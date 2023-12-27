@@ -1,0 +1,7 @@
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/container/ContainerModelTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/container/ContainerModelTest.java
+index 5cf1b423..e04da099 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/container/ContainerModelTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/container/ContainerModelTest.java
+@@ -34 +34 @@ public class ContainerModelTest extends JXPathTestCase {
+-    private final class ArrayContainer implements Container
++    private class ArrayContainer implements Container

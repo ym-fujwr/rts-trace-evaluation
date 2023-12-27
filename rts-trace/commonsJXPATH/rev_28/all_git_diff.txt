@@ -1,0 +1,76 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index 98dcaeef..91deefda 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -48 +48 @@ jobs:
+-      uses: actions/checkout@v3.4.0
++      uses: actions/checkout@v3.3.0
+@@ -51 +51 @@ jobs:
+-    - uses: actions/cache@v3.3.1
++    - uses: actions/cache@v3.2.6
+diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
+index 1d23bd57..3cff7ecf 100644
+--- a/.github/workflows/coverage.yml
++++ b/.github/workflows/coverage.yml
+@@ -32 +32 @@ jobs:
+-    - uses: actions/checkout@v3.4.0
++    - uses: actions/checkout@v3.3.0
+@@ -35 +35 @@ jobs:
+-    - uses: actions/cache@v3.3.1
++    - uses: actions/cache@v3.2.6
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index 7f18a98d..43e6cd38 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -48 +48 @@ jobs:
+-    - uses: actions/checkout@v3.4.0
++    - uses: actions/checkout@v3.3.0
+@@ -51 +51 @@ jobs:
+-    - uses: actions/cache@v3.3.1
++    - uses: actions/cache@v3.2.6
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index a276cee8..f6750464 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -42 +42 @@ jobs:
+-        uses: actions/checkout@v3.4.0   # 3.0.2
++        uses: actions/checkout@v3.3.0   # 3.0.2
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index c75b2928..2f0512d3 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -42,3 +42 @@ The <action> type attribute can be add,update,fix,remove.
+-<document xmlns="http://maven.apache.org/changes/1.0.0"
+-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-          xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
++<document>
+diff --git a/src/main/java/org/apache/commons/jxpath/NodeSet.java b/src/main/java/org/apache/commons/jxpath/NodeSet.java
+index d92a02fc..477be054 100644
+--- a/src/main/java/org/apache/commons/jxpath/NodeSet.java
++++ b/src/main/java/org/apache/commons/jxpath/NodeSet.java
+@@ -25,0 +26 @@ import java.util.List;
++ * @version $Id$
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicAttributeIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicAttributeIterator.java
+index b6264cc1..dff26624 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicAttributeIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicAttributeIterator.java
+@@ -26,0 +27 @@ import org.apache.commons.jxpath.ri.model.beans.PropertyOwnerPointer;
++ * @version $Id$
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyIterator.java
+index aac09ae6..33b21b7b 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyIterator.java
+@@ -24,0 +25 @@ import org.apache.commons.jxpath.ri.model.beans.PropertyOwnerPointer;
++ * @version $Id$
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java b/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
+index 79da9eb6..6031bb23 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
+@@ -22,0 +23 @@ import org.apache.commons.jxpath.TestBean;
++ * @version $Id$
+diff --git a/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java b/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java
+index a4c2a886..0b815924 100644
+--- a/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java
++++ b/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java
+@@ -36,0 +37 @@ import junit.framework.TestCase;
++ * @version $Revision$, $Date$

@@ -1,0 +1,10 @@
+diff --git a/src/test/java/org/apache/commons/cli/ApplicationTest.java b/src/test/java/org/apache/commons/cli/ApplicationTest.java
+index 32079c77..9ea0ee8c 100644
+--- a/src/test/java/org/apache/commons/cli/ApplicationTest.java
++++ b/src/test/java/org/apache/commons/cli/ApplicationTest.java
+@@ -218 +218 @@ public class ApplicationTest {
+-                addOption("m", "systems", true, "search for man pages from other Unix system(s).").
++                addOption("m", "systems", true, "search for man pages from other unix system(s).").
+@@ -257 +257 @@ public class ApplicationTest {
+-                        "                           Unix system(s)." + eol +
++                        "                           unix system(s)." + eol +

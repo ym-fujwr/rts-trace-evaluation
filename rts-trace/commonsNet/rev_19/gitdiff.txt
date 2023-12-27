@@ -1,0 +1,15 @@
+diff --git a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
+index 14c06d067..9a075fbc3 100644
+--- a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
++++ b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
+@@ -26,3 +25,0 @@ import org.junit.Test;
+-import org.junit.jupiter.api.function.Executable;
+-
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -92 +89 @@ public class TestTimeInfo {
+-    @Test
++    @Test(expected=IllegalArgumentException.class)
+@@ -95,2 +92 @@ public class TestTimeInfo {
+-        final Executable testMethod = () -> new TimeInfo(packet, 1L);
+-        assertThrows(IllegalArgumentException.class, testMethod);
++        new TimeInfo(packet, 1L);

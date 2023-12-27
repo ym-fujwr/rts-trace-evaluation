@@ -1,0 +1,26 @@
+diff --git a/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java b/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java
+index f615b3d..28383cf 100644
+--- a/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java
++++ b/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java
+@@ -3,0 +4 @@ import java.util.ArrayList;
++import java.util.Arrays;
+@@ -6,0 +8,2 @@ import java.util.TreeSet;
++import java.util.function.Consumer;
++import java.util.stream.Collectors;
+@@ -7,0 +11 @@ import java.util.TreeSet;
++import com.github.davidmoten.guavamini.Lists;
+@@ -8,0 +13 @@ import com.github.davidmoten.guavamini.Preconditions;
++import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
+diff --git a/src/main/java/org/davidmoten/hilbert/internal/util/BoundedPriorityQueue.java b/src/main/java/org/davidmoten/hilbert/internal/util/BoundedPriorityQueue.java
+index ab9a318..06b108b 100644
+--- a/src/main/java/org/davidmoten/hilbert/internal/util/BoundedPriorityQueue.java
++++ b/src/main/java/org/davidmoten/hilbert/internal/util/BoundedPriorityQueue.java
+@@ -8,0 +9,2 @@ import java.util.PriorityQueue;
++import org.davidmoten.hilbert.internal.util.BoundedPriorityQueue;
++
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index 461b325..b1cb385 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -13,0 +14 @@ import java.util.BitSet;
++import java.util.Collections;

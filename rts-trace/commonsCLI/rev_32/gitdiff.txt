@@ -1,0 +1,21 @@
+diff --git a/src/main/java/org/apache/commons/cli/DefaultParser.java b/src/main/java/org/apache/commons/cli/DefaultParser.java
+index 8a027094..8b69a766 100644
+--- a/src/main/java/org/apache/commons/cli/DefaultParser.java
++++ b/src/main/java/org/apache/commons/cli/DefaultParser.java
+@@ -583 +583 @@ public class DefaultParser implements CommandLineParser {
+-        final String opt = token.isEmpty() ? null : token.substring(0, 1);
++        final String opt = token.substring(0, 1);
+diff --git a/src/test/java/org/apache/commons/cli/ParserTestCase.java b/src/test/java/org/apache/commons/cli/ParserTestCase.java
+index db8d7b08..25ade7e7 100644
+--- a/src/test/java/org/apache/commons/cli/ParserTestCase.java
++++ b/src/test/java/org/apache/commons/cli/ParserTestCase.java
+@@ -1023,8 +1023 @@ public abstract class ParserTestCase {
+-    
+-    @Test(expected = UnrecognizedOptionException.class)
+-    public void testAmbiguousArgParsing() throws Exception {
+-        final String[] args = {"-=-"};
+-        final Options options = new Options();
+-        
+-        final CommandLine cl = parser.parse(options, args);
+-    }
++

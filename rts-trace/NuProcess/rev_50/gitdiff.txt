@@ -1,0 +1,55 @@
+diff --git a/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java b/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
+index ac18538..890cfc1 100644
+--- a/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
++++ b/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
+@@ -293,6 +292,0 @@ public class NuProcessBuilder
+-   private void ensureNoNullCharacters(String environment) {
+-      if (environment.indexOf('\u0000') >= 0) {
+-         throw new IllegalArgumentException("Environment may not contain null characters");
+-      }
+-   }
+-
+@@ -304,5 +298 @@ public class NuProcessBuilder
+-         String key = entrySet.getKey();
+-         String value = entrySet.getValue();
+-         ensureNoNullCharacters(key);
+-         ensureNoNullCharacters(value);
+-         env[i++] = key + "=" + value;
++         env[i++] = entrySet.getKey() + "=" + entrySet.getValue();
+diff --git a/src/test/java/com/zaxxer/nuprocess/RunTest.java b/src/test/java/com/zaxxer/nuprocess/RunTest.java
+index 8953b45..5207ddd 100644
+--- a/src/test/java/com/zaxxer/nuprocess/RunTest.java
++++ b/src/test/java/com/zaxxer/nuprocess/RunTest.java
+@@ -31 +30,0 @@ import java.nio.file.Paths;
+-import java.util.Collections;
+@@ -346,30 +344,0 @@ public class RunTest
+-   @Test(expected = IllegalArgumentException.class)
+-   public void nullEnvironmentKeyViaConstructor() {
+-      NuProcessBuilder pb = new NuProcessBuilder(Collections.singletonList(command),
+-              Collections.singletonMap("FOO=foo\0BAD=bad", ""));
+-      pb.setProcessListener(new NullProcessHandler());
+-      pb.run();
+-   }
+-
+-   @Test(expected = IllegalArgumentException.class)
+-   public void nullEnvironmentValueViaConstructor() {
+-      NuProcessBuilder pb = new NuProcessBuilder(Collections.singletonList(command),
+-              Collections.singletonMap("FOO", "foo\0BAD=bad"));
+-      pb.setProcessListener(new NullProcessHandler());
+-      pb.run();
+-   }
+-
+-   @Test(expected = IllegalArgumentException.class)
+-   public void nullEnvironmentKeyViaEnvironmentMutation() {
+-      NuProcessBuilder pb = new NuProcessBuilder(new NullProcessHandler(), command);
+-      pb.environment().put("FOO=foo\0BAD=bad", "");
+-      pb.start();
+-   }
+-
+-   @Test(expected = IllegalArgumentException.class)
+-   public void nullEnvironmentValueViaEnvironmentMutation() {
+-      NuProcessBuilder pb = new NuProcessBuilder(new NullProcessHandler(), command);
+-      pb.environment().put("FOO", "foo\0BAD=bad");
+-      pb.start();
+-   }
+-

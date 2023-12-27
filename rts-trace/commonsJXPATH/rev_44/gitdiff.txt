@@ -1,0 +1,421 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/ExpressionContext.java b/src/main/java/org/apache/commons/jxpath/ExpressionContext.java
+index 3cd44ede..7af1b359 100644
+--- a/src/main/java/org/apache/commons/jxpath/ExpressionContext.java
++++ b/src/main/java/org/apache/commons/jxpath/ExpressionContext.java
+@@ -48 +48 @@ public interface ExpressionContext {
+-     * Gets the JXPathContext in which this function is being evaluated.
++     * Get the JXPathContext in which this function is being evaluated.
+@@ -55 +55 @@ public interface ExpressionContext {
+-     * Gets the current context node.
++     * Get the current context node.
+@@ -62 +62 @@ public interface ExpressionContext {
+-     * Gets the current context node list.  Each element of the list is
++     * Get the current context node list.  Each element of the list is
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContext.java b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+index e8967b19..8ec5c40d 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathContext.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+@@ -618 +618 @@ public abstract class JXPathContext {
+-     * Gets the named DecimalFormatSymbols.
++     * Get the named DecimalFormatSymbols.
+@@ -939 +939 @@ public abstract class JXPathContext {
+-     * Gets the prefix associated with the specifed namespace URI.
++     * Get the prefix associated with the specifed namespace URI.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java b/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java
+index aa809191..5167628e 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java
+@@ -303 +303 @@ public abstract class EvalContext implements ExpressionContext, Iterator {
+-     * Gets the current position.
++     * Get the current position.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/JXPathCompiledExpression.java b/src/main/java/org/apache/commons/jxpath/ri/JXPathCompiledExpression.java
+index 7f098447..fd9a88a3 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/JXPathCompiledExpression.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/JXPathCompiledExpression.java
+@@ -45 +45 @@ public class JXPathCompiledExpression implements CompiledExpression {
+-     * Gets the source expression.
++     * Get the source expression.
+@@ -53 +53 @@ public class JXPathCompiledExpression implements CompiledExpression {
+-     * Gets the compiled expression.
++     * Get the compiled expression.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
+index 50b1d3bb..7a350a14 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
+@@ -162 +162 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets the registered NodePointerFactories.
++     * Get the registered NodePointerFactories.
+@@ -364 +364 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets the value indicated.
++     * Get the value indicated.
+@@ -410 +410 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets the value indicated.
++     * Get the value indicated.
+@@ -463 +463 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets a pointer to the specified path/expression.
++     * Get a pointer to the specified path/expression.
+@@ -718 +718 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets absolute root pointer.
++     * Get absolute root pointer.
+@@ -726 +726 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets the evaluation context.
++     * Get the evaluation context.
+@@ -735 +735 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets the absolute root context.
++     * Get the absolute root context.
+@@ -744 +744 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets a VariablePointer for the given variable name.
++     * Get a VariablePointer for the given variable name.
+@@ -754 +754 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets the named Function.
++     * Get the named Function.
+@@ -815 +815 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Gets the namespace resolver.
++     * Get the namespace resolver.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/NamespaceResolver.java b/src/main/java/org/apache/commons/jxpath/ri/NamespaceResolver.java
+index 44400829..2713e317 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/NamespaceResolver.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/NamespaceResolver.java
+@@ -107 +107 @@ public class NamespaceResolver implements Cloneable, Serializable {
+-     * Gets the namespace context pointer.
++     * Get the namespace context pointer.
+@@ -148 +148 @@ public class NamespaceResolver implements Cloneable, Serializable {
+-     * Gets the prefix associated with the specifed namespace URI.
++     * Get the prefix associated with the specifed namespace URI.
+@@ -159 +159 @@ public class NamespaceResolver implements Cloneable, Serializable {
+-     * Gets the nearest prefix found that matches an externally-registered namespace.
++     * Get the nearest prefix found that matches an externally-registered namespace.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/QName.java b/src/main/java/org/apache/commons/jxpath/ri/QName.java
+index 50d44f3c..25d8e950 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/QName.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/QName.java
+@@ -56 +56 @@ public class QName implements Serializable {
+-     * Gets the prefix of this QName.
++     * Get the prefix of this QName.
+@@ -64 +64 @@ public class QName implements Serializable {
+-     * Gets the local name.
++     * Get the local name.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/axes/RootContext.java b/src/main/java/org/apache/commons/jxpath/ri/axes/RootContext.java
+index 93925e03..4d56111c 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/axes/RootContext.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/axes/RootContext.java
+@@ -64 +64 @@ public class RootContext extends EvalContext {
+-     * Gets absolute root context
++     * Get absolute root context
+@@ -102 +102 @@ public class RootContext extends EvalContext {
+-     * Gets a context that points to the specified object.
++     * Get a context that points to the specified object.
+@@ -127 +127 @@ public class RootContext extends EvalContext {
+-     * Gets variable context.
++     * Get variable context.
+@@ -139 +139 @@ public class RootContext extends EvalContext {
+-     * Gets the specified function from the context.
++     * Get the specified function from the context.
+@@ -149 +149 @@ public class RootContext extends EvalContext {
+-     * Gets a registered value.
++     * Get a registered value.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java b/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java
+index 09dd016f..2efd1426 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java
+@@ -872 +872 @@ public class SimplePathInterpreter {
+-     * Gets a NodeIterator.
++     * Get a NodeIterator.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java
+index 3200ba46..9b3bd01b 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java
+@@ -56 +56 @@ public class CoreFunction extends Operation {
+-     * Gets the function code.
++     * Get the function code.
+@@ -64 +64 @@ public class CoreFunction extends Operation {
+-     * Gets the name of this function.
++     * Get the name of this function.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/ExpressionPath.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/ExpressionPath.java
+index 5c8c0947..39853fa9 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/ExpressionPath.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/ExpressionPath.java
+@@ -54 +54 @@ public class ExpressionPath extends Path {
+-     * Gets the expression.
++     * Get the expression.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunction.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunction.java
+index fbb12e71..c8a9b277 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunction.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunction.java
+@@ -47 +47 @@ public class ExtensionFunction extends Operation {
+-     * Gets the function name
++     * Get the function name
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/NameAttributeTest.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/NameAttributeTest.java
+index 0df8e9d7..3bb9843b 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/NameAttributeTest.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/NameAttributeTest.java
+@@ -36 +36 @@ public class NameAttributeTest extends CoreOperationEqual {
+-     * Gets the name test expression.
++     * Get the name test expression.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeNameTest.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeNameTest.java
+index 118f700d..6dd3ec64 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeNameTest.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeNameTest.java
+@@ -46 +46 @@ public class NodeNameTest extends NodeTest {
+-     * Gets the node name.
++     * Get the node name.
+@@ -54 +54 @@ public class NodeNameTest extends NodeTest {
+-     * Gets the ns URI.
++     * Get the ns URI.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeTypeTest.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeTypeTest.java
+index 545c3733..16290782 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeTypeTest.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeTypeTest.java
+@@ -35 +35 @@ public class NodeTypeTest extends NodeTest {
+-     * Gets the nodeType.
++     * Get the nodeType.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/Operation.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/Operation.java
+index b8c36b5c..aec5ac30 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/Operation.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/Operation.java
+@@ -35 +35 @@ public abstract class Operation extends Expression {
+-     * Gets the arguments.
++     * Get the arguments.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/Path.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/Path.java
+index e933dc8f..d05b58aa 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/Path.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/Path.java
+@@ -54 +54 @@ public abstract class Path extends Expression {
+-     * Gets the steps.
++     * Get the steps.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/ProcessingInstructionTest.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/ProcessingInstructionTest.java
+index 14106201..2fc1c780 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/ProcessingInstructionTest.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/ProcessingInstructionTest.java
+@@ -33 +33 @@ public class ProcessingInstructionTest extends NodeTest {
+-     * Gets the target.
++     * Get the target.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/Step.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/Step.java
+index 09c23b3e..8dc0e48d 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/Step.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/Step.java
+@@ -41 +41 @@ public class Step {
+-     * Gets the axis code.
++     * Get the axis code.
+@@ -49 +49 @@ public class Step {
+-     * Gets the step test.
++     * Get the step test.
+@@ -57 +57 @@ public class Step {
+-     * Gets the predicates.
++     * Get the predicates.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/TreeCompiler.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/TreeCompiler.java
+index 3f90894b..87a92618 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/TreeCompiler.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/TreeCompiler.java
+@@ -181 +181 @@ public class TreeCompiler implements Compiler {
+-     * Gets an Object[] as an Expression[].
++     * Get an Object[] as an Expression[].
+@@ -197 +197 @@ public class TreeCompiler implements Compiler {
+-     * Gets an Object[] as a Step[].
++     * Get an Object[] as a Step[].
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/VariableReference.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/VariableReference.java
+index c0f664c9..4a71a090 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/VariableReference.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/VariableReference.java
+@@ -38 +38 @@ public class VariableReference extends Expression {
+-     * Gets the variable name.
++     * Get the variable name.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java
+index 1fa7a080..0283f59d 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java
+@@ -25 +25 @@ public interface NodeIterator {
+-     * Gets the current iterator position.
++     * Get the current iterator position.
+@@ -38 +38 @@ public interface NodeIterator {
+-     * Gets the NodePointer at the current position.
++     * Get the NodePointer at the current position.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+index ebb5902e..ed53b39e 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+@@ -145 +145 @@ public abstract class NodePointer implements Pointer {
+-     * Gets the NamespaceResolver associated with this NodePointer.
++     * Get the NamespaceResolver associated with this NodePointer.
+@@ -164 +164 @@ public abstract class NodePointer implements Pointer {
+-     * Gets the parent pointer.
++     * Get the parent pointer.
+@@ -176 +176 @@ public abstract class NodePointer implements Pointer {
+-     * Gets the immediate parent pointer.
++     * Get the immediate parent pointer.
+@@ -371 +371 @@ public abstract class NodePointer implements Pointer {
+-     * Gets the root node.
++     * Get the root node.
+@@ -635 +635 @@ public abstract class NodePointer implements Pointer {
+-     * Gets the default ns uri
++     * Get the default ns uri
+@@ -880 +880 @@ public abstract class NodePointer implements Pointer {
+-     * Gets the AbstractFactory associated with the specified JXPathContext.
++     * Get the AbstractFactory associated with the specified JXPathContext.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/VariablePointerFactory.java b/src/main/java/org/apache/commons/jxpath/ri/model/VariablePointerFactory.java
+index d6d3c2dc..6faf4c74 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/VariablePointerFactory.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/VariablePointerFactory.java
+@@ -48 +48 @@ public class VariablePointerFactory implements NodePointerFactory {
+-         * Gets the original (unwrapped) context.
++         * Get the original (unwrapped) context.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/BeanPropertyPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/BeanPropertyPointer.java
+index 17fb7a32..b556d21b 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/BeanPropertyPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/BeanPropertyPointer.java
+@@ -72 +72 @@ public class BeanPropertyPointer extends PropertyPointer {
+-     * Gets the names of all properties, sorted alphabetically
++     * Get the names of all properties, sorted alphabetically
+@@ -113 +113 @@ public class BeanPropertyPointer extends PropertyPointer {
+-     * Gets the value of the currently selected property.
++     * Get the value of the currently selected property.
+@@ -274 +274 @@ public class BeanPropertyPointer extends PropertyPointer {
+-     * Gets the name of the currently selected property.
++     * Get the name of the currently selected property.
+@@ -315 +315 @@ public class BeanPropertyPointer extends PropertyPointer {
+-     * Gets all PropertyDescriptors.
++     * Get all PropertyDescriptors.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullElementPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullElementPointer.java
+index c5e2cdfa..bf7fbdbe 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullElementPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullElementPointer.java
+@@ -71 +71 @@ public class NullElementPointer extends CollectionPointer {
+-     * Gets the property pointer for this.
++     * Get the property pointer for this.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyIterator.java
+index 12071b6c..4b0184be 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyIterator.java
+@@ -84 +84 @@ public class PropertyIterator implements NodeIterator {
+-     * Gets the property pointer.
++     * Get the property pointer.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyOwnerPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyOwnerPointer.java
+index e16c8ada..15626142 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyOwnerPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyOwnerPointer.java
+@@ -171 +171 @@ public abstract class PropertyOwnerPointer extends NodePointer {
+-     * Gets a PropertyPointer for this PropertyOwnerPointer.
++     * Get a PropertyPointer for this PropertyOwnerPointer.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java
+index 5ecf81cd..01e298ad 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java
+@@ -52 +52 @@ public abstract class PropertyPointer extends NodePointer {
+-     * Gets the property index.
++     * Get the property index.
+@@ -71 +71 @@ public abstract class PropertyPointer extends NodePointer {
+-     * Gets the parent bean.
++     * Get the parent bean.
+@@ -87 +87 @@ public abstract class PropertyPointer extends NodePointer {
+-     * Gets the property name.
++     * Get the property name.
+@@ -105 +105 @@ public abstract class PropertyPointer extends NodePointer {
+-     * Gets the names of the included properties.
++     * Get the names of the included properties.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java
+index ae3ad3a0..72c7befa 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java
+@@ -105 +105 @@ public class DOMAttributeIterator implements NodeIterator {
+-     * Gets the named attribute.
++     * Get the named attribute.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java
+index 6efad9c7..d3fdfaf6 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java
+@@ -371 +371 @@ public class DOMNodePointer extends NodePointer {
+-     * Gets the language attribute for this node.
++     * Get the language attribute for this node.
+@@ -573 +573 @@ public class DOMNodePointer extends NodePointer {
+-     * Gets relative position of this among like-named siblings.
++     * Get relative position of this among like-named siblings.
+@@ -597 +597 @@ public class DOMNodePointer extends NodePointer {
+-     * Gets relative position of this among all siblings.
++     * Get relative position of this among all siblings.
+@@ -613 +613 @@ public class DOMNodePointer extends NodePointer {
+-     * Gets the relative position of this among sibling text nodes.
++     * Get the relative position of this among sibling text nodes.
+@@ -630 +630 @@ public class DOMNodePointer extends NodePointer {
+-     * Gets the relative position of this among same-target processing instruction siblings.
++     * Get the relative position of this among same-target processing instruction siblings.
+@@ -658 +658 @@ public class DOMNodePointer extends NodePointer {
+-     * Gets any prefix from the specified node.
++     * Get any prefix from the specified node.
+@@ -674 +674 @@ public class DOMNodePointer extends NodePointer {
+-     * Gets the local name of the specified node.
++     * Get the local name of the specified node.
+@@ -690 +690 @@ public class DOMNodePointer extends NodePointer {
+-     * Gets the ns uri of the specified node.
++     * Get the ns uri of the specified node.
+@@ -731 +731 @@ public class DOMNodePointer extends NodePointer {
+-     * Gets the string value of the specified node.
++     * Get the string value of the specified node.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
+index e3de51e2..f3b53240 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
+@@ -123 +123 @@ public class JDOMNodePointer extends NodePointer {
+-     * Gets the ns uri of the specified node.
++     * Get the ns uri of the specified node.
+@@ -455 +455 @@ public class JDOMNodePointer extends NodePointer {
+-     * Gets the prefix from a given node.
++     * Get the prefix from a given node.
+@@ -472 +472 @@ public class JDOMNodePointer extends NodePointer {
+-     * Gets the local name of the specified node.
++     * Get the local name of the specified node.
+@@ -501 +501 @@ public class JDOMNodePointer extends NodePointer {
+-     * Gets the language of this element.
++     * Get the language of this element.
+@@ -531 +531 @@ public class JDOMNodePointer extends NodePointer {
+-     * Gets the parent of the specified node.
++     * Get the parent of the specified node.
+@@ -698 +698 @@ public class JDOMNodePointer extends NodePointer {
+-     * Gets relative position of this among like-named siblings.
++     * Get relative position of this among like-named siblings.
+@@ -734 +734 @@ public class JDOMNodePointer extends NodePointer {
+-     * Gets relative position of this among all siblings.
++     * Get relative position of this among all siblings.
+@@ -762 +762 @@ public class JDOMNodePointer extends NodePointer {
+-     * Gets the relative position of this among sibling text nodes.
++     * Get the relative position of this among sibling text nodes.
+@@ -790 +790 @@ public class JDOMNodePointer extends NodePointer {
+-     * Gets the relative position of this among same-target processing instruction siblings.
++     * Get the relative position of this among same-target processing instruction siblings.
+diff --git a/src/main/java/org/apache/commons/jxpath/servlet/HttpSessionAndServletContext.java b/src/main/java/org/apache/commons/jxpath/servlet/HttpSessionAndServletContext.java
+index a2e35278..11bec18e 100644
+--- a/src/main/java/org/apache/commons/jxpath/servlet/HttpSessionAndServletContext.java
++++ b/src/main/java/org/apache/commons/jxpath/servlet/HttpSessionAndServletContext.java
+@@ -42 +42 @@ public class HttpSessionAndServletContext {
+-     * Gets the session.
++     * Get the session.
+@@ -50 +50 @@ public class HttpSessionAndServletContext {
+-     * Gets the ServletContext.
++     * Get the ServletContext.
+diff --git a/src/main/java/org/apache/commons/jxpath/servlet/PageScopeContext.java b/src/main/java/org/apache/commons/jxpath/servlet/PageScopeContext.java
+index c010853d..7485230c 100644
+--- a/src/main/java/org/apache/commons/jxpath/servlet/PageScopeContext.java
++++ b/src/main/java/org/apache/commons/jxpath/servlet/PageScopeContext.java
+@@ -49 +49 @@ public class PageScopeContext {
+-     * Gets the value of the specified attribute.
++     * Get the value of the specified attribute.
+diff --git a/src/main/java/org/apache/commons/jxpath/servlet/ServletRequestAndContext.java b/src/main/java/org/apache/commons/jxpath/servlet/ServletRequestAndContext.java
+index 9c7edb23..a0c225ba 100644
+--- a/src/main/java/org/apache/commons/jxpath/servlet/ServletRequestAndContext.java
++++ b/src/main/java/org/apache/commons/jxpath/servlet/ServletRequestAndContext.java
+@@ -50 +50 @@ public class ServletRequestAndContext extends HttpSessionAndServletContext {
+-     * Gets the request.
++     * Get the request.
+diff --git a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
+index f9acdc75..91a45faa 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
++++ b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
+@@ -451 +451 @@ public class BasicTypeConverter implements TypeConverter {
+-     * Gets an unmodifiable version of a collection.
++     * Get an unmodifiable version of a collection.
+diff --git a/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java b/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java
+index c1f29425..76c2acab 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java
++++ b/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java
+@@ -64 +64 @@ public class KeyManagerUtils {
+-     * Gets an ExtendedKeyManager from the specified KeyManager.
++     * Get an ExtendedKeyManager from the specified KeyManager.

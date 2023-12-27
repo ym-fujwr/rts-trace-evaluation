@@ -1,0 +1,14 @@
+diff --git a/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java b/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java
+index f08f1ea4d..9fc2bf427 100644
+--- a/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java
++++ b/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java
+@@ -19,2 +18,0 @@ package org.apache.commons.net.ntp;
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+-
+@@ -25 +22,0 @@ import org.junit.Test;
+-import org.junit.jupiter.api.function.Executable;
+@@ -155,0 +153 @@ public class TestNtpPacket {
++    @Test(expected=IllegalArgumentException.class)
+@@ -158 +156 @@ public class TestNtpPacket {
+-        assertThrows(IllegalArgumentException.class, () -> message.setDatagramPacket(null));
++        message.setDatagramPacket(null);

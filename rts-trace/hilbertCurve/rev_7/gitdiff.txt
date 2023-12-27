@@ -1,0 +1,21 @@
+diff --git a/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java b/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java
+index 95bf694..f615b3d 100644
+--- a/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java
++++ b/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java
+@@ -104,12 +103,0 @@ public final class SmallHilbertCurve {
+-    public Ranges query(long[] a, long[] b, int maxRanges) {
+-        Preconditions.checkArgument(maxRanges >= 0);
+-        // TODO optimise this by joining ranges as they are found
+-        // instead of joining them at the end
+-        Ranges ranges = query(a, b);
+-        if (maxRanges >= ranges.size() || maxRanges == 0) {
+-            return ranges;
+-        } else {
+-            return ranges.join(ranges.size() - maxRanges);
+-        }
+-    }
+-
+@@ -117,2 +105 @@ public final class SmallHilbertCurve {
+-     * Returns a list of index ranges exactly covering the region bounded by
+-     * {@code a} and {@code b}.
++     * Returns a list of index ranges exactly covering the region bounded by {@code a} and {@code b}.

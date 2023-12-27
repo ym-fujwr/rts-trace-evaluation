@@ -1,0 +1,149 @@
+diff --git a/pom.xml b/pom.xml
+index 221696b..5a95bc3 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -65 +65 @@
+-            <version>5.8.0</version>
++            <version>5.5.0</version>
+@@ -70 +70 @@
+-            <version>4.13.2</version>
++            <version>4.12</version>
+@@ -113 +113 @@
+-							com.zaxxer.nuprocess;version="${project.version}",
++							com.zaxxer.nuprocess;version="${project.version}", 
+diff --git a/src/main/java/com/zaxxer/nuprocess/windows/NuKernel32.java b/src/main/java/com/zaxxer/nuprocess/windows/NuKernel32.java
+index a2b67a6..8b8eb53 100644
+--- a/src/main/java/com/zaxxer/nuprocess/windows/NuKernel32.java
++++ b/src/main/java/com/zaxxer/nuprocess/windows/NuKernel32.java
+@@ -104,0 +105,5 @@ public class NuKernel32
++      public OVERLAPPED(Pointer p)
++      {
++         super(p);
++      }
++
+@@ -106 +111,2 @@ public class NuKernel32
+-      protected List<String> getFieldOrder()
++      @SuppressWarnings("rawtypes")
++      protected List getFieldOrder()
+@@ -108 +114 @@ public class NuKernel32
+-         return Arrays.asList("Internal", "InternalHigh", "Offset", "OffsetHigh", "hEvent");
++         return Arrays.asList(new String[] { "Internal", "InternalHigh", "Offset", "OffsetHigh", "hEvent" });
+diff --git a/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java b/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java
+index 3ab8a45..380f231 100644
+--- a/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java
++++ b/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java
+@@ -61 +61 @@ public interface NuWinNT
+-   HANDLE INVALID_HANDLE_VALUE = new HANDLE(HANDLE.INVALID);
++   HANDLE INVALID_HANDLE_VALUE = new HANDLE(Pointer.createConstant(Native.POINTER_SIZE == 8 ? -1 : 0xFFFFFFFFL));
+@@ -65,2 +64,0 @@ public interface NuWinNT
+-      static final Pointer INVALID = Pointer.createConstant(Native.POINTER_SIZE == 8 ? -1 : 0xFFFFFFFFL);
+-
+@@ -79,6 +77,2 @@ public interface NuWinNT
+-         if (nativeValue == null) {
+-            return null;
+-         }
+-
+-         Pointer ptr = (Pointer) nativeValue;
+-         if (INVALID.equals(ptr)) {
++         Object o = super.fromNative(nativeValue, context);
++         if (INVALID_HANDLE_VALUE.equals(o)) {
+@@ -87 +81 @@ public interface NuWinNT
+-         return new HANDLE(ptr);
++         return o;
+@@ -91 +85 @@ public interface NuWinNT
+-   class WORD extends IntegerType
++   static class WORD extends IntegerType
+@@ -106 +100 @@ public interface NuWinNT
+-   class DWORD extends IntegerType
++   static class DWORD extends IntegerType
+@@ -121 +115 @@ public interface NuWinNT
+-   class ULONG_PTR extends IntegerType
++   static class ULONG_PTR extends IntegerType
+@@ -131,0 +126,5 @@ public interface NuWinNT
++
++      public Pointer toPointer()
++      {
++         return Pointer.createConstant(longValue());
++      }
+@@ -134 +133 @@ public interface NuWinNT
+-   class ULONG_PTRByReference extends ByReference
++   static class ULONG_PTRByReference extends ByReference
+@@ -170 +169,2 @@ public interface NuWinNT
+-      protected List<String> getFieldOrder()
++      @SuppressWarnings("rawtypes")
++      protected List getFieldOrder()
+@@ -172 +172 @@ public interface NuWinNT
+-         return Arrays.asList("dwLength", "lpSecurityDescriptor", "bInheritHandle");
++         return Arrays.asList(new String[] { "dwLength", "lpSecurityDescriptor", "bInheritHandle" });
+@@ -197 +197,3 @@ public interface NuWinNT
+-      public STARTUPINFO()
++      @Override
++      @SuppressWarnings("rawtypes")
++      protected List getFieldOrder()
+@@ -199 +201,2 @@ public interface NuWinNT
+-         cb = new DWORD(size());
++         return Arrays.asList(new String[] { "cb", "lpReserved", "lpDesktop", "lpTitle", "dwX", "dwY", "dwXSize", "dwYSize", "dwXCountChars", "dwYCountChars",
++               "dwFillAttribute", "dwFlags", "wShowWindow", "cbReserved2", "lpReserved2", "hStdInput", "hStdOutput", "hStdError" });
+@@ -202,2 +205 @@ public interface NuWinNT
+-      @Override
+-      protected List<String> getFieldOrder()
++      public STARTUPINFO()
+@@ -205,3 +207 @@ public interface NuWinNT
+-         return Arrays.asList("cb", "lpReserved", "lpDesktop", "lpTitle", "dwX", "dwY", "dwXSize", "dwYSize",
+-               "dwXCountChars", "dwYCountChars", "dwFillAttribute", "dwFlags", "wShowWindow", "cbReserved2",
+-               "lpReserved2", "hStdInput", "hStdOutput", "hStdError");
++         cb = new DWORD(size());
+@@ -219 +219,2 @@ public interface NuWinNT
+-      protected List<String> getFieldOrder()
++      @SuppressWarnings("rawtypes")
++      protected List getFieldOrder()
+@@ -221 +222 @@ public interface NuWinNT
+-         return Arrays.asList("hProcess", "hThread", "dwProcessId", "dwThreadId");
++         return Arrays.asList(new String[] { "hProcess", "hThread", "dwProcessId", "dwThreadId" });
+diff --git a/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java b/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java
+index 1f0ea72..fce7b60 100644
+--- a/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java
+@@ -48,2 +48 @@ public final class WindowsProcess implements NuProcess
+-   // See https://github.com/JetBrains/jdk8u_jdk/blob/master/src/windows/native/java/lang/ProcessImpl_md.c#L36-L41
+-   private static final int BUFFER_SIZE = 4096 + 24;
++   private static final int BUFFER_SIZE = 65536;
+@@ -51 +49,0 @@ public final class WindowsProcess implements NuProcess
+-   private static final Logger LOGGER = Logger.getLogger(WindowsProcess.class.getCanonicalName());
+@@ -91 +89 @@ public final class WindowsProcess implements NuProcess
+-      IS_SOFTEXIT_DETECTION = Boolean.parseBoolean(System.getProperty("com.zaxxer.nuprocess.softExitDetection", "true"));
++      IS_SOFTEXIT_DETECTION = Boolean.valueOf(System.getProperty("com.zaxxer.nuprocess.softExitDetection", "true"));
+@@ -241 +239 @@ public final class WindowsProcess implements NuProcess
+-         LOGGER.log(Level.WARNING, "Failed to start process", e);
++         e.printStackTrace();
+@@ -267 +265 @@ public final class WindowsProcess implements NuProcess
+-         LOGGER.log(Level.WARNING, "Failed to start process", e);
++         e.printStackTrace();
+@@ -356 +354 @@ public final class WindowsProcess implements NuProcess
+-         LOGGER.log(Level.WARNING, "Exception thrown from handler", e);
++         e.printStackTrace();
+@@ -391 +389 @@ public final class WindowsProcess implements NuProcess
+-         LOGGER.log(Level.WARNING, "Exception thrown from handler", e);
++         e.printStackTrace();
+@@ -460 +458 @@ public final class WindowsProcess implements NuProcess
+-         LOGGER.log(Level.SEVERE, "Exception thrown handling writes to stdin " + processHandler, e);
++         Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Exception thrown handling writes to stdin " + processHandler, e);
+@@ -490 +488 @@ public final class WindowsProcess implements NuProcess
+-         LOGGER.log(Level.WARNING, "Exception thrown from handler", e);
++         e.printStackTrace();
+@@ -545 +542,0 @@ public final class WindowsProcess implements NuProcess
+-         LOGGER.log(Level.WARNING, "Exception thrown from handler", e);
+@@ -556 +553 @@ public final class WindowsProcess implements NuProcess
+-         LOGGER.log(Level.WARNING, "Exception thrown from handler", e);
++         e.printStackTrace();
+@@ -609 +606 @@ public final class WindowsProcess implements NuProcess
+-      pendingWrites = new ConcurrentLinkedQueue<>();
++      pendingWrites = new ConcurrentLinkedQueue<ByteBuffer>();
+@@ -783,6 +780 @@ public final class WindowsProcess implements NuProcess
+-
+-         // The OVERLAPPED structure is required to make non-blocking ReadFile and WriteFile calls,
+-         // but its state is never read from nor written to in Java, so we disable auto-sync so JNA
+-         // doesn't waste time marshaling contents to/from native memory
+-         overlapped = new OVERLAPPED();
+-         overlapped.setAutoSynch(false);
++         this.overlapped = new OVERLAPPED();

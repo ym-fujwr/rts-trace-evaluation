@@ -1,0 +1,85 @@
+diff --git a/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java b/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java
+index fe6109c..fcf5c20 100644
+--- a/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java
+@@ -47 +46,0 @@ public final class WindowsProcess implements NuProcess
+-   private static final String ENV_SYSTEMROOT = "SystemRoot";
+@@ -94 +93 @@ public final class WindowsProcess implements NuProcess
+-      if (Boolean.parseBoolean(System.getProperty("com.zaxxer.nuprocess.enableShutdownHook", "true"))) {
++      if (Boolean.valueOf(System.getProperty("com.zaxxer.nuprocess.enableShutdownHook", "true"))) {
+@@ -633,4 +632,6 @@ public final class WindowsProcess implements NuProcess
+-      // This SystemRoot handling matches java.lang.ProcessEnvironment.toEnvironmentBlock,
+-      // which is used by ProcessBuilder when starting processes on Windows
+-      boolean addSystemRoot = true;
+-
++      final String SYSTEMROOT = "SystemRoot";
++      String systemRootValue = System.getenv(SYSTEMROOT);
++      if (systemRootValue != null) {
++         env.put(SYSTEMROOT, systemRootValue);
++      }
++      
+@@ -640,17 +641 @@ public final class WindowsProcess implements NuProcess
+-            String key = entry.substring(0, ndx);
+-            env.put(key, (ndx < entry.length() ? entry.substring(ndx + 1) : ""));
+-
+-            // SystemRoot is sometimes set as SYSTEMROOT, which is also valid, so this needs
+-            // to use a case-insensitive comparison to detect either permutation
+-            if (ENV_SYSTEMROOT.equalsIgnoreCase(key)) {
+-               addSystemRoot = false;
+-            }
+-         }
+-      }
+-
+-      // If SystemRoot wasn't included in the user-specified environment, copy it from our
+-      // own environment if it's set there
+-      if (addSystemRoot) {
+-         String systemRoot = System.getenv(ENV_SYSTEMROOT);
+-         if (systemRoot != null) {
+-            env.put(ENV_SYSTEMROOT, systemRoot);
++            env.put(entry.substring(0, ndx), (ndx < entry.length() ? entry.substring(ndx + 1) : ""));
+diff --git a/src/test/java/com/zaxxer/nuprocess/EnvironmentTest.java b/src/test/java/com/zaxxer/nuprocess/EnvironmentTest.java
+index 6222311..d3f1c87 100644
+--- a/src/test/java/com/zaxxer/nuprocess/EnvironmentTest.java
++++ b/src/test/java/com/zaxxer/nuprocess/EnvironmentTest.java
+@@ -24,2 +24,2 @@ import java.util.Arrays;
+-import java.util.Collections;
+-import java.util.LinkedHashSet;
++import java.util.HashMap;
++import java.util.HashSet;
+@@ -53,2 +53,3 @@ public class EnvironmentTest {
+-		Set<String> javaResult = runJavaProcess(command, Collections.<String, String>emptyMap());
+-		Set<String> nuResult = runNuProcess(command, Collections.<String, String>emptyMap());
++		Map<String, String> env = new HashMap<String, String>();
++		Set<String> javaResult = runJavaProcess(command, env);
++		Set<String> nuResult = runNuProcess(command, env);
+@@ -71,3 +72,5 @@ public class EnvironmentTest {
+-		Process process = pb.start();
+-		Set<String> result = new LinkedHashSet<>();
+-		Scanner s = new Scanner(process.getInputStream(), "UTF-8").useDelimiter(System.lineSeparator());
++		System.out.println("Started Java Process");
++		Process process = pb.start();		
++		System.out.println("Waited for Java Process");
++		Set<String> result = new HashSet<String>();
++		Scanner s = new Scanner(process.getInputStream()).useDelimiter(System.lineSeparator());
+@@ -77,0 +81 @@ public class EnvironmentTest {
++		System.out.println("env: " + result);
+@@ -86,0 +91 @@ public class EnvironmentTest {
++		System.out.println("Started Nu Process");
+@@ -88 +93 @@ public class EnvironmentTest {
+-		Set<String> result = new LinkedHashSet<>();
++		System.out.println("Waited for Nu Process");
+@@ -89,0 +95 @@ public class EnvironmentTest {
++		Set<String> result = new HashSet<String>();
+@@ -92,0 +99 @@ public class EnvironmentTest {
++		System.out.println("env: " + result);
+@@ -98 +105 @@ public class EnvironmentTest {
+-		ProcessHandler()
++		protected ProcessHandler() 
+@@ -103 +110 @@ public class EnvironmentTest {
+-		private final StringBuilder stdOut = new StringBuilder();
++		private StringBuilder stdOut = new StringBuilder();
+@@ -112 +119 @@ public class EnvironmentTest {
+-		String getStdOut()
++		public String getStdOut() 
+@@ -116,0 +124 @@ public class EnvironmentTest {
++

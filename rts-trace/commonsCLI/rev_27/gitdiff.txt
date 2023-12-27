@@ -1,0 +1,74 @@
+diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
+index 611c4aed..8511f08c 100644
+--- a/src/main/java/org/apache/commons/cli/CommandLine.java
++++ b/src/main/java/org/apache/commons/cli/CommandLine.java
+@@ -38 +37,0 @@ public class CommandLine implements Serializable {
+-
+@@ -45 +43,0 @@ public class CommandLine implements Serializable {
+-
+@@ -52 +50 @@ public class CommandLine implements Serializable {
+-         * Adds left-over unrecognized option/argument.
++         * Add left-over unrecognized option/argument.
+@@ -64 +62 @@ public class CommandLine implements Serializable {
+-         * Adds an option to the command line. The values of the option are stored.
++         * Add an option to the command line. The values of the option are stored.
+@@ -97 +95 @@ public class CommandLine implements Serializable {
+-     * Adds left-over unrecognized option/argument.
++     * Add left-over unrecognized option/argument.
+@@ -106 +104 @@ public class CommandLine implements Serializable {
+-     * Adds an option to the command line. The values of the option are stored.
++     * Add an option to the command line. The values of the option are stored.
+@@ -115 +113 @@ public class CommandLine implements Serializable {
+-     * Gets any left-over non-recognized options and arguments
++     * Retrieve any left-over non-recognized options and arguments
+@@ -124 +122 @@ public class CommandLine implements Serializable {
+-     * Gets any left-over non-recognized options and arguments
++     * Retrieve any left-over non-recognized options and arguments
+@@ -133 +131 @@ public class CommandLine implements Serializable {
+-     * Gets the {@code Object} type of this {@code Option}.
++     * Return the {@code Object} type of this {@code Option}.
+@@ -145 +143 @@ public class CommandLine implements Serializable {
+-     * Gets the {@code Object} type of this {@code Option}.
++     * Return the {@code Object} type of this {@code Option}.
+@@ -162 +160 @@ public class CommandLine implements Serializable {
+-     * Gets the map of values associated to the option. This is convenient for options specifying Java properties like
++     * Retrieve the map of values associated to the option. This is convenient for options specifying Java properties like
+@@ -191 +189 @@ public class CommandLine implements Serializable {
+-     * Gets the map of values associated to the option. This is convenient for options specifying Java properties like
++     * Retrieve the map of values associated to the option. This is convenient for options specifying Java properties like
+@@ -229 +227 @@ public class CommandLine implements Serializable {
+-     * Gets the first argument, if any, of this option.
++     * Retrieve the first argument, if any, of this option.
+@@ -239 +237 @@ public class CommandLine implements Serializable {
+-     * Gets the argument, if any, of an option.
++     * Retrieve the argument, if any, of an option.
+@@ -250 +248 @@ public class CommandLine implements Serializable {
+-     * Gets the first argument, if any, of this option.
++     * Retrieve the first argument, if any, of this option.
+@@ -265 +263 @@ public class CommandLine implements Serializable {
+-     * Gets the first argument, if any, of an option.
++     * Retrieve the first argument, if any, of an option.
+@@ -278 +276 @@ public class CommandLine implements Serializable {
+-     * Gets the first argument, if any, of this option.
++     * Retrieve the first argument, if any, of this option.
+@@ -288 +286 @@ public class CommandLine implements Serializable {
+-     * Gets the first argument, if any, of an option.
++     * Retrieve the first argument, if any, of an option.
+@@ -299 +297 @@ public class CommandLine implements Serializable {
+-     * Gets the array of values, if any, of an option.
++     * Retrieves the array of values, if any, of an option.
+@@ -309 +307 @@ public class CommandLine implements Serializable {
+-     * Gets the array of values, if any, of an option.
++     * Retrieves the array of values, if any, of an option.
+@@ -328 +326 @@ public class CommandLine implements Serializable {
+-     * Gets the array of values, if any, of an option.
++     * Retrieves the array of values, if any, of an option.
+@@ -338 +336 @@ public class CommandLine implements Serializable {
+-     * Gets a version of this {@code Option} converted to a particular type.
++     * Return a version of this {@code Option} converted to a particular type.
+@@ -351 +349 @@ public class CommandLine implements Serializable {
+-     * Gets a version of this {@code Option} converted to a particular type.
++     * Return a version of this {@code Option} converted to a particular type.
+@@ -371 +369 @@ public class CommandLine implements Serializable {
+-     * Gets a version of this {@code Option} converted to a particular type.
++     * Return a version of this {@code Option} converted to a particular type.

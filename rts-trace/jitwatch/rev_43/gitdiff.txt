@@ -1,0 +1,39 @@
+diff --git a/src/main/resources/examples/DoesItVectorise.java b/src/main/resources/examples/DoesItVectorise.java
+deleted file mode 100644
+index 9ed670f9..00000000
+--- a/src/main/resources/examples/DoesItVectorise.java
++++ /dev/null
+@@ -1,32 +0,0 @@
+-public class DoesItVectorise
+-{
+-    public DoesItVectorise()
+-    {
+-        int[] array = new int[1024];
+-
+-        for (int i = 0; i < 1_000_000; i++)
+-        {
+-            incrementArray(array, 1);
+-        }
+-
+-        for (int i = 0; i < array.length; i++)
+-        {
+-            System.out.println(array[i]);
+-        }
+-    }
+-
+-    public void incrementArray(int[] array, int constant)
+-    {
+-        int length = array.length;
+-
+-        for (int i = 0; i < length; i++)
+-        {
+-            array[i] += constant;
+-        }
+-    }
+-
+-    public static void main(String[] args)
+-    {
+-        new DoesItVectorise();
+-    }
+-}
+\ No newline at end of file

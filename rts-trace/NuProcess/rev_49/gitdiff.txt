@@ -1,0 +1,35 @@
+diff --git a/src/test/java/com/zaxxer/nuprocess/RunTest.java b/src/test/java/com/zaxxer/nuprocess/RunTest.java
+index 5207ddd..f9cdf32 100644
+--- a/src/test/java/com/zaxxer/nuprocess/RunTest.java
++++ b/src/test/java/com/zaxxer/nuprocess/RunTest.java
+@@ -319,26 +318,0 @@ public class RunTest
+-   @Test(expected = IllegalArgumentException.class)
+-   public void nullCommandViaCommandMutationWithRun() {
+-      NuProcessBuilder pb = new NuProcessBuilder(new NullProcessHandler(), command);
+-      pb.command().add("--foo\0--bar");
+-      pb.run();
+-   }
+-
+-   @Test(expected = IllegalArgumentException.class)
+-   public void nullCommandViaCommandMutationWithStart() {
+-      NuProcessBuilder pb = new NuProcessBuilder(new NullProcessHandler(), command);
+-      pb.command().add("--foo\0--bar");
+-      pb.start();
+-   }
+-
+-   @Test(expected = IllegalArgumentException.class)
+-   public void nullCommandViaConstructorWithRun() {
+-      NuProcessBuilder pb = new NuProcessBuilder(new NullProcessHandler(), command, "--foo\0--bar");
+-      pb.run();
+-   }
+-
+-   @Test(expected = IllegalArgumentException.class)
+-   public void nullCommandViaConstructorWithStart() {
+-      NuProcessBuilder pb = new NuProcessBuilder(new NullProcessHandler(), command, "--foo\0--bar");
+-      pb.start();
+-   }
+-
+@@ -424,3 +397,0 @@ public class RunTest
+-   private static class NullProcessHandler extends NuAbstractProcessHandler {
+-   }
+-

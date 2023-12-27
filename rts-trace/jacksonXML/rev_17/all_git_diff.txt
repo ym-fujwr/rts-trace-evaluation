@@ -1,0 +1,16 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+index f842ca60a..df9215c51 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+@@ -4 +3,0 @@ import java.io.IOException;
+-import java.io.UncheckedIOException;
+@@ -16 +14,0 @@ import com.fasterxml.jackson.core.base.ParserMinimalBase;
+-import com.fasterxml.jackson.core.exc.StreamConstraintsException;
+@@ -635,6 +633 @@ public class FromXmlParser
+-                try {
+-                    streamReadConstraints().validateIntegerLength(text.length());
+-                } catch (StreamConstraintsException e) {
+-                    // Ugh. This method in API ought to expose IOException
+-                    throw new UncheckedIOException(e);
+-                }
++                streamReadConstraints().validateIntegerLength(text.length());

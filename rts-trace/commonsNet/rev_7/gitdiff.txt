@@ -1,0 +1,14 @@
+diff --git a/src/test/java/org/apache/commons/net/examples/MainTest.java b/src/test/java/org/apache/commons/net/examples/MainTest.java
+index d442e1908..321d15f4c 100644
+--- a/src/test/java/org/apache/commons/net/examples/MainTest.java
++++ b/src/test/java/org/apache/commons/net/examples/MainTest.java
+@@ -40 +40 @@ public class MainTest {
+-        name = name.replace("\\", "."); // Allow for Windows
++        System.out.println("Updated name " + name);
+@@ -112 +112 @@ public class MainTest {
+-        final String sourceFile = new File(URLDecoder.decode(codeSource.getLocation().getFile(),"UTF-8")).getCanonicalPath();
++        final String sourceFile = URLDecoder.decode(codeSource.getLocation().getFile(),"UTF-8");
+@@ -127 +127,2 @@ public class MainTest {
+-                scanForClasses(sourceFile.length() + 1, examples, p);
++                System.out.println("cp="+new File(sourceFile).getCanonicalPath());
++                scanForClasses(sourceFile.length(), examples, p);

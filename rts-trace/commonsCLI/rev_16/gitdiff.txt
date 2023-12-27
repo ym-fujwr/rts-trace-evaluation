@@ -1,0 +1,16 @@
+diff --git a/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java b/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java
+index b1efe80e..e39ac52f 100644
+--- a/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java
++++ b/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java
+@@ -27,2 +26,0 @@ import org.junit.Test;
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+-
+@@ -38,5 +36,3 @@ public class BugCLI252Test {
+-    @Test
+-    public void testAmbiquousOptionName() {
+-        assertThrows(AmbiguousOptionException.class, () ->
+-                new DefaultParser().parse(getOptions(), new String[]{"--pref"})
+-        );
++    @Test(expected = AmbiguousOptionException.class)
++    public void testAmbiquousOptionName() throws ParseException {
++        new DefaultParser().parse(getOptions(), new String[] {"--pref"});

@@ -1,0 +1,279 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlFactory.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlFactory.java
+index 521c9bded..ad97266e9 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlFactory.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlFactory.java
+@@ -16 +16 @@ import com.fasterxml.jackson.core.util.VersionUtil;
+-import com.fasterxml.jackson.databind.util.ClassUtil;
++
+@@ -664,11 +664 @@ public class XmlFactory extends JsonFactory
+-                // 04-Dec-2023, tatu: As per [dataformat-xml#618], JDK's crappy in-built
+-                //    Stax implementation barfs here. Hence:
+-                try {
+-                    sr = _xmlInputFactory.createXMLStreamReader(new ByteArrayInputStream(data, offset, len));
+-                } catch (ArrayIndexOutOfBoundsException e) {
+-                    throw new JsonParseException(null,
+-                            "Internal processing error by `XMLInputFactory` of type "
+-                            +ClassUtil.classNameOf(_xmlInputFactory)+" when trying to create a parser ("
+-                            +"consider using Woodstox instead): "
+-                            +e.getMessage());
+-                }
++                sr = _xmlInputFactory.createXMLStreamReader(new ByteArrayInputStream(data, offset, len));
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java
+index 8dac3d293..f5a9d4723 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java
+@@ -7,0 +8 @@ import javax.xml.stream.*;
++import com.fasterxml.jackson.dataformat.xml.XmlNameProcessor;
+@@ -9,0 +11 @@ import org.codehaus.stax2.XMLStreamReader2;
++import org.codehaus.stax2.ri.Stax2ReaderAdapter;
+@@ -14,3 +15,0 @@ import com.fasterxml.jackson.core.io.ContentReference;
+-import com.fasterxml.jackson.dataformat.xml.XmlNameProcessor;
+-import com.fasterxml.jackson.dataformat.xml.util.Stax2JacksonReaderAdapter;
+-
+@@ -172,2 +171 @@ public class XmlTokenStream
+-        // 04-Dec-2023, tatu: [dataformat-xml#618] Need further customized adapter:
+-        _xmlReader = Stax2JacksonReaderAdapter.wrapIfNecessary(xmlReader);
++        _xmlReader = Stax2ReaderAdapter.wrapIfNecessary(xmlReader);
+@@ -562,2 +560 @@ public class XmlTokenStream
+-        main_loop:
+-        while (_xmlReader.hasNext()) {
++        while (true) {
+@@ -566 +563 @@ public class XmlTokenStream
+-                break main_loop;
++                return (chars == null) ? "" : chars.toString();
+@@ -570 +567 @@ public class XmlTokenStream
+-                break main_loop;
++                return (chars == null) ? "" : chars.toString();
+@@ -592 +588,0 @@ public class XmlTokenStream
+-        return (chars == null) ? "" : chars.toString();
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/Stax2JacksonReaderAdapter.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/Stax2JacksonReaderAdapter.java
+deleted file mode 100644
+index 4aa36c074..000000000
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/Stax2JacksonReaderAdapter.java
++++ /dev/null
+@@ -1,51 +0,0 @@
+-package com.fasterxml.jackson.dataformat.xml.util;
+-
+-import javax.xml.stream.XMLStreamException;
+-import javax.xml.stream.XMLStreamReader;
+-
+-import org.codehaus.stax2.XMLStreamReader2;
+-import org.codehaus.stax2.ri.Stax2ReaderAdapter;
+-
+-import com.fasterxml.jackson.databind.util.ClassUtil;
+-
+-/**
+- * Refinement of {@link Stax2ReaderAdapter} to override certain methods,
+- * to patch over flaws of JDK-provided default Stax implementation, SJSXP
+- *
+- * @since 2.17
+- */
+-public class Stax2JacksonReaderAdapter
+-    extends Stax2ReaderAdapter
+-{
+-    private final XMLStreamReader _delegate;
+-
+-    public Stax2JacksonReaderAdapter(XMLStreamReader sr) {
+-        super(sr);
+-        _delegate = sr;
+-    }
+-
+-    public static XMLStreamReader2 wrapIfNecessary(XMLStreamReader sr)
+-    {
+-        if (sr instanceof XMLStreamReader2) {
+-            return (XMLStreamReader2) sr;
+-        }
+-        return new Stax2JacksonReaderAdapter(sr);
+-    }
+-
+-    // 04-Dec-2023, tatu: Needed to catch exceptions from buggy SJSXP decoder...
+-    @Override
+-    public int next() throws XMLStreamException
+-    {
+-        try {
+-            return super.next();
+-        } catch (ArrayIndexOutOfBoundsException e) {
+-            // Use IllegalStateException since that is guaranteed to be translated
+-            // appropriately into Jackson type by caller:
+-            throw new IllegalStateException(
+-                    "Internal processing error by `XMLStreamReader` of type "
+-                    +ClassUtil.classNameOf(_delegate)+" when calling `next()` ("
+-                    +"consider using Woodstox instead): "
+-                    +e.getMessage(), e);
+-        }
+-    }
+-}
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/TestDeserialization.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/TestDeserialization.java
+new file mode 100644
+index 000000000..17e77142c
+--- /dev/null
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/TestDeserialization.java
+@@ -0,0 +1,123 @@
++package com.fasterxml.jackson.dataformat.xml.deser;
++
++import com.fasterxml.jackson.annotation.JsonRootName;
++
++import com.fasterxml.jackson.dataformat.xml.XmlMapper;
++import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
++import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
++import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
++
++public class TestDeserialization extends XmlTestBase
++{
++    static class AttributeBean
++    {
++        @JacksonXmlProperty(isAttribute=true, localName="attr")
++        public String text = "?";
++    }
++
++    static class Optional {
++        @JacksonXmlText
++        public String number = "NOT SET";
++        public String type = "NOT SET";
++    }
++
++    // [dataformat-xml#219]
++    static class Worker219
++    {
++        @JacksonXmlProperty(localName = "developer")
++        String developer;
++        @JacksonXmlProperty(localName = "tester")
++        String tester;
++        @JacksonXmlProperty(localName = "manager")
++        String manager;
++    }
++
++    // [dataformat-xml#219]
++    @JsonRootName("line")
++    static class Line219 {
++        public String code; //This should ideally be complex type
++        public String amount;
++    }
++
++    /*
++    /**********************************************************
++    /* Test methods
++    /**********************************************************
++     */
++
++    private final XmlMapper MAPPER = newMapper();
++
++    /**
++     * Unit test to ensure that we can successfully also round trip
++     * example Bean used in Jackson tutorial
++     */
++    public void testRoundTripWithJacksonExample() throws Exception
++    {
++        FiveMinuteUser user = new FiveMinuteUser("Joe", "Sixpack",
++                true, FiveMinuteUser.Gender.MALE, new byte[] { 1, 2, 3 , 4, 5 });
++        String xml = MAPPER.writeValueAsString(user);
++        FiveMinuteUser result = MAPPER.readValue(xml, FiveMinuteUser.class);
++        assertEquals(user, result);
++    }
++
++    public void testFromAttribute() throws Exception
++    {
++        AttributeBean bean = MAPPER.readValue("<AttributeBean attr=\"abc\"></AttributeBean>", AttributeBean.class);
++        assertNotNull(bean);
++        assertEquals("abc", bean.text);
++    }
++
++    // // Tests for [dataformat-xml#64]
++
++    public void testOptionalAttr() throws Exception
++    {
++        Optional ob = MAPPER.readValue("<Optional type='work'>123-456-7890</Optional>",
++                Optional.class);
++        assertNotNull(ob);
++        assertEquals("123-456-7890", ob.number);
++        assertEquals("work", ob.type);
++    }
++
++    // 03-Jul-2020, tatu: Due to change on deserialization of root-level scalars,
++    //    this test that passed on 2.11 is no longer valid (it wasn't even before
++    //    wrt compatibility of serialization)
++    /*
++    public void testMissingOptionalAttr() throws Exception
++    {
++        Optional ob = MAPPER.readValue("<Optional>123-456-7890</Optional>",
++                Optional.class);
++        assertNotNull(ob);
++        assertEquals("123-456-7890", ob.number);
++        assertEquals("NOT SET", ob.type);
++    }
++    */
++
++    // [dataformat-xml#219]
++    public void testWithAttribute219Worker() throws Exception
++    {
++        final String DOC =
++"<worker>\n" + 
++"  <developer>test1</developer>\n" + 
++"  <tester grade='senior'>test2</tester>\n" + 
++"  <manager>test3</manager>\n" + 
++"</worker>"
++                ;
++        Worker219 result = MAPPER.readValue(DOC, Worker219.class);
++        assertNotNull(result);
++        assertEquals("test3", result.manager);
++    }
++
++    // [dataformat-xml#219]
++    public void testWithAttribute219Line() throws Exception
++    {
++        final String DOC =
++"<line>\n" + 
++"    <code type='ABC'>qsd</code>\n" + 
++"    <amount>138</amount>\n" + 
++"</line>"
++                ;
++        Line219 result = MAPPER.readValue(DOC, Line219.class);
++        assertNotNull(result);
++        assertEquals("138", result.amount);
++    }
++}
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/fuzz/Fuzz618_64655_InvalidXMLTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/fuzz/Fuzz618_64655_InvalidXMLTest.java
+deleted file mode 100644
+index 0e3d66f8a..000000000
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/fuzz/Fuzz618_64655_InvalidXMLTest.java
++++ /dev/null
+@@ -1,39 +0,0 @@
+-package com.fasterxml.jackson.dataformat.xml.fuzz;
+-
+-import com.fasterxml.jackson.core.exc.StreamReadException;
+-
+-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+-import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
+-
+-public class Fuzz618_64655_InvalidXMLTest extends XmlTestBase
+-{
+-    private final XmlMapper MAPPER = newMapper();
+-
+-    public void testWithInvalidXml1() throws Exception {
+-        _testWithInvalidXml(1, "Unexpected end of input", // Woodstox
+-                "Internal processing error by `XMLStreamReader` of type" // SJSXP
+-        );
+-    }
+-
+-    public void testWithInvalidXml2() throws Exception {
+-        _testWithInvalidXml(2, "Unexpected character 'a'", // Woodstox
+-                "Internal processing error by `XMLInputFactory` of type " // SJSXP
+-        );
+-    }
+-
+-    public void testWithInvalidXml3() throws Exception {
+-        _testWithInvalidXml(3, "Unexpected EOF; was expecting a close tag", // Woodstox
+-                "XML document structures must start and end" // SJSXP
+-        );
+-    }
+-
+-    private void _testWithInvalidXml(int ix, String... errorToMatch) throws Exception
+-    {
+-        byte[] doc = readResource("/data/fuzz-618-"+ix+".xml");
+-        try {
+-            MAPPER.readTree(doc);
+-        } catch (StreamReadException e) {
+-            verifyException(e, errorToMatch);
+-        }
+-    }
+-}

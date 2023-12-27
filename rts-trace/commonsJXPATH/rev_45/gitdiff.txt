@@ -1,0 +1,123 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContext.java b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+index ad56494c..e8967b19 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathContext.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+@@ -574 +574 @@ public abstract class JXPathContext {
+-     * Sets the locale for this context.  The value of the "lang"
++     * Set the locale for this context.  The value of the "lang"
+@@ -976 +976 @@ public abstract class JXPathContext {
+-     * Sets the ExceptionHandler used by this context, if any.
++     * Set the ExceptionHandler used by this context, if any.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
+index b5e4b2de..50b1d3bb 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
+@@ -489 +489 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Sets the value of xpath to value.
++     * Set the value of xpath to value.
+@@ -566 +566 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Sets the specified value.
++     * Set the specified value.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/axes/RootContext.java b/src/main/java/org/apache/commons/jxpath/ri/axes/RootContext.java
+index 0827dd93..93925e03 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/axes/RootContext.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/axes/RootContext.java
+@@ -161 +161 @@ public class RootContext extends EvalContext {
+-     * Sets the next registered value.
++     * Set the next registered value.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java
+index 80e3c708..1fa7a080 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java
+@@ -31 +31 @@ public interface NodeIterator {
+-     * Sets the new current position.
++     * Set the new current position.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+index 2433d4e8..ebb5902e 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+@@ -156 +156 @@ public abstract class NodePointer implements Pointer {
+-     * Sets the NamespaceResolver for this NodePointer.
++     * Set the NamespaceResolver for this NodePointer.
+@@ -184 +184 @@ public abstract class NodePointer implements Pointer {
+-     * Sets to true if the pointer represents the "attribute::" axis.
++     * Set to true if the pointer represents the "attribute::" axis.
+@@ -245 +245 @@ public abstract class NodePointer implements Pointer {
+-     * Sets the index of this NodePointer.
++     * Set the index of this NodePointer.
+@@ -812 +812 @@ public abstract class NodePointer implements Pointer {
+-     * Sets the exceptionHandler of this NodePointer.
++     * Set the exceptionHandler of this NodePointer.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java
+index 4f7d49db..fcc02cae 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java
+@@ -187 +187 @@ public class NullPropertyPointer extends PropertyPointer {
+-     * Sets the name attribute.
++     * Set the name attribute.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyIterator.java
+index f0f4a580..12071b6c 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyIterator.java
+@@ -143 +143 @@ public class PropertyIterator implements NodeIterator {
+-     * Sets position for an individual property.
++     * Set position for an individual property.
+@@ -190 +190 @@ public class PropertyIterator implements NodeIterator {
+-     * Sets position for all properties
++     * Set position for all properties
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java
+index 03bb1ad7..5ecf81cd 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java
+@@ -60 +60 @@ public abstract class PropertyPointer extends NodePointer {
+-     * Sets the property index.
++     * Set the property index.
+@@ -93 +93 @@ public abstract class PropertyPointer extends NodePointer {
+-     * Sets the property name.
++     * Set the property name.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodeIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodeIterator.java
+index 2b46ffb1..f5eb5909 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodeIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodeIterator.java
+@@ -85 +85 @@ public class DOMNodeIterator implements NodeIterator {
+-     * Sets the previous position.
++     * Set the previous position.
+@@ -114 +114 @@ public class DOMNodeIterator implements NodeIterator {
+-     * Sets the next position.
++     * Set the next position.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/DynaBeanPropertyPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/DynaBeanPropertyPointer.java
+index fbc1175a..22666579 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/DynaBeanPropertyPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/DynaBeanPropertyPointer.java
+@@ -244 +244 @@ public class DynaBeanPropertyPointer extends PropertyPointer {
+-     * Sets an indexed value.
++     * Set an indexed value.
+diff --git a/src/main/java/org/apache/commons/jxpath/servlet/PageScopeContext.java b/src/main/java/org/apache/commons/jxpath/servlet/PageScopeContext.java
+index 4ec41c5a..c010853d 100644
+--- a/src/main/java/org/apache/commons/jxpath/servlet/PageScopeContext.java
++++ b/src/main/java/org/apache/commons/jxpath/servlet/PageScopeContext.java
+@@ -58 +58 @@ public class PageScopeContext {
+-     * Sets the specified attribute.
++     * Set the specified attribute.
+diff --git a/src/main/java/org/apache/commons/jxpath/xml/XMLParser2.java b/src/main/java/org/apache/commons/jxpath/xml/XMLParser2.java
+index bd89b4e3..957c547e 100644
+--- a/src/main/java/org/apache/commons/jxpath/xml/XMLParser2.java
++++ b/src/main/java/org/apache/commons/jxpath/xml/XMLParser2.java
+@@ -34 +34 @@ public abstract class XMLParser2 implements XMLParser {
+-     * Sets whether the underlying parser should be validating.
++     * Set whether the underlying parser should be validating.
+@@ -61 +61 @@ public abstract class XMLParser2 implements XMLParser {
+-     * Sets whether the underlying parser is ns-aware.
++     * Set whether the underlying parser is ns-aware.
+@@ -70 +70 @@ public abstract class XMLParser2 implements XMLParser {
+-     * Sets whether the underlying parser is ignoring whitespace.
++     * Set whether the underlying parser is ignoring whitespace.
+@@ -97 +97 @@ public abstract class XMLParser2 implements XMLParser {
+-     * Sets whether the underlying parser expands entity references.
++     * Set whether the underlying parser expands entity references.
+@@ -115 +115 @@ public abstract class XMLParser2 implements XMLParser {
+-     * Sets whether the underlying parser ignores comments.
++     * Set whether the underlying parser ignores comments.
+@@ -133 +133 @@ public abstract class XMLParser2 implements XMLParser {
+-     * Sets whether the underlying parser is coalescing.
++     * Set whether the underlying parser is coalescing.

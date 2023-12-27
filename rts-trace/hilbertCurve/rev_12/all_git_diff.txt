@@ -1,0 +1,31 @@
+diff --git a/README.md b/README.md
+index 4870a48..889cea3 100644
+--- a/README.md
++++ b/README.md
+@@ -237 +237 @@ The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</
+-Let's consider 3 dimensions of information being latitude, longitude and time. We'll index the full world for one day using 10 bits. When I search the Sydney (Australia) region for an hour at midday I get exact coverage with 20 ranges and those ranges are calculated in ~20ns. When we limit the number of ranges the ratio of coverage to exact coverage is below:
++Let's consider 3 dimensions of information being latitude, longitude and time. We'll index the full world for one day using 10 bits. When I search the Sydney (Australia) region for an hour at midday I get exact coverage with 20 ranges. When we limit the number of ranges the ratio of coverage to exact coverage is below:
+@@ -261,4 +260,0 @@ Let's consider 3 dimensions of information being latitude, longitude and time. W
+-The data above in a graph (only for ranges >=4):
+-
+-<img src="src/docs/coverage.png"/>
+-
+@@ -267,2 +262,0 @@ So if you use 12 ranges you will be returned points from a region that is 2.28 t
+-Note that if we expand the search to the entire region (give me every point) then the single range to cover it is returned in about 4.4s. As search boxes approach the dimensions of the entire domain some simplifications may be useful (TODO).
+-
+diff --git a/src/docs/coverage.png b/src/docs/coverage.png
+deleted file mode 100644
+index bf2fd2d..0000000
+Binary files a/src/docs/coverage.png and /dev/null differ
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index 8fde81e..c35fcc7 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -345,6 +345 @@ public class HilbertCurveTest {
+-        if (false) {
+-            long t = System.currentTimeMillis();
+-            h.query(new long[] { 0, 0, 0 },
+-                    new long[] { maxOrdinates, maxOrdinates, maxOrdinates });
+-            System.out.println("full domain query took " + (System.currentTimeMillis() - t) + "ms");
+-        }
++

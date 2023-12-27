@@ -1,0 +1,275 @@
+diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+index 1b27e8f60..beaa4b694 100644
+--- a/.github/workflows/main.yml
++++ b/.github/workflows/main.yml
+@@ -38 +38 @@ jobs:
+-      uses: actions/setup-java@v4
++      uses: actions/setup-java@v3
+diff --git a/release-notes/CREDITS-2.x b/release-notes/CREDITS-2.x
+index 67cc18d06..ef3635bec 100644
+--- a/release-notes/CREDITS-2.x
++++ b/release-notes/CREDITS-2.x
+@@ -240,6 +239,0 @@ Marco Belladelli (mbladel@github)
+-
+-Motonori IWAMURO (vmi@github)
+-
+-* Contributed fix for #616: Fix mismatch in `setNextIsUnwrapped(boolean)` in
+-  `XmlBeanSerializerBase#serializeFieldsFiltered()`
+- (2.16.1)
+diff --git a/release-notes/VERSION-2.x b/release-notes/VERSION-2.x
+index 6ad676b68..d61544bfc 100644
+--- a/release-notes/VERSION-2.x
++++ b/release-notes/VERSION-2.x
+@@ -11,6 +10,0 @@ Project: jackson-dataformat-xml
+-2.16.1 (not yet released)
+-
+-#616: Fix mismatch in `setNextIsUnwrapped(boolean)` in
+-  `XmlBeanSerializerBase#serializeFieldsFiltered()`
+- (fix contributed by Motonori I)
+-
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+index cf9e4806c..12a716ed8 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+@@ -476 +476 @@ public class FromXmlParser
+-    public String currentName() throws IOException
++    public String getCurrentName() throws IOException
+@@ -493,6 +492,0 @@ public class FromXmlParser
+-    @Deprecated // since 2.17
+-    @Override
+-    public String getCurrentName() throws IOException {
+-        return currentName();
+-    }
+-
+@@ -509 +503 @@ public class FromXmlParser
+-
++    
+@@ -545 +539 @@ public class FromXmlParser
+-    public JsonLocation currentTokenLocation() {
++    public JsonLocation getTokenLocation() {
+@@ -554,6 +547,0 @@ public class FromXmlParser
+-    public JsonLocation currentLocation() {
+-        return _xmlTokens.getCurrentLocation();
+-    }
+-
+-    @Deprecated // since 2.17
+-    @Override
+@@ -561,7 +549 @@ public class FromXmlParser
+-        return currentLocation();
+-    }
+-
+-    @Deprecated // since 2.17
+-    @Override
+-    public JsonLocation getTokenLocation() {
+-        return currentTokenLocation();
++        return _xmlTokens.getCurrentLocation();
+@@ -680 +662 @@ public class FromXmlParser
+-                System.out.printf("FromXmlParser.nextToken() at '%s': JsonToken.FIELD_NAME '%s'\n", loc, _parsingContext.currentName());
++                System.out.printf("FromXmlParser.nextToken() at '%s': JsonToken.FIELD_NAME '%s'\n", loc, _parsingContext.getCurrentName());
+@@ -895 +877 @@ XmlTokenStream.XML_END_ELEMENT, XmlTokenStream.XML_START_ELEMENT, token));
+-            return currentName();
++            return getCurrentName();
+@@ -1048 +1030 @@ XmlTokenStream.XML_END_ELEMENT, XmlTokenStream.XML_START_ELEMENT, token));
+-            return currentName();
++            return getCurrentName();
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java
+index 7a2d3d78c..f53f90a49 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java
+@@ -15,0 +16 @@ import com.fasterxml.jackson.databind.ser.SerializerFactory;
++import com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.Impl;
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/XmlTestBase.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/XmlTestBase.java
+index b794ff979..4a75778a3 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/XmlTestBase.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/XmlTestBase.java
+@@ -296 +296 @@ public abstract class XmlTestBase
+-        assertEquals(expName, jp.currentName());
++        assertEquals(expName, jp.getCurrentName());
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/StringListRoundtripTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/StringListRoundtripTest.java
+index 09297c614..ea9a75f21 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/StringListRoundtripTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/StringListRoundtripTest.java
+@@ -21,29 +21,28 @@ import static org.junit.Assert.assertNull;
+-public class StringListRoundtripTest
+-{
+-    private final static String[] TEST_DATA = new String[] {"", "test", null, "test2"};
+-
+-    private final static XmlMapper MAPPER_READ_WRITE_NULLS = XmlMapper.builder()
+-            .enable(PROCESS_XSI_NIL)
+-            .enable(WRITE_NULLS_AS_XSI_NIL)
+-            .build();
+-    private final static XmlMapper MAPPER_READ_NULLS = XmlMapper.builder()
+-            .enable(PROCESS_XSI_NIL)
+-            .disable(WRITE_NULLS_AS_XSI_NIL)
+-            .build();
+-    private final static XmlMapper MAPPER_WRITE_NULLS = XmlMapper.builder()
+-            .disable(PROCESS_XSI_NIL)
+-            .enable(WRITE_NULLS_AS_XSI_NIL)
+-            .build();
+-
+-    @Test
+-    public void testStringArray() throws Exception
+-    {
+-        // default mode, should get back empty string
+-        _stringArrayRoundtrip(MAPPER_READ_NULLS, false);
+-
+-        // xsi null enabled, should get back null
+-        _stringArrayRoundtrip(MAPPER_READ_WRITE_NULLS, true);
+-
+-        // xsi null write enabled but processing disabled, should get back empty string
+-        _stringArrayRoundtrip(MAPPER_WRITE_NULLS, false);
+-    }
++public class StringListRoundtripTest {
++	private final static String[] TEST_DATA = new String[] {"", "test", null, "test2"};
++
++	private final static XmlMapper MAPPER_READ_WRITE_NULLS = XmlMapper.builder()
++             .enable(PROCESS_XSI_NIL)
++             .enable(WRITE_NULLS_AS_XSI_NIL)
++             .build();
++     private final static XmlMapper MAPPER_READ_NULLS = XmlMapper.builder()
++             .enable(PROCESS_XSI_NIL)
++             .disable(WRITE_NULLS_AS_XSI_NIL)
++             .build();
++     private final static XmlMapper MAPPER_WRITE_NULLS = XmlMapper.builder()
++             .disable(PROCESS_XSI_NIL)
++             .enable(WRITE_NULLS_AS_XSI_NIL)
++             .build();
++
++     @Test
++	public void testStringArray() throws Exception
++	{
++		// default mode, should get back empty string
++		_stringArrayRoundtrip(MAPPER_READ_NULLS, false);
++
++		// xsi null enabled, should get back null
++		_stringArrayRoundtrip(MAPPER_READ_WRITE_NULLS, true);
++
++		// xsi null write enabled but processing disabled, should get back empty string
++		_stringArrayRoundtrip(MAPPER_WRITE_NULLS, false);
++	}
+@@ -219,28 +218,29 @@ public class StringListRoundtripTest
+-    private void _stringMapPojoRoundtrip(ObjectMapper mapper, boolean shouldBeNull) throws Exception
+-    {
+-        @SuppressWarnings("serial")
+-        Map<String, String> map = new HashMap<String, String>() {{
+-            put("a", "");
+-            put("b", "test");
+-            put("c", null);
+-            put("d", "test2");
+-        }};
+-        MapPojo mapPojo = new MapPojo();
+-        mapPojo.setMap(map);
+-
+-        // serialize to string
+-        String xml = mapper.writeValueAsString(mapPojo);
+-        assertNotNull(xml);
+-
+-        // then bring it back
+-        MapPojo result = mapper.readValue(xml, MapPojo.class);
+-        assertEquals(4, result.map.size());
+-        assertEquals("", result.map.get("a"));
+-        assertEquals("test", result.map.get("b"));
+-        if (shouldBeNull) {
+-            assertNull(result.map.get("c"));
+-        } else {
+-            assertEquals("", result.map.get("c"));
+-        }
+-        assertEquals("test2", result.map.get("d"));
+-    }
++	private void _stringMapPojoRoundtrip(ObjectMapper mapper, boolean shouldBeNull) throws Exception
++	{
++		Map<String, String> map = new HashMap<String, String>() {{
++			put("a", "");
++			put("b", "test");
++			put("c", null);
++			put("d", "test2");
++		}};
++		MapPojo mapPojo = new MapPojo();
++		mapPojo.setMap(map);
++
++		// serialize to string
++		String xml = mapper.writeValueAsString(mapPojo);
++		assertNotNull(xml);
++
++		// then bring it back
++		MapPojo result = mapper.readValue(xml, MapPojo.class);
++		assertEquals(4, result.map.size());
++		assertEquals("", result.map.get("a"));
++		assertEquals("test", result.map.get("b"));
++		if (shouldBeNull)
++		{
++			assertNull(result.map.get("c"));
++		} else
++		{
++			assertEquals("", result.map.get("c"));
++		}
++		assertEquals("test2", result.map.get("d"));
++	}
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserNextXxxTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserNextXxxTest.java
+index ac9b6921f..b2ee2e9e7 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserNextXxxTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserNextXxxTest.java
+@@ -39 +39 @@ public class XmlParserNextXxxTest extends XmlTestBase
+-        assertEquals("max", xp.currentName());
++        assertEquals("max", xp.getCurrentName());
+@@ -44 +44 @@ public class XmlParserNextXxxTest extends XmlTestBase
+-        assertEquals("offset", xp.currentName());
++        assertEquals("offset", xp.getCurrentName());
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserTest.java
+index c19d58868..e45f9ad11 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserTest.java
+@@ -231 +231 @@ public class XmlParserTest extends XmlTestBase
+-        assertEquals("elem", xp.currentName());
++        assertEquals("elem", xp.getCurrentName());
+@@ -236 +236 @@ public class XmlParserTest extends XmlTestBase
+-        assertEquals("elem", xp.currentName());
++        assertEquals("elem", xp.getCurrentName());
+@@ -239 +239 @@ public class XmlParserTest extends XmlTestBase
+-        assertEquals("property", xp.currentName());
++        assertEquals("property", xp.getCurrentName());
+@@ -245 +245 @@ public class XmlParserTest extends XmlTestBase
+-        assertEquals("elem", xp.currentName());
++        assertEquals("elem", xp.getCurrentName());
+@@ -271 +271 @@ public class XmlParserTest extends XmlTestBase
+-        assertEquals("property", xp.currentName());
++        assertEquals("property", xp.getCurrentName());
+@@ -301 +301 @@ public class XmlParserTest extends XmlTestBase
+-        assertEquals("max", xp.currentName());
++        assertEquals("max", xp.getCurrentName());
+@@ -306 +306 @@ public class XmlParserTest extends XmlTestBase
+-        assertEquals("offset", xp.currentName());
++        assertEquals("offset", xp.getCurrentName());
+@@ -347 +347 @@ public class XmlParserTest extends XmlTestBase
+-        assertEquals("value2", xp.currentName());
++        assertEquals("value2", xp.getCurrentName());
+@@ -355 +355 @@ public class XmlParserTest extends XmlTestBase
+-        assertEquals("", xp.currentName());
++        assertEquals("", xp.getCurrentName());
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/dos/DeepNestingParserTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/dos/DeepNestingParserTest.java
+index 1f6c9a8e0..c201d7135 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/dos/DeepNestingParserTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/dos/DeepNestingParserTest.java
+@@ -4 +4 @@ import com.ctc.wstx.stax.WstxInputFactory;
+-
++import com.fasterxml.jackson.core.JsonParseException;
+@@ -6,2 +6 @@ import com.fasterxml.jackson.core.JsonParser;
+-import com.fasterxml.jackson.core.exc.StreamReadException;
+-
++import com.fasterxml.jackson.core.JsonToken;
+@@ -18,3 +17,6 @@ public class DeepNestingParserTest extends XmlTestBase {
+-            while (p.nextToken() != null) { }
+-            fail("expected StreamReadException");
+-        } catch (StreamReadException e) {
++            JsonToken jt;
++            while ((jt = p.nextToken()) != null) {
++
++            }
++            fail("expected JsonParseException");
++        } catch (JsonParseException e) {
+@@ -32 +34,4 @@ public class DeepNestingParserTest extends XmlTestBase {
+-            while (p.nextToken() != null) { }
++            JsonToken jt;
++            while ((jt = p.nextToken()) != null) {
++
++            }

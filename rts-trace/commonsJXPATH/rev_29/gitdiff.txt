@@ -1,0 +1,54 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContext.java b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+index 2c9734c7..8823c313 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathContext.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+@@ -398,0 +399 @@ import org.apache.commons.jxpath.util.KeyManagerUtils;
++ *
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java
+index 2ded4273..bce9c36a 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java
+@@ -34,0 +35 @@ import org.apache.commons.jxpath.ri.model.beans.PropertyPointer;
++ *
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/AliasedNamespaceIterationTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/AliasedNamespaceIterationTest.java
+index 1e9a08a4..4c97e2bb 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/AliasedNamespaceIterationTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/AliasedNamespaceIterationTest.java
+@@ -26,0 +27 @@ import org.apache.commons.jxpath.xml.DocumentContainer;
++ *
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/EmbeddedColonMapKeysTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/EmbeddedColonMapKeysTest.java
+index 7014d112..b69ca8ca 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/EmbeddedColonMapKeysTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/EmbeddedColonMapKeysTest.java
+@@ -25,0 +26 @@ import org.apache.commons.jxpath.JXPathTestCase;
++ *
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java b/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
+index 87f9ac81..79da9eb6 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
+@@ -21,0 +22 @@ import org.apache.commons.jxpath.TestBean;
++ *
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/XMLUpperCaseElementsTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/XMLUpperCaseElementsTest.java
+index 5e14d2b0..afa65c48 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/XMLUpperCaseElementsTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/XMLUpperCaseElementsTest.java
+@@ -24,0 +25 @@ import org.apache.commons.jxpath.xml.DocumentContainer;
++ *
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/dynabeans/LazyDynaBeanTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/dynabeans/LazyDynaBeanTest.java
+index 13b77bb2..5df0621b 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/dynabeans/LazyDynaBeanTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/dynabeans/LazyDynaBeanTest.java
+@@ -25,0 +26 @@ import org.apache.commons.jxpath.ri.JXPathContextReferenceImpl;
++ *
+diff --git a/src/test/java/org/apache/commons/jxpath/util/BasicTypeConverterTest.java b/src/test/java/org/apache/commons/jxpath/util/BasicTypeConverterTest.java
+index f81226ad..85b2e23d 100644
+--- a/src/test/java/org/apache/commons/jxpath/util/BasicTypeConverterTest.java
++++ b/src/test/java/org/apache/commons/jxpath/util/BasicTypeConverterTest.java
+@@ -33,0 +34 @@ import junit.framework.TestCase;
++ *
+diff --git a/src/test/java/org/apache/commons/jxpath/util/ClassLoadingExampleClass.java b/src/test/java/org/apache/commons/jxpath/util/ClassLoadingExampleClass.java
+index bd4c5181..83ecbaa1 100644
+--- a/src/test/java/org/apache/commons/jxpath/util/ClassLoadingExampleClass.java
++++ b/src/test/java/org/apache/commons/jxpath/util/ClassLoadingExampleClass.java
+@@ -21,0 +22 @@ package org.apache.commons.jxpath.util;
++ *

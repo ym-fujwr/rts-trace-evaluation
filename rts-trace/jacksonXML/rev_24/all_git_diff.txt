@@ -1,0 +1,193 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/StringListRoundtripTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/StringListRoundtripTest.java
+index ea9a75f21..d3cd8f2f3 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/StringListRoundtripTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/StringListRoundtripTest.java
+@@ -10 +9,0 @@ import com.fasterxml.jackson.core.type.TypeReference;
+-import com.fasterxml.jackson.databind.ObjectMapper;
+@@ -21,0 +21,2 @@ public class StringListRoundtripTest {
++	private final static XmlMapper MAPPER = new XmlMapper();
++
+@@ -24,14 +25 @@ public class StringListRoundtripTest {
+-	private final static XmlMapper MAPPER_READ_WRITE_NULLS = XmlMapper.builder()
+-             .enable(PROCESS_XSI_NIL)
+-             .enable(WRITE_NULLS_AS_XSI_NIL)
+-             .build();
+-     private final static XmlMapper MAPPER_READ_NULLS = XmlMapper.builder()
+-             .enable(PROCESS_XSI_NIL)
+-             .disable(WRITE_NULLS_AS_XSI_NIL)
+-             .build();
+-     private final static XmlMapper MAPPER_WRITE_NULLS = XmlMapper.builder()
+-             .disable(PROCESS_XSI_NIL)
+-             .enable(WRITE_NULLS_AS_XSI_NIL)
+-             .build();
+-
+-     @Test
++	@Test
+@@ -41 +29,3 @@ public class StringListRoundtripTest {
+-		_stringArrayRoundtrip(MAPPER_READ_NULLS, false);
++		MAPPER.disable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringArrayRoundtrip(false);
+@@ -44 +34,3 @@ public class StringListRoundtripTest {
+-		_stringArrayRoundtrip(MAPPER_READ_WRITE_NULLS, true);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringArrayRoundtrip(true);
+@@ -47 +39,3 @@ public class StringListRoundtripTest {
+-		_stringArrayRoundtrip(MAPPER_WRITE_NULLS, false);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.disable(PROCESS_XSI_NIL);
++		stringArrayRoundtrip(false);
+@@ -50 +44 @@ public class StringListRoundtripTest {
+-	private void _stringArrayRoundtrip(ObjectMapper mapper, boolean shouldBeNull) throws Exception
++	private void stringArrayRoundtrip(boolean shouldBeNull) throws Exception
+@@ -53 +47 @@ public class StringListRoundtripTest {
+-		String xml = mapper.writeValueAsString(TEST_DATA);
++		String xml = MAPPER.writeValueAsString(TEST_DATA);
+@@ -57 +51 @@ public class StringListRoundtripTest {
+-		String[] result = mapper.readValue(xml, String[].class);
++		String[] result = MAPPER.readValue(xml, String[].class);
+@@ -75 +69,3 @@ public class StringListRoundtripTest {
+-		_stringArrayPojoRoundtrip(MAPPER_READ_NULLS, false);
++		MAPPER.disable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringArrayPojoRoundtrip(false);
+@@ -78 +74,3 @@ public class StringListRoundtripTest {
+-		_stringArrayPojoRoundtrip(MAPPER_READ_WRITE_NULLS, true);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringArrayPojoRoundtrip(true);
+@@ -81 +79,3 @@ public class StringListRoundtripTest {
+-		_stringArrayPojoRoundtrip(MAPPER_WRITE_NULLS, false);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.disable(PROCESS_XSI_NIL);
++		stringArrayPojoRoundtrip(false);
+@@ -84 +84 @@ public class StringListRoundtripTest {
+-	private void _stringArrayPojoRoundtrip(ObjectMapper mapper, boolean shouldBeNull) throws Exception
++	private void stringArrayPojoRoundtrip(boolean shouldBeNull) throws Exception
+@@ -90 +90 @@ public class StringListRoundtripTest {
+-		String xml = mapper.writeValueAsString(arrayPojo);
++		String xml = MAPPER.writeValueAsString(arrayPojo);
+@@ -94 +94 @@ public class StringListRoundtripTest {
+-		ArrayPojo result = mapper.readValue(xml, ArrayPojo.class);
++		ArrayPojo result = MAPPER.readValue(xml, ArrayPojo.class);
+@@ -108,2 +108,2 @@ public class StringListRoundtripTest {
+-	static class ArrayPojo {
+-		String[] array;
++	private static class ArrayPojo {
++		private String[] array;
+@@ -124 +124,3 @@ public class StringListRoundtripTest {
+-		_stringListRoundtrip(MAPPER_READ_NULLS, false);
++		MAPPER.disable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringListRoundtrip(false);
+@@ -127 +129,3 @@ public class StringListRoundtripTest {
+-		_stringListRoundtrip(MAPPER_READ_WRITE_NULLS, true);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringListRoundtrip(true);
+@@ -130 +134,3 @@ public class StringListRoundtripTest {
+-		_stringListRoundtrip(MAPPER_WRITE_NULLS, false);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.disable(PROCESS_XSI_NIL);
++		stringListRoundtrip(false);
+@@ -133 +139 @@ public class StringListRoundtripTest {
+-	private void _stringListRoundtrip(ObjectMapper mapper, boolean shouldBeNull) throws Exception
++	private void stringListRoundtrip(boolean shouldBeNull) throws Exception
+@@ -138 +144 @@ public class StringListRoundtripTest {
+-		String xml = mapper.writeValueAsString(list);
++		String xml = MAPPER.writeValueAsString(list);
+@@ -142 +148 @@ public class StringListRoundtripTest {
+-		List<String> result = mapper.readValue(xml, new TypeReference<List<String>>() {});
++		List<String> result = MAPPER.readValue(xml, new TypeReference<List<String>>() {});
+@@ -160 +166,3 @@ public class StringListRoundtripTest {
+-		_stringListPojoRoundtrip(MAPPER_READ_NULLS, false);
++		MAPPER.disable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringListPojoRoundtrip(false);
+@@ -163 +171,3 @@ public class StringListRoundtripTest {
+-		_stringListPojoRoundtrip(MAPPER_READ_WRITE_NULLS, true);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringListPojoRoundtrip(true);
+@@ -166 +176,3 @@ public class StringListRoundtripTest {
+-		_stringListPojoRoundtrip(MAPPER_WRITE_NULLS, false);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.disable(PROCESS_XSI_NIL);
++		stringListPojoRoundtrip(false);
+@@ -169 +181 @@ public class StringListRoundtripTest {
+-	private void _stringListPojoRoundtrip(ObjectMapper mapper, boolean shouldBeNull) throws Exception
++	private void stringListPojoRoundtrip(boolean shouldBeNull) throws Exception
+@@ -175 +187 @@ public class StringListRoundtripTest {
+-		String xml = mapper.writeValueAsString(listPojo);
++		String xml = MAPPER.writeValueAsString(listPojo);
+@@ -179 +191 @@ public class StringListRoundtripTest {
+-		ListPojo result = mapper.readValue(xml, ListPojo.class);
++		ListPojo result = MAPPER.readValue(xml, ListPojo.class);
+@@ -193,2 +205,2 @@ public class StringListRoundtripTest {
+-	static class ListPojo {
+-		List<String> list;
++	private static class ListPojo {
++		private List<String> list;
+@@ -209 +221,3 @@ public class StringListRoundtripTest {
+-		_stringMapPojoRoundtrip(MAPPER_READ_NULLS, false);
++		MAPPER.disable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringMapPojoRoundtrip(false);
+@@ -212 +226,3 @@ public class StringListRoundtripTest {
+-		_stringMapPojoRoundtrip(MAPPER_READ_WRITE_NULLS, true);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringMapPojoRoundtrip(true);
+@@ -215 +231,3 @@ public class StringListRoundtripTest {
+-		_stringMapPojoRoundtrip(MAPPER_WRITE_NULLS, false);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.disable(PROCESS_XSI_NIL);
++		stringMapPojoRoundtrip(false);
+@@ -218 +236 @@ public class StringListRoundtripTest {
+-	private void _stringMapPojoRoundtrip(ObjectMapper mapper, boolean shouldBeNull) throws Exception
++	private void stringMapPojoRoundtrip(boolean shouldBeNull) throws Exception
+@@ -230 +248 @@ public class StringListRoundtripTest {
+-		String xml = mapper.writeValueAsString(mapPojo);
++		String xml = MAPPER.writeValueAsString(mapPojo);
+@@ -234 +252 @@ public class StringListRoundtripTest {
+-		MapPojo result = mapper.readValue(xml, MapPojo.class);
++		MapPojo result = MAPPER.readValue(xml, MapPojo.class);
+@@ -248,2 +266,2 @@ public class StringListRoundtripTest {
+-	static class MapPojo {
+-		Map<String, String> map;
++	private static class MapPojo {
++		private Map<String, String> map;
+@@ -264 +282,3 @@ public class StringListRoundtripTest {
+-		_stringPojoRoundtrip(MAPPER_READ_NULLS, false);
++		MAPPER.disable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringPojoRoundtrip(false);
+@@ -267 +287,3 @@ public class StringListRoundtripTest {
+-		_stringPojoRoundtrip(MAPPER_READ_WRITE_NULLS, true);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.enable(PROCESS_XSI_NIL);
++		stringPojoRoundtrip(true);
+@@ -270 +292,3 @@ public class StringListRoundtripTest {
+-		_stringPojoRoundtrip(MAPPER_WRITE_NULLS, false);
++		MAPPER.enable(WRITE_NULLS_AS_XSI_NIL);
++		MAPPER.disable(PROCESS_XSI_NIL);
++		stringPojoRoundtrip(false);
+@@ -273 +297 @@ public class StringListRoundtripTest {
+-	private void _stringPojoRoundtrip(ObjectMapper mapper, boolean shouldBeNull) throws Exception
++	private void stringPojoRoundtrip(boolean shouldBeNull) throws Exception
+@@ -281 +305 @@ public class StringListRoundtripTest {
+-		String xml = mapper.writeValueAsString(stringPojo);
++		String xml = MAPPER.writeValueAsString(stringPojo);
+@@ -285 +309 @@ public class StringListRoundtripTest {
+-		StringPojo result = mapper.readValue(xml, StringPojo.class);
++		StringPojo result = MAPPER.readValue(xml, StringPojo.class);
+@@ -297,4 +321,4 @@ public class StringListRoundtripTest {
+-	static class StringPojo {
+-		String normalString;
+-		String emptyString;
+-		String nullString;
++	private static class StringPojo {
++		private String normalString;
++		private String emptyString;
++		private String nullString;

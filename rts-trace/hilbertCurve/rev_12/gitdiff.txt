@@ -1,0 +1,12 @@
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index 8fde81e..c35fcc7 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -345,6 +345 @@ public class HilbertCurveTest {
+-        if (false) {
+-            long t = System.currentTimeMillis();
+-            h.query(new long[] { 0, 0, 0 },
+-                    new long[] { maxOrdinates, maxOrdinates, maxOrdinates });
+-            System.out.println("full domain query took " + (System.currentTimeMillis() - t) + "ms");
+-        }
++

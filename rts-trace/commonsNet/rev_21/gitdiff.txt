@@ -1,0 +1,173 @@
+diff --git a/src/main/java/org/apache/commons/net/util/SubnetUtils.java b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
+index f1014b1ee..1a18afd55 100644
+--- a/src/main/java/org/apache/commons/net/util/SubnetUtils.java
++++ b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
+@@ -210,7 +210,7 @@ public class SubnetUtils {
+-            buf.append("CIDR Signature:\t[").append(getCidrSignature()).append("]\n")
+-                .append("  Netmask: [").append(getNetmask()).append("]\n")
+-                .append("  Network: [").append(getNetworkAddress()).append("]\n")
+-                .append("  Broadcast: [").append(getBroadcastAddress()).append("]\n")
+-                .append("  First address: [").append(getLowAddress()).append("]\n")
+-                .append("  Last address: [").append(getHighAddress()).append("]\n")
+-                .append("  Address Count: [").append(getAddressCountLong()).append("]\n");
++            buf.append("CIDR Signature:\t[").append(getCidrSignature()).append("]")
++                .append(" Netmask: [").append(getNetmask()).append("]\n")
++                .append("Network:\t[").append(getNetworkAddress()).append("]\n")
++                .append("Broadcast:\t[").append(getBroadcastAddress()).append("]\n")
++                 .append("First Address:\t[").append(getLowAddress()).append("]\n")
++                 .append("Last Address:\t[").append(getHighAddress()).append("]\n")
++                 .append("# Addresses:\t[").append(getAddressCount()).append("]\n");
+@@ -252 +251,0 @@ public class SubnetUtils {
+-
+@@ -265,0 +265 @@ public class SubnetUtils {
++
+@@ -269,0 +270 @@ public class SubnetUtils {
++
+@@ -274,0 +276,2 @@ public class SubnetUtils {
++
++
+@@ -287 +290 @@ public class SubnetUtils {
+-      this.address = matchAddress(matcher);
++    this.address = matchAddress(matcher);
+@@ -289 +292 @@ public class SubnetUtils {
+-      // Create a binary netmask from the number of bits specification /x 
++      /* Create a binary netmask from the number of bits specification /x */
+@@ -292,9 +295,8 @@ public class SubnetUtils {
+-      
+-      //
+-      // An IPv4 netmask consists of 32 bits, a contiguous sequence
+-      // of the specified number of ones followed by all zeros.
+-      // So, it can be obtained by shifting an unsigned integer (32 bits) to the left by
+-      // the number of trailing zeros which is (32 - the # bits specification).
+-      // Note that there is no unsigned left shift operator, so we have to use
+-      // a long to ensure that the left-most bit is shifted out correctly.
+-      //
++      /*
++       * An IPv4 netmask consists of 32 bits, a contiguous sequence
++       * of the specified number of ones followed by all zeros.
++       * So, it can be obtained by shifting an unsigned integer (32 bits) to the left by
++       * the number of trailing zeros which is (32 - the # bits specification).
++       * Note that there is no unsigned left shift operator, so we have to use
++       * a long to ensure that the left-most bit is shifted out correctly.
++       */
+@@ -303 +305 @@ public class SubnetUtils {
+-      // Calculate base network address
++      /* Calculate base network address */
+@@ -306 +308 @@ public class SubnetUtils {
+-      // Calculate broadcast address
++      /* Calculate broadcast address */
+@@ -325 +327 @@ public class SubnetUtils {
+-        // Calculate base network address
++        /* Calculate base network address */
+@@ -328 +330 @@ public class SubnetUtils {
+-        // Calculate broadcast address
++        /* Calculate broadcast address */
+diff --git a/src/test/java/org/apache/commons/net/SubnetUtilsTest.java b/src/test/java/org/apache/commons/net/SubnetUtilsTest.java
+index a4715989d..4b0769ea2 100644
+--- a/src/test/java/org/apache/commons/net/SubnetUtilsTest.java
++++ b/src/test/java/org/apache/commons/net/SubnetUtilsTest.java
+@@ -20,4 +19,0 @@ package org.apache.commons.net;
+-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+-
+@@ -47,9 +42,0 @@ public class SubnetUtilsTest extends TestCase {
+-        //
+-        assertEquals(-1062731775, info.asInteger("192.168.0.1"));
+-        assertThrows(IllegalArgumentException.class, () -> info.asInteger("bad"));
+-        //
+-        assertArrayEquals(new String[] { "192.168.0.1", "192.168.0.2", "192.168.0.3", "192.168.0.4", "192.168.0.5", "192.168.0.6" }, info.getAllAddresses());
+-    }
+-
+-    public void testAddressIllegalArgument() {
+-        assertThrows(IllegalArgumentException.class, () -> new SubnetUtils("bad"));
+@@ -334,5 +320,0 @@ public class SubnetUtilsTest extends TestCase {
+-    public void testNext() {
+-        final SubnetUtils utils = new SubnetUtils("192.168.0.1/29");
+-        assertEquals("192.168.0.2", utils.getNext().getInfo().getAddress());
+-    }
+-
+@@ -341,2 +323,2 @@ public class SubnetUtilsTest extends TestCase {
+-        final String masks[] = { "255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.248" };
+-        final String bcastAddresses[] = { "192.255.255.255", "192.168.255.255", "192.168.0.255",
++        final String masks[] = new String[] { "255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.248" };
++        final String bcastAddresses[] = new String[] { "192.255.255.255", "192.168.255.255", "192.168.0.255",
+@@ -344,2 +326,2 @@ public class SubnetUtilsTest extends TestCase {
+-        final String lowAddresses[] = { "192.0.0.1", "192.168.0.1", "192.168.0.1", "192.168.0.1" };
+-        final String highAddresses[] = { "192.255.255.254", "192.168.255.254", "192.168.0.254",
++        final String lowAddresses[] = new String[] { "192.0.0.1", "192.168.0.1", "192.168.0.1", "192.168.0.1" };
++        final String highAddresses[] = new String[] { "192.255.255.254", "192.168.255.254", "192.168.0.254",
+@@ -347 +329 @@ public class SubnetUtilsTest extends TestCase {
+-        final String nextAddresses[] = { "192.168.0.2", "192.168.0.2", "192.168.0.2",
++        final String nextAddresses[] = new String[] { "192.168.0.2", "192.168.0.2", "192.168.0.2",
+@@ -349 +331 @@ public class SubnetUtilsTest extends TestCase {
+-        final String previousAddresses[] = { "192.168.0.0", "192.168.0.0", "192.168.0.0",
++        final String previousAddresses[] = new String[] { "192.168.0.0", "192.168.0.0", "192.168.0.0",
+@@ -351,2 +333,2 @@ public class SubnetUtilsTest extends TestCase {
+-        final String networkAddresses[] = { "192.0.0.0", "192.168.0.0", "192.168.0.0", "192.168.0.0" };
+-        final String cidrSignatures[] = { "192.168.0.1/8", "192.168.0.1/16", "192.168.0.1/24",
++        final String networkAddresses[] = new String[] { "192.0.0.0", "192.168.0.0", "192.168.0.0", "192.168.0.0" };
++        final String cidrSignatures[] = new String[] { "192.168.0.1/8", "192.168.0.1/16", "192.168.0.1/24",
+@@ -354 +336 @@ public class SubnetUtilsTest extends TestCase {
+-        final int usableAddresses[] = { 16777214, 65534, 254, 6 };
++        final int usableAddresses[] = new int[] { 16777214, 65534, 254, 6 };
+@@ -359 +340,0 @@ public class SubnetUtilsTest extends TestCase {
+-            assertEquals(address, info.getAddress());
+@@ -373,7 +354,7 @@ public class SubnetUtilsTest extends TestCase {
+-        final String masks[] = { "255.255.255.252", "255.255.255.254", "255.255.255.255" };
+-        final String bcast[] = { "192.168.15.7", "192.168.15.7", "192.168.15.7" };
+-        final String netwk[] = { "192.168.15.4", "192.168.15.6", "192.168.15.7" };
+-        final String lowAd[] = { "192.168.15.5", "0.0.0.0", "0.0.0.0" };
+-        final String highA[] = { "192.168.15.6", "0.0.0.0", "0.0.0.0" };
+-        final String cidrS[] = { "192.168.15.7/30", "192.168.15.7/31", "192.168.15.7/32" };
+-        final int usableAd[] = { 2, 0, 0 };
++        final String masks[] = new String[] { "255.255.255.252", "255.255.255.254", "255.255.255.255" };
++        final String bcast[] = new String[] { "192.168.15.7", "192.168.15.7", "192.168.15.7" };
++        final String netwk[] = new String[] { "192.168.15.4", "192.168.15.6", "192.168.15.7" };
++        final String lowAd[] = new String[] { "192.168.15.5", "0.0.0.0", "0.0.0.0" };
++        final String highA[] = new String[] { "192.168.15.6", "0.0.0.0", "0.0.0.0" };
++        final String cidrS[] = new String[] { "192.168.15.7/30", "192.168.15.7/31", "192.168.15.7/32" };
++        final int usableAd[] = new int[] { 2, 0, 0 };
+@@ -397,7 +378,7 @@ public class SubnetUtilsTest extends TestCase {
+-        final String masks[] = { "255.255.255.252", "255.255.255.254", "255.255.255.255" };
+-        final String bcast[] = { "192.168.15.7", "192.168.15.7", "192.168.15.7" };
+-        final String netwk[] = { "192.168.15.4", "192.168.15.6", "192.168.15.7" };
+-        final String lowAd[] = { "192.168.15.4", "192.168.15.6", "192.168.15.7" };
+-        final String highA[] = { "192.168.15.7", "192.168.15.7", "192.168.15.7" };
+-        final String cidrS[] = { "192.168.15.7/30", "192.168.15.7/31", "192.168.15.7/32" };
+-        final int usableAd[] = { 4, 2, 1 };
++        final String masks[] = new String[] { "255.255.255.252", "255.255.255.254", "255.255.255.255" };
++        final String bcast[] = new String[] { "192.168.15.7", "192.168.15.7", "192.168.15.7" };
++        final String netwk[] = new String[] { "192.168.15.4", "192.168.15.6", "192.168.15.7" };
++        final String lowAd[] = new String[] { "192.168.15.4", "192.168.15.6", "192.168.15.7" };
++        final String highA[] = new String[] { "192.168.15.7", "192.168.15.7", "192.168.15.7" };
++        final String cidrS[] = new String[] { "192.168.15.7/30", "192.168.15.7/31", "192.168.15.7/32" };
++        final int usableAd[] = new int[] { 4, 2, 1 };
+@@ -418,12 +398,0 @@ public class SubnetUtilsTest extends TestCase {
+-    public void testPrevious() {
+-        final SubnetUtils utils = new SubnetUtils("192.168.0.1/29");
+-        assertEquals("192.168.0.0", utils.getPrevious().getInfo().getAddress());
+-    }
+-
+-    public void testToString() {
+-        final SubnetUtils utils = new SubnetUtils("192.168.0.1/29");
+-        assertDoesNotThrow(() -> utils.toString());
+-        final SubnetInfo info = utils.getInfo();
+-        assertDoesNotThrow(() -> info.toString());
+-    }
+-
+diff --git a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
+index ae30ef5d1..62a73a9cc 100644
+--- a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
++++ b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
+@@ -21,0 +22 @@ import static org.junit.Assert.fail;
++import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -31,0 +33 @@ import org.junit.Test;
++import org.junit.jupiter.api.function.Executable;
+@@ -106 +108 @@ public class SimpleSMTPHeaderTestCase {
+-    @Test(expected=IllegalArgumentException.class)
++    @Test
+@@ -108 +110,2 @@ public class SimpleSMTPHeaderTestCase {
+-        new SimpleSMTPHeader(null, null, null);
++        final Executable testMethod = () -> new SimpleSMTPHeader(null, null, null);
++        assertThrows(IllegalArgumentException.class, testMethod);

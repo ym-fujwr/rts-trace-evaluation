@@ -1,0 +1,41 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index f59ce2924..2c299be0c 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -92,3 +91,0 @@ The <action> type attribute can be add,update,fix,remove.
+-      <action type="fix" dev="ggregory" due-to="Gary Gregory">
+-        Remove reflection from SSLSocketUtils.
+-      </action>
+diff --git a/src/main/java/org/apache/commons/net/util/SSLSocketUtils.java b/src/main/java/org/apache/commons/net/util/SSLSocketUtils.java
+index 5485a8b73..3261c08cb 100644
+--- a/src/main/java/org/apache/commons/net/util/SSLSocketUtils.java
++++ b/src/main/java/org/apache/commons/net/util/SSLSocketUtils.java
+@@ -21 +21,3 @@ package org.apache.commons.net.util;
+-import javax.net.ssl.SSLParameters;
++import java.lang.reflect.InvocationTargetException;
++import java.lang.reflect.Method;
++
+@@ -30 +31,0 @@ public class SSLSocketUtils {
+-
+@@ -35 +36 @@ public class SSLSocketUtils {
+-     * @return {@code true} on success
++     * @return {@code true} on success (this is only supported on Java 1.7+)
+@@ -38,5 +39,13 @@ public class SSLSocketUtils {
+-        final SSLParameters sslParameters = socket.getSSLParameters();
+-        if (sslParameters != null) {
+-            sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
+-            socket.setSSLParameters(sslParameters);
+-            return true;
++        try {
++            final Class<?> cls = Class.forName("javax.net.ssl.SSLParameters");
++            final Method setEndpointIdentificationAlgorithm = cls.getDeclaredMethod("setEndpointIdentificationAlgorithm", String.class);
++            final Method getSSLParameters = SSLSocket.class.getDeclaredMethod("getSSLParameters");
++            final Method setSSLParameters = SSLSocket.class.getDeclaredMethod("setSSLParameters", cls);
++            final Object sslParams = getSSLParameters.invoke(socket);
++            if (sslParams != null) {
++                setEndpointIdentificationAlgorithm.invoke(sslParams, "HTTPS");
++                setSSLParameters.invoke(socket, sslParams);
++                return true;
++            }
++        } catch (final SecurityException | ClassNotFoundException | NoSuchMethodException | IllegalArgumentException | IllegalAccessException
++                | InvocationTargetException e) { // Ignored

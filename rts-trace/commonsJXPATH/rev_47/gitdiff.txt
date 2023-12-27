@@ -1,0 +1,28 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java b/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java
+index fe4e4968..aa809191 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java
+@@ -177 +177 @@ public abstract class EvalContext implements ExpressionContext, Iterator {
+-     * Constructs an iterator.
++     * Construct an iterator.
+diff --git a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
+index d9ace589..9d55d9c6 100644
+--- a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
++++ b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
+@@ -94 +94 @@ public class DocumentContainer extends XMLParser2 implements Container {
+-     * Constructs a new DocumentContainer.
++     * Construct a new DocumentContainer.
+diff --git a/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java b/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java
+index 9df8df5b..21c2df2e 100644
+--- a/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java
++++ b/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java
+@@ -38 +38 @@ public abstract class JXPathTestCase extends TestCase {
+-     * Constructs a new instance of this test case.
++     * Construct a new instance of this test case.
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/EmptyCollectionTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/EmptyCollectionTest.java
+index d8fc17b2..c78d123a 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/EmptyCollectionTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/EmptyCollectionTest.java
+@@ -32 +32 @@ public class EmptyCollectionTest extends JXPathTestCase {
+-         * Constructs a new EmptyCollectionTest.HasChild instance.
++         * Construct a new EmptyCollectionTest.HasChild instance.

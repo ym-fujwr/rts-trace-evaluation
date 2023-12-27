@@ -1,0 +1,27 @@
+diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+index 240789f7..b69838d7 100644
+--- a/RELEASE-NOTES.txt
++++ b/RELEASE-NOTES.txt
+@@ -81 +81 @@ Apache Commons CLI provides a simple API for presenting, processing and validati
+-New features and bug fixes (Java 7 or above).
++New features and bug fixes (Java 7).
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index f8ab1c23..6f2e0e17 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -118 +118 @@
+-    <release version="1.5.0" date="2021-10-23" description="New features and bug fixes (Java 7 or above).">
++    <release version="1.5.0" date="2021-10-23" description="New features and bug fixes (Java 7).">
+diff --git a/src/test/java/org/apache/commons/cli/bug/BugCLI265Test.java b/src/test/java/org/apache/commons/cli/bug/BugCLI265Test.java
+index 51df09c9..b1880ea4 100644
+--- a/src/test/java/org/apache/commons/cli/bug/BugCLI265Test.java
++++ b/src/test/java/org/apache/commons/cli/bug/BugCLI265Test.java
+@@ -56 +56 @@ public class BugCLI265Test {
+-    public void testShouldParseConcatenatedShortOptions() throws Exception {
++    public void shouldParseConcatenatedShortOptions() throws Exception {
+@@ -69 +69 @@ public class BugCLI265Test {
+-    public void testShouldParseShortOptionWithoutValue() throws Exception {
++    public void shouldParseShortOptionWithoutValue() throws Exception {
+@@ -80 +80 @@ public class BugCLI265Test {
+-    public void testShouldParseShortOptionWithValue() throws Exception {
++    public void shouldParseShortOptionWithValue() throws Exception {

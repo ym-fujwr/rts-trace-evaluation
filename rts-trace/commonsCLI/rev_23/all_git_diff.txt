@@ -1,0 +1,46 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index 5b399768..567b3745 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -60 +60 @@ jobs:
+-      uses: github/codeql-action/init@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
++      uses: github/codeql-action/init@f6e388ebf0efc915c6c5b165b019ee61a6746a38 # v2.20.1
+@@ -71 +71 @@ jobs:
+-      uses: github/codeql-action/autobuild@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
++      uses: github/codeql-action/autobuild@f6e388ebf0efc915c6c5b165b019ee61a6746a38 # v2.20.1
+@@ -85 +85 @@ jobs:
+-      uses: github/codeql-action/analyze@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
++      uses: github/codeql-action/analyze@f6e388ebf0efc915c6c5b165b019ee61a6746a38 # v2.20.1
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index 3abbfe2d..ddf9b95c 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -67 +67 @@ jobs:
+-        uses: github/codeql-action/upload-sarif@46ed16ded91731b2df79a2893d3aea8e9f03b5c4    # 2.20.3
++        uses: github/codeql-action/upload-sarif@f6e388ebf0efc915c6c5b165b019ee61a6746a38    # 2.20.1
+diff --git a/src/test/java/org/apache/commons/cli/OptionTest.java b/src/test/java/org/apache/commons/cli/OptionTest.java
+index 0ee40055..debf6268 100644
+--- a/src/test/java/org/apache/commons/cli/OptionTest.java
++++ b/src/test/java/org/apache/commons/cli/OptionTest.java
+@@ -19,0 +20 @@ package org.apache.commons.cli;
++import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -26 +26,0 @@ import static org.junit.Assert.assertTrue;
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+diff --git a/src/test/java/org/apache/commons/cli/TypeHandlerTest.java b/src/test/java/org/apache/commons/cli/TypeHandlerTest.java
+index c288622e..de9e89c6 100644
+--- a/src/test/java/org/apache/commons/cli/TypeHandlerTest.java
++++ b/src/test/java/org/apache/commons/cli/TypeHandlerTest.java
+@@ -19,0 +20 @@ package org.apache.commons.cli;
++import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -23 +23,0 @@ import static org.junit.Assert.assertTrue;
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+diff --git a/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java b/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java
+index c916325f..b1efe80e 100644
+--- a/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java
++++ b/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java
+@@ -20,2 +19,0 @@ package org.apache.commons.cli.bug;
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+-
+@@ -28,0 +27,2 @@ import org.junit.Test;
++import static org.junit.jupiter.api.Assertions.assertThrows;
++

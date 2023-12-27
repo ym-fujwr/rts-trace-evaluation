@@ -1,0 +1,53 @@
+diff --git a/pom.xml b/pom.xml
+index fca7613..3888426 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -7 +7 @@
+-    <version>2.0.5-SNAPSHOT</version>
++    <version>2.0.3-SNAPSHOT</version>
+@@ -49,2 +49 @@
+-      <tag>HEAD</tag>
+-  </scm>
++    </scm>
+@@ -118,5 +116,0 @@
+-                <plugin>
+-                    <groupId>org.apache.maven.plugins</groupId>
+-                    <artifactId>maven-jar-plugin</artifactId>
+-                    <version>3.2.2</version>
+-                </plugin>
+@@ -180,12 +173,0 @@
+-            <plugin>
+-                <groupId>org.apache.maven.plugins</groupId>
+-                <artifactId>maven-jar-plugin</artifactId>
+-                <version>3.2.2</version>
+-                <configuration>
+-                    <archive>
+-                        <manifestEntries>
+-                            <Automatic-Module-Name>com.zaxxer.nuprocess</Automatic-Module-Name>
+-                        </manifestEntries>
+-                    </archive>
+-                </configuration>
+-            </plugin>
+diff --git a/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java b/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
+index ae4c490..d0276ec 100644
+--- a/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
++++ b/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
+@@ -110 +109,0 @@ public class NuProcessBuilder
+-      ensureNoNullCharacters(commands);
+@@ -130 +128,0 @@ public class NuProcessBuilder
+-      ensureNoNullCharacters(commands);
+@@ -149,2 +146,0 @@ public class NuProcessBuilder
+-      List<String> commandsList = Arrays.asList(commands);
+-      ensureNoNullCharacters(commandsList);
+@@ -153 +149 @@ public class NuProcessBuilder
+-      this.command = new ArrayList<String>(commandsList);
++      this.command = new ArrayList<String>(Arrays.asList(commands));
+@@ -287,8 +282,0 @@ public class NuProcessBuilder
+-   private void ensureNoNullCharacters(List<String> commands) {
+-      for (String command : commands) {
+-         if (command.indexOf('\u0000') >= 0) {
+-            throw new IllegalArgumentException("Commands may not contain null characters");
+-         }
+-      }
+-   }
+-

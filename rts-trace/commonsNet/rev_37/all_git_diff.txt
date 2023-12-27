@@ -1,0 +1,12 @@
+diff --git a/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java b/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java
+index 9aa49e991..f08f1ea4d 100644
+--- a/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java
++++ b/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java
+@@ -141 +141 @@ public class TestNtpPacket {
+-    @Test
++    @Test(expected=IllegalArgumentException.class)
+@@ -145 +145 @@ public class TestNtpPacket {
+-        assertThrows(IllegalArgumentException.class, () -> message.setDatagramPacket(dp));
++        message.setDatagramPacket(dp);
+@@ -156 +155,0 @@ public class TestNtpPacket {
+-    @Test

@@ -1,0 +1,21 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 2866348a..62d5f232 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -40,3 +39,0 @@
+-      <action type="update" dev="ggregory" due-to="Arturo Bernal">
+-        Use Math.max() #111.
+-      </action>
+diff --git a/src/main/java/org/apache/commons/cli/OptionBuilder.java b/src/main/java/org/apache/commons/cli/OptionBuilder.java
+index 47139bc9..8461ad22 100644
+--- a/src/main/java/org/apache/commons/cli/OptionBuilder.java
++++ b/src/main/java/org/apache/commons/cli/OptionBuilder.java
+@@ -100 +100 @@ public final class OptionBuilder {
+-        Option option;
++        Option option = null;
+diff --git a/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java b/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java
+index 184b45e8..bc203fe8 100644
+--- a/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java
++++ b/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java
+@@ -172,0 +173 @@ public class PatternOptionBuilder {
++                    opt = ' ';

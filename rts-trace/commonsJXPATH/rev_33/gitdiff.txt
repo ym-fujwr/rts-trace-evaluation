@@ -1,0 +1,25 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
+index ecee382b..843715aa 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
++++ b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
+@@ -481 +481,2 @@ public class ValueUtils {
+-                final IndexedPropertyDescriptor ipd = (IndexedPropertyDescriptor) propertyDescriptor;
++                final IndexedPropertyDescriptor ipd =
++                    (IndexedPropertyDescriptor) propertyDescriptor;
+@@ -484 +485,4 @@ public class ValueUtils {
+-                    method.invoke(bean, Integer.valueOf(index), convert(value, ipd.getIndexedPropertyType()));
++                    method.invoke(
++                        bean,
++                            Integer.valueOf(index),
++                            convert(value, ipd.getIndexedPropertyType()));
+@@ -489 +493,5 @@ public class ValueUtils {
+-                throw new IllegalArgumentException("Cannot access property: " + propertyDescriptor.getName() + ", " + ex.getMessage());
++                throw new RuntimeException(
++                    "Cannot access property: "
++                        + propertyDescriptor.getName()
++                        + ", "
++                        + ex.getMessage());
+@@ -501 +509,2 @@ public class ValueUtils {
+-            throw new IllegalArgumentException("Not a collection: " + propertyDescriptor.getName());
++            throw new RuntimeException(
++                "Not a collection: " + propertyDescriptor.getName());

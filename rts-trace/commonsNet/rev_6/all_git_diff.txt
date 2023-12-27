@@ -1,0 +1,15 @@
+diff --git a/.github/workflows/maven_adhoc.yml b/.github/workflows/maven_adhoc.yml
+index d4aaa54c6..8bb9bc6a9 100644
+--- a/.github/workflows/maven_adhoc.yml
++++ b/.github/workflows/maven_adhoc.yml
+@@ -32 +32 @@ jobs:
+-      run: mvn -V --batch-mode --file pom.xml --no-transfer-progress -Dtest=MainTest
++      run: mvn -V --batch-mode --file pom.xml --no-transfer-progress -dtest=MainTest
+diff --git a/src/test/java/org/apache/commons/net/examples/MainTest.java b/src/test/java/org/apache/commons/net/examples/MainTest.java
+index 321d15f4c..6dc8de604 100644
+--- a/src/test/java/org/apache/commons/net/examples/MainTest.java
++++ b/src/test/java/org/apache/commons/net/examples/MainTest.java
+@@ -126,2 +126 @@ public class MainTest {
+-                System.out.println("sf="+sourceFile);
+-                System.out.println("cp="+new File(sourceFile).getCanonicalPath());
++                System.out.println(sourceFile);

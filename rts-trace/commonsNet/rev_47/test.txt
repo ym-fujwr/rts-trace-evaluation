@@ -1,0 +1,1 @@
+org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameJunk,org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameNull,org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameRoot,org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testParseFieldsOnFile,org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testParseFieldsOnDirectory

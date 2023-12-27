@@ -1,0 +1,40 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index a1632ea4..b94b376b 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -52,3 +51,0 @@
+-      <action dev="ggregory" type="fix" due-to="Dilraj Singh, Gary Gregory" issue="CLI-283">
+-        Fix NPE in CommandLine.resolveOption(String).
+-      </action>
+diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
+index 8511f08c..ad416cbc 100644
+--- a/src/main/java/org/apache/commons/cli/CommandLine.java
++++ b/src/main/java/org/apache/commons/cli/CommandLine.java
+@@ -442 +442 @@ public class CommandLine implements Serializable {
+-     * @param opt short or long name of the option, may be null.
++     * @param opt short or long name of the option.
+@@ -445,7 +445,5 @@ public class CommandLine implements Serializable {
+-    private Option resolveOption(final String opt) {
+-        final String actual = Util.stripLeadingHyphens(opt);
+-        if (actual != null) {
+-            for (final Option option : options) {
+-                if (actual.equals(option.getOpt()) || actual.equals(option.getLongOpt())) {
+-                    return option;
+-                }
++    private Option resolveOption(String opt) {
++        opt = Util.stripLeadingHyphens(opt);
++        for (final Option option : options) {
++            if (opt.equals(option.getOpt()) || opt.equals(option.getLongOpt())) {
++                return option;
+@@ -452,0 +451 @@ public class CommandLine implements Serializable {
++
+diff --git a/src/test/java/org/apache/commons/cli/bug/BugsTest.java b/src/test/java/org/apache/commons/cli/bug/BugsTest.java
+index eed3381a..2eb6ea73 100644
+--- a/src/test/java/org/apache/commons/cli/bug/BugsTest.java
++++ b/src/test/java/org/apache/commons/cli/bug/BugsTest.java
+@@ -23 +22,0 @@ import static org.junit.Assert.assertNotNull;
+-import static org.junit.Assert.assertNull;
+@@ -139,3 +137,0 @@ public class BugsTest {
+-        //
+-        assertNull(cmd.getOptionValue((String) null, null));
+-        assertEquals("default", cmd.getOptionValue((String) null, "default"));

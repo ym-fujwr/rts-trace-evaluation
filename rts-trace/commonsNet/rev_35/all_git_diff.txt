@@ -1,0 +1,19 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index b63cf9555..cbc70e07e 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -83,6 +82,0 @@ The <action> type attribute can be add,update,fix,remove.
+-      <action type="fix" dev="ggregory" due-to="John Patrick, Gary Gregory">
+-        JUnit5 assertThrows SimpleSMTPHeaderTestCase #121.
+-      </action>
+-      <action type="fix" dev="ggregory" due-to="John Patrick, Gary Gregory">
+-        JUnit5 assertThrows TestTimeInfo #120.
+-      </action>
+diff --git a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
+index 2d1622d9b..14c06d067 100644
+--- a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
++++ b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
+@@ -95 +95,2 @@ public class TestTimeInfo {
+-        assertThrows(IllegalArgumentException.class, () -> new TimeInfo(packet, 1L));
++        final Executable testMethod = () -> new TimeInfo(packet, 1L);
++        assertThrows(IllegalArgumentException.class, testMethod);

@@ -1,0 +1,26 @@
+diff --git a/src/main/java/org/apache/commons/net/ftp/parser/CompositeFileEntryParser.java b/src/main/java/org/apache/commons/net/ftp/parser/CompositeFileEntryParser.java
+index d405039fc..090c84ce9 100644
+--- a/src/main/java/org/apache/commons/net/ftp/parser/CompositeFileEntryParser.java
++++ b/src/main/java/org/apache/commons/net/ftp/parser/CompositeFileEntryParser.java
+@@ -26 +26 @@ import org.apache.commons.net.ftp.FTPFileEntryParserImpl;
+- * and handle the case where to returned dir style isn't clearly defined.
++ * and handle the case where to returned dirstyle isnt clearly defined.
+@@ -28 +28 @@ import org.apache.commons.net.ftp.FTPFileEntryParserImpl;
+- * If the cached parser wont match due to the server changed the dir style,
++ * If the cached parser wont match due to the server changed the dirstyle,
+@@ -49 +49 @@ public class CompositeFileEntryParser extends FTPFileEntryParserImpl
+-        for (final FTPFileEntryParser ftpFileEntryParser : ftpFileEntryParsers)
++        else
+@@ -51,2 +51 @@ public class CompositeFileEntryParser extends FTPFileEntryParserImpl
+-            final FTPFile matched = ftpFileEntryParser.parseFTPEntry(listEntry);
+-            if (matched != null)
++            for (final FTPFileEntryParser ftpFileEntryParser : ftpFileEntryParsers)
+@@ -54,2 +53,6 @@ public class CompositeFileEntryParser extends FTPFileEntryParserImpl
+-                cachedFtpFileEntryParser = ftpFileEntryParser;
+-                return matched;
++                final FTPFile matched = ftpFileEntryParser.parseFTPEntry(listEntry);
++                if (matched != null)
++                {
++                    cachedFtpFileEntryParser = ftpFileEntryParser;
++                    return matched;
++                }

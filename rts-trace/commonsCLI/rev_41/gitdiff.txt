@@ -1,0 +1,7 @@
+diff --git a/src/main/java/org/apache/commons/cli/TypeHandler.java b/src/main/java/org/apache/commons/cli/TypeHandler.java
+index 1a31e609..261ecc44 100644
+--- a/src/main/java/org/apache/commons/cli/TypeHandler.java
++++ b/src/main/java/org/apache/commons/cli/TypeHandler.java
+@@ -86 +86 @@ public class TypeHandler {
+-     * Create a number from a String. If a '.' is present, it creates a Double, otherwise a Long.
++     * Create a number from a String. If a . is present, it creates a Double, otherwise a Long.

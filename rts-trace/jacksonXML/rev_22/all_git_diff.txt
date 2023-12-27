@@ -1,0 +1,31 @@
+diff --git a/release-notes/CREDITS-2.x b/release-notes/CREDITS-2.x
+index a9633a62d..4e28a8c3e 100644
+--- a/release-notes/CREDITS-2.x
++++ b/release-notes/CREDITS-2.x
+@@ -224,7 +224 @@ PJ Fanning (pjfanning@github)
+-  of: Ljavax/xml/stream/XMLInputFactory
+- (2.15.0)
+-
+-Marco Belladelli (mbladel@github)
+-
+-* Contributed fix for #584: Deserialization of `null` String values in Arrays / `Collection`s
+-  not working as expected
++   of: Ljavax/xml/stream/XMLInputFactory
+diff --git a/release-notes/VERSION-2.x b/release-notes/VERSION-2.x
+index 2684c2967..f696d9016 100644
+--- a/release-notes/VERSION-2.x
++++ b/release-notes/VERSION-2.x
+@@ -22,3 +21,0 @@ Project: jackson-dataformat-xml
+-#584: Deserialization of `null` String values in Arrays / `Collection`s
+-   not working as expected
+- (fix contributed by Marco B)
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+index b46b112d4..5f2005d69 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+@@ -936,5 +935,0 @@ XmlTokenStream.XML_END_ELEMENT, XmlTokenStream.XML_START_ELEMENT, token));
+-                // 18-Mar-2023, tatu: [dataformat-xml#584 / #585] in 2.14 and before
+-                //    returned VALUE_STRING on assumption we never expose `null`s if
+-                //    asked text value -- but that seems incorrect. Hoping this won't
+-                //    break anything in 2.15+
+-

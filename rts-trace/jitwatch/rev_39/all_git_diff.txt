@@ -1,0 +1,147 @@
+diff --git a/README.md b/README.md
+index 56502557..43b1a2dc 100644
+--- a/README.md
++++ b/README.md
+@@ -12,3 +12 @@ Log analyser and visualiser for the HotSpot JIT compiler.
+-The JITWatch user interface is built using JavaFX which is downloaded as a maven dependency for JDK11+.
+-
+-For pre-JDK11 you will need to use a JDK that includes JavaFX.
++The JITWatch user interface is built using JavaFX. This is included in the Oracle JDK. If you are using a JDK that does not include JavaFX (e.g. Azul Zulu, or some flavour of packaged OpenJDK on Linux) then you can download a pre-built OpenJFX jar from https://chriswhocodes.com and put it in your build classpath.
+diff --git a/build.properties b/build.properties
+index 162590e2..7dc9496e 100644
+--- a/build.properties
++++ b/build.properties
+@@ -1 +1 @@
+-version=1.4.2
++version=1.4.0
+diff --git a/core/pom.xml b/core/pom.xml
+index 4440253b..09404c5b 100644
+--- a/core/pom.xml
++++ b/core/pom.xml
+@@ -9 +9 @@
+-		<version>1.4.2</version>
++		<version>1.4.0</version>
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
+index 0033d744..0f3cf65d 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
+@@ -49,6 +49 @@ public class JavapProcess extends AbstractProcess
+-				executablePath = Paths.get(System.getenv("JAVA_HOME"), "bin", EXECUTABLE_NAME);
+-
+-				if (!executablePath.toFile().exists()) 
+-				{
+-					throw new FileNotFoundException("Could not find " + EXECUTABLE_NAME);
+-				}
++				throw new FileNotFoundException("Could not find " + EXECUTABLE_NAME);
+diff --git a/pom.xml b/pom.xml
+index f02dfce8..925d3a97 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -8 +8 @@
+-	<version>1.4.2</version>
++	<version>1.4.0</version>
+@@ -127,3 +126,0 @@
+-                <contributor>
+-                        <name>Thiago Henrique Hüpner</name>
+-                </contributor>
+diff --git a/ui/pom.xml b/ui/pom.xml
+index 52213591..45c1e442 100644
+--- a/ui/pom.xml
++++ b/ui/pom.xml
+@@ -9 +9 @@
+-		<version>1.4.2</version>
++		<version>1.4.0</version>
+@@ -17,3 +17 @@
+-		<openjfx.version>17.0.0.1</openjfx.version>
+-
+-		<!--set on command line with -Djavafx.platform={linux|win|mac} -->
++		<openjfx.version>15.0.1</openjfx.version>
+@@ -43 +41 @@
+-									<outputFile>target/jitwatch-ui-${project.version}-shaded.jar</outputFile>
++									<outputFile>target/ui-shaded.jar</outputFile>
+@@ -47,3 +44,0 @@
+-											<manifestEntries>
+-												<Add-Exports>jdk.jdeps/com.sun.tools.javap</Add-Exports>
+-											</manifestEntries>
+@@ -70,0 +66,37 @@
++					<type>pom</type>
++				</dependency>
++				<dependency>
++					<groupId>org.openjfx</groupId>
++					<artifactId>javafx-swing</artifactId>
++					<version>${openjfx.version}</version>
++					<type>pom</type>
++				</dependency>
++				<dependency>
++					<groupId>org.openjfx</groupId>
++					<artifactId>javafx-web</artifactId>
++					<version>${openjfx.version}</version>
++					<type>pom</type>
++				</dependency>
++				<dependency>
++					<groupId>org.openjfx</groupId>
++					<artifactId>javafx-controls</artifactId>
++					<version>${openjfx.version}</version>
++					<classifier>win</classifier>
++				</dependency>
++				<dependency>
++					<groupId>org.openjfx</groupId>
++					<artifactId>javafx-controls</artifactId>
++					<version>${openjfx.version}</version>
++					<classifier>linux</classifier>
++				</dependency>
++				<dependency>
++					<groupId>org.openjfx</groupId>
++					<artifactId>javafx-controls</artifactId>
++					<version>${openjfx.version}</version>
++					<classifier>mac</classifier>
++				</dependency>
++				<dependency>
++					<groupId>org.openjfx</groupId>
++					<artifactId>javafx-web</artifactId>
++					<version>${openjfx.version}</version>
++					<classifier>win</classifier>
+@@ -75,0 +108,19 @@
++					<classifier>linux</classifier>
++				</dependency>
++				<dependency>
++					<groupId>org.openjfx</groupId>
++					<artifactId>javafx-web</artifactId>
++					<version>${openjfx.version}</version>
++					<classifier>mac</classifier>
++				</dependency>
++				<dependency>
++					<groupId>org.openjfx</groupId>
++					<artifactId>javafx-swing</artifactId>
++					<version>${openjfx.version}</version>
++					<classifier>win</classifier>
++				</dependency>
++				<dependency>
++					<groupId>org.openjfx</groupId>
++					<artifactId>javafx-swing</artifactId>
++					<version>${openjfx.version}</version>
++					<classifier>linux</classifier>
+@@ -80,0 +132 @@
++					<classifier>mac</classifier>
+@@ -98 +150 @@
+-                                                                        <outputFile>target/jitwatch-ui-${project.version}-shaded-${javafx.platform}.jar</outputFile>
++									<outputFile>target/ui-shaded.jar</outputFile>
+@@ -102,3 +153,0 @@
+-											<manifestEntries>
+-												<Add-Exports>jdk.jdeps/com.sun.tools.javap</Add-Exports>
+-											</manifestEntries>
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
+index 74fb7a57..57a4592f 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
+@@ -732,6 +732,4 @@ public class JITWatchUI extends Application
+-		vmBuilder.append("VM: ");
+-		vmBuilder.append(System.getProperty("java.vendor"));
+-		vmBuilder.append(" JDK");
+-		vmBuilder.append(System.getProperty("java.version"));
+-		vmBuilder.append(" build ");
+-		vmBuilder.append(System.getProperty("java.runtime.version"));
++		vmBuilder.append("VM is ");
++		vmBuilder.append(Runtime.class.getPackage().getImplementationVendor());
++		vmBuilder.append(C_SPACE);
++		vmBuilder.append(Runtime.class.getPackage().getImplementationVersion());

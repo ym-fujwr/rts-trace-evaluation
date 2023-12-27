@@ -1,0 +1,13 @@
+diff --git a/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java b/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
+index 279ac29..83a499a 100644
+--- a/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
+@@ -37,0 +38,2 @@ public class LinuxProcess extends BasePosixProcess
++   private static final boolean isAzul;
++
+@@ -38,0 +41,2 @@ public class LinuxProcess extends BasePosixProcess
++      isAzul = System.getProperty("java.vm.vendor", "").contains("Azul");
++
+@@ -89 +93 @@ public class LinuxProcess extends BasePosixProcess
+-         if (JVM_MAJOR_VERSION >= 10) {
++         if (JVM_MAJOR_VERSION >= 10 || isAzul) {

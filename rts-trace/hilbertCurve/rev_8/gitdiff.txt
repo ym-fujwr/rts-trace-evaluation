@@ -1,0 +1,52 @@
+diff --git a/src/main/java/org/davidmoten/hilbert/Ranges.java b/src/main/java/org/davidmoten/hilbert/Ranges.java
+index 4ba005f..cadc1b5 100644
+--- a/src/main/java/org/davidmoten/hilbert/Ranges.java
++++ b/src/main/java/org/davidmoten/hilbert/Ranges.java
+@@ -5 +4,0 @@ import java.util.List;
+-import java.util.stream.Stream;
+@@ -129,4 +127,0 @@ public final class Ranges {
+-    
+-    public Stream<Range> stream() {
+-        return ranges.stream();
+-    }
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index ea1eca0..461b325 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -389,36 +388,0 @@ public class HilbertCurveTest {
+-    
+-    @Test
+-    public void testQuery1() {
+-        SmallHilbertCurve c = HilbertCurve.small().bits(5).dimensions(2);
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
+-        Ranges ranges = c.query(point1, point2, 1);
+-        assertEquals(Lists.newArrayList(Range.create(10, 229)), ranges.get());
+-    }
+-    
+-    @Test
+-    public void testQueryJoin0() {
+-        SmallHilbertCurve c = HilbertCurve.small().bits(5).dimensions(2);
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
+-        Ranges ranges = c.query(point1, point2, 0);
+-        ranges.stream().forEach(System.out::println);
+-    }
+-    
+-    @Test
+-    public void testQueryJoin3() {
+-        SmallHilbertCurve c = HilbertCurve.small().bits(5).dimensions(2);
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
+-        Ranges ranges = c.query(point1, point2, 3);
+-        ranges.stream().forEach(System.out::println);
+-    }
+-    
+-    @Test
+-    public void testQueryJoin6() {
+-        SmallHilbertCurve c = HilbertCurve.small().bits(5).dimensions(2);
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
+-        Ranges ranges = c.query(point1, point2, 6);
+-        ranges.stream().forEach(System.out::println);
+-    }

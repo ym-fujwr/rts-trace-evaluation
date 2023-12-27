@@ -1,0 +1,78 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index 5ed6d2b5..85e12f1c 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -60 +60 @@ jobs:
+-      uses: github/codeql-action/init@407ffafae6a767df3e0230c3df91b6443ae8df75 # v2.22.8
++      uses: github/codeql-action/init@74483a38d39275f33fcff5f35b679b5ca4a26a99 # v2.22.5
+@@ -71 +71 @@ jobs:
+-      uses: github/codeql-action/autobuild@407ffafae6a767df3e0230c3df91b6443ae8df75 # v2.22.8
++      uses: github/codeql-action/autobuild@74483a38d39275f33fcff5f35b679b5ca4a26a99 # v2.22.5
+@@ -85 +85 @@ jobs:
+-      uses: github/codeql-action/analyze@407ffafae6a767df3e0230c3df91b6443ae8df75 # v2.22.8
++      uses: github/codeql-action/analyze@74483a38d39275f33fcff5f35b679b5ca4a26a99 # v2.22.5
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index 034e45bc..4355b6da 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -66 +66 @@ jobs:
+-        uses: github/codeql-action/upload-sarif@407ffafae6a767df3e0230c3df91b6443ae8df75    # 2.22.8
++        uses: github/codeql-action/upload-sarif@74483a38d39275f33fcff5f35b679b5ca4a26a99    # 2.22.5
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributePointer.java
+index 90ac734a..e05daedb 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributePointer.java
+@@ -62 +62 @@ public class DOMAttributePointer extends NodePointer {
+-        if (value == null || value.isEmpty() && !attr.getSpecified()) {
++        if (value == null || value.equals("") && !attr.getSpecified()) {
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java
+index a2ea3a8c..6efad9c7 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java
+@@ -230 +230 @@ public class DOMNodePointer extends NodePointer {
+-        if (prefix == null || prefix.isEmpty()) {
++        if (prefix == null || prefix.equals("")) {
+@@ -266 +266 @@ public class DOMNodePointer extends NodePointer {
+-            if (namespace == null || namespace.isEmpty()) {
++            if (namespace == null || namespace.equals("")) {
+@@ -302 +302 @@ public class DOMNodePointer extends NodePointer {
+-        return defaultNamespace.isEmpty() ? null : defaultNamespace;
++        return defaultNamespace.equals("") ? null : defaultNamespace;
+@@ -361 +361 @@ public class DOMNodePointer extends NodePointer {
+-                if (attr != null && !attr.isEmpty()) {
++                if (attr != null && !attr.equals("")) {
+@@ -390 +390 @@ public class DOMNodePointer extends NodePointer {
+-            if (string != null && !string.isEmpty()) {
++            if (string != null && !string.equals("")) {
+@@ -421 +421 @@ public class DOMNodePointer extends NodePointer {
+-                if (string != null && !string.isEmpty()) {
++                if (string != null && !string.equals("")) {
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributePointer.java
+index 01da8027..05dd873b 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributePointer.java
+@@ -52 +52 @@ public class JDOMAttributePointer extends NodePointer {
+-        if (uri != null && uri.isEmpty()) {
++        if (uri != null && uri.equals("")) {
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
+index 78827e72..e3de51e2 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
+@@ -251 +251 @@ public class JDOMNodePointer extends NodePointer {
+-            if (ns != null && ns.isEmpty()) {
++            if (ns != null && ns.equals("")) {
+@@ -301 +301 @@ public class JDOMNodePointer extends NodePointer {
+-            if (string != null && !string.isEmpty()) {
++            if (string != null && !string.equals("")) {
+@@ -336 +336 @@ public class JDOMNodePointer extends NodePointer {
+-                if (string != null && !string.isEmpty()) {
++                if (string != null && !string.equals("")) {
+@@ -462 +462 @@ public class JDOMNodePointer extends NodePointer {
+-            return prefix == null || prefix.isEmpty() ? null : prefix;
++            return prefix == null || prefix.equals("") ? null : prefix;
+@@ -466 +466 @@ public class JDOMNodePointer extends NodePointer {
+-            return prefix == null || prefix.isEmpty() ? null : prefix;
++            return prefix == null || prefix.equals("") ? null : prefix;
+@@ -521 +521 @@ public class JDOMNodePointer extends NodePointer {
+-                if (attr != null && !attr.isEmpty()) {
++                if (attr != null && !attr.equals("")) {

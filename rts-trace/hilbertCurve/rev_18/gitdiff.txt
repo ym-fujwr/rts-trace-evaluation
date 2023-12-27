@@ -1,0 +1,10 @@
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index fbe84e3..55794b8 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -28,2 +27,0 @@ public class HilbertCurveTest {
+-    private static final boolean FULL_DOMAIN_QUERY = false;
+-
+@@ -347 +345 @@ public class HilbertCurveTest {
+-        if (FULL_DOMAIN_QUERY) {
++        if (false) {

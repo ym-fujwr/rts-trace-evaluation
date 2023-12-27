@@ -1,0 +1,23 @@
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java b/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
+index e2fa76f..6b526e3 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
+@@ -167,11 +167 @@ public abstract class BasePosixProcess implements NuProcess
+-         int result = LibC.kill(pid, force ? LibC.SIGKILL : LibC.SIGTERM);
+-         if (result != 0) {
+-            int errno = Native.getLastError();
+-            if (errno == LibC.ESRCH) {
+-               LOGGER.log(Level.FINE, "{0}: The process exited before it could be {1}",
+-                       new Object[]{pid, force ? "killed" : "terminated"});
+-            }
+-            else {
+-               throw new RuntimeException("Sending signal failed, return code: " + result + ", last error: " + errno);
+-            }
+-         }
++         checkReturnCode(LibC.kill(pid, force ? LibC.SIGKILL : LibC.SIGTERM), "Sending signal failed");
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/LibC.java b/src/main/java/com/zaxxer/nuprocess/internal/LibC.java
+index 5a0d24d..3c8e001 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/LibC.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/LibC.java
+@@ -97 +96,0 @@ public class LibC
+-   public static final int ESRCH = 3;   /* No such process */

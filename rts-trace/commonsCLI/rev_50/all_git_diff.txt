@@ -1,0 +1,44 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index 971df01a..b90934a7 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -60 +60 @@ jobs:
+-      uses: github/codeql-action/init@74483a38d39275f33fcff5f35b679b5ca4a26a99 # v2.22.5
++      uses: github/codeql-action/init@49abf0ba24d0b7953cb586944e918a0b92074c80 # v2.22.4
+@@ -71 +71 @@ jobs:
+-      uses: github/codeql-action/autobuild@74483a38d39275f33fcff5f35b679b5ca4a26a99 # v2.22.5
++      uses: github/codeql-action/autobuild@49abf0ba24d0b7953cb586944e918a0b92074c80 # v2.22.4
+@@ -85 +85 @@ jobs:
+-      uses: github/codeql-action/analyze@74483a38d39275f33fcff5f35b679b5ca4a26a99 # v2.22.5
++      uses: github/codeql-action/analyze@49abf0ba24d0b7953cb586944e918a0b92074c80 # v2.22.4
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index 193a995d..13220deb 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -67 +67 @@ jobs:
+-        uses: github/codeql-action/upload-sarif@74483a38d39275f33fcff5f35b679b5ca4a26a99    # 2.22.5
++        uses: github/codeql-action/upload-sarif@49abf0ba24d0b7953cb586944e918a0b92074c80    # 2.22.4
+diff --git a/src/main/java/org/apache/commons/cli/MissingArgumentException.java b/src/main/java/org/apache/commons/cli/MissingArgumentException.java
+index eb5a1a1e..87609d8d 100644
+--- a/src/main/java/org/apache/commons/cli/MissingArgumentException.java
++++ b/src/main/java/org/apache/commons/cli/MissingArgumentException.java
+@@ -33 +33 @@ public class MissingArgumentException extends ParseException {
+-     * Constructs a new {@code MissingArgumentException} with the specified detail message.
++     * Construct a new {@code MissingArgumentException} with the specified detail message.
+@@ -44 +44 @@ public class MissingArgumentException extends ParseException {
+-     * Constructs a new {@code MissingArgumentException} with the specified detail message.
++     * Construct a new {@code MissingArgumentException} with the specified detail message.
+diff --git a/src/main/java/org/apache/commons/cli/MissingOptionException.java b/src/main/java/org/apache/commons/cli/MissingOptionException.java
+index 1fdb8401..521cf2e7 100644
+--- a/src/main/java/org/apache/commons/cli/MissingOptionException.java
++++ b/src/main/java/org/apache/commons/cli/MissingOptionException.java
+@@ -67 +67 @@ public class MissingOptionException extends ParseException {
+-     * Constructs a new {@code MissingSelectedException} with the specified detail message.
++     * Construct a new {@code MissingSelectedException} with the specified detail message.
+diff --git a/src/main/java/org/apache/commons/cli/ParseException.java b/src/main/java/org/apache/commons/cli/ParseException.java
+index 37bab981..5d3acc6c 100644
+--- a/src/main/java/org/apache/commons/cli/ParseException.java
++++ b/src/main/java/org/apache/commons/cli/ParseException.java
+@@ -30 +30 @@ public class ParseException extends Exception {
+-     * Constructs a new {@code ParseException} with the specified detail message.
++     * Construct a new {@code ParseException} with the specified detail message.

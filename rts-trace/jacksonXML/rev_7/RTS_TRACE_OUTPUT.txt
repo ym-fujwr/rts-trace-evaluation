@@ -1,0 +1,59 @@
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] ------< com.fasterxml.jackson.dataformat:jackson-dataformat-xml >-------
+[INFO] Building Jackson-dataformat-XML 2.15.0-SNAPSHOT
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.2.1:enforce (enforce-java) @ jackson-dataformat-xml ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (default) @ jackson-dataformat-xml ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jacksonXML/workingDir/target/jacoco.exec"
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.3.0:add-source (add-generated-sources) @ jackson-dataformat-xml ---
+[INFO] Source directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jacksonXML/workingDir/target/generated-sources added.
+[INFO] 
+[INFO] --- replacer:1.5.3:replace (process-packageVersion) @ jackson-dataformat-xml ---
+[INFO] Replacement run on 1 file.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.3.0:add-resource (add-resource) @ jackson-dataformat-xml ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ jackson-dataformat-xml ---
+[INFO] Copying 4 resources
+[INFO] Copying 1 resource to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ jackson-dataformat-xml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 42 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jacksonXML/workingDir/target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.8:manifest (bundle-manifest) @ jackson-dataformat-xml ---
+[INFO] No MANIFEST.MF file found, generating manifest.
+[INFO] Writing manifest: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jacksonXML/workingDir/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.0:testResources (default-testResources) @ jackson-dataformat-xml ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ jackson-dataformat-xml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 134 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jacksonXML/workingDir/target/test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] unknown enum constant aQute.bnd.annotation.Resolution.OPTIONAL
+  reason: class file for aQute.bnd.annotation.Resolution not found
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M9:test (default-test) @ jackson-dataformat-xml ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:report (report) @ jackson-dataformat-xml ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.242 s
+[INFO] Finished at: 2023-12-26T15:24:01+09:00
+[INFO] ------------------------------------------------------------------------

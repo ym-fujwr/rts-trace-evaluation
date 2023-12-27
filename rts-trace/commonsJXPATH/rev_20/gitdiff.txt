@@ -1,0 +1,54 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/PackageFunctions.java b/src/main/java/org/apache/commons/jxpath/PackageFunctions.java
+index 3a2e4a1e..2059587d 100644
+--- a/src/main/java/org/apache/commons/jxpath/PackageFunctions.java
++++ b/src/main/java/org/apache/commons/jxpath/PackageFunctions.java
+@@ -24 +23,0 @@ import java.util.Iterator;
+-import java.util.Objects;
+@@ -70,3 +69,3 @@ public class PackageFunctions implements Functions {
+-    private final String classPrefix;
+-    private final String namespace;
+-    private static final Object[] EMPTY_ARRAY = {};
++    private String classPrefix;
++    private String namespace;
++    private static final Object[] EMPTY_ARRAY = new Object[0];
+@@ -79 +78 @@ public class PackageFunctions implements Functions {
+-    public PackageFunctions(final String classPrefix, final String namespace) {
++    public PackageFunctions(String classPrefix, String namespace) {
+@@ -88 +86,0 @@ public class PackageFunctions implements Functions {
+-    @Override
+@@ -114 +111,0 @@ public class PackageFunctions implements Functions {
+-    @Override
+@@ -116,2 +113,2 @@ public class PackageFunctions implements Functions {
+-        final String namespace,
+-        final String name,
++        String namespace,
++        String name,
+@@ -119 +116,2 @@ public class PackageFunctions implements Functions {
+-        if (!Objects.equals(this.namespace, namespace)) {
++        if ((namespace == null && this.namespace != null) //NOPMD
++            || (namespace != null && !namespace.equals(this.namespace))) {
+@@ -153 +151 @@ public class PackageFunctions implements Functions {
+-                    final Iterator iter = ((Collection) target).iterator();
++                    Iterator iter = ((Collection) target).iterator();
+@@ -166 +164 @@ public class PackageFunctions implements Functions {
+-                final Method method =
++                Method method =
+@@ -177,2 +175,2 @@ public class PackageFunctions implements Functions {
+-        final String fullName = classPrefix + name;
+-        final int inx = fullName.lastIndexOf('.');
++        String fullName = classPrefix + name;
++        int inx = fullName.lastIndexOf('.');
+@@ -183,2 +181,2 @@ public class PackageFunctions implements Functions {
+-        final String className = fullName.substring(0, inx);
+-        final String methodName = fullName.substring(inx + 1);
++        String className = fullName.substring(0, inx);
++        String methodName = fullName.substring(inx + 1);
+@@ -190 +188 @@ public class PackageFunctions implements Functions {
+-        catch (final ClassNotFoundException ex) {
++        catch (ClassNotFoundException ex) {
+@@ -198 +196 @@ public class PackageFunctions implements Functions {
+-            final Constructor constructor =
++            Constructor constructor =
+@@ -205 +203 @@ public class PackageFunctions implements Functions {
+-            final Method method =
++            Method method =

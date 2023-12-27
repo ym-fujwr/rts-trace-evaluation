@@ -1,0 +1,72 @@
+diff --git a/README.md b/README.md
+index 01ab4ee..4870a48 100644
+--- a/README.md
++++ b/README.md
+@@ -151 +151 @@ This is one of the very useful applications of the Hilbert curve. By mapping n-d
+-Given an n-dimensional search box **the exact hilbert curve ranges that cover the search box can be determined just by looking at the hilbert curve values on the perimeter of the box**. *I didn't manage to find any discussion of this very useful fact on the web and am confused as to why this isn't covered anywhere. Surely this is not an unpublished discovery (because it's a pretty trivial one to come across). Let me know if you find discussion of this technique elsewhere!*
++Given an n-dimensional search box **the exact hilbert curve ranges that cover the search box can be determined just by looking at the hilbert curve values on the perimeter of the box**. I didn't manage to find any discussion of this very useful fact on the web and am confused as to why this isn't covered anywhere. Surely this is not an unpublished discovery (because it's a pretty trivial one to come across). Let me know if you find discussion of this technique elsewhere!
+@@ -155 +155 @@ Let's first establish why this is so.
+-##### Perimeter algorithm proof
++Firstly, let's state that the points corresponding to 0 on the hilbert curve and the maximum on the hilbert curve are vertices of the domain. 
+@@ -157 +157 @@ Let's first establish why this is so.
+-**Lemma 1:** *The points corresponding to 0 on the hilbert curve and the maximum on the hilbert curve are vertices of the domain*. 
++Proof: TODO
+@@ -159 +159 @@ Let's first establish why this is so.
+-*Proof*: For two dimensions, note that the order 2 Hilbert curve has this property (this curve is just a U) and the known production rules for generating the Hilbert curve of order `n+1` from the curve of order `n` maintain the start and end positions of the curve on vertices. By induction the statement is true for 2 dimensions. The proof is similar for dimensions > 2.
++Secondly, based on the first statement we make the observation that given exact covering ranges of the Hilbert curve over a search box that the extremes of those ranges must be on the perimeter of the search region.
+@@ -161 +161 @@ Let's first establish why this is so.
+-**Lemma 2:** *Given the exact covering ranges of the Hilbert curve over a search box, the endpoints of those ranges must be on the perimeter of the search region.*
++Proof: TODO. Easily demonstrable by contradiction.
+@@ -163 +163 @@ Let's first establish why this is so.
+-*Proof*: We proceed with a proof by contradiction. Suppose an endpoint of one of the covering ranges was not on the perimeter of the search region. Remember that the hilbert curve is a single continuous line visiting every point in the region. If the range endpoint in question is inside the box then it must be the termination of the Hilbert curve but by Lemma 1 the Hilbert curve termination points are at the vertices of the domain which cannot be wholly inside the search box. 
++I'll get around to the above proofs one day, just need to come up with some precise language.
+@@ -165 +165,14 @@ Let's first establish why this is so.
+-With these facts we can create an algorithm for extracting the exact ranges. The hilbert curve values of the perimeter (an `n-1` dimensional surface) of the search box are calculated and put in a sorted list L. Then the values in L are paired with each other into ranges (and concatenated if they are adjacent) starting with the lowest value in L and checking if the next hop along the Hilbert curve in increasing value is on the perimeter, in the box or on the outside of the box. If the next value is outside the search box then we close the current range. If the value is on the perimeter then we add that value to the range and close off the range. If the value is strictly inside the search box then the next value in L must be where the curve exits (see Lemma 2) and we can add that value to the range and close it off. We continue adding ranges using the values in L and concatenate ranges when they are adjacent.
++With these facts we create an algorithm for extracting the exact ranges:
++
++```
++find all the values of the hilbert curve on the perimeter of the search box
++sort those values in ascending order
++at this point the smallest value v<sub>1</sub> in the list will correspond to the start of a range
++continue recording the values in the list to the range while the hilbert curve proceeds along the perimeter (in steps of one along the Hilbert curve)
++If the next point on the curve is in the box (not on the perimeter) then 
++  add all values on the curve till the next perimeter value in the list. 
++  if the next hilbert curve value is on the perimeter then recursively apply this algorithm to continue extending the range
++else // the next point on the curve is outside the box
++  close off the range
++continue as above with the rest of the remaining perimeter values in the sorted list
++```
+diff --git a/src/test/java/org/davidmoten/hilbert/Benchmarks.java b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
+index fba826b..d6e509f 100644
+--- a/src/test/java/org/davidmoten/hilbert/Benchmarks.java
++++ b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
+@@ -21 +21 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -29 +29 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -36 +36 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -43 +43 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -50 +50 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -58 +58 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -65 +65 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -73 +73 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -81 +81 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -89 +89 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark

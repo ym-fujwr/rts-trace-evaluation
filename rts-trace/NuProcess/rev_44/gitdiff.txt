@@ -1,0 +1,50 @@
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/BaseEventProcessor.java b/src/main/java/com/zaxxer/nuprocess/internal/BaseEventProcessor.java
+index 33ff02b..3797d8a 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/BaseEventProcessor.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/BaseEventProcessor.java
+@@ -24,2 +23,0 @@ import java.util.concurrent.atomic.AtomicBoolean;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
+@@ -38,3 +35,0 @@ public abstract class BaseEventProcessor<T extends BasePosixProcess> implements
+-
+-   private static final Logger LOGGER = Logger.getLogger(BaseEventProcessor.class.getCanonicalName());
+-
+@@ -91,2 +85,0 @@ public abstract class BaseEventProcessor<T extends BasePosixProcess> implements
+-         LOGGER.log(Level.WARNING, "Aborting processing loop after unexpected exception (" +
+-                 pidToProcessMap.size() + " processes running)", e);
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/LibC.java b/src/main/java/com/zaxxer/nuprocess/internal/LibC.java
+index 3c8e001..5d6bbb3 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/LibC.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/LibC.java
+@@ -97 +96,0 @@ public class LibC
+-   public static final int EINTR = 4;   /* Interrupted system call */
+diff --git a/src/main/java/com/zaxxer/nuprocess/linux/ProcessEpoll.java b/src/main/java/com/zaxxer/nuprocess/linux/ProcessEpoll.java
+index ad2067d..2d38606 100644
+--- a/src/main/java/com/zaxxer/nuprocess/linux/ProcessEpoll.java
++++ b/src/main/java/com/zaxxer/nuprocess/linux/ProcessEpoll.java
+@@ -221,11 +221 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-            int errno = Native.getLastError();
+-            if (errno == LibC.EINTR) {
+-               // Signals received while in epoll_wait can interrupt the call and, per the documentation for
+-               // SA_RESTART, it will not be restarted automatically. When that happens, we manually restart
+-               // epoll_wait by returning true, which ensures BaseEventProcessor.run() calls process() again.
+-               // This matches how the JVM internals handle EINTR during epoll_wait.
+-               // See https://github.com/JetBrains/jdk8u_jdk/blob/94318f9185757cc33d2b8d527d36be26ac6b7582/src/solaris/native/sun/nio/ch/nio_util.h#L33-L37
+-               return true;
+-            }
+-
+-            throw new RuntimeException("Error waiting for epoll (" + errno + ")");
++            throw new RuntimeException("Error waiting for epoll");
+diff --git a/src/main/java/com/zaxxer/nuprocess/windows/ProcessCompletions.java b/src/main/java/com/zaxxer/nuprocess/windows/ProcessCompletions.java
+index 6dbb3ef..94ec1d9 100644
+--- a/src/main/java/com/zaxxer/nuprocess/windows/ProcessCompletions.java
++++ b/src/main/java/com/zaxxer/nuprocess/windows/ProcessCompletions.java
+@@ -30,2 +29,0 @@ import java.util.concurrent.atomic.AtomicBoolean;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
+@@ -46 +43,0 @@ public final class ProcessCompletions implements Runnable
+-   private static final Logger LOGGER = Logger.getLogger(ProcessCompletions.class.getCanonicalName());
+@@ -128,2 +125 @@ public final class ProcessCompletions implements Runnable
+-         LOGGER.log(Level.WARNING, "Aborting processing loop after unexpected exception (" +
+-                 completionKeyToProcessMap.size() + " processes running)", e);
++         e.printStackTrace();

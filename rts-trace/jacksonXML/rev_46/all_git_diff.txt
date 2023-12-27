@@ -1,0 +1,100 @@
+diff --git a/pom.xml b/pom.xml
+index 887cc2e68..c7760a491 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -12 +12 @@
+-    <version>2.16.0-rc1-SNAPSHOT</version>
++    <version>2.16.0-SNAPSHOT</version>
+@@ -16 +16 @@
+-  <version>2.16.0-rc1-SNAPSHOT</version>
++  <version>2.16.0-SNAPSHOT</version>
+diff --git a/release-notes/VERSION-2.x b/release-notes/VERSION-2.x
+index 9766dbeb1..58b14804c 100644
+--- a/release-notes/VERSION-2.x
++++ b/release-notes/VERSION-2.x
+@@ -19 +18,0 @@ Project: jackson-dataformat-xml
+-2.15.3 (12-Oct-2023)
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/UnexpectedNonWhitespaceText509Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/UnexpectedNonWhitespaceText509Test.java
+deleted file mode 100644
+index 0059dbc4c..000000000
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/UnexpectedNonWhitespaceText509Test.java
++++ /dev/null
+@@ -1,78 +0,0 @@
+-package com.fasterxml.jackson.dataformat.xml.failing;
+-
+-import java.util.*;
+-
+-import org.junit.Test;
+-
+-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+-
+-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
+-
+-import static org.junit.Assert.assertEquals;
+-
+-// For [dataformat-xml#509]
+-public class UnexpectedNonWhitespaceText509Test {
+-	@JsonPropertyOrder({ "key", "content" })
+-	static class Data {
+-	    @JacksonXmlText
+-		public String content;
+-		@JacksonXmlProperty(isAttribute=true)
+-		protected java.lang.String key;
+-
+-		public java.lang.String getKey() {
+-			return key;
+-		}
+-
+-		public void setKey(java.lang.String value) {
+-			this.key = value;
+-		}
+-	}
+-
+-	static class MetaData {
+-		protected List<Data> data;
+-
+-		public List<Data> getData() {
+-			if (data == null) {
+-				data = new ArrayList<>();
+-			}
+-			return this.data;
+-		}
+-
+-		public void setData(List<Data> data) {
+-			this.data = data;
+-		}
+-
+-		@Override
+-		public String toString() {
+-			return Objects.toString(data);
+-		}
+-	}
+-
+-	private final XmlMapper XML_MAPPER = new XmlMapper();
+-
+-	@Test
+-	public void testDeSerData() throws Exception {
+-		Data value = deSer("<data key=\"MadeWith\">Text Editor</data>", Data.class);
+-		assertEquals("\"key\" attribute not correctly deserialized", value.getKey(), "MadeWith");
+-	}
+-
+-	@Test
+-	public void testDeSerMetaData() throws Exception {
+-		MetaData value = deSer("<metaData>\n" //
+-				+ "    <data key=\"MadeWith\">Text Editor</data>\n" //
+-				+ "    <data key=\"Version\">1.0.0</data>\n" //
+-				+ "</metaData>", MetaData.class);
+-		List<Data> entries = value.getData();
+-		assertEquals("\"data\" not correctly deserialized", entries.size(), 2);
+-		Data entry = entries.get(0);
+-		assertEquals("\"key\" attribute not correctly deserialized", entry.getKey(), "MadeWith");
+-		entry = entries.get(1);
+-		assertEquals("\"key\" attribute not correctly deserialized", entry.getKey(), "Version");
+-	}
+-
+-	private <T> T deSer(String xmlString, Class<T> clazz) throws Exception {
+-	    return XML_MAPPER.readerFor(clazz).readValue(xmlString);
+-	}
+-}

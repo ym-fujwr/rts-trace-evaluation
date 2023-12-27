@@ -1,0 +1,57 @@
+diff --git a/src/main/java/org/apache/commons/net/examples/nntp/PostMessage.java b/src/main/java/org/apache/commons/net/examples/nntp/PostMessage.java
+index 78d687720..5f4c0b803 100644
+--- a/src/main/java/org/apache/commons/net/examples/nntp/PostMessage.java
++++ b/src/main/java/org/apache/commons/net/examples/nntp/PostMessage.java
+@@ -168 +168,3 @@ public final class PostMessage
+-            fileReader.close();
++            if (fileReader != null) {
++                fileReader.close();
++            }
+diff --git a/src/main/java/org/apache/commons/net/ftp/parser/MacOsPeterFTPEntryParser.java b/src/main/java/org/apache/commons/net/ftp/parser/MacOsPeterFTPEntryParser.java
+index 8323b06c7..5ec3e7a62 100644
+--- a/src/main/java/org/apache/commons/net/ftp/parser/MacOsPeterFTPEntryParser.java
++++ b/src/main/java/org/apache/commons/net/ftp/parser/MacOsPeterFTPEntryParser.java
+@@ -224,2 +224,2 @@ public class MacOsPeterFTPEntryParser extends ConfigurableFTPFileEntryParserImpl
+-            file.setUser(null);
+-            file.setGroup(null);
++            file.setUser(usr);
++            file.setGroup(grp);
+diff --git a/src/main/java/org/apache/commons/net/io/FromNetASCIIOutputStream.java b/src/main/java/org/apache/commons/net/io/FromNetASCIIOutputStream.java
+index cab6e7492..c88437a93 100644
+--- a/src/main/java/org/apache/commons/net/io/FromNetASCIIOutputStream.java
++++ b/src/main/java/org/apache/commons/net/io/FromNetASCIIOutputStream.java
+@@ -161,0 +162 @@ public final class FromNetASCIIOutputStream extends FilterOutputStream
++            lastWasCR = false;
+diff --git a/src/main/java/org/apache/commons/net/nntp/Threader.java b/src/main/java/org/apache/commons/net/nntp/Threader.java
+index bc52b6f60..55f476ec7 100644
+--- a/src/main/java/org/apache/commons/net/nntp/Threader.java
++++ b/src/main/java/org/apache/commons/net/nntp/Threader.java
+@@ -346 +346,4 @@ public class Threader {
+-                    container.threadable == null && (container.parent != null || container.child.next == null)) {
++                container.threadable == null
++                    && container.child != null
++                    && (container.parent != null
++                        || container.child.next == null)) {
+diff --git a/src/main/java/org/apache/commons/net/telnet/Telnet.java b/src/main/java/org/apache/commons/net/telnet/Telnet.java
+index 31952735a..18d409852 100644
+--- a/src/main/java/org/apache/commons/net/telnet/Telnet.java
++++ b/src/main/java/org/apache/commons/net/telnet/Telnet.java
+@@ -248,0 +249 @@ class Telnet extends SocketClient
++                retValue = false;
+diff --git a/src/main/java/org/apache/commons/net/util/SSLSocketUtils.java b/src/main/java/org/apache/commons/net/util/SSLSocketUtils.java
+index db344c66f..e275a5c5f 100644
+--- a/src/main/java/org/apache/commons/net/util/SSLSocketUtils.java
++++ b/src/main/java/org/apache/commons/net/util/SSLSocketUtils.java
+@@ -45,5 +45,7 @@ public class SSLSocketUtils {
+-            final Object sslParams = getSSLParameters.invoke(socket);
+-            if (sslParams != null) {
+-                setEndpointIdentificationAlgorithm.invoke(sslParams, "HTTPS");
+-                setSSLParameters.invoke(socket, sslParams);
+-                return true;
++            if (setEndpointIdentificationAlgorithm != null && getSSLParameters != null && setSSLParameters != null) {
++                final Object sslParams = getSSLParameters.invoke(socket);
++                if (sslParams != null) {
++                    setEndpointIdentificationAlgorithm.invoke(sslParams, "HTTPS");
++                    setSSLParameters.invoke(socket, sslParams);
++                    return true;
++                }

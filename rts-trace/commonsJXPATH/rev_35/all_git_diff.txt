@@ -1,0 +1,20 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index edb1e274..9d6560da 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -98,3 +97,0 @@ The <action> type attribute can be add,update,fix,remove.
+-      <action dev="ggregory" type="fix" due-to="Gary Gregory">
+-        XMLDocumentContainer.XMLDocumentContainer(Source) now calls Objects.requireNonNull() instead of throwing a RuntimeException.
+-      </action>
+diff --git a/src/main/java/org/apache/commons/jxpath/XMLDocumentContainer.java b/src/main/java/org/apache/commons/jxpath/XMLDocumentContainer.java
+index 0079d72e..6ca37586 100644
+--- a/src/main/java/org/apache/commons/jxpath/XMLDocumentContainer.java
++++ b/src/main/java/org/apache/commons/jxpath/XMLDocumentContainer.java
+@@ -20 +19,0 @@ import java.net.URL;
+-import java.util.Objects;
+@@ -65 +64,4 @@ public class XMLDocumentContainer implements Container {
+-        this.source = Objects.requireNonNull(source);
++        this.source = source;
++        if (source == null) {
++            throw new RuntimeException("Source is null");
++        }

@@ -1,0 +1,3 @@
+org.apache.commons.cli.bug.BugCLI265Test
+org.apache.commons.cli.DefaultParserTest
+org.apache.commons.cli.DisablePartialMatchingTest

@@ -1,0 +1,1 @@
+org.apache.commons.cli.OptionTest#testClear,org.apache.commons.cli.OptionTest#testBuilderMethods,org.apache.commons.cli.OptionTest#testBuilderInsufficientParams1,org.apache.commons.cli.OptionTest#testBuilderInsufficientParams2

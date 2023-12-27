@@ -1,0 +1,128 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index cb9ded29..3593df87 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -27,3 +26,0 @@ on:
+-permissions:
+-  contents: read
+-
+@@ -48,4 +45,2 @@ jobs:
+-      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+-      with:
+-        persist-credentials: false
+-    - uses: actions/cache@v3.0.11
++      uses: actions/checkout@v3.0.2
++    - uses: actions/cache@v3.0.9
+diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
+index c42458f5..1a410888 100644
+--- a/.github/workflows/coverage.yml
++++ b/.github/workflows/coverage.yml
+@@ -32,4 +32,2 @@ jobs:
+-    - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+-      with:
+-        persist-credentials: false
+-    - uses: actions/cache@v3.0.11
++    - uses: actions/checkout@v3.0.2
++    - uses: actions/cache@v3.0.9
+@@ -42 +40 @@ jobs:
+-      uses: actions/setup-java@v3.6.0
++      uses: actions/setup-java@v3.5.1
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index 690a5165..b175cc11 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -20,3 +19,0 @@ on: [push, pull_request]
+-permissions:
+-  contents: read
+-
+@@ -37,4 +34,2 @@ jobs:
+-    - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+-      with:
+-        persist-credentials: false
+-    - uses: actions/cache@v3.0.11
++    - uses: actions/checkout@v3.0.2
++    - uses: actions/cache@v3.0.9
+@@ -47 +42 @@ jobs:
+-      uses: actions/setup-java@v3.6.0
++      uses: actions/setup-java@v3.5.1
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index d223bf49..abd69927 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -34,2 +34 @@ jobs:
+-      # Needed to upload the results to the code-scanning dashboard.
+-      security-events: write
++      security-events: write    # Needed to upload the results to the code-scanning dashboard.
+@@ -37,2 +36 @@ jobs:
+-      id-token: write # This is required for requesting the JWT
+-      contents: read  # This is required for actions/checkout
++      contents: read
+@@ -43 +41 @@ jobs:
+-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8   # 3.1.0
++        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b   # 3.0.2
+@@ -48 +46 @@ jobs:
+-        uses: ossf/scorecard-action@99c53751e09b9529366343771cc321ec74e9bd3d    # 2.0.6
++        uses: ossf/scorecard-action@ce330fde6b1a5c9c75b417e7efc510b822a35564    # 1.1.2
+@@ -60 +58 @@ jobs:
+-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb    # 3.1.0
++        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8    # 3.1.0
+diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+index 331227d0..befcd1e6 100644
+--- a/RELEASE-NOTES.txt
++++ b/RELEASE-NOTES.txt
+@@ -246 +246 @@ o CLI-137: The number of arguments defined for an option specifies the
+-           arguments per occurence of the option and not for all occurrences.
++           arguments per occurence of the option and not for all occurences.
+diff --git a/pom.xml b/pom.xml
+index a58928d9..ca4b5cee 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -193,2 +193,2 @@
+-    <maven.compiler.source>1.8</maven.compiler.source>
+-    <maven.compiler.target>1.8</maven.compiler.target>
++    <maven.compiler.source>1.7</maven.compiler.source>
++    <maven.compiler.target>1.7</maven.compiler.target>
+@@ -219,2 +219,2 @@
+-    <spotbugs.plugin.version>4.7.2.1</spotbugs.plugin.version>
+-    <spotbugs.impl.version>4.7.3</spotbugs.impl.version>
++    <spotbugs.plugin.version>4.7.2.0</spotbugs.plugin.version>
++    <spotbugs.impl.version>4.7.2</spotbugs.impl.version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index a097dc7c..69e74936 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -42,3 +41,0 @@
+-      <action type="update" dev="ggregory" due-to="Gary Gregory">
+-        Bump Java from 7 to 8.
+-      </action>
+@@ -46 +43 @@
+-        Bump actions/cache from 2.1.7 to 3.0.10 #97, #130, #132.
++        Bump actions/cache from 2.1.7 to 3.0.9 #97, #130.
+@@ -48,2 +45,2 @@
+-      <action type="update" dev="ggregory" due-to="Gary Gregory, Dependabot">
+-        Bump actions/checkout from 3 to 3.1.0 #133.
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Bump actions/checkout from 3 to 3.0.2.
+@@ -52 +49 @@
+-        Bump actions/setup-java from 2 to 3.6.0 #136.
++        Bump actions/setup-java from 2 to 3.5.1.
+@@ -55 +52 @@
+-        Bump spotbugs from 4.5.3 to 4.7.3 #96, #107, #113, #125, #138.
++        Bump spotbugs from 4.5.3 to 4.7.2 #96, #107, #113, #125.
+diff --git a/src/main/java/org/apache/commons/cli/DefaultParser.java b/src/main/java/org/apache/commons/cli/DefaultParser.java
+index 8b69a766..3bbd0422 100644
+--- a/src/main/java/org/apache/commons/cli/DefaultParser.java
++++ b/src/main/java/org/apache/commons/cli/DefaultParser.java
+@@ -109 +109 @@ public class DefaultParser implements CommandLineParser {
+-         * kept in other cases, which is the historic behavior.
++         * kept in other cases, which is the historic behaviour.
+@@ -160 +160 @@ public class DefaultParser implements CommandLineParser {
+-     * null represents the historic arbitrary behavior */
++     * null represents the historic arbitrary behaviour */
+diff --git a/src/test/java/org/apache/commons/cli/DefaultParserTest.java b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
+index c3ccf9ab..0fd835a1 100644
+--- a/src/test/java/org/apache/commons/cli/DefaultParserTest.java
++++ b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
+@@ -100 +100 @@ public class DefaultParserTest extends ParserTestCase {
+-        //This is behavior is not consistent with the other parsers, but is required for backwards compatibility
++        //This is behaviour is not consistent with the other parsers, but is required for backwards compatibility

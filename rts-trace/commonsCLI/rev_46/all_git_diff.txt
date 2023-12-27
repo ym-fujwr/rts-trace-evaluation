@@ -1,0 +1,7 @@
+diff --git a/src/test/java/org/apache/commons/cli/ApplicationTest.java b/src/test/java/org/apache/commons/cli/ApplicationTest.java
+index 5d27c7ad..b0587b0c 100644
+--- a/src/test/java/org/apache/commons/cli/ApplicationTest.java
++++ b/src/test/java/org/apache/commons/cli/ApplicationTest.java
+@@ -200 +200 @@ public class ApplicationTest {
+-                addOption("l", "local-file", false, "interpret 'page' argument(s) as local file name(s)").
++                addOption("l", "local-file", false, "interpret 'page' argument(s) as local filen ame(s)").

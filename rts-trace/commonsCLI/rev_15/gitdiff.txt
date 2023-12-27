@@ -1,0 +1,50 @@
+diff --git a/src/test/java/org/apache/commons/cli/OptionTest.java b/src/test/java/org/apache/commons/cli/OptionTest.java
+index debf6268..14542d98 100644
+--- a/src/test/java/org/apache/commons/cli/OptionTest.java
++++ b/src/test/java/org/apache/commons/cli/OptionTest.java
+@@ -20 +19,0 @@ package org.apache.commons.cli;
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -31 +29,0 @@ public class OptionTest {
+-
+@@ -76 +74 @@ public class OptionTest {
+-    @Test
++    @Test(expected = IllegalArgumentException.class)
+@@ -78,2 +76 @@ public class OptionTest {
+-        assertThrows(IllegalArgumentException.class, () ->
+-                Option.builder().desc("desc").build());
++        Option.builder().desc("desc").build();
+@@ -82 +79 @@ public class OptionTest {
+-    @Test
++    @Test(expected = IllegalArgumentException.class)
+@@ -84,2 +81 @@ public class OptionTest {
+-        assertThrows(IllegalArgumentException.class, () ->
+-                Option.builder(null).desc("desc").build());
++        Option.builder(null).desc("desc").build();
+@@ -88 +84 @@ public class OptionTest {
+-    @Test
++    @Test(expected = IllegalArgumentException.class)
+@@ -90,2 +86 @@ public class OptionTest {
+-        assertThrows(IllegalArgumentException.class, () ->
+-                Option.builder().option("invalid?"));
++        Option.builder().option("invalid?");
+@@ -94 +89 @@ public class OptionTest {
+-    @Test
++    @Test(expected = IllegalArgumentException.class)
+@@ -96,2 +91 @@ public class OptionTest {
+-        assertThrows(IllegalArgumentException.class, () ->
+-                Option.builder().option("invalid@"));
++        Option.builder().option("invalid@");
+@@ -100 +94 @@ public class OptionTest {
+-    @Test
++    @Test(expected = IllegalArgumentException.class)
+@@ -102,2 +96 @@ public class OptionTest {
+-        assertThrows(IllegalArgumentException.class, () ->
+-                Option.builder("invalid?"));
++        Option.builder("invalid?");
+@@ -106 +99 @@ public class OptionTest {
+-    @Test
++    @Test(expected = IllegalArgumentException.class)
+@@ -108,2 +101 @@ public class OptionTest {
+-        assertThrows(IllegalArgumentException.class, () ->
+-                Option.builder("invalid@"));
++        Option.builder("invalid@");

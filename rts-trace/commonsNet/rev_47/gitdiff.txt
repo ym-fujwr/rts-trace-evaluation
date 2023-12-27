@@ -1,0 +1,51 @@
+diff --git a/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java b/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
+index 14e59883b..250a86a69 100644
+--- a/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
++++ b/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
+@@ -69 +69 @@ public class FTPListParseEngine {
+-    private static final FTPFile[] EMPTY_FTP_FILE_ARRAY = {};
++    private static final FTPFile[] EMPTY_FTP_FILE_ARRAY = new FTPFile[0];
+diff --git a/src/main/java/org/apache/commons/net/nntp/NNTPClient.java b/src/main/java/org/apache/commons/net/nntp/NNTPClient.java
+index 211c32b93..47b145ad7 100644
+--- a/src/main/java/org/apache/commons/net/nntp/NNTPClient.java
++++ b/src/main/java/org/apache/commons/net/nntp/NNTPClient.java
+@@ -63 +63 @@ public class NNTPClient extends NNTP {
+-    private static final NewsgroupInfo[] EMPTY_NEWSGROUP_INFO_ARRAY = {};
++    private static final NewsgroupInfo[] EMPTY_NEWSGROUP_INFO_ARRAY = new NewsgroupInfo[0];
+diff --git a/src/main/java/org/apache/commons/net/util/NetConstants.java b/src/main/java/org/apache/commons/net/util/NetConstants.java
+index 666f12edb..aa98e764d 100644
+--- a/src/main/java/org/apache/commons/net/util/NetConstants.java
++++ b/src/main/java/org/apache/commons/net/util/NetConstants.java
+@@ -31 +31 @@ public class NetConstants {
+-    public static final String[] EMPTY_STRING_ARRAY = {};
++    public static final String[] EMPTY_STRING_ARRAY = new String[0];
+@@ -36 +36 @@ public class NetConstants {
+-    public static final byte[] EMPTY_BTYE_ARRAY = {};
++    public static final byte[] EMPTY_BTYE_ARRAY = new byte[0];
+@@ -41 +41 @@ public class NetConstants {
+-    public static final X509Certificate[] EMPTY_X509_CERTIFICATE_ARRAY = {};
++    public static final X509Certificate[] EMPTY_X509_CERTIFICATE_ARRAY = new X509Certificate[0];
+diff --git a/src/test/java/org/apache/commons/net/nntp/TestThreader.java b/src/test/java/org/apache/commons/net/nntp/TestThreader.java
+index 21007839e..172515303 100644
+--- a/src/test/java/org/apache/commons/net/nntp/TestThreader.java
++++ b/src/test/java/org/apache/commons/net/nntp/TestThreader.java
+@@ -31 +31 @@ public class TestThreader {
+-    private static final Threadable[] EMPTY_THREADABLE_ARRAY = {};
++    private static final Threadable[] EMPTY_THREADABLE_ARRAY = new Threadable[0];
+diff --git a/src/test/java/org/apache/commons/net/util/Base64Test.java b/src/test/java/org/apache/commons/net/util/Base64Test.java
+index 1bc1f79c5..580dd1e29 100644
+--- a/src/test/java/org/apache/commons/net/util/Base64Test.java
++++ b/src/test/java/org/apache/commons/net/util/Base64Test.java
+@@ -129 +129 @@ public class Base64Test {
+-        final byte[] binaryData = { '1', '2', '3' };
++        final byte[] binaryData = new byte[] { '1', '2', '3' };
+diff --git a/src/test/java/org/apache/commons/net/util/UtilTest.java b/src/test/java/org/apache/commons/net/util/UtilTest.java
+index a4b0de862..556dc9190 100644
+--- a/src/test/java/org/apache/commons/net/util/UtilTest.java
++++ b/src/test/java/org/apache/commons/net/util/UtilTest.java
+@@ -111 +111 @@ public class UtilTest {
+-        final char[] buff = { 'a', 'b', 'c', 'd' }; // must be multiple of 2
++        final char[] buff = new char[] { 'a', 'b', 'c', 'd' }; // must be multiple of 2
+@@ -147 +147 @@ public class UtilTest {
+-        final byte[] buff = { 'a', 'b', 'c', 'd' }; // must be multiple of 2
++        final byte[] buff = new byte[] { 'a', 'b', 'c', 'd' }; // must be multiple of 2

@@ -1,0 +1,20 @@
+diff --git a/src/main/java/org/apache/commons/net/util/SubnetUtils.java b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
+index 5f84bf44d..88bbe83c8 100644
+--- a/src/main/java/org/apache/commons/net/util/SubnetUtils.java
++++ b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
+@@ -48,6 +48,5 @@ public class SubnetUtils {
+-            final int last = octets.length - 1;
+-            final StringBuilder builder = new StringBuilder();
+-            for (int i = 0;; i++) {
+-                builder.append(octets[i]);
+-                if (i == last) {
+-                    return builder.toString();
++            final StringBuilder str = new StringBuilder();
++            for (int i =0; i < octets.length; ++i){
++                str.append(octets[i]);
++                if (i != octets.length - 1) {
++                    str.append(".");
+@@ -55 +53,0 @@ public class SubnetUtils {
+-                builder.append('.');
+@@ -56,0 +55 @@ public class SubnetUtils {
++            return str.toString();

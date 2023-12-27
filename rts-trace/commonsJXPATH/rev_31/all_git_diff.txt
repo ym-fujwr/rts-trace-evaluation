@@ -1,0 +1,68 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContext.java b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+index 8ec5c40d..2c9734c7 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathContext.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+@@ -381 +381 @@ import org.apache.commons.jxpath.util.KeyManagerUtils;
+- *      <li>If <code>lenient</code> is {@code false} (default) - methods
++ *      <li>If <code>lenient</code> is <code>false</code> (default) - methods
+@@ -383 +383 @@ import org.apache.commons.jxpath.util.KeyManagerUtils;
+- *      <li>If <code>lenient</code> is {@code true} - methods will throw
++ *      <li>If <code>lenient</code> is <code>true</code> - methods will throw
+@@ -800 +800 @@ public abstract class JXPathContext {
+-     * <li> {@code false} (default) the method will throw a
++     * <li> <code>false</code> (default) the method will throw a
+@@ -802 +802 @@ public abstract class JXPathContext {
+-     * <li> {@code true} the method returns a pointer whose
++     * <li> <code>true</code> the method returns a pointer whose
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
+index ce39fea2..2d731994 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
+@@ -64 +64 @@ public class JXPathContextReferenceImpl extends JXPathContext {
+-     * Change this to {@code false} to disable soft caching of
++     * Change this to <code>false</code> to disable soft caching of
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeNameTest.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeNameTest.java
+index 6dd3ec64..8578f20a 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeNameTest.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/NodeNameTest.java
+@@ -63 +63 @@ public class NodeNameTest extends NodeTest {
+-     * @return {@code true} if the node name is "*".
++     * @return <code>true</code> if the node name is "*".
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/Path.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/Path.java
+index d05b58aa..40ba7e8c 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/Path.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/Path.java
+@@ -77 +77 @@ public abstract class Path extends Expression {
+-     * @return {@code true} if this path is simple
++     * @return <code>true</code> if this path is simple
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java
+index 0283f59d..579c51c2 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/NodeIterator.java
+@@ -33 +33 @@ public interface NodeIterator {
+-     * @return {@code true} if there is a node at <code>position</code>.
++     * @return <code>true</code> if there is a node at <code>position</code>.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+index ed53b39e..4d7e0e76 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+@@ -253 +253 @@ public abstract class NodePointer implements Pointer {
+-     * Returns {@code true} if the value of the pointer is an array or
++     * Returns <code>true</code> if the value of the pointer is an array or
+@@ -623 +623 @@ public abstract class NodePointer implements Pointer {
+-     * @return {@code true} if prefix is default
++     * @return <code>true</code> if prefix is default
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyOwnerPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyOwnerPointer.java
+index 15626142..37b2478c 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyOwnerPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/PropertyOwnerPointer.java
+@@ -118 +118 @@ public abstract class PropertyOwnerPointer extends NodePointer {
+-     * @return {@code true} if <code>QName</code> is a valid property name.
++     * @return <code>true</code> if <code>QName</code> is a valid property name.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/container/ContainerPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/container/ContainerPointer.java
+index 226d1f17..69f9169c 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/container/ContainerPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/container/ContainerPointer.java
+@@ -61 +61 @@ public class ContainerPointer extends NodePointer {
+-     * @return {@code true}.
++     * @return <code>true</code>.

@@ -1,0 +1,25 @@
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/JsonAppend578Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/JsonAppend508Test.java
+similarity index 86%
+rename from src/test/java/com/fasterxml/jackson/dataformat/xml/failing/JsonAppend578Test.java
+rename to src/test/java/com/fasterxml/jackson/dataformat/xml/failing/JsonAppend508Test.java
+index f543901b6..fe4d032f1 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/JsonAppend578Test.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/JsonAppend508Test.java
+@@ -14 +14 @@ import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
+-public class JsonAppend578Test extends XmlTestBase
++public class JsonAppend508Test extends XmlTestBase
+@@ -16 +16 @@ public class JsonAppend578Test extends XmlTestBase
+-    // [dataformat-xml#578]: Duplication of virtual properties
++    // [dataformat-xml#508]: Duplication of virtual properties
+@@ -18 +18 @@ public class JsonAppend578Test extends XmlTestBase
+-    public static class Pojo578 {
++    public static class Pojo508 {
+@@ -21 +21 @@ public class JsonAppend578Test extends XmlTestBase
+-        public Pojo578(String name) {
++        public Pojo508(String name) {
+@@ -53 +53 @@ public class JsonAppend578Test extends XmlTestBase
+-    // [dataformat-xml#578]: Duplication of virtual properties
++    // [dataformat-xml#508]: Duplication of virtual properties
+@@ -55 +55 @@ public class JsonAppend578Test extends XmlTestBase
+-        String xml = MAPPER.writeValueAsString(new Pojo578("foo"));
++        String xml = MAPPER.writeValueAsString(new Pojo508("foo"));

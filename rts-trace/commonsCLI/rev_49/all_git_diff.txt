@@ -1,0 +1,22 @@
+diff --git a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+index c4c0662d..bb992379 100644
+--- a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
++++ b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+@@ -63,8 +62,0 @@ public abstract class AbstractParserTestCase {
+-    @Test(expected = UnrecognizedOptionException.class)
+-    public void testAmbiguousArgParsing() throws Exception {
+-        final String[] args = {"-=-"};
+-        final Options options = new Options();
+-
+-        final CommandLine cl = parser.parse(options, args);
+-    }
+-
+@@ -1031,0 +1024,8 @@ public abstract class AbstractParserTestCase {
++
++    @Test(expected = UnrecognizedOptionException.class)
++    public void testAmbiguousArgParsing() throws Exception {
++        final String[] args = {"-=-"};
++        final Options options = new Options();
++
++        final CommandLine cl = parser.parse(options, args);
++    }

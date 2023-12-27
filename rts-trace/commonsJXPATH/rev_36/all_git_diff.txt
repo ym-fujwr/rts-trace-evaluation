@@ -1,0 +1,20 @@
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/compiler/TestFunctions.java b/src/test/java/org/apache/commons/jxpath/ri/compiler/TestFunctions.java
+index a6ff54bd..ac5eb8ae 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/compiler/TestFunctions.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/compiler/TestFunctions.java
+@@ -116 +116 @@ public class TestFunctions {
+-                throw new IllegalArgumentException("Invalid argument");
++                throw new RuntimeException("Invalid argument");
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java b/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
+index 29d83bee..87f9ac81 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
+@@ -26 +26 @@ public class ExceptionPropertyTestBean {
+-        throw new IllegalStateException("errorString");
++        throw new RuntimeException("errorString");
+@@ -30 +30 @@ public class ExceptionPropertyTestBean {
+-        throw new IllegalStateException("errorStringArray");
++        throw new RuntimeException("errorStringArray");
+@@ -34 +34 @@ public class ExceptionPropertyTestBean {
+-        throw new IllegalStateException("errorBean");
++        throw new RuntimeException("errorBean");

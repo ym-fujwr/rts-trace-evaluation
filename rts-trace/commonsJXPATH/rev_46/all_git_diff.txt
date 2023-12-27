@@ -1,0 +1,14 @@
+diff --git a/pom.xml b/pom.xml
+index 347ae3ca..6b32063c 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -96 +96 @@
+-    <commons.release.desc>(Java 8 or above)</commons.release.desc>
++    <commons.release.desc>(Java 8)</commons.release.desc>
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/container/ContainerModelTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/container/ContainerModelTest.java
+index 5cf1b423..e04da099 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/container/ContainerModelTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/container/ContainerModelTest.java
+@@ -34 +34 @@ public class ContainerModelTest extends JXPathTestCase {
+-    private final class ArrayContainer implements Container
++    private class ArrayContainer implements Container

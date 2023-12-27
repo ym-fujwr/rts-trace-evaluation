@@ -1,0 +1,7 @@
+diff --git a/src/main/java/org/apache/commons/net/examples/Main.java b/src/main/java/org/apache/commons/net/examples/Main.java
+index 27308bf05..fccff0b33 100644
+--- a/src/main/java/org/apache/commons/net/examples/Main.java
++++ b/src/main/java/org/apache/commons/net/examples/Main.java
+@@ -70 +70 @@ public class Main {
+-                System.out.println("Usage: java -cp target/classes org.apache.commons.net.examples.Main" +
++                System.out.println("Usage: java -cp target/classes org.apache.commons.net.examples.Main" + 

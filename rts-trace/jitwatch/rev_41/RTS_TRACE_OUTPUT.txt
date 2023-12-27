@@ -1,0 +1,112 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.chrisnewland:jitwatch-core >-------------------
+[INFO] Building JITWatch Core 1.4.4
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ jitwatch-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 38 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 180 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ jitwatch-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 39 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/target/test-classes
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[49,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[70,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[307,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[327,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[350,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[371,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ jitwatch-core ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestAssemblyParserX86
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.451 s - in org.adoptopenjdk.jitwatch.test.TestAssemblyParserX86
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestAssemblyProcessor
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.009 s - in org.adoptopenjdk.jitwatch.test.TestAssemblyProcessor
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestBytecodeAnnotationBuilder
+2023-12-26T07:24:23.263661200Z ERR org.adoptopenjdk.jitwatch.util.ParseUtil ClassNotFoundException: 'EscapeTest$Wrapper1'
+2023-12-26T07:24:23.265379Z ERR org.adoptopenjdk.jitwatch.util.ParseUtil metaClass not found: EscapeTest$Wrapper1
+2023-12-26T07:24:23.266179900Z ERR org.adoptopenjdk.jitwatch.util.ParseUtil ClassNotFoundException: 'EscapeTest$Wrapper2'
+2023-12-26T07:24:23.266252600Z ERR org.adoptopenjdk.jitwatch.util.ParseUtil metaClass not found: EscapeTest$Wrapper2
+2023-12-26T07:24:23.266838100Z ERR org.adoptopenjdk.jitwatch.util.ParseUtil ClassNotFoundException: 'EscapeTest$Wrapper1'
+2023-12-26T07:24:23.266908100Z ERR org.adoptopenjdk.jitwatch.util.ParseUtil metaClass not found: EscapeTest$Wrapper1
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.003 s - in org.adoptopenjdk.jitwatch.test.TestBytecodeAnnotationBuilder
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestExecutionUtil
+2023-12-26T07:24:23.364242Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+UnlockDiagnosticVMOptions -XX:+LogCompilation -cp /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/target/test-classes org.adoptopenjdk.jitwatch.test.DummyClassWithMain 
+Running: /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+UnlockDiagnosticVMOptions -XX:+LogCompilation -cp /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/target/test-classes org.adoptopenjdk.jitwatch.test.DummyClassWithMain 
+Hello World!
+
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.202 s - in org.adoptopenjdk.jitwatch.test.TestExecutionUtil
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestHisto
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s - in org.adoptopenjdk.jitwatch.test.TestHisto
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestJarScan
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.205 s - in org.adoptopenjdk.jitwatch.test.TestJarScan
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestLineTable
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s - in org.adoptopenjdk.jitwatch.test.TestLineTable
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestLocales
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.adoptopenjdk.jitwatch.test.TestLocales
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestParseUtil
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in org.adoptopenjdk.jitwatch.test.TestParseUtil
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestTagProcessor
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.adoptopenjdk.jitwatch.test.TestTagProcessor
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestVmVersionDetector
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in org.adoptopenjdk.jitwatch.test.TestVmVersionDetector
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestZingParser
+[ERROR] Tests run: 6, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.142 s <<< FAILURE! - in org.adoptopenjdk.jitwatch.test.TestZingParser
+[ERROR] testParseLineInstalledWithStashedCompile(org.adoptopenjdk.jitwatch.test.TestZingParser)  Time elapsed: 0.123 s  <<< FAILURE!
+java.lang.AssertionError: expected:<426> but was:<0>
+	at org.adoptopenjdk.jitwatch.test.TestZingParser.testParseLineInstalledWithStashedCompile(TestZingParser.java:82)
+
+[ERROR] testParseLineQueued(org.adoptopenjdk.jitwatch.test.TestZingParser)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<426> but was:<0>
+	at org.adoptopenjdk.jitwatch.test.TestZingParser.testParseLineQueued(TestZingParser.java:61)
+
+[ERROR] testParseLineQueuedWithException(org.adoptopenjdk.jitwatch.test.TestZingParser)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: expected:<584> but was:<0>
+	at org.adoptopenjdk.jitwatch.test.TestZingParser.testParseLineQueuedWithException(TestZingParser.java:129)
+
+[ERROR] testParseLineInstalledWithoutStashedCompile(org.adoptopenjdk.jitwatch.test.TestZingParser)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: expected:<777> but was:<0>
+	at org.adoptopenjdk.jitwatch.test.TestZingParser.testParseLineInstalledWithoutStashedCompile(TestZingParser.java:108)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   TestZingParser.testParseLineInstalledWithStashedCompile:82 expected:<426> but was:<0>
+[ERROR]   TestZingParser.testParseLineInstalledWithoutStashedCompile:108 expected:<777> but was:<0>
+[ERROR]   TestZingParser.testParseLineQueued:61 expected:<426> but was:<0>
+[ERROR]   TestZingParser.testParseLineQueuedWithException:129 expected:<584> but was:<0>
+[INFO] 
+[ERROR] Tests run: 39, Failures: 4, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.901 s
+[INFO] Finished at: 2023-12-26T16:24:24+09:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.2:test (default-test) on project jitwatch-core: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

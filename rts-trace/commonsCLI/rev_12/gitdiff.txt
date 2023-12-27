@@ -1,0 +1,42 @@
+diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
+index ad416cbc..05d6a93b 100644
+--- a/src/main/java/org/apache/commons/cli/CommandLine.java
++++ b/src/main/java/org/apache/commons/cli/CommandLine.java
+@@ -20,2 +19,0 @@ package org.apache.commons.cli;
+-import static org.apache.commons.cli.Util.EMPTY_STRING_ARRAY;
+-
+@@ -23,0 +22 @@ import java.util.ArrayList;
++import java.util.Collection;
+@@ -28,0 +28,2 @@ import java.util.Properties;
++import static org.apache.commons.cli.Util.EMPTY_STRING_ARRAY;
++
+@@ -127 +128,5 @@ public class CommandLine implements Serializable {
+-        return args.toArray(Util.EMPTY_STRING_ARRAY);
++        final String[] answer = new String[args.size()];
++
++        args.toArray(answer);
++
++        return answer;
+@@ -223 +228,7 @@ public class CommandLine implements Serializable {
+-        return options.toArray(Option.EMPTY_ARRAY);
++        final Collection<Option> processed = options;
++
++        // reinitialize array
++        final Option[] optionsArray = new Option[processed.size()];
++
++        // return the array
++        return processed.toArray(optionsArray);
+diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
+index 9c883107..d101c504 100644
+--- a/src/main/java/org/apache/commons/cli/Option.java
++++ b/src/main/java/org/apache/commons/cli/Option.java
+@@ -20,2 +19,0 @@ package org.apache.commons.cli;
+-import static org.apache.commons.cli.Util.EMPTY_STRING_ARRAY;
+-
+@@ -26,0 +25,2 @@ import java.util.Objects;
++import static org.apache.commons.cli.Util.EMPTY_STRING_ARRAY;
++
+@@ -283,3 +282,0 @@ public class Option implements Cloneable, Serializable {
+-    /** Empty array. */
+-    static final Option[] EMPTY_ARRAY = {};
+-

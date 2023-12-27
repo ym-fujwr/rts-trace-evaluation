@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
+index eb6eabc0..1994b53b 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
++++ b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
+@@ -21 +20,0 @@ import java.util.Map;
+-import java.util.Objects;
+@@ -149,2 +148,4 @@ public class ClassLoaderUtil {
+-        Objects.requireNonNull(className, "className");
+-        if (className.endsWith("[]")) {
++        if (className == null) {
++            throw new RuntimeException("Argument className was null.");
++        }
++        else if (className.endsWith("[]")) {

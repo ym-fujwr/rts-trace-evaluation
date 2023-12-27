@@ -1,0 +1,14 @@
+diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
+index a1c2e4ee..7ca95186 100644
+--- a/src/main/java/org/apache/commons/cli/Option.java
++++ b/src/main/java/org/apache/commons/cli/Option.java
+@@ -190 +190 @@ public class Option implements Cloneable, Serializable {
+-        public Builder option(final String option) throws IllegalArgumentException {
++        public Builder option(String option) throws IllegalArgumentException {
+diff --git a/src/test/java/org/apache/commons/cli/HelpFormatterTest.java b/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
+index abeb4321..d836f996 100644
+--- a/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
++++ b/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
+@@ -342 +342 @@ public class HelpFormatterTest {
+-        final String expected = "usage: test" + EOL +
++        String expected = "usage: test" + EOL +

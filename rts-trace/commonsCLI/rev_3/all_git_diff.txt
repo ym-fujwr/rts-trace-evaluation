@@ -1,0 +1,7 @@
+diff --git a/src/test/java/org/apache/commons/cli/DefaultParserTest.java b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
+index 0fd835a1..afba6518 100644
+--- a/src/test/java/org/apache/commons/cli/DefaultParserTest.java
++++ b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
+@@ -35 +35 @@ public class DefaultParserTest extends ParserTestCase {
+-    public void testBuilder() {
++    public void testBuilder() throws Exception {

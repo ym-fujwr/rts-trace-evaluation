@@ -1,0 +1,23 @@
+diff --git a/README.md b/README.md
+index 9382099..4a63345 100644
+--- a/README.md
++++ b/README.md
+@@ -5 +4,0 @@ NuProcess
+-[![][Shippable Status img]][Shippable Status]
+@@ -186,3 +184,0 @@ The following limitations exist in NuProcess:
+-[Shippable Status]:https://app.shippable.com/github/brettwooldridge/NuProcess
+-[Shippable Status img]:https://api.shippable.com/projects/5b4b6a3e6db3b807000a63d8/badge?branch=master
+-
+diff --git a/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java b/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
+index 5161e7a..f8ccdaf 100644
+--- a/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
++++ b/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
+@@ -13,3 +13 @@ public class EpollEventTest
+-      Assert.assertEquals(16, event.size());
+-      // When alignment is ALIGN_NONE
+-      // Assert.assertEquals(12, event.size());
++      Assert.assertEquals(12, event.size());
+@@ -17 +15 @@ public class EpollEventTest
+-}
++}
+\ No newline at end of file

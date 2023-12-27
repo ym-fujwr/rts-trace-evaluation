@@ -1,0 +1,14 @@
+diff --git a/src/main/java/org/apache/commons/cli/Util.java b/src/main/java/org/apache/commons/cli/Util.java
+index fff10057..ed47ba3f 100644
+--- a/src/main/java/org/apache/commons/cli/Util.java
++++ b/src/main/java/org/apache/commons/cli/Util.java
+@@ -31 +31 @@ final class Util {
+-     * Removes the leading and trailing quotes from {@code str}. E.g. if str is '"one two"', then 'one two' is returned.
++     * Remove the leading and trailing quotes from {@code str}. E.g. if str is '"one two"', then 'one two' is returned.
+@@ -33,0 +34 @@ final class Util {
++     *
+@@ -46 +47 @@ final class Util {
+-     * Removes the hyphens from the beginning of {@code str} and return the new String.
++     * Remove the hyphens from the beginning of {@code str} and return the new String.
+@@ -48,0 +50 @@ final class Util {
++     *

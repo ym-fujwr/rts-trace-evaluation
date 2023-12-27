@@ -1,0 +1,21 @@
+diff --git a/src/main/java/org/apache/commons/net/examples/mail/IMAPExportMbox.java b/src/main/java/org/apache/commons/net/examples/mail/IMAPExportMbox.java
+index d2b171cf2..3f3d59fee 100644
+--- a/src/main/java/org/apache/commons/net/examples/mail/IMAPExportMbox.java
++++ b/src/main/java/org/apache/commons/net/examples/mail/IMAPExportMbox.java
+@@ -211 +211 @@ public final class IMAPExportMbox {
+-    private static final String EOL_DEFAULT = System.lineSeparator();
++    private static final String EOL_DEFAULT = System.getProperty("line.separator");
+diff --git a/src/main/java/org/apache/commons/net/ftp/parser/RegexFTPFileEntryParserImpl.java b/src/main/java/org/apache/commons/net/ftp/parser/RegexFTPFileEntryParserImpl.java
+index d33eb9515..d9705c1b5 100644
+--- a/src/main/java/org/apache/commons/net/ftp/parser/RegexFTPFileEntryParserImpl.java
++++ b/src/main/java/org/apache/commons/net/ftp/parser/RegexFTPFileEntryParserImpl.java
+@@ -117 +117 @@ public abstract class RegexFTPFileEntryParserImpl extends FTPFileEntryParserImpl
+-            b.append(i).append(") ").append(this.result.group(i)).append(System.lineSeparator());
++            b.append(i).append(") ").append(this.result.group(i)).append(System.getProperty("line.separator"));
+diff --git a/src/main/java/org/apache/commons/net/io/FromNetASCIIInputStream.java b/src/main/java/org/apache/commons/net/io/FromNetASCIIInputStream.java
+index 9beb05656..8da6e78f8 100644
+--- a/src/main/java/org/apache/commons/net/io/FromNetASCIIInputStream.java
++++ b/src/main/java/org/apache/commons/net/io/FromNetASCIIInputStream.java
+@@ -41 +41 @@ public final class FromNetASCIIInputStream extends PushbackInputStream {
+-        _lineSeparator = System.lineSeparator();
++        _lineSeparator = System.getProperty("line.separator");

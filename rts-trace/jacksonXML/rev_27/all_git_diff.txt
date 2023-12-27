@@ -1,0 +1,76 @@
+diff --git a/pom.xml b/pom.xml
+index 2449b0d91..1a2569a65 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -12 +12 @@
+-    <version>2.15.0-rc3-SNAPSHOT</version>
++    <version>2.15.0-rc2-SNAPSHOT</version>
+@@ -16 +16 @@
+-  <version>2.15.0-rc3-SNAPSHOT</version>
++  <version>2.15.0-rc2-SNAPSHOT</version>
+@@ -37 +37 @@ alternative support for serializing POJOs as XML and deserializing XML as pojos.
+-    <project.build.outputTimestamp>2023-03-28T23:54:20Z</project.build.outputTimestamp>
++    <project.build.outputTimestamp>2023-03-18T21:09:30Z</project.build.outputTimestamp>
+diff --git a/release-notes/VERSION-2.x b/release-notes/VERSION-2.x
+index a43128fee..27304536b 100644
+--- a/release-notes/VERSION-2.x
++++ b/release-notes/VERSION-2.x
+@@ -7,6 +7 @@ Project: jackson-dataformat-xml
+-Not yet released
+-
+-#578: `XmlMapper` serializes `@JsonAppend` property twice
+- (reported by @stepince)
+-
+-2.15.0-rc2 (28-Mar-2023)
++2.15.0-rc1 (18-Mar-2023)
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlAnnotationIntrospector.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlAnnotationIntrospector.java
+index 8080d540f..f2b375550 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlAnnotationIntrospector.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlAnnotationIntrospector.java
+@@ -4 +3,0 @@ import java.lang.annotation.Annotation;
+-import java.util.List;
+@@ -11 +9,0 @@ import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
+-import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
+@@ -129,13 +126,0 @@ public class JacksonXmlAnnotationIntrospector
+-    /**
+-     * Due to issue [dataformat-xml#578] need to suppress calls to this method
+-     * to avoid duplicate virtual properties from being added. Not elegant
+-     * but .. works.
+-     *
+-     * @since 2.15
+-     */
+-    @Override
+-    public void findAndAddVirtualProperties(MapperConfig<?> config, AnnotatedClass ac,
+-            List<BeanPropertyWriter> properties) {
+-        return;
+-    }
+-
+diff --git a/src/main/resources/META-INF/LICENSE b/src/main/resources/META-INF/LICENSE
+index e4ed27a15..daad0a6aa 100644
+--- a/src/main/resources/META-INF/LICENSE
++++ b/src/main/resources/META-INF/LICENSE
+@@ -4 +4 @@ See the License for details about distribution rights, and the
+-specific rights regarding derivative works.
++specific rights regarding derivate works.
+diff --git a/src/main/resources/META-INF/NOTICE b/src/main/resources/META-INF/NOTICE
+index cbc944724..d55c59a0d 100644
+--- a/src/main/resources/META-INF/NOTICE
++++ b/src/main/resources/META-INF/NOTICE
+@@ -8,4 +7,0 @@ It is currently developed by a community of developers.
+-## Copyright
+-
+-Copyright 2007-, Tatu Saloranta (tatu.saloranta@iki.fi)
+-
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/JsonAppend578Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/JsonAppend578Test.java
+similarity index 93%
+rename from src/test/java/com/fasterxml/jackson/dataformat/xml/ser/JsonAppend578Test.java
+rename to src/test/java/com/fasterxml/jackson/dataformat/xml/failing/JsonAppend578Test.java
+index 7543faaea..f543901b6 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/JsonAppend578Test.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/JsonAppend578Test.java
+@@ -1 +1 @@
+-package com.fasterxml.jackson.dataformat.xml.ser;
++package com.fasterxml.jackson.dataformat.xml.failing;
+@@ -56 +56 @@ public class JsonAppend578Test extends XmlTestBase
+-        assertEquals("<Pojo578><name>foo</name><virtual>bar</virtual></Pojo578>",xml);
++        assertEquals("<Pojo><name>foo</name><virtual>bar</virtual></Pojo>",xml);

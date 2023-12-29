@@ -26,7 +26,7 @@
 [INFO] --- buildnumber-maven-plugin:3.0.0:create (default) @ commons-jxpath ---
 [INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsJXPATH/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsJXPATH/workingDir
-[INFO] Storing buildNumber: null at timestamp: 1703570591117
+[INFO] Storing buildNumber: null at timestamp: 1703692524017
 [WARNING] Cannot get the branch information from the git repository: 
 Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 
@@ -81,16 +81,14 @@ Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running org.apache.commons.jxpath.ri.compiler.ContextDependencyTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.413 s - in org.apache.commons.jxpath.ri.compiler.ContextDependencyTest
-[INFO] Running org.apache.commons.jxpath.ri.compiler.CoreFunctionTest
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.655 s - in org.apache.commons.jxpath.ri.compiler.CoreFunctionTest
+[INFO] Running org.apache.commons.jxpath.ri.compiler.CoreOperationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.195 s - in org.apache.commons.jxpath.ri.compiler.CoreOperationTest
 [INFO] Running org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.699 s - in org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.302 s - in org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
 [INFO] Running org.apache.commons.jxpath.ri.model.MixedModelTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.141 s - in org.apache.commons.jxpath.ri.model.MixedModelTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.67 s - in org.apache.commons.jxpath.ri.model.MixedModelTest
 [INFO] Running org.apache.commons.jxpath.util.BasicTypeConverterTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in org.apache.commons.jxpath.util.BasicTypeConverterTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s - in org.apache.commons.jxpath.util.BasicTypeConverterTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -99,6 +97,6 @@ Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  22.617 s
-[INFO] Finished at: 2023-12-26T15:03:31+09:00
+[INFO] Total time:  21.681 s
+[INFO] Finished at: 2023-12-28T00:55:43+09:00
 [INFO] ------------------------------------------------------------------------

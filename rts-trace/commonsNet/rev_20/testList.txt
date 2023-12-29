@@ -1,2 +1,2 @@
-org.apache.commons.net.ntp.TestNtpClient
-org.apache.commons.net.ntp.TestNtpPacket
+org.apache.commons.net.ntp.TestTimeInfo
+org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase

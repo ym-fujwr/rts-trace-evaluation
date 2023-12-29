@@ -28,7 +28,7 @@
 [INFO] --- buildnumber-maven-plugin:3.0.0:create (default) @ commons-net ---
 [INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsNet/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsNet/workingDir
-[INFO] Storing buildNumber: null at timestamp: 1703569236348
+[INFO] Storing buildNumber: null at timestamp: 1703850824762
 [WARNING] Cannot get the branch information from the git repository: 
 Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 
@@ -148,7 +148,7 @@ Updated name org.apache.commons.net.examples.unix.rshell
 len=85 /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsNet/workingDir/target/classes/org/apache/commons/net/examples/util
 Initial name org/apache/commons/net/examples/util/IOUtil.class
 Updated name org.apache.commons.net.examples.util.IOUtil
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.03 s - in org.apache.commons.net.examples.MainTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.137 s - in org.apache.commons.net.examples.MainTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -157,6 +157,6 @@ Updated name org.apache.commons.net.examples.util.IOUtil
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  22.578 s
-[INFO] Finished at: 2023-12-26T14:40:56+09:00
+[INFO] Total time:  17.895 s
+[INFO] Finished at: 2023-12-29T20:54:00+09:00
 [INFO] ------------------------------------------------------------------------

@@ -112,6 +112,8 @@ protected
 JXPathContext
 context
 ;
+@
+Override
 public
 void
 setUp
@@ -125,6 +127,7 @@ context
 null
 )
 {
+final
 DocumentContainer
 docCtr
 =
@@ -138,6 +141,7 @@ createContext
 (
 )
 ;
+final
 Variables
 vars
 =
@@ -234,6 +238,7 @@ createContext
 (
 )
 {
+final
 JXPathContext
 context
 =
@@ -293,28 +298,36 @@ protected
 void
 assertXMLSignature
 (
+final
 JXPathContext
 context
 ,
+final
 String
 path
 ,
+final
 String
 signature
 ,
+final
 boolean
 elements
 ,
+final
 boolean
 attributes
 ,
+final
 boolean
 text
 ,
+final
 boolean
 pi
 )
 {
+final
 Object
 node
 =
@@ -329,6 +342,7 @@ getNode
 (
 )
 ;
+final
 String
 sig
 =
@@ -669,8 +683,9 @@ assertEquals
 (
 "Remove DOM element"
 ,
-new
 Double
+.
+valueOf
 (
 0
 )
@@ -694,8 +709,9 @@ assertEquals
 (
 "Remove DOM attribute"
 ,
-new
 Double
+.
+valueOf
 (
 0
 )
@@ -724,13 +740,17 @@ IdentityManager
 (
 )
 {
+@
+Override
 public
 Pointer
 getPointerByID
 (
+final
 JXPathContext
 context
 ,
+final
 String
 id
 )
@@ -902,6 +922,7 @@ getValue
 }
 catch
 (
+final
 JXPathException
 ex
 )
@@ -941,6 +962,7 @@ getValue
 }
 catch
 (
+final
 JXPathException
 ex
 )
@@ -963,8 +985,9 @@ context
 ,
 "count(vendor/product/price:*)"
 ,
-new
 Double
+.
+valueOf
 (
 2
 )
@@ -976,8 +999,9 @@ context
 ,
 "count(vendor/product/*)"
 ,
-new
 Double
+.
+valueOf
 (
 4
 )
@@ -1048,8 +1072,9 @@ context
 ,
 "count(//price:*)"
 ,
-new
 Double
+.
+valueOf
 (
 2
 )
@@ -1485,8 +1510,9 @@ context
 ,
 "count(vendor/product/namespace::*)"
 ,
-new
 Double
+.
+valueOf
 (
 3
 )
@@ -1813,8 +1839,9 @@ context
 ,
 "number(vendor/location/employeeCount)"
 ,
-new
 Double
+.
+valueOf
 (
 10
 )
@@ -1849,8 +1876,9 @@ context
 ,
 "vendor/location/employeeCount + 1"
 ,
-new
 Double
+.
+valueOf
 (
 11
 )
@@ -1982,8 +2010,9 @@ context
 ,
 "count(vendor/product/rate:*)"
 ,
-new
 Double
+.
+valueOf
 (
 2
 )
@@ -2036,6 +2065,7 @@ context
 "/vendor[1]/product[1]/goods:name[1]"
 )
 ;
+final
 JXPathContext
 childCtx
 =
@@ -2063,6 +2093,7 @@ childCtx
 "/vendor[1]/product[1]/goods:name[1]"
 )
 ;
+final
 JXPathContext
 relativeCtx
 =
@@ -2121,6 +2152,7 @@ testNodes
 (
 )
 {
+final
 Pointer
 pointer
 =

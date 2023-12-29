@@ -47,6 +47,8 @@ private
 JXPathContext
 context
 ;
+@
+Override
 protected
 void
 setUp
@@ -63,6 +65,7 @@ RecursiveBean
 "zero"
 )
 ;
+final
 RecursiveBean
 bean1
 =
@@ -72,6 +75,7 @@ RecursiveBean
 "one"
 )
 ;
+final
 RecursiveBean
 bean2
 =
@@ -81,6 +85,7 @@ RecursiveBean
 "two"
 )
 ;
+final
 RecursiveBean
 bean3
 =

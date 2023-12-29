@@ -1,18 +1,18 @@
 diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/RootValueDeserTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/RootValueDeserTest.java
-index 2c1ff7298..32135e344 100644
+index 32135e344..2c1ff7298 100644
 --- a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/RootValueDeserTest.java
 +++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/RootValueDeserTest.java
-@@ -3 +2,0 @@ package com.fasterxml.jackson.dataformat.xml.deser;
--import java.math.BigDecimal;
-@@ -28,8 +26,0 @@ public class RootValueDeserTest extends XmlTestBase
--    public void testNumbersWithENotation() throws Exception
--    {
--        BigInteger bigInteger = new BigDecimal("2e308").toBigInteger();
--        _testScalar(bigInteger, "<BigInteger>" + bigInteger + "</BigInteger>");
--        BigDecimal bigDecimal = new BigDecimal("2e308");
--        _testScalar(bigDecimal, "<BigDecimal>" + bigDecimal + "</BigDecimal>");
--    }
--
-@@ -44 +35 @@ public class RootValueDeserTest extends XmlTestBase
--        Object result = MAPPER.readValue(xml, type);
-+        Object result = MAPPER.readValue(xml, input.getClass());
+@@ -2,0 +3 @@ package com.fasterxml.jackson.dataformat.xml.deser;
++import java.math.BigDecimal;
+@@ -26,0 +28,8 @@ public class RootValueDeserTest extends XmlTestBase
++    public void testNumbersWithENotation() throws Exception
++    {
++        BigInteger bigInteger = new BigDecimal("2e308").toBigInteger();
++        _testScalar(bigInteger, "<BigInteger>" + bigInteger + "</BigInteger>");
++        BigDecimal bigDecimal = new BigDecimal("2e308");
++        _testScalar(bigDecimal, "<BigDecimal>" + bigDecimal + "</BigDecimal>");
++    }
++
+@@ -35 +44 @@ public class RootValueDeserTest extends XmlTestBase
+-        Object result = MAPPER.readValue(xml, input.getClass());
++        Object result = MAPPER.readValue(xml, type);

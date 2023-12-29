@@ -98,6 +98,7 @@ CoreOperation
 protected
 CoreOperationRelationalExpression
 (
+final
 Expression
 [
 ]
@@ -110,11 +111,14 @@ args
 )
 ;
 }
+@
+Override
 public
 final
 Object
 computeValue
 (
+final
 EvalContext
 context
 )
@@ -152,6 +156,8 @@ Boolean
 FALSE
 ;
 }
+@
+Override
 protected
 final
 int
@@ -163,6 +169,8 @@ return
 RELATIONAL_EXPR_PRECEDENCE
 ;
 }
+@
+Override
 protected
 final
 boolean
@@ -310,6 +318,7 @@ right
 )
 ;
 }
+final
 double
 ld
 =
@@ -334,6 +343,7 @@ return
 false
 ;
 }
+final
 double
 rd
 =
@@ -436,9 +446,11 @@ private
 boolean
 containsMatch
 (
+final
 Iterator
 it
 ,
+final
 Object
 value
 )
@@ -452,6 +464,7 @@ hasNext
 )
 )
 {
+final
 Object
 element
 =
@@ -484,9 +497,11 @@ private
 boolean
 containsMatch
 (
+final
 Object
 value
 ,
+final
 Iterator
 it
 )
@@ -500,6 +515,7 @@ hasNext
 )
 )
 {
+final
 Object
 element
 =
@@ -532,13 +548,16 @@ private
 boolean
 findMatch
 (
+final
 Iterator
 lit
 ,
+final
 Iterator
 rit
 )
 {
+final
 HashSet
 left
 =

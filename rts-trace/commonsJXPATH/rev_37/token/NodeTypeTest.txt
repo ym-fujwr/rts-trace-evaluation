@@ -31,12 +31,14 @@ extends
 NodeTest
 {
 private
+final
 int
 nodeType
 ;
 public
 NodeTypeTest
 (
+final
 int
 nodeType
 )
@@ -58,6 +60,8 @@ return
 nodeType
 ;
 }
+@
+Override
 public
 String
 toString
@@ -78,6 +82,7 @@ static
 String
 nodeTypeToString
 (
+final
 int
 code
 )

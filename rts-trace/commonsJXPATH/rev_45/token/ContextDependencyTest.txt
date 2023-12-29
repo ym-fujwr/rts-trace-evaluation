@@ -122,13 +122,16 @@ public
 void
 testContextDependency
 (
+final
 String
 xpath
 ,
+final
 boolean
 expected
 )
 {
+final
 Expression
 expr
 =

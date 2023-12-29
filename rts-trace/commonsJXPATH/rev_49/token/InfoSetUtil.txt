@@ -60,8 +60,9 @@ final
 Double
 ZERO
 =
-new
 Double
+.
+valueOf
 (
 0
 )
@@ -72,8 +73,9 @@ final
 Double
 ONE
 =
-new
 Double
+.
+valueOf
 (
 1
 )
@@ -84,8 +86,9 @@ final
 Double
 NOT_A_NUMBER
 =
-new
 Double
+.
+valueOf
 (
 Double
 .
@@ -97,6 +100,7 @@ static
 String
 stringValue
 (
+final
 Object
 object
 )
@@ -122,6 +126,7 @@ instanceof
 Number
 )
 {
+final
 double
 d
 =
@@ -136,6 +141,7 @@ doubleValue
 (
 )
 ;
+final
 long
 l
 =
@@ -235,6 +241,7 @@ instanceof
 EvalContext
 )
 {
+final
 EvalContext
 ctx
 =
@@ -243,6 +250,7 @@ EvalContext
 )
 object
 ;
+final
 Pointer
 ptr
 =
@@ -279,6 +287,7 @@ static
 Number
 number
 (
+final
 Object
 object
 )
@@ -331,8 +340,9 @@ String
 try
 {
 return
-new
 Double
+.
+valueOf
 (
 (
 String
@@ -343,6 +353,7 @@ object
 }
 catch
 (
+final
 NumberFormatException
 ex
 )
@@ -359,6 +370,7 @@ instanceof
 EvalContext
 )
 {
+final
 EvalContext
 ctx
 =
@@ -367,6 +379,7 @@ EvalContext
 )
 object
 ;
+final
 Pointer
 ptr
 =
@@ -427,6 +440,7 @@ static
 double
 doubleValue
 (
+final
 Object
 object
 )
@@ -512,6 +526,7 @@ object
 }
 catch
 (
+final
 NumberFormatException
 ex
 )
@@ -553,6 +568,7 @@ instanceof
 EvalContext
 )
 {
+final
 EvalContext
 ctx
 =
@@ -561,6 +577,7 @@ EvalContext
 )
 object
 ;
+final
 Pointer
 ptr
 =
@@ -600,6 +617,7 @@ static
 boolean
 booleanValue
 (
+final
 Object
 object
 )
@@ -611,6 +629,7 @@ instanceof
 Number
 )
 {
+final
 double
 value
 =
@@ -677,6 +696,7 @@ instanceof
 EvalContext
 )
 {
+final
 EvalContext
 ctx
 =
@@ -685,6 +705,7 @@ EvalContext
 )
 object
 ;
+final
 Pointer
 ptr
 =
@@ -696,11 +717,9 @@ getSingleNodePointer
 ;
 return
 ptr
-==
+!=
 null
-?
-false
-:
+&&
 booleanValue
 (
 ptr

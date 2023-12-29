@@ -31,6 +31,7 @@ extends
 NodeTest
 {
 private
+final
 QName
 qname
 ;
@@ -41,6 +42,7 @@ namespaceURI
 public
 NodeNameTest
 (
+final
 QName
 qname
 )
@@ -55,9 +57,11 @@ qname
 public
 NodeNameTest
 (
+final
 QName
 qname
 ,
+final
 String
 namespaceURI
 )
@@ -114,6 +118,8 @@ equals
 )
 ;
 }
+@
+Override
 public
 String
 toString

@@ -67,6 +67,8 @@ DynaBeanModelTest
 extends
 BeanModelTestCase
 {
+@
+Override
 protected
 Object
 createContextBean
@@ -84,6 +86,8 @@ TestBean
 )
 ;
 }
+@
+Override
 protected
 AbstractFactory
 getAbstractFactory

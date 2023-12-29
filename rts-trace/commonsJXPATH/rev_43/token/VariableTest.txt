@@ -65,6 +65,8 @@ private
 JXPathContext
 context
 ;
+@
+Override
 public
 void
 setUp
@@ -100,6 +102,7 @@ VariableFactory
 )
 )
 ;
+final
 Variables
 vars
 =
@@ -115,8 +118,9 @@ declareVariable
 (
 "a"
 ,
-new
 Double
+.
+valueOf
 (
 1
 )
@@ -128,8 +132,9 @@ declareVariable
 (
 "b"
 ,
-new
 Double
+.
+valueOf
 (
 1
 )
@@ -167,8 +172,9 @@ declareVariable
 (
 "integer"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -180,8 +186,9 @@ declareVariable
 (
 "nan"
 ,
-new
 Double
+.
+valueOf
 (
 Double
 .
@@ -212,8 +219,9 @@ context
 ,
 "$a"
 ,
-new
 Double
+.
+valueOf
 (
 1
 )
@@ -256,8 +264,9 @@ context
 ,
 "$a + 1"
 ,
-new
 Double
+.
+valueOf
 (
 2
 )
@@ -305,6 +314,7 @@ getValue
 }
 catch
 (
+final
 Exception
 ex
 )
@@ -333,8 +343,9 @@ setValue
 (
 "$none"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -343,6 +354,7 @@ Integer
 }
 catch
 (
+final
 Exception
 ex
 )
@@ -366,6 +378,7 @@ testNestedContext
 (
 )
 {
+final
 JXPathContext
 nestedContext
 =
@@ -384,8 +397,9 @@ nestedContext
 ,
 "$a"
 ,
-new
 Double
+.
+valueOf
 (
 1
 )
@@ -404,8 +418,9 @@ context
 ,
 "$x"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -863,8 +878,9 @@ context
 ,
 "count($a | /document/vendor/location)"
 ,
-new
 Double
+.
+valueOf
 (
 3
 )
@@ -876,8 +892,9 @@ context
 ,
 "count($a | /list)"
 ,
-new
 Double
+.
+valueOf
 (
 7
 )

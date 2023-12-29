@@ -48,15 +48,18 @@ extends
 HttpSessionAndServletContext
 {
 private
+final
 ServletRequest
 request
 ;
 public
 ServletRequestAndContext
 (
+final
 ServletRequest
 request
 ,
+final
 ServletContext
 context
 )
@@ -75,6 +78,8 @@ request
 request
 ;
 }
+@
+Override
 public
 HttpSession
 getSession

@@ -83,6 +83,7 @@ extends
 EvalContext
 {
 private
+final
 NodeTest
 nodeTest
 ;
@@ -107,18 +108,22 @@ NodePointer
 currentRootLocation
 ;
 private
+final
 boolean
 reverse
 ;
 public
 PrecedingOrFollowingContext
 (
+final
 EvalContext
 parentContext
 ,
+final
 NodeTest
 nodeTest
 ,
+final
 boolean
 reverse
 )
@@ -141,6 +146,8 @@ reverse
 reverse
 ;
 }
+@
+Override
 public
 NodePointer
 getCurrentNodePointer
@@ -151,6 +158,8 @@ return
 currentNodePointer
 ;
 }
+@
+Override
 public
 int
 getDocumentOrder
@@ -166,6 +175,8 @@ reverse
 1
 ;
 }
+@
+Override
 public
 void
 reset
@@ -183,10 +194,13 @@ setStarted
 false
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )
@@ -231,6 +245,8 @@ return
 true
 ;
 }
+@
+Override
 public
 boolean
 nextNode
@@ -279,6 +295,7 @@ getCurrentNodePointer
 (
 )
 ;
+final
 NodePointer
 parent
 =
@@ -351,6 +368,7 @@ isRoot
 break
 ;
 }
+final
 NodePointer
 parent
 =
@@ -401,6 +419,7 @@ if
 reverse
 )
 {
+final
 NodeIterator
 it
 =

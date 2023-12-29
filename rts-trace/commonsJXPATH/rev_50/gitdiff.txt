@@ -1,20 +1,20 @@
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java b/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java
-index 761716b8..09dd016f 100644
+index 09dd016f..761716b8 100644
 --- a/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java
 +++ b/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java
 @@ -603 +603 @@ public class SimplePathInterpreter {
--        if (parents.isEmpty()) {
-+        if (parents.size() == 0) {
+-        if (parents.size() == 0) {
++        if (parents.isEmpty()) {
 @@ -625 +625 @@ public class SimplePathInterpreter {
--            if (newList.isEmpty()) {
-+            if (newList.size() == 0) {
+-            if (newList.size() == 0) {
++            if (newList.isEmpty()) {
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
-index 45b76b70..78827e72 100644
+index 78827e72..45b76b70 100644
 --- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
 +++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
 @@ -237 +237 @@ public class JDOMNodePointer extends NodePointer {
--            return ((Element) node).getContent().isEmpty();
-+            return ((Element) node).getContent().size() == 0;
+-            return ((Element) node).getContent().size() == 0;
++            return ((Element) node).getContent().isEmpty();
 @@ -240 +240 @@ public class JDOMNodePointer extends NodePointer {
--            return ((Document) node).getContent().isEmpty();
-+            return ((Document) node).getContent().size() == 0;
+-            return ((Document) node).getContent().size() == 0;
++            return ((Document) node).getContent().isEmpty();

@@ -1,8 +1,8 @@
 diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
-index 87325a9f5..0067a0123 100644
+index 0067a0123..87325a9f5 100644
 --- a/.github/workflows/codeql-analysis.yml
 +++ b/.github/workflows/codeql-analysis.yml
-@@ -1,80 +1,74 @@
+@@ -1,74 +1,80 @@
 -# Licensed to the Apache Software Foundation (ASF) under one or more
 -# contributor license agreements.  See the NOTICE file distributed with
 -# this work for additional information regarding copyright ownership.
@@ -47,13 +47,7 @@ index 87325a9f5..0067a0123 100644
 -
 -    steps:
 -    - name: Checkout repository
--      uses: actions/checkout@v3.0.2
--    - uses: actions/cache@v3.0.8
--      with:
--        path: ~/.m2/repository
--        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
--        restore-keys: |
--          ${{ runner.os }}-maven-
+-      uses: actions/checkout@v3
 -
 -    # Initializes the CodeQL tools for scanning.
 -    - name: Initialize CodeQL
@@ -127,7 +121,13 @@ index 87325a9f5..0067a0123 100644
 +
 +    steps:
 +    - name: Checkout repository
-+      uses: actions/checkout@v3
++      uses: actions/checkout@v3.0.2
++    - uses: actions/cache@v3.0.8
++      with:
++        path: ~/.m2/repository
++        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
++        restore-keys: |
++          ${{ runner.os }}-maven-
 +
 +    # Initializes the CodeQL tools for scanning.
 +    - name: Initialize CodeQL
@@ -158,180 +158,180 @@ index 87325a9f5..0067a0123 100644
 +    - name: Perform CodeQL Analysis
 +      uses: github/codeql-action/analyze@v2
 diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
-index 86c333443..ae0ab60a1 100644
+index ae0ab60a1..86c333443 100644
 --- a/.github/workflows/coverage.yml
 +++ b/.github/workflows/coverage.yml
 @@ -32 +32 @@ jobs:
--    - uses: actions/checkout@v3.0.2
-+    - uses: actions/checkout@v3
+-    - uses: actions/checkout@v3
++    - uses: actions/checkout@v3.0.2
 @@ -40 +40 @@ jobs:
--      uses: actions/setup-java@v3.5.1
-+      uses: actions/setup-java@v3
+-      uses: actions/setup-java@v3
++      uses: actions/setup-java@v3.5.1
 diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index 2af8eb225..0efdb5540 100644
+index 0efdb5540..2af8eb225 100644
 --- a/.github/workflows/maven.yml
 +++ b/.github/workflows/maven.yml
 @@ -43 +43 @@ jobs:
--    - uses: actions/checkout@v3.0.2
-+    - uses: actions/checkout@v3
+-    - uses: actions/checkout@v3
++    - uses: actions/checkout@v3.0.2
 @@ -51 +51 @@ jobs:
--      uses: actions/setup-java@v3.5.1
-+      uses: actions/setup-java@v3
+-      uses: actions/setup-java@v3
++      uses: actions/setup-java@v3.5.1
 diff --git a/.github/workflows/maven_adhoc.yml b/.github/workflows/maven_adhoc.yml
-index 6c2ef7f90..68aac5150 100644
+index 68aac5150..6c2ef7f90 100644
 --- a/.github/workflows/maven_adhoc.yml
 +++ b/.github/workflows/maven_adhoc.yml
 @@ -25 +25 @@ jobs:
--    - uses: actions/checkout@v3.0.2
-+    - uses: actions/checkout@v3
+-    - uses: actions/checkout@v3
++    - uses: actions/checkout@v3.0.2
 @@ -27 +27 @@ jobs:
--      uses: actions/setup-java@v3.5.1
-+      uses: actions/setup-java@v3
+-      uses: actions/setup-java@v3
++      uses: actions/setup-java@v3.5.1
 diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
-deleted file mode 100644
-index abd699271..000000000
---- a/.github/workflows/scorecards-analysis.yml
-+++ /dev/null
-@@ -1,67 +0,0 @@
--# Licensed to the Apache Software Foundation (ASF) under one or more
--# contributor license agreements. See the NOTICE file distributed with
--# this work for additional information regarding copyright ownership.
--# The ASF licenses this file to You under the Apache license, Version 2.0
--# (the "License"); you may not use this file except in compliance with
--# the License. You may obtain a copy of the License at
--#
--#      http://www.apache.org/licenses/LICENSE-2.0
--#
--# Unless required by applicable law or agreed to in writing, software
--# distributed under the License is distributed on an "AS IS" BASIS,
--# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
--# See the license for the specific language governing permissions and
--# limitations under the license.
--
--name: "Scorecards supply-chain security"
--
--on:
--  branch_protection_rule:
--  schedule:
--    - cron: "30 1 * * 6"    # Weekly on Saturdays
--  push:
--    branches: [ "master" ]
--
--permissions: read-all
--
--jobs:
--
--  analysis:
--
--    name: "Scorecards analysis"
--    runs-on: ubuntu-latest
--    permissions:
--      security-events: write    # Needed to upload the results to the code-scanning dashboard.
--      actions: read
--      contents: read
--
--    steps:
--
--      - name: "Checkout code"
--        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b   # 3.0.2
--        with:
--          persist-credentials: false
--
--      - name: "Run analysis"
--        uses: ossf/scorecard-action@ce330fde6b1a5c9c75b417e7efc510b822a35564    # 1.1.2
--        with:
--          results_file: results.sarif
--          results_format: sarif
--          # A read-only PAT token, which is sufficient for the action to function.
--          # The relevant discussion: https://github.com/ossf/scorecard-action/issues/188
--          repo_token: ${{ secrets.GITHUB_TOKEN }}
--          # Publish the results for public repositories to enable scorecard badges.
--          # For more details: https://github.com/ossf/scorecard-action#publishing-results
--          publish_results: true
--
--      - name: "Upload artifact"
--        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8    # 3.1.0
--        with:
--          name: SARIF file
--          path: results.sarif
--          retention-days: 5
--
--      - name: "Upload to code-scanning"
--        uses: github/codeql-action/upload-sarif@b398f525a5587552e573b247ac661067fafa920b    # 2.1.22
--        with:
--          sarif_file: results.sarif
+new file mode 100644
+index 000000000..abd699271
+--- /dev/null
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -0,0 +1,67 @@
++# Licensed to the Apache Software Foundation (ASF) under one or more
++# contributor license agreements. See the NOTICE file distributed with
++# this work for additional information regarding copyright ownership.
++# The ASF licenses this file to You under the Apache license, Version 2.0
++# (the "License"); you may not use this file except in compliance with
++# the License. You may obtain a copy of the License at
++#
++#      http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the license for the specific language governing permissions and
++# limitations under the license.
++
++name: "Scorecards supply-chain security"
++
++on:
++  branch_protection_rule:
++  schedule:
++    - cron: "30 1 * * 6"    # Weekly on Saturdays
++  push:
++    branches: [ "master" ]
++
++permissions: read-all
++
++jobs:
++
++  analysis:
++
++    name: "Scorecards analysis"
++    runs-on: ubuntu-latest
++    permissions:
++      security-events: write    # Needed to upload the results to the code-scanning dashboard.
++      actions: read
++      contents: read
++
++    steps:
++
++      - name: "Checkout code"
++        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b   # 3.0.2
++        with:
++          persist-credentials: false
++
++      - name: "Run analysis"
++        uses: ossf/scorecard-action@ce330fde6b1a5c9c75b417e7efc510b822a35564    # 1.1.2
++        with:
++          results_file: results.sarif
++          results_format: sarif
++          # A read-only PAT token, which is sufficient for the action to function.
++          # The relevant discussion: https://github.com/ossf/scorecard-action/issues/188
++          repo_token: ${{ secrets.GITHUB_TOKEN }}
++          # Publish the results for public repositories to enable scorecard badges.
++          # For more details: https://github.com/ossf/scorecard-action#publishing-results
++          publish_results: true
++
++      - name: "Upload artifact"
++        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8    # 3.1.0
++        with:
++          name: SARIF file
++          path: results.sarif
++          retention-days: 5
++
++      - name: "Upload to code-scanning"
++        uses: github/codeql-action/upload-sarif@b398f525a5587552e573b247ac661067fafa920b    # 2.1.22
++        with:
++          sarif_file: results.sarif
 diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
-index 71f0edce8..cfadadbf2 100644
+index cfadadbf2..71f0edce8 100644
 --- a/CONTRIBUTING.md
 +++ b/CONTRIBUTING.md
 @@ -64 +64 @@ Making Changes
--  * Usually you should base your branch on the `master` branch.
-+  * Usually you should base your branch on the `master` or `trunk` branch.
+-  * Usually you should base your branch on the `master` or `trunk` branch.
++  * Usually you should base your branch on the `master` branch.
 diff --git a/README.md b/README.md
-index c405871c8..037efa853 100644
+index 037efa853..c405871c8 100644
 --- a/README.md
 +++ b/README.md
 @@ -47,2 +47,2 @@ Apache Commons Net
--[![Coverage Status](https://codecov.io/gh/apache/commons-net/branch/master/graph/badge.svg)](https://app.codecov.io/gh/apache/commons-net/branch/master)
--[![Maven Central](https://maven-badges.herokuapp.com/maven-central/commons-net/commons-net/badge.svg?gav=true)](https://maven-badges.herokuapp.com/maven-central/commons-net/commons-net/?gav=true)
-+[![Coverage Status](https://coveralls.io/repos/apache/commons-net/badge.svg)](https://coveralls.io/r/apache/commons-net)
-+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/commons-net/commons-net/badge.svg?gav=true)](https://maven-badges.herokuapp.com/maven-central/commons-net/commons-net/)
+-[![Coverage Status](https://coveralls.io/repos/apache/commons-net/badge.svg)](https://coveralls.io/r/apache/commons-net)
+-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/commons-net/commons-net/badge.svg?gav=true)](https://maven-badges.herokuapp.com/maven-central/commons-net/commons-net/)
++[![Coverage Status](https://codecov.io/gh/apache/commons-net/branch/master/graph/badge.svg)](https://app.codecov.io/gh/apache/commons-net/branch/master)
++[![Maven Central](https://maven-badges.herokuapp.com/maven-central/commons-net/commons-net/badge.svg?gav=true)](https://maven-badges.herokuapp.com/maven-central/commons-net/commons-net/?gav=true)
 diff --git a/pom.xml b/pom.xml
-index 60f03f2ec..6537d5298 100644
+index 6537d5298..60f03f2ec 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -27 +27 @@
--        <version>54</version>
-+        <version>53</version>
+-        <version>53</version>
++        <version>54</version>
 @@ -69,4 +69,4 @@ Supported protocols include: Echo, Finger, FTP, NNTP, NTP, POP3(S), SMTP(S), Tel
--        <commons.junit.version>5.9.1</commons.junit.version>
--        <commons.jacoco.version>0.8.8</commons.jacoco.version>
--        <commons.japicmp.version>0.16.0</commons.japicmp.version>
--        <commons.surefire.version>3.0.0-M7</commons.surefire.version>
-+        <clirr.skip>true</clirr.skip>
-+        <commons.jacoco.version>0.8.7</commons.jacoco.version>
-+        <commons.japicmp.version>0.15.7</commons.japicmp.version>
-+        <commons.surefire.version>3.0.0-M5</commons.surefire.version>
-@@ -98,2 +98,3 @@ Supported protocols include: Echo, Finger, FTP, NNTP, NTP, POP3(S), SMTP(S), Tel
--            <groupId>org.junit.vintage</groupId>
--            <artifactId>junit-vintage-engine</artifactId>
-+            <groupId>junit</groupId>
-+            <artifactId>junit</artifactId>
-+            <version>4.13.2</version>
+-        <clirr.skip>true</clirr.skip>
+-        <commons.jacoco.version>0.8.7</commons.jacoco.version>
+-        <commons.japicmp.version>0.15.7</commons.japicmp.version>
+-        <commons.surefire.version>3.0.0-M5</commons.surefire.version>
++        <commons.junit.version>5.9.1</commons.junit.version>
++        <commons.jacoco.version>0.8.8</commons.jacoco.version>
++        <commons.japicmp.version>0.16.0</commons.japicmp.version>
++        <commons.surefire.version>3.0.0-M7</commons.surefire.version>
+@@ -98,3 +98,2 @@ Supported protocols include: Echo, Finger, FTP, NNTP, NTP, POP3(S), SMTP(S), Tel
+-            <groupId>junit</groupId>
+-            <artifactId>junit</artifactId>
+-            <version>4.13.2</version>
++            <groupId>org.junit.vintage</groupId>
++            <artifactId>junit-vintage-engine</artifactId>
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index 045e904c2..22c219c2b 100644
+index 22c219c2b..045e904c2 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
 @@ -112,2 +112,2 @@ The <action> type attribute can be add,update,fix,remove.
--      <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">
--        Bump actions/checkout from 2.3.4 to 3.0.2 #89, #91, #100.
-+      <action type="update" dev="ggregory" due-to="Dependabot">
-+        Bump actions/checkout from 2.3.4 to 3 #89, #91, #100.
-@@ -116 +116 @@ The <action> type attribute can be add,update,fix,remove.
--        A actions/setup-java from 1.4.3 to 3.5.1.
-+        A actions/setup-java from 1.4.3 to 3.
-@@ -119 +119 @@ The <action> type attribute can be add,update,fix,remove.
--        Bump junit from 4.13.1 to 5.9.1 Vintage #74.
-+        Bump junit from 4.13.1 to 4.13.2 #74.
-@@ -125 +125 @@ The <action> type attribute can be add,update,fix,remove.
--        Bump commons.jacoco.version from 0.8.6 to 0.8.8.
-+        Bump commons.jacoco.version from 0.8.6 to 0.8.7.
-@@ -128 +128 @@ The <action> type attribute can be add,update,fix,remove.
--        Bump commons.japicmp.version from 0.14.3 to 0.16.0.
-+        Bump commons.japicmp.version from 0.14.3 to 0.15.7.
-@@ -131 +131 @@ The <action> type attribute can be add,update,fix,remove.
--        Bump commons.surefire.version from 2.22.2 to 3.0.0-M7.
-+        Bump commons.surefire.version from 2.22.2 to 3.0.0-M5.
-@@ -139,3 +138,0 @@ The <action> type attribute can be add,update,fix,remove.
 -      <action type="update" dev="ggregory" due-to="Dependabot">
--        Bump commons-parent from 53 to 54 #112
--      </action>
+-        Bump actions/checkout from 2.3.4 to 3 #89, #91, #100.
++      <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">
++        Bump actions/checkout from 2.3.4 to 3.0.2 #89, #91, #100.
+@@ -116 +116 @@ The <action> type attribute can be add,update,fix,remove.
+-        A actions/setup-java from 1.4.3 to 3.
++        A actions/setup-java from 1.4.3 to 3.5.1.
+@@ -119 +119 @@ The <action> type attribute can be add,update,fix,remove.
+-        Bump junit from 4.13.1 to 4.13.2 #74.
++        Bump junit from 4.13.1 to 5.9.1 Vintage #74.
+@@ -125 +125 @@ The <action> type attribute can be add,update,fix,remove.
+-        Bump commons.jacoco.version from 0.8.6 to 0.8.7.
++        Bump commons.jacoco.version from 0.8.6 to 0.8.8.
+@@ -128 +128 @@ The <action> type attribute can be add,update,fix,remove.
+-        Bump commons.japicmp.version from 0.14.3 to 0.15.7.
++        Bump commons.japicmp.version from 0.14.3 to 0.16.0.
+@@ -131 +131 @@ The <action> type attribute can be add,update,fix,remove.
+-        Bump commons.surefire.version from 2.22.2 to 3.0.0-M5.
++        Bump commons.surefire.version from 2.22.2 to 3.0.0-M7.
+@@ -138,0 +139,3 @@ The <action> type attribute can be add,update,fix,remove.
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump commons-parent from 53 to 54 #112
++      </action>
 diff --git a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
-index a552a4183..5b247dd3c 100644
+index 5b247dd3c..a552a4183 100644
 --- a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
 +++ b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
-@@ -21 +20,0 @@ import java.io.IOException;
--import java.io.Serializable;
-@@ -44 +43 @@ import java.util.TimeZone;
--public class TimeStamp implements Serializable, Comparable<TimeStamp>
-+public class TimeStamp implements java.io.Serializable, Comparable<TimeStamp>
+@@ -20,0 +21 @@ import java.io.IOException;
++import java.io.Serializable;
+@@ -43 +44 @@ import java.util.TimeZone;
+-public class TimeStamp implements java.io.Serializable, Comparable<TimeStamp>
++public class TimeStamp implements Serializable, Comparable<TimeStamp>

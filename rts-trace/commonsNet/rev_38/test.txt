@@ -1,0 +1,1 @@
+org.apache.commons.net.ftp.ListingFunctionalTest,org.apache.commons.net.ntp.TestNtpPacket,org.apache.commons.net.ntp.TestTimeInfo,org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase

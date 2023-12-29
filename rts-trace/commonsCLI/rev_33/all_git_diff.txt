@@ -1,75 +1,75 @@
 diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
-index 2e532aa3..8c0c57e8 100644
+index 8c0c57e8..2e532aa3 100644
 --- a/.github/workflows/codeql-analysis.yml
 +++ b/.github/workflows/codeql-analysis.yml
 @@ -60 +60 @@ jobs:
--      uses: github/codeql-action/init@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
-+      uses: github/codeql-action/init@5b6282e01c62d02e720b81eb8a51204f527c3624 # v2.21.3
+-      uses: github/codeql-action/init@5b6282e01c62d02e720b81eb8a51204f527c3624 # v2.21.3
++      uses: github/codeql-action/init@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
 @@ -71 +71 @@ jobs:
--      uses: github/codeql-action/autobuild@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
-+      uses: github/codeql-action/autobuild@5b6282e01c62d02e720b81eb8a51204f527c3624 # v2.21.3
+-      uses: github/codeql-action/autobuild@5b6282e01c62d02e720b81eb8a51204f527c3624 # v2.21.3
++      uses: github/codeql-action/autobuild@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
 @@ -85 +85 @@ jobs:
--      uses: github/codeql-action/analyze@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
-+      uses: github/codeql-action/analyze@5b6282e01c62d02e720b81eb8a51204f527c3624 # v2.21.3
+-      uses: github/codeql-action/analyze@5b6282e01c62d02e720b81eb8a51204f527c3624 # v2.21.3
++      uses: github/codeql-action/analyze@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
 diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
-index 7b23e61d..bf822a7b 100644
+index bf822a7b..7b23e61d 100644
 --- a/.github/workflows/scorecards-analysis.yml
 +++ b/.github/workflows/scorecards-analysis.yml
 @@ -67 +67 @@ jobs:
--        uses: github/codeql-action/upload-sarif@a09933a12a80f87b87005513f0abb1494c27a716    # 2.21.4
-+        uses: github/codeql-action/upload-sarif@5b6282e01c62d02e720b81eb8a51204f527c3624    # 2.21.3
+-        uses: github/codeql-action/upload-sarif@5b6282e01c62d02e720b81eb8a51204f527c3624    # 2.21.3
++        uses: github/codeql-action/upload-sarif@a09933a12a80f87b87005513f0abb1494c27a716    # 2.21.4
 diff --git a/src/main/java/org/apache/commons/cli/DefaultParser.java b/src/main/java/org/apache/commons/cli/DefaultParser.java
-index 8b69a766..8a027094 100644
+index 8a027094..8b69a766 100644
 --- a/src/main/java/org/apache/commons/cli/DefaultParser.java
 +++ b/src/main/java/org/apache/commons/cli/DefaultParser.java
 @@ -583 +583 @@ public class DefaultParser implements CommandLineParser {
--        final String opt = token.substring(0, 1);
-+        final String opt = token.isEmpty() ? null : token.substring(0, 1);
+-        final String opt = token.isEmpty() ? null : token.substring(0, 1);
++        final String opt = token.substring(0, 1);
+diff --git a/src/test/java/org/apache/commons/cli/ParserTestCase.java b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+similarity index 99%
+rename from src/test/java/org/apache/commons/cli/ParserTestCase.java
+rename to src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+index db8d7b08..907e1f00 100644
+--- a/src/test/java/org/apache/commons/cli/ParserTestCase.java
++++ b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+@@ -37 +37 @@ import org.junit.Test;
+-public abstract class ParserTestCase {
++public abstract class AbstractParserTestCase {
+@@ -1023,8 +1023 @@ public abstract class ParserTestCase {
+-    
+-    @Test(expected = UnrecognizedOptionException.class)
+-    public void testAmbiguousArgParsing() throws Exception {
+-        final String[] args = {"-=-"};
+-        final Options options = new Options();
+-        
+-        final CommandLine cl = parser.parse(options, args);
+-    }
++
 diff --git a/src/test/java/org/apache/commons/cli/BasicParserTest.java b/src/test/java/org/apache/commons/cli/BasicParserTest.java
-index e05a38f5..fe7a823e 100644
+index fe7a823e..e05a38f5 100644
 --- a/src/test/java/org/apache/commons/cli/BasicParserTest.java
 +++ b/src/test/java/org/apache/commons/cli/BasicParserTest.java
 @@ -25 +25 @@ import org.junit.Test;
--public class BasicParserTest extends AbstractParserTestCase {
-+public class BasicParserTest extends ParserTestCase {
+-public class BasicParserTest extends ParserTestCase {
++public class BasicParserTest extends AbstractParserTestCase {
 diff --git a/src/test/java/org/apache/commons/cli/DefaultParserTest.java b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
-index 7181daa5..c3ccf9ab 100644
+index c3ccf9ab..7181daa5 100644
 --- a/src/test/java/org/apache/commons/cli/DefaultParserTest.java
 +++ b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
 @@ -25 +25 @@ import org.junit.Test;
--public class DefaultParserTest extends AbstractParserTestCase {
-+public class DefaultParserTest extends ParserTestCase {
+-public class DefaultParserTest extends ParserTestCase {
++public class DefaultParserTest extends AbstractParserTestCase {
 diff --git a/src/test/java/org/apache/commons/cli/GnuParserTest.java b/src/test/java/org/apache/commons/cli/GnuParserTest.java
-index 92cc24da..a08ca8bc 100644
+index a08ca8bc..92cc24da 100644
 --- a/src/test/java/org/apache/commons/cli/GnuParserTest.java
 +++ b/src/test/java/org/apache/commons/cli/GnuParserTest.java
 @@ -25 +25 @@ import org.junit.Test;
--public class GnuParserTest extends AbstractParserTestCase {
-+public class GnuParserTest extends ParserTestCase {
-diff --git a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java b/src/test/java/org/apache/commons/cli/ParserTestCase.java
-similarity index 99%
-rename from src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
-rename to src/test/java/org/apache/commons/cli/ParserTestCase.java
-index 907e1f00..db8d7b08 100644
---- a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
-+++ b/src/test/java/org/apache/commons/cli/ParserTestCase.java
-@@ -37 +37 @@ import org.junit.Test;
--public abstract class AbstractParserTestCase {
-+public abstract class ParserTestCase {
-@@ -1023 +1023,8 @@ public abstract class AbstractParserTestCase {
--
-+    
-+    @Test(expected = UnrecognizedOptionException.class)
-+    public void testAmbiguousArgParsing() throws Exception {
-+        final String[] args = {"-=-"};
-+        final Options options = new Options();
-+        
-+        final CommandLine cl = parser.parse(options, args);
-+    }
+-public class GnuParserTest extends ParserTestCase {
++public class GnuParserTest extends AbstractParserTestCase {
 diff --git a/src/test/java/org/apache/commons/cli/PosixParserTest.java b/src/test/java/org/apache/commons/cli/PosixParserTest.java
-index 19874228..5efb938e 100644
+index 5efb938e..19874228 100644
 --- a/src/test/java/org/apache/commons/cli/PosixParserTest.java
 +++ b/src/test/java/org/apache/commons/cli/PosixParserTest.java
 @@ -27 +27 @@ import org.junit.Test;
--public class PosixParserTest extends AbstractParserTestCase {
-+public class PosixParserTest extends ParserTestCase {
+-public class PosixParserTest extends ParserTestCase {
++public class PosixParserTest extends AbstractParserTestCase {

@@ -573,6 +573,7 @@ getCause
 }
 private
 static
+final
 class
 TestClassLoader
 extends

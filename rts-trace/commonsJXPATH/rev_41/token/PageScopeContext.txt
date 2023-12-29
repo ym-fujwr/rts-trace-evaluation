@@ -30,12 +30,14 @@ class
 PageScopeContext
 {
 private
+final
 PageContext
 pageContext
 ;
 public
 PageScopeContext
 (
+final
 PageContext
 pageContext
 )
@@ -68,6 +70,7 @@ public
 Object
 getAttribute
 (
+final
 String
 attribute
 )
@@ -89,9 +92,11 @@ public
 void
 setAttribute
 (
+final
 String
 attribute
 ,
+final
 Object
 value
 )

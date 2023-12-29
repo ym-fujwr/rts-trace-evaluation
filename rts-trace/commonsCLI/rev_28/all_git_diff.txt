@@ -1,34 +1,34 @@
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index 703e4ec3..a1632ea4 100644
+index a1632ea4..703e4ec3 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
-@@ -55,3 +54,0 @@
--      <action dev="ggregory" type="fix" due-to="Dilraj Singh, Gary Gregory" issue="CLI-283">
--        CommandLine.addOption(Option) should not allow a null Option.
--      </action>
+@@ -54,0 +55,3 @@
++      <action dev="ggregory" type="fix" due-to="Dilraj Singh, Gary Gregory" issue="CLI-283">
++        CommandLine.addOption(Option) should not allow a null Option.
++      </action>
 diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
-index 22940a79..611c4aed 100644
+index 611c4aed..22940a79 100644
 --- a/src/main/java/org/apache/commons/cli/CommandLine.java
 +++ b/src/main/java/org/apache/commons/cli/CommandLine.java
-@@ -111,3 +111 @@ public class CommandLine implements Serializable {
--        if (opt != null) {
--            options.add(opt);
--        }
-+        options.add(opt);
+@@ -111 +111,3 @@ public class CommandLine implements Serializable {
+-        options.add(opt);
++        if (opt != null) {
++            options.add(opt);
++        }
 diff --git a/src/test/java/org/apache/commons/cli/CommandLineTest.java b/src/test/java/org/apache/commons/cli/CommandLineTest.java
-index 812c65e8..b0f7f470 100644
+index b0f7f470..812c65e8 100644
 --- a/src/test/java/org/apache/commons/cli/CommandLineTest.java
 +++ b/src/test/java/org/apache/commons/cli/CommandLineTest.java
-@@ -43,12 +42,0 @@ public class CommandLineTest {
--    @Test
--    public void testBuilderNulls() {
--        final CommandLine.Builder builder = new CommandLine.Builder();
--        builder.addArg("foo").addArg("bar");
--        builder.addOption(null);
--        final CommandLine cmd = builder.build();
--
--        assertEquals("foo", cmd.getArgs()[0]);
--        assertEquals("bar", cmd.getArgList().get(1));
--        assertEquals(0, cmd.getOptions().length);
--    }
--
+@@ -42,0 +43,12 @@ public class CommandLineTest {
++    @Test
++    public void testBuilderNulls() {
++        final CommandLine.Builder builder = new CommandLine.Builder();
++        builder.addArg("foo").addArg("bar");
++        builder.addOption(null);
++        final CommandLine cmd = builder.build();
++
++        assertEquals("foo", cmd.getArgs()[0]);
++        assertEquals("bar", cmd.getArgList().get(1));
++        assertEquals(0, cmd.getOptions().length);
++    }
++

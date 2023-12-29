@@ -1,7 +1,7 @@
 diff --git a/src/main/java/org/apache/commons/cli/HelpFormatter.java b/src/main/java/org/apache/commons/cli/HelpFormatter.java
-index b8ef6704..911e3f87 100644
+index 911e3f87..b8ef6704 100644
 --- a/src/main/java/org/apache/commons/cli/HelpFormatter.java
 +++ b/src/main/java/org/apache/commons/cli/HelpFormatter.java
 @@ -711 +711 @@ public class HelpFormatter {
--            max = Math.max(optBuf.length(), max);
-+            max = optBuf.length() > max ? optBuf.length() : max;
+-            max = optBuf.length() > max ? optBuf.length() : max;
++            max = Math.max(optBuf.length(), max);

@@ -1,98 +1,98 @@
 diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
-index 6cc86f3f2..290246808 100644
+index 290246808..6cc86f3f2 100644
 --- a/.github/workflows/codeql-analysis.yml
 +++ b/.github/workflows/codeql-analysis.yml
-@@ -27,3 +26,0 @@ on:
--permissions:
--  contents: read
--
-@@ -48,4 +45,2 @@ jobs:
--      uses: actions/checkout@v3.1.0
--      with:
--        persist-credentials: false
--    - uses: actions/cache@v3.0.10
-+      uses: actions/checkout@v3.0.2
-+    - uses: actions/cache@v3.0.8
+@@ -26,0 +27,3 @@ on:
++permissions:
++  contents: read
++
+@@ -45,2 +48,4 @@ jobs:
+-      uses: actions/checkout@v3.0.2
+-    - uses: actions/cache@v3.0.8
++      uses: actions/checkout@v3.1.0
++      with:
++        persist-credentials: false
++    - uses: actions/cache@v3.0.10
 diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
-index 31c065b1a..86c333443 100644
+index 86c333443..31c065b1a 100644
 --- a/.github/workflows/coverage.yml
 +++ b/.github/workflows/coverage.yml
-@@ -32,4 +32,2 @@ jobs:
--    - uses: actions/checkout@v3.1.0
--      with:
--        persist-credentials: false
--    - uses: actions/cache@v3.0.10
-+    - uses: actions/checkout@v3.0.2
-+    - uses: actions/cache@v3.0.8
+@@ -32,2 +32,4 @@ jobs:
+-    - uses: actions/checkout@v3.0.2
+-    - uses: actions/cache@v3.0.8
++    - uses: actions/checkout@v3.1.0
++      with:
++        persist-credentials: false
++    - uses: actions/cache@v3.0.10
 diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index f2ea31c95..9f923fac2 100644
+index 9f923fac2..f2ea31c95 100644
 --- a/.github/workflows/maven.yml
 +++ b/.github/workflows/maven.yml
-@@ -20,3 +19,0 @@ on: [push, pull_request, workflow_dispatch]
--permissions:
--  contents: read
--
-@@ -46,4 +43,2 @@ jobs:
--    - uses: actions/checkout@v3.1.0
--      with:
--        persist-credentials: false
--    - uses: actions/cache@v3.0.10
-+    - uses: actions/checkout@v3.0.2
-+    - uses: actions/cache@v3.0.8
+@@ -19,0 +20,3 @@ on: [push, pull_request, workflow_dispatch]
++permissions:
++  contents: read
++
+@@ -43,2 +46,4 @@ jobs:
+-    - uses: actions/checkout@v3.0.2
+-    - uses: actions/cache@v3.0.8
++    - uses: actions/checkout@v3.1.0
++      with:
++        persist-credentials: false
++    - uses: actions/cache@v3.0.10
 diff --git a/.github/workflows/maven_adhoc.yml b/.github/workflows/maven_adhoc.yml
-index 97d7e1eef..6c2ef7f90 100644
+index 6c2ef7f90..97d7e1eef 100644
 --- a/.github/workflows/maven_adhoc.yml
 +++ b/.github/workflows/maven_adhoc.yml
-@@ -20,3 +19,0 @@ on: workflow_dispatch
--permissions:
--  contents: read
--
-@@ -28,4 +25,2 @@ jobs:
--    - uses: actions/checkout@v3.1.0
--      with:
--        persist-credentials: false
--    - name: Set up JDK
-+    - uses: actions/checkout@v3.0.2
-+    - name: Set up JDK 
+@@ -19,0 +20,3 @@ on: workflow_dispatch
++permissions:
++  contents: read
++
+@@ -25,2 +28,4 @@ jobs:
+-    - uses: actions/checkout@v3.0.2
+-    - name: Set up JDK 
++    - uses: actions/checkout@v3.1.0
++      with:
++        persist-credentials: false
++    - name: Set up JDK
 diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
-index fd03907cd..abd699271 100644
+index abd699271..fd03907cd 100644
 --- a/.github/workflows/scorecards-analysis.yml
 +++ b/.github/workflows/scorecards-analysis.yml
 @@ -41 +41 @@ jobs:
--        uses: actions/checkout@v3.1.0   # 3.0.2
-+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b   # 3.0.2
+-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b   # 3.0.2
++        uses: actions/checkout@v3.1.0   # 3.0.2
 diff --git a/pom.xml b/pom.xml
-index 6342abc49..60f03f2ec 100644
+index 60f03f2ec..6342abc49 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -97,5 +96,0 @@ Supported protocols include: Echo, Finger, FTP, NNTP, NTP, POP3(S), SMTP(S), Tel
--        <dependency>
--            <groupId>org.junit.jupiter</groupId>
--            <artifactId>junit-jupiter-api</artifactId>
--            <scope>test</scope>
--        </dependency>
+@@ -96,0 +97,5 @@ Supported protocols include: Echo, Finger, FTP, NNTP, NTP, POP3(S), SMTP(S), Tel
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-api</artifactId>
++            <scope>test</scope>
++        </dependency>
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index d42d4ed73..0f417a9b3 100644
+index 0f417a9b3..d42d4ed73 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
 @@ -110 +110 @@ The <action> type attribute can be add,update,fix,remove.
--        Bump actions/cache from 2.1.6 to 3.0.10 #93, #102, #115.
-+        Bump actions/cache from 2.1.6 to 3.0.8 #93, #102.
+-        Bump actions/cache from 2.1.6 to 3.0.8 #93, #102.
++        Bump actions/cache from 2.1.6 to 3.0.10 #93, #102, #115.
 @@ -113 +113 @@ The <action> type attribute can be add,update,fix,remove.
--        Bump actions/checkout from 2.3.4 to 3.1.0 #89, #91, #100, #114.
-+        Bump actions/checkout from 2.3.4 to 3.0.2 #89, #91, #100.
+-        Bump actions/checkout from 2.3.4 to 3.0.2 #89, #91, #100.
++        Bump actions/checkout from 2.3.4 to 3.1.0 #89, #91, #100, #114.
 diff --git a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
-index 14c06d067..9a075fbc3 100644
+index 9a075fbc3..14c06d067 100644
 --- a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
 +++ b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
-@@ -26,3 +25,0 @@ import org.junit.Test;
--import org.junit.jupiter.api.function.Executable;
--
--import static org.junit.jupiter.api.Assertions.assertThrows;
-@@ -92 +89 @@ public class TestTimeInfo {
--    @Test
-+    @Test(expected=IllegalArgumentException.class)
-@@ -95,2 +92 @@ public class TestTimeInfo {
--        final Executable testMethod = () -> new TimeInfo(packet, 1L);
--        assertThrows(IllegalArgumentException.class, testMethod);
-+        new TimeInfo(packet, 1L);
+@@ -25,0 +26,3 @@ import org.junit.Test;
++import org.junit.jupiter.api.function.Executable;
++
++import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -89 +92 @@ public class TestTimeInfo {
+-    @Test(expected=IllegalArgumentException.class)
++    @Test
+@@ -92 +95,2 @@ public class TestTimeInfo {
+-        new TimeInfo(packet, 1L);
++        final Executable testMethod = () -> new TimeInfo(packet, 1L);
++        assertThrows(IllegalArgumentException.class, testMethod);

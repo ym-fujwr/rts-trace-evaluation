@@ -25,6 +25,7 @@ serialVersionUID
 public
 JXPathNotFoundException
 (
+final
 String
 message
 )

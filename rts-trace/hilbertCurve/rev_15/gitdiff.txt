@@ -1,142 +1,142 @@
 diff --git a/src/main/java/org/davidmoten/hilbert/Ranges2.java b/src/main/java/org/davidmoten/hilbert/Ranges2.java
-index 49e58c3..a5b9177 100644
+index a5b9177..49e58c3 100644
 --- a/src/main/java/org/davidmoten/hilbert/Ranges2.java
 +++ b/src/main/java/org/davidmoten/hilbert/Ranges2.java
-@@ -2,0 +3 @@ package org.davidmoten.hilbert;
-+import java.util.ArrayList;
-@@ -3,0 +5 @@ import java.util.Comparator;
-+import java.util.List;
-@@ -5,0 +8,2 @@ import java.util.TreeSet;
-+import org.davidmoten.hilbert.internal.util.BoundedPriorityQueue;
-+
-@@ -11,3 +15,4 @@ public class Ranges2 {
--    private final TreeSet<Node> set;
--    private Node ranges;
--    private int count;
-+    private final List<Range> ranges;
-+    private final TreeSet<RangeWithDistanceToNext> set;
-+    private static final Comparator<RangeWithDistanceToNext> COMPARATOR = (a,
-+            b) -> a.distance < b.distance ? -1 : (a.distance == b.distance ? 0 : 1);
-@@ -17,2 +22,2 @@ public class Ranges2 {
--        this.ranges = null;
--        this.set = new TreeSet<>();
-+        this.ranges = new ArrayList<>(maxRanges);
-+        this.set = new TreeSet<>(COMPARATOR);
-@@ -22,7 +27,11 @@ public class Ranges2 {
--        Preconditions.checkArgument(ranges == null || ranges.value.high() < r.low());
--        ranges = insert(ranges, r);
--        count++;
--        if (ranges.next != null) {
--            // if there are at least two ranges
--            set.add(ranges);
--            if (count > maxRanges) {
-+        Preconditions
-+                .checkArgument(ranges.isEmpty() || ranges.get(ranges.size() - 1).high() <= r.low());
-+        ranges.add(r);
-+        if (ranges.size() > 1) {
-+            {
-+                RangeWithDistanceToNext x = new RangeWithDistanceToNext( //
-+                        ranges.size() - 2, //
-+                        r.low() - ranges.get(ranges.size() - 2).high());
-+                set.add(x);
-+            }
-+            if (ranges.size() > maxRanges) {
-@@ -30,9 +39,8 @@ public class Ranges2 {
--                Node x = set.first();
--                Node next = x.next;
--                Node y = new Node(x.value.join(next.value));
--                y.next = next.next;
--                if (x.previous == null) {
--                    ranges = y;
--                } else {
--                    x.previous.next = y;
--                    y.previous = x.previous;
-+                RangeWithDistanceToNext x = set.first();
-+                Range y = ranges.get(x.index).join(ranges.get(x.index + 1));
-+                ranges.set(x.index, y);
-+                ranges.remove(x.index + 1);
-+                set.remove(new RangeWithDistanceToNext(x.index, -1));
-+                if (x.index < ranges.size() - 1) {
-+                    set.add(new RangeWithDistanceToNext(x.index,
-+                            ranges.get(x.index + 1).low() - y.high()));
-@@ -40,11 +47,0 @@ public class Ranges2 {
--                // x has been replaced now so null its references for the joy of gc (I remember
--                // some old/new generation gc problem with linked lists that was fixed by doing
--                // this)
--                x.next = null;
--                x.previous = null;
+@@ -3 +2,0 @@ package org.davidmoten.hilbert;
+-import java.util.ArrayList;
+@@ -5 +3,0 @@ import java.util.Comparator;
+-import java.util.List;
+@@ -8,2 +5,0 @@ import java.util.TreeSet;
+-import org.davidmoten.hilbert.internal.util.BoundedPriorityQueue;
 -
--                // remove x (its old distance was used for sorting)
--                set.remove(x);
--                // add y as replacement for x
--                set.add(y);
--                count--;
-@@ -55,7 +52 @@ public class Ranges2 {
--    private static Node insert(Node ranges, Range r) {
--        if (ranges == null) {
--            return new Node(r);
--        } else {
--            return ranges.insert(r);
--        }
--    }
-+    private static final class RangeWithDistanceToNext {
-@@ -63,4 +54,2 @@ public class Ranges2 {
--    private static final class Node implements Comparator<Node> {
--        final Range value;
--        Node next;
--        Node previous;
-+        final int index;
-+        final long distance; // not involved in equals, hashCode
-@@ -68,2 +57,4 @@ public class Ranges2 {
--        Node(Range value) {
--            this.value = value;
-+        RangeWithDistanceToNext(int index, long distance) {
-+            Preconditions.checkArgument(distance > 0);
-+            this.index = index;
-+            this.distance = distance;
-@@ -72,5 +63,6 @@ public class Ranges2 {
--        Node insert(Range value) {
--            Node n = new Node(value);
--            n.next = this;
--            previous = n;
--            return n;
-+        @Override
-+        public int hashCode() {
-+            final int prime = 31;
-+            int result = 1;
-+            result = prime * result + index;
-+            return result;
-@@ -80,10 +72,11 @@ public class Ranges2 {
--        public int compare(Node a, Node b) {
--            long x = a.next.value.low() - a.value.high();
--            long y = b.next.value.low() - b.value.high();
--            if (x < y) {
--                return -1;
--            } else if (x == y) {
--                return 0;
--            } else {
--                return 1;
+@@ -15,4 +11,3 @@ public class Ranges2 {
+-    private final List<Range> ranges;
+-    private final TreeSet<RangeWithDistanceToNext> set;
+-    private static final Comparator<RangeWithDistanceToNext> COMPARATOR = (a,
+-            b) -> a.distance < b.distance ? -1 : (a.distance == b.distance ? 0 : 1);
++    private final TreeSet<Node> set;
++    private Node ranges;
++    private int count;
+@@ -22,2 +17,2 @@ public class Ranges2 {
+-        this.ranges = new ArrayList<>(maxRanges);
+-        this.set = new TreeSet<>(COMPARATOR);
++        this.ranges = null;
++        this.set = new TreeSet<>();
+@@ -27,11 +22,7 @@ public class Ranges2 {
+-        Preconditions
+-                .checkArgument(ranges.isEmpty() || ranges.get(ranges.size() - 1).high() <= r.low());
+-        ranges.add(r);
+-        if (ranges.size() > 1) {
+-            {
+-                RangeWithDistanceToNext x = new RangeWithDistanceToNext( //
+-                        ranges.size() - 2, //
+-                        r.low() - ranges.get(ranges.size() - 2).high());
+-                set.add(x);
 -            }
-+        public boolean equals(Object obj) {
-+            if (this == obj)
-+                return true;
-+            if (obj == null)
-+                return false;
-+            if (getClass() != obj.getClass())
-+                return false;
-+            RangeWithDistanceToNext other = (RangeWithDistanceToNext) obj;
-+            if (index != other.index)
-+                return false;
-+            return true;
-@@ -90,0 +84 @@ public class Ranges2 {
+-            if (ranges.size() > maxRanges) {
++        Preconditions.checkArgument(ranges == null || ranges.value.high() < r.low());
++        ranges = insert(ranges, r);
++        count++;
++        if (ranges.next != null) {
++            // if there are at least two ranges
++            set.add(ranges);
++            if (count > maxRanges) {
+@@ -39,8 +30,9 @@ public class Ranges2 {
+-                RangeWithDistanceToNext x = set.first();
+-                Range y = ranges.get(x.index).join(ranges.get(x.index + 1));
+-                ranges.set(x.index, y);
+-                ranges.remove(x.index + 1);
+-                set.remove(new RangeWithDistanceToNext(x.index, -1));
+-                if (x.index < ranges.size() - 1) {
+-                    set.add(new RangeWithDistanceToNext(x.index,
+-                            ranges.get(x.index + 1).low() - y.high()));
++                Node x = set.first();
++                Node next = x.next;
++                Node y = new Node(x.value.join(next.value));
++                y.next = next.next;
++                if (x.previous == null) {
++                    ranges = y;
++                } else {
++                    x.previous.next = y;
++                    y.previous = x.previous;
+@@ -47,0 +40,11 @@ public class Ranges2 {
++                // x has been replaced now so null its references for the joy of gc (I remember
++                // some old/new generation gc problem with linked lists that was fixed by doing
++                // this)
++                x.next = null;
++                x.previous = null;
 +
++                // remove x (its old distance was used for sorting)
++                set.remove(x);
++                // add y as replacement for x
++                set.add(y);
++                count--;
+@@ -52 +55,7 @@ public class Ranges2 {
+-    private static final class RangeWithDistanceToNext {
++    private static Node insert(Node ranges, Range r) {
++        if (ranges == null) {
++            return new Node(r);
++        } else {
++            return ranges.insert(r);
++        }
++    }
+@@ -54,2 +63,4 @@ public class Ranges2 {
+-        final int index;
+-        final long distance; // not involved in equals, hashCode
++    private static final class Node implements Comparator<Node> {
++        final Range value;
++        Node next;
++        Node previous;
+@@ -57,4 +68,2 @@ public class Ranges2 {
+-        RangeWithDistanceToNext(int index, long distance) {
+-            Preconditions.checkArgument(distance > 0);
+-            this.index = index;
+-            this.distance = distance;
++        Node(Range value) {
++            this.value = value;
+@@ -63,6 +72,5 @@ public class Ranges2 {
+-        @Override
+-        public int hashCode() {
+-            final int prime = 31;
+-            int result = 1;
+-            result = prime * result + index;
+-            return result;
++        Node insert(Range value) {
++            Node n = new Node(value);
++            n.next = this;
++            previous = n;
++            return n;
+@@ -72,11 +80,10 @@ public class Ranges2 {
+-        public boolean equals(Object obj) {
+-            if (this == obj)
+-                return true;
+-            if (obj == null)
+-                return false;
+-            if (getClass() != obj.getClass())
+-                return false;
+-            RangeWithDistanceToNext other = (RangeWithDistanceToNext) obj;
+-            if (index != other.index)
+-                return false;
+-            return true;
++        public int compare(Node a, Node b) {
++            long x = a.next.value.low() - a.value.high();
++            long y = b.next.value.low() - b.value.high();
++            if (x < y) {
++                return -1;
++            } else if (x == y) {
++                return 0;
++            } else {
++                return 1;
++            }
+@@ -84 +90,0 @@ public class Ranges2 {
+-
 diff --git a/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java b/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java
-index ca80780..0d84703 100644
+index 0d84703..ca80780 100644
 --- a/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java
 +++ b/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java
 @@ -163 +163 @@ public final class SmallHilbertCurve {
--    public Ranges2 query2(long[] a, long[] b, int maxRanges) {
-+    public Ranges query2(long[] a, long[] b, int maxRanges) {
+-    public Ranges query2(long[] a, long[] b, int maxRanges) {
++    public Ranges2 query2(long[] a, long[] b, int maxRanges) {
 @@ -200 +200 @@ public final class SmallHilbertCurve {
--        return ranges;
-+        return new Ranges(ranges);
+-        return new Ranges(ranges);
++        return ranges;

@@ -146,6 +146,7 @@ static
 JXPathContext
 newContext
 (
+final
 Object
 contextBean
 )
@@ -168,9 +169,11 @@ static
 JXPathContext
 newContext
 (
+final
 JXPathContext
 parentContext
 ,
+final
 Object
 contextBean
 )
@@ -218,9 +221,11 @@ contextFactory
 protected
 JXPathContext
 (
+final
 JXPathContext
 parentContext
 ,
+final
 Object
 contextBean
 )
@@ -278,6 +283,7 @@ public
 void
 setVariables
 (
+final
 Variables
 vars
 )
@@ -318,6 +324,7 @@ public
 void
 setFunctions
 (
+final
 Functions
 functions
 )
@@ -365,6 +372,7 @@ public
 void
 setFactory
 (
+final
 AbstractFactory
 factory
 )
@@ -410,6 +418,7 @@ synchronized
 void
 setLocale
 (
+final
 Locale
 locale
 )
@@ -468,9 +477,11 @@ synchronized
 void
 setDecimalFormatSymbols
 (
+final
 String
 name
 ,
+final
 DecimalFormatSymbols
 symbols
 )
@@ -505,6 +516,7 @@ synchronized
 DecimalFormatSymbols
 getDecimalFormatSymbols
 (
+final
 String
 name
 )
@@ -548,6 +560,7 @@ synchronized
 void
 setLenient
 (
+final
 boolean
 lenient
 )
@@ -597,6 +610,7 @@ static
 CompiledExpression
 compile
 (
+final
 String
 xpath
 )
@@ -640,10 +654,12 @@ public
 Object
 selectSingleNode
 (
+final
 String
 xpath
 )
 {
+final
 Pointer
 pointer
 =
@@ -670,10 +686,12 @@ public
 List
 selectNodes
 (
+final
 String
 xpath
 )
 {
+final
 ArrayList
 list
 =
@@ -682,6 +700,7 @@ ArrayList
 (
 )
 ;
+final
 Iterator
 iterator
 =
@@ -699,6 +718,7 @@ hasNext
 )
 )
 {
+final
 Pointer
 pointer
 =
@@ -830,6 +850,7 @@ public
 void
 setIdentityManager
 (
+final
 IdentityManager
 idManager
 )
@@ -874,10 +895,12 @@ public
 Pointer
 getPointerByID
 (
+final
 String
 id
 )
 {
+final
 IdentityManager
 manager
 =
@@ -917,6 +940,7 @@ public
 void
 setKeyManager
 (
+final
 KeyManager
 keyManager
 )
@@ -961,13 +985,16 @@ public
 Pointer
 getPointerByKey
 (
+final
 String
 key
 ,
+final
 String
 value
 )
 {
+final
 KeyManager
 manager
 =
@@ -1009,13 +1036,16 @@ public
 NodeSet
 getNodeSetByKey
 (
+final
 String
 key
 ,
+final
 Object
 value
 )
 {
+final
 KeyManager
 manager
 =
@@ -1062,9 +1092,11 @@ public
 void
 registerNamespace
 (
+final
 String
 prefix
 ,
+final
 String
 namespaceURI
 )
@@ -1085,6 +1117,7 @@ public
 String
 getNamespaceURI
 (
+final
 String
 prefix
 )
@@ -1105,6 +1138,7 @@ public
 String
 getPrefix
 (
+final
 String
 namespaceURI
 )
@@ -1125,6 +1159,7 @@ public
 void
 setNamespaceContextPointer
 (
+final
 Pointer
 namespaceContextPointer
 )
@@ -1163,6 +1198,7 @@ public
 void
 setExceptionHandler
 (
+final
 ExceptionHandler
 exceptionHandler
 )

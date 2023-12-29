@@ -1,9 +1,9 @@
 diff --git a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
-index a552a4183..5b247dd3c 100644
+index 5b247dd3c..a552a4183 100644
 --- a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
 +++ b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
-@@ -21 +20,0 @@ import java.io.IOException;
--import java.io.Serializable;
-@@ -44 +43 @@ import java.util.TimeZone;
--public class TimeStamp implements Serializable, Comparable<TimeStamp>
-+public class TimeStamp implements java.io.Serializable, Comparable<TimeStamp>
+@@ -20,0 +21 @@ import java.io.IOException;
++import java.io.Serializable;
+@@ -43 +44 @@ import java.util.TimeZone;
+-public class TimeStamp implements java.io.Serializable, Comparable<TimeStamp>
++public class TimeStamp implements Serializable, Comparable<TimeStamp>

@@ -117,8 +117,6 @@ listEntry
 )
 ;
 }
-else
-{
 for
 (
 final
@@ -153,7 +151,6 @@ ftpFileEntryParser
 return
 matched
 ;
-}
 }
 }
 return

@@ -33,9 +33,9 @@
  T E S T S
 -------------------------------------------------------
 Running org.davidmoten.hilbert.BoxTest
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.144 sec
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.155 sec
 Running org.davidmoten.hilbert.HilbertCurveRendererTest
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 2.321 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 2.413 sec
 Running org.davidmoten.hilbert.HilbertCurveTest
 [Range [low=3, high=3], Range [low=4, high=6]]
 0	[0, 0]
@@ -46,13 +46,13 @@ Running org.davidmoten.hilbert.HilbertCurveTest
 length = 46
 [845160956002304, 772841539928063, 1110767956099071]
 [Range [low=5, high=7], Range [low=8, high=10]]
-Tests run: 36, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.254 sec
+Tests run: 36, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 35.593 sec
 Running org.davidmoten.hilbert.RangesTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec
 Running org.davidmoten.hilbert.UtilTest
 Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
 Running org.davidmoten.hilbert.WikipediaHilbertTest
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 sec
 
 Results :
 
@@ -64,6 +64,6 @@ Tests run: 59, Failures: 0, Errors: 0, Skipped: 1
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  47.791 s
-[INFO] Finished at: 2023-12-22T17:56:11+09:00
+[INFO] Total time:  43.962 s
+[INFO] Finished at: 2023-12-28T00:12:07+09:00
 [INFO] ------------------------------------------------------------------------

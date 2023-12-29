@@ -67,10 +67,12 @@ empty
 false
 ;
 private
+final
 boolean
 reverse
 ;
 private
+final
 String
 name
 ;
@@ -93,6 +95,7 @@ position
 0
 ;
 private
+final
 PropertyPointer
 propertyNodePointer
 ;
@@ -109,12 +112,15 @@ false
 public
 PropertyIterator
 (
+final
 PropertyOwnerPointer
 pointer
 ,
+final
 String
 name
 ,
+final
 boolean
 reverse
 ,
@@ -317,6 +323,8 @@ targetReady
 false
 ;
 }
+@
+Override
 public
 NodePointer
 getNodePointer
@@ -392,6 +400,7 @@ getValuePointer
 }
 catch
 (
+final
 Throwable
 t
 )
@@ -403,6 +412,7 @@ handle
 t
 )
 ;
+final
 NullPropertyPointer
 npp
 =
@@ -447,6 +457,8 @@ getValuePointer
 ;
 }
 }
+@
+Override
 public
 int
 getPosition
@@ -457,10 +469,13 @@ return
 position
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )
@@ -485,6 +500,7 @@ private
 boolean
 setPositionIndividualProperty
 (
+final
 int
 position
 )
@@ -527,6 +543,7 @@ return
 false
 ;
 }
+final
 int
 length
 =
@@ -640,6 +657,7 @@ private
 boolean
 setPositionAllProperties
 (
+final
 int
 position
 )
@@ -664,6 +682,7 @@ false
 int
 offset
 ;
+final
 int
 count
 =
@@ -957,6 +976,7 @@ protected
 void
 prepareForIndividualProperty
 (
+final
 String
 name
 )
@@ -969,6 +989,7 @@ empty
 =
 true
 ;
+final
 String
 [
 ]
@@ -1195,6 +1216,7 @@ getLength
 }
 catch
 (
+final
 Throwable
 t
 )

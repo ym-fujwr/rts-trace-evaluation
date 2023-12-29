@@ -11,17 +11,17 @@
 [INFO] Changes detected - recompiling the module! :source
 [INFO] Compiling 180 source files with javac [debug target 1.8] to target/classes
 [WARNING] bootstrap class path not set in conjunction with -source 8
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[99,80] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[99,80] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[100,87] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[100,87] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[101,78] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[101,78] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[136,86] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[136,86] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[137,100] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[137,100] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[138,82] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[138,82] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
 [INFO] 
 [INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ jitwatch-core ---
@@ -31,82 +31,82 @@
 [INFO] Changes detected - recompiling the module! :dependency
 [INFO] Compiling 39 source files with javac [debug target 1.8] to target/test-classes
 [WARNING] bootstrap class path not set in conjunction with -source 8
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestReport.java:[331,37] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestReport.java:[331,37] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestReport.java:[333,116] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestReport.java:[333,116] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestReport.java:[545,130] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestReport.java:[545,130] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestParseUtil.java:[440,82] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[49,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[70,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[98,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[299,37] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[127,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[537,37] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[156,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[773,37] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[183,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[988,37] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[212,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1053,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[241,101] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1097,41] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[268,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1157,41] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[293,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1475,97] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[325,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1724,97] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[351,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1829,115] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[379,114] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1874,41] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[392,37] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1932,41] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[420,110] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[2401,114] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[433,37] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[49,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[70,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[98,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[461,124] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[127,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[474,37] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[156,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[504,116] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[183,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[517,37] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[212,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestParseUtil.java:[440,82] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[241,101] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[307,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[327,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[350,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[371,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[299,37] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[268,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[537,37] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[293,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[773,37] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[325,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[988,37] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[351,99] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1053,99] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[379,114] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1097,41] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[392,37] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1157,41] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[420,110] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1475,97] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[433,37] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1724,97] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[461,124] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1829,115] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[474,37] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1874,41] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[504,116] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1932,41] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[517,37] found raw type: java.lang.Class
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[2401,114] found raw type: java.lang.Class
   missing type arguments for generic class java.lang.Class<T>
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[307,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[327,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[350,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
-[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[371,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
 [INFO] 
 [INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ jitwatch-core ---
 [INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
@@ -114,28 +114,26 @@
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running org.adoptopenjdk.jitwatch.test.TestBytecodeLoader
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.733 s -- in org.adoptopenjdk.jitwatch.test.TestBytecodeLoader
 [INFO] Running org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses
-2023-12-26T07:27:38.423276400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses4602679611140631371 /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch2/workingDir/core/src/main/resources/examples/TestInner.java 
-2023-12-26T07:27:39.322907Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
-2023-12-26T07:27:39.350978700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
-2023-12-26T07:27:39.351200800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses4602679611140631371 TestInner 
-2023-12-26T07:27:39.860375900Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
-2023-12-26T07:27:39.862477200Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
-2023-12-26T07:27:39.862616600Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses4602679611140631371 TestInner$Inner1 
-2023-12-26T07:27:40.362893800Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
-2023-12-26T07:27:40.364432Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
-2023-12-26T07:27:40.364531Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses4602679611140631371 TestInner$Inner1$Inner2 
-[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.477 s -- in org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses
+2023-12-29T12:47:21.495260Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses17748865774022373965 /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/resources/examples/TestInner.java 
+2023-12-29T12:47:22.706105Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2023-12-29T12:47:22.751935900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2023-12-29T12:47:22.752184100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses17748865774022373965 TestInner 
+2023-12-29T12:47:24.175419400Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2023-12-29T12:47:24.176950Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2023-12-29T12:47:24.177067200Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses17748865774022373965 TestInner$Inner1 
+2023-12-29T12:47:24.597373900Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2023-12-29T12:47:24.598926100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2023-12-29T12:47:24.599535300Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses17748865774022373965 TestInner$Inner1$Inner2 
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.823 s -- in org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  14.524 s
-[INFO] Finished at: 2023-12-26T16:27:40+09:00
+[INFO] Total time:  14.695 s
+[INFO] Finished at: 2023-12-29T21:47:25+09:00
 [INFO] ------------------------------------------------------------------------

@@ -121,9 +121,11 @@ position
 public
 JDOMAttributeIterator
 (
+final
 NodePointer
 parent
 ,
+final
 QName
 name
 )
@@ -145,6 +147,7 @@ instanceof
 Element
 )
 {
+final
 Element
 element
 =
@@ -157,6 +160,7 @@ getNode
 (
 )
 ;
+final
 String
 prefix
 =
@@ -197,6 +201,7 @@ XML_NAMESPACE
 }
 else
 {
+final
 String
 uri
 =
@@ -257,6 +262,7 @@ Namespace
 NO_NAMESPACE
 ;
 }
+final
 String
 lname
 =
@@ -284,6 +290,7 @@ ArrayList
 (
 )
 ;
+final
 Attribute
 attr
 =
@@ -321,6 +328,7 @@ ArrayList
 (
 )
 ;
+final
 List
 allAttributes
 =
@@ -349,6 +357,7 @@ i
 ++
 )
 {
+final
 Attribute
 attr
 =
@@ -394,6 +403,8 @@ attr
 }
 }
 }
+@
+Override
 public
 NodePointer
 getNodePointer
@@ -462,6 +473,8 @@ index
 )
 ;
 }
+@
+Override
 public
 int
 getPosition
@@ -472,10 +485,13 @@ return
 position
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )

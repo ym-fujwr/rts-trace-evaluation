@@ -28,7 +28,7 @@
 [INFO] --- buildnumber-maven-plugin:3.0.0:create (default) @ commons-net ---
 [INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsNet/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsNet/workingDir
-[INFO] Storing buildNumber: null at timestamp: 1703569207957
+[INFO] Storing buildNumber: null at timestamp: 1703850799966
 [WARNING] Cannot get the branch information from the git repository: 
 Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 
@@ -72,13 +72,13 @@ Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running org.apache.commons.net.ftp.FTPClientTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.733 s - in org.apache.commons.net.ftp.FTPClientTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.315 s - in org.apache.commons.net.ftp.FTPClientTest
 [INFO] Running org.apache.commons.net.ftp.FTPSClientTest
-[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.196 s - in org.apache.commons.net.ftp.FTPSClientTest
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.19 s - in org.apache.commons.net.ftp.FTPSClientTest
 [INFO] Running org.apache.commons.net.ftp.parser.NTFTPEntryParserTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.098 s - in org.apache.commons.net.ftp.parser.NTFTPEntryParserTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.net.ftp.parser.NTFTPEntryParserTest
 [INFO] Running org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s - in org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s - in org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -87,6 +87,6 @@ Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  21.255 s
-[INFO] Finished at: 2023-12-26T14:40:26+09:00
+[INFO] Total time:  17.475 s
+[INFO] Finished at: 2023-12-29T20:53:35+09:00
 [INFO] ------------------------------------------------------------------------

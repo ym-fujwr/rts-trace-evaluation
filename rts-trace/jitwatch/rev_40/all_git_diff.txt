@@ -1,2521 +1,2519 @@
 diff --git a/PRIVACY b/PRIVACY
-index 8bc0edf4..2f34a6bf 100644
+index 2f34a6bf..8bc0edf4 100644
 --- a/PRIVACY
 +++ b/PRIVACY
 @@ -4,2 +4,2 @@ JITWatch Privacy Policy
--Version:            1.02
--Date   :      2021-12-03
-+Version:            1.01
-+Date   :      2017-11-10
-@@ -37,0 +38,3 @@ dependencies required to compile, package, test, and execute the build targets.
-+If you want to build JITWatch without downloading additional build dependencies please use the provided Apache 
-+Ant build script (build.xml) which uses the local dependencies found in the lib folder.
-+
-@@ -43 +46,10 @@ JITWatch contains a screenshot feature. If you share screenshots from JITWatch,
--XML or disassembled compiled methods you may divulge information about your program.
-+XML or disassembled compiled methods you may divulge information about your program that can be used to reverse 
-+engineer the source code.
-+
-+====================
-+jitwatch.com website
-+====================
-+
-+The jitwatch.com website is served over HTTPS using LetsEncrypt SSL certificates. The website does not set any 
-+cookies and does not use any JavaScript or tracking code such as Google Analytics. Your IP address will be 
-+recorded in the webserver log files which are kept for up to 30 days for the purpose of diagnosing website errors.
+-Version:            1.01
+-Date   :      2017-11-10
++Version:            1.02
++Date   :      2021-12-03
+@@ -38,3 +37,0 @@ dependencies required to compile, package, test, and execute the build targets.
+-If you want to build JITWatch without downloading additional build dependencies please use the provided Apache 
+-Ant build script (build.xml) which uses the local dependencies found in the lib folder.
+-
+@@ -46,10 +43 @@ JITWatch contains a screenshot feature. If you share screenshots from JITWatch,
+-XML or disassembled compiled methods you may divulge information about your program that can be used to reverse 
+-engineer the source code.
+-
+-====================
+-jitwatch.com website
+-====================
+-
+-The jitwatch.com website is served over HTTPS using LetsEncrypt SSL certificates. The website does not set any 
+-cookies and does not use any JavaScript or tracking code such as Google Analytics. Your IP address will be 
+-recorded in the webserver log files which are kept for up to 30 days for the purpose of diagnosing website errors.
++XML or disassembled compiled methods you may divulge information about your program.
 diff --git a/QUICKSTART.txt b/QUICKSTART.txt
-index 87e08815..aaa1d8c7 100644
+index aaa1d8c7..87e08815 100644
 --- a/QUICKSTART.txt
 +++ b/QUICKSTART.txt
-@@ -5 +5,3 @@ Build and install JITWatch
--mvn clean package
-+The JITWatch user interface is built using JavaFX. This is included in the Oracle JDK. If you are using a JDK that does not include JavaFX (e.g. Azul Zulu, or some flavour of packaged OpenJDK on Linux) then you can download a pre-built OpenJFX jar from https://chriswhocodes.com and put it in your build classpath.
-+
-+mvn clean install
+@@ -5,3 +5 @@ Build and install JITWatch
+-The JITWatch user interface is built using JavaFX. This is included in the Oracle JDK. If you are using a JDK that does not include JavaFX (e.g. Azul Zulu, or some flavour of packaged OpenJDK on Linux) then you can download a pre-built OpenJFX jar from https://chriswhocodes.com and put it in your build classpath.
+-
+-mvn clean install
++mvn clean package
 diff --git a/README.md b/README.md
-index 94acfd0f..56502557 100644
+index 56502557..94acfd0f 100644
 --- a/README.md
 +++ b/README.md
-@@ -14 +14,4 @@ The JITWatch user interface is built using JavaFX which is downloaded as a maven
--For pre-JDK11 you will need to use a Java runtime that includes JavaFX.
-+For pre-JDK11 you will need to use a JDK that includes JavaFX.
-+
-+<h2>ant</h2>
-+<pre>ant clean compile test run</pre>
-@@ -23 +26 @@ For pre-JDK11 you will need to use a Java runtime that includes JavaFX.
--<pre># Build the code and then run
-+<pre># Build the code first with ant / maven / IDE
+@@ -14,4 +14 @@ The JITWatch user interface is built using JavaFX which is downloaded as a maven
+-For pre-JDK11 you will need to use a JDK that includes JavaFX.
+-
+-<h2>ant</h2>
+-<pre>ant clean compile test run</pre>
++For pre-JDK11 you will need to use a Java runtime that includes JavaFX.
+@@ -26 +23 @@ For pre-JDK11 you will need to use a JDK that includes JavaFX.
+-<pre># Build the code first with ant / maven / IDE
++<pre># Build the code and then run
 diff --git a/build.properties b/build.properties
-index af5c7e2a..162590e2 100644
+index 162590e2..af5c7e2a 100644
 --- a/build.properties
 +++ b/build.properties
 @@ -1 +1 @@
--version=1.4.4
-+version=1.4.2
+-version=1.4.2
++version=1.4.4
 diff --git a/build.xml b/build.xml
-new file mode 100644
-index 00000000..d108d5e9
---- /dev/null
-+++ b/build.xml
-@@ -0,0 +1,30 @@
-+<project name="jitwatch" default="all" basedir=".">
-+
-+	<target name="clean">
-+		<ant inheritAll="false" dir="core" target="clean" />
-+		<ant inheritAll="false" dir="ui" target="clean" />
-+	</target>
-+
-+	<target name="compile">
-+		<ant inheritAll="false" dir="core" target="compile" />
-+		<ant inheritAll="false" dir="ui" target="compile" />
-+	</target>
-+
-+	<target name="test">
-+		<ant inheritAll="false" dir="core" target="test" />
-+		<ant inheritAll="false" dir="ui" target="test" />
-+	</target>
-+
-+	<target name="jar">
-+		<ant inheritAll="false" dir="core" target="doJar" />
-+		<ant inheritAll="false" dir="ui" target="doJar" />
-+	</target>
-+
-+	<target name="run" depends="jar">
-+		<ant inheritAll="false" dir="core" target="doRun" />
-+		<ant inheritAll="false" dir="ui" target="doRun" />
-+	</target>
-+
-+	<target name="all" depends="jar" />
-+
-+</project>
+deleted file mode 100644
+index d108d5e9..00000000
+--- a/build.xml
++++ /dev/null
+@@ -1,30 +0,0 @@
+-<project name="jitwatch" default="all" basedir=".">
+-
+-	<target name="clean">
+-		<ant inheritAll="false" dir="core" target="clean" />
+-		<ant inheritAll="false" dir="ui" target="clean" />
+-	</target>
+-
+-	<target name="compile">
+-		<ant inheritAll="false" dir="core" target="compile" />
+-		<ant inheritAll="false" dir="ui" target="compile" />
+-	</target>
+-
+-	<target name="test">
+-		<ant inheritAll="false" dir="core" target="test" />
+-		<ant inheritAll="false" dir="ui" target="test" />
+-	</target>
+-
+-	<target name="jar">
+-		<ant inheritAll="false" dir="core" target="doJar" />
+-		<ant inheritAll="false" dir="ui" target="doJar" />
+-	</target>
+-
+-	<target name="run" depends="jar">
+-		<ant inheritAll="false" dir="core" target="doRun" />
+-		<ant inheritAll="false" dir="ui" target="doRun" />
+-	</target>
+-
+-	<target name="all" depends="jar" />
+-
+-</project>
 diff --git a/core/build.gradle b/core/build.gradle
-index 26886931..5154dd0f 100644
+index 5154dd0f..26886931 100644
 --- a/core/build.gradle
 +++ b/core/build.gradle
 @@ -7 +7 @@ dependencies {
--    compile 'com.chrisnewland.freelogj:freelogj:0.0.1'
-+    compile 'org.slf4j:slf4j-api:1.7.30', 'ch.qos.logback:logback-classic:1.2.3', 'ch.qos.logback:logback-core:1.2.3'
+-    compile 'org.slf4j:slf4j-api:1.7.30', 'ch.qos.logback:logback-classic:1.2.3', 'ch.qos.logback:logback-core:1.2.3'
++    compile 'com.chrisnewland.freelogj:freelogj:0.0.1'
 diff --git a/core/build.xml b/core/build.xml
-new file mode 100644
-index 00000000..6695c3f8
---- /dev/null
-+++ b/core/build.xml
-@@ -0,0 +1,90 @@
-+<project name="jitwatch-core" default="all" basedir=".">
-+
-+	<property name="main_src" value="${basedir}/src/main/java" />
-+	<property name="main_resources" value="${basedir}/src/main/resources" />
-+	<property name="test_src" value="${basedir}/src/test/java" />
-+	<property name="test_resources" value="${basedir}/src/test/resources" />
-+	<property name="target" location="${basedir}/target" />
-+	<property name="main_classes" location="${target}/classes" />
-+	<property name="test_classes" location="${target}/test-classes" />
-+	<property name="lib" value="../lib" />
-+	<property environment="env" />
-+	<loadproperties srcfile="../build.properties" />
-+
-+	<target name="clean">
-+		<delete quiet="true" dir="${target}" />
-+	</target>
-+
-+	<target name="init">
-+		<mkdir dir="${target}" />
-+	</target>
-+
-+	<path id="classpath">
-+		<fileset dir="${lib}" includes="**/*.jar" />
-+		<filelist>
-+			<file name="${env.JAVA_HOME}/jre/lib/jfxrt.jar" />
-+			<!-- Java 8 stores jfxrt in a different location -->
-+			<file name="${env.JAVA_HOME}/jre/lib/ext/jfxrt.jar" />
-+		</filelist>
-+	</path>
-+
-+	<target name="compile" depends="init">
-+		<mkdir dir="${main_classes}" />
-+		<javac srcdir="${main_src}" destdir="${main_classes}" includeantruntime="false" debug="true" debuglevel="lines,vars,source">
-+			<classpath>
-+				<path refid="classpath" />
-+			</classpath>
-+		</javac>
-+
-+		<copy todir="${main_classes}">
-+			<fileset dir="${main_resources}" />
-+		</copy>
-+
-+		<mkdir dir="${test_classes}" />
-+		<javac srcdir="${test_src}" destdir="${test_classes}" includeantruntime="false" debug="true" debuglevel="lines,vars,source">
-+			<classpath>
-+				<path refid="classpath" />
-+				<dirset dir="${main_classes}" />
-+			</classpath>
-+		</javac>
-+
-+		<copy todir="${test_classes}">
-+			<fileset dir="${test_resources}" />
-+		</copy>
-+	</target>
-+
-+	<target name="test" depends="compile, doTest" />
-+
-+	<target name="doTest">
-+		<mkdir dir="${target}/test-output" />
-+		<junit printsummary="yes" haltonerror="yes" fork="yes">
-+			<jvmarg value="-Duser.dir=${basedir}" />
-+			<classpath>
-+				<path refid="classpath" />
-+				<pathelement path="${main_classes}" />
-+				<pathelement path="${test_classes}" />
-+			</classpath>
-+
-+			<formatter type="plain" />
-+
-+			<batchtest fork="yes" todir="${target}/test-output">
-+				<fileset dir="${test_src}" includes="**/Test*.java" />
-+			</batchtest>
-+		</junit>
-+	</target>
-+
-+	<target name="jar" depends="test, doJar" />
-+
-+	<target name="doJar" depends="compile">
-+		<jar destfile="${target}/jitwatch-core-${version}.jar">
-+			<fileset dir="${main_classes}" />
-+		</jar>
-+	</target>
-+
-+	<target name="run" depends="jar, doRun" />
-+
-+	<target name="doRun" />
-+
-+	<target name="all" depends="jar" />
-+
-+</project>
+deleted file mode 100644
+index 6695c3f8..00000000
+--- a/core/build.xml
++++ /dev/null
+@@ -1,90 +0,0 @@
+-<project name="jitwatch-core" default="all" basedir=".">
+-
+-	<property name="main_src" value="${basedir}/src/main/java" />
+-	<property name="main_resources" value="${basedir}/src/main/resources" />
+-	<property name="test_src" value="${basedir}/src/test/java" />
+-	<property name="test_resources" value="${basedir}/src/test/resources" />
+-	<property name="target" location="${basedir}/target" />
+-	<property name="main_classes" location="${target}/classes" />
+-	<property name="test_classes" location="${target}/test-classes" />
+-	<property name="lib" value="../lib" />
+-	<property environment="env" />
+-	<loadproperties srcfile="../build.properties" />
+-
+-	<target name="clean">
+-		<delete quiet="true" dir="${target}" />
+-	</target>
+-
+-	<target name="init">
+-		<mkdir dir="${target}" />
+-	</target>
+-
+-	<path id="classpath">
+-		<fileset dir="${lib}" includes="**/*.jar" />
+-		<filelist>
+-			<file name="${env.JAVA_HOME}/jre/lib/jfxrt.jar" />
+-			<!-- Java 8 stores jfxrt in a different location -->
+-			<file name="${env.JAVA_HOME}/jre/lib/ext/jfxrt.jar" />
+-		</filelist>
+-	</path>
+-
+-	<target name="compile" depends="init">
+-		<mkdir dir="${main_classes}" />
+-		<javac srcdir="${main_src}" destdir="${main_classes}" includeantruntime="false" debug="true" debuglevel="lines,vars,source">
+-			<classpath>
+-				<path refid="classpath" />
+-			</classpath>
+-		</javac>
+-
+-		<copy todir="${main_classes}">
+-			<fileset dir="${main_resources}" />
+-		</copy>
+-
+-		<mkdir dir="${test_classes}" />
+-		<javac srcdir="${test_src}" destdir="${test_classes}" includeantruntime="false" debug="true" debuglevel="lines,vars,source">
+-			<classpath>
+-				<path refid="classpath" />
+-				<dirset dir="${main_classes}" />
+-			</classpath>
+-		</javac>
+-
+-		<copy todir="${test_classes}">
+-			<fileset dir="${test_resources}" />
+-		</copy>
+-	</target>
+-
+-	<target name="test" depends="compile, doTest" />
+-
+-	<target name="doTest">
+-		<mkdir dir="${target}/test-output" />
+-		<junit printsummary="yes" haltonerror="yes" fork="yes">
+-			<jvmarg value="-Duser.dir=${basedir}" />
+-			<classpath>
+-				<path refid="classpath" />
+-				<pathelement path="${main_classes}" />
+-				<pathelement path="${test_classes}" />
+-			</classpath>
+-
+-			<formatter type="plain" />
+-
+-			<batchtest fork="yes" todir="${target}/test-output">
+-				<fileset dir="${test_src}" includes="**/Test*.java" />
+-			</batchtest>
+-		</junit>
+-	</target>
+-
+-	<target name="jar" depends="test, doJar" />
+-
+-	<target name="doJar" depends="compile">
+-		<jar destfile="${target}/jitwatch-core-${version}.jar">
+-			<fileset dir="${main_classes}" />
+-		</jar>
+-	</target>
+-
+-	<target name="run" depends="jar, doRun" />
+-
+-	<target name="doRun" />
+-
+-	<target name="all" depends="jar" />
+-
+-</project>
 diff --git a/core/pom.xml b/core/pom.xml
-index 077bcf71..4440253b 100644
+index 4440253b..077bcf71 100644
 --- a/core/pom.xml
 +++ b/core/pom.xml
-@@ -2,28 +2,67 @@
--         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
--         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
--    <modelVersion>4.0.0</modelVersion>
+@@ -2,67 +2,28 @@
+-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+-	<modelVersion>4.0.0</modelVersion>
 -
--    <parent>
--        <groupId>com.chrisnewland</groupId>
--        <artifactId>jitwatch-parent</artifactId>
--        <version>1.4.4</version>
--    </parent>
+-	<parent>
+-		<groupId>com.chrisnewland</groupId>
+-		<artifactId>jitwatch-parent</artifactId>
+-		<version>1.4.2</version>
+-	</parent>
 -
--    <artifactId>jitwatch-core</artifactId>
+-	<artifactId>jitwatch-core</artifactId>
 -
--    <name>JITWatch Core</name>
+-	<name>JITWatch Core</name>
 -
--    <dependencies>
--        <dependency>
--            <groupId>com.chrisnewland</groupId>
--            <artifactId>FreeLogJ</artifactId>
--            <version>0.0.1</version>
--        </dependency>
+-	<!-- ======== Dependencies ======== -->
+-	<dependencyManagement>
+-		<dependencies>
 -
--        <dependency>
--            <groupId>junit</groupId>
--            <artifactId>junit</artifactId>
--            <version>${junit.version}</version>
--            <scope>test</scope>
--        </dependency>
--    </dependencies>
-+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-+	<modelVersion>4.0.0</modelVersion>
+-			<!-- ======== SLF4J Logging Framework ======== -->
+-			<dependency>
+-				<groupId>org.slf4j</groupId>
+-				<artifactId>slf4j-api</artifactId>
+-				<version>${slf4j.version}</version>
+-			</dependency>
+-
+-			<!-- ======== Logback bindings for SLF4J ======== -->
+-			<dependency>
+-				<groupId>ch.qos.logback</groupId>
+-				<artifactId>logback-classic</artifactId>
+-				<version>${logback.version}</version>
+-			</dependency>
+-
+-			<dependency>
+-				<groupId>ch.qos.logback</groupId>
+-				<artifactId>logback-core</artifactId>
+-				<version>${logback.version}</version>
+-			</dependency>
+-
+-			<!-- ======== JUnit 4 ======== -->
+-			<dependency>
+-				<groupId>junit</groupId>
+-				<artifactId>junit</artifactId>
+-				<version>${junit.version}</version>
+-				<scope>test</scope>
+-			</dependency>
+-		</dependencies>
+-	</dependencyManagement>
+-
+-	<dependencies>
+-		<dependency>
+-			<groupId>org.slf4j</groupId>
+-			<artifactId>slf4j-api</artifactId>
+-		</dependency>
+-		<dependency>
+-			<groupId>ch.qos.logback</groupId>
+-			<artifactId>logback-classic</artifactId>
+-		</dependency>
+-		<dependency>
+-			<groupId>ch.qos.logback</groupId>
+-			<artifactId>logback-core</artifactId>
+-		</dependency>
+-		<dependency>
+-			<groupId>junit</groupId>
+-			<artifactId>junit</artifactId>
+-		</dependency>
+-	</dependencies>
+-
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
 +
-+	<parent>
-+		<groupId>com.chrisnewland</groupId>
-+		<artifactId>jitwatch-parent</artifactId>
-+		<version>1.4.2</version>
-+	</parent>
++    <parent>
++        <groupId>com.chrisnewland</groupId>
++        <artifactId>jitwatch-parent</artifactId>
++        <version>1.4.4</version>
++    </parent>
 +
-+	<artifactId>jitwatch-core</artifactId>
++    <artifactId>jitwatch-core</artifactId>
 +
-+	<name>JITWatch Core</name>
++    <name>JITWatch Core</name>
 +
-+	<!-- ======== Dependencies ======== -->
-+	<dependencyManagement>
-+		<dependencies>
++    <dependencies>
++        <dependency>
++            <groupId>com.chrisnewland</groupId>
++            <artifactId>FreeLogJ</artifactId>
++            <version>0.0.1</version>
++        </dependency>
 +
-+			<!-- ======== SLF4J Logging Framework ======== -->
-+			<dependency>
-+				<groupId>org.slf4j</groupId>
-+				<artifactId>slf4j-api</artifactId>
-+				<version>${slf4j.version}</version>
-+			</dependency>
-+
-+			<!-- ======== Logback bindings for SLF4J ======== -->
-+			<dependency>
-+				<groupId>ch.qos.logback</groupId>
-+				<artifactId>logback-classic</artifactId>
-+				<version>${logback.version}</version>
-+			</dependency>
-+
-+			<dependency>
-+				<groupId>ch.qos.logback</groupId>
-+				<artifactId>logback-core</artifactId>
-+				<version>${logback.version}</version>
-+			</dependency>
-+
-+			<!-- ======== JUnit 4 ======== -->
-+			<dependency>
-+				<groupId>junit</groupId>
-+				<artifactId>junit</artifactId>
-+				<version>${junit.version}</version>
-+				<scope>test</scope>
-+			</dependency>
-+		</dependencies>
-+	</dependencyManagement>
-+
-+	<dependencies>
-+		<dependency>
-+			<groupId>org.slf4j</groupId>
-+			<artifactId>slf4j-api</artifactId>
-+		</dependency>
-+		<dependency>
-+			<groupId>ch.qos.logback</groupId>
-+			<artifactId>logback-classic</artifactId>
-+		</dependency>
-+		<dependency>
-+			<groupId>ch.qos.logback</groupId>
-+			<artifactId>logback-core</artifactId>
-+		</dependency>
-+		<dependency>
-+			<groupId>junit</groupId>
-+			<artifactId>junit</artifactId>
-+		</dependency>
-+	</dependencies>
-+
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>${junit.version}</version>
++            <scope>test</scope>
++        </dependency>
++    </dependencies>
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/chain/CompileChainWalker.java b/core/src/main/java/org/adoptopenjdk/jitwatch/chain/CompileChainWalker.java
-index ff0495a9..8a45e3c2 100644
+index 8a45e3c2..ff0495a9 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/chain/CompileChainWalker.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/chain/CompileChainWalker.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -46,2 +46,2 @@ import org.adoptopenjdk.jitwatch.util.TooltipUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/compilation/CompilationUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/compilation/CompilationUtil.java
-index df5d4937..103897a8 100644
+index 103897a8..df5d4937 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/compilation/CompilationUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/compilation/CompilationUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2018 Chris Newland.
+- * Copyright (c) 2013-2018 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -41,2 +41,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/compilation/codecache/CodeCacheEventWalker.java b/core/src/main/java/org/adoptopenjdk/jitwatch/compilation/codecache/CodeCacheEventWalker.java
-index b66449fe..24a27209 100644
+index 24a27209..b66449fe 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/compilation/codecache/CodeCacheEventWalker.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/compilation/codecache/CodeCacheEventWalker.java
 @@ -2 +2 @@
-- * Copyright (c) 2017-2021 Chris Newland.
-+ * Copyright (c) 2017 Chris Newland.
+- * Copyright (c) 2017 Chris Newland.
++ * Copyright (c) 2017-2021 Chris Newland.
 @@ -14,2 +14,2 @@ import org.adoptopenjdk.jitwatch.model.IReadOnlyJITDataModel;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -36 +36 @@ public class CodeCacheEventWalker extends AbstractCompilationWalker
--	{
-+	{			
+-	{			
++	{
 @@ -89 +89 @@ public class CodeCacheEventWalker extends AbstractCompilationWalker
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java b/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
-index 07c183d3..9e93232c 100644
+index 9e93232c..07c183d3 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -30,2 +30,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -922 +922 @@ public class JITWatchConfig
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/core/TagProcessor.java b/core/src/main/java/org/adoptopenjdk/jitwatch/core/TagProcessor.java
-index dbb8dd5c..87272a85 100644
+index 87272a85..dbb8dd5c 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/core/TagProcessor.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/core/TagProcessor.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -24,2 +24,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/demo/MakeHotSpotLog.java b/core/src/main/java/org/adoptopenjdk/jitwatch/demo/MakeHotSpotLog.java
-index 4135137f..7dbc85be 100644
+index 7dbc85be..4135137f 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/demo/MakeHotSpotLog.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/demo/MakeHotSpotLog.java
 @@ -8,2 +8,2 @@ package org.adoptopenjdk.jitwatch.demo;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/histo/InlineSizeHistoVisitable.java b/core/src/main/java/org/adoptopenjdk/jitwatch/histo/InlineSizeHistoVisitable.java
-index d7557c0d..8fb31b74 100644
+index 8fb31b74..d7557c0d 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/histo/InlineSizeHistoVisitable.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/histo/InlineSizeHistoVisitable.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -48,2 +48,2 @@ import org.adoptopenjdk.jitwatch.model.Tag;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -193 +193 @@ public class InlineSizeHistoVisitable extends AbstractHistoVisitable
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/hotthrow/HotThrowFinder.java b/core/src/main/java/org/adoptopenjdk/jitwatch/hotthrow/HotThrowFinder.java
-index a291aaff..fef89668 100644
+index fef89668..a291aaff 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/hotthrow/HotThrowFinder.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/hotthrow/HotThrowFinder.java
 @@ -2 +2 @@
-- * Copyright (c) 2016-2021 Chris Newland.
-+ * Copyright (c) 2016-2020 Chris Newland.
+- * Copyright (c) 2016-2020 Chris Newland.
++ * Copyright (c) 2016-2021 Chris Newland.
 @@ -53,2 +53,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/inline/HeadlessInlineVisitor.java b/core/src/main/java/org/adoptopenjdk/jitwatch/inline/HeadlessInlineVisitor.java
-index d8021089..bf792358 100644
+index bf792358..d8021089 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/inline/HeadlessInlineVisitor.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/inline/HeadlessInlineVisitor.java
 @@ -2 +2 @@
-- * Copyright (c) 2015-2021 Jean Phillipe BEMPEL
-+ * Copyright (c) 2015-2016 Jean Phillipe BEMPEL
+- * Copyright (c) 2015-2016 Jean Phillipe BEMPEL
++ * Copyright (c) 2015-2021 Jean Phillipe BEMPEL
 @@ -38,2 +38,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/intrinsic/IntrinsicFinder.java b/core/src/main/java/org/adoptopenjdk/jitwatch/intrinsic/IntrinsicFinder.java
-index d9253b24..5098061b 100644
+index 5098061b..d9253b24 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/intrinsic/IntrinsicFinder.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/intrinsic/IntrinsicFinder.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -48,2 +48,2 @@ import org.adoptopenjdk.jitwatch.model.Tag;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/launch/LaunchHeadless.java b/core/src/main/java/org/adoptopenjdk/jitwatch/launch/LaunchHeadless.java
-index 8d289c80..3cbec49e 100644
+index 3cbec49e..8d289c80 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/launch/LaunchHeadless.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/launch/LaunchHeadless.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2018 Chris Newland.
-@@ -19 +18,0 @@ import java.util.List;
--import com.chrisnewland.freelogj.LoggerFactory;
-@@ -54,3 +53 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--		LoggerFactory.setLogFile(Paths.get("jitwatch.out"));
--
--		String compilationLog = args[args.length - 1];
-+		String logFile = args[args.length - 1];
-@@ -68 +65 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
-+		
-@@ -70 +67 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
-+		
-@@ -72 +69 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
-+		
-@@ -75 +72 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--		parser.processLogFile(new File(compilationLog), this);
-+		parser.processLogFile(new File(logFile), this);
-@@ -78 +75,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--	@Override public void handleLogEntry(String entry)
-+	@Override
-+	public void handleLogEntry(String entry)
-@@ -82 +80,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--	@Override public void handleErrorEntry(String entry)
-+	@Override
-+	public void handleErrorEntry(String entry)
-@@ -90 +89,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--	@Override public void handleJITEvent(JITEvent event)
-+	@Override
-+	public void handleJITEvent(JITEvent event)
-@@ -101 +101,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--	@Override public void handleReadStart()
-+	@Override
-+	public void handleReadStart()
-@@ -105 +106,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--	@Override public void handleError(String title, String body)
-+	@Override
-+	public void handleError(String title, String body)
-@@ -145 +147 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
-+				
-@@ -149 +151 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
-+				
-@@ -153 +155 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
-+				
-@@ -157 +159 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
-+				
-@@ -161 +163 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
-+				
-@@ -165 +167 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
-+				
-@@ -169,4 +171,4 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--
--			// case "-o":
--			// showOptimizedVirtualCalls = true;
--			// break;s
-+				
-+				// case "-o":
-+				// showOptimizedVirtualCalls = true;
-+				// break;s
-@@ -177 +179,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
--	@Override public void handleReadComplete()
-+	@Override
-+	public void handleReadComplete()
-@@ -315 +318 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+- * Copyright (c) 2013-2018 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
+@@ -18,0 +19 @@ import java.util.List;
++import com.chrisnewland.freelogj.LoggerFactory;
+@@ -53 +54,3 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-		String logFile = args[args.length - 1];
++		LoggerFactory.setLogFile(Paths.get("jitwatch.out"));
++
++		String compilationLog = args[args.length - 1];
+@@ -65 +68 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-		
++
+@@ -67 +70 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-		
++
+@@ -69 +72 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-		
++
+@@ -72 +75 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-		parser.processLogFile(new File(logFile), this);
++		parser.processLogFile(new File(compilationLog), this);
+@@ -75,2 +78 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override
+-	public void handleLogEntry(String entry)
++	@Override public void handleLogEntry(String entry)
+@@ -80,2 +82 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override
+-	public void handleErrorEntry(String entry)
++	@Override public void handleErrorEntry(String entry)
+@@ -89,2 +90 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override
+-	public void handleJITEvent(JITEvent event)
++	@Override public void handleJITEvent(JITEvent event)
+@@ -101,2 +101 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override
+-	public void handleReadStart()
++	@Override public void handleReadStart()
+@@ -106,2 +105 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override
+-	public void handleError(String title, String body)
++	@Override public void handleError(String title, String body)
+@@ -147 +145 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-				
++
+@@ -151 +149 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-				
++
+@@ -155 +153 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-				
++
+@@ -159 +157 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-				
++
+@@ -163 +161 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-				
++
+@@ -167 +165 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-				
++
+@@ -171,4 +169,4 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-				
+-				// case "-o":
+-				// showOptimizedVirtualCalls = true;
+-				// break;s
++
++			// case "-o":
++			// showOptimizedVirtualCalls = true;
++			// break;s
+@@ -179,2 +177 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override
+-	public void handleReadComplete()
++	@Override public void handleReadComplete()
+@@ -318 +315 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java b/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
-index 69eea89a..5f370299 100644
+index 5f370299..69eea89a 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -68,2 +68,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/loader/ResourceLoader.java b/core/src/main/java/org/adoptopenjdk/jitwatch/loader/ResourceLoader.java
-index c0db95d1..6c399e72 100644
+index 6c399e72..c0db95d1 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/loader/ResourceLoader.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/loader/ResourceLoader.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -29,2 +29,2 @@ import org.adoptopenjdk.jitwatch.util.FileUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/AbstractMetaMember.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/AbstractMetaMember.java
-index 9a53a71b..20fdab2a 100644
+index 20fdab2a..9a53a71b 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/AbstractMetaMember.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/AbstractMetaMember.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -40,2 +40,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -606 +606 @@ public abstract class AbstractMetaMember implements IMetaMember, Comparable<IMet
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/JITDataModel.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/JITDataModel.java
-index d27e3c36..83223e0e 100644
+index 83223e0e..d27e3c36 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/JITDataModel.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/JITDataModel.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2019 Chris Newland.
+- * Copyright (c) 2013-2019 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -35,2 +35,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/MemberSignatureParts.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/MemberSignatureParts.java
-index b8aa0037..3bf38792 100644
+index 3bf38792..b8aa0037 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/MemberSignatureParts.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/MemberSignatureParts.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2018 Chris Newland.
+- * Copyright (c) 2013-2018 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -45,2 +45,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/MetaClass.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/MetaClass.java
-index 9b869fb6..feac5e0d 100644
+index feac5e0d..9b869fb6 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/MetaClass.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/MetaClass.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2015 Chris Newland.
+- * Copyright (c) 2013-2015 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -21,2 +21,2 @@ import java.util.concurrent.CopyOnWriteArrayList;
--//import com.chrisnewland.freelogj.Logger;
--//import com.chrisnewland.freelogj.LoggerFactory;
-+//import org.slf4j.Logger;
-+//import org.slf4j.LoggerFactory;
+-//import org.slf4j.Logger;
+-//import org.slf4j.LoggerFactory;
++//import com.chrisnewland.freelogj.Logger;
++//import com.chrisnewland.freelogj.LoggerFactory;
 @@ -25,2 +25,2 @@ import org.adoptopenjdk.jitwatch.model.bytecode.ClassBC;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/PackageManager.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/PackageManager.java
-index 32510a89..d9beb11b 100644
+index d9beb11b..32510a89 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/PackageManager.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/PackageManager.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2015 Chris Newland.
+- * Copyright (c) 2013-2015 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -18,2 +18,2 @@ import java.util.concurrent.CopyOnWriteArrayList;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/Task.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/Task.java
-index aa84c57a..8f690281 100644
+index 8f690281..aa84c57a 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/Task.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/Task.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -23,2 +23,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -132 +132 @@ public class Task extends Tag
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser.java
-index 7537db3d..13bfe387 100644
+index 13bfe387..7537db3d 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser.java
 @@ -2 +2 @@
-- * Copyright (c) 2017-2021 Chris Newland.
-+ * Copyright (c) 2017 Chris Newland.
+- * Copyright (c) 2017 Chris Newland.
++ * Copyright (c) 2017-2021 Chris Newland.
 @@ -19,2 +19,2 @@ import static org.adoptopenjdk.jitwatch.core.JITWatchConstants.S_SEMICOLON;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod.java
-index e9f0691e..95387ba5 100644
+index 95387ba5..e9f0691e 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -12,2 +12,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -140 +140 @@ public class AssemblyMethod
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyProcessor.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyProcessor.java
-index 1544857c..fe4f35ee 100644
+index fe4f35ee..1544857c 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyProcessor.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyProcessor.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2020 Chris Newland.
+- * Copyright (c) 2013-2020 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -27,2 +27,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -326 +326 @@ public class AssemblyProcessor
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyReference.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyReference.java
-index aa7afb1d..3c147ecf 100644
+index 3c147ecf..aa7afb1d 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyReference.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyReference.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2015 Chris Newland.
+- * Copyright (c) 2013-2015 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -17,2 +17,2 @@ import java.util.Set;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -143 +143 @@ public final class AssemblyReference
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil.java
-index 4dcc82b5..79bce100 100644
+index 79bce100..4dcc82b5 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2020 Chris Newland.
+- * Copyright (c) 2013-2020 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -10,2 +10,2 @@ import org.adoptopenjdk.jitwatch.model.assembly.x86.AssemblyParserX86;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -75 +75 @@ public final class AssemblyUtil
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationBuilder.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationBuilder.java
-index c9580100..f1098b4b 100644
+index f1098b4b..c9580100 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationBuilder.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationBuilder.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2018 Chris Newland.
+- * Copyright (c) 2013-2018 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -77,2 +77,2 @@ import org.adoptopenjdk.jitwatch.util.TooltipUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -869 +869 @@ public class BytecodeAnnotationBuilder extends AbstractCompilationVisitable
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationList.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationList.java
-index 3979a0ae..5a922805 100644
+index 5a922805..3979a0ae 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationList.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationList.java
 @@ -2 +2 @@
-- * Copyright (c) 2016-2021 Chris Newland.
-+ * Copyright (c) 2016 Chris Newland.
+- * Copyright (c) 2016 Chris Newland.
++ * Copyright (c) 2016-2021 Chris Newland.
 @@ -19,2 +19,2 @@ import java.util.TreeMap;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -94 +94 @@ public class BytecodeAnnotationList
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeInstruction.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeInstruction.java
-index bde06476..7bd2e045 100644
+index 7bd2e045..bde06476 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeInstruction.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeInstruction.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -22,2 +22,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
-index bfaa458d..292235fc 100644
+index 292235fc..bfaa458d 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
 @@ -22,2 +22,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/LineTable.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/LineTable.java
-index 438a5445..00cae543 100644
+index 00cae543..438a5445 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/LineTable.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/LineTable.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -16,2 +16,2 @@ import java.util.List;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -258 +258 @@ public class LineTable
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/MemberBytecode.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/MemberBytecode.java
-index d4580753..8163760a 100644
+index 8163760a..d4580753 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/MemberBytecode.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/MemberBytecode.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2015 Chris Newland.
+- * Copyright (c) 2013-2015 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -15,2 +15,2 @@ import org.adoptopenjdk.jitwatch.model.MemberSignatureParts;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -203 +203 @@ public class MemberBytecode
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/SourceMapper.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/SourceMapper.java
-index e85b0178..4e5b7979 100644
+index 4e5b7979..e85b0178 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/SourceMapper.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/SourceMapper.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2015 Chris Newland.
+- * Copyright (c) 2013-2015 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -17,2 +17,2 @@ import java.util.Map;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -137 +137 @@ public class SourceMapper
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/parser/AbstractLogParser.java b/core/src/main/java/org/adoptopenjdk/jitwatch/parser/AbstractLogParser.java
-index 5202a23a..2e4e56b2 100644
+index 2e4e56b2..5202a23a 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/parser/AbstractLogParser.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/parser/AbstractLogParser.java
 @@ -2 +2 @@
-- * Copyright (c) 2018-2021 Chris Newland.
-+ * Copyright (c) 2018 Chris Newland.
+- * Copyright (c) 2018 Chris Newland.
++ * Copyright (c) 2018-2021 Chris Newland.
 @@ -60,2 +60,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java
-index 978b4e0a..657395a5 100644
+index 657395a5..978b4e0a 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -21,2 +21,2 @@ import org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -178 +178 @@ public abstract class AbstractProcess implements IExternalProcess
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
-index 311c6711..0033d744 100644
+index 0033d744..311c6711 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -19,2 +19,2 @@ import org.adoptopenjdk.jitwatch.process.AbstractProcess;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -101 +101 @@ public class JavapProcess extends AbstractProcess
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java
-index d87e3b8b..70a5e720 100644
+index 70a5e720..d87e3b8b 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java
 @@ -2 +2 @@
-- * Copyright (c) 2017-2021 Chris Newland.
-+ * Copyright (c) 2017 Chris Newland.
+- * Copyright (c) 2017 Chris Newland.
++ * Copyright (c) 2017-2021 Chris Newland.
 @@ -22,2 +22,2 @@ import org.adoptopenjdk.jitwatch.loader.DisposableURLClassLoader;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/report/suggestion/SuggestionWalker.java b/core/src/main/java/org/adoptopenjdk/jitwatch/report/suggestion/SuggestionWalker.java
-index 1ed6f385..3d24a448 100644
+index 3d24a448..1ed6f385 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/report/suggestion/SuggestionWalker.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/report/suggestion/SuggestionWalker.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2020 Chris Newland.
+- * Copyright (c) 2013-2020 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -66,2 +66,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/toplist/AbstractTopListVisitable.java b/core/src/main/java/org/adoptopenjdk/jitwatch/toplist/AbstractTopListVisitable.java
-index 78972c00..58e06085 100644
+index 58e06085..78972c00 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/toplist/AbstractTopListVisitable.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/toplist/AbstractTopListVisitable.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2015 Chris Newland.
+- * Copyright (c) 2013-2015 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -19,2 +19,2 @@ import org.adoptopenjdk.jitwatch.treevisitor.TreeVisitor;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/ClassUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/ClassUtil.java
-index c044aea0..0d9b8915 100644
+index 0d9b8915..c044aea0 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/ClassUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/ClassUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2020 Chris Newland.
+- * Copyright (c) 2013-2020 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -10,2 +10,2 @@ import org.adoptopenjdk.jitwatch.loader.DisposableURLClassLoader;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
-index 9638afac..e26275cc 100644
+index e26275cc..9638afac 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2020 Chris Newland.
+- * Copyright (c) 2013-2020 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -16,2 +16,2 @@ import org.adoptopenjdk.jitwatch.util.OSUtil.OperatingSystem;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/FileUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/FileUtil.java
-index 59b97009..481b8d42 100644
+index 481b8d42..59b97009 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/FileUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/FileUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2020 Chris Newland.
+- * Copyright (c) 2013-2020 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -25,2 +25,2 @@ import java.util.zip.ZipInputStream;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -247 +247 @@ public final class FileUtil
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/JVMSUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/JVMSUtil.java
-index bb06bc2c..de78a989 100644
+index de78a989..bb06bc2c 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/JVMSUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/JVMSUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -9,2 +9,2 @@ import org.adoptopenjdk.jitwatch.model.bytecode.Opcode;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -179 +179 @@ public final class JVMSUtil
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java
-index 7b10042c..bbf2198d 100644
+index bbf2198d..7b10042c 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2015 Chris Newland.
+- * Copyright (c) 2013-2015 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -8,2 +8,2 @@ package org.adoptopenjdk.jitwatch.util;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java
-index 28b5aa54..94b27329 100644
+index 94b27329..28b5aa54 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -9,2 +9,2 @@ import org.adoptopenjdk.jitwatch.model.assembly.Architecture;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/ParseUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/ParseUtil.java
-index ef6d6f95..b53d7123 100644
+index b53d7123..ef6d6f95 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/ParseUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/ParseUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2018 Chris Newland.
+- * Copyright (c) 2013-2018 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -76,2 +76,2 @@ import org.adoptopenjdk.jitwatch.model.bytecode.BytecodeInstruction;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/VmVersionDetector.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/VmVersionDetector.java
-index c697f4b1..57ee27bd 100644
+index 57ee27bd..c697f4b1 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/VmVersionDetector.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/VmVersionDetector.java
 @@ -2 +2 @@
-- * Copyright (c) 2019-2021 Chris Newland.
-+ * Copyright (c) 2019 Chris Newland.
+- * Copyright (c) 2019 Chris Newland.
++ * Copyright (c) 2019-2021 Chris Newland.
 @@ -9,2 +9,2 @@ import org.adoptopenjdk.jitwatch.model.Tag;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/core/src/main/resources/logback.xml b/core/src/main/resources/logback.xml
-new file mode 100644
-index 00000000..322516dd
---- /dev/null
-+++ b/core/src/main/resources/logback.xml
-@@ -0,0 +1,52 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!--
-+
-+
-+     Copyright (c) 2013. All rights reserved.
-+
-+     DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-+
-+     This code is free software; you can redistribute it and/or modify it
-+     under the terms of the GNU General Public License version 2 only, as
-+     published by the Free Software Foundation.  Oracle designates this
-+     particular file as subject to the "Classpath" exception as provided
-+     by Oracle in the LICENSE file that accompanied this code.
-+
-+     This code is distributed in the hope that it will be useful, but WITHOUT
-+     ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+     FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-+     version 2 for more details (a copy is included in the LICENSE file that
-+     accompanied this code).
-+
-+     You should have received a copy of the GNU General Public License version
-+     2 along with this work; if not, write to the Free Software Foundation,
-+     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-+
-+-->
-+
-+<configuration debug="false">
-+  <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
-+
-+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-+    <encoder>
-+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
-+    </encoder>
-+  </appender>
-+
-+
-+ <appender name="FILE" class="ch.qos.logback.core.FileAppender"> 
-+    <File>jitwatch.out</File> 
-+    <append>false</append>
-+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
-+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
-+    </encoder>
-+  </appender>
-+
-+  <!-- Strictly speaking, the level attribute is not necessary since -->
-+  <!-- the level of the root level is set to DEBUG by default.       -->
-+  <root level="INFO">          
-+    <appender-ref ref="STDOUT" />
-+    <appender-ref ref="FILE" />
-+  </root>  
-+  
-+</configuration>
+deleted file mode 100644
+index 322516dd..00000000
+--- a/core/src/main/resources/logback.xml
++++ /dev/null
+@@ -1,52 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!--
+-
+-
+-     Copyright (c) 2013. All rights reserved.
+-
+-     DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+-
+-     This code is free software; you can redistribute it and/or modify it
+-     under the terms of the GNU General Public License version 2 only, as
+-     published by the Free Software Foundation.  Oracle designates this
+-     particular file as subject to the "Classpath" exception as provided
+-     by Oracle in the LICENSE file that accompanied this code.
+-
+-     This code is distributed in the hope that it will be useful, but WITHOUT
+-     ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+-     FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+-     version 2 for more details (a copy is included in the LICENSE file that
+-     accompanied this code).
+-
+-     You should have received a copy of the GNU General Public License version
+-     2 along with this work; if not, write to the Free Software Foundation,
+-     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-
+--->
+-
+-<configuration debug="false">
+-  <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+-
+-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+-    <encoder>
+-      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+-    </encoder>
+-  </appender>
+-
+-
+- <appender name="FILE" class="ch.qos.logback.core.FileAppender"> 
+-    <File>jitwatch.out</File> 
+-    <append>false</append>
+-    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
+-      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+-    </encoder>
+-  </appender>
+-
+-  <!-- Strictly speaking, the level attribute is not necessary since -->
+-  <!-- the level of the root level is set to DEBUG by default.       -->
+-  <root level="INFO">          
+-    <appender-ref ref="STDOUT" />
+-    <appender-ref ref="FILE" />
+-  </root>  
+-  
+-</configuration>
 diff --git a/core/src/main/resources/x86reference.xml b/core/src/main/resources/x86reference.xml
-index 26338a07..13adf593 100644
+index 13adf593..26338a07 100644
 --- a/core/src/main/resources/x86reference.xml
 +++ b/core/src/main/resources/x86reference.xml
-@@ -1,0 +2 @@
-+<!DOCTYPE x86reference SYSTEM "x86reference.dtd">
-@@ -3,3 +4,47 @@
--<x86reference
--  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
--  xsi:noNamespaceSchemaLocation="x86reference.xsd">
-+<!-- Visit http://ref.x86asm.net/ -->
-+
-+<!--
-+
-+Author: Karel Lejska a.k.a. MazeGen (mazegen gmail com)
-+
-+Short Description:
-+
-+This reference is intended to be precise opcode and instruction
-+set reference (including x86-64). Its principal aim is exact
-+definition of instruction parameters and attributes.
-+
-+- Minor Issues:
-+
-+83/1, 83/4, 83/6:
-+These short forms of OR, AND, and XOR instructions are documented
-+since 80386. They were probably working since 8086, 80186
-+or 80286, but I have no trustworthy information regarding this issue.
-+
-+D9/3 mod=11, DF/2 mod=11, DF/3 mod=11:
-+These encodings are documented in Intel 80287 manual at least. They
-+were probably working since 8086, 80186 or 80286, but I have no
-+trustworthy information regarding this issue.
-+
-+0F0D:
-+I am not sure since which Intel procesor was second multi-byte NOP (0F0D)
-+released. The reference sets it since Pentium Pro.
-+
-+0FAE /0 FXSAVE, 0FAE /1 FXRSTOR
-+Current Intel manuals say that these were introduced with PIII
-+processor. I can't find them documented in PIII manual though.
-+Because of this problem, these instructions are marked as introduced
-+with latter steppings of PIII processor.
-+
-+- Discussion:
-+
-+FF /3, FF /5:
-+Should I add this comment?
-+"The offset from the target operand is ignored when a call gate is used."
-+
-+LAR, LSL:
-+Should I add this comment?
-+"For all loads (regardless of source or destination sizing) only bits 16-0 are used. Other bits are ignored."
-+
-+-->
-+
-+<x86reference version="1.11">
-@@ -1345 +1390 @@
--	  <src type="b" address="X">(DS:)[rSI]</src>
-+	  <src type="b" address="X">(DS):[rSI]</src>
-@@ -1351 +1396 @@
--          <src type="b" address="X" displayed="no">(DS:)[rSI]</src>
-+          <src type="b" address="X" displayed="no">(DS):[rSI]</src>
-@@ -1514 +1559 @@
--	<note><brief>Jump short if not parity/parity odd (PF=0)</brief></note>
-+	<note><brief>Jump short if not parity/parity odd</brief></note>
-@@ -1805 +1850 @@
--        <grp1>gen</grp1><grp2>logical</grp2>
-+        <grp1>gen</grp1><grp2>arith</grp2><grp3>binary</grp3>
-@@ -1814 +1859 @@
--        <grp1>gen</grp1><grp2>logical</grp2>
-+        <grp1>gen</grp1><grp2>arith</grp2><grp3>binary</grp3>
-@@ -1861 +1906 @@
--      <entry direction="1" op_size="1" r="yes">
-+      <entry direction="1" op_size="0" r="yes">
-@@ -2890 +2935 @@
--      <entry op_size="1" alias="C1_4" doc="u" doc_ref="gen_note_SAL_C0_4_C1_4_D0_4_D1_4">
-+      <entry op_size="0" alias="C1_4" doc="u" doc_ref="gen_note_SAL_C0_4_C1_4_D0_4_D1_4">
-@@ -3969 +4013,0 @@
--	<pref>9B</pref>
-@@ -3970,0 +4015 @@
-+	<pref>9B</pref>
-@@ -4104 +4148,0 @@
--	<pref>9B</pref>
-@@ -4105,0 +4150 @@
-+	<pref>9B</pref>
-@@ -4517 +4561,0 @@
--	<pref>9B</pref>
-@@ -4518,0 +4563 @@
-+	<pref>9B</pref>
-@@ -4555 +4599,0 @@
--	<pref>9B</pref>
-@@ -4556,0 +4601 @@
-+	<pref>9B</pref>
-@@ -4593 +4637,0 @@
--	<pref>9B</pref>
-@@ -4594,0 +4639 @@
-+	<pref>9B</pref>
-@@ -4618 +4662,0 @@
--	<pref>9B</pref>
-@@ -4619,0 +4664 @@
-+	<pref>9B</pref>
-@@ -4643 +4687,0 @@
--	<pref>9B</pref>
-@@ -4644,0 +4689 @@
-+	<pref>9B</pref>
-@@ -5148 +5192,0 @@
--	<pref>9B</pref>
-@@ -5149,0 +5194 @@
-+	<pref>9B</pref>
-@@ -5182 +5226,0 @@
--	<pref>9B</pref>
-@@ -5183,0 +5228 @@
-+	<pref>9B</pref>
-@@ -5669 +5713,0 @@
--	<pref>9B</pref>
-@@ -5670,0 +5715 @@
-+	<pref>9B</pref>
-@@ -6231 +6276 @@
--      <entry op_size="0" lock="yes">
-+      <entry op_size="0">
-@@ -6237 +6282 @@
--      <entry op_size="0" lock="yes">
-+      <entry op_size="0">
-@@ -6299 +6344 @@
--	<syntax><mnem>TEST</mnem><src><a>E</a><t>vqp</t></src><src><a>I</a><t>vds</t></src></syntax>
-+	<syntax><mnem>TEST</mnem><src><a>E</a><t>vqp</t></src><src><a>I</a><t>vqp</t></src></syntax>
-@@ -6306 +6351 @@
--	<syntax><mnem>TEST</mnem><src><a>E</a><t>vqp</t></src><src><a>I</a><t>vds</t></src></syntax>
-+	<syntax><mnem>TEST</mnem><src><a>E</a><t>vqp</t></src><src><a>I</a><t>vqp</t></src></syntax>
-@@ -6311 +6356 @@
--      <entry op_size="1" lock="yes">
-+      <entry op_size="1">
-@@ -6317 +6362 @@
--      <entry op_size="1" lock="yes">
-+      <entry op_size="1">
-@@ -6336 +6381 @@
+@@ -2 +1,0 @@
+-<!DOCTYPE x86reference SYSTEM "x86reference.dtd">
+@@ -4,47 +3,3 @@
+-<!-- Visit http://ref.x86asm.net/ -->
+-
+-<!--
+-
+-Author: Karel Lejska a.k.a. MazeGen (mazegen gmail com)
+-
+-Short Description:
+-
+-This reference is intended to be precise opcode and instruction
+-set reference (including x86-64). Its principal aim is exact
+-definition of instruction parameters and attributes.
+-
+-- Minor Issues:
+-
+-83/1, 83/4, 83/6:
+-These short forms of OR, AND, and XOR instructions are documented
+-since 80386. They were probably working since 8086, 80186
+-or 80286, but I have no trustworthy information regarding this issue.
+-
+-D9/3 mod=11, DF/2 mod=11, DF/3 mod=11:
+-These encodings are documented in Intel 80287 manual at least. They
+-were probably working since 8086, 80186 or 80286, but I have no
+-trustworthy information regarding this issue.
+-
+-0F0D:
+-I am not sure since which Intel procesor was second multi-byte NOP (0F0D)
+-released. The reference sets it since Pentium Pro.
+-
+-0FAE /0 FXSAVE, 0FAE /1 FXRSTOR
+-Current Intel manuals say that these were introduced with PIII
+-processor. I can't find them documented in PIII manual though.
+-Because of this problem, these instructions are marked as introduced
+-with latter steppings of PIII processor.
+-
+-- Discussion:
+-
+-FF /3, FF /5:
+-Should I add this comment?
+-"The offset from the target operand is ignored when a call gate is used."
+-
+-LAR, LSL:
+-Should I add this comment?
+-"For all loads (regardless of source or destination sizing) only bits 16-0 are used. Other bits are ignored."
+-
+--->
+-
+-<x86reference version="1.11">
++<x86reference
++  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++  xsi:noNamespaceSchemaLocation="x86reference.xsd">
+@@ -1390 +1345 @@ Should I add this comment?
+-	  <src type="b" address="X">(DS):[rSI]</src>
++	  <src type="b" address="X">(DS:)[rSI]</src>
+@@ -1396 +1351 @@ Should I add this comment?
+-          <src type="b" address="X" displayed="no">(DS):[rSI]</src>
++          <src type="b" address="X" displayed="no">(DS:)[rSI]</src>
+@@ -1559 +1514 @@ Should I add this comment?
+-	<note><brief>Jump short if not parity/parity odd</brief></note>
++	<note><brief>Jump short if not parity/parity odd (PF=0)</brief></note>
+@@ -1850 +1805 @@ Should I add this comment?
+-        <grp1>gen</grp1><grp2>arith</grp2><grp3>binary</grp3>
++        <grp1>gen</grp1><grp2>logical</grp2>
+@@ -1859 +1814 @@ Should I add this comment?
+-        <grp1>gen</grp1><grp2>arith</grp2><grp3>binary</grp3>
++        <grp1>gen</grp1><grp2>logical</grp2>
+@@ -1906 +1861 @@ Should I add this comment?
+-      <entry direction="1" op_size="0" r="yes">
++      <entry direction="1" op_size="1" r="yes">
+@@ -2935 +2890 @@ Should I add this comment?
+-      <entry op_size="0" alias="C1_4" doc="u" doc_ref="gen_note_SAL_C0_4_C1_4_D0_4_D1_4">
++      <entry op_size="1" alias="C1_4" doc="u" doc_ref="gen_note_SAL_C0_4_C1_4_D0_4_D1_4">
+@@ -4014 +3968,0 @@ Should I add this comment?
+-	<opcd_ext>6</opcd_ext>
+@@ -4015,0 +3970 @@ Should I add this comment?
++	<opcd_ext>6</opcd_ext>
+@@ -4149 +4103,0 @@ Should I add this comment?
+-	<opcd_ext>7</opcd_ext>
+@@ -4150,0 +4105 @@ Should I add this comment?
++	<opcd_ext>7</opcd_ext>
+@@ -4562 +4516,0 @@ Should I add this comment?
+-	<opcd_ext>4</opcd_ext>
+@@ -4563,0 +4518 @@ Should I add this comment?
++	<opcd_ext>4</opcd_ext>
+@@ -4600 +4554,0 @@ Should I add this comment?
+-	<opcd_ext>4</opcd_ext>
+@@ -4601,0 +4556 @@ Should I add this comment?
++	<opcd_ext>4</opcd_ext>
+@@ -4638 +4592,0 @@ Should I add this comment?
+-	<opcd_ext>4</opcd_ext>
+@@ -4639,0 +4594 @@ Should I add this comment?
++	<opcd_ext>4</opcd_ext>
+@@ -4663 +4617,0 @@ Should I add this comment?
+-	<opcd_ext>4</opcd_ext>
+@@ -4664,0 +4619 @@ Should I add this comment?
++	<opcd_ext>4</opcd_ext>
+@@ -4688 +4642,0 @@ Should I add this comment?
+-	<opcd_ext>4</opcd_ext>
+@@ -4689,0 +4644 @@ Should I add this comment?
++	<opcd_ext>4</opcd_ext>
+@@ -5193 +5147,0 @@ Should I add this comment?
+-	<opcd_ext>6</opcd_ext>
+@@ -5194,0 +5149 @@ Should I add this comment?
++	<opcd_ext>6</opcd_ext>
+@@ -5227 +5181,0 @@ Should I add this comment?
+-	<opcd_ext>7</opcd_ext>
+@@ -5228,0 +5183 @@ Should I add this comment?
++	<opcd_ext>7</opcd_ext>
+@@ -5714 +5668,0 @@ Should I add this comment?
+-	<opcd_ext>4</opcd_ext>
+@@ -5715,0 +5670 @@ Should I add this comment?
++	<opcd_ext>4</opcd_ext>
+@@ -6276 +6231 @@ Should I add this comment?
+-      <entry op_size="0">
++      <entry op_size="0" lock="yes">
+@@ -6282 +6237 @@ Should I add this comment?
+-      <entry op_size="0">
++      <entry op_size="0" lock="yes">
+@@ -6344 +6299 @@ Should I add this comment?
+-	<syntax><mnem>TEST</mnem><src><a>E</a><t>vqp</t></src><src><a>I</a><t>vqp</t></src></syntax>
++	<syntax><mnem>TEST</mnem><src><a>E</a><t>vqp</t></src><src><a>I</a><t>vds</t></src></syntax>
+@@ -6351 +6306 @@ Should I add this comment?
+-	<syntax><mnem>TEST</mnem><src><a>E</a><t>vqp</t></src><src><a>I</a><t>vqp</t></src></syntax>
++	<syntax><mnem>TEST</mnem><src><a>E</a><t>vqp</t></src><src><a>I</a><t>vds</t></src></syntax>
+@@ -6356 +6311 @@ Should I add this comment?
 -      <entry op_size="1">
-+      <entry op_size="0">
-@@ -6348 +6393 @@
++      <entry op_size="1" lock="yes">
+@@ -6362 +6317 @@ Should I add this comment?
 -      <entry op_size="1">
-+      <entry op_size="0">
-@@ -6360 +6405 @@
++      <entry op_size="1" lock="yes">
+@@ -6381 +6336 @@ Should I add this comment?
+-      <entry op_size="0">
++      <entry op_size="1">
+@@ -6393 +6348 @@ Should I add this comment?
+-      <entry op_size="0">
++      <entry op_size="1">
+@@ -6405 +6360 @@ Should I add this comment?
+-      <entry op_size="0">
++      <entry op_size="1">
+@@ -6474 +6429 @@ Should I add this comment?
+-      <entry op_size="0">
++      <entry op_size="0" lock="yes">
+@@ -6481 +6436 @@ Should I add this comment?
+-      <entry op_size="0">
++      <entry op_size="0" lock="yes">
+@@ -6491 +6446 @@ Should I add this comment?
 -      <entry op_size="1">
-+      <entry op_size="0">
-@@ -6429 +6474 @@
--      <entry op_size="0" lock="yes">
-+      <entry op_size="0">
-@@ -6436 +6481 @@
--      <entry op_size="0" lock="yes">
-+      <entry op_size="0">
-@@ -6446 +6491 @@
--      <entry op_size="1" lock="yes">
-+      <entry op_size="1">
-@@ -6453 +6498 @@
--      <entry op_size="1" lock="yes">
-+      <entry op_size="1">
-@@ -9895 +9939,0 @@
--	  <src><a>I</a><t>b</t></src>
-@@ -9909 +9952,0 @@
--	  <src><a>I</a><t>b</t></src>
-@@ -10025 +10068 @@
--	<syntax mod="mem">
-+	<syntax mod="nomem">
-@@ -10033 +10076 @@
++      <entry op_size="1" lock="yes">
+@@ -6498 +6453 @@ Should I add this comment?
+-      <entry op_size="1">
++      <entry op_size="1" lock="yes">
+@@ -9939,0 +9895 @@ Should I add this comment?
++	  <src><a>I</a><t>b</t></src>
+@@ -9952,0 +9909 @@ Should I add this comment?
++	  <src><a>I</a><t>b</t></src>
+@@ -10068 +10025 @@ Should I add this comment?
 -	<syntax mod="nomem">
 +	<syntax mod="mem">
-@@ -10054 +10097 @@
--	  <src><a>M</a><t>d</t></src>
-+	  <src><a>U</a><t>ps</t></src>
-@@ -10060 +10103 @@
+@@ -10076 +10033 @@ Should I add this comment?
+-	<syntax mod="mem">
++	<syntax mod="nomem">
+@@ -10097 +10054 @@ Should I add this comment?
 -	  <src><a>U</a><t>ps</t></src>
 +	  <src><a>M</a><t>d</t></src>
-@@ -10316 +10359 @@
--	<note><brief>Conditional Move - zero/equal (ZF=1)</brief></note>
-+	<note><brief>Conditional Move - zero/equal (ZF=0)</brief></note>
-@@ -10327 +10370 @@
--	<note><brief>Conditional Move - not zero/not equal (ZF=0)</brief></note>
-+	<note><brief>Conditional Move - not zero/not equal (ZF=1)</brief></note>
-@@ -10339 +10382 @@
--	<note><brief>Conditional Move - below or equal/not above (CF=1 OR ZF=1)</brief></note>
-+	<note><brief>Conditional Move - below or equal/not above (CF=1 AND ZF=1)</brief></note>
-@@ -10393 +10436 @@
--	<note><brief>Conditional Move - not parity/parity odd (PF=0)</brief></note>
-+	<note><brief>Conditional Move - not parity/parity odd</brief></note>
-@@ -11678 +11720,0 @@
--	<pref>66</pref>
-@@ -11679,0 +11722 @@
-+	<pref>66</pref>
-@@ -11704 +11746,0 @@
--	<pref>66</pref>
-@@ -11705,0 +11748 @@
-+	<pref>66</pref>
-@@ -11730 +11772,0 @@
--	<pref>66</pref>
-@@ -11731,0 +11774 @@
-+	<pref>66</pref>
-@@ -11758 +11800,0 @@
--	<pref>66</pref>
-@@ -11759,0 +11802 @@
-+	<pref>66</pref>
-@@ -11784 +11826,0 @@
--	<pref>66</pref>
-@@ -11785,0 +11828 @@
-+	<pref>66</pref>
-@@ -11810 +11852,0 @@
--	<pref>66</pref>
-@@ -11811,0 +11854 @@
-+	<pref>66</pref>
-@@ -11838 +11880,0 @@
--	<pref>66</pref>
-@@ -11839,0 +11882 @@
-+	<pref>66</pref>
-@@ -11853 +11895,0 @@
--	<pref>66</pref>
-@@ -11854,0 +11897 @@
-+	<pref>66</pref>
-@@ -11880 +11922,0 @@
--	<pref>66</pref>
-@@ -11881,0 +11924 @@
-+	<pref>66</pref>
-@@ -11895 +11937,0 @@
--	<pref>66</pref>   
-@@ -11896,0 +11939 @@
-+	<pref>66</pref>   
-@@ -12197 +12240 @@
--          <src><a>V</a><t>dq</t></src>
-+          <src><a>E</a><t>dq </t></src>
-@@ -12268 +12311 @@
--	<note><brief>Jump near if overflow (OF=1)</brief></note>
-+	<note><brief>Jump short if overflow (OF=1)</brief></note>
-@@ -12278 +12321 @@
--	<note><brief>Jump near if not overflow (OF=0)</brief></note>
-+	<note><brief>Jump short if not overflow (OF=0)</brief></note>
-@@ -12290 +12333 @@
--	<note><brief>Jump near if below/not above or equal/carry (CF=1)</brief></note>
-+	<note><brief>Jump short if below/not above or equal/carry (CF=1)</brief></note>
-@@ -12302 +12345 @@
--	<note><brief>Jump near if not below/above or equal/not carry (CF=0)</brief></note>
-+	<note><brief>Jump short if not below/above or equal/not carry (CF=0)</brief></note>
-@@ -12313 +12356 @@
--	<note><brief>Jump near if zero/equal (ZF=1)</brief></note>
-+	<note><brief>Jump short if zero/equal (ZF=0)</brief></note>
-@@ -12324 +12367 @@
--	<note><brief>Jump near if not zero/not equal (ZF=0)</brief></note>
-+	<note><brief>Jump short if not zero/not equal (ZF=1)</brief></note>
-@@ -12336 +12379 @@
--	<note><brief>Jump near if below or equal/not above (CF=1 OR ZF=1)</brief></note>
-+	<note><brief>Jump short if below or equal/not above (CF=1 AND ZF=1)</brief></note>
-@@ -12348 +12391 @@
--	<note><brief>Jump near if not below or equal/above (CF=0 AND ZF=0)</brief></note>
-+	<note><brief>Jump short if not below or equal/above (CF=0 AND ZF=0)</brief></note>
-@@ -12358 +12401 @@
--	<note><brief>Jump near if sign (SF=1)</brief></note>
-+	<note><brief>Jump short if sign (SF=1)</brief></note>
-@@ -12368 +12411 @@
--	<note><brief>Jump near if not sign (SF=0)</brief></note>
-+	<note><brief>Jump short if not sign (SF=0)</brief></note>
-@@ -12379 +12422 @@
--	<note><brief>Jump near if parity/parity even (PF=1)</brief></note>
-+	<note><brief>Jump short if parity/parity even (PF=1)</brief></note>
-@@ -12390 +12433 @@
--	<note><brief>Jump near if not parity/parity odd (PF=0)</brief></note>
-+	<note><brief>Jump short if not parity/parity odd</brief></note>
-@@ -12401 +12444 @@
--	<note><brief>Jump near if less/not greater (SF!=OF)</brief></note>
-+	<note><brief>Jump short if less/not greater (SF!=OF)</brief></note>
-@@ -12412 +12455 @@
--	<note><brief>Jump near if not less/greater or equal (SF=OF)</brief></note>
-+	<note><brief>Jump short if not less/greater or equal (SF=OF)</brief></note>
-@@ -12423 +12466 @@
--	<note><brief>Jump near if less or equal/not greater ((ZF=1) OR (SF!=OF))</brief></note>
-+	<note><brief>Jump short if less or equal/not greater ((ZF=1) OR (SF!=OF))</brief></note>
-@@ -12434 +12477 @@
--	<note><brief>Jump near if not less nor equal/greater ((ZF=0) AND (SF=OF))</brief></note>
-+	<note><brief>Jump short if not less nor equal/greater ((ZF=0) AND (SF=OF))</brief></note>
-@@ -12494 +12537 @@
--	<note><brief>Set Byte on Condition - zero/equal (ZF=1)</brief></note>
-+	<note><brief>Set Byte on Condition - zero/equal (ZF=0)</brief></note>
-@@ -12506 +12549 @@
--	<note><brief>Set Byte on Condition - not zero/not equal (ZF=0)</brief></note>
-+	<note><brief>Set Byte on Condition - not zero/not equal (ZF=1)</brief></note>
-@@ -12519 +12562 @@
--	<note><brief>Set Byte on Condition - below or equal/not above (CF=1 OR ZF=1)</brief></note>
-+	<note><brief>Set Byte on Condition - below or equal/not above (CF=1 AND ZF=1)</brief></note>
-@@ -12578 +12621 @@
--	<note><brief>Set Byte on Condition - not parity/parity odd (PF=0)</brief></note>
-+	<note><brief>Set Byte on Condition - not parity/parity odd</brief></note>
+@@ -10103 +10060 @@ Should I add this comment?
+-	  <src><a>M</a><t>d</t></src>
++	  <src><a>U</a><t>ps</t></src>
+@@ -10359 +10316 @@ Should I add this comment?
+-	<note><brief>Conditional Move - zero/equal (ZF=0)</brief></note>
++	<note><brief>Conditional Move - zero/equal (ZF=1)</brief></note>
+@@ -10370 +10327 @@ Should I add this comment?
+-	<note><brief>Conditional Move - not zero/not equal (ZF=1)</brief></note>
++	<note><brief>Conditional Move - not zero/not equal (ZF=0)</brief></note>
+@@ -10382 +10339 @@ Should I add this comment?
+-	<note><brief>Conditional Move - below or equal/not above (CF=1 AND ZF=1)</brief></note>
++	<note><brief>Conditional Move - below or equal/not above (CF=1 OR ZF=1)</brief></note>
+@@ -10436 +10393 @@ Should I add this comment?
+-	<note><brief>Conditional Move - not parity/parity odd</brief></note>
++	<note><brief>Conditional Move - not parity/parity odd (PF=0)</brief></note>
+@@ -11721 +11677,0 @@ Should I add this comment?
+-        <opcd_ext>2</opcd_ext>
+@@ -11722,0 +11679 @@ Should I add this comment?
++        <opcd_ext>2</opcd_ext>
+@@ -11747 +11703,0 @@ Should I add this comment?
+-        <opcd_ext>4</opcd_ext>
+@@ -11748,0 +11705 @@ Should I add this comment?
++        <opcd_ext>4</opcd_ext>
+@@ -11773 +11729,0 @@ Should I add this comment?
+-        <opcd_ext>6</opcd_ext>
+@@ -11774,0 +11731 @@ Should I add this comment?
++        <opcd_ext>6</opcd_ext>
+@@ -11801 +11757,0 @@ Should I add this comment?
+-        <opcd_ext>2</opcd_ext>
+@@ -11802,0 +11759 @@ Should I add this comment?
++        <opcd_ext>2</opcd_ext>
+@@ -11827 +11783,0 @@ Should I add this comment?
+-        <opcd_ext>4</opcd_ext>
+@@ -11828,0 +11785 @@ Should I add this comment?
++        <opcd_ext>4</opcd_ext>
+@@ -11853 +11809,0 @@ Should I add this comment?
+-        <opcd_ext>6</opcd_ext>
+@@ -11854,0 +11811 @@ Should I add this comment?
++        <opcd_ext>6</opcd_ext>
+@@ -11881 +11837,0 @@ Should I add this comment?
+-        <opcd_ext>2</opcd_ext>
+@@ -11882,0 +11839 @@ Should I add this comment?
++        <opcd_ext>2</opcd_ext>
+@@ -11896 +11852,0 @@ Should I add this comment?
+-        <opcd_ext>3</opcd_ext>
+@@ -11897,0 +11854 @@ Should I add this comment?
++        <opcd_ext>3</opcd_ext>
+@@ -11923 +11879,0 @@ Should I add this comment?
+-        <opcd_ext>6</opcd_ext>
+@@ -11924,0 +11881 @@ Should I add this comment?
++        <opcd_ext>6</opcd_ext>
+@@ -11938 +11894,0 @@ Should I add this comment?
+-        <opcd_ext>7</opcd_ext> 
+@@ -11939,0 +11896 @@ Should I add this comment?
++        <opcd_ext>7</opcd_ext> 
+@@ -12240 +12197 @@ Should I add this comment?
+-          <src><a>E</a><t>dq </t></src>
++          <src><a>V</a><t>dq</t></src>
+@@ -12311 +12268 @@ Should I add this comment?
+-	<note><brief>Jump short if overflow (OF=1)</brief></note>
++	<note><brief>Jump near if overflow (OF=1)</brief></note>
+@@ -12321 +12278 @@ Should I add this comment?
+-	<note><brief>Jump short if not overflow (OF=0)</brief></note>
++	<note><brief>Jump near if not overflow (OF=0)</brief></note>
+@@ -12333 +12290 @@ Should I add this comment?
+-	<note><brief>Jump short if below/not above or equal/carry (CF=1)</brief></note>
++	<note><brief>Jump near if below/not above or equal/carry (CF=1)</brief></note>
+@@ -12345 +12302 @@ Should I add this comment?
+-	<note><brief>Jump short if not below/above or equal/not carry (CF=0)</brief></note>
++	<note><brief>Jump near if not below/above or equal/not carry (CF=0)</brief></note>
+@@ -12356 +12313 @@ Should I add this comment?
+-	<note><brief>Jump short if zero/equal (ZF=0)</brief></note>
++	<note><brief>Jump near if zero/equal (ZF=1)</brief></note>
+@@ -12367 +12324 @@ Should I add this comment?
+-	<note><brief>Jump short if not zero/not equal (ZF=1)</brief></note>
++	<note><brief>Jump near if not zero/not equal (ZF=0)</brief></note>
+@@ -12379 +12336 @@ Should I add this comment?
+-	<note><brief>Jump short if below or equal/not above (CF=1 AND ZF=1)</brief></note>
++	<note><brief>Jump near if below or equal/not above (CF=1 OR ZF=1)</brief></note>
+@@ -12391 +12348 @@ Should I add this comment?
+-	<note><brief>Jump short if not below or equal/above (CF=0 AND ZF=0)</brief></note>
++	<note><brief>Jump near if not below or equal/above (CF=0 AND ZF=0)</brief></note>
+@@ -12401 +12358 @@ Should I add this comment?
+-	<note><brief>Jump short if sign (SF=1)</brief></note>
++	<note><brief>Jump near if sign (SF=1)</brief></note>
+@@ -12411 +12368 @@ Should I add this comment?
+-	<note><brief>Jump short if not sign (SF=0)</brief></note>
++	<note><brief>Jump near if not sign (SF=0)</brief></note>
+@@ -12422 +12379 @@ Should I add this comment?
+-	<note><brief>Jump short if parity/parity even (PF=1)</brief></note>
++	<note><brief>Jump near if parity/parity even (PF=1)</brief></note>
+@@ -12433 +12390 @@ Should I add this comment?
+-	<note><brief>Jump short if not parity/parity odd</brief></note>
++	<note><brief>Jump near if not parity/parity odd (PF=0)</brief></note>
+@@ -12444 +12401 @@ Should I add this comment?
+-	<note><brief>Jump short if less/not greater (SF!=OF)</brief></note>
++	<note><brief>Jump near if less/not greater (SF!=OF)</brief></note>
+@@ -12455 +12412 @@ Should I add this comment?
+-	<note><brief>Jump short if not less/greater or equal (SF=OF)</brief></note>
++	<note><brief>Jump near if not less/greater or equal (SF=OF)</brief></note>
+@@ -12466 +12423 @@ Should I add this comment?
+-	<note><brief>Jump short if less or equal/not greater ((ZF=1) OR (SF!=OF))</brief></note>
++	<note><brief>Jump near if less or equal/not greater ((ZF=1) OR (SF!=OF))</brief></note>
+@@ -12477 +12434 @@ Should I add this comment?
+-	<note><brief>Jump short if not less nor equal/greater ((ZF=0) AND (SF=OF))</brief></note>
++	<note><brief>Jump near if not less nor equal/greater ((ZF=0) AND (SF=OF))</brief></note>
+@@ -12537 +12494 @@ Should I add this comment?
+-	<note><brief>Set Byte on Condition - zero/equal (ZF=0)</brief></note>
++	<note><brief>Set Byte on Condition - zero/equal (ZF=1)</brief></note>
+@@ -12549 +12506 @@ Should I add this comment?
+-	<note><brief>Set Byte on Condition - not zero/not equal (ZF=1)</brief></note>
++	<note><brief>Set Byte on Condition - not zero/not equal (ZF=0)</brief></note>
+@@ -12562 +12519 @@ Should I add this comment?
+-	<note><brief>Set Byte on Condition - below or equal/not above (CF=1 AND ZF=1)</brief></note>
++	<note><brief>Set Byte on Condition - below or equal/not above (CF=1 OR ZF=1)</brief></note>
+@@ -12621 +12578 @@ Should I add this comment?
+-	<note><brief>Set Byte on Condition - not parity/parity odd</brief></note>
++	<note><brief>Set Byte on Condition - not parity/parity odd (PF=0)</brief></note>
 diff --git a/core/src/test/java/org/adoptopenjdk/jitwatch/test/DummyClassWithMain.java b/core/src/test/java/org/adoptopenjdk/jitwatch/test/DummyClassWithMain.java
-deleted file mode 100644
-index 7bb5b94b..00000000
---- a/core/src/test/java/org/adoptopenjdk/jitwatch/test/DummyClassWithMain.java
-+++ /dev/null
-@@ -1,14 +0,0 @@
--/*
-- * Copyright (c) 2021 Chris Newland.
-- * Licensed under https://github.com/AdoptOpenJDK/jitwatch/blob/master/LICENSE-BSD
-- * Instructions: https://github.com/AdoptOpenJDK/jitwatch/wiki
-- */
--package org.adoptopenjdk.jitwatch.test;
--
--public class DummyClassWithMain
--{
--	public static void main(String[] args)
--	{
--		System.out.println("Hello World!");
--	}
--}
+new file mode 100644
+index 00000000..7bb5b94b
+--- /dev/null
++++ b/core/src/test/java/org/adoptopenjdk/jitwatch/test/DummyClassWithMain.java
+@@ -0,0 +1,14 @@
++/*
++ * Copyright (c) 2021 Chris Newland.
++ * Licensed under https://github.com/AdoptOpenJDK/jitwatch/blob/master/LICENSE-BSD
++ * Instructions: https://github.com/AdoptOpenJDK/jitwatch/wiki
++ */
++package org.adoptopenjdk.jitwatch.test;
++
++public class DummyClassWithMain
++{
++	public static void main(String[] args)
++	{
++		System.out.println("Hello World!");
++	}
++}
 diff --git a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoader.java b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoader.java
-index 28b561c6..0e4a5b9c 100644
+index 0e4a5b9c..28b561c6 100644
 --- a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoader.java
 +++ b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoader.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -787,2 +787,2 @@ public class TestBytecodeLoader
--				"                             2: invokestatic  #150                // Method com.chrisnewland.freelogj/LoggerFactory.getLogger:(Ljava/lang/Class;)Lcom.chrisnewland.freelogj/Logger;",
--				"                             5: putstatic     #33                 // Field logger:Lcom.chrisnewland.freelogj/Logger;",
-+				"                             2: invokestatic  #150                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;",
-+				"                             5: putstatic     #33                 // Field logger:Lorg/slf4j/Logger;",
+-				"                             2: invokestatic  #150                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;",
+-				"                             5: putstatic     #33                 // Field logger:Lorg/slf4j/Logger;",
++				"                             2: invokestatic  #150                // Method com.chrisnewland.freelogj/LoggerFactory.getLogger:(Ljava/lang/Class;)Lcom.chrisnewland.freelogj/Logger;",
++				"                             5: putstatic     #33                 // Field logger:Lcom.chrisnewland.freelogj/Logger;",
 diff --git a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
-index f55d4e04..9def146a 100644
+index 9def146a..f55d4e04 100644
 --- a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
 +++ b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
-@@ -10,0 +11,2 @@ import static org.junit.Assert.fail;
-+import java.io.File;
-+import java.io.FilenameFilter;
-@@ -13,0 +16 @@ import java.nio.file.Path;
-+import java.nio.file.Paths;
-@@ -16,0 +20,2 @@ import java.util.List;
-+import org.adoptopenjdk.jitwatch.demo.MakeHotSpotLog;
-+import org.adoptopenjdk.jitwatch.logger.NullLogListener;
-@@ -23 +28,2 @@ public class TestExecutionUtil
--	@Test public void testExecuteDemo()
-+	@Test
-+	public void testExecuteDemo()
-@@ -30 +36 @@ public class TestExecutionUtil
--		Path path = FileSystems.getDefault().getPath(userDir, "target", "test-classes");
-+		Path path = FileSystems.getDefault().getPath(userDir, "target", "classes");
-@@ -32,2 +38 @@ public class TestExecutionUtil
--		if (Files.exists(path))
--		{
-+		if (Files.exists(path)){
-@@ -38 +43 @@ public class TestExecutionUtil
--		path = FileSystems.getDefault().getPath(userDir, "build", "classes", "java", "test");
-+		path = FileSystems.getDefault().getPath(userDir, "build", "classes","java", "main");
-@@ -40,2 +45 @@ public class TestExecutionUtil
--		if (Files.exists(path))
--		{
-+		if (Files.exists(path)){
-@@ -44,0 +49,19 @@ public class TestExecutionUtil
-+		File libDir = Paths.get(userDir, "../lib").toFile();
-+
-+		assertTrue(libDir.exists());
-+		assertTrue(libDir.isDirectory());
-+
-+		String[] jarNames = libDir.list(new FilenameFilter()
+@@ -11,2 +10,0 @@ import static org.junit.Assert.fail;
+-import java.io.File;
+-import java.io.FilenameFilter;
+@@ -16 +13,0 @@ import java.nio.file.Path;
+-import java.nio.file.Paths;
+@@ -20,2 +16,0 @@ import java.util.List;
+-import org.adoptopenjdk.jitwatch.demo.MakeHotSpotLog;
+-import org.adoptopenjdk.jitwatch.logger.NullLogListener;
+@@ -28,2 +23 @@ public class TestExecutionUtil
+-	@Test
+-	public void testExecuteDemo()
++	@Test public void testExecuteDemo()
+@@ -36 +30 @@ public class TestExecutionUtil
+-		Path path = FileSystems.getDefault().getPath(userDir, "target", "classes");
++		Path path = FileSystems.getDefault().getPath(userDir, "target", "test-classes");
+@@ -38 +32,2 @@ public class TestExecutionUtil
+-		if (Files.exists(path)){
++		if (Files.exists(path))
 +		{
-+			@Override
-+			public boolean accept(File dir, String name)
-+			{
-+				return name.endsWith(".jar");
-+			}
-+		});
-+
-+		for (String jar : jarNames)
-+		{
-+			cp.add(libDir.getAbsolutePath() + File.separatorChar + jar);
-+		}
-+
-@@ -53,5 +76 @@ public class TestExecutionUtil
--			boolean success = executor.execute(DummyClassWithMain.class.getCanonicalName(), cp, options, new StdLogListener());
+@@ -43,7 +38 @@ public class TestExecutionUtil
+-		path = FileSystems.getDefault().getPath(userDir, "build", "classes","java", "main");
 -
--			System.out.println(executor.getOutputStream());
+-		if (Files.exists(path)){
+-			cp.add(path.toString());
+-		}
 -
--			System.out.println(executor.getErrorStream());
-+			boolean success = executor.execute(MakeHotSpotLog.class.getCanonicalName(), cp, options, new StdLogListener());
+-		File libDir = Paths.get(userDir, "../lib").toFile();
++		path = FileSystems.getDefault().getPath(userDir, "build", "classes", "java", "test");
+@@ -51,13 +40 @@ public class TestExecutionUtil
+-		assertTrue(libDir.exists());
+-		assertTrue(libDir.isDirectory());
+-
+-		String[] jarNames = libDir.list(new FilenameFilter()
+-		{
+-			@Override
+-			public boolean accept(File dir, String name)
+-			{
+-				return name.endsWith(".jar");
+-			}
+-		});
+-
+-		for (String jar : jarNames)
++		if (Files.exists(path))
+@@ -65 +42 @@ public class TestExecutionUtil
+-			cp.add(libDir.getAbsolutePath() + File.separatorChar + jar);
++			cp.add(path.toString());
+@@ -76 +53,5 @@ public class TestExecutionUtil
+-			boolean success = executor.execute(MakeHotSpotLog.class.getCanonicalName(), cp, options, new StdLogListener());
++			boolean success = executor.execute(DummyClassWithMain.class.getCanonicalName(), cp, options, new StdLogListener());
++
++			System.out.println(executor.getOutputStream());
++
++			System.out.println(executor.getErrorStream());
 diff --git a/lib/hamcrest-core-1.3.jar b/lib/hamcrest-core-1.3.jar
-new file mode 100644
-index 00000000..9d5fe16e
-Binary files /dev/null and b/lib/hamcrest-core-1.3.jar differ
+deleted file mode 100644
+index 9d5fe16e..00000000
+Binary files a/lib/hamcrest-core-1.3.jar and /dev/null differ
 diff --git a/lib/junit-4.8.2.jar b/lib/junit-4.8.2.jar
-new file mode 100644
-index 00000000..5b4bb849
-Binary files /dev/null and b/lib/junit-4.8.2.jar differ
+deleted file mode 100644
+index 5b4bb849..00000000
+Binary files a/lib/junit-4.8.2.jar and /dev/null differ
 diff --git a/lib/logback-classic-1.1.2.jar b/lib/logback-classic-1.1.2.jar
-new file mode 100644
-index 00000000..3d5d0fff
-Binary files /dev/null and b/lib/logback-classic-1.1.2.jar differ
+deleted file mode 100644
+index 3d5d0fff..00000000
+Binary files a/lib/logback-classic-1.1.2.jar and /dev/null differ
 diff --git a/lib/logback-core-1.1.2.jar b/lib/logback-core-1.1.2.jar
-new file mode 100644
-index 00000000..575aec5e
-Binary files /dev/null and b/lib/logback-core-1.1.2.jar differ
+deleted file mode 100644
+index 575aec5e..00000000
+Binary files a/lib/logback-core-1.1.2.jar and /dev/null differ
 diff --git a/lib/slf4j-api-1.7.7.jar b/lib/slf4j-api-1.7.7.jar
-new file mode 100644
-index 00000000..bebabd96
-Binary files /dev/null and b/lib/slf4j-api-1.7.7.jar differ
+deleted file mode 100644
+index bebabd96..00000000
+Binary files a/lib/slf4j-api-1.7.7.jar and /dev/null differ
 diff --git a/pom.xml b/pom.xml
-index 57dea25e..f02dfce8 100644
+index f02dfce8..57dea25e 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -2,3 +2,3 @@
--         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
--         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
--    <modelVersion>4.0.0</modelVersion>
-+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-+	<modelVersion>4.0.0</modelVersion>
+-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+-	<modelVersion>4.0.0</modelVersion>
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
 @@ -6,3 +6,3 @@
--    <groupId>com.chrisnewland</groupId>
--    <artifactId>jitwatch-parent</artifactId>
--    <version>1.4.4</version>
-+	<groupId>com.chrisnewland</groupId>
-+	<artifactId>jitwatch-parent</artifactId>
-+	<version>1.4.2</version>
+-	<groupId>com.chrisnewland</groupId>
+-	<artifactId>jitwatch-parent</artifactId>
+-	<version>1.4.2</version>
++    <groupId>com.chrisnewland</groupId>
++    <artifactId>jitwatch-parent</artifactId>
++    <version>1.4.4</version>
 @@ -10,2 +10,2 @@
--    <properties>
--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-+	<properties>
-+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-@@ -13 +13,3 @@
--        <junit.version>4.13.1</junit.version>
-+		<slf4j.version>1.7.30</slf4j.version>
-+		<logback.version>1.2.3</logback.version>
-+		<junit.version>4.13.1</junit.version>
-@@ -15 +17 @@
--        <exec.skip>true</exec.skip>
-+		<exec.skip>true</exec.skip>
-@@ -17,2 +19,2 @@
--        <javac.source>1.8</javac.source>
--        <javac.target>1.8</javac.target>
-+		<javac.source>1.8</javac.source>
-+		<javac.target>1.8</javac.target>
-@@ -20,2 +22,2 @@
--        <main.class>org.adoptopenjdk.jitwatch.launch.LaunchUI</main.class>
--    </properties>
-+		<main.class>org.adoptopenjdk.jitwatch.launch.LaunchUI</main.class>
-+	</properties>
-@@ -23 +25 @@
--    <packaging>pom</packaging>
-+	<packaging>pom</packaging>
-@@ -25,4 +27,4 @@
--    <modules>
--        <module>core</module>
--        <module>ui</module>
--    </modules>
-+	<modules>
-+		<module>core</module>
-+		<module>ui</module>
-+	</modules>
-@@ -30,4 +32,4 @@
--    <name>JITWatch Parent</name>
--    <description>Visualisation of JIT behaviour</description>
--    <url>https://github.com/AdoptOpenJDK/jitwatch</url>
--    <inceptionYear>2013</inceptionYear>
-+	<name>JITWatch Parent</name>
-+	<description>Visualisation of JIT behaviour</description>
-+	<url>https://github.com/AdoptOpenJDK/jitwatch</url>
-+	<inceptionYear>2013</inceptionYear>
-@@ -35,8 +37,8 @@
--    <licenses>
--        <license>
--            <name>Simplified BSD License</name>
--            <url>http://opensource.org/licenses/BSD-2-Clause</url>
--            <distribution>repo</distribution>
--            <comments>Simplified BSD License</comments>
--        </license>
--    </licenses>
-+	<licenses>
-+		<license>
-+			<name>Simplified BSD License</name>
-+			<url>http://opensource.org/licenses/BSD-2-Clause</url>
-+			<distribution>repo</distribution>
-+			<comments>Simplified BSD License</comments>
-+		</license>
-+	</licenses>
-@@ -44,8 +46,8 @@
--    <developers>
--        <developer>
--            <name>Chris Newland</name>
--            <url>https://www.chrisnewland.com</url>
--            <email>chris@chrisnewland.com</email>
--            <timezone>GMT</timezone>
--        </developer>
--    </developers>
-+	<developers>
-+		<developer>
-+			<name>Chris Newland</name>
-+			<url>https://www.chrisnewland.com</url>
-+			<email>chris@chrisnewland.com</email>
-+			<timezone>GMT</timezone>
-+		</developer>
-+	</developers>
-@@ -53,79 +55,76 @@
--    <contributors>
--        <contributor>
--            <name>Martijn Verburg</name>
--            <timezone>GMT</timezone>
--        </contributor>
--        <contributor>
--            <name>Mani Sarkar</name>
--            <timezone>GMT</timezone>
--        </contributor>
--        <contributor>
--            <name>Stefan Ferstl</name>
--        </contributor>
--        <contributor>
--            <name>Philip Aston</name>
--        </contributor>
--        <contributor>
--            <name>Marshall Pierce</name>
--        </contributor>
--        <contributor>
--            <name>Ben Evans</name>
--        </contributor>
--        <contributor>
--            <name>David Schlosnagle</name>
--        </contributor>
--        <contributor>
--            <name>Trask Stalnaker</name>
--        </contributor>
--        <contributor>
--            <name>Chris Vest</name>
--        </contributor>
--        <contributor>
--            <name>Jean-Philippe BEMPEL</name>
--        </contributor>
--        <contributor>
--            <name>Sebastian Sickelmann</name>
--        </contributor>
--        <contributor>
--            <name>Rafael Winterhalter</name>
--        </contributor>
--        <contributor>
--            <name>Andres Almiray</name>
--        </contributor>
--        <contributor>
--            <name>Alex Bertram</name>
--        </contributor>
--        <contributor>
--            <name>Alex Blewitt</name>
--        </contributor>
--        <contributor>
--            <name>Dmitry Jemerov</name>
--        </contributor>
--        <contributor>
--            <name>Thomas Peyrard</name>
--        </contributor>
--        <contributor>
--            <name>Ajay Borra</name>
--        </contributor>
--        <contributor>
--            <name>Luis De Bello</name>
--        </contributor>
--        <contributor>
--            <name>Laurent CARON</name>
--        </contributor>
--        <contributor>
--            <name>JCWasmx86</name>
--        </contributor>
--        <contributor>
--            <name>RenÃ© Link</name>
--        </contributor>
--        <contributor>
--            <name>Geertjan Wielenga</name>
--        </contributor>
--        <contributor>
--            <name>Thiago Henrique HÃ¼pner</name>
--        </contributor>
--        <contributor>
--            <name>Gabriel Dutra</name>
--        </contributor>
--    </contributors>
-+	<contributors>
-+		<contributor>
-+			<name>Martijn Verburg</name>
-+			<timezone>GMT</timezone>
-+		</contributor>
-+		<contributor>
-+			<name>Mani Sarkar</name>
-+			<timezone>GMT</timezone>
-+		</contributor>
-+		<contributor>
-+			<name>Stefan Ferstl</name>
-+		</contributor>
-+		<contributor>
-+			<name>Philip Aston</name>
-+		</contributor>
-+		<contributor>
-+			<name>Marshall Pierce</name>
-+		</contributor>
-+		<contributor>
-+			<name>Ben Evans</name>
-+		</contributor>
-+		<contributor>
-+			<name>David Schlosnagle</name>
-+		</contributor>
-+		<contributor>
-+			<name>Trask Stalnaker</name>
-+		</contributor>
-+		<contributor>
-+			<name>Chris Vest</name>
-+		</contributor>
-+		<contributor>
-+			<name>Jean-Philippe BEMPEL</name>
-+		</contributor>
-+		<contributor>
-+			<name>Sebastian Sickelmann</name>
-+		</contributor>
-+		<contributor>
-+			<name>Rafael Winterhalter</name>
-+		</contributor>
-+		<contributor>
-+			<name>Andres Almiray</name>
-+		</contributor>
-+		<contributor>
-+			<name>Alex Bertram</name>
-+		</contributor>
-+		<contributor>
-+			<name>Alex Blewitt</name>
-+		</contributor>
-+		<contributor>
-+			<name>Dmitry Jemerov</name>
-+		</contributor>
-+		<contributor>
-+			<name>Thomas Peyrard</name>
-+		</contributor>
-+		<contributor>
-+			<name>Ajay Borra</name>
-+		</contributor>
-+		<contributor>
-+			<name>Luis De Bello</name>
-+		</contributor>
-+		<contributor>
-+			<name>Laurent CARON</name>
-+		</contributor>
-+		<contributor>
-+			<name>JCWasmx86</name>
-+		</contributor>
-+		<contributor>
-+			<name>RenÃ© Link</name>
-+		</contributor>
-+		<contributor>
-+			<name>Geertjan Wielenga</name>
-+		</contributor>
-+                <contributor>
-+                        <name>Thiago Henrique HÃ¼pner</name>
-+                </contributor>
-+	</contributors>
-@@ -133,4 +132,4 @@
--    <issueManagement>
--        <system>GitHub</system>
--        <url>https://github.com/AdoptOpenJDK/jitwatch/issues</url>
--    </issueManagement>
-+	<issueManagement>
-+		<system>GitHub</system>
-+		<url>https://github.com/AdoptOpenJDK/jitwatch/issues</url>
-+	</issueManagement>
-@@ -138,5 +137,5 @@
--    <scm>
--        <connection>scm:git:https://github.com/AdoptOpenJDK/jitwatch.git</connection>
--        <developerConnection>scm:git:git@github.com:AdoptOpenJDK/jitwatch.git</developerConnection>
--        <url>${project.url}</url>
--    </scm>
-+	<scm>
-+		<connection>scm:git:https://github.com/AdoptOpenJDK/jitwatch.git</connection>
-+		<developerConnection>scm:git:git@github.com:AdoptOpenJDK/jitwatch.git</developerConnection>
-+		<url>${project.url}</url>
-+	</scm>
-@@ -144,126 +143,180 @@
--    <build>
--        <pluginManagement>
--            <plugins>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-release-plugin</artifactId>
--                    <version>2.5.3</version>
--                    <configuration>
--                        <autoVersionSubmodules>true</autoVersionSubmodules>
--                        <useReleaseProfile>false</useReleaseProfile>
--                        <releaseProfiles>release</releaseProfiles>
--                        <goals>deploy</goals>
--                    </configuration>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-assembly-plugin</artifactId>
--                    <version>2.2.1</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-clean-plugin</artifactId>
--                    <version>3.1.0</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-compiler-plugin</artifactId>
--                    <version>3.8.1</version>
--                    <configuration>
--                        <source>${javac.source}</source>
--                        <target>${javac.target}</target>
--                        <compilerArgs>
--                            <arg>-Xlint:all</arg>
--                            <arg>-g:source,lines</arg>
--                        </compilerArgs>
--                    </configuration>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-dependency-plugin</artifactId>
--                    <version>3.0.0</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-deploy-plugin</artifactId>
--                    <version>2.8.2</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-failsafe-plugin</artifactId>
--                    <version>2.20</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-install-plugin</artifactId>
--                    <version>2.5.2</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-resources-plugin</artifactId>
--                    <version>3.0.2</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-source-plugin</artifactId>
--                    <version>3.0.1</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-surefire-plugin</artifactId>
--                    <version>2.22.2</version>
--                    <configuration>
--                        <useManifestOnlyJar>false</useManifestOnlyJar>
--                        <useSystemClassLoader>true</useSystemClassLoader>
--                    </configuration>
--                </plugin>
--                <plugin>
--                    <groupId>org.codehaus.mojo</groupId>
--                    <artifactId>exec-maven-plugin</artifactId>
--                    <version>3.0.0</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.apache.maven.plugins</groupId>
--                    <artifactId>maven-site-plugin</artifactId>
--                    <version>3.6</version>
--                </plugin>
--                <plugin>
--                    <groupId>org.codehaus.mojo</groupId>
--                    <artifactId>license-maven-plugin</artifactId>
--                    <version>2.0.0</version>
--                </plugin>
--            </plugins>
--        </pluginManagement>
--        <plugins>
--            <plugin>
--                <groupId>org.apache.maven.plugins</groupId>
--                <artifactId>maven-source-plugin</artifactId>
--                <executions>
--                    <execution>
--                        <id>attach-sources</id>
--                        <goals>
--                            <goal>jar-no-fork</goal>
--                        </goals>
--                    </execution>
--                </executions>
--            </plugin>
--            <plugin>
--                <groupId>org.codehaus.mojo</groupId>
--                <artifactId>exec-maven-plugin</artifactId>
--                <executions>
--                    <execution>
--                        <id>default-cli</id>
--                        <goals>
--                            <goal>java</goal>
--                        </goals>
--                        <configuration>
--                            <skip>true</skip>
--                            <mainClass>${main.class}</mainClass>
--                            <cleanupDaemonThreads>false</cleanupDaemonThreads>
--                            <classpathScope>compile</classpathScope>
--                        </configuration>
--                    </execution>
--                </executions>
--            </plugin>
--        </plugins>
--    </build>
-+	<build>
-+		<pluginManagement>
-+			<plugins>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-release-plugin</artifactId>
-+					<version>2.5.3</version>
-+					<configuration>
-+						<autoVersionSubmodules>true</autoVersionSubmodules>
-+						<useReleaseProfile>false</useReleaseProfile>
-+						<releaseProfiles>release</releaseProfiles>
-+						<goals>deploy</goals>
-+					</configuration>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-antrun-plugin</artifactId>
-+					<version>1.8</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-assembly-plugin</artifactId>
-+					<version>3.0.0</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-clean-plugin</artifactId>
-+					<version>3.0.0</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-compiler-plugin</artifactId>
-+					<version>3.8.0</version>
-+					<configuration>
-+						<source>${javac.source}</source>
-+						<target>${javac.target}</target>
-+						<compilerArgs>
-+							<arg>-Xlint:all</arg>
-+							<arg>-g:source,lines</arg>
-+						</compilerArgs>
-+					</configuration>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-dependency-plugin</artifactId>
-+					<version>3.0.0</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-deploy-plugin</artifactId>
-+					<version>2.8.2</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-failsafe-plugin</artifactId>
-+					<version>2.20</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-gpg-plugin</artifactId>
-+					<version>1.6</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-install-plugin</artifactId>
-+					<version>2.5.2</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-javadoc-plugin</artifactId>
-+					<version>2.10.4</version>
-+					<configuration>
-+						<additionalparam>-Xdoclint:none</additionalparam>
-+						<links>
-+							<link>http://docs.oracle.com/javase/8/docs/api/</link>
-+						</links>
-+					</configuration>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-resources-plugin</artifactId>
-+					<version>3.0.2</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-source-plugin</artifactId>
-+					<version>3.0.1</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-surefire-plugin</artifactId>
-+					<version>2.20</version>
-+					<configuration>
-+						<useManifestOnlyJar>false</useManifestOnlyJar>
-+						<useSystemClassLoader>true</useSystemClassLoader>
-+					</configuration>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.codehaus.mojo</groupId>
-+					<artifactId>exec-maven-plugin</artifactId>
-+					<version>1.6.0</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.apache.maven.plugins</groupId>
-+					<artifactId>maven-site-plugin</artifactId>
-+					<version>3.6</version>
-+				</plugin>
-+				<plugin>
-+					<groupId>org.codehaus.mojo</groupId>
-+					<artifactId>license-maven-plugin</artifactId>
-+					<version>1.12</version>
-+				</plugin>
-+
-+				<plugin>
-+					<groupId>org.eclipse.m2e</groupId>
-+					<artifactId>lifecycle-mapping</artifactId>
-+					<version>1.0.0</version>
-+					<configuration>
-+						<lifecycleMappingMetadata>
-+							<pluginExecutions>
-+								<pluginExecution>
-+									<pluginExecutionFilter>
-+										<groupId>
-+											org.codehaus.mojo
-+										</groupId>
-+										<artifactId>
-+											license-maven-plugin
-+										</artifactId>
-+										<versionRange>
-+											[1.6,)
-+										</versionRange>
-+										<goals>
-+											<goal>
-+												check-file-header
-+											</goal>
-+										</goals>
-+									</pluginExecutionFilter>
-+									<action>
-+										<ignore />
-+									</action>
-+								</pluginExecution>
-+							</pluginExecutions>
-+						</lifecycleMappingMetadata>
-+					</configuration>
-+				</plugin>
-+			</plugins>
-+		</pluginManagement>
-+		<plugins>
-+			<plugin>
-+				<groupId>org.apache.maven.plugins</groupId>
-+				<artifactId>maven-source-plugin</artifactId>
-+				<executions>
-+					<execution>
-+						<id>attach-sources</id>
-+						<goals>
-+							<goal>jar-no-fork</goal>
-+						</goals>
-+					</execution>
-+				</executions>
-+			</plugin>
-+			<plugin>
-+				<groupId>org.codehaus.mojo</groupId>
-+				<artifactId>exec-maven-plugin</artifactId>
-+				<executions>
-+					<execution>
-+						<id>default-cli</id>
-+						<goals>
-+							<goal>java</goal>
-+						</goals>
-+						<configuration>
-+							<skip>true</skip>
-+							<mainClass>${main.class}</mainClass>
-+							<cleanupDaemonThreads>false</cleanupDaemonThreads>
-+							<classpathScope>compile</classpathScope>
-+						</configuration>
-+					</execution>
-+				</executions>
-+			</plugin>
-+		</plugins>
-+	</build>
+-	<properties>
+-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++    <properties>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+@@ -13,3 +13 @@
+-		<slf4j.version>1.7.30</slf4j.version>
+-		<logback.version>1.2.3</logback.version>
+-		<junit.version>4.13.1</junit.version>
++        <junit.version>4.13.1</junit.version>
+@@ -17 +15 @@
+-		<exec.skip>true</exec.skip>
++        <exec.skip>true</exec.skip>
+@@ -19,2 +17,2 @@
+-		<javac.source>1.8</javac.source>
+-		<javac.target>1.8</javac.target>
++        <javac.source>1.8</javac.source>
++        <javac.target>1.8</javac.target>
+@@ -22,2 +20,2 @@
+-		<main.class>org.adoptopenjdk.jitwatch.launch.LaunchUI</main.class>
+-	</properties>
++        <main.class>org.adoptopenjdk.jitwatch.launch.LaunchUI</main.class>
++    </properties>
+@@ -25 +23 @@
+-	<packaging>pom</packaging>
++    <packaging>pom</packaging>
+@@ -27,4 +25,4 @@
+-	<modules>
+-		<module>core</module>
+-		<module>ui</module>
+-	</modules>
++    <modules>
++        <module>core</module>
++        <module>ui</module>
++    </modules>
+@@ -32,4 +30,4 @@
+-	<name>JITWatch Parent</name>
+-	<description>Visualisation of JIT behaviour</description>
+-	<url>https://github.com/AdoptOpenJDK/jitwatch</url>
+-	<inceptionYear>2013</inceptionYear>
++    <name>JITWatch Parent</name>
++    <description>Visualisation of JIT behaviour</description>
++    <url>https://github.com/AdoptOpenJDK/jitwatch</url>
++    <inceptionYear>2013</inceptionYear>
+@@ -37,8 +35,8 @@
+-	<licenses>
+-		<license>
+-			<name>Simplified BSD License</name>
+-			<url>http://opensource.org/licenses/BSD-2-Clause</url>
+-			<distribution>repo</distribution>
+-			<comments>Simplified BSD License</comments>
+-		</license>
+-	</licenses>
++    <licenses>
++        <license>
++            <name>Simplified BSD License</name>
++            <url>http://opensource.org/licenses/BSD-2-Clause</url>
++            <distribution>repo</distribution>
++            <comments>Simplified BSD License</comments>
++        </license>
++    </licenses>
+@@ -46,8 +44,8 @@
+-	<developers>
+-		<developer>
+-			<name>Chris Newland</name>
+-			<url>https://www.chrisnewland.com</url>
+-			<email>chris@chrisnewland.com</email>
+-			<timezone>GMT</timezone>
+-		</developer>
+-	</developers>
++    <developers>
++        <developer>
++            <name>Chris Newland</name>
++            <url>https://www.chrisnewland.com</url>
++            <email>chris@chrisnewland.com</email>
++            <timezone>GMT</timezone>
++        </developer>
++    </developers>
+@@ -55,76 +53,79 @@
+-	<contributors>
+-		<contributor>
+-			<name>Martijn Verburg</name>
+-			<timezone>GMT</timezone>
+-		</contributor>
+-		<contributor>
+-			<name>Mani Sarkar</name>
+-			<timezone>GMT</timezone>
+-		</contributor>
+-		<contributor>
+-			<name>Stefan Ferstl</name>
+-		</contributor>
+-		<contributor>
+-			<name>Philip Aston</name>
+-		</contributor>
+-		<contributor>
+-			<name>Marshall Pierce</name>
+-		</contributor>
+-		<contributor>
+-			<name>Ben Evans</name>
+-		</contributor>
+-		<contributor>
+-			<name>David Schlosnagle</name>
+-		</contributor>
+-		<contributor>
+-			<name>Trask Stalnaker</name>
+-		</contributor>
+-		<contributor>
+-			<name>Chris Vest</name>
+-		</contributor>
+-		<contributor>
+-			<name>Jean-Philippe BEMPEL</name>
+-		</contributor>
+-		<contributor>
+-			<name>Sebastian Sickelmann</name>
+-		</contributor>
+-		<contributor>
+-			<name>Rafael Winterhalter</name>
+-		</contributor>
+-		<contributor>
+-			<name>Andres Almiray</name>
+-		</contributor>
+-		<contributor>
+-			<name>Alex Bertram</name>
+-		</contributor>
+-		<contributor>
+-			<name>Alex Blewitt</name>
+-		</contributor>
+-		<contributor>
+-			<name>Dmitry Jemerov</name>
+-		</contributor>
+-		<contributor>
+-			<name>Thomas Peyrard</name>
+-		</contributor>
+-		<contributor>
+-			<name>Ajay Borra</name>
+-		</contributor>
+-		<contributor>
+-			<name>Luis De Bello</name>
+-		</contributor>
+-		<contributor>
+-			<name>Laurent CARON</name>
+-		</contributor>
+-		<contributor>
+-			<name>JCWasmx86</name>
+-		</contributor>
+-		<contributor>
+-			<name>RenÃ© Link</name>
+-		</contributor>
+-		<contributor>
+-			<name>Geertjan Wielenga</name>
+-		</contributor>
+-                <contributor>
+-                        <name>Thiago Henrique HÃ¼pner</name>
+-                </contributor>
+-	</contributors>
++    <contributors>
++        <contributor>
++            <name>Martijn Verburg</name>
++            <timezone>GMT</timezone>
++        </contributor>
++        <contributor>
++            <name>Mani Sarkar</name>
++            <timezone>GMT</timezone>
++        </contributor>
++        <contributor>
++            <name>Stefan Ferstl</name>
++        </contributor>
++        <contributor>
++            <name>Philip Aston</name>
++        </contributor>
++        <contributor>
++            <name>Marshall Pierce</name>
++        </contributor>
++        <contributor>
++            <name>Ben Evans</name>
++        </contributor>
++        <contributor>
++            <name>David Schlosnagle</name>
++        </contributor>
++        <contributor>
++            <name>Trask Stalnaker</name>
++        </contributor>
++        <contributor>
++            <name>Chris Vest</name>
++        </contributor>
++        <contributor>
++            <name>Jean-Philippe BEMPEL</name>
++        </contributor>
++        <contributor>
++            <name>Sebastian Sickelmann</name>
++        </contributor>
++        <contributor>
++            <name>Rafael Winterhalter</name>
++        </contributor>
++        <contributor>
++            <name>Andres Almiray</name>
++        </contributor>
++        <contributor>
++            <name>Alex Bertram</name>
++        </contributor>
++        <contributor>
++            <name>Alex Blewitt</name>
++        </contributor>
++        <contributor>
++            <name>Dmitry Jemerov</name>
++        </contributor>
++        <contributor>
++            <name>Thomas Peyrard</name>
++        </contributor>
++        <contributor>
++            <name>Ajay Borra</name>
++        </contributor>
++        <contributor>
++            <name>Luis De Bello</name>
++        </contributor>
++        <contributor>
++            <name>Laurent CARON</name>
++        </contributor>
++        <contributor>
++            <name>JCWasmx86</name>
++        </contributor>
++        <contributor>
++            <name>RenÃ© Link</name>
++        </contributor>
++        <contributor>
++            <name>Geertjan Wielenga</name>
++        </contributor>
++        <contributor>
++            <name>Thiago Henrique HÃ¼pner</name>
++        </contributor>
++        <contributor>
++            <name>Gabriel Dutra</name>
++        </contributor>
++    </contributors>
+@@ -132,4 +133,4 @@
+-	<issueManagement>
+-		<system>GitHub</system>
+-		<url>https://github.com/AdoptOpenJDK/jitwatch/issues</url>
+-	</issueManagement>
++    <issueManagement>
++        <system>GitHub</system>
++        <url>https://github.com/AdoptOpenJDK/jitwatch/issues</url>
++    </issueManagement>
+@@ -137,5 +138,5 @@
+-	<scm>
+-		<connection>scm:git:https://github.com/AdoptOpenJDK/jitwatch.git</connection>
+-		<developerConnection>scm:git:git@github.com:AdoptOpenJDK/jitwatch.git</developerConnection>
+-		<url>${project.url}</url>
+-	</scm>
++    <scm>
++        <connection>scm:git:https://github.com/AdoptOpenJDK/jitwatch.git</connection>
++        <developerConnection>scm:git:git@github.com:AdoptOpenJDK/jitwatch.git</developerConnection>
++        <url>${project.url}</url>
++    </scm>
+@@ -143,180 +144,126 @@
+-	<build>
+-		<pluginManagement>
+-			<plugins>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-release-plugin</artifactId>
+-					<version>2.5.3</version>
+-					<configuration>
+-						<autoVersionSubmodules>true</autoVersionSubmodules>
+-						<useReleaseProfile>false</useReleaseProfile>
+-						<releaseProfiles>release</releaseProfiles>
+-						<goals>deploy</goals>
+-					</configuration>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-antrun-plugin</artifactId>
+-					<version>1.8</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-assembly-plugin</artifactId>
+-					<version>3.0.0</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-clean-plugin</artifactId>
+-					<version>3.0.0</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-compiler-plugin</artifactId>
+-					<version>3.8.0</version>
+-					<configuration>
+-						<source>${javac.source}</source>
+-						<target>${javac.target}</target>
+-						<compilerArgs>
+-							<arg>-Xlint:all</arg>
+-							<arg>-g:source,lines</arg>
+-						</compilerArgs>
+-					</configuration>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-dependency-plugin</artifactId>
+-					<version>3.0.0</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-deploy-plugin</artifactId>
+-					<version>2.8.2</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-failsafe-plugin</artifactId>
+-					<version>2.20</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-gpg-plugin</artifactId>
+-					<version>1.6</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-install-plugin</artifactId>
+-					<version>2.5.2</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-javadoc-plugin</artifactId>
+-					<version>2.10.4</version>
+-					<configuration>
+-						<additionalparam>-Xdoclint:none</additionalparam>
+-						<links>
+-							<link>http://docs.oracle.com/javase/8/docs/api/</link>
+-						</links>
+-					</configuration>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-resources-plugin</artifactId>
+-					<version>3.0.2</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-source-plugin</artifactId>
+-					<version>3.0.1</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-surefire-plugin</artifactId>
+-					<version>2.20</version>
+-					<configuration>
+-						<useManifestOnlyJar>false</useManifestOnlyJar>
+-						<useSystemClassLoader>true</useSystemClassLoader>
+-					</configuration>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.codehaus.mojo</groupId>
+-					<artifactId>exec-maven-plugin</artifactId>
+-					<version>1.6.0</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.apache.maven.plugins</groupId>
+-					<artifactId>maven-site-plugin</artifactId>
+-					<version>3.6</version>
+-				</plugin>
+-				<plugin>
+-					<groupId>org.codehaus.mojo</groupId>
+-					<artifactId>license-maven-plugin</artifactId>
+-					<version>1.12</version>
+-				</plugin>
+-
+-				<plugin>
+-					<groupId>org.eclipse.m2e</groupId>
+-					<artifactId>lifecycle-mapping</artifactId>
+-					<version>1.0.0</version>
+-					<configuration>
+-						<lifecycleMappingMetadata>
+-							<pluginExecutions>
+-								<pluginExecution>
+-									<pluginExecutionFilter>
+-										<groupId>
+-											org.codehaus.mojo
+-										</groupId>
+-										<artifactId>
+-											license-maven-plugin
+-										</artifactId>
+-										<versionRange>
+-											[1.6,)
+-										</versionRange>
+-										<goals>
+-											<goal>
+-												check-file-header
+-											</goal>
+-										</goals>
+-									</pluginExecutionFilter>
+-									<action>
+-										<ignore />
+-									</action>
+-								</pluginExecution>
+-							</pluginExecutions>
+-						</lifecycleMappingMetadata>
+-					</configuration>
+-				</plugin>
+-			</plugins>
+-		</pluginManagement>
+-		<plugins>
+-			<plugin>
+-				<groupId>org.apache.maven.plugins</groupId>
+-				<artifactId>maven-source-plugin</artifactId>
+-				<executions>
+-					<execution>
+-						<id>attach-sources</id>
+-						<goals>
+-							<goal>jar-no-fork</goal>
+-						</goals>
+-					</execution>
+-				</executions>
+-			</plugin>
+-			<plugin>
+-				<groupId>org.codehaus.mojo</groupId>
+-				<artifactId>exec-maven-plugin</artifactId>
+-				<executions>
+-					<execution>
+-						<id>default-cli</id>
+-						<goals>
+-							<goal>java</goal>
+-						</goals>
+-						<configuration>
+-							<skip>true</skip>
+-							<mainClass>${main.class}</mainClass>
+-							<cleanupDaemonThreads>false</cleanupDaemonThreads>
+-							<classpathScope>compile</classpathScope>
+-						</configuration>
+-					</execution>
+-				</executions>
+-			</plugin>
+-		</plugins>
+-	</build>
++    <build>
++        <pluginManagement>
++            <plugins>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-release-plugin</artifactId>
++                    <version>2.5.3</version>
++                    <configuration>
++                        <autoVersionSubmodules>true</autoVersionSubmodules>
++                        <useReleaseProfile>false</useReleaseProfile>
++                        <releaseProfiles>release</releaseProfiles>
++                        <goals>deploy</goals>
++                    </configuration>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-assembly-plugin</artifactId>
++                    <version>2.2.1</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-clean-plugin</artifactId>
++                    <version>3.1.0</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-compiler-plugin</artifactId>
++                    <version>3.8.1</version>
++                    <configuration>
++                        <source>${javac.source}</source>
++                        <target>${javac.target}</target>
++                        <compilerArgs>
++                            <arg>-Xlint:all</arg>
++                            <arg>-g:source,lines</arg>
++                        </compilerArgs>
++                    </configuration>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-dependency-plugin</artifactId>
++                    <version>3.0.0</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-deploy-plugin</artifactId>
++                    <version>2.8.2</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-failsafe-plugin</artifactId>
++                    <version>2.20</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-install-plugin</artifactId>
++                    <version>2.5.2</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-resources-plugin</artifactId>
++                    <version>3.0.2</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-source-plugin</artifactId>
++                    <version>3.0.1</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-surefire-plugin</artifactId>
++                    <version>2.22.2</version>
++                    <configuration>
++                        <useManifestOnlyJar>false</useManifestOnlyJar>
++                        <useSystemClassLoader>true</useSystemClassLoader>
++                    </configuration>
++                </plugin>
++                <plugin>
++                    <groupId>org.codehaus.mojo</groupId>
++                    <artifactId>exec-maven-plugin</artifactId>
++                    <version>3.0.0</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-site-plugin</artifactId>
++                    <version>3.6</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.codehaus.mojo</groupId>
++                    <artifactId>license-maven-plugin</artifactId>
++                    <version>2.0.0</version>
++                </plugin>
++            </plugins>
++        </pluginManagement>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-source-plugin</artifactId>
++                <executions>
++                    <execution>
++                        <id>attach-sources</id>
++                        <goals>
++                            <goal>jar-no-fork</goal>
++                        </goals>
++                    </execution>
++                </executions>
++            </plugin>
++            <plugin>
++                <groupId>org.codehaus.mojo</groupId>
++                <artifactId>exec-maven-plugin</artifactId>
++                <executions>
++                    <execution>
++                        <id>default-cli</id>
++                        <goals>
++                            <goal>java</goal>
++                        </goals>
++                        <configuration>
++                            <skip>true</skip>
++                            <mainClass>${main.class}</mainClass>
++                            <cleanupDaemonThreads>false</cleanupDaemonThreads>
++                            <classpathScope>compile</classpathScope>
++                        </configuration>
++                    </execution>
++                </executions>
++            </plugin>
++        </plugins>
++    </build>
 diff --git a/ui/build-jdk11.gradle b/ui/build-jdk11.gradle
-index 5b2d061b..f020e1a6 100644
+index f020e1a6..5b2d061b 100644
 --- a/ui/build-jdk11.gradle
 +++ b/ui/build-jdk11.gradle
 @@ -4 +4 @@ def javaVersion = JavaVersion.current()
--def openjfxVersion = "17.0.1"
-+def openjfxVersion = "15.0.1"
+-def openjfxVersion = "15.0.1"
++def openjfxVersion = "17.0.1"
 diff --git a/ui/build.gradle b/ui/build.gradle
-index c6c5baef..6d30c3be 100644
+index 6d30c3be..c6c5baef 100644
 --- a/ui/build.gradle
 +++ b/ui/build.gradle
 @@ -21 +21 @@ dependencies {
--    compile 'com.chrisnewland.freelogj:freelogj:0.0.1'
-+    compile 'org.slf4j:slf4j-api:1.7.30', 'ch.qos.logback:logback-classic:1.2.3', 'ch.qos.logback:logback-core:1.2.3'
+-    compile 'org.slf4j:slf4j-api:1.7.30', 'ch.qos.logback:logback-classic:1.2.3', 'ch.qos.logback:logback-core:1.2.3'
++    compile 'com.chrisnewland.freelogj:freelogj:0.0.1'
 diff --git a/ui/build.xml b/ui/build.xml
-new file mode 100644
-index 00000000..49fcc0b3
---- /dev/null
-+++ b/ui/build.xml
-@@ -0,0 +1,108 @@
-+<project name="jitwatch-ui" default="all" basedir=".">
-+
-+	<property name="main_src" value="${basedir}/src/main/java" />
-+	<property name="main_resources" value="${basedir}/src/main/resources" />
-+	<property name="test_src" value="${basedir}/src/test/java" />
-+	<property name="test_resources" value="${basedir}/src/test/resources" />
-+	<property name="target" location="${basedir}/target" />
-+	<property name="main_classes" location="${target}/classes" />
-+	<property name="test_classes" location="${target}/test-classes" />
-+	<property name="lib" value="../lib" />
-+	<property environment="env" />
-+	<loadproperties srcfile="../build.properties" />
-+
-+	<property name="core_main_classes" location="../core/target/classes" />
-+	<property name="core_test_classes" location="../core/target/test-classes" />
-+
-+	<target name="clean">
-+		<delete quiet="true" dir="${target}" />
-+	</target>
-+
-+	<target name="init">
-+		<mkdir dir="${target}" />
-+	</target>
-+
-+	<path id="classpath">
-+		<fileset dir="${lib}" includes="**/*.jar" />
-+		<filelist>
-+			<file name="${env.JAVA_HOME}/jre/lib/jfxrt.jar" />
-+			<!-- Java 8 stores jfxrt in a different location -->
-+			<file name="${env.JAVA_HOME}/jre/lib/ext/jfxrt.jar" />
-+		</filelist>
-+	</path>
-+
-+	<target name="compile" depends="init">
-+		<mkdir dir="${main_classes}" />
-+		<javac srcdir="${main_src}" destdir="${main_classes}" includeantruntime="false" debug="true" debuglevel="lines,vars,source">
-+			<classpath>
-+				<path refid="classpath" />
-+				<dirset dir="${core_main_classes}" />
-+			</classpath>
-+		</javac>
-+
-+		<copy todir="${main_classes}">
-+			<fileset dir="${main_resources}" />
-+		</copy>
-+
-+		<mkdir dir="${test_classes}" />
-+		<javac srcdir="${test_src}" destdir="${test_classes}" includeantruntime="false" debug="true" debuglevel="lines,vars,source">
-+			<classpath>
-+				<path refid="classpath" />
-+				<dirset dir="${main_classes}" />
-+				<dirset dir="${core_main_classes}" />
-+				<dirset dir="${core_test_classes}" />
-+			</classpath>
-+		</javac>
-+
-+		<copy todir="${test_classes}">
-+			<fileset dir="${test_resources}" />
-+		</copy>
-+	</target>
-+
-+	<target name="test" depends="compile, doTest" />
-+
-+	<target name="doTest">
-+		<mkdir dir="${target}/test-output" />
-+		<junit printsummary="yes" haltonerror="yes">
-+			<jvmarg value="-Duser.dir=${basedir}" />
-+			<classpath>
-+				<path refid="classpath" />
-+				<pathelement path="${main_classes}" />
-+				<pathelement path="${test_classes}" />
-+				<pathelement path="${core_main_classes}" />
-+				<pathelement path="${core_test_classes}" />
-+			</classpath>
-+
-+			<formatter type="plain" />
-+
-+			<batchtest fork="yes" todir="${target}/test-output">
-+				<fileset dir="${test_src}" includes="**/Test*.java" />
-+			</batchtest>
-+		</junit>
-+	</target>
-+
-+	<target name="jar" depends="test, doJar" />
-+
-+	<target name="doJar" depends="compile">
-+		<jar destfile="${target}/jitwatch-ui-${version}.jar">
-+			<fileset dir="${main_classes}" />
-+			<manifest>
-+				<attribute name="Main-Class" value="org.adoptopenjdk.jitwatch.launch.LaunchUI" />
-+			</manifest>
-+		</jar>
-+	</target>
-+
-+	<target name="run" depends="jar, doRun" />
-+
-+	<target name="doRun">
-+		<java classname="org.adoptopenjdk.jitwatch.launch.LaunchUI" classpathref="classpath">
-+			<classpath>
-+				<pathelement location="../core/target/jitwatch-core-${version}.jar" />
-+				<pathelement location="${target}/jitwatch-ui-${version}.jar" />
-+			</classpath>
-+		</java>
-+	</target>
-+
-+	<target name="all" depends="jar" />
-+
-+</project>
+deleted file mode 100644
+index 49fcc0b3..00000000
+--- a/ui/build.xml
++++ /dev/null
+@@ -1,108 +0,0 @@
+-<project name="jitwatch-ui" default="all" basedir=".">
+-
+-	<property name="main_src" value="${basedir}/src/main/java" />
+-	<property name="main_resources" value="${basedir}/src/main/resources" />
+-	<property name="test_src" value="${basedir}/src/test/java" />
+-	<property name="test_resources" value="${basedir}/src/test/resources" />
+-	<property name="target" location="${basedir}/target" />
+-	<property name="main_classes" location="${target}/classes" />
+-	<property name="test_classes" location="${target}/test-classes" />
+-	<property name="lib" value="../lib" />
+-	<property environment="env" />
+-	<loadproperties srcfile="../build.properties" />
+-
+-	<property name="core_main_classes" location="../core/target/classes" />
+-	<property name="core_test_classes" location="../core/target/test-classes" />
+-
+-	<target name="clean">
+-		<delete quiet="true" dir="${target}" />
+-	</target>
+-
+-	<target name="init">
+-		<mkdir dir="${target}" />
+-	</target>
+-
+-	<path id="classpath">
+-		<fileset dir="${lib}" includes="**/*.jar" />
+-		<filelist>
+-			<file name="${env.JAVA_HOME}/jre/lib/jfxrt.jar" />
+-			<!-- Java 8 stores jfxrt in a different location -->
+-			<file name="${env.JAVA_HOME}/jre/lib/ext/jfxrt.jar" />
+-		</filelist>
+-	</path>
+-
+-	<target name="compile" depends="init">
+-		<mkdir dir="${main_classes}" />
+-		<javac srcdir="${main_src}" destdir="${main_classes}" includeantruntime="false" debug="true" debuglevel="lines,vars,source">
+-			<classpath>
+-				<path refid="classpath" />
+-				<dirset dir="${core_main_classes}" />
+-			</classpath>
+-		</javac>
+-
+-		<copy todir="${main_classes}">
+-			<fileset dir="${main_resources}" />
+-		</copy>
+-
+-		<mkdir dir="${test_classes}" />
+-		<javac srcdir="${test_src}" destdir="${test_classes}" includeantruntime="false" debug="true" debuglevel="lines,vars,source">
+-			<classpath>
+-				<path refid="classpath" />
+-				<dirset dir="${main_classes}" />
+-				<dirset dir="${core_main_classes}" />
+-				<dirset dir="${core_test_classes}" />
+-			</classpath>
+-		</javac>
+-
+-		<copy todir="${test_classes}">
+-			<fileset dir="${test_resources}" />
+-		</copy>
+-	</target>
+-
+-	<target name="test" depends="compile, doTest" />
+-
+-	<target name="doTest">
+-		<mkdir dir="${target}/test-output" />
+-		<junit printsummary="yes" haltonerror="yes">
+-			<jvmarg value="-Duser.dir=${basedir}" />
+-			<classpath>
+-				<path refid="classpath" />
+-				<pathelement path="${main_classes}" />
+-				<pathelement path="${test_classes}" />
+-				<pathelement path="${core_main_classes}" />
+-				<pathelement path="${core_test_classes}" />
+-			</classpath>
+-
+-			<formatter type="plain" />
+-
+-			<batchtest fork="yes" todir="${target}/test-output">
+-				<fileset dir="${test_src}" includes="**/Test*.java" />
+-			</batchtest>
+-		</junit>
+-	</target>
+-
+-	<target name="jar" depends="test, doJar" />
+-
+-	<target name="doJar" depends="compile">
+-		<jar destfile="${target}/jitwatch-ui-${version}.jar">
+-			<fileset dir="${main_classes}" />
+-			<manifest>
+-				<attribute name="Main-Class" value="org.adoptopenjdk.jitwatch.launch.LaunchUI" />
+-			</manifest>
+-		</jar>
+-	</target>
+-
+-	<target name="run" depends="jar, doRun" />
+-
+-	<target name="doRun">
+-		<java classname="org.adoptopenjdk.jitwatch.launch.LaunchUI" classpathref="classpath">
+-			<classpath>
+-				<pathelement location="../core/target/jitwatch-core-${version}.jar" />
+-				<pathelement location="${target}/jitwatch-ui-${version}.jar" />
+-			</classpath>
+-		</java>
+-	</target>
+-
+-	<target name="all" depends="jar" />
+-
+-</project>
 diff --git a/ui/pom.xml b/ui/pom.xml
-index b2ca37da..52213591 100644
+index 52213591..b2ca37da 100644
 --- a/ui/pom.xml
 +++ b/ui/pom.xml
 @@ -9 +9 @@
--		<version>1.4.4</version>
-+		<version>1.4.2</version>
-@@ -17 +17,3 @@
--		<openjfx.version>17.0.1</openjfx.version>
-+		<openjfx.version>17.0.0.1</openjfx.version>
-+
-+		<!--set on command line with -Djavafx.platform={linux|win|mac} -->
-@@ -21,33 +22,0 @@
--        <profile>
--            <id>linux</id>
--            <activation>
--                <os>
--                    <name>linux</name>
--                </os>
--            </activation>
--            <properties>
--                <javafx.platform>linux</javafx.platform>
--            </properties>
--        </profile>
--        <profile>
--            <id>macosx</id>
--            <activation>
--                <os>
--                    <name>mac os x</name>
--                </os>
--            </activation>
--            <properties>
--                <javafx.platform>mac</javafx.platform>
--            </properties>
--        </profile>
--        <profile>
--            <id>windows</id>
--            <activation>
--                <os>
--                    <family>windows</family>
--                </os>
--            </activation>
--            <properties>
--                <javafx.platform>win</javafx.platform>
--            </properties>
--        </profile>
-@@ -145,0 +115,33 @@
-+	<!-- ======== Dependencies ======== -->
-+	<dependencyManagement>
-+		<dependencies>
-+
-+			<!-- ======== SLF4J Logging Framework ======== -->
-+			<dependency>
-+				<groupId>org.slf4j</groupId>
-+				<artifactId>slf4j-api</artifactId>
-+				<version>${slf4j.version}</version>
-+			</dependency>
-+
-+			<!-- ======== Logback bindings for SLF4J ======== -->
-+			<dependency>
-+				<groupId>ch.qos.logback</groupId>
-+				<artifactId>logback-classic</artifactId>
-+				<version>${logback.version}</version>
-+			</dependency>
-+
-+			<dependency>
-+				<groupId>ch.qos.logback</groupId>
-+				<artifactId>logback-core</artifactId>
-+				<version>${logback.version}</version>
-+			</dependency>
-+
-+			<!-- ======== JUnit 4 ======== -->
-+			<dependency>
-+				<groupId>junit</groupId>
-+				<artifactId>junit</artifactId>
-+				<version>${junit.version}</version>
-+				<scope>test</scope>
-+			</dependency>
-+		</dependencies>
-+	</dependencyManagement>
-@@ -153 +154,0 @@
+-		<version>1.4.2</version>
++		<version>1.4.4</version>
+@@ -17,3 +17 @@
+-		<openjfx.version>17.0.0.1</openjfx.version>
 -
-@@ -155,4 +156,6 @@
--			<groupId>junit</groupId>
--			<artifactId>junit</artifactId>
--			<version>${junit.version}</version>
--			<scope>test</scope>
-+			<groupId>org.slf4j</groupId>
-+			<artifactId>slf4j-api</artifactId>
-+		</dependency>
-+		<dependency>
-+			<groupId>ch.qos.logback</groupId>
-+			<artifactId>logback-classic</artifactId>
-@@ -160 +162,0 @@
+-		<!--set on command line with -Djavafx.platform={linux|win|mac} -->
++		<openjfx.version>17.0.1</openjfx.version>
+@@ -22,0 +21,33 @@
++        <profile>
++            <id>linux</id>
++            <activation>
++                <os>
++                    <name>linux</name>
++                </os>
++            </activation>
++            <properties>
++                <javafx.platform>linux</javafx.platform>
++            </properties>
++        </profile>
++        <profile>
++            <id>macosx</id>
++            <activation>
++                <os>
++                    <name>mac os x</name>
++                </os>
++            </activation>
++            <properties>
++                <javafx.platform>mac</javafx.platform>
++            </properties>
++        </profile>
++        <profile>
++            <id>windows</id>
++            <activation>
++                <os>
++                    <family>windows</family>
++                </os>
++            </activation>
++            <properties>
++                <javafx.platform>win</javafx.platform>
++            </properties>
++        </profile>
+@@ -115,33 +145,0 @@
+-	<!-- ======== Dependencies ======== -->
+-	<dependencyManagement>
+-		<dependencies>
 -
-@@ -162,3 +164,6 @@
--			<groupId>com.chrisnewland</groupId>
--			<artifactId>FreeLogJ</artifactId>
--			<version>0.0.1</version>
-+			<groupId>ch.qos.logback</groupId>
-+			<artifactId>logback-core</artifactId>
+-			<!-- ======== SLF4J Logging Framework ======== -->
+-			<dependency>
+-				<groupId>org.slf4j</groupId>
+-				<artifactId>slf4j-api</artifactId>
+-				<version>${slf4j.version}</version>
+-			</dependency>
+-
+-			<!-- ======== Logback bindings for SLF4J ======== -->
+-			<dependency>
+-				<groupId>ch.qos.logback</groupId>
+-				<artifactId>logback-classic</artifactId>
+-				<version>${logback.version}</version>
+-			</dependency>
+-
+-			<dependency>
+-				<groupId>ch.qos.logback</groupId>
+-				<artifactId>logback-core</artifactId>
+-				<version>${logback.version}</version>
+-			</dependency>
+-
+-			<!-- ======== JUnit 4 ======== -->
+-			<dependency>
+-				<groupId>junit</groupId>
+-				<artifactId>junit</artifactId>
+-				<version>${junit.version}</version>
+-				<scope>test</scope>
+-			</dependency>
+-		</dependencies>
+-	</dependencyManagement>
+@@ -155,12 +153 @@
+-		<dependency>
+-			<groupId>org.slf4j</groupId>
+-			<artifactId>slf4j-api</artifactId>
+-		</dependency>
+-		<dependency>
+-			<groupId>ch.qos.logback</groupId>
+-			<artifactId>logback-classic</artifactId>
+-		</dependency>
+-		<dependency>
+-			<groupId>ch.qos.logback</groupId>
+-			<artifactId>logback-core</artifactId>
+-		</dependency>
++
+@@ -169,0 +157,8 @@
++			<version>${junit.version}</version>
++			<scope>test</scope>
 +		</dependency>
++
 +		<dependency>
-+			<groupId>junit</groupId>
-+			<artifactId>junit</artifactId>
-@@ -202 +207 @@
++			<groupId>com.chrisnewland</groupId>
++			<artifactId>FreeLogJ</artifactId>
++			<version>0.0.1</version>
+@@ -207 +202 @@
 -</project>
-\ No newline at end of file
 +</project>
+\ No newline at end of file
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
-index 72bbec60..031506b8 100644
+index 031506b8..72bbec60 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2020 Chris Newland.
+- * Copyright (c) 2013-2020 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -41,2 +41,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -465 +465 @@ public class Sandbox
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/filechooser/FileChooserList.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/filechooser/FileChooserList.java
-index 60cff1a7..c4352ce9 100644
+index c4352ce9..60cff1a7 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/filechooser/FileChooserList.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/filechooser/FileChooserList.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2015 Chris Newland.
+- * Copyright (c) 2013-2015 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -26,2 +26,2 @@ import org.adoptopenjdk.jitwatch.util.UserInterfaceUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/filechooser/FileChooserListSrcZip.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/filechooser/FileChooserListSrcZip.java
-index dddc36f2..0655dada 100644
+index 0655dada..dddc36f2 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/filechooser/FileChooserListSrcZip.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/filechooser/FileChooserListSrcZip.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -19,2 +19,2 @@ import org.adoptopenjdk.jitwatch.util.UserInterfaceUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -57 +57 @@ public class FileChooserListSrcZip extends FileChooserList
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
-index ffd5e51e..74fb7a57 100644
+index 74fb7a57..ffd5e51e 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
-@@ -8,0 +9 @@ import static org.adoptopenjdk.jitwatch.core.JITWatchConstants.C_DOT;
-+import static org.adoptopenjdk.jitwatch.core.JITWatchConstants.C_SPACE;
-@@ -20 +20,0 @@ import java.io.IOException;
--import java.nio.file.Paths;
+@@ -9 +8,0 @@ import static org.adoptopenjdk.jitwatch.core.JITWatchConstants.C_DOT;
+-import static org.adoptopenjdk.jitwatch.core.JITWatchConstants.C_SPACE;
+@@ -20,0 +20 @@ import java.io.IOException;
++import java.nio.file.Paths;
 @@ -68,2 +68,2 @@ import org.adoptopenjdk.jitwatch.util.UserInterfaceUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
-@@ -235,2 +234,0 @@ public class JITWatchUI extends Application
--		LoggerFactory.setLogFile(Paths.get("jitwatch.out"));
--
-@@ -886 +884 @@ public class JITWatchUI extends Application
--		comboLanguage.getItems().addAll(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH, Locale.SIMPLIFIED_CHINESE, Locale.forLanguageTag("pl"), Locale.forLanguageTag("es"), Locale.forLanguageTag("pt-BR"));
-+		comboLanguage.getItems().addAll(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH, Locale.SIMPLIFIED_CHINESE, Locale.forLanguageTag("pl"), Locale.forLanguageTag("es"));
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
+@@ -234,0 +235,2 @@ public class JITWatchUI extends Application
++		LoggerFactory.setLogFile(Paths.get("jitwatch.out"));
++
+@@ -884 +886 @@ public class JITWatchUI extends Application
+-		comboLanguage.getItems().addAll(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH, Locale.SIMPLIFIED_CHINESE, Locale.forLanguageTag("pl"), Locale.forLanguageTag("es"));
++		comboLanguage.getItems().addAll(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH, Locale.SIMPLIFIED_CHINESE, Locale.forLanguageTag("pl"), Locale.forLanguageTag("es"), Locale.forLanguageTag("pt-BR"));
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/MainConfigStage.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/MainConfigStage.java
-index ffaf85c7..33f0685c 100644
+index 33f0685c..ffaf85c7 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/MainConfigStage.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/MainConfigStage.java
 @@ -21,2 +21,2 @@ import org.adoptopenjdk.jitwatch.util.UserInterfaceUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
-index 8f9e376e..8fdc6b82 100644
+index 8fdc6b82..8f9e376e 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2020 Chris Newland.
+- * Copyright (c) 2013-2020 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -17,2 +17,2 @@ import org.adoptopenjdk.jitwatch.util.UserInterfaceUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -729 +729 @@ public class SandboxConfigStage extends Stage
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java
-index e46efbdf..2356b14e 100644
+index 2356b14e..e46efbdf 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2020 Chris Newland.
+- * Copyright (c) 2013-2020 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -47,2 +47,2 @@ import org.adoptopenjdk.jitwatch.util.UserInterfaceUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/TriView.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/TriView.java
-index 170adc10..6dadea16 100644
+index 6dadea16..170adc10 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/TriView.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/TriView.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -45,2 +45,2 @@ import org.adoptopenjdk.jitwatch.util.UserInterfaceUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -1280 +1280 @@ public class TriView extends Stage implements ILineListener, ICompilationChangeL
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/Viewer.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/Viewer.java
-index bcabe9bb..9ff4974f 100644
+index 9ff4974f..bcabe9bb 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/Viewer.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/Viewer.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -50,2 +50,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 @@ -677 +677 @@ public class Viewer extends VBox
 -}
-+}
 \ No newline at end of file
++}
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/util/UserInterfaceUtil.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/util/UserInterfaceUtil.java
-index 35863ef6..8c40a83b 100644
+index 8c40a83b..35863ef6 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/util/UserInterfaceUtil.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/util/UserInterfaceUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2021 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
 @@ -23,2 +23,2 @@ import org.adoptopenjdk.jitwatch.model.bytecode.BCAnnotationType;
--import com.chrisnewland.freelogj.Logger;
--import com.chrisnewland.freelogj.LoggerFactory;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
++import com.chrisnewland.freelogj.Logger;
++import com.chrisnewland.freelogj.LoggerFactory;
 diff --git a/ui/src/main/resources/i18n/lang_pt_BR.properties b/ui/src/main/resources/i18n/lang_pt_BR.properties
-deleted file mode 100644
-index a60792f7..00000000
---- a/ui/src/main/resources/i18n/lang_pt_BR.properties
-+++ /dev/null
-@@ -1,123 +0,0 @@
--#==============================
--# MAIN WINDOW
--#==============================
--
--SANDBOX=Sandbox
--SANDBOX_tt=Ambiente de testes
--OPEN_LOG=Abrir Log
--OPEN_LOG_tt=Abrir arquivo de LogCompilation
--START=Iniciar
--START_tt=Iniciar Analize
--STOP=Parar
--STOP_tt=Parar Analize
--CONFIG=Configurações
--CONFIG_tt=Configurações do JITWatch
--TIMELINE=Linha do tempo
--TIMELINE_tt=Linha do tempo dos eventos de compilação
--HISTO=Histograma
--HISTO_tt=Histograma de eventos
--CACHE=Cache
--CACHE_tt=Utilização de uso do cache do codigo
--NMETHODS=Métodos Nativos
--NMETHODS_tt=Detalhes Codigo Nativo
--TOPLIST=Toplist
--TOPLIST_tt=Atividades de compilação (Toplist)
--THREADS=Threads
--THREADS_tt=Atividades das threads do compilador
--TRIVIEW=TriView
--TRIVIEW_tt=Código fonte, bytecode e assembly
--SUGGEST=Sugestões {0}
--SUGGEST_tt=sugestões de JITWatch
--ELIM_ALLOCS=-Allocations {0}
--ELIM_LOCKS=Locks {0}
--ELIM_LOCKS_tt=Remover locks
--STATS=Stats
--STATS_tt=Estatísticas
--RESET=Reset
--RESET_tt=Limpar tudo
--HIDE_INTERFACES=Ocultar interfaces
--HIDE_INTERFACES_tt=Ocultar interfaces da arvores de classes
--HIDE_UNCOMPILED_CLASSES=Ocultar classes não compiladas
--HIDE_UNCOMPILED_MEMBERS=Ocultar miembros sin compilar
--HIDE_UNCOMPILED_MEMBERS_tt=Oculta membros (método y construtores) nao compilado
--CT_QUEUED=Método na fila
--CT_COMPILE_START=Inicio da compilação
--CT_NMETHOD_EMIT=Fim da compilação
--CT_NATIVE_SIZE=Tamanho
--CT_COMPILER=Compilador
--CT_LEVEL=Nivel
--
--#==============================
--# COMMON
--#==============================
--OK=OK
--CANCEL=Cancelar
--YES=Sim
--NO=Não
--SAVE=Salvar
--CLASS=Classe
--MEMBER=Membros
--
--#==============================
--# CONFIGURATION
--#==============================
--NEW_PROFILE=Novo
--NEW_PROFILE_tt=Criar um novo perfil de configuração
--DELETE_PROFILE=Apagar
--DELETE_PROFILE_tt=Apagar perfil de configuração
--SAVE_PROFILE=Salvar
--SAVE_PROFILE_tt=Salvar perfil de configuração
--CONFIG_ADD_FILE=Adicionar Arquivo(s)
--CONFIG_ADD_FOLDER=Adicionar Directorio
--CONFIG_REMOVE=Remover
--CONFIG_ADD_JDK_SRC=Adicionar código fonte JDK
--SOURCE_LOCATIONS=Localização do código fonte
--CLASS_LOCATIONS=Localização dos arquivos .class
--PROFILE=Perfil
--
--#==============================
--# SANDBOX
--#==============================
--SANDBOX_NEW_EDITOR=Nova Aba
--SANDBOX_NEW_EDITOR_tt=Editar um novo código fonte
--SANDBOX_OPEN_FILE=Abrir
--SANDBOX_OPEN_FILE_tt=Abrir un arquivo para editar
--SANDBOX_SAVE_FILE=Salvar
--SANDBOX_SAVE_FILE_tt=Salvar o arquivo atual
--SANDBOX_CONFIGURE=Configurar
--SANDBOX_CONFIGURE_tt=Configurar o ambiente de testes
--SANDBOX_RESET=Reiniciar
--SANDBOX_RESET_tt=Reiniciar o ambiente de testes
--SANDBOX_RUN=Executar
--SANDBOX_VIEW_OUTPUT=Output
--SANDBOX_VIEW_OUTPUT_tt=Mostra do output
--COMPILE_AND_RUNTIME_CLASSPATH=Classpath de compilação e execução
--
--#==============================
--# TRIVIEW
--#==============================
--COMPILE_CHAIN=Chain
--COMPILE_CHAIN_tt=Mostra de cadeia do código compilado
--JIT_JOURNAL=JIT Logs
--JIT_JOURNAL_tt=Mostra dos logs de eventos do JIT para este membro
--LINE_NUMBER_TABLE=LNT
--LINE_NUMBER_TABLE_tt=Mostrar o LineNumberTable para o bytecode atual
--INLINED_INTO=Inlined into
--INLINED_INTO_tt=Mostra aonde ocorreu o inlined desse método
--
--# these checkboxes have an underscore to indicate the first letter is an ALT+letter shortcut
--CHECKBOX_SOURCE=_Código Fonte
--CHECKBOX_BYTECODE=_Bytecode
--CHECKBOX_ASSEMBLY=_Assembly
--CHECKBOX_MOUSEOVER=_Mouseover
--CHECKBOX_LABELS=_Labels
--CHECKBOX_LABELS_tt=Labels simplificadas
--
--BYTECODE_SIZE=Tamanho do Bytecode
--NATIVE_SIZE=Tamanho Nativo
--COMPILE_TIME=Tempo de compilação
--
--SOURCE=Código Fonte
--BYTECODE=Bytecode
--ASSEMBLY=Assembly
--BYTECODE_DOUBLE_CLICK_FOR_JVM_SPEC=Bytecode (Duplo clique para ver as especificações da JVM)
+new file mode 100644
+index 00000000..a60792f7
+--- /dev/null
++++ b/ui/src/main/resources/i18n/lang_pt_BR.properties
+@@ -0,0 +1,123 @@
++#==============================
++# MAIN WINDOW
++#==============================
++
++SANDBOX=Sandbox
++SANDBOX_tt=Ambiente de testes
++OPEN_LOG=Abrir Log
++OPEN_LOG_tt=Abrir arquivo de LogCompilation
++START=Iniciar
++START_tt=Iniciar Analize
++STOP=Parar
++STOP_tt=Parar Analize
++CONFIG=Configurações
++CONFIG_tt=Configurações do JITWatch
++TIMELINE=Linha do tempo
++TIMELINE_tt=Linha do tempo dos eventos de compilação
++HISTO=Histograma
++HISTO_tt=Histograma de eventos
++CACHE=Cache
++CACHE_tt=Utilização de uso do cache do codigo
++NMETHODS=Métodos Nativos
++NMETHODS_tt=Detalhes Codigo Nativo
++TOPLIST=Toplist
++TOPLIST_tt=Atividades de compilação (Toplist)
++THREADS=Threads
++THREADS_tt=Atividades das threads do compilador
++TRIVIEW=TriView
++TRIVIEW_tt=Código fonte, bytecode e assembly
++SUGGEST=Sugestões {0}
++SUGGEST_tt=sugestões de JITWatch
++ELIM_ALLOCS=-Allocations {0}
++ELIM_LOCKS=Locks {0}
++ELIM_LOCKS_tt=Remover locks
++STATS=Stats
++STATS_tt=Estatísticas
++RESET=Reset
++RESET_tt=Limpar tudo
++HIDE_INTERFACES=Ocultar interfaces
++HIDE_INTERFACES_tt=Ocultar interfaces da arvores de classes
++HIDE_UNCOMPILED_CLASSES=Ocultar classes não compiladas
++HIDE_UNCOMPILED_MEMBERS=Ocultar miembros sin compilar
++HIDE_UNCOMPILED_MEMBERS_tt=Oculta membros (método y construtores) nao compilado
++CT_QUEUED=Método na fila
++CT_COMPILE_START=Inicio da compilação
++CT_NMETHOD_EMIT=Fim da compilação
++CT_NATIVE_SIZE=Tamanho
++CT_COMPILER=Compilador
++CT_LEVEL=Nivel
++
++#==============================
++# COMMON
++#==============================
++OK=OK
++CANCEL=Cancelar
++YES=Sim
++NO=Não
++SAVE=Salvar
++CLASS=Classe
++MEMBER=Membros
++
++#==============================
++# CONFIGURATION
++#==============================
++NEW_PROFILE=Novo
++NEW_PROFILE_tt=Criar um novo perfil de configuração
++DELETE_PROFILE=Apagar
++DELETE_PROFILE_tt=Apagar perfil de configuração
++SAVE_PROFILE=Salvar
++SAVE_PROFILE_tt=Salvar perfil de configuração
++CONFIG_ADD_FILE=Adicionar Arquivo(s)
++CONFIG_ADD_FOLDER=Adicionar Directorio
++CONFIG_REMOVE=Remover
++CONFIG_ADD_JDK_SRC=Adicionar código fonte JDK
++SOURCE_LOCATIONS=Localização do código fonte
++CLASS_LOCATIONS=Localização dos arquivos .class
++PROFILE=Perfil
++
++#==============================
++# SANDBOX
++#==============================
++SANDBOX_NEW_EDITOR=Nova Aba
++SANDBOX_NEW_EDITOR_tt=Editar um novo código fonte
++SANDBOX_OPEN_FILE=Abrir
++SANDBOX_OPEN_FILE_tt=Abrir un arquivo para editar
++SANDBOX_SAVE_FILE=Salvar
++SANDBOX_SAVE_FILE_tt=Salvar o arquivo atual
++SANDBOX_CONFIGURE=Configurar
++SANDBOX_CONFIGURE_tt=Configurar o ambiente de testes
++SANDBOX_RESET=Reiniciar
++SANDBOX_RESET_tt=Reiniciar o ambiente de testes
++SANDBOX_RUN=Executar
++SANDBOX_VIEW_OUTPUT=Output
++SANDBOX_VIEW_OUTPUT_tt=Mostra do output
++COMPILE_AND_RUNTIME_CLASSPATH=Classpath de compilação e execução
++
++#==============================
++# TRIVIEW
++#==============================
++COMPILE_CHAIN=Chain
++COMPILE_CHAIN_tt=Mostra de cadeia do código compilado
++JIT_JOURNAL=JIT Logs
++JIT_JOURNAL_tt=Mostra dos logs de eventos do JIT para este membro
++LINE_NUMBER_TABLE=LNT
++LINE_NUMBER_TABLE_tt=Mostrar o LineNumberTable para o bytecode atual
++INLINED_INTO=Inlined into
++INLINED_INTO_tt=Mostra aonde ocorreu o inlined desse método
++
++# these checkboxes have an underscore to indicate the first letter is an ALT+letter shortcut
++CHECKBOX_SOURCE=_Código Fonte
++CHECKBOX_BYTECODE=_Bytecode
++CHECKBOX_ASSEMBLY=_Assembly
++CHECKBOX_MOUSEOVER=_Mouseover
++CHECKBOX_LABELS=_Labels
++CHECKBOX_LABELS_tt=Labels simplificadas
++
++BYTECODE_SIZE=Tamanho do Bytecode
++NATIVE_SIZE=Tamanho Nativo
++COMPILE_TIME=Tempo de compilação
++
++SOURCE=Código Fonte
++BYTECODE=Bytecode
++ASSEMBLY=Assembly
++BYTECODE_DOUBLE_CLICK_FOR_JVM_SPEC=Bytecode (Duplo clique para ver as especificações da JVM)
 \ No newline at end of file

@@ -80,6 +80,13 @@ java
 .
 util
 .
+Collections
+;
+import
+java
+.
+util
+.
 List
 ;
 import
@@ -475,6 +482,12 @@ compileClasspath
 tempDirPath
 .
 toFile
+(
+)
+,
+Collections
+.
+emptyMap
 (
 )
 ,

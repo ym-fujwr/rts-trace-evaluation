@@ -1,106 +1,106 @@
 diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
-index 1d26ae61..cce187db 100644
+index cce187db..1d26ae61 100644
 --- a/.github/workflows/codeql-analysis.yml
 +++ b/.github/workflows/codeql-analysis.yml
 @@ -48 +48 @@ jobs:
--      uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-+      uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+-      uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
++      uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
 @@ -51 +51 @@ jobs:
--    - uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
-+    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
+-    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
++    - uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
 @@ -60 +60 @@ jobs:
--      uses: github/codeql-action/init@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
-+      uses: github/codeql-action/init@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
+-      uses: github/codeql-action/init@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
++      uses: github/codeql-action/init@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
 @@ -71 +71 @@ jobs:
--      uses: github/codeql-action/autobuild@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
-+      uses: github/codeql-action/autobuild@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
+-      uses: github/codeql-action/autobuild@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
++      uses: github/codeql-action/autobuild@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
 @@ -85 +85 @@ jobs:
--      uses: github/codeql-action/analyze@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
-+      uses: github/codeql-action/analyze@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
+-      uses: github/codeql-action/analyze@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
++      uses: github/codeql-action/analyze@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
 diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
-index 11e15ef4..a55c9bea 100644
+index a55c9bea..11e15ef4 100644
 --- a/.github/workflows/coverage.yml
 +++ b/.github/workflows/coverage.yml
 @@ -32 +32 @@ jobs:
--    - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-+    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+-    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
++    - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
 @@ -35 +35 @@ jobs:
--    - uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
-+    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
+-    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
++    - uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
 @@ -42 +42 @@ jobs:
--      uses: actions/setup-java@0ab4596768b603586c0de567f2430c30f5b0d2b0 # v3.13.0
-+      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
+-      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
++      uses: actions/setup-java@0ab4596768b603586c0de567f2430c30f5b0d2b0 # v3.13.0
 diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index 14b32ada..7cf2ac3b 100644
+index 7cf2ac3b..14b32ada 100644
 --- a/.github/workflows/maven.yml
 +++ b/.github/workflows/maven.yml
 @@ -48 +48 @@ jobs:
--    - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-+    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+-    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
++    - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
 @@ -51 +51 @@ jobs:
--    - uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
-+    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
+-    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
++    - uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
 @@ -58 +58 @@ jobs:
--      uses: actions/setup-java@0ab4596768b603586c0de567f2430c30f5b0d2b0 # v3.13.0
-+      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
+-      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
++      uses: actions/setup-java@0ab4596768b603586c0de567f2430c30f5b0d2b0 # v3.13.0
 diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
-index 08973146..d62d866b 100644
+index d62d866b..08973146 100644
 --- a/.github/workflows/scorecards-analysis.yml
 +++ b/.github/workflows/scorecards-analysis.yml
 @@ -42 +42 @@ jobs:
--        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+-        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
++        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
 @@ -59 +59 @@ jobs:
--        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32    # 3.1.0
-+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce    # 3.1.0
+-        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce    # 3.1.0
++        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32    # 3.1.0
 @@ -66 +66 @@ jobs:
--        uses: github/codeql-action/upload-sarif@ddccb873888234080b77e9bc2d4764d5ccaaccf9    # 2.21.9
-+        uses: github/codeql-action/upload-sarif@a09933a12a80f87b87005513f0abb1494c27a716    # 2.21.4
+-        uses: github/codeql-action/upload-sarif@a09933a12a80f87b87005513f0abb1494c27a716    # 2.21.4
++        uses: github/codeql-action/upload-sarif@ddccb873888234080b77e9bc2d4764d5ccaaccf9    # 2.21.9
 diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
-index 74ab2cc9..560a58b1 100644
+index 560a58b1..74ab2cc9 100644
 --- a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
 +++ b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
 @@ -105 +105 @@ public abstract class JXPathContextFactory {
--            factoryImpl = (JXPathContextFactory) clazz.getConstructor().newInstance();
-+            factoryImpl = (JXPathContextFactory) clazz.newInstance();
+-            factoryImpl = (JXPathContextFactory) clazz.newInstance();
++            factoryImpl = (JXPathContextFactory) clazz.getConstructor().newInstance();
 @@ -107 +107 @@ public abstract class JXPathContextFactory {
--        catch (final ReflectiveOperationException ie) {
-+        catch (final ClassNotFoundException | IllegalAccessException | InstantiationException ie) {
+-        catch (final ClassNotFoundException | IllegalAccessException | InstantiationException ie) {
++        catch (final ReflectiveOperationException ie) {
 diff --git a/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java b/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java
-index 57952759..9a7d1abc 100644
+index 9a7d1abc..57952759 100644
 --- a/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java
 +++ b/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java
 @@ -186 +186 @@ public class JXPathIntrospector {
--                return (JXPathBeanInfo) beanClass.getConstructor().newInstance();
-+                return (JXPathBeanInfo) beanClass.newInstance();
+-                return (JXPathBeanInfo) beanClass.newInstance();
++                return (JXPathBeanInfo) beanClass.getConstructor().newInstance();
 @@ -213 +213 @@ public class JXPathIntrospector {
--                return cls.getConstructor().newInstance();
-+                return cls.newInstance();
+-                return cls.newInstance();
++                return cls.getConstructor().newInstance();
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
-index 7a350a14..ce39fea2 100644
+index ce39fea2..7a350a14 100644
 --- a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
 +++ b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
 @@ -850 +850 @@ public class JXPathContextReferenceImpl extends JXPathContext {
--            return cls.getConstructor().newInstance();
-+            return cls.newInstance();
+-            return cls.newInstance();
++            return cls.getConstructor().newInstance();
 diff --git a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
-index 482de3d8..e5eb0593 100644
+index e5eb0593..482de3d8 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
 @@ -432 +432 @@ public class BasicTypeConverter implements TypeConverter {
--                return (Collection) type.getConstructor().newInstance();
-+                return (Collection) type.newInstance();
+-                return (Collection) type.newInstance();
++                return (Collection) type.getConstructor().newInstance();
 diff --git a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
-index 669f7ddd..cdd04193 100644
+index cdd04193..669f7ddd 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
 @@ -527 +527 @@ public class ValueUtils {
--                return (DynamicPropertyHandler) clazz.getConstructor().newInstance();
-+                return (DynamicPropertyHandler) clazz.newInstance();
+-                return (DynamicPropertyHandler) clazz.newInstance();
++                return (DynamicPropertyHandler) clazz.getConstructor().newInstance();
 diff --git a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
-index c1d929a2..f7f1599c 100644
+index f7f1599c..c1d929a2 100644
 --- a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
 +++ b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
 @@ -182 +182 @@ public class DocumentContainer extends XMLParser2 implements Container {
--                return (XMLParser) clazz.getConstructor().newInstance();
-+                return (XMLParser) clazz.newInstance();
+-                return (XMLParser) clazz.newInstance();
++                return (XMLParser) clazz.getConstructor().newInstance();

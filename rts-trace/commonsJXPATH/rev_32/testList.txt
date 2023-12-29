@@ -7,9 +7,11 @@ org.apache.commons.jxpath.issues.JXPath172Test
 org.apache.commons.jxpath.issues.JXPath177Test
 org.apache.commons.jxpath.ri.axes.RecursiveAxesTest
 org.apache.commons.jxpath.ri.axes.SimplePathInterpreterTest
+org.apache.commons.jxpath.ri.compiler.ContextDependencyTest
+org.apache.commons.jxpath.ri.compiler.CoreFunctionTest
+org.apache.commons.jxpath.ri.compiler.CoreOperationTest
 org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
 org.apache.commons.jxpath.ri.compiler.VariableTest
-org.apache.commons.jxpath.ri.ExceptionHandlerTest
 org.apache.commons.jxpath.ri.JXPathCompiledExpressionTest
 org.apache.commons.jxpath.ri.model.AliasedNamespaceIterationTest
 org.apache.commons.jxpath.ri.model.beans.BadlyImplementedFactoryTest
@@ -27,3 +29,4 @@ org.apache.commons.jxpath.ri.model.JXPath154Test
 org.apache.commons.jxpath.ri.model.MixedModelTest
 org.apache.commons.jxpath.ri.model.XMLPreserveSpaceTest
 org.apache.commons.jxpath.ri.model.XMLSpaceTest
+org.apache.commons.jxpath.ri.StressTest

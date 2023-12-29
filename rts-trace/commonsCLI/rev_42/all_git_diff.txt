@@ -1,22 +1,22 @@
 diff --git a/src/main/java/org/apache/commons/cli/TypeHandler.java b/src/main/java/org/apache/commons/cli/TypeHandler.java
-index 99c374e1..1a31e609 100644
+index 1a31e609..99c374e1 100644
 --- a/src/main/java/org/apache/commons/cli/TypeHandler.java
 +++ b/src/main/java/org/apache/commons/cli/TypeHandler.java
 @@ -104 +104 @@ public class TypeHandler {
--     * Create an Object from the class name and empty constructor.
-+     * Create an Object from the classname and empty constructor.
+-     * Create an Object from the classname and empty constructor.
++     * Create an Object from the class name and empty constructor.
 @@ -106 +106 @@ public class TypeHandler {
--     * @param className the argument value
-+     * @param classname the argument value
+-     * @param classname the argument value
++     * @param className the argument value
 @@ -110 +110 @@ public class TypeHandler {
--    public static Object createObject(final String className) throws ParseException {
-+    public static Object createObject(final String classname) throws ParseException {
+-    public static Object createObject(final String classname) throws ParseException {
++    public static Object createObject(final String className) throws ParseException {
 @@ -114 +114 @@ public class TypeHandler {
--            cl = Class.forName(className);
-+            cl = Class.forName(classname);
+-            cl = Class.forName(classname);
++            cl = Class.forName(className);
 @@ -116 +116 @@ public class TypeHandler {
--            throw new ParseException("Unable to find the class: " + className);
-+            throw new ParseException("Unable to find the class: " + classname);
+-            throw new ParseException("Unable to find the class: " + classname);
++            throw new ParseException("Unable to find the class: " + className);
 @@ -122 +122 @@ public class TypeHandler {
--            throw new ParseException(e.getClass().getName() + "; Unable to create an instance of: " + className);
-+            throw new ParseException(e.getClass().getName() + "; Unable to create an instance of: " + classname);
+-            throw new ParseException(e.getClass().getName() + "; Unable to create an instance of: " + classname);
++            throw new ParseException(e.getClass().getName() + "; Unable to create an instance of: " + className);

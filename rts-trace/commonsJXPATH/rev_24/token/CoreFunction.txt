@@ -182,22 +182,26 @@ final
 Double
 ZERO
 =
-new
 Double
+.
+valueOf
 (
 0
 )
 ;
 private
+final
 int
 functionCode
 ;
 public
 CoreFunction
 (
+final
 int
 functionCode
 ,
+final
 Expression
 [
 ]
@@ -550,6 +554,8 @@ args
 length
 ;
 }
+@
+Override
 public
 boolean
 computeContextDependent
@@ -751,12 +757,15 @@ false
 ;
 }
 }
+@
+Override
 public
 String
 toString
 (
 )
 {
+final
 StringBuffer
 buffer
 =
@@ -781,6 +790,7 @@ append
 '('
 )
 ;
+final
 Expression
 [
 ]
@@ -856,10 +866,13 @@ toString
 )
 ;
 }
+@
+Override
 public
 Object
 compute
 (
+final
 EvalContext
 context
 )
@@ -871,10 +884,13 @@ context
 )
 ;
 }
+@
+Override
 public
 Object
 computeValue
 (
+final
 EvalContext
 context
 )
@@ -1236,6 +1252,7 @@ protected
 Object
 functionLast
 (
+final
 EvalContext
 context
 )
@@ -1245,6 +1262,7 @@ assertArgCount
 0
 )
 ;
+final
 int
 old
 =
@@ -1294,8 +1312,9 @@ old
 ;
 }
 return
-new
 Double
+.
+valueOf
 (
 count
 )
@@ -1305,6 +1324,7 @@ protected
 Object
 functionPosition
 (
+final
 EvalContext
 context
 )
@@ -1315,8 +1335,9 @@ assertArgCount
 )
 ;
 return
-new
 Integer
+.
+valueOf
 (
 context
 .
@@ -1330,6 +1351,7 @@ protected
 Object
 functionCount
 (
+final
 EvalContext
 context
 )
@@ -1339,6 +1361,7 @@ assertArgCount
 1
 )
 ;
+final
 Expression
 arg1
 =
@@ -1389,6 +1412,7 @@ instanceof
 EvalContext
 )
 {
+final
 EvalContext
 ctx
 =
@@ -1460,8 +1484,9 @@ count
 ;
 }
 return
-new
 Double
+.
+valueOf
 (
 count
 )
@@ -1471,6 +1496,7 @@ protected
 Object
 functionLang
 (
+final
 EvalContext
 context
 )
@@ -1480,6 +1506,7 @@ assertArgCount
 1
 )
 ;
+final
 String
 lang
 =
@@ -1497,6 +1524,7 @@ context
 )
 )
 ;
+final
 NodePointer
 pointer
 =
@@ -1543,6 +1571,7 @@ protected
 Object
 functionID
 (
+final
 EvalContext
 context
 )
@@ -1552,6 +1581,7 @@ assertArgCount
 1
 )
 ;
+final
 String
 id
 =
@@ -1569,6 +1599,7 @@ context
 )
 )
 ;
+final
 JXPathContext
 jxpathContext
 =
@@ -1578,6 +1609,7 @@ getJXPathContext
 (
 )
 ;
+final
 NodePointer
 pointer
 =
@@ -1605,6 +1637,7 @@ protected
 Object
 functionKey
 (
+final
 EvalContext
 context
 )
@@ -1614,6 +1647,7 @@ assertArgCount
 2
 )
 ;
+final
 String
 key
 =
@@ -1705,6 +1739,7 @@ BasicNodeSet
 ;
 }
 }
+final
 JXPathContext
 jxpathContext
 =
@@ -1739,6 +1774,7 @@ hasNext
 )
 )
 {
+final
 BasicNodeSet
 accum
 =
@@ -1814,6 +1850,7 @@ protected
 Object
 functionNamespaceURI
 (
+final
 EvalContext
 context
 )
@@ -1827,6 +1864,7 @@ getArgumentCount
 0
 )
 {
+final
 NodePointer
 ptr
 =
@@ -1836,6 +1874,7 @@ getCurrentNodePointer
 (
 )
 ;
+final
 String
 str
 =
@@ -1860,6 +1899,7 @@ assertArgCount
 1
 )
 ;
+final
 Object
 set
 =
@@ -1879,6 +1919,7 @@ instanceof
 EvalContext
 )
 {
+final
 EvalContext
 ctx
 =
@@ -1896,6 +1937,7 @@ hasNext
 )
 )
 {
+final
 NodePointer
 ptr
 =
@@ -1908,6 +1950,7 @@ next
 (
 )
 ;
+final
 String
 str
 =
@@ -1936,6 +1979,7 @@ protected
 Object
 functionLocalName
 (
+final
 EvalContext
 context
 )
@@ -1949,6 +1993,7 @@ getArgumentCount
 0
 )
 {
+final
 NodePointer
 ptr
 =
@@ -1975,6 +2020,7 @@ assertArgCount
 1
 )
 ;
+final
 Object
 set
 =
@@ -1994,6 +2040,7 @@ instanceof
 EvalContext
 )
 {
+final
 EvalContext
 ctx
 =
@@ -2011,6 +2058,7 @@ hasNext
 )
 )
 {
+final
 NodePointer
 ptr
 =
@@ -2044,6 +2092,7 @@ protected
 Object
 functionName
 (
+final
 EvalContext
 context
 )
@@ -2057,6 +2106,7 @@ getArgumentCount
 0
 )
 {
+final
 NodePointer
 ptr
 =
@@ -2083,6 +2133,7 @@ assertArgCount
 1
 )
 ;
+final
 Object
 set
 =
@@ -2102,6 +2153,7 @@ instanceof
 EvalContext
 )
 {
+final
 EvalContext
 ctx
 =
@@ -2119,6 +2171,7 @@ hasNext
 )
 )
 {
+final
 NodePointer
 ptr
 =
@@ -2152,6 +2205,7 @@ protected
 Object
 functionString
 (
+final
 EvalContext
 context
 )
@@ -2203,6 +2257,7 @@ protected
 Object
 functionConcat
 (
+final
 EvalContext
 context
 )
@@ -2222,6 +2277,7 @@ assertArgCount
 )
 ;
 }
+final
 StringBuffer
 buffer
 =
@@ -2230,6 +2286,7 @@ StringBuffer
 (
 )
 ;
+final
 Expression
 [
 ]
@@ -2241,19 +2298,11 @@ getArguments
 ;
 for
 (
-int
-i
-=
-0
-;
-i
-<
+final
+Expression
+arg
+:
 args
-.
-length
-;
-i
-++
 )
 {
 buffer
@@ -2264,10 +2313,7 @@ InfoSetUtil
 .
 stringValue
 (
-args
-[
-i
-]
+arg
 .
 compute
 (
@@ -2289,6 +2335,7 @@ protected
 Object
 functionStartsWith
 (
+final
 EvalContext
 context
 )
@@ -2298,6 +2345,7 @@ assertArgCount
 2
 )
 ;
+final
 String
 s1
 =
@@ -2315,6 +2363,7 @@ context
 )
 )
 ;
+final
 String
 s2
 =
@@ -2353,6 +2402,7 @@ protected
 Object
 functionEndsWith
 (
+final
 EvalContext
 context
 )
@@ -2362,6 +2412,7 @@ assertArgCount
 2
 )
 ;
+final
 String
 s1
 =
@@ -2379,6 +2430,7 @@ context
 )
 )
 ;
+final
 String
 s2
 =
@@ -2417,6 +2469,7 @@ protected
 Object
 functionContains
 (
+final
 EvalContext
 context
 )
@@ -2426,6 +2479,7 @@ assertArgCount
 2
 )
 ;
+final
 String
 s1
 =
@@ -2443,6 +2497,7 @@ context
 )
 )
 ;
+final
 String
 s2
 =
@@ -2484,6 +2539,7 @@ protected
 Object
 functionSubstringBefore
 (
+final
 EvalContext
 context
 )
@@ -2493,6 +2549,7 @@ assertArgCount
 2
 )
 ;
+final
 String
 s1
 =
@@ -2510,6 +2567,7 @@ context
 )
 )
 ;
+final
 String
 s2
 =
@@ -2527,6 +2585,7 @@ context
 )
 )
 ;
+final
 int
 index
 =
@@ -2564,6 +2623,7 @@ protected
 Object
 functionSubstringAfter
 (
+final
 EvalContext
 context
 )
@@ -2573,6 +2633,7 @@ assertArgCount
 2
 )
 ;
+final
 String
 s1
 =
@@ -2590,6 +2651,7 @@ context
 )
 )
 ;
+final
 String
 s2
 =
@@ -2607,6 +2669,7 @@ context
 )
 )
 ;
+final
 int
 index
 =
@@ -2648,6 +2711,7 @@ protected
 Object
 functionSubstring
 (
+final
 EvalContext
 context
 )
@@ -2671,6 +2735,7 @@ minArgs
 maxArgs
 )
 ;
+final
 int
 ac
 =
@@ -2678,6 +2743,7 @@ getArgumentCount
 (
 )
 ;
+final
 String
 s1
 =
@@ -2822,6 +2888,7 @@ return
 ""
 ;
 }
+final
 double
 to
 =
@@ -2918,6 +2985,7 @@ protected
 Object
 functionStringLength
 (
+final
 EvalContext
 context
 )
@@ -2973,8 +3041,9 @@ context
 ;
 }
 return
-new
 Double
+.
+valueOf
 (
 s
 .
@@ -2988,6 +3057,7 @@ protected
 Object
 functionNormalizeSpace
 (
+final
 EvalContext
 context
 )
@@ -2997,6 +3067,7 @@ assertArgCount
 1
 )
 ;
+final
 String
 s
 =
@@ -3014,6 +3085,7 @@ context
 )
 )
 ;
+final
 char
 [
 ]
@@ -3140,6 +3212,7 @@ protected
 Object
 functionTranslate
 (
+final
 EvalContext
 context
 )
@@ -3155,6 +3228,7 @@ assertArgCount
 argCount
 )
 ;
+final
 String
 s1
 =
@@ -3172,6 +3246,7 @@ context
 )
 )
 ;
+final
 String
 s2
 =
@@ -3189,6 +3264,7 @@ context
 )
 )
 ;
+final
 String
 s3
 =
@@ -3206,6 +3282,7 @@ context
 )
 )
 ;
+final
 char
 [
 ]
@@ -3239,6 +3316,7 @@ in
 ++
 )
 {
+final
 char
 c
 =
@@ -3247,6 +3325,7 @@ chars
 in
 ]
 ;
+final
 int
 inx
 =
@@ -3319,6 +3398,7 @@ protected
 Object
 functionBoolean
 (
+final
 EvalContext
 context
 )
@@ -3356,6 +3436,7 @@ protected
 Object
 functionNot
 (
+final
 EvalContext
 context
 )
@@ -3393,6 +3474,7 @@ protected
 Object
 functionTrue
 (
+final
 EvalContext
 context
 )
@@ -3412,6 +3494,7 @@ protected
 Object
 functionFalse
 (
+final
 EvalContext
 context
 )
@@ -3431,6 +3514,7 @@ protected
 Object
 functionNull
 (
+final
 EvalContext
 context
 )
@@ -3448,6 +3532,7 @@ protected
 Object
 functionNumber
 (
+final
 EvalContext
 context
 )
@@ -3499,6 +3584,7 @@ protected
 Object
 functionSum
 (
+final
 EvalContext
 context
 )
@@ -3508,6 +3594,7 @@ assertArgCount
 1
 )
 ;
+final
 Object
 v
 =
@@ -3543,6 +3630,7 @@ sum
 =
 0.0
 ;
+final
 EvalContext
 ctx
 =
@@ -3560,6 +3648,7 @@ hasNext
 )
 )
 {
+final
 NodePointer
 ptr
 =
@@ -3583,8 +3672,9 @@ ptr
 ;
 }
 return
-new
 Double
+.
+valueOf
 (
 sum
 )
@@ -3612,6 +3702,7 @@ protected
 Object
 functionFloor
 (
+final
 EvalContext
 context
 )
@@ -3621,6 +3712,7 @@ assertArgCount
 1
 )
 ;
+final
 double
 v
 =
@@ -3656,16 +3748,18 @@ v
 )
 {
 return
-new
 Double
+.
+valueOf
 (
 v
 )
 ;
 }
 return
-new
 Double
+.
+valueOf
 (
 Math
 .
@@ -3680,6 +3774,7 @@ protected
 Object
 functionCeiling
 (
+final
 EvalContext
 context
 )
@@ -3689,6 +3784,7 @@ assertArgCount
 1
 )
 ;
+final
 double
 v
 =
@@ -3724,16 +3820,18 @@ v
 )
 {
 return
-new
 Double
+.
+valueOf
 (
 v
 )
 ;
 }
 return
-new
 Double
+.
+valueOf
 (
 Math
 .
@@ -3748,6 +3846,7 @@ protected
 Object
 functionRound
 (
+final
 EvalContext
 context
 )
@@ -3757,6 +3856,7 @@ assertArgCount
 1
 )
 ;
+final
 double
 v
 =
@@ -3792,16 +3892,18 @@ v
 )
 {
 return
-new
 Double
+.
+valueOf
 (
 v
 )
 ;
 }
 return
-new
 Double
+.
+valueOf
 (
 Math
 .
@@ -3816,6 +3918,7 @@ private
 Object
 functionFormatNumber
 (
+final
 EvalContext
 context
 )
@@ -3839,6 +3942,7 @@ minArgs
 maxArgs
 )
 ;
+final
 double
 number
 =
@@ -3856,6 +3960,7 @@ context
 )
 )
 ;
+final
 String
 pattern
 =
@@ -3885,6 +3990,7 @@ getArgumentCount
 maxArgs
 )
 {
+final
 String
 symbolsName
 =
@@ -3918,6 +4024,7 @@ symbolsName
 }
 else
 {
+final
 NodePointer
 pointer
 =
@@ -3970,6 +4077,7 @@ locale
 )
 ;
 }
+final
 DecimalFormat
 format
 =
@@ -4009,6 +4117,7 @@ private
 void
 assertArgCount
 (
+final
 int
 count
 )
@@ -4025,13 +4134,16 @@ private
 void
 assertArgRange
 (
+final
 int
 min
 ,
+final
 int
 max
 )
 {
+final
 int
 ct
 =

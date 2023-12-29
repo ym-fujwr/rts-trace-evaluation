@@ -1186,9 +1186,8 @@ eol
 =
 System
 .
-getProperty
+lineSeparator
 (
-"line.separator"
 )
 ;
 final

@@ -30,3 +30,4 @@ org.apache.commons.jxpath.ri.model.JXPath154Test
 org.apache.commons.jxpath.ri.model.MixedModelTest
 org.apache.commons.jxpath.ri.model.XMLPreserveSpaceTest
 org.apache.commons.jxpath.ri.model.XMLSpaceTest
+org.apache.commons.jxpath.util.ClassLoaderUtilTest

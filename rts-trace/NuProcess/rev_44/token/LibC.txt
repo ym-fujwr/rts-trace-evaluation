@@ -431,6 +431,14 @@ public
 static
 final
 int
+EINTR
+=
+4
+;
+public
+static
+final
+int
 ECHILD
 =
 10

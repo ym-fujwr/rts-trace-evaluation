@@ -1,1 +1,1 @@
-org.apache.commons.net.nntp.TestThreader
+org.apache.commons.net.ntp.TestTimeInfo

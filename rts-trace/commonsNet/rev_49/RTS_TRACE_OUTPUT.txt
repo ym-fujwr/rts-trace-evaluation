@@ -26,7 +26,7 @@
 [INFO] --- buildnumber-maven-plugin:3.0.0:create (default) @ commons-net ---
 [INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsNet/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsNet/workingDir
-[INFO] Storing buildNumber: null at timestamp: 1703570311230
+[INFO] Storing buildNumber: null at timestamp: 1703852096448
 [WARNING] Cannot get the branch information from the git repository: 
 Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 
@@ -70,6 +70,6 @@ Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  14.359 s
-[INFO] Finished at: 2023-12-26T14:58:43+09:00
+[INFO] Total time:  13.417 s
+[INFO] Finished at: 2023-12-29T21:15:07+09:00
 [INFO] ------------------------------------------------------------------------

@@ -1,12 +1,12 @@
 diff --git a/src/main/java/org/apache/commons/cli/Options.java b/src/main/java/org/apache/commons/cli/Options.java
-index f87ca900..6905f8f4 100644
+index 6905f8f4..f87ca900 100644
 --- a/src/main/java/org/apache/commons/cli/Options.java
 +++ b/src/main/java/org/apache/commons/cli/Options.java
-@@ -228,2 +228,5 @@ public class Options implements Serializable {
--        final Option option = shortOpts.get(opt);
--        return option != null ? option : longOpts.get(opt);
-+        if (shortOpts.containsKey(opt)) {
-+            return shortOpts.get(opt);
-+        }
-+
-+        return longOpts.get(opt);
+@@ -228,5 +228,2 @@ public class Options implements Serializable {
+-        if (shortOpts.containsKey(opt)) {
+-            return shortOpts.get(opt);
+-        }
+-
+-        return longOpts.get(opt);
++        final Option option = shortOpts.get(opt);
++        return option != null ? option : longOpts.get(opt);

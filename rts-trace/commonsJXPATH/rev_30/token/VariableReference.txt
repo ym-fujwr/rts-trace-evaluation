@@ -22,7 +22,7 @@ jxpath
 .
 ri
 .
-QName
+EvalContext
 ;
 import
 org
@@ -35,7 +35,7 @@ jxpath
 .
 ri
 .
-EvalContext
+QName
 ;
 public
 class
@@ -44,12 +44,14 @@ extends
 Expression
 {
 private
+final
 QName
 varName
 ;
 public
 VariableReference
 (
+final
 QName
 varName
 )
@@ -71,6 +73,8 @@ return
 varName
 ;
 }
+@
+Override
 public
 String
 toString
@@ -83,6 +87,8 @@ return
 varName
 ;
 }
+@
+Override
 public
 boolean
 isContextDependent
@@ -93,6 +99,8 @@ return
 false
 ;
 }
+@
+Override
 public
 boolean
 computeContextDependent
@@ -103,10 +111,13 @@ return
 false
 ;
 }
+@
+Override
 public
 Object
 compute
 (
+final
 EvalContext
 context
 )
@@ -118,10 +129,13 @@ context
 )
 ;
 }
+@
+Override
 public
 Object
 computeValue
 (
+final
 EvalContext
 context
 )

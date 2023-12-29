@@ -1,1 +1,1 @@
-org.adoptopenjdk.jitwatch.test.TestExecutionUtil#testExecuteDemo
+org.adoptopenjdk.jitwatch.test.TestExecutionUtil

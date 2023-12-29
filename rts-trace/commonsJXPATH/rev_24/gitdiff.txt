@@ -1,436 +1,436 @@
 diff --git a/src/main/java/org/apache/commons/jxpath/functions/package-info.java b/src/main/java/org/apache/commons/jxpath/functions/package-info.java
-deleted file mode 100644
-index cc0b70b0..00000000
---- a/src/main/java/org/apache/commons/jxpath/functions/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementations of Java class-based extension functions.
-- */
--package org.apache.commons.jxpath.functions;
+new file mode 100644
+index 00000000..cc0b70b0
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/functions/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementations of Java class-based extension functions.
++ */
++package org.apache.commons.jxpath.functions;
 diff --git a/src/main/java/org/apache/commons/jxpath/package-info.java b/src/main/java/org/apache/commons/jxpath/package-info.java
-deleted file mode 100644
-index 71e1025a..00000000
---- a/src/main/java/org/apache/commons/jxpath/package-info.java
-+++ /dev/null
-@@ -1,22 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Public, abstract part of JXPath: interfaces and configuration. If you are a user of JXPath and don't plan to modify its implementation, this is the only
-- * package you'll need to use. Start with the {@link org.apache.commons.jxpath.JXPathContext} class.
-- */
--package org.apache.commons.jxpath;
+new file mode 100644
+index 00000000..71e1025a
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/package-info.java
+@@ -0,0 +1,22 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Public, abstract part of JXPath: interfaces and configuration. If you are a user of JXPath and don't plan to modify its implementation, this is the only
++ * package you'll need to use. Start with the {@link org.apache.commons.jxpath.JXPathContext} class.
++ */
++package org.apache.commons.jxpath;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/axes/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/axes/package-info.java
-deleted file mode 100644
-index 6176416f..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/axes/package-info.java
-+++ /dev/null
-@@ -1,22 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementations of EvalContext used for different XPath axes (child::, parent:: etc). In order to evaluate a path, RI creates a chain of EvalContexts, one
-- * for each step in the path.
-- */
--package org.apache.commons.jxpath.ri.axes;
+new file mode 100644
+index 00000000..6176416f
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/axes/package-info.java
+@@ -0,0 +1,22 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementations of EvalContext used for different XPath axes (child::, parent:: etc). In order to evaluate a path, RI creates a chain of EvalContexts, one
++ * for each step in the path.
++ */
++package org.apache.commons.jxpath.ri.axes;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/package-info.java
-deleted file mode 100644
-index fd220214..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/compiler/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * XPath parse tree. TreeCompiler is the class responsible for the construction of a parse tree out of individual elements.
-- */
--package org.apache.commons.jxpath.ri.compiler;
+new file mode 100644
+index 00000000..fd220214
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * XPath parse tree. TreeCompiler is the class responsible for the construction of a parse tree out of individual elements.
++ */
++package org.apache.commons.jxpath.ri.compiler;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/package-info.java
-deleted file mode 100644
-index 7a7f23b3..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementation of "model" APIs for JavaBeans, Dynamic Property Objects, collections and null.
-- */
--package org.apache.commons.jxpath.ri.model.beans;
+new file mode 100644
+index 00000000..7a7f23b3
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementation of "model" APIs for JavaBeans, Dynamic Property Objects, collections and null.
++ */
++package org.apache.commons.jxpath.ri.model.beans;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/container/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/model/container/package-info.java
-deleted file mode 100644
-index 7691b10b..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/model/container/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementation of "model" APIs for Containers.
-- */
--package org.apache.commons.jxpath.ri.model.container;
+new file mode 100644
+index 00000000..7691b10b
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/container/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementation of "model" APIs for Containers.
++ */
++package org.apache.commons.jxpath.ri.model.container;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dom/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/model/dom/package-info.java
-deleted file mode 100644
-index a1471c89..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/model/dom/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementation of "model" APIs for W3C DOM.
-- */
--package org.apache.commons.jxpath.ri.model.dom;
+new file mode 100644
+index 00000000..a1471c89
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dom/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementation of "model" APIs for W3C DOM.
++ */
++package org.apache.commons.jxpath.ri.model.dom;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/package-info.java
-deleted file mode 100644
-index 39547d9b..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementation of "model" APIs for Commons BeanUtils DynaBeans.
-- */
--package org.apache.commons.jxpath.ri.model.dynabeans;
+new file mode 100644
+index 00000000..39547d9b
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementation of "model" APIs for Commons BeanUtils DynaBeans.
++ */
++package org.apache.commons.jxpath.ri.model.dynabeans;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/package-info.java
-deleted file mode 100644
-index b615cf57..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementation of "model" APIs for dynamic property objects e.g. Maps or anything else for which a client can provide a DynamicPropertyHandler class.
-- */
--package org.apache.commons.jxpath.ri.model.dynamic;
+new file mode 100644
+index 00000000..b615cf57
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementation of "model" APIs for dynamic property objects e.g. Maps or anything else for which a client can provide a DynamicPropertyHandler class.
++ */
++package org.apache.commons.jxpath.ri.model.dynamic;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/package-info.java
-deleted file mode 100644
-index 0659e2b8..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementation of "model" APIs for JDOM (see jdom.org).
-- */
--package org.apache.commons.jxpath.ri.model.jdom;
+new file mode 100644
+index 00000000..0659e2b8
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementation of "model" APIs for JDOM (see jdom.org).
++ */
++package org.apache.commons.jxpath.ri.model.jdom;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/model/package-info.java
-deleted file mode 100644
-index cb215ed7..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/model/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementation of "model" APIs for Containers.
-- */
--package org.apache.commons.jxpath.ri.model;
+new file mode 100644
+index 00000000..cb215ed7
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementation of "model" APIs for Containers.
++ */
++package org.apache.commons.jxpath.ri.model;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/package-info.java
-deleted file mode 100644
-index b1d1a62e..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/package-info.java
-+++ /dev/null
-@@ -1,22 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Reference implementation of JXPath. It comes with a JavaCC-based parser for XPath expressions, a parse tree and a fast interpreter, which applies XPaths to
-- * graphs of Java objects.
-- */
--package org.apache.commons.jxpath.ri;
+new file mode 100644
+index 00000000..b1d1a62e
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/package-info.java
+@@ -0,0 +1,22 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Reference implementation of JXPath. It comes with a JavaCC-based parser for XPath expressions, a parse tree and a fast interpreter, which applies XPaths to
++ * graphs of Java objects.
++ */
++package org.apache.commons.jxpath.ri;
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/package-info.java b/src/main/java/org/apache/commons/jxpath/ri/parser/package-info.java
-deleted file mode 100644
-index 783dbac9..00000000
---- a/src/main/java/org/apache/commons/jxpath/ri/parser/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * JavaCC XPath grammar. All classes in this package were generated by JavaCC. The grammar definition is in the XPath.jj file.
-- */
--package org.apache.commons.jxpath.ri.parser;
+new file mode 100644
+index 00000000..783dbac9
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * JavaCC XPath grammar. All classes in this package were generated by JavaCC. The grammar definition is in the XPath.jj file.
++ */
++package org.apache.commons.jxpath.ri.parser;
 diff --git a/src/main/java/org/apache/commons/jxpath/servlet/package-info.java b/src/main/java/org/apache/commons/jxpath/servlet/package-info.java
-deleted file mode 100644
-index 3ef978ae..00000000
---- a/src/main/java/org/apache/commons/jxpath/servlet/package-info.java
-+++ /dev/null
-@@ -1,22 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Implementations of JXPathContexts bound to various servlet scopes: PageContext, ServletRequest, HttpSession and ServletContext. Start with the
-- * {@link org.apache.commons.jxpath.servlet.JXPathServletContexts} class.
-- */
--package org.apache.commons.jxpath.servlet;
+new file mode 100644
+index 00000000..3ef978ae
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/servlet/package-info.java
+@@ -0,0 +1,22 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Implementations of JXPathContexts bound to various servlet scopes: PageContext, ServletRequest, HttpSession and ServletContext. Start with the
++ * {@link org.apache.commons.jxpath.servlet.JXPathServletContexts} class.
++ */
++package org.apache.commons.jxpath.servlet;
 diff --git a/src/main/java/org/apache/commons/jxpath/util/package-info.java b/src/main/java/org/apache/commons/jxpath/util/package-info.java
-deleted file mode 100644
-index c33e8c3e..00000000
---- a/src/main/java/org/apache/commons/jxpath/util/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Utility classes to assist with JXPath implementation(s) and/or usage.
-- */
--package org.apache.commons.jxpath.util;
+new file mode 100644
+index 00000000..c33e8c3e
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/util/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Utility classes to assist with JXPath implementation(s) and/or usage.
++ */
++package org.apache.commons.jxpath.util;
 diff --git a/src/main/java/org/apache/commons/jxpath/xml/package-info.java b/src/main/java/org/apache/commons/jxpath/xml/package-info.java
-deleted file mode 100644
-index b44981c6..00000000
---- a/src/main/java/org/apache/commons/jxpath/xml/package-info.java
-+++ /dev/null
-@@ -1,21 +0,0 @@
--/*
-- * Licensed to the Apache Software Foundation (ASF) under one or more
-- * contributor license agreements.  See the NOTICE file distributed with
-- * this work for additional information regarding copyright ownership.
-- * The ASF licenses this file to You under the Apache License, Version 2.0
-- * (the "License"); you may not use this file except in compliance with
-- * the License.  You may obtain a copy of the License at
-- *
-- *     http://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS,
-- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- * See the License for the specific language governing permissions and
-- * limitations under the License.
-- */
--
--/**
-- * Support classes for working with XML.
-- */
--package org.apache.commons.jxpath.xml;
+new file mode 100644
+index 00000000..b44981c6
+--- /dev/null
++++ b/src/main/java/org/apache/commons/jxpath/xml/package-info.java
+@@ -0,0 +1,21 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/**
++ * Support classes for working with XML.
++ */
++package org.apache.commons.jxpath.xml;

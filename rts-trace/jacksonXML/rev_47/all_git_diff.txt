@@ -1,131 +1,131 @@
 diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
-index beaa4b694..07d84d33e 100644
+index 07d84d33e..beaa4b694 100644
 --- a/.github/workflows/main.yml
 +++ b/.github/workflows/main.yml
 @@ -7 +7 @@ on:
--    - "2.17"
-+    - "2.16"
+-    - "2.16"
++    - "2.17"
 @@ -15 +15 @@ on:
--    - "2.17"
-+    - "2.16"
+-    - "2.16"
++    - "2.17"
 diff --git a/.gitignore b/.gitignore
-index cdbf5d441..c3bde8034 100644
+index c3bde8034..cdbf5d441 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -11,2 +11 @@ syntax: glob
--/target
--.mvn/wrapper/maven-wrapper.jar
-+target
+@@ -11 +11,2 @@ syntax: glob
+-target
++/target
++.mvn/wrapper/maven-wrapper.jar
 diff --git a/.mvn/wrapper/maven-wrapper.jar b/.mvn/wrapper/maven-wrapper.jar
-new file mode 100644
-index 000000000..2cc7d4a55
-Binary files /dev/null and b/.mvn/wrapper/maven-wrapper.jar differ
+deleted file mode 100644
+index 2cc7d4a55..000000000
+Binary files a/.mvn/wrapper/maven-wrapper.jar and /dev/null differ
 diff --git a/.mvn/wrapper/maven-wrapper.properties b/.mvn/wrapper/maven-wrapper.properties
-index 71952c452..a36fc474e 100644
+index a36fc474e..71952c452 100644
 --- a/.mvn/wrapper/maven-wrapper.properties
 +++ b/.mvn/wrapper/maven-wrapper.properties
 @@ -17 +17 @@
--distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.3/apache-maven-3.9.3-bin.zip
-+distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.2/apache-maven-3.9.2-bin.zip
+-distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.2/apache-maven-3.9.2-bin.zip
++distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.3/apache-maven-3.9.3-bin.zip
 diff --git a/README.md b/README.md
-index 9dd6e03a8..c0daf53f4 100644
+index c0daf53f4..9dd6e03a8 100644
 --- a/README.md
 +++ b/README.md
-@@ -31 +30,0 @@ Specifically:
--| OpenSSF Score | [![OpenSSF  Scorecard](https://api.securityscorecards.dev/projects/github.com/FasterXML/jackson-dataformat-xml/badge)](https://securityscorecards.dev/viewer/?uri=github.com/FasterXML/jackson-dataformat-xml) |
+@@ -30,0 +31 @@ Specifically:
++| OpenSSF Score | [![OpenSSF  Scorecard](https://api.securityscorecards.dev/projects/github.com/FasterXML/jackson-dataformat-xml/badge)](https://securityscorecards.dev/viewer/?uri=github.com/FasterXML/jackson-dataformat-xml) |
 diff --git a/pom.xml b/pom.xml
-index 8ab588297..887cc2e68 100644
+index 887cc2e68..8ab588297 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -12 +12 @@
--    <version>2.17.0-SNAPSHOT</version>
-+    <version>2.16.0-rc1-SNAPSHOT</version>
+-    <version>2.16.0-rc1-SNAPSHOT</version>
++    <version>2.17.0-SNAPSHOT</version>
 @@ -16 +16 @@
--  <version>2.17.0-SNAPSHOT</version>
-+  <version>2.16.0-rc1-SNAPSHOT</version>
+-  <version>2.16.0-rc1-SNAPSHOT</version>
++  <version>2.17.0-SNAPSHOT</version>
 @@ -37 +37 @@ alternative support for serializing POJOs as XML and deserializing XML as pojos.
--    <project.build.outputTimestamp>2023-11-15T23:23:21Z</project.build.outputTimestamp>
-+    <project.build.outputTimestamp>2023-04-24T00:29:29Z</project.build.outputTimestamp>
+-    <project.build.outputTimestamp>2023-04-24T00:29:29Z</project.build.outputTimestamp>
++    <project.build.outputTimestamp>2023-11-15T23:23:21Z</project.build.outputTimestamp>
 diff --git a/release-notes/VERSION-2.x b/release-notes/VERSION-2.x
-index d61544bfc..9766dbeb1 100644
+index 9766dbeb1..d61544bfc 100644
 --- a/release-notes/VERSION-2.x
 +++ b/release-notes/VERSION-2.x
-@@ -7,5 +7 @@ Project: jackson-dataformat-xml
--2.17.0 (not yet released)
--
---
--
--2.16.0 (15-Nov-2023)
-+2.16.0 (not yet released)
+@@ -7 +7,5 @@ Project: jackson-dataformat-xml
+-2.16.0 (not yet released)
++2.17.0 (not yet released)
++
++-
++
++2.16.0 (15-Nov-2023)
 diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlBeanSerializerBase.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlBeanSerializerBase.java
-index 20acd0e08..7b43fa71d 100644
+index 7b43fa71d..20acd0e08 100644
 --- a/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlBeanSerializerBase.java
 +++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlBeanSerializerBase.java
-@@ -297,5 +296,0 @@ public abstract class XmlBeanSerializerBase extends BeanSerializerBase
--                // Reset to avoid next value being written as unwrapped,
--                // for example when property is suppressed
--                if (i == textIndex) {
--                    xgen.setNextIsUnwrapped(false);
--                }
+@@ -296,0 +297,5 @@ public abstract class XmlBeanSerializerBase extends BeanSerializerBase
++                // Reset to avoid next value being written as unwrapped,
++                // for example when property is suppressed
++                if (i == textIndex) {
++                    xgen.setNextIsUnwrapped(false);
++                }
 diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestSerializationWithFilter.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestSerializationWithFilter.java
-deleted file mode 100644
-index bfe3864d0..000000000
---- a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestSerializationWithFilter.java
-+++ /dev/null
-@@ -1,56 +0,0 @@
--package com.fasterxml.jackson.dataformat.xml.ser;
--
--import com.fasterxml.jackson.annotation.JsonFilter;
--import com.fasterxml.jackson.core.JsonGenerator;
--import com.fasterxml.jackson.databind.SerializerProvider;
--import com.fasterxml.jackson.databind.ser.FilterProvider;
--import com.fasterxml.jackson.databind.ser.PropertyFilter;
--import com.fasterxml.jackson.databind.ser.PropertyWriter;
--import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
--import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
--import com.fasterxml.jackson.dataformat.xml.XmlMapper;
--import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
--import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
--
--/**
-- * Unit test for [PullRequest#616], problems with filtered serialization.
-- */
--public class TestSerializationWithFilter extends XmlTestBase
--{
--    @JsonFilter("filter")
--    static class Item
--    {
--        @JacksonXmlText
--        public int a;
--        public int b;
--        public int c;
--    }
--
--    public void testPullRequest616() throws Exception
--    {
--        Item bean = new Item();
--        bean.a = 0;
--        bean.b = 10;
--        bean.c = 100;
--
--        String exp = "<Item><b>10</b><c>100</c></Item>";
--
--        XmlMapper xmlMapper = new XmlMapper();
--        PropertyFilter filter = new SimpleBeanPropertyFilter() {
--            @Override
--            public void serializeAsField(Object pojo, JsonGenerator jgen, SerializerProvider provider, PropertyWriter writer) throws Exception
--            {
--                if (include(writer) && writer.getName().equals("a")) {
--                    int a = ((Item) pojo).a;
--                    if (a <= 0)
--                        return;
--                }
--                super.serializeAsField(pojo, jgen, provider, writer);
--            }
--        };
--        FilterProvider filterProvider = new SimpleFilterProvider().addFilter("filter", filter);
--        xmlMapper.setFilterProvider(filterProvider);
--        String act = xmlMapper.writeValueAsString(bean);
--        assertEquals(exp, act);
--    }
--}
+new file mode 100644
+index 000000000..bfe3864d0
+--- /dev/null
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestSerializationWithFilter.java
+@@ -0,0 +1,56 @@
++package com.fasterxml.jackson.dataformat.xml.ser;
++
++import com.fasterxml.jackson.annotation.JsonFilter;
++import com.fasterxml.jackson.core.JsonGenerator;
++import com.fasterxml.jackson.databind.SerializerProvider;
++import com.fasterxml.jackson.databind.ser.FilterProvider;
++import com.fasterxml.jackson.databind.ser.PropertyFilter;
++import com.fasterxml.jackson.databind.ser.PropertyWriter;
++import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
++import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
++import com.fasterxml.jackson.dataformat.xml.XmlMapper;
++import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
++import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
++
++/**
++ * Unit test for [PullRequest#616], problems with filtered serialization.
++ */
++public class TestSerializationWithFilter extends XmlTestBase
++{
++    @JsonFilter("filter")
++    static class Item
++    {
++        @JacksonXmlText
++        public int a;
++        public int b;
++        public int c;
++    }
++
++    public void testPullRequest616() throws Exception
++    {
++        Item bean = new Item();
++        bean.a = 0;
++        bean.b = 10;
++        bean.c = 100;
++
++        String exp = "<Item><b>10</b><c>100</c></Item>";
++
++        XmlMapper xmlMapper = new XmlMapper();
++        PropertyFilter filter = new SimpleBeanPropertyFilter() {
++            @Override
++            public void serializeAsField(Object pojo, JsonGenerator jgen, SerializerProvider provider, PropertyWriter writer) throws Exception
++            {
++                if (include(writer) && writer.getName().equals("a")) {
++                    int a = ((Item) pojo).a;
++                    if (a <= 0)
++                        return;
++                }
++                super.serializeAsField(pojo, jgen, provider, writer);
++            }
++        };
++        FilterProvider filterProvider = new SimpleFilterProvider().addFilter("filter", filter);
++        xmlMapper.setFilterProvider(filterProvider);
++        String act = xmlMapper.writeValueAsString(bean);
++        assertEquals(exp, act);
++    }
++}

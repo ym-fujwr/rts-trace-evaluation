@@ -325,6 +325,7 @@ serialVersionUID
 8751046933894857319L
 ;
 private
+final
 Node
 node
 ;
@@ -363,9 +364,11 @@ XMLNS_NAMESPACE_URI
 public
 DOMNodePointer
 (
+final
 Node
 node
 ,
+final
 Locale
 locale
 )
@@ -387,12 +390,15 @@ node
 public
 DOMNodePointer
 (
+final
 Node
 node
 ,
+final
 Locale
 locale
 ,
+final
 String
 id
 )
@@ -420,9 +426,11 @@ id
 public
 DOMNodePointer
 (
+final
 NodePointer
 parent
 ,
+final
 Node
 node
 )
@@ -439,10 +447,13 @@ node
 node
 ;
 }
+@
+Override
 public
 boolean
 testNode
 (
+final
 NodeTest
 test
 )
@@ -461,9 +472,11 @@ static
 boolean
 testNode
 (
+final
 Node
 node
 ,
+final
 NodeTest
 test
 )
@@ -503,6 +516,7 @@ return
 false
 ;
 }
+final
 NodeNameTest
 nodeNameTest
 =
@@ -511,6 +525,7 @@ NodeNameTest
 )
 test
 ;
+final
 QName
 testName
 =
@@ -520,6 +535,7 @@ getNodeName
 (
 )
 ;
+final
 String
 namespaceURI
 =
@@ -529,6 +545,7 @@ getNamespaceURI
 (
 )
 ;
+final
 boolean
 wildcard
 =
@@ -538,6 +555,7 @@ isWildcard
 (
 )
 ;
+final
 String
 testPrefix
 =
@@ -581,6 +599,7 @@ node
 )
 )
 {
+final
 String
 nodeNS
 =
@@ -625,6 +644,7 @@ instanceof
 NodeTypeTest
 )
 {
+final
 int
 nodeType
 =
@@ -722,6 +742,7 @@ Node
 PROCESSING_INSTRUCTION_NODE
 )
 {
+final
 String
 testPI
 =
@@ -736,6 +757,7 @@ getTarget
 (
 )
 ;
+final
 String
 nodePI
 =
@@ -823,6 +845,8 @@ s2
 )
 ;
 }
+@
+Override
 public
 QName
 getName
@@ -839,6 +863,7 @@ ns
 =
 null
 ;
+final
 int
 type
 =
@@ -910,6 +935,8 @@ ln
 )
 ;
 }
+@
+Override
 public
 String
 getNamespaceURI
@@ -923,16 +950,21 @@ node
 )
 ;
 }
+@
+Override
 public
 NodeIterator
 childIterator
 (
+final
 NodeTest
 test
 ,
+final
 boolean
 reverse
 ,
+final
 NodePointer
 startWith
 )
@@ -951,10 +983,13 @@ startWith
 )
 ;
 }
+@
+Override
 public
 NodeIterator
 attributeIterator
 (
+final
 QName
 name
 )
@@ -969,10 +1004,13 @@ name
 )
 ;
 }
+@
+Override
 public
 NodePointer
 namespacePointer
 (
+final
 String
 prefix
 )
@@ -987,6 +1025,8 @@ prefix
 )
 ;
 }
+@
+Override
 public
 NodeIterator
 namespaceIterator
@@ -1001,6 +1041,8 @@ this
 )
 ;
 }
+@
+Override
 public
 synchronized
 NamespaceResolver
@@ -1039,10 +1081,13 @@ return
 localNamespaceResolver
 ;
 }
+@
+Override
 public
 String
 getNamespaceURI
 (
+final
 String
 prefix
 )
@@ -1137,6 +1182,7 @@ namespace
 null
 )
 {
+final
 String
 qname
 =
@@ -1190,6 +1236,7 @@ Node
 ELEMENT_NODE
 )
 {
+final
 Attr
 attr
 =
@@ -1279,6 +1326,8 @@ return
 namespace
 ;
 }
+@
+Override
 public
 String
 getDefaultNamespaceURI
@@ -1338,6 +1387,7 @@ Node
 ELEMENT_NODE
 )
 {
+final
 Attr
 attr
 =
@@ -1407,6 +1457,8 @@ null
 defaultNamespace
 ;
 }
+@
+Override
 public
 Object
 getBaseValue
@@ -1417,6 +1469,8 @@ return
 node
 ;
 }
+@
+Override
 public
 Object
 getImmediateNode
@@ -1427,6 +1481,8 @@ return
 node
 ;
 }
+@
+Override
 public
 boolean
 isActual
@@ -1437,6 +1493,8 @@ return
 true
 ;
 }
+@
+Override
 public
 boolean
 isCollection
@@ -1447,6 +1505,8 @@ return
 false
 ;
 }
+@
+Override
 public
 int
 getLength
@@ -1457,6 +1517,8 @@ return
 1
 ;
 }
+@
+Override
 public
 boolean
 isLeaf
@@ -1472,14 +1534,18 @@ hasChildNodes
 )
 ;
 }
+@
+Override
 public
 boolean
 isLanguage
 (
+final
 String
 lang
 )
 {
+final
 String
 current
 =
@@ -1529,6 +1595,7 @@ findEnclosingAttribute
 Node
 n
 ,
+final
 String
 attrName
 )
@@ -1553,6 +1620,7 @@ Node
 ELEMENT_NODE
 )
 {
+final
 Element
 e
 =
@@ -1561,6 +1629,7 @@ Element
 )
 n
 ;
+final
 String
 attr
 =
@@ -1619,10 +1688,13 @@ node
 )
 ;
 }
+@
+Override
 public
 void
 setValue
 (
+final
 Object
 value
 )
@@ -1650,6 +1722,7 @@ Node
 CDATA_SECTION_NODE
 )
 {
+final
 String
 string
 =
@@ -1716,6 +1789,7 @@ getChildNodes
 (
 )
 ;
+final
 int
 count
 =
@@ -1739,6 +1813,7 @@ i
 ;
 )
 {
+final
 Node
 child
 =
@@ -1764,6 +1839,7 @@ instanceof
 Node
 )
 {
+final
 Node
 valueNode
 =
@@ -1810,6 +1886,7 @@ i
 ++
 )
 {
+final
 Node
 child
 =
@@ -1852,6 +1929,7 @@ true
 }
 else
 {
+final
 String
 string
 =
@@ -1884,6 +1962,7 @@ equals
 )
 )
 {
+final
 Node
 textNode
 =
@@ -1909,13 +1988,17 @@ textNode
 }
 }
 }
+@
+Override
 public
 NodePointer
 createChild
 (
+final
 JXPathContext
 context
 ,
+final
 QName
 name
 ,
@@ -1935,6 +2018,7 @@ index
 0
 ;
 }
+final
 boolean
 success
 =
@@ -1968,6 +2052,7 @@ success
 NodeTest
 nodeTest
 ;
+final
 String
 prefix
 =
@@ -1977,6 +2062,7 @@ getPrefix
 (
 )
 ;
+final
 String
 namespaceURI
 =
@@ -2003,6 +2089,7 @@ name
 namespaceURI
 )
 ;
+final
 NodeIterator
 it
 =
@@ -2066,23 +2153,30 @@ index
 )
 ;
 }
+@
+Override
 public
 NodePointer
 createChild
 (
+final
 JXPathContext
 context
 ,
+final
 QName
 name
 ,
+final
 int
 index
 ,
+final
 Object
 value
 )
 {
+final
 NodePointer
 ptr
 =
@@ -2106,13 +2200,17 @@ return
 ptr
 ;
 }
+@
+Override
 public
 NodePointer
 createAttribute
 (
+final
 JXPathContext
 context
 ,
+final
 QName
 name
 )
@@ -2138,6 +2236,7 @@ name
 )
 ;
 }
+final
 Element
 element
 =
@@ -2146,6 +2245,7 @@ Element
 )
 node
 ;
+final
 String
 prefix
 =
@@ -2167,6 +2267,7 @@ ns
 =
 null
 ;
+final
 NamespaceResolver
 nsr
 =
@@ -2256,6 +2357,7 @@ getName
 ;
 }
 }
+final
 NodeIterator
 it
 =
@@ -2279,12 +2381,15 @@ getNodePointer
 )
 ;
 }
+@
+Override
 public
 void
 remove
 (
 )
 {
+final
 Node
 parent
 =
@@ -2317,6 +2422,8 @@ node
 )
 ;
 }
+@
+Override
 public
 String
 asPath
@@ -2341,6 +2448,7 @@ id
 "')"
 ;
 }
+final
 StringBuffer
 buffer
 =
@@ -2423,6 +2531,7 @@ append
 )
 ;
 }
+final
 String
 ln
 =
@@ -2433,6 +2542,7 @@ getLocalName
 node
 )
 ;
+final
 String
 nsURI
 =
@@ -2478,6 +2588,7 @@ append
 }
 else
 {
+final
 String
 prefix
 =
@@ -2761,6 +2872,7 @@ private
 boolean
 matchesQName
 (
+final
 Node
 n
 )
@@ -2955,6 +3067,7 @@ count
 =
 1
 ;
+final
 String
 target
 =
@@ -3031,6 +3144,8 @@ return
 count
 ;
 }
+@
+Override
 public
 int
 hashCode
@@ -3045,10 +3160,13 @@ hashCode
 )
 ;
 }
+@
+Override
 public
 boolean
 equals
 (
+final
 Object
 object
 )
@@ -3079,10 +3197,12 @@ static
 String
 getPrefix
 (
+final
 Node
 node
 )
 {
+final
 String
 prefix
 =
@@ -3103,6 +3223,7 @@ return
 prefix
 ;
 }
+final
 String
 name
 =
@@ -3112,6 +3233,7 @@ getNodeName
 (
 )
 ;
+final
 int
 index
 =
@@ -3144,10 +3266,12 @@ static
 String
 getLocalName
 (
+final
 Node
 node
 )
 {
+final
 String
 localName
 =
@@ -3168,6 +3292,7 @@ return
 localName
 ;
 }
+final
 String
 name
 =
@@ -3177,6 +3302,7 @@ getNodeName
 (
 )
 ;
+final
 int
 index
 =
@@ -3234,6 +3360,7 @@ getDocumentElement
 )
 ;
 }
+final
 Element
 element
 =
@@ -3258,6 +3385,7 @@ uri
 null
 )
 {
+final
 String
 prefix
 =
@@ -3266,6 +3394,7 @@ getPrefix
 node
 )
 ;
+final
 String
 qname
 =
@@ -3304,6 +3433,7 @@ Node
 ELEMENT_NODE
 )
 {
+final
 Attr
 attr
 =
@@ -3361,6 +3491,8 @@ null
 uri
 ;
 }
+@
+Override
 public
 Object
 getValue
@@ -3380,6 +3512,7 @@ Node
 COMMENT_NODE
 )
 {
+final
 String
 text
 =
@@ -3419,10 +3552,12 @@ private
 String
 stringValue
 (
+final
 Node
 node
 )
 {
+final
 int
 nodeType
 =
@@ -3445,6 +3580,7 @@ return
 ""
 ;
 }
+final
 boolean
 trim
 =
@@ -3476,6 +3612,7 @@ Node
 CDATA_SECTION_NODE
 )
 {
+final
 String
 text
 =
@@ -3512,6 +3649,7 @@ Node
 PROCESSING_INSTRUCTION_NODE
 )
 {
+final
 String
 text
 =
@@ -3544,6 +3682,7 @@ trim
 text
 ;
 }
+final
 NodeList
 list
 =
@@ -3553,6 +3692,7 @@ getChildNodes
 (
 )
 ;
+final
 StringBuffer
 buf
 =
@@ -3580,6 +3720,7 @@ i
 ++
 )
 {
+final
 Node
 child
 =
@@ -3609,17 +3750,22 @@ toString
 )
 ;
 }
+@
+Override
 public
 Pointer
 getPointerByID
 (
+final
 JXPathContext
 context
 ,
+final
 String
 id
 )
 {
+final
 Document
 document
 =
@@ -3644,6 +3790,7 @@ getOwnerDocument
 (
 )
 ;
+final
 Element
 element
 =
@@ -3685,17 +3832,22 @@ id
 )
 ;
 }
+@
+Override
 public
 int
 compareChildNodePointers
 (
+final
 NodePointer
 pointer1
 ,
+final
 NodePointer
 pointer2
 )
 {
+final
 Node
 node1
 =
@@ -3708,6 +3860,7 @@ getBaseValue
 (
 )
 ;
+final
 Node
 node2
 =
@@ -3731,6 +3884,7 @@ return
 0
 ;
 }
+final
 int
 t1
 =
@@ -3740,6 +3894,7 @@ getNodeType
 (
 )
 ;
+final
 int
 t2
 =
@@ -3803,6 +3958,7 @@ Node
 ATTRIBUTE_NODE
 )
 {
+final
 NamedNodeMap
 map
 =
@@ -3819,6 +3975,7 @@ getAttributes
 (
 )
 ;
+final
 int
 length
 =
@@ -3843,6 +4000,7 @@ i
 ++
 )
 {
+final
 Node
 n
 =

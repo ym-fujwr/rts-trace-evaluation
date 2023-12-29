@@ -74,6 +74,13 @@ java
 .
 util
 .
+Map
+;
+import
+java
+.
+util
+.
 Properties
 ;
 import
@@ -244,6 +251,14 @@ String
 >
 vmOptions
 ,
+Map
+<
+String
+,
+String
+>
+environment
+,
 ILogListener
 logListener
 )
@@ -342,6 +357,8 @@ return
 runCommands
 (
 commands
+,
+environment
 ,
 logListener
 )

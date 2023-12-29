@@ -120,14 +120,17 @@ implements
 NodeIterator
 {
 private
+final
 NodePointer
 parent
 ;
 private
+final
 QName
 name
 ;
 private
+final
 List
 attributes
 ;
@@ -140,9 +143,11 @@ position
 public
 DOMAttributeIterator
 (
+final
 NodePointer
 parent
 ,
+final
 QName
 name
 )
@@ -166,6 +171,7 @@ ArrayList
 (
 )
 ;
+final
 Node
 node
 =
@@ -191,6 +197,7 @@ Node
 ELEMENT_NODE
 )
 {
+final
 String
 lname
 =
@@ -211,6 +218,7 @@ equals
 )
 )
 {
+final
 Attr
 attr
 =
@@ -242,6 +250,7 @@ attr
 }
 else
 {
+final
 NamedNodeMap
 map
 =
@@ -251,6 +260,7 @@ getAttributes
 (
 )
 ;
+final
 int
 count
 =
@@ -275,6 +285,7 @@ i
 ++
 )
 {
+final
 Attr
 attr
 =
@@ -312,10 +323,12 @@ private
 boolean
 testAttr
 (
+final
 Attr
 attr
 )
 {
+final
 String
 nodePrefix
 =
@@ -326,6 +339,7 @@ getPrefix
 attr
 )
 ;
+final
 String
 nodeLocalName
 =
@@ -372,6 +386,7 @@ return
 false
 ;
 }
+final
 String
 testLocalName
 =
@@ -398,6 +413,7 @@ nodeLocalName
 )
 )
 {
+final
 String
 testPrefix
 =
@@ -467,13 +483,16 @@ private
 Attr
 getAttribute
 (
+final
 Element
 element
 ,
+final
 QName
 name
 )
 {
+final
 String
 testPrefix
 =
@@ -543,6 +562,7 @@ return
 attr
 ;
 }
+final
 NamedNodeMap
 nnm
 =
@@ -613,6 +633,8 @@ getName
 )
 ;
 }
+@
+Override
 public
 NodePointer
 getNodePointer
@@ -681,6 +703,8 @@ index
 )
 ;
 }
+@
+Override
 public
 int
 getPosition
@@ -691,10 +715,13 @@ return
 position
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )

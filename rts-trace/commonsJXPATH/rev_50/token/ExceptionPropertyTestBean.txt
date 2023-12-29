@@ -34,7 +34,7 @@ getErrorString
 {
 throw
 new
-RuntimeException
+IllegalStateException
 (
 "errorString"
 )
@@ -50,7 +50,7 @@ getErrorStringArray
 {
 throw
 new
-RuntimeException
+IllegalStateException
 (
 "errorStringArray"
 )
@@ -64,7 +64,7 @@ getErrorBean
 {
 throw
 new
-RuntimeException
+IllegalStateException
 (
 "errorBean"
 )

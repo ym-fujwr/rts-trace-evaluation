@@ -44,12 +44,14 @@ extends
 Expression
 {
 private
+final
 Object
 value
 ;
 public
 Constant
 (
+final
 Number
 number
 )
@@ -64,6 +66,7 @@ number
 public
 Constant
 (
+final
 String
 string
 )
@@ -75,10 +78,13 @@ value
 string
 ;
 }
+@
+Override
 public
 Object
 compute
 (
+final
 EvalContext
 context
 )
@@ -87,10 +93,13 @@ return
 value
 ;
 }
+@
+Override
 public
 Object
 computeValue
 (
+final
 EvalContext
 context
 )
@@ -99,6 +108,8 @@ return
 value
 ;
 }
+@
+Override
 public
 boolean
 isContextDependent
@@ -109,6 +120,8 @@ return
 false
 ;
 }
+@
+Override
 public
 boolean
 computeContextDependent
@@ -119,6 +132,8 @@ return
 false
 ;
 }
+@
+Override
 public
 String
 toString

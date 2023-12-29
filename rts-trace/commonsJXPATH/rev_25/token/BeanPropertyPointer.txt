@@ -119,6 +119,7 @@ String
 propertyName
 ;
 private
+final
 JXPathBeanInfo
 beanInfo
 ;
@@ -156,9 +157,11 @@ propertyDescriptor
 public
 BeanPropertyPointer
 (
+final
 NodePointer
 parent
 ,
+final
 JXPathBeanInfo
 beanInfo
 )
@@ -175,6 +178,8 @@ beanInfo
 beanInfo
 ;
 }
+@
+Override
 public
 boolean
 isContainer
@@ -185,6 +190,8 @@ return
 true
 ;
 }
+@
+Override
 public
 int
 getPropertyCount
@@ -212,6 +219,8 @@ getPropertyDescriptors
 length
 ;
 }
+@
+Override
 public
 String
 [
@@ -227,6 +236,7 @@ names
 null
 )
 {
+final
 PropertyDescriptor
 [
 ]
@@ -283,10 +293,13 @@ return
 names
 ;
 }
+@
+Override
 public
 void
 setPropertyName
 (
+final
 String
 propertyName
 )
@@ -303,10 +316,13 @@ propertyName
 propertyName
 ;
 }
+@
+Override
 public
 void
 setPropertyIndex
 (
+final
 int
 index
 )
@@ -343,6 +359,8 @@ UNINITIALIZED
 ;
 }
 }
+@
+Override
 public
 Object
 getBaseValue
@@ -356,6 +374,7 @@ baseValue
 UNINITIALIZED
 )
 {
+final
 PropertyDescriptor
 pd
 =
@@ -392,10 +411,13 @@ return
 baseValue
 ;
 }
+@
+Override
 public
 void
 setIndex
 (
+final
 int
 index
 )
@@ -442,6 +464,8 @@ UNINITIALIZED
 ;
 }
 }
+@
+Override
 public
 Object
 getImmediateNode
@@ -476,6 +500,7 @@ getBaseValue
 }
 else
 {
+final
 PropertyDescriptor
 pd
 =
@@ -519,6 +544,8 @@ return
 value
 ;
 }
+@
+Override
 protected
 boolean
 isActualProperty
@@ -533,12 +560,15 @@ getPropertyDescriptor
 null
 ;
 }
+@
+Override
 public
 boolean
 isCollection
 (
 )
 {
+final
 PropertyDescriptor
 pd
 =
@@ -568,6 +598,7 @@ return
 true
 ;
 }
+final
 int
 hint
 =
@@ -605,6 +636,7 @@ return
 true
 ;
 }
+final
 Object
 value
 =
@@ -625,12 +657,15 @@ value
 )
 ;
 }
+@
+Override
 public
 int
 getLength
 (
 )
 {
+final
 PropertyDescriptor
 pd
 =
@@ -672,6 +707,7 @@ pd
 )
 ;
 }
+final
 int
 hint
 =
@@ -706,14 +742,18 @@ getLength
 )
 ;
 }
+@
+Override
 public
 void
 setValue
 (
+final
 Object
 value
 )
 {
+final
 PropertyDescriptor
 pd
 =
@@ -788,10 +828,13 @@ value
 value
 ;
 }
+@
+Override
 public
 NodePointer
 createPath
 (
+final
 JXPathContext
 context
 )
@@ -825,6 +868,8 @@ return
 this
 ;
 }
+@
+Override
 public
 void
 remove
@@ -852,6 +897,7 @@ isCollection
 )
 )
 {
+final
 Object
 o
 =
@@ -859,6 +905,7 @@ getBaseValue
 (
 )
 ;
+final
 Object
 collection
 =
@@ -916,6 +963,8 @@ null
 ;
 }
 }
+@
+Override
 public
 String
 getPropertyName
@@ -929,6 +978,7 @@ propertyName
 null
 )
 {
+final
 PropertyDescriptor
 pd
 =
@@ -976,6 +1026,7 @@ propertyDescriptor
 null
 )
 {
+final
 int
 inx
 =
@@ -1002,6 +1053,7 @@ propertyName
 }
 else
 {
+final
 PropertyDescriptor
 [
 ]

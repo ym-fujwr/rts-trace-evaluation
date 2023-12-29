@@ -1,72 +1,72 @@
 diff --git a/pom.xml b/pom.xml
-index 615b1ce1..a59c6e40 100644
+index a59c6e40..615b1ce1 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -27 +27 @@
--  <version>1.5.0-SNAPSHOT</version>
-+  <version>1.5-SNAPSHOT</version>
+-  <version>1.5-SNAPSHOT</version>
++  <version>1.5.0-SNAPSHOT</version>
 @@ -198 +198 @@
--    <commons.release.version>1.5.0</commons.release.version>
-+    <commons.release.version>1.5</commons.release.version>
+-    <commons.release.version>1.5</commons.release.version>
++    <commons.release.version>1.5.0</commons.release.version>
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index 35e15182..cf380a77 100644
+index cf380a77..35e15182 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
 @@ -23 +23 @@
--    <release version="1.5.0" date="tba" description="New features and bug fixes (Java 7)">
-+    <release version="1.5" date="tba" description="New features and bug fixes (Java 7)">
-@@ -68,3 +67,0 @@
--      <action type="add" dev="ggregory" due-to="Waldemar Sojka, Gary Gregory">
--        Add Option unit tests #76.
--      </action>
+-    <release version="1.5" date="tba" description="New features and bug fixes (Java 7)">
++    <release version="1.5.0" date="tba" description="New features and bug fixes (Java 7)">
+@@ -67,0 +68,3 @@
++      <action type="add" dev="ggregory" due-to="Waldemar Sojka, Gary Gregory">
++        Add Option unit tests #76.
++      </action>
 diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
-index 333ef9d4..a8e8d190 100644
+index a8e8d190..333ef9d4 100644
 --- a/src/main/java/org/apache/commons/cli/CommandLine.java
 +++ b/src/main/java/org/apache/commons/cli/CommandLine.java
 @@ -170 +170 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -261 +261 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -277 +277 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -320 +320 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -351 +351 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -364 +364 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -423 +423 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 diff --git a/src/main/java/org/apache/commons/cli/DefaultParser.java b/src/main/java/org/apache/commons/cli/DefaultParser.java
-index 3bbd0422..81dbc204 100644
+index 81dbc204..3bbd0422 100644
 --- a/src/main/java/org/apache/commons/cli/DefaultParser.java
 +++ b/src/main/java/org/apache/commons/cli/DefaultParser.java
 @@ -44 +44 @@ public class DefaultParser implements CommandLineParser {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -67 +67 @@ public class DefaultParser implements CommandLineParser {
--         * @since 1.5.0
-+         * @since 1.5
+-         * @since 1.5
++         * @since 1.5.0
 @@ -93 +93 @@ public class DefaultParser implements CommandLineParser {
--         * @since 1.5.0
-+         * @since 1.5
+-         * @since 1.5
++         * @since 1.5.0
 @@ -113 +113 @@ public class DefaultParser implements CommandLineParser {
--         * @since 1.5.0
-+         * @since 1.5
+-         * @since 1.5
++         * @since 1.5.0
 @@ -126 +126 @@ public class DefaultParser implements CommandLineParser {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
-index 7ca95186..8ae5a02c 100644
+index 8ae5a02c..7ca95186 100644
 --- a/src/main/java/org/apache/commons/cli/Option.java
 +++ b/src/main/java/org/apache/commons/cli/Option.java
 @@ -188 +188 @@ public class Option implements Cloneable, Serializable {
--         * @since 1.5.0
-+         * @since 1.5
+-         * @since 1.5
++         * @since 1.5.0

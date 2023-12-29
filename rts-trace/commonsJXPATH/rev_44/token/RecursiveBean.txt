@@ -16,6 +16,7 @@ class
 RecursiveBean
 {
 private
+final
 String
 name
 ;
@@ -30,6 +31,7 @@ second
 public
 RecursiveBean
 (
+final
 String
 name
 )
@@ -65,6 +67,7 @@ public
 void
 setFirst
 (
+final
 RecursiveBean
 bean
 )
@@ -90,6 +93,7 @@ public
 void
 setSecond
 (
+final
 RecursiveBean
 bean
 )
@@ -99,6 +103,8 @@ second
 bean
 ;
 }
+@
+Override
 public
 String
 toString

@@ -1,0 +1,1 @@
+org.adoptopenjdk.jitwatch.test.DummyClassWithMain,org.adoptopenjdk.jitwatch.test.TestBytecodeLoader,org.adoptopenjdk.jitwatch.test.TestExecutionUtil

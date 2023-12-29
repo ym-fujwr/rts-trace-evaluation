@@ -46,9 +46,11 @@ CoreOperation
 public
 CoreOperationSubtract
 (
+final
 Expression
 arg1
 ,
+final
 Expression
 arg2
 )
@@ -67,14 +69,18 @@ arg2
 )
 ;
 }
+@
+Override
 public
 Object
 computeValue
 (
+final
 EvalContext
 context
 )
 {
+final
 double
 l
 =
@@ -93,6 +99,7 @@ context
 )
 )
 ;
+final
 double
 r
 =
@@ -112,8 +119,9 @@ context
 )
 ;
 return
-new
 Double
+.
+valueOf
 (
 l
 -
@@ -121,6 +129,8 @@ r
 )
 ;
 }
+@
+Override
 protected
 int
 getPrecedence
@@ -131,6 +141,8 @@ return
 ADD_PRECEDENCE
 ;
 }
+@
+Override
 protected
 boolean
 isSymmetric
@@ -141,6 +153,8 @@ return
 false
 ;
 }
+@
+Override
 public
 String
 getSymbol

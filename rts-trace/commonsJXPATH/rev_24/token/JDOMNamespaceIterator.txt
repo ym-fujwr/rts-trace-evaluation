@@ -99,6 +99,7 @@ implements
 NodeIterator
 {
 private
+final
 NodePointer
 parent
 ;
@@ -119,6 +120,7 @@ position
 public
 JDOMNamespaceIterator
 (
+final
 NodePointer
 parent
 )
@@ -194,6 +196,7 @@ private
 void
 collectNamespaces
 (
+final
 Element
 element
 )
@@ -245,6 +248,7 @@ getPrefix
 )
 ;
 }
+final
 List
 others
 =
@@ -324,6 +328,7 @@ getPrefix
 ;
 }
 }
+final
 Object
 elementParent
 =
@@ -350,6 +355,8 @@ elementParent
 ;
 }
 }
+@
+Override
 public
 NodePointer
 getNodePointer
@@ -400,6 +407,7 @@ index
 0
 ;
 }
+final
 Namespace
 ns
 =
@@ -433,6 +441,8 @@ getURI
 )
 ;
 }
+@
+Override
 public
 int
 getPosition
@@ -443,10 +453,13 @@ return
 position
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )

@@ -63,6 +63,7 @@ public
 void
 setValidating
 (
+final
 boolean
 validating
 )
@@ -98,6 +99,7 @@ public
 void
 setNamespaceAware
 (
+final
 boolean
 namespaceAware
 )
@@ -113,6 +115,7 @@ public
 void
 setIgnoringElementContentWhitespace
 (
+final
 boolean
 whitespace
 )
@@ -148,6 +151,7 @@ public
 void
 setExpandEntityReferences
 (
+final
 boolean
 expandEntityRef
 )
@@ -173,6 +177,7 @@ public
 void
 setIgnoringComments
 (
+final
 boolean
 ignoreComments
 )
@@ -198,6 +203,7 @@ public
 void
 setCoalescing
 (
+final
 boolean
 coalescing
 )
@@ -209,6 +215,8 @@ coalescing
 coalescing
 ;
 }
+@
+Override
 public
 abstract
 Object

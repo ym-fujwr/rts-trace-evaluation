@@ -208,6 +208,7 @@ pointerIterator
 public
 EvalContext
 (
+final
 EvalContext
 parentContext
 )
@@ -219,6 +220,8 @@ parentContext
 parentContext
 ;
 }
+@
+Override
 public
 Pointer
 getContextNodePointer
@@ -231,6 +234,8 @@ getCurrentNodePointer
 )
 ;
 }
+@
+Override
 public
 JXPathContext
 getJXPathContext
@@ -247,6 +252,8 @@ getJXPathContext
 )
 ;
 }
+@
+Override
 public
 int
 getPosition
@@ -293,6 +300,8 @@ getDocumentOrder
 0
 ;
 }
+@
+Override
 public
 boolean
 hasNext
@@ -348,6 +357,8 @@ return
 done
 ;
 }
+@
+Override
 public
 Object
 next
@@ -493,6 +504,8 @@ hasPerformedIteratorStep
 true
 ;
 }
+@
+Override
 public
 void
 remove
@@ -513,6 +526,7 @@ constructIterator
 (
 )
 {
+final
 HashSet
 set
 =
@@ -521,6 +535,7 @@ HashSet
 (
 )
 ;
+final
 ArrayList
 list
 =
@@ -543,6 +558,7 @@ nextNode
 )
 )
 {
+final
 NodePointer
 pointer
 =
@@ -612,6 +628,7 @@ protected
 void
 sortPointers
 (
+final
 List
 l
 )
@@ -658,12 +675,15 @@ break
 ;
 }
 }
+@
+Override
 public
 List
 getContextNodeList
 (
 )
 {
+final
 int
 pos
 =
@@ -681,6 +701,7 @@ reset
 )
 ;
 }
+final
 List
 list
 =
@@ -755,6 +776,7 @@ JXPathException
 )
 ;
 }
+final
 BasicNodeSet
 set
 =
@@ -811,12 +833,15 @@ getNodeSet
 )
 ;
 }
+@
+Override
 public
 String
 toString
 (
 )
 {
+final
 Pointer
 ptr
 =
@@ -1033,6 +1058,7 @@ public
 boolean
 setPosition
 (
+final
 int
 position
 )

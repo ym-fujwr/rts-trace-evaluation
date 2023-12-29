@@ -1,8 +1,8 @@
 diff --git a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
-index 2d1622d9b..14c06d067 100644
+index 14c06d067..2d1622d9b 100644
 --- a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
 +++ b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
-@@ -95 +95,2 @@ public class TestTimeInfo {
--        assertThrows(IllegalArgumentException.class, () -> new TimeInfo(packet, 1L));
-+        final Executable testMethod = () -> new TimeInfo(packet, 1L);
-+        assertThrows(IllegalArgumentException.class, testMethod);
+@@ -95,2 +95 @@ public class TestTimeInfo {
+-        final Executable testMethod = () -> new TimeInfo(packet, 1L);
+-        assertThrows(IllegalArgumentException.class, testMethod);
++        assertThrows(IllegalArgumentException.class, () -> new TimeInfo(packet, 1L));

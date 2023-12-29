@@ -1,7 +1,7 @@
 diff --git a/src/main/java/org/apache/commons/jxpath/PackageFunctions.java b/src/main/java/org/apache/commons/jxpath/PackageFunctions.java
-index f4458fa9..3a2e4a1e 100644
+index 3a2e4a1e..f4458fa9 100644
 --- a/src/main/java/org/apache/commons/jxpath/PackageFunctions.java
 +++ b/src/main/java/org/apache/commons/jxpath/PackageFunctions.java
 @@ -96 +96 @@ public class PackageFunctions implements Functions {
--     *
-+     * <p>
+-     * <p>
++     *

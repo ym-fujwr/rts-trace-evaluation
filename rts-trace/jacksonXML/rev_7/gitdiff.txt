@@ -1,13 +1,13 @@
-diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListAsObject76Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/ListAsObject76Test.java
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/ListAsObject76Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListAsObject76Test.java
 similarity index 94%
-rename from src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListAsObject76Test.java
-rename to src/test/java/com/fasterxml/jackson/dataformat/xml/failing/ListAsObject76Test.java
-index 31aa4339..83bdcbf1 100644
---- a/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListAsObject76Test.java
-+++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/ListAsObject76Test.java
+rename from src/test/java/com/fasterxml/jackson/dataformat/xml/failing/ListAsObject76Test.java
+rename to src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListAsObject76Test.java
+index 83bdcbf1..31aa4339 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/ListAsObject76Test.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListAsObject76Test.java
 @@ -1 +1 @@
--package com.fasterxml.jackson.dataformat.xml.lists;
-+package com.fasterxml.jackson.dataformat.xml.failing;
+-package com.fasterxml.jackson.dataformat.xml.failing;
++package com.fasterxml.jackson.dataformat.xml.lists;
 @@ -18 +18 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
--// Should pass on JDK17+ too on Jackson 2.15+
-+// Under "failing/" for Jackson 2.14 since it fails on JDK 17+
+-// Under "failing/" for Jackson 2.14 since it fails on JDK 17+
++// Should pass on JDK17+ too on Jackson 2.15+

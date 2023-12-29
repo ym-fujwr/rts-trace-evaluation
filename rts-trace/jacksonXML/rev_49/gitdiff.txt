@@ -1,63 +1,12 @@
-diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/NonNamespaceAwareDeser422Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NonNamespaceAwareDeser422Test.java
-similarity index 96%
-rename from src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/NonNamespaceAwareDeser422Test.java
-rename to src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NonNamespaceAwareDeser422Test.java
-index 2ec01868b..6c9038e08 100644
---- a/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/NonNamespaceAwareDeser422Test.java
-+++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NonNamespaceAwareDeser422Test.java
-@@ -1 +1 @@
--package com.fasterxml.jackson.dataformat.xml.woodstox;
-+package com.fasterxml.jackson.dataformat.xml.deser;
-@@ -6,0 +7,2 @@ import javax.xml.stream.XMLInputFactory;
-+import com.ctc.wstx.stax.WstxInputFactory;
-+
-@@ -15,3 +17 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
--// [dataformat-xml#422]: while setting itself is NOT Woodstox-specific,
--// many/most Stax implementations do not offer non-namespace-aware mode
--// so let's separate this into Woodstox-specific section
-+// [dataformat-xml#422]
-@@ -58 +58 @@ public class NonNamespaceAwareDeser422Test extends XmlTestBase
--        final XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
-+        final XMLInputFactory xmlInputFactory = new WstxInputFactory();
 diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/dos/DeepNestingParserTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/dos/DeepNestingParserTest.java
-index 4b3593f5d..1f6c9a8e0 100644
+index 1f6c9a8e0..4b3593f5d 100644
 --- a/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/dos/DeepNestingParserTest.java
 +++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/dos/DeepNestingParserTest.java
-@@ -2,0 +3,2 @@ package com.fasterxml.jackson.dataformat.xml.stream.dos;
-+import com.ctc.wstx.stax.WstxInputFactory;
-+
-@@ -22,0 +25,11 @@ public class DeepNestingParserTest extends XmlTestBase {
-+    public void testDeepDocWithCustomDepthLimit() throws Exception
-+    {
-+        final WstxInputFactory wstxInputFactory = new WstxInputFactory();
-+        wstxInputFactory.getConfig().setMaxElementDepth(2000);
-+        final XmlMapper xmlMapper = new XmlMapper(wstxInputFactory);
-+        final String XML = createDeepNestedDoc(1050);
-+        try (JsonParser p = xmlMapper.createParser(XML)) {
-+            while (p.nextToken() != null) { }
-+        }
-+    }
-+
-diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/DeepNestingWoodstoxParserTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/DeepNestingWoodstoxParserTest.java
-deleted file mode 100644
-index f7ca7edfa..000000000
---- a/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/DeepNestingWoodstoxParserTest.java
-+++ /dev/null
-@@ -1,38 +0,0 @@
--package com.fasterxml.jackson.dataformat.xml.woodstox;
--
+@@ -3,2 +2,0 @@ package com.fasterxml.jackson.dataformat.xml.stream.dos;
 -import com.ctc.wstx.stax.WstxInputFactory;
 -
--import com.fasterxml.jackson.core.JsonParser;
--
--import com.fasterxml.jackson.dataformat.xml.XmlMapper;
--import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
--
--public class DeepNestingWoodstoxParserTest extends XmlTestBase
--{
--    // Try using Woodstox-specific settings above and beyond
--    // what Jackson-core would provide
--    public void testDeepDocWithWoodstoxLimits() throws Exception
+@@ -25,11 +22,0 @@ public class DeepNestingParserTest extends XmlTestBase {
+-    public void testDeepDocWithCustomDepthLimit() throws Exception
 -    {
 -        final WstxInputFactory wstxInputFactory = new WstxInputFactory();
 -        wstxInputFactory.getConfig().setMaxElementDepth(2000);
@@ -68,30 +17,81 @@ index f7ca7edfa..000000000
 -        }
 -    }
 -
--    private String createDeepNestedDoc(final int depth) {
--        StringBuilder sb = new StringBuilder();
--        sb.append("<root>");
--        for (int i = 0; i < depth; i++) {
--            sb.append("<leaf>");
--        }
--        sb.append("abc");
--        for (int i = 0; i < depth; i++) {
--            sb.append("</leaf>");
--        }
--        sb.append("</root>");
--        return sb.toString();
--    }
--}
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/DeepNestingWoodstoxParserTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/DeepNestingWoodstoxParserTest.java
+new file mode 100644
+index 000000000..f7ca7edfa
+--- /dev/null
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/DeepNestingWoodstoxParserTest.java
+@@ -0,0 +1,38 @@
++package com.fasterxml.jackson.dataformat.xml.woodstox;
++
++import com.ctc.wstx.stax.WstxInputFactory;
++
++import com.fasterxml.jackson.core.JsonParser;
++
++import com.fasterxml.jackson.dataformat.xml.XmlMapper;
++import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
++
++public class DeepNestingWoodstoxParserTest extends XmlTestBase
++{
++    // Try using Woodstox-specific settings above and beyond
++    // what Jackson-core would provide
++    public void testDeepDocWithWoodstoxLimits() throws Exception
++    {
++        final WstxInputFactory wstxInputFactory = new WstxInputFactory();
++        wstxInputFactory.getConfig().setMaxElementDepth(2000);
++        final XmlMapper xmlMapper = new XmlMapper(wstxInputFactory);
++        final String XML = createDeepNestedDoc(1050);
++        try (JsonParser p = xmlMapper.createParser(XML)) {
++            while (p.nextToken() != null) { }
++        }
++    }
++
++    private String createDeepNestedDoc(final int depth) {
++        StringBuilder sb = new StringBuilder();
++        sb.append("<root>");
++        for (int i = 0; i < depth; i++) {
++            sb.append("<leaf>");
++        }
++        sb.append("abc");
++        for (int i = 0; i < depth; i++) {
++            sb.append("</leaf>");
++        }
++        sb.append("</root>");
++        return sb.toString();
++    }
++}
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NonNamespaceAwareDeser422Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/NonNamespaceAwareDeser422Test.java
+similarity index 96%
+rename from src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NonNamespaceAwareDeser422Test.java
+rename to src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/NonNamespaceAwareDeser422Test.java
+index 6c9038e08..2ec01868b 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NonNamespaceAwareDeser422Test.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/NonNamespaceAwareDeser422Test.java
+@@ -1 +1 @@
+-package com.fasterxml.jackson.dataformat.xml.deser;
++package com.fasterxml.jackson.dataformat.xml.woodstox;
+@@ -7,2 +6,0 @@ import javax.xml.stream.XMLInputFactory;
+-import com.ctc.wstx.stax.WstxInputFactory;
+-
+@@ -17 +15,3 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+-// [dataformat-xml#422]
++// [dataformat-xml#422]: while setting itself is NOT Woodstox-specific,
++// many/most Stax implementations do not offer non-namespace-aware mode
++// so let's separate this into Woodstox-specific section
+@@ -58 +58 @@ public class NonNamespaceAwareDeser422Test extends XmlTestBase
+-        final XMLInputFactory xmlInputFactory = new WstxInputFactory();
++        final XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/package-info.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/package-info.java
-deleted file mode 100644
-index 84e1d7a60..000000000
---- a/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/package-info.java
-+++ /dev/null
-@@ -1,7 +0,0 @@
--/**
-- * Package that contains <a href="https://github.com/FasterXML/woodstox/">Woodstox</a>
-- * - specific tests, distinct from general Stax-backed tests.
-- *
-- * @since 2.17
-- */
--package com.fasterxml.jackson.dataformat.xml.woodstox;
+new file mode 100644
+index 000000000..84e1d7a60
+--- /dev/null
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/woodstox/package-info.java
+@@ -0,0 +1,7 @@
++/**
++ * Package that contains <a href="https://github.com/FasterXML/woodstox/">Woodstox</a>
++ * - specific tests, distinct from general Stax-backed tests.
++ *
++ * @since 2.17
++ */
++package com.fasterxml.jackson.dataformat.xml.woodstox;

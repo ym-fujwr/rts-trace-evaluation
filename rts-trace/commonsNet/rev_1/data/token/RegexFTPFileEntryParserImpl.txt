@@ -253,9 +253,8 @@ append
 (
 System
 .
-getProperty
+lineSeparator
 (
-"line.separator"
 )
 )
 ;

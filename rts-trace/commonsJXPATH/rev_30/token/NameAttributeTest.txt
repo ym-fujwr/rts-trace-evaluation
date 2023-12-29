@@ -20,9 +20,11 @@ CoreOperationEqual
 public
 NameAttributeTest
 (
+final
 Expression
 namePath
 ,
+final
 Expression
 nameValue
 )
@@ -48,6 +50,8 @@ args
 ]
 ;
 }
+@
+Override
 public
 boolean
 computeContextDependent

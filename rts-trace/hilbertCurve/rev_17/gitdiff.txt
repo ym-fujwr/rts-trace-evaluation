@@ -1,34 +1,34 @@
 diff --git a/src/test/java/org/davidmoten/hilbert/Benchmarks.java b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
-index fba826b..d6e509f 100644
+index d6e509f..fba826b 100644
 --- a/src/test/java/org/davidmoten/hilbert/Benchmarks.java
 +++ b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
 @@ -21 +21 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark
 @@ -29 +29 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark
 @@ -36 +36 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark
 @@ -43 +43 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark
 @@ -50 +50 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark
 @@ -58 +58 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark
 @@ -65 +65 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark
 @@ -73 +73 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark
 @@ -81 +81 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark
 @@ -89 +89 @@ public class Benchmarks {
--    @Benchmark
-+//    @Benchmark
+-//    @Benchmark
++    @Benchmark

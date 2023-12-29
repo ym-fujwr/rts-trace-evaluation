@@ -1,114 +1,114 @@
 diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
-index 4605ce10..bf326fbf 100644
+index bf326fbf..4605ce10 100644
 --- a/.github/workflows/codeql-analysis.yml
 +++ b/.github/workflows/codeql-analysis.yml
 @@ -48 +48 @@ jobs:
--      uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
-+      uses: actions/checkout@v3.5.3
+-      uses: actions/checkout@v3.5.3
++      uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 @@ -51 +51 @@ jobs:
--    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
-+    - uses: actions/cache@v3.3.1
+-    - uses: actions/cache@v3.3.1
++    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
 @@ -60 +60 @@ jobs:
--      uses: github/codeql-action/init@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
-+      uses: github/codeql-action/init@v2
+-      uses: github/codeql-action/init@v2
++      uses: github/codeql-action/init@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
 @@ -71 +71 @@ jobs:
--      uses: github/codeql-action/autobuild@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
-+      uses: github/codeql-action/autobuild@v2
+-      uses: github/codeql-action/autobuild@v2
++      uses: github/codeql-action/autobuild@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
 @@ -85 +85 @@ jobs:
--      uses: github/codeql-action/analyze@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
-+      uses: github/codeql-action/analyze@v2
+-      uses: github/codeql-action/analyze@v2
++      uses: github/codeql-action/analyze@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
 diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
-index d984e1f3..7f1f8611 100644
+index 7f1f8611..d984e1f3 100644
 --- a/.github/workflows/coverage.yml
 +++ b/.github/workflows/coverage.yml
 @@ -32 +32 @@ jobs:
--    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
-+    - uses: actions/checkout@v3.5.3
+-    - uses: actions/checkout@v3.5.3
++    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 @@ -35 +35 @@ jobs:
--    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
-+    - uses: actions/cache@v3.3.1
+-    - uses: actions/cache@v3.3.1
++    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
 @@ -42 +42 @@ jobs:
--      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
-+      uses: actions/setup-java@v3.11.0
+-      uses: actions/setup-java@v3.11.0
++      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
 @@ -50 +50 @@ jobs:
--      uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
-+      uses: codecov/codecov-action@v3
+-      uses: codecov/codecov-action@v3
++      uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
 diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index 75fdc0b1..495c4a01 100644
+index 495c4a01..75fdc0b1 100644
 --- a/.github/workflows/maven.yml
 +++ b/.github/workflows/maven.yml
 @@ -48 +48 @@ jobs:
--    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
-+    - uses: actions/checkout@v3.5.3
+-    - uses: actions/checkout@v3.5.3
++    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 @@ -51 +51 @@ jobs:
--    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
-+    - uses: actions/cache@v3.3.1
+-    - uses: actions/cache@v3.3.1
++    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
 @@ -58 +58 @@ jobs:
--      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
-+      uses: actions/setup-java@v3.11.0
+-      uses: actions/setup-java@v3.11.0
++      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
 diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
-index d6fb0340..d9beb0ff 100644
+index d9beb0ff..d6fb0340 100644
 --- a/.github/workflows/scorecards-analysis.yml
 +++ b/.github/workflows/scorecards-analysis.yml
 @@ -42 +42 @@ jobs:
--        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
-+        uses: actions/checkout@v3.5.3   # 3.0.2
+-        uses: actions/checkout@v3.5.3   # 3.0.2
++        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 @@ -47 +47 @@ jobs:
--        uses: ossf/scorecard-action@08b4669551908b1024bb425080c797723083c031    # 2.2.0
-+        uses: ossf/scorecard-action@80e868c13c90f172d68d1f4501dee99e2479f7af    # 2.1.3
+-        uses: ossf/scorecard-action@80e868c13c90f172d68d1f4501dee99e2479f7af    # 2.1.3
++        uses: ossf/scorecard-action@08b4669551908b1024bb425080c797723083c031    # 2.2.0
 @@ -66 +66 @@ jobs:
--        uses: github/codeql-action/upload-sarif@46ed16ded91731b2df79a2893d3aea8e9f03b5c4    # 2.20.3
-+        uses: github/codeql-action/upload-sarif@b398f525a5587552e573b247ac661067fafa920b    # 2.1.22
+-        uses: github/codeql-action/upload-sarif@b398f525a5587552e573b247ac661067fafa920b    # 2.1.22
++        uses: github/codeql-action/upload-sarif@46ed16ded91731b2df79a2893d3aea8e9f03b5c4    # 2.20.3
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index eeaa238f..edb1e274 100644
+index edb1e274..eeaa238f 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
-@@ -101,3 +100,0 @@ The <action> type attribute can be add,update,fix,remove.
--      <action dev="ggregory" type="fix" due-to="step-security-bot, Gary Gregory">
--        [StepSecurity] ci: Harden GitHub Actions #66.
--      </action>            
+@@ -100,0 +101,3 @@ The <action> type attribute can be add,update,fix,remove.
++      <action dev="ggregory" type="fix" due-to="step-security-bot, Gary Gregory">
++        [StepSecurity] ci: Harden GitHub Actions #66.
++      </action>            
 diff --git a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
-index cdd04193..ecee382b 100644
+index ecee382b..cdd04193 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
-@@ -525 +525,3 @@ public class ValueUtils {
--        return (DynamicPropertyHandler) dynamicPropertyHandlerMap.computeIfAbsent(clazz, k -> {
-+        DynamicPropertyHandler handler =
-+            (DynamicPropertyHandler) dynamicPropertyHandlerMap.get(clazz);
-+        if (handler == null) {
-@@ -527,2 +529,2 @@ public class ValueUtils {
--                return (DynamicPropertyHandler) clazz.newInstance();
--            } 
-+                handler = (DynamicPropertyHandler) clazz.newInstance();
-+            }
-@@ -530 +532,4 @@ public class ValueUtils {
--                throw new JXPathException("Cannot allocate dynamic property handler of class " + clazz.getName(), ex);
-+                throw new JXPathException(
-+                    "Cannot allocate dynamic property handler of class "
-+                        + clazz.getName(),
-+                    ex);
-@@ -532 +537,3 @@ public class ValueUtils {
--        });
-+            dynamicPropertyHandlerMap.put(clazz, handler);
-+        }
-+        return handler;
+@@ -525,3 +525 @@ public class ValueUtils {
+-        DynamicPropertyHandler handler =
+-            (DynamicPropertyHandler) dynamicPropertyHandlerMap.get(clazz);
+-        if (handler == null) {
++        return (DynamicPropertyHandler) dynamicPropertyHandlerMap.computeIfAbsent(clazz, k -> {
+@@ -529,2 +527,2 @@ public class ValueUtils {
+-                handler = (DynamicPropertyHandler) clazz.newInstance();
+-            }
++                return (DynamicPropertyHandler) clazz.newInstance();
++            } 
+@@ -532,4 +530 @@ public class ValueUtils {
+-                throw new JXPathException(
+-                    "Cannot allocate dynamic property handler of class "
+-                        + clazz.getName(),
+-                    ex);
++                throw new JXPathException("Cannot allocate dynamic property handler of class " + clazz.getName(), ex);
+@@ -537,3 +532 @@ public class ValueUtils {
+-            dynamicPropertyHandlerMap.put(clazz, handler);
+-        }
+-        return handler;
++        });
 diff --git a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
-index f7f1599c..e87b7153 100644
+index e87b7153..f7f1599c 100644
 --- a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
 +++ b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
-@@ -175 +175,2 @@ public class DocumentContainer extends XMLParser2 implements Container {
--        return (XMLParser) parsers.computeIfAbsent(model, k -> {
-+        XMLParser parser = (XMLParser) parsers.get(model);
-+        if (parser == null) {
-@@ -182 +183 @@ public class DocumentContainer extends XMLParser2 implements Container {
--                return (XMLParser) clazz.newInstance();
-+                parser = (XMLParser) clazz.newInstance();
-@@ -185 +186,2 @@ public class DocumentContainer extends XMLParser2 implements Container {
--                throw new JXPathException("Cannot allocate XMLParser: " + className, ex);
-+                throw new JXPathException(
-+                    "Cannot allocate XMLParser: " + className, ex);
-@@ -187 +189,3 @@ public class DocumentContainer extends XMLParser2 implements Container {
--        });
-+            parsers.put(model, parser);
-+        }
-+        return parser;
+@@ -175,2 +175 @@ public class DocumentContainer extends XMLParser2 implements Container {
+-        XMLParser parser = (XMLParser) parsers.get(model);
+-        if (parser == null) {
++        return (XMLParser) parsers.computeIfAbsent(model, k -> {
+@@ -183 +182 @@ public class DocumentContainer extends XMLParser2 implements Container {
+-                parser = (XMLParser) clazz.newInstance();
++                return (XMLParser) clazz.newInstance();
+@@ -186,2 +185 @@ public class DocumentContainer extends XMLParser2 implements Container {
+-                throw new JXPathException(
+-                    "Cannot allocate XMLParser: " + className, ex);
++                throw new JXPathException("Cannot allocate XMLParser: " + className, ex);
+@@ -189,3 +187 @@ public class DocumentContainer extends XMLParser2 implements Container {
+-            parsers.put(model, parser);
+-        }
+-        return parser;
++        });

@@ -108,14 +108,12 @@ suite
 )
 {
 return
-(
 new
 TestSuite
 (
 JXPath172Test
 .
 class
-)
 )
 ;
 }
@@ -472,6 +470,7 @@ bRet
 }
 catch
 (
+final
 JXPathNotFoundException
 e
 )
@@ -500,6 +499,7 @@ pointer
 }
 catch
 (
+final
 JXPathNotFoundException
 e
 )
@@ -528,6 +528,7 @@ pointer
 }
 catch
 (
+final
 JXPathNotFoundException
 e
 )
@@ -542,6 +543,7 @@ final
 String
 val
 ,
+final
 boolean
 lenient
 )
@@ -614,6 +616,7 @@ public
 void
 setValue
 (
+final
 String
 value
 )

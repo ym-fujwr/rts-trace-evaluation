@@ -37,7 +37,7 @@ public
 class
 GnuParserTest
 extends
-ParserTestCase
+AbstractParserTestCase
 {
 @
 Override

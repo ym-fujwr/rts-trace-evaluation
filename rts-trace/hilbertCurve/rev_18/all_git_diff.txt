@@ -1,19 +1,19 @@
 diff --git a/.travis.yml b/.travis.yml
-index 70a1178..f9f677e 100644
+index f9f677e..70a1178 100644
 --- a/.travis.yml
 +++ b/.travis.yml
-@@ -4,3 +4 @@ jdk:
--- openjdk8
--- openjdk10
--- openjdk11
-+- oraclejdk8
+@@ -4 +4,3 @@ jdk:
+-- oraclejdk8
++- openjdk8
++- openjdk10
++- openjdk11
 diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
-index fbe84e3..55794b8 100644
+index 55794b8..fbe84e3 100644
 --- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
 +++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
-@@ -28,2 +27,0 @@ public class HilbertCurveTest {
--    private static final boolean FULL_DOMAIN_QUERY = false;
--
-@@ -347 +345 @@ public class HilbertCurveTest {
--        if (FULL_DOMAIN_QUERY) {
-+        if (false) {
+@@ -27,0 +28,2 @@ public class HilbertCurveTest {
++    private static final boolean FULL_DOMAIN_QUERY = false;
++
+@@ -345 +347 @@ public class HilbertCurveTest {
+-        if (false) {
++        if (FULL_DOMAIN_QUERY) {

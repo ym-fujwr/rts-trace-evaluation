@@ -25,6 +25,7 @@ serialVersionUID
 public
 JXPathTypeConversionException
 (
+final
 String
 message
 )
@@ -38,9 +39,11 @@ message
 public
 JXPathTypeConversionException
 (
+final
 String
 message
 ,
+final
 Exception
 ex
 )

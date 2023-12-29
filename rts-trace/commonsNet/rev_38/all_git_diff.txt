@@ -1,95 +1,95 @@
 diff --git a/src/main/java/org/apache/commons/net/io/CRLFLineReader.java b/src/main/java/org/apache/commons/net/io/CRLFLineReader.java
-index 5f0e347fb..3988ffb0c 100644
+index 3988ffb0c..5f0e347fb 100644
 --- a/src/main/java/org/apache/commons/net/io/CRLFLineReader.java
 +++ b/src/main/java/org/apache/commons/net/io/CRLFLineReader.java
-@@ -19,0 +20,2 @@ package org.apache.commons.net.io;
-+import org.apache.commons.net.util.NetConstants;
-+
-@@ -24,2 +25,0 @@ import java.io.Reader;
+@@ -20,2 +19,0 @@ package org.apache.commons.net.io;
 -import org.apache.commons.net.util.NetConstants;
 -
+@@ -25,0 +24,2 @@ import java.io.Reader;
++import org.apache.commons.net.util.NetConstants;
++
 diff --git a/src/main/java/org/apache/commons/net/io/DotTerminatedMessageReader.java b/src/main/java/org/apache/commons/net/io/DotTerminatedMessageReader.java
-index 01350b2d1..8524ebc25 100644
+index 8524ebc25..01350b2d1 100644
 --- a/src/main/java/org/apache/commons/net/io/DotTerminatedMessageReader.java
 +++ b/src/main/java/org/apache/commons/net/io/DotTerminatedMessageReader.java
-@@ -19,0 +20,2 @@ package org.apache.commons.net.io;
-+import org.apache.commons.net.util.NetConstants;
-+
-@@ -24,2 +25,0 @@ import java.io.Reader;
+@@ -20,2 +19,0 @@ package org.apache.commons.net.io;
 -import org.apache.commons.net.util.NetConstants;
 -
+@@ -25,0 +24,2 @@ import java.io.Reader;
++import org.apache.commons.net.util.NetConstants;
++
 diff --git a/src/main/java/org/apache/commons/net/io/FromNetASCIIInputStream.java b/src/main/java/org/apache/commons/net/io/FromNetASCIIInputStream.java
-index 654d778e6..bcf922069 100644
+index bcf922069..654d778e6 100644
 --- a/src/main/java/org/apache/commons/net/io/FromNetASCIIInputStream.java
 +++ b/src/main/java/org/apache/commons/net/io/FromNetASCIIInputStream.java
-@@ -19,0 +20,2 @@ package org.apache.commons.net.io;
-+import org.apache.commons.net.util.NetConstants;
-+
-@@ -25,2 +26,0 @@ import java.nio.charset.StandardCharsets;
+@@ -20,2 +19,0 @@ package org.apache.commons.net.io;
 -import org.apache.commons.net.util.NetConstants;
 -
+@@ -26,0 +25,2 @@ import java.nio.charset.StandardCharsets;
++import org.apache.commons.net.util.NetConstants;
++
 diff --git a/src/main/java/org/apache/commons/net/io/ToNetASCIIInputStream.java b/src/main/java/org/apache/commons/net/io/ToNetASCIIInputStream.java
-index 0b02d339f..b393c9206 100644
+index b393c9206..0b02d339f 100644
 --- a/src/main/java/org/apache/commons/net/io/ToNetASCIIInputStream.java
 +++ b/src/main/java/org/apache/commons/net/io/ToNetASCIIInputStream.java
-@@ -19,0 +20,2 @@ package org.apache.commons.net.io;
-+import org.apache.commons.net.util.NetConstants;
-+
-@@ -24,2 +25,0 @@ import java.io.InputStream;
+@@ -20,2 +19,0 @@ package org.apache.commons.net.io;
 -import org.apache.commons.net.util.NetConstants;
 -
+@@ -25,0 +24,2 @@ import java.io.InputStream;
++import org.apache.commons.net.util.NetConstants;
++
 diff --git a/src/main/java/org/apache/commons/net/io/Util.java b/src/main/java/org/apache/commons/net/io/Util.java
-index c452a08d7..eb848ecae 100644
+index eb848ecae..c452a08d7 100644
 --- a/src/main/java/org/apache/commons/net/io/Util.java
 +++ b/src/main/java/org/apache/commons/net/io/Util.java
-@@ -19,0 +20,2 @@ package org.apache.commons.net.io;
-+import org.apache.commons.net.util.NetConstants;
-+
-@@ -28,2 +29,0 @@ import java.net.Socket;
+@@ -20,2 +19,0 @@ package org.apache.commons.net.io;
 -import org.apache.commons.net.util.NetConstants;
 -
+@@ -29,0 +28,2 @@ import java.net.Socket;
++import org.apache.commons.net.util.NetConstants;
++
 diff --git a/src/test/java/org/apache/commons/net/ftp/ListingFunctionalTest.java b/src/test/java/org/apache/commons/net/ftp/ListingFunctionalTest.java
-index d51a90edd..618155c1f 100644
+index 618155c1f..d51a90edd 100644
 --- a/src/test/java/org/apache/commons/net/ftp/ListingFunctionalTest.java
 +++ b/src/test/java/org/apache/commons/net/ftp/ListingFunctionalTest.java
-@@ -18,2 +17,0 @@ package org.apache.commons.net.ftp;
--import static org.junit.Assert.assertArrayEquals;
--
-@@ -29,0 +28,2 @@ import junit.framework.TestSuite;
+@@ -17,0 +18,2 @@ package org.apache.commons.net.ftp;
 +import static org.junit.Assert.assertArrayEquals;
 +
+@@ -28,2 +29,0 @@ import junit.framework.TestSuite;
+-import static org.junit.Assert.assertArrayEquals;
+-
 diff --git a/src/test/java/org/apache/commons/net/ftp/NoProtocolSslConfigurationProxy.java b/src/test/java/org/apache/commons/net/ftp/NoProtocolSslConfigurationProxy.java
-index 060c9eb78..7a26989ac 100644
+index 7a26989ac..060c9eb78 100644
 --- a/src/test/java/org/apache/commons/net/ftp/NoProtocolSslConfigurationProxy.java
 +++ b/src/test/java/org/apache/commons/net/ftp/NoProtocolSslConfigurationProxy.java
-@@ -21 +20,0 @@ import java.security.GeneralSecurityException;
--
+@@ -20,0 +21 @@ import java.security.GeneralSecurityException;
++
 diff --git a/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java b/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java
-index bf34381af..9aa49e991 100644
+index 9aa49e991..bf34381af 100644
 --- a/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java
 +++ b/src/test/java/org/apache/commons/net/ntp/TestNtpPacket.java
-@@ -24,0 +25 @@ import org.junit.Test;
-+import org.junit.jupiter.api.function.Executable;
+@@ -25 +24,0 @@ import org.junit.Test;
+-import org.junit.jupiter.api.function.Executable;
 diff --git a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
-index b80252e86..2d1622d9b 100644
+index 2d1622d9b..b80252e86 100644
 --- a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
 +++ b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
-@@ -19,2 +18,0 @@ package org.apache.commons.net.ntp;
--import static org.junit.jupiter.api.Assertions.assertThrows;
--
-@@ -27,0 +26,3 @@ import org.junit.Test;
-+import org.junit.jupiter.api.function.Executable;
-+
+@@ -18,0 +19,2 @@ package org.apache.commons.net.ntp;
 +import static org.junit.jupiter.api.Assertions.assertThrows;
++
+@@ -26,3 +27,0 @@ import org.junit.Test;
+-import org.junit.jupiter.api.function.Executable;
+-
+-import static org.junit.jupiter.api.Assertions.assertThrows;
 diff --git a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
-index 95f61236d..7c50c5e5d 100644
+index 7c50c5e5d..95f61236d 100644
 --- a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
 +++ b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
-@@ -32,0 +33 @@ import org.junit.Test;
-+import org.junit.jupiter.api.function.Executable;
+@@ -33 +32,0 @@ import org.junit.Test;
+-import org.junit.jupiter.api.function.Executable;
 diff --git a/src/test/java/org/apache/commons/net/util/Base64Test.java b/src/test/java/org/apache/commons/net/util/Base64Test.java
-index df3a328ff..01e87b752 100644
+index 01e87b752..df3a328ff 100644
 --- a/src/test/java/org/apache/commons/net/util/Base64Test.java
 +++ b/src/test/java/org/apache/commons/net/util/Base64Test.java
-@@ -27,0 +28 @@ import static org.junit.Assert.fail;
-+
+@@ -28 +27,0 @@ import static org.junit.Assert.fail;
+-

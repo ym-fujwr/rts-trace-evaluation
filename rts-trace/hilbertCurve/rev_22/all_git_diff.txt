@@ -1,47 +1,47 @@
 diff --git a/src/main/java/org/davidmoten/hilbert/Node.java b/src/main/java/org/davidmoten/hilbert/Node.java
-index ed76a3b..16b99dc 100644
+index 16b99dc..ed76a3b 100644
 --- a/src/main/java/org/davidmoten/hilbert/Node.java
 +++ b/src/main/java/org/davidmoten/hilbert/Node.java
-@@ -37,0 +38,7 @@ final class Node implements Comparable<Node> {
-+    Node insert(Range value) {
-+        Node n = new Node(value);
-+        n.next = this;
-+        previous = n;
-+        return n;
-+    }
-+
-@@ -67 +74 @@ final class Node implements Comparable<Node> {
--    public void clearForGc() {
-+    public void clearNext() {
-@@ -69 +75,0 @@ final class Node implements Comparable<Node> {
--        previous = null;
-@@ -71,0 +78,4 @@ final class Node implements Comparable<Node> {
-+    public void clearPrevious() {
-+        previous = null;
-+    }
-+
+@@ -38,7 +37,0 @@ final class Node implements Comparable<Node> {
+-    Node insert(Range value) {
+-        Node n = new Node(value);
+-        n.next = this;
+-        previous = n;
+-        return n;
+-    }
+-
+@@ -74 +67 @@ final class Node implements Comparable<Node> {
+-    public void clearNext() {
++    public void clearForGc() {
+@@ -76,3 +68,0 @@ final class Node implements Comparable<Node> {
+-    }
+-    
+-    public void clearPrevious() {
+@@ -81 +71 @@ final class Node implements Comparable<Node> {
+-
++    
 diff --git a/src/main/java/org/davidmoten/hilbert/Ranges2.java b/src/main/java/org/davidmoten/hilbert/Ranges2.java
-index 865d293..b7b00d4 100644
+index b7b00d4..865d293 100644
 --- a/src/main/java/org/davidmoten/hilbert/Ranges2.java
 +++ b/src/main/java/org/davidmoten/hilbert/Ranges2.java
 @@ -9 +9 @@ import com.github.davidmoten.guavamini.Preconditions;
--public class Ranges2 implements Iterable<Range> {
-+public class Ranges2 implements Iterable<Range>{
-@@ -53 +53 @@ public class Ranges2 implements Iterable<Range> {
--                // link and calculate the distance for n
-+                //link and calculate the distance for n
-@@ -58 +58,2 @@ public class Ranges2 implements Iterable<Range> {
--                first.clearForGc();
-+                first.clearNext();
-+                first.clearPrevious();
-@@ -60,2 +60,0 @@ public class Ranges2 implements Iterable<Range> {
--                // we have reduced number of nodes in list so reduce count
--                count--;
-@@ -69 +68 @@ public class Ranges2 implements Iterable<Range> {
--
-+            
-@@ -83 +82 @@ public class Ranges2 implements Iterable<Range> {
--
-+            
-@@ -86,0 +86 @@ public class Ranges2 implements Iterable<Range> {
-+    
+-public class Ranges2 implements Iterable<Range>{
++public class Ranges2 implements Iterable<Range> {
+@@ -53 +53 @@ public class Ranges2 implements Iterable<Range>{
+-                //link and calculate the distance for n
++                // link and calculate the distance for n
+@@ -58,2 +58 @@ public class Ranges2 implements Iterable<Range>{
+-                first.clearNext();
+-                first.clearPrevious();
++                first.clearForGc();
+@@ -60,0 +60,2 @@ public class Ranges2 implements Iterable<Range>{
++                // we have reduced number of nodes in list so reduce count
++                count--;
+@@ -68 +69 @@ public class Ranges2 implements Iterable<Range>{
+-            
++
+@@ -82 +83 @@ public class Ranges2 implements Iterable<Range>{
+-            
++
+@@ -86 +86,0 @@ public class Ranges2 implements Iterable<Range>{
+-    

@@ -1,12 +1,12 @@
 diff --git a/src/test/java/org/apache/commons/net/examples/MainTest.java b/src/test/java/org/apache/commons/net/examples/MainTest.java
-index 6dc8de604..58f9e2222 100644
+index 58f9e2222..6dc8de604 100644
 --- a/src/test/java/org/apache/commons/net/examples/MainTest.java
 +++ b/src/test/java/org/apache/commons/net/examples/MainTest.java
-@@ -37 +36,0 @@ public class MainTest {
--        System.out.println("Initial name " + name);
-@@ -40 +38,0 @@ public class MainTest {
--        System.out.println("Updated name " + name);
-@@ -75 +72,0 @@ public class MainTest {
--        System.out.println("len=" + rootLength + " " + current);
-@@ -126 +122,0 @@ public class MainTest {
--                System.out.println(sourceFile);
+@@ -36,0 +37 @@ public class MainTest {
++        System.out.println("Initial name " + name);
+@@ -38,0 +40 @@ public class MainTest {
++        System.out.println("Updated name " + name);
+@@ -72,0 +75 @@ public class MainTest {
++        System.out.println("len=" + rootLength + " " + current);
+@@ -122,0 +126 @@ public class MainTest {
++                System.out.println(sourceFile);

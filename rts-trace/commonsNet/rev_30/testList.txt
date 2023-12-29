@@ -1,2 +1,3 @@
 org.apache.commons.net.ftp.FTPSClientTest
 org.apache.commons.net.ntp.TimeStampTest
+org.apache.commons.net.SocketClientTest

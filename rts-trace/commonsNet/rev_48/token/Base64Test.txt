@@ -508,10 +508,6 @@ byte
 ]
 binaryData
 =
-new
-byte
-[
-]
 {
 '1'
 ,

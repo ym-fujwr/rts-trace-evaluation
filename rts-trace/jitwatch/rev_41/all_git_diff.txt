@@ -1,1160 +1,1160 @@
 diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index 5b4a9a97..ccd8c2eb 100644
+index ccd8c2eb..5b4a9a97 100644
 --- a/.github/workflows/maven.yml
 +++ b/.github/workflows/maven.yml
 @@ -10,2 +10,2 @@ jobs:
--        os: [ubuntu-18.04, macOS-latest, windows-latest]
--        java: [11, 17]
-+        os: [ubuntu-18.04]
-+        java: [11, 11.0.9, 13, 13.0.4, 15, 16-ea]
+-        os: [ubuntu-18.04]
+-        java: [11, 11.0.9, 13, 13.0.4, 15, 16-ea]
++        os: [ubuntu-18.04, macOS-latest, windows-latest]
++        java: [11, 17]
 diff --git a/PRIVACY b/PRIVACY
-index 81b63131..8bc0edf4 100644
+index 8bc0edf4..81b63131 100644
 --- a/PRIVACY
 +++ b/PRIVACY
 @@ -4,2 +4,2 @@ JITWatch Privacy Policy
--Version:            1.03
--Date   :      2022-01-08
-+Version:            1.02
-+Date   :      2021-12-03
-@@ -31,4 +30,0 @@ jitwatch folder and will not be downloaded again.
--JITWatch offers the option to download the hsdis HotSpot disassembly binary from https://chriswhocodes.com
--This is an optional download. If you choose to download the binary your IP address will be logged in the webserver
--logs which are retained for 14 days.
--
+-Version:            1.02
+-Date   :      2021-12-03
++Version:            1.03
++Date   :      2022-01-08
+@@ -30,0 +31,4 @@ jitwatch folder and will not be downloaded again.
++JITWatch offers the option to download the hsdis HotSpot disassembly binary from https://chriswhocodes.com
++This is an optional download. If you choose to download the binary your IP address will be logged in the webserver
++logs which are retained for 14 days.
++
 diff --git a/build.gradle b/build.gradle
-index 7100c704..a36277d2 100644
+index a36277d2..7100c704 100644
 --- a/build.gradle
 +++ b/build.gradle
-@@ -4 +3,0 @@ buildscript {
--      mavenCentral()
-@@ -122,0 +122,2 @@ task makeDemoLogFile(type: JavaExec) {
-+        // Unlock the HotSpot logging options
-+        "-XX:+UnlockDiagnosticVMOptions",
+@@ -3,0 +4 @@ buildscript {
++      mavenCentral()
+@@ -122,2 +122,0 @@ task makeDemoLogFile(type: JavaExec) {
+-        // Unlock the HotSpot logging options
+-        "-XX:+UnlockDiagnosticVMOptions",
 diff --git a/core/build.gradle b/core/build.gradle
-index 5589096b..26886931 100644
+index 26886931..5589096b 100644
 --- a/core/build.gradle
 +++ b/core/build.gradle
 @@ -7 +7 @@ dependencies {
--    implementation 'com.chrisnewland:FreeLogJ:0.0.1'
-+    compile 'com.chrisnewland.freelogj:freelogj:0.0.1'
-@@ -11 +10,0 @@ dependencies {
--
+-    compile 'com.chrisnewland.freelogj:freelogj:0.0.1'
++    implementation 'com.chrisnewland:FreeLogJ:0.0.1'
+@@ -10,0 +11 @@ dependencies {
++
 diff --git a/core/pom.xml b/core/pom.xml
-index d824eb43..077bcf71 100644
+index 077bcf71..d824eb43 100644
 --- a/core/pom.xml
 +++ b/core/pom.xml
-@@ -17 +16,0 @@
--
+@@ -16,0 +17 @@
++
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java b/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
-index 29751208..07c183d3 100644
+index 07c183d3..29751208 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
-@@ -88 +87,0 @@ public class JITWatchConfig
--	private static final String KEY_NO_PROMPT_HSDIS = SANDBOX_PREFIX + ".no.prompt.hsdis";
-@@ -121,3 +120,2 @@ public class JITWatchConfig
--	private File propertiesFile = (CONFIG_OVERRIDE != null) ?
--			new File(CONFIG_OVERRIDE) :
--			new File(System.getProperty("user.dir"), PROPERTIES_FILENAME);
-+	private File propertiesFile = (CONFIG_OVERRIDE != null) ? new File(CONFIG_OVERRIDE)
-+			: new File(System.getProperty("user.dir"), PROPERTIES_FILENAME);
-@@ -129,2 +126,0 @@ public class JITWatchConfig
--	private boolean noPromptHsdis = false;
--
-@@ -181 +177,2 @@ public class JITWatchConfig
--	@Override public JITWatchConfig clone()
-+	@Override
-+	public JITWatchConfig clone()
-@@ -358,2 +354,0 @@ public class JITWatchConfig
--
--		noPromptHsdis = loadBooleanFromProperty(loadedProps, KEY_NO_PROMPT_HSDIS, false);
-@@ -622 +616,0 @@ public class JITWatchConfig
--		putProperty(loadedProps, KEY_NO_PROMPT_HSDIS, Boolean.toString(noPromptHsdis));
-@@ -855 +849 @@ public class JITWatchConfig
--
-+	
-@@ -928,11 +922 @@ public class JITWatchConfig
--
--	public boolean isNoPromptHsdis()
--	{
--		return noPromptHsdis;
--	}
--
--	public void setNoPromptHsdis(boolean noPromptHsdis)
--	{
--		this.noPromptHsdis = noPromptHsdis;
--	}
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -87,0 +88 @@ public class JITWatchConfig
++	private static final String KEY_NO_PROMPT_HSDIS = SANDBOX_PREFIX + ".no.prompt.hsdis";
+@@ -120,2 +121,3 @@ public class JITWatchConfig
+-	private File propertiesFile = (CONFIG_OVERRIDE != null) ? new File(CONFIG_OVERRIDE)
+-			: new File(System.getProperty("user.dir"), PROPERTIES_FILENAME);
++	private File propertiesFile = (CONFIG_OVERRIDE != null) ?
++			new File(CONFIG_OVERRIDE) :
++			new File(System.getProperty("user.dir"), PROPERTIES_FILENAME);
+@@ -126,0 +129,2 @@ public class JITWatchConfig
++	private boolean noPromptHsdis = false;
++
+@@ -177,2 +181 @@ public class JITWatchConfig
+-	@Override
+-	public JITWatchConfig clone()
++	@Override public JITWatchConfig clone()
+@@ -354,0 +358,2 @@ public class JITWatchConfig
++
++		noPromptHsdis = loadBooleanFromProperty(loadedProps, KEY_NO_PROMPT_HSDIS, false);
+@@ -616,0 +622 @@ public class JITWatchConfig
++		putProperty(loadedProps, KEY_NO_PROMPT_HSDIS, Boolean.toString(noPromptHsdis));
+@@ -849 +855 @@ public class JITWatchConfig
+-	
++
+@@ -922 +928,11 @@ public class JITWatchConfig
 -}
-\ No newline at end of file
++
++	public boolean isNoPromptHsdis()
++	{
++		return noPromptHsdis;
++	}
++
++	public void setNoPromptHsdis(boolean noPromptHsdis)
++	{
++		this.noPromptHsdis = noPromptHsdis;
++	}
 +}
+\ No newline at end of file
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java b/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
-index 70e0e3db..69eea89a 100644
+index 69eea89a..70e0e3db 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
 @@ -157 +157 @@ public final class BytecodeLoader
--
-+		
-@@ -175,3 +175 @@ public final class BytecodeLoader
--		Map<String, String> environment = new HashMap<>();
--
--		javapProcess.execute(classLocations, fqClassName, environment);
-+		javapProcess.execute(classLocations, fqClassName);
+-		
++
+@@ -175 +175,3 @@ public final class BytecodeLoader
+-		javapProcess.execute(classLocations, fqClassName);
++		Map<String, String> environment = new HashMap<>();
++
++		javapProcess.execute(classLocations, fqClassName, environment);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java
-index 45db1658..978b4e0a 100644
+index 978b4e0a..45db1658 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
 @@ -30 +30 @@ public abstract class AbstractProcess implements IExternalProcess
--
-+	
-@@ -59 +59,2 @@ public abstract class AbstractProcess implements IExternalProcess
--	@Override public String getOutputStream()
-+	@Override
-+	public String getOutputStream()
-@@ -78 +79,2 @@ public abstract class AbstractProcess implements IExternalProcess
--	@Override public String getErrorStream()
-+	@Override
-+	public String getErrorStream()
-@@ -114 +116 @@ public abstract class AbstractProcess implements IExternalProcess
--	protected boolean runCommands(List<String> commands, Map<String, String> environment, ILogListener logListener)
-+	protected boolean runCommands(List<String> commands, ILogListener logListener)
-@@ -116 +118 @@ public abstract class AbstractProcess implements IExternalProcess
--		return runCommands(commands, null, environment, logListener);
-+		return runCommands(commands, null, null, logListener);
-@@ -135 +137 @@ public abstract class AbstractProcess implements IExternalProcess
--
-+		
-@@ -149,2 +150,0 @@ public abstract class AbstractProcess implements IExternalProcess
--
--					logListener.handleLogEntry("Environment: " + entry.getKey() + "=" + entry.getValue());
+-	
++
+@@ -59,2 +59 @@ public abstract class AbstractProcess implements IExternalProcess
+-	@Override
+-	public String getOutputStream()
++	@Override public String getOutputStream()
+@@ -79,2 +78 @@ public abstract class AbstractProcess implements IExternalProcess
+-	@Override
+-	public String getErrorStream()
++	@Override public String getErrorStream()
+@@ -116 +114 @@ public abstract class AbstractProcess implements IExternalProcess
+-	protected boolean runCommands(List<String> commands, ILogListener logListener)
++	protected boolean runCommands(List<String> commands, Map<String, String> environment, ILogListener logListener)
+@@ -118 +116 @@ public abstract class AbstractProcess implements IExternalProcess
+-		return runCommands(commands, null, null, logListener);
++		return runCommands(commands, null, environment, logListener);
+@@ -137 +135 @@ public abstract class AbstractProcess implements IExternalProcess
+-		
++
+@@ -150,0 +149,2 @@ public abstract class AbstractProcess implements IExternalProcess
++
++					logListener.handleLogEntry("Environment: " + entry.getKey() + "=" + entry.getValue());
 @@ -172 +172 @@ public abstract class AbstractProcess implements IExternalProcess
--
-+			
+-			
++
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerGroovy.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerGroovy.java
-index 3ad1312e..f0f077c6 100644
+index f0f077c6..3ad1312e 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerGroovy.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerGroovy.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -16 +15,0 @@ import java.util.List;
--import java.util.Map;
-@@ -42 +41 @@ public class CompilerGroovy extends AbstractProcess implements ICompiler
--	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
-+	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
-@@ -67 +66 @@ public class CompilerGroovy extends AbstractProcess implements ICompiler
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -15,0 +16 @@ import java.util.List;
++import java.util.Map;
+@@ -41 +42 @@ public class CompilerGroovy extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -66 +67 @@ public class CompilerGroovy extends AbstractProcess implements ICompiler
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJRuby.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJRuby.java
-index e6cd6416..bd5d5f05 100644
+index bd5d5f05..e6cd6416 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJRuby.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJRuby.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -15 +15,4 @@ import java.nio.file.Paths;
--import java.util.*;
-+import java.util.ArrayList;
-+import java.util.HashSet;
-+import java.util.List;
-+import java.util.Set;
-@@ -44 +47 @@ public class CompilerJRuby extends AbstractProcess implements ICompiler
--	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
-+	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
-@@ -74 +77 @@ public class CompilerJRuby extends AbstractProcess implements ICompiler
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -15,4 +15 @@ import java.nio.file.Paths;
+-import java.util.ArrayList;
+-import java.util.HashSet;
+-import java.util.List;
+-import java.util.Set;
++import java.util.*;
+@@ -47 +44 @@ public class CompilerJRuby extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -77 +74 @@ public class CompilerJRuby extends AbstractProcess implements ICompiler
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJava.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJava.java
-index 92e18c5d..ea0db730 100644
+index ea0db730..92e18c5d 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJava.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJava.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -16 +15,0 @@ import java.util.List;
--import java.util.Map;
-@@ -47 +46 @@ public class CompilerJava extends AbstractProcess implements ICompiler
--	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
-+	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
-@@ -72 +71 @@ public class CompilerJava extends AbstractProcess implements ICompiler
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -15,0 +16 @@ import java.util.List;
++import java.util.Map;
+@@ -46 +47 @@ public class CompilerJava extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -71 +72 @@ public class CompilerJava extends AbstractProcess implements ICompiler
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJavaScript.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJavaScript.java
-index 4868ebee..ee5c08ac 100644
+index ee5c08ac..4868ebee 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJavaScript.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJavaScript.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -16 +15,0 @@ import java.util.List;
--import java.util.Map;
-@@ -42 +41 @@ public class CompilerJavaScript extends AbstractProcess implements ICompiler
--	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
-+	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
-@@ -68 +67 @@ public class CompilerJavaScript extends AbstractProcess implements ICompiler
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -15,0 +16 @@ import java.util.List;
++import java.util.Map;
+@@ -41 +42 @@ public class CompilerJavaScript extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -67 +68 @@ public class CompilerJavaScript extends AbstractProcess implements ICompiler
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerKotlin.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerKotlin.java
-index 10ab50b0..6f8807bf 100644
+index 6f8807bf..10ab50b0 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerKotlin.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerKotlin.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -16 +15,0 @@ import java.util.List;
--import java.util.Map;
-@@ -43 +42 @@ public class CompilerKotlin extends AbstractProcess implements ICompiler
--	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
-+	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
-@@ -70 +69 @@ public class CompilerKotlin extends AbstractProcess implements ICompiler
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -15,0 +16 @@ import java.util.List;
++import java.util.Map;
+@@ -42 +43 @@ public class CompilerKotlin extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -69 +70 @@ public class CompilerKotlin extends AbstractProcess implements ICompiler
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerScala.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerScala.java
-index a654c6f1..bba0ff20 100644
+index bba0ff20..a654c6f1 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerScala.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerScala.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -17 +16,0 @@ import java.util.List;
--import java.util.Map;
-@@ -47 +46 @@ public class CompilerScala extends AbstractProcess implements ICompiler
--	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment,ILogListener logListener)
-+	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
-@@ -74 +73 @@ public class CompilerScala extends AbstractProcess implements ICompiler
--		boolean success = runCommands(commands, environment, logListener);
-+		boolean success = runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -16,0 +17 @@ import java.util.List;
++import java.util.Map;
+@@ -46 +47 @@ public class CompilerScala extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment,ILogListener logListener)
+@@ -73 +74 @@ public class CompilerScala extends AbstractProcess implements ICompiler
+-		boolean success = runCommands(commands, logListener);
++		boolean success = runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/ICompiler.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/ICompiler.java
-index 35d7e910..7b663457 100644
+index 7b663457..35d7e910 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/ICompiler.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/ICompiler.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -11 +10,0 @@ import java.util.List;
--import java.util.Map;
-@@ -18 +17 @@ public interface ICompiler extends IExternalProcess
--	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener) throws IOException;
-+	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener) throws IOException;
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -10,0 +11 @@ import java.util.List;
++import java.util.Map;
+@@ -17 +18 @@ public interface ICompiler extends IExternalProcess
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, ILogListener logListener) throws IOException;
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener) throws IOException;
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
-index 171dd5cb..311c6711 100644
+index 311c6711..171dd5cb 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
-@@ -13 +13,4 @@ import java.nio.file.Paths;
--import java.util.*;
-+import java.util.ArrayList;
-+import java.util.Arrays;
-+import java.util.Collection;
-+import java.util.List;
-@@ -15,0 +19,2 @@ import org.adoptopenjdk.jitwatch.process.AbstractProcess;
-+import com.chrisnewland.freelogj.Logger;
-+import com.chrisnewland.freelogj.LoggerFactory;
-@@ -88 +93 @@ public class JavapProcess extends AbstractProcess
--	public boolean execute(Collection<String> classLocations, String fqClassName, Map<String, String> environment)
-+	public boolean execute(Collection<String> classLocations, String fqClassName)
-@@ -94 +99 @@ public class JavapProcess extends AbstractProcess
--		return runCommands(commands, environment, null);
-+		return runCommands(commands, null);
-@@ -96 +101 @@ public class JavapProcess extends AbstractProcess
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -13,4 +13 @@ import java.nio.file.Paths;
+-import java.util.ArrayList;
+-import java.util.Arrays;
+-import java.util.Collection;
+-import java.util.List;
++import java.util.*;
+@@ -19,2 +15,0 @@ import org.adoptopenjdk.jitwatch.process.AbstractProcess;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
+@@ -93 +88 @@ public class JavapProcess extends AbstractProcess
+-	public boolean execute(Collection<String> classLocations, String fqClassName)
++	public boolean execute(Collection<String> classLocations, String fqClassName, Map<String, String> environment)
+@@ -99 +94 @@ public class JavapProcess extends AbstractProcess
+-		return runCommands(commands, null);
++		return runCommands(commands, environment, null);
+@@ -101 +96 @@ public class JavapProcess extends AbstractProcess
 -}
-\ No newline at end of file
 +}
+\ No newline at end of file
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/IRuntime.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/IRuntime.java
-index 4475dc78..50f568bc 100644
+index 50f568bc..4475dc78 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/IRuntime.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/IRuntime.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -10 +9,0 @@ import java.util.List;
--import java.util.Map;
-@@ -17 +16 @@ public interface IRuntime extends IExternalProcess
--	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener);
-+	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -9,0 +10 @@ import java.util.List;
++import java.util.Map;
+@@ -16 +17 @@ public interface IRuntime extends IExternalProcess
+-	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener);
++	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeGroovy.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeGroovy.java
-index e7ad8db5..6127b0d9 100644
+index 6127b0d9..e7ad8db5 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeGroovy.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeGroovy.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -17 +16,0 @@ import java.util.List;
--import java.util.Map;
-@@ -66 +65 @@ public class RuntimeGroovy extends AbstractProcess implements IRuntime
--	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
-+	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
-@@ -85 +84 @@ public class RuntimeGroovy extends AbstractProcess implements IRuntime
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -16,0 +17 @@ import java.util.List;
++import java.util.Map;
+@@ -65 +66 @@ public class RuntimeGroovy extends AbstractProcess implements IRuntime
+-	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
++	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
+@@ -84 +85 @@ public class RuntimeGroovy extends AbstractProcess implements IRuntime
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJRuby.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJRuby.java
-index 05bbedb6..15b4e40c 100644
+index 15b4e40c..05bbedb6 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJRuby.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJRuby.java
-@@ -17 +16,0 @@ import java.util.List;
--import java.util.Map;
-@@ -43 +42 @@ public class RuntimeJRuby extends AbstractProcess implements IRuntime
--	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
-+	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
-@@ -63 +62 @@ public class RuntimeJRuby extends AbstractProcess implements IRuntime
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
+@@ -16,0 +17 @@ import java.util.List;
++import java.util.Map;
+@@ -42 +43 @@ public class RuntimeJRuby extends AbstractProcess implements IRuntime
+-	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
++	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
+@@ -62 +63 @@ public class RuntimeJRuby extends AbstractProcess implements IRuntime
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJava.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJava.java
-index f85650e8..4591c203 100644
+index 4591c203..f85650e8 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJava.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJava.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2017 Chris Newland.
-@@ -21 +20,0 @@ import java.util.List;
--import java.util.Map;
-@@ -51,2 +50,2 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
--	@Override public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions,
--			Map<String, String> environment, ILogListener logListener)
-+	@Override
-+	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
-@@ -72 +71 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
-@@ -75 +74,2 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
--	@Override public String getClassToExecute(File fileToRun)
-+	@Override
-+	public String getClassToExecute(File fileToRun)
+- * Copyright (c) 2013-2017 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -20,0 +21 @@ import java.util.List;
++import java.util.Map;
+@@ -50,2 +51,2 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
+-	@Override
+-	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
++	@Override public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions,
++			Map<String, String> environment, ILogListener logListener)
+@@ -71 +72 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
+@@ -74,2 +75 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
+-	@Override
+-	public String getClassToExecute(File fileToRun)
++	@Override public String getClassToExecute(File fileToRun)
 @@ -78 +78 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
--
-+		
+-		
++
 @@ -82 +82 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
--
-+			
+-			
++
 @@ -86 +86 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
--
-+				
+-				
++
 @@ -97 +97 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
--
-+		
-@@ -102 +102,2 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
--	@Override public String getClassForTriView(File fileToRun)
-+	@Override
-+	public String getClassForTriView(File fileToRun)
+-		
++
+@@ -102,2 +102 @@ public class RuntimeJava extends AbstractProcess implements IRuntime
+-	@Override
+-	public String getClassForTriView(File fileToRun)
++	@Override public String getClassForTriView(File fileToRun)
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJavaScript.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJavaScript.java
-index 2385f73e..b20dbdaf 100644
+index b20dbdaf..2385f73e 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJavaScript.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeJavaScript.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -14 +13,0 @@ import java.util.List;
--import java.util.Map;
-@@ -40 +39 @@ public class RuntimeJavaScript extends AbstractProcess implements IRuntime
--	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
-+	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
-@@ -63 +62 @@ public class RuntimeJavaScript extends AbstractProcess implements IRuntime
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -13,0 +14 @@ import java.util.List;
++import java.util.Map;
+@@ -39 +40 @@ public class RuntimeJavaScript extends AbstractProcess implements IRuntime
+-	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
++	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
+@@ -62 +63 @@ public class RuntimeJavaScript extends AbstractProcess implements IRuntime
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeKotlin.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeKotlin.java
-index cc6e7b11..d9669c98 100644
+index d9669c98..cc6e7b11 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeKotlin.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeKotlin.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -16 +15,0 @@ import java.util.List;
--import java.util.Map;
-@@ -49 +48 @@ public class RuntimeKotlin extends AbstractProcess implements IRuntime
--	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
-+	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
-@@ -69 +68 @@ public class RuntimeKotlin extends AbstractProcess implements IRuntime
--		return runCommands(commands, environment,logListener);
-+		return runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -15,0 +16 @@ import java.util.List;
++import java.util.Map;
+@@ -48 +49 @@ public class RuntimeKotlin extends AbstractProcess implements IRuntime
+-	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
++	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
+@@ -68 +69 @@ public class RuntimeKotlin extends AbstractProcess implements IRuntime
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment,logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeScala.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeScala.java
-index 16a59608..30242903 100644
+index 30242903..16a59608 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeScala.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/runtime/RuntimeScala.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -17 +16,0 @@ import java.util.List;
--import java.util.Map;
-@@ -43 +42 @@ public class RuntimeScala extends AbstractProcess implements IRuntime
--	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
-+	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
-@@ -63 +62 @@ public class RuntimeScala extends AbstractProcess implements IRuntime
--		return runCommands(commands, environment, logListener);
-+		return runCommands(commands, logListener);
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -16,0 +17 @@ import java.util.List;
++import java.util.Map;
+@@ -42 +43 @@ public class RuntimeScala extends AbstractProcess implements IRuntime
+-	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, ILogListener logListener)
++	public boolean execute(String className, List<String> classpathEntries, List<String> vmOptions, Map<String, String> environment, ILogListener logListener)
+@@ -62 +63 @@ public class RuntimeScala extends AbstractProcess implements IRuntime
+-		return runCommands(commands, logListener);
++		return runCommands(commands, environment, logListener);
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
-index 37f53f40..9638afac 100644
+index 9638afac..37f53f40 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
 @@ -29 +29 @@ public final class DisassemblyUtil
--		boolean found = downloadedDisassemblerPresent();
-+		boolean found = false;
-@@ -51,16 +51 @@ public final class DisassemblyUtil
--	public static String getDynamicLibraryPath()
--	{
--		switch (OSUtil.getOperatingSystem())
--		{
--		case WIN:
--			return "PATH";
--		case MAC:
--			return "DYLD_LIBRARY_PATH";
--		case LINUX:
--			return "LD_LIBRARY_PATH";
--		}
--
--		throw new RuntimeException("Unknown OS");
--	}
--
--	public static String getDisassemblerFilename()
-+	private static String getDisassemblerFilename()
-@@ -76 +61,23 @@ public final class DisassemblyUtil
--		String binaryName = "hsdis-" + System.getProperty("os.arch");
-+		String binaryName = null;
-+
-+		switch (arch)
+-		boolean found = false;
++		boolean found = downloadedDisassemblerPresent();
+@@ -51 +51,16 @@ public final class DisassemblyUtil
+-	private static String getDisassemblerFilename()
++	public static String getDynamicLibraryPath()
++	{
++		switch (OSUtil.getOperatingSystem())
 +		{
-+		case X86_32:
-+			binaryName = "hsdis-i386";
-+			break;
-+
-+		case X86_64:
-+			binaryName = "hsdis-amd64";
-+			break;
-+
-+		case ARM_32:
-+			binaryName = "hsdis-arm";
-+			break;
-+
-+		case ARM_64:
-+			binaryName = "hsdis-arm";
-+			break;
-+
-+		default:
-+			break;
++		case WIN:
++			return "PATH";
++		case MAC:
++			return "DYLD_LIBRARY_PATH";
++		case LINUX:
++			return "LD_LIBRARY_PATH";
 +		}
-@@ -102,5 +108,0 @@ public final class DisassemblyUtil
--	public static boolean downloadedDisassemblerPresent()
--	{
--		return new File(getDisassemblerFilename()).exists();
--	}
++
++		throw new RuntimeException("Unknown OS");
++	}
++
++	public static String getDisassemblerFilename()
+@@ -61,23 +76 @@ public final class DisassemblyUtil
+-		String binaryName = null;
 -
-@@ -111,26 +112,0 @@ public final class DisassemblyUtil
--		// first check the dynamic library path in case user has overridden JDK location for hsdis
--		String dynLibPath = System.getenv(getDynamicLibraryPath());
--
--		if (dynLibPath != null)
+-		switch (arch)
 -		{
--			String[] dirs = dynLibPath.split(":");
+-		case X86_32:
+-			binaryName = "hsdis-i386";
+-			break;
 -
--			for (String dir : dirs)
--			{
--				Path path = Paths.get(dir, binaryName);
+-		case X86_64:
+-			binaryName = "hsdis-amd64";
+-			break;
 -
--				if (DEBUG_LOGGING_ASSEMBLY)
--				{
--					logger.debug("looking in {}", path);
--				}
+-		case ARM_32:
+-			binaryName = "hsdis-arm";
+-			break;
 -
--				File file = path.toFile();
+-		case ARM_64:
+-			binaryName = "hsdis-arm";
+-			break;
 -
--				if (file.exists() && file.isFile())
--				{
--					return path;
--				}
--			}
+-		default:
+-			break;
 -		}
--
--		// next search JDK
-@@ -183,2 +159 @@ public final class DisassemblyUtil
--		// finally search for locally downloaded
--		if (downloadedDisassemblerPresent())
-+		if (OSUtil.OperatingSystem.LINUX == OSUtil.getOperatingSystem())
-@@ -186 +161,23 @@ public final class DisassemblyUtil
--			return Paths.get(getDisassemblerFilename());
-+			String dynLibPath = System.getenv("LD_LIBRARY_PATH");
++		String binaryName = "hsdis-" + System.getProperty("os.arch");
+@@ -108,0 +102,5 @@ public final class DisassemblyUtil
++	public static boolean downloadedDisassemblerPresent()
++	{
++		return new File(getDisassemblerFilename()).exists();
++	}
 +
-+			if (dynLibPath != null)
+@@ -112,0 +111,26 @@ public final class DisassemblyUtil
++		// first check the dynamic library path in case user has overridden JDK location for hsdis
++		String dynLibPath = System.getenv(getDynamicLibraryPath());
++
++		if (dynLibPath != null)
++		{
++			String[] dirs = dynLibPath.split(":");
++
++			for (String dir : dirs)
 +			{
-+				String[] dirs = dynLibPath.split(":");
++				Path path = Paths.get(dir, binaryName);
 +
-+				for (String dir : dirs)
++				if (DEBUG_LOGGING_ASSEMBLY)
 +				{
-+					Path path = Paths.get(dir, binaryName);
++					logger.debug("looking in {}", path);
++				}
 +
-+					if (DEBUG_LOGGING_ASSEMBLY)
-+					{
-+						logger.debug("looking in {}", path);
-+					}
++				File file = path.toFile();
 +
-+					File file = path.toFile();
-+
-+					if (file.exists() && file.isFile())
-+					{
-+						return path;
-+					}
++				if (file.exists() && file.isFile())
++				{
++					return path;
 +				}
 +			}
-@@ -191 +188 @@ public final class DisassemblyUtil
++		}
++
++		// next search JDK
+@@ -159 +183,2 @@ public final class DisassemblyUtil
+-		if (OSUtil.OperatingSystem.LINUX == OSUtil.getOperatingSystem())
++		// finally search for locally downloaded
++		if (downloadedDisassemblerPresent())
+@@ -161,23 +186 @@ public final class DisassemblyUtil
+-			String dynLibPath = System.getenv("LD_LIBRARY_PATH");
+-
+-			if (dynLibPath != null)
+-			{
+-				String[] dirs = dynLibPath.split(":");
+-
+-				for (String dir : dirs)
+-				{
+-					Path path = Paths.get(dir, binaryName);
+-
+-					if (DEBUG_LOGGING_ASSEMBLY)
+-					{
+-						logger.debug("looking in {}", path);
+-					}
+-
+-					File file = path.toFile();
+-
+-					if (file.exists() && file.isFile())
+-					{
+-						return path;
+-					}
+-				}
+-			}
++			return Paths.get(getDisassemblerFilename());
+@@ -188 +191 @@ public final class DisassemblyUtil
 -}
-\ No newline at end of file
 +}
+\ No newline at end of file
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java
-index a2cb90c4..7b10042c 100644
+index 7b10042c..a2cb90c4 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
-@@ -11 +11,3 @@ import com.chrisnewland.freelogj.LoggerFactory;
--import java.io.*;
-+import java.io.BufferedReader;
-+import java.io.IOException;
-+import java.io.InputStreamReader;
-@@ -14,2 +15,0 @@ import java.net.URL;
--import java.nio.Buffer;
--import java.nio.file.Path;
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -11,3 +11 @@ import com.chrisnewland.freelogj.LoggerFactory;
+-import java.io.BufferedReader;
+-import java.io.IOException;
+-import java.io.InputStreamReader;
++import java.io.*;
+@@ -15,0 +14,2 @@ import java.net.URL;
++import java.nio.Buffer;
++import java.nio.file.Path;
 @@ -27 +27 @@ public final class NetUtil
--	public static String fetchURL(String url)
-+	public static String fetchURL(String toFetch)
-@@ -31,2 +31,8 @@ public final class NetUtil
--		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new URL(url).openStream())))
--		{
-+		BufferedReader in = null;
-+
-+		try
-+		{			
-+			URL url = new URL(toFetch);
-+
-+			in = new BufferedReader(new InputStreamReader(url.openStream()));
-+
-@@ -35,2 +41,2 @@ public final class NetUtil
--			while ((inputLine = bufferedReader.readLine()) != null)
--			{
-+			while ((inputLine = in.readLine()) != null)
-+			{				
-@@ -38,0 +45 @@ public final class NetUtil
-+
-@@ -42 +49 @@ public final class NetUtil
--			logger.error("Bad URL: {}", url, e);
-+			logger.error("", e);
-@@ -46 +53 @@ public final class NetUtil
--			logger.error("Could not download {}", url, e);
-+			logger.error("", e);
-@@ -48,8 +55 @@ public final class NetUtil
+-	public static String fetchURL(String toFetch)
++	public static String fetchURL(String url)
+@@ -31,8 +31,2 @@ public final class NetUtil
+-		BufferedReader in = null;
 -
--		return builder.toString();
--	}
+-		try
+-		{			
+-			URL url = new URL(toFetch);
 -
--	public static boolean fetchBinary(String url, Path targetPath)
--	{
--		try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new URL(url).openStream());
--				BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(targetPath.toFile())))
-+		finally
-@@ -57,5 +57 @@ public final class NetUtil
--			byte[] data = new byte[1024];
+-			in = new BufferedReader(new InputStreamReader(url.openStream()));
 -
--			int read;
++		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new URL(url).openStream())))
++		{
+@@ -41,2 +35,2 @@ public final class NetUtil
+-			while ((inputLine = in.readLine()) != null)
+-			{				
++			while ((inputLine = bufferedReader.readLine()) != null)
++			{
+@@ -45 +38,0 @@ public final class NetUtil
 -
--			while ((read = bufferedInputStream.read(data)) != -1)
-+			if (in != null)
-@@ -63 +59,7 @@ public final class NetUtil
--				bufferedOutputStream.write(data, 0, read);
-+				try
-+				{
-+					in.close();
-+				}
-+				catch (IOException ioe)
-+				{
-+				}
-@@ -66,10 +67,0 @@ public final class NetUtil
--		catch (MalformedURLException e)
--		{
--			logger.error("Bad URL: {}", url, e);
--			return false;
--		}
--		catch (IOException e)
--		{
--			logger.error("Could not download {}", url, e);
--			return false;
--		}
-@@ -77 +69 @@ public final class NetUtil
--		return true;
+@@ -49 +42 @@ public final class NetUtil
+-			logger.error("", e);
++			logger.error("Bad URL: {}", url, e);
+@@ -53 +46 @@ public final class NetUtil
+-			logger.error("", e);
++			logger.error("Could not download {}", url, e);
+@@ -55 +48,8 @@ public final class NetUtil
+-		finally
++
 +		return builder.toString();
-@@ -79 +71 @@ public final class NetUtil
++	}
++
++	public static boolean fetchBinary(String url, Path targetPath)
++	{
++		try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new URL(url).openStream());
++				BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(targetPath.toFile())))
+@@ -57 +57,5 @@ public final class NetUtil
+-			if (in != null)
++			byte[] data = new byte[1024];
++
++			int read;
++
++			while ((read = bufferedInputStream.read(data)) != -1)
+@@ -59,7 +63 @@ public final class NetUtil
+-				try
+-				{
+-					in.close();
+-				}
+-				catch (IOException ioe)
+-				{
+-				}
++				bufferedOutputStream.write(data, 0, read);
+@@ -67,0 +66,10 @@ public final class NetUtil
++		catch (MalformedURLException e)
++		{
++			logger.error("Bad URL: {}", url, e);
++			return false;
++		}
++		catch (IOException e)
++		{
++			logger.error("Could not download {}", url, e);
++			return false;
++		}
+@@ -69 +77 @@ public final class NetUtil
+-		return builder.toString();
++		return true;
+@@ -71 +79 @@ public final class NetUtil
 -}
-\ No newline at end of file
 +}
+\ No newline at end of file
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java
-index b957ec7d..28b5aa54 100644
+index 28b5aa54..b957ec7d 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
-@@ -54,3 +54 @@ public final class OSUtil
--			arch = arch.toLowerCase();
--
--			if (arch.contains("arm") || arch.contains("aarch"))
-+			if (arch.contains("arm"))
-@@ -82 +80 @@ public final class OSUtil
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -54 +54,3 @@ public final class OSUtil
+-			if (arch.contains("arm"))
++			arch = arch.toLowerCase();
++
++			if (arch.contains("arm") || arch.contains("aarch"))
+@@ -80 +82 @@ public final class OSUtil
 -}
-\ No newline at end of file
 +}
+\ No newline at end of file
 diff --git a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java
-index 1550c6c6..20adfb69 100644
+index 20adfb69..1550c6c6 100644
 --- a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java
 +++ b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java
-@@ -17 +17,5 @@ import java.nio.file.Paths;
--import java.util.*;
-+import java.util.ArrayList;
-+import java.util.Arrays;
-+import java.util.HashSet;
-+import java.util.List;
-+import java.util.Set;
-@@ -84 +88,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Before public void setUp()
-+	@Before
-+	public void setUp()
-@@ -106,3 +111 @@ public class TestBytecodeLoaderWithInnerClasses
--			boolean success = compiler.compile(sources, compileClasspath, pathToTempClassDir.toFile(), Collections.emptyMap(),
--					new NullLogListener());
--
-+			boolean success = compiler.compile(sources, compileClasspath, pathToTempClassDir.toFile(), new NullLogListener());
-@@ -134 +137,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@After public void tearDown()
-+	@After
-+	public void tearDown()
-@@ -153 +157,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testCompilationCreatedCorrectOutputs()
-+	@Test
-+	public void testCompilationCreatedCorrectOutputs()
-@@ -190 +195,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromSourceOuterClassConstructor()
-+	@Test
-+	public void testSearchFromSourceOuterClassConstructor()
-@@ -209 +215,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromSourceOuterClassMethod()
-+	@Test
-+	public void testSearchFromSourceOuterClassMethod()
-@@ -224 +231,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromSourceInner1ClassConstructor()
-+	@Test
-+	public void testSearchFromSourceInner1ClassConstructor()
-@@ -245 +253,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromSourceInner1ClassMethod()
-+	@Test
-+	public void testSearchFromSourceInner1ClassMethod()
-@@ -260 +269,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromSourceInner2ClassConstructor()
-+	@Test
-+	public void testSearchFromSourceInner2ClassConstructor()
-@@ -281 +291,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromSourceInner2ClassMethod()
-+	@Test
-+	public void testSearchFromSourceInner2ClassMethod()
-@@ -296 +307,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromBytecodeOuterClassConstructor()
-+	@Test
-+	public void testSearchFromBytecodeOuterClassConstructor()
-@@ -313 +325,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromBytecodeOuterClassMethod()
-+	@Test
-+	public void testSearchFromBytecodeOuterClassMethod()
-@@ -324 +337,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromBytecodeInner1ClassConstructor()
-+	@Test
-+	public void testSearchFromBytecodeInner1ClassConstructor()
-@@ -341 +355,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromBytecodeInner1ClassMethod()
-+	@Test
-+	public void testSearchFromBytecodeInner1ClassMethod()
-@@ -351,2 +366,3 @@ public class TestBytecodeLoaderWithInnerClasses
--
--	@Test public void testSearchFromBytecodeInner2ClassConstructor()
-+	
-+	@Test
-+	public void testSearchFromBytecodeInner2ClassConstructor()
-@@ -356,4 +372,4 @@ public class TestBytecodeLoaderWithInnerClasses
--		//		 line 36: 0
--		//		 line 37: 9
--		//		 line 39: 17
--		//		 line 40: 21
-+//		 line 36: 0
-+//		 line 37: 9
-+//		 line 39: 17
-+//		 line 40: 21
-@@ -367 +383,2 @@ public class TestBytecodeLoaderWithInnerClasses
--	@Test public void testSearchFromBytecodeInner2ClassMethod()
-+	@Test
-+	public void testSearchFromBytecodeInner2ClassMethod()
-@@ -371,2 +388,2 @@ public class TestBytecodeLoaderWithInnerClasses
--		//		 line 44: 0
--		//		 line 45: 8
-+//		 line 44: 0
-+//		 line 45: 8
+@@ -17,5 +17 @@ import java.nio.file.Paths;
+-import java.util.ArrayList;
+-import java.util.Arrays;
+-import java.util.HashSet;
+-import java.util.List;
+-import java.util.Set;
++import java.util.*;
+@@ -88,2 +84 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Before
+-	public void setUp()
++	@Before public void setUp()
+@@ -111 +106,3 @@ public class TestBytecodeLoaderWithInnerClasses
+-			boolean success = compiler.compile(sources, compileClasspath, pathToTempClassDir.toFile(), new NullLogListener());
++			boolean success = compiler.compile(sources, compileClasspath, pathToTempClassDir.toFile(), Collections.emptyMap(),
++					new NullLogListener());
++
+@@ -137,2 +134 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@After
+-	public void tearDown()
++	@After public void tearDown()
+@@ -157,2 +153 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testCompilationCreatedCorrectOutputs()
++	@Test public void testCompilationCreatedCorrectOutputs()
+@@ -195,2 +190 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromSourceOuterClassConstructor()
++	@Test public void testSearchFromSourceOuterClassConstructor()
+@@ -215,2 +209 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromSourceOuterClassMethod()
++	@Test public void testSearchFromSourceOuterClassMethod()
+@@ -231,2 +224 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromSourceInner1ClassConstructor()
++	@Test public void testSearchFromSourceInner1ClassConstructor()
+@@ -253,2 +245 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromSourceInner1ClassMethod()
++	@Test public void testSearchFromSourceInner1ClassMethod()
+@@ -269,2 +260 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromSourceInner2ClassConstructor()
++	@Test public void testSearchFromSourceInner2ClassConstructor()
+@@ -291,2 +281 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromSourceInner2ClassMethod()
++	@Test public void testSearchFromSourceInner2ClassMethod()
+@@ -307,2 +296 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromBytecodeOuterClassConstructor()
++	@Test public void testSearchFromBytecodeOuterClassConstructor()
+@@ -325,2 +313 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromBytecodeOuterClassMethod()
++	@Test public void testSearchFromBytecodeOuterClassMethod()
+@@ -337,2 +324 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromBytecodeInner1ClassConstructor()
++	@Test public void testSearchFromBytecodeInner1ClassConstructor()
+@@ -355,2 +341 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromBytecodeInner1ClassMethod()
++	@Test public void testSearchFromBytecodeInner1ClassMethod()
+@@ -366,3 +351,2 @@ public class TestBytecodeLoaderWithInnerClasses
+-	
+-	@Test
+-	public void testSearchFromBytecodeInner2ClassConstructor()
++
++	@Test public void testSearchFromBytecodeInner2ClassConstructor()
+@@ -372,4 +356,4 @@ public class TestBytecodeLoaderWithInnerClasses
+-//		 line 36: 0
+-//		 line 37: 9
+-//		 line 39: 17
+-//		 line 40: 21
++		//		 line 36: 0
++		//		 line 37: 9
++		//		 line 39: 17
++		//		 line 40: 21
+@@ -383,2 +367 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Test
+-	public void testSearchFromBytecodeInner2ClassMethod()
++	@Test public void testSearchFromBytecodeInner2ClassMethod()
+@@ -388,2 +371,2 @@ public class TestBytecodeLoaderWithInnerClasses
+-//		 line 44: 0
+-//		 line 45: 8
++		//		 line 44: 0
++		//		 line 45: 8
 diff --git a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestCompilationUtil.java b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestCompilationUtil.java
-index be35a9e6..19a2e56a 100644
+index 19a2e56a..be35a9e6 100644
 --- a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestCompilationUtil.java
 +++ b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestCompilationUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2016 Chris Newland.
-@@ -17 +16,0 @@ import java.util.ArrayList;
--import java.util.Collections;
-@@ -33 +32,2 @@ public class TestCompilationUtil
--	@Before public void setUp()
-+	@Before
-+	public void setUp()
+- * Copyright (c) 2013-2016 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -16,0 +17 @@ import java.util.ArrayList;
++import java.util.Collections;
+@@ -32,2 +33 @@ public class TestCompilationUtil
+-	@Before
+-	public void setUp()
++	@Before public void setUp()
 @@ -46 +46 @@ public class TestCompilationUtil
--							  .toFile();
-+				.toFile();
+-				.toFile();
++							  .toFile();
 @@ -49 +49 @@ public class TestCompilationUtil
--							 .toFile();
-+				.toFile();
-@@ -55 +55,2 @@ public class TestCompilationUtil
--	@After public void tearDown()
-+	@After
-+	public void tearDown()
-@@ -69 +70,2 @@ public class TestCompilationUtil
--	@Test public void testCompileSimple()
-+	@Test
-+	public void testCompileSimple()
-@@ -94,2 +96 @@ public class TestCompilationUtil
--			boolean success = compiler.compile(sources, compileClasspath, tempDirPath.toFile(), Collections.emptyMap(),
--					new NullLogListener());
-+			boolean success = compiler.compile(sources, compileClasspath, tempDirPath.toFile(), new NullLogListener());
+-				.toFile();
++							 .toFile();
+@@ -55,2 +55 @@ public class TestCompilationUtil
+-	@After
+-	public void tearDown()
++	@After public void tearDown()
+@@ -70,2 +69 @@ public class TestCompilationUtil
+-	@Test
+-	public void testCompileSimple()
++	@Test public void testCompileSimple()
+@@ -96 +94,2 @@ public class TestCompilationUtil
+-			boolean success = compiler.compile(sources, compileClasspath, tempDirPath.toFile(), new NullLogListener());
++			boolean success = compiler.compile(sources, compileClasspath, tempDirPath.toFile(), Collections.emptyMap(),
++					new NullLogListener());
 diff --git a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
-index 4ac09f36..f55d4e04 100644
+index f55d4e04..4ac09f36 100644
 --- a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
 +++ b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
-@@ -15 +14,0 @@ import java.util.ArrayList;
--import java.util.Collections;
-@@ -54,2 +53 @@ public class TestExecutionUtil
--			boolean success = executor.execute(DummyClassWithMain.class.getCanonicalName(), cp, options, Collections.emptyMap(),
--					new StdLogListener());
-+			boolean success = executor.execute(DummyClassWithMain.class.getCanonicalName(), cp, options, new StdLogListener());
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -14,0 +15 @@ import java.util.ArrayList;
++import java.util.Collections;
+@@ -53 +54,2 @@ public class TestExecutionUtil
+-			boolean success = executor.execute(DummyClassWithMain.class.getCanonicalName(), cp, options, new StdLogListener());
++			boolean success = executor.execute(DummyClassWithMain.class.getCanonicalName(), cp, options, Collections.emptyMap(),
++					new StdLogListener());
 diff --git a/ui/build.gradle b/ui/build.gradle
-index 2f3c8158..c6c5baef 100644
+index c6c5baef..2f3c8158 100644
 --- a/ui/build.gradle
 +++ b/ui/build.gradle
-@@ -20 +20,2 @@ dependencies {
--    implementation 'com.chrisnewland:FreeLogJ:0.0.1'
-+
-+    compile 'com.chrisnewland.freelogj:freelogj:0.0.1'
+@@ -20,2 +20 @@ dependencies {
+-
+-    compile 'com.chrisnewland.freelogj:freelogj:0.0.1'
++    implementation 'com.chrisnewland:FreeLogJ:0.0.1'
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
-index 9b9c41de..72bbec60 100644
+index 72bbec60..9b9c41de 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
-@@ -20 +20,2 @@ import java.nio.file.Paths;
--import java.util.*;
-+import java.util.ArrayList;
-+import java.util.List;
-@@ -38 +38,0 @@ import org.adoptopenjdk.jitwatch.ui.sandbox.ISandboxStage;
--import org.adoptopenjdk.jitwatch.util.DisassemblyUtil;
-@@ -149 +149,2 @@ public class Sandbox
--		String languagePath = logParser.getConfig().getVMLanguagePath(language);
-+		String languagePath = logParser.getConfig()
-+									   .getVMLanguagePath(language);
-@@ -181 +182 @@ public class Sandbox
--				Collections.<String, String>emptyMap(), logListener);
-+				logListener);
-@@ -191 +192,2 @@ public class Sandbox
--			boolean executionSuccess = executeClass(fqClassNameToRun, runtime, logParser.getConfig().isSandboxIntelMode());
-+			boolean executionSuccess = executeClass(fqClassNameToRun, runtime, logParser.getConfig()
-+																						.isSandboxIntelMode());
-@@ -249 +251,2 @@ public class Sandbox
--		if (logParser.getConfig().isPrintAssembly())
-+		if (logParser.getConfig()
-+					 .isPrintAssembly())
-@@ -259 +262,2 @@ public class Sandbox
--		boolean isDisableInlining = logParser.getConfig().isDisableInlining();
-+		boolean isDisableInlining = logParser.getConfig()
-+											 .isDisableInlining();
-@@ -266 +270,2 @@ public class Sandbox
--		TieredCompilation tieredMode = logParser.getConfig().getTieredCompilationMode();
-+		TieredCompilation tieredMode = logParser.getConfig()
-+												.getTieredCompilationMode();
-@@ -277 +282,2 @@ public class Sandbox
--		CompressedOops oopsMode = logParser.getConfig().getCompressedOopsMode();
-+		CompressedOops oopsMode = logParser.getConfig()
-+										   .getCompressedOopsMode();
-@@ -288 +294,2 @@ public class Sandbox
--		BackgroundCompilation backgroundCompilationMode = logParser.getConfig().getBackgroundCompilationMode();
-+		BackgroundCompilation backgroundCompilationMode = logParser.getConfig()
-+																   .getBackgroundCompilationMode();
-@@ -299 +306,2 @@ public class Sandbox
--		OnStackReplacement onStackReplacementMode = logParser.getConfig().getOnStackReplacementMode();
-+		OnStackReplacement onStackReplacementMode = logParser.getConfig()
-+															 .getOnStackReplacementMode();
-@@ -310 +318,2 @@ public class Sandbox
--		if (!isDisableInlining && logParser.getConfig().getFreqInlineSize() != JITWatchConstants.DEFAULT_FREQ_INLINE_SIZE)
-+		if (!isDisableInlining && logParser.getConfig()
-+										   .getFreqInlineSize() != JITWatchConstants.DEFAULT_FREQ_INLINE_SIZE)
-@@ -312 +321,2 @@ public class Sandbox
--			options.add("-XX:FreqInlineSize=" + logParser.getConfig().getFreqInlineSize());
-+			options.add("-XX:FreqInlineSize=" + logParser.getConfig()
-+														 .getFreqInlineSize());
-@@ -315 +325,2 @@ public class Sandbox
--		if (!isDisableInlining && logParser.getConfig().getMaxInlineSize() != JITWatchConstants.DEFAULT_MAX_INLINE_SIZE)
-+		if (!isDisableInlining && logParser.getConfig()
-+										   .getMaxInlineSize() != JITWatchConstants.DEFAULT_MAX_INLINE_SIZE)
-@@ -317 +328,2 @@ public class Sandbox
--			options.add("-XX:MaxInlineSize=" + logParser.getConfig().getMaxInlineSize());
-+			options.add("-XX:MaxInlineSize=" + logParser.getConfig()
-+														.getMaxInlineSize());
-@@ -320 +332,2 @@ public class Sandbox
--		if (logParser.getConfig().getCompileThreshold() != JITWatchConstants.DEFAULT_COMPILER_THRESHOLD)
-+		if (logParser.getConfig()
-+					 .getCompileThreshold() != JITWatchConstants.DEFAULT_COMPILER_THRESHOLD)
-@@ -322 +335,2 @@ public class Sandbox
--			options.add("-XX:CompileThreshold=" + logParser.getConfig().getCompileThreshold());
-+			options.add("-XX:CompileThreshold=" + logParser.getConfig()
-+														   .getCompileThreshold());
-@@ -325 +339,3 @@ public class Sandbox
--		if (logParser.getConfig().getExtraVMSwitches().length() > 0)
-+		if (logParser.getConfig()
-+					 .getExtraVMSwitches()
-+					 .length() > 0)
-@@ -327 +343,2 @@ public class Sandbox
--			String extraSwitchString = logParser.getConfig().getExtraVMSwitches();
-+			String extraSwitchString = logParser.getConfig()
-+												.getExtraVMSwitches();
-@@ -340,9 +357 @@ public class Sandbox
--		Map<String, String> environment = new LinkedHashMap<>();
--
--		if (DisassemblyUtil.downloadedDisassemblerPresent())
--		{
--			environment.put(DisassemblyUtil.getDynamicLibraryPath(),
--					Paths.get(DisassemblyUtil.getDisassemblerFilename()).toAbsolutePath().getParent().toString());
--		}
--
--		return runtime.execute(fqClassName, classpath, options, environment, logListener);
-+		return runtime.execute(fqClassName, classpath, options, logListener);
-@@ -379 +388,2 @@ public class Sandbox
--			String jdkSourceZipString = jdkSrcZip.toPath().toString();
-+			String jdkSourceZipString = jdkSrcZip.toPath()
-+												 .toString();
-@@ -424 +434,2 @@ public class Sandbox
--		MetaClass metaClass = model.getPackageManager().getMetaClass(openClassInTriView);
-+		MetaClass metaClass = model.getPackageManager()
-+								   .getMetaClass(openClassInTriView);
+@@ -20,2 +20 @@ import java.nio.file.Paths;
+-import java.util.ArrayList;
+-import java.util.List;
++import java.util.*;
+@@ -38,0 +38 @@ import org.adoptopenjdk.jitwatch.ui.sandbox.ISandboxStage;
++import org.adoptopenjdk.jitwatch.util.DisassemblyUtil;
+@@ -149,2 +149 @@ public class Sandbox
+-		String languagePath = logParser.getConfig()
+-									   .getVMLanguagePath(language);
++		String languagePath = logParser.getConfig().getVMLanguagePath(language);
+@@ -182 +181 @@ public class Sandbox
+-				logListener);
++				Collections.<String, String>emptyMap(), logListener);
+@@ -192,2 +191 @@ public class Sandbox
+-			boolean executionSuccess = executeClass(fqClassNameToRun, runtime, logParser.getConfig()
+-																						.isSandboxIntelMode());
++			boolean executionSuccess = executeClass(fqClassNameToRun, runtime, logParser.getConfig().isSandboxIntelMode());
+@@ -251,2 +249 @@ public class Sandbox
+-		if (logParser.getConfig()
+-					 .isPrintAssembly())
++		if (logParser.getConfig().isPrintAssembly())
+@@ -262,2 +259 @@ public class Sandbox
+-		boolean isDisableInlining = logParser.getConfig()
+-											 .isDisableInlining();
++		boolean isDisableInlining = logParser.getConfig().isDisableInlining();
+@@ -270,2 +266 @@ public class Sandbox
+-		TieredCompilation tieredMode = logParser.getConfig()
+-												.getTieredCompilationMode();
++		TieredCompilation tieredMode = logParser.getConfig().getTieredCompilationMode();
+@@ -282,2 +277 @@ public class Sandbox
+-		CompressedOops oopsMode = logParser.getConfig()
+-										   .getCompressedOopsMode();
++		CompressedOops oopsMode = logParser.getConfig().getCompressedOopsMode();
+@@ -294,2 +288 @@ public class Sandbox
+-		BackgroundCompilation backgroundCompilationMode = logParser.getConfig()
+-																   .getBackgroundCompilationMode();
++		BackgroundCompilation backgroundCompilationMode = logParser.getConfig().getBackgroundCompilationMode();
+@@ -306,2 +299 @@ public class Sandbox
+-		OnStackReplacement onStackReplacementMode = logParser.getConfig()
+-															 .getOnStackReplacementMode();
++		OnStackReplacement onStackReplacementMode = logParser.getConfig().getOnStackReplacementMode();
+@@ -318,2 +310 @@ public class Sandbox
+-		if (!isDisableInlining && logParser.getConfig()
+-										   .getFreqInlineSize() != JITWatchConstants.DEFAULT_FREQ_INLINE_SIZE)
++		if (!isDisableInlining && logParser.getConfig().getFreqInlineSize() != JITWatchConstants.DEFAULT_FREQ_INLINE_SIZE)
+@@ -321,2 +312 @@ public class Sandbox
+-			options.add("-XX:FreqInlineSize=" + logParser.getConfig()
+-														 .getFreqInlineSize());
++			options.add("-XX:FreqInlineSize=" + logParser.getConfig().getFreqInlineSize());
+@@ -325,2 +315 @@ public class Sandbox
+-		if (!isDisableInlining && logParser.getConfig()
+-										   .getMaxInlineSize() != JITWatchConstants.DEFAULT_MAX_INLINE_SIZE)
++		if (!isDisableInlining && logParser.getConfig().getMaxInlineSize() != JITWatchConstants.DEFAULT_MAX_INLINE_SIZE)
+@@ -328,2 +317 @@ public class Sandbox
+-			options.add("-XX:MaxInlineSize=" + logParser.getConfig()
+-														.getMaxInlineSize());
++			options.add("-XX:MaxInlineSize=" + logParser.getConfig().getMaxInlineSize());
+@@ -332,2 +320 @@ public class Sandbox
+-		if (logParser.getConfig()
+-					 .getCompileThreshold() != JITWatchConstants.DEFAULT_COMPILER_THRESHOLD)
++		if (logParser.getConfig().getCompileThreshold() != JITWatchConstants.DEFAULT_COMPILER_THRESHOLD)
+@@ -335,2 +322 @@ public class Sandbox
+-			options.add("-XX:CompileThreshold=" + logParser.getConfig()
+-														   .getCompileThreshold());
++			options.add("-XX:CompileThreshold=" + logParser.getConfig().getCompileThreshold());
+@@ -339,3 +325 @@ public class Sandbox
+-		if (logParser.getConfig()
+-					 .getExtraVMSwitches()
+-					 .length() > 0)
++		if (logParser.getConfig().getExtraVMSwitches().length() > 0)
+@@ -343,2 +327 @@ public class Sandbox
+-			String extraSwitchString = logParser.getConfig()
+-												.getExtraVMSwitches();
++			String extraSwitchString = logParser.getConfig().getExtraVMSwitches();
+@@ -357 +340,9 @@ public class Sandbox
+-		return runtime.execute(fqClassName, classpath, options, logListener);
++		Map<String, String> environment = new LinkedHashMap<>();
++
++		if (DisassemblyUtil.downloadedDisassemblerPresent())
++		{
++			environment.put(DisassemblyUtil.getDynamicLibraryPath(),
++					Paths.get(DisassemblyUtil.getDisassemblerFilename()).toAbsolutePath().getParent().toString());
++		}
++
++		return runtime.execute(fqClassName, classpath, options, environment, logListener);
+@@ -388,2 +379 @@ public class Sandbox
+-			String jdkSourceZipString = jdkSrcZip.toPath()
+-												 .toString();
++			String jdkSourceZipString = jdkSrcZip.toPath().toString();
+@@ -434,2 +424 @@ public class Sandbox
+-		MetaClass metaClass = model.getPackageManager()
+-								   .getMetaClass(openClassInTriView);
++		MetaClass metaClass = model.getPackageManager().getMetaClass(openClassInTriView);
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/Dialogs.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/Dialogs.java
-index 006c702f..6b222ba1 100644
+index 6b222ba1..006c702f 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/Dialogs.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/Dialogs.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
 @@ -36 +36 @@ public final class Dialogs
--		NO, YES, NEVER
-+		NO, YES
-@@ -131,67 +130,0 @@ public final class Dialogs
--	public static Response showYesNoDialogNever(Stage owner, String title, String message)
--	{
--		VBox vBox = new VBox();
--		vBox.setAlignment(Pos.CENTER);
--		vBox.setSpacing(10);
--		vBox.setPadding(new Insets(10));
--
--		int width = Math.max(320, message == null ? 0 : message.length() * 10);
--
--		Scene scene = UserInterfaceUtil.getScene(vBox, width, 80);
--
--		final Dialog dialog = new Dialog(title, owner, scene);
--
--		Button btnYes = UserInterfaceUtil.createButton("YES");
--
--		btnYes.setOnAction(new EventHandler<ActionEvent>()
--		{
--			@Override
--			public void handle(ActionEvent e)
--			{
--				dialog.close();
--				response = Response.YES;
--			}
--		});
--
--		Button btnNo = UserInterfaceUtil.createButton("NO");
--
--		btnNo.setOnAction(new EventHandler<ActionEvent>()
--		{
--			@Override
--			public void handle(ActionEvent e)
--			{
--				dialog.close();
--				response = Response.NO;
--			}
--		});
--
--		Button btnNever = UserInterfaceUtil.createButton("NEVER");
--
--		btnNever.setOnAction(new EventHandler<ActionEvent>()
--		{
--			@Override
--			public void handle(ActionEvent e)
--			{
--				dialog.close();
--				response = Response.NEVER;
--			}
--		});
--
--		BorderPane bp = new BorderPane();
--
--		HBox hBox = new HBox();
--		hBox.setAlignment(Pos.CENTER);
--		hBox.setSpacing(10);
--		hBox.setPadding(new Insets(10));
--
--		hBox.getChildren().addAll(btnYes, btnNo, btnNever);
--
--		bp.setCenter(hBox);
--
--		vBox.getChildren().addAll(new Label(message), bp);
--
--		dialog.showDialog();
--
--		return response;
--	}
--
+-		NO, YES
++		NO, YES, NEVER
+@@ -130,0 +131,67 @@ public final class Dialogs
++	public static Response showYesNoDialogNever(Stage owner, String title, String message)
++	{
++		VBox vBox = new VBox();
++		vBox.setAlignment(Pos.CENTER);
++		vBox.setSpacing(10);
++		vBox.setPadding(new Insets(10));
++
++		int width = Math.max(320, message == null ? 0 : message.length() * 10);
++
++		Scene scene = UserInterfaceUtil.getScene(vBox, width, 80);
++
++		final Dialog dialog = new Dialog(title, owner, scene);
++
++		Button btnYes = UserInterfaceUtil.createButton("YES");
++
++		btnYes.setOnAction(new EventHandler<ActionEvent>()
++		{
++			@Override
++			public void handle(ActionEvent e)
++			{
++				dialog.close();
++				response = Response.YES;
++			}
++		});
++
++		Button btnNo = UserInterfaceUtil.createButton("NO");
++
++		btnNo.setOnAction(new EventHandler<ActionEvent>()
++		{
++			@Override
++			public void handle(ActionEvent e)
++			{
++				dialog.close();
++				response = Response.NO;
++			}
++		});
++
++		Button btnNever = UserInterfaceUtil.createButton("NEVER");
++
++		btnNever.setOnAction(new EventHandler<ActionEvent>()
++		{
++			@Override
++			public void handle(ActionEvent e)
++			{
++				dialog.close();
++				response = Response.NEVER;
++			}
++		});
++
++		BorderPane bp = new BorderPane();
++
++		HBox hBox = new HBox();
++		hBox.setAlignment(Pos.CENTER);
++		hBox.setSpacing(10);
++		hBox.setPadding(new Insets(10));
++
++		hBox.getChildren().addAll(btnYes, btnNo, btnNever);
++
++		bp.setCenter(hBox);
++
++		vBox.getChildren().addAll(new Label(message), bp);
++
++		dialog.showDialog();
++
++		return response;
++	}
++
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
-index f4719d15..ffd5e51e 100644
+index ffd5e51e..f4719d15 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
-@@ -1000,2 +999,0 @@ public class JITWatchUI extends Application
--
--			sandBoxStage.checkHsdis();
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -999,0 +1000,2 @@ public class JITWatchUI extends Application
++
++			sandBoxStage.checkHsdis();
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
-index a315e178..8f9e376e 100644
+index 8f9e376e..a315e178 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
-@@ -670 +670,3 @@ public class SandboxConfigStage extends Stage
--		if (DisassemblyUtil.isDisassemblerAvailable())
-+		boolean disassemblerAvailable = DisassemblyUtil.getDisassemblerFilePath() != null;
-+
-+		if (disassemblerAvailable)
+@@ -670,3 +670 @@ public class SandboxConfigStage extends Stage
+-		boolean disassemblerAvailable = DisassemblyUtil.getDisassemblerFilePath() != null;
+-
+-		if (disassemblerAvailable)
++		if (DisassemblyUtil.isDisassemblerAvailable())
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java
-index 0f686a39..e46efbdf 100644
+index e46efbdf..0f686a39 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java
 @@ -2 +2 @@
-- * Copyright (c) 2013-2022 Chris Newland.
-+ * Copyright (c) 2013-2021 Chris Newland.
-@@ -26 +25,0 @@ import java.nio.file.Path;
--import java.nio.file.Paths;
-@@ -47 +45,0 @@ import org.adoptopenjdk.jitwatch.util.DisassemblyUtil;
--import org.adoptopenjdk.jitwatch.util.NetUtil;
-@@ -224 +222 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
--		Button btnResetSandbox = UserInterfaceUtil.createButton("SANDBOX_RESET");
-+		Button btnResetSandbox =  UserInterfaceUtil.createButton("SANDBOX_RESET");
-@@ -404,8 +402 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
--		log("Sandbox ready. OS is '" + System.getProperty("os.name") + "' Architecture is '" + System.getProperty("os.arch") + "'");
--	}
--
--	public void checkHsdis()
--	{
--		String disassemblerFilename = DisassemblyUtil.getDisassemblerFilename();
--
--		Path downloadPath = Paths.get(disassemblerFilename);
-+		log("Sandbox ready");
-@@ -415,49 +406 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
--		boolean noPromptHsdis = config.isNoPromptHsdis();
--
--		if (!noPromptHsdis && !DisassemblyUtil.isDisassemblerAvailable())
--		{
--			log("Disassembler not found");
--
--			String message = "The hsdis plugin " + disassemblerFilename + " could not be found. Would you like to download it?";
--
--			Response response = Dialogs.showYesNoDialogNever(SandboxStage.this, "Download hsdis plugin", message);
--
--			switch (response)
--			{
--			case YES:
--			{
--				String url = "https://chriswhocodes.com/hsdis/" + disassemblerFilename;
--
--				log("Downloading hsdis from " + url);
--
--				NetUtil.fetchBinary(url, downloadPath);
--
--				if (downloadPath.toFile().exists())
--				{
--					log("Downloaded OK");
--				}
--				else
--				{
--					log("Download failed");
--				}
--			}
--			break;
--			case NEVER:
--			{
--				config.setNoPromptHsdis(true);
--				config.saveConfig();
--			}
--			break;
--			}
--		}
--
--		if (DisassemblyUtil.downloadedDisassemblerPresent())
--		{
--			log("Disassembler available: " + downloadPath.toAbsolutePath());
--		}
--		else if (disassemblerPath != null)
--		{
--			log("Disassembler available: " + disassemblerPath);
--		}
--
--		//pb.environment.set(LD_LIBRARY_PATH);
-+		log("Disassembler available: " + (disassemblerPath != null ? disassemblerPath : "Not found"));
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -25,0 +26 @@ import java.nio.file.Path;
++import java.nio.file.Paths;
+@@ -45,0 +47 @@ import org.adoptopenjdk.jitwatch.util.DisassemblyUtil;
++import org.adoptopenjdk.jitwatch.util.NetUtil;
+@@ -222 +224 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
+-		Button btnResetSandbox =  UserInterfaceUtil.createButton("SANDBOX_RESET");
++		Button btnResetSandbox = UserInterfaceUtil.createButton("SANDBOX_RESET");
+@@ -402 +404,8 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
+-		log("Sandbox ready");
++		log("Sandbox ready. OS is '" + System.getProperty("os.name") + "' Architecture is '" + System.getProperty("os.arch") + "'");
++	}
++
++	public void checkHsdis()
++	{
++		String disassemblerFilename = DisassemblyUtil.getDisassemblerFilename();
++
++		Path downloadPath = Paths.get(disassemblerFilename);
+@@ -406 +415,49 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
+-		log("Disassembler available: " + (disassemblerPath != null ? disassemblerPath : "Not found"));
++		boolean noPromptHsdis = config.isNoPromptHsdis();
++
++		if (!noPromptHsdis && !DisassemblyUtil.isDisassemblerAvailable())
++		{
++			log("Disassembler not found");
++
++			String message = "The hsdis plugin " + disassemblerFilename + " could not be found. Would you like to download it?";
++
++			Response response = Dialogs.showYesNoDialogNever(SandboxStage.this, "Download hsdis plugin", message);
++
++			switch (response)
++			{
++			case YES:
++			{
++				String url = "https://chriswhocodes.com/hsdis/" + disassemblerFilename;
++
++				log("Downloading hsdis from " + url);
++
++				NetUtil.fetchBinary(url, downloadPath);
++
++				if (downloadPath.toFile().exists())
++				{
++					log("Downloaded OK");
++				}
++				else
++				{
++					log("Download failed");
++				}
++			}
++			break;
++			case NEVER:
++			{
++				config.setNoPromptHsdis(true);
++				config.saveConfig();
++			}
++			break;
++			}
++		}
++
++		if (DisassemblyUtil.downloadedDisassemblerPresent())
++		{
++			log("Disassembler available: " + downloadPath.toAbsolutePath());
++		}
++		else if (disassemblerPath != null)
++		{
++			log("Disassembler available: " + disassemblerPath);
++		}
++
++		//pb.environment.set(LD_LIBRARY_PATH);
 diff --git a/ui/src/main/resources/i18n/lang.properties b/ui/src/main/resources/i18n/lang.properties
-index 891b73ca..3e187a69 100644
+index 3e187a69..891b73ca 100644
 --- a/ui/src/main/resources/i18n/lang.properties
 +++ b/ui/src/main/resources/i18n/lang.properties
-@@ -57 +56,0 @@ YES=Yes
--NEVER=Never
+@@ -56,0 +57 @@ YES=Yes
++NEVER=Never
 diff --git a/ui/src/main/resources/i18n/lang_zh.properties b/ui/src/main/resources/i18n/lang_zh.properties
-index 826a8d5a..43f2cdfe 100644
+index 43f2cdfe..826a8d5a 100644
 --- a/ui/src/main/resources/i18n/lang_zh.properties
 +++ b/ui/src/main/resources/i18n/lang_zh.properties
-@@ -1,121 +1 @@
--#==============================
--# MAIN WINDOW
--#==============================
--SANDBOX=沙盒
--SANDBOX_tt=在沙盒中实验JIT特性
--OPEN_LOG=打开日志
--OPEN_LOG_tt=选择 LogCompilation 文件
+@@ -1 +1,121 @@
 -START=开始
--START_tt=开始处理
--STOP=停止
--STOP_tt=停止处理
--CONFIG=配置
--CONFIG_tt=配置 JITWatch
--TIMELINE=时间线
--TIMELINE_tt=编译事件时间线
--HISTO=直方图
--HISTO_tt=事件直方图
--CACHE=缓存
--CACHE_tt=Code cache usage
--NMETHODS=NMethods
--NMETHODS_tt=NMethod layout in the code cache
--TOPLIST=Toplist
--TOPLIST_tt=Compilation activity toplists
--THREADS=Threads
--THREADS_tt=Compiler thread activity
--TRIVIEW=TriView
--TRIVIEW_tt=Show source, bytecode, and assembly
--SUGGEST=Suggest {0}
--SUGGEST_tt=JITWatch suggestions
--ELIM_ALLOCS=-Allocs {0}
--ELIM_ALLOCS_tt=已消除的堆(heap)分配
--ELIM_LOCKS=-Locks {0}
--ELIM_LOCKS_tt=已消除的锁
--STATS=统计数据
--STATS_tt=统计数据
--RESET=重置
--RESET_tt=清除所有数据
--HIDE_INTERFACES=隐藏 interfaces
--HIDE_INTERFACES_tt=Hide interfaces from the class tree
--HIDE_UNCOMPILED_CLASSES=Hide uncompiled classes
--HIDE_UNCOMPILED_CLASSES_tt=Hide classes with no JIT-compiled members from the class tree
--HIDE_UNCOMPILED_MEMBERS=Hide non JIT-compiled class members
--HIDE_UNCOMPILED_MEMBERS_tt=Hide class members (methods and constructors) that were not JIT-compiled
--CT_QUEUED=排队中
--CT_COMPILE_START=编译开始
--CT_NMETHOD_EMIT=NMethod Emit
--CT_NATIVE_SIZE=Native Size
--CT_COMPILER=编译器
--CT_LEVEL=等级
--
--#==============================
--# COMMON
--#==============================
--OK=OK
--CANCEL=取消
--YES=Yes
--NO=No
--SAVE=保存
--CLASS=Class
--MEMBER=Member
--
--#==============================
--# CONFIGURATION
--#==============================
--NEW_PROFILE=创建
--NEW_PROFILE_tt=创建新的配置文件
--DELETE_PROFILE=删除
--DELETE_PROFILE_tt=删除配置
--SAVE_PROFILE=保存
--SAVE_PROFILE_tt=保存配置文件
--CONFIG_ADD_FILE=添加文件(s)
--CONFIG_ADD_FOLDER=添加文件夹
--CONFIG_REMOVE=移除
--CONFIG_ADD_JDK_SRC=Add JDK src
--SOURCE_LOCATIONS=Source locations
--CLASS_LOCATIONS=Class locations
--PROFILE=Profile
--
--#==============================
--# SANDBOX
--#==============================
--SANDBOX_NEW_EDITOR=新编辑器
--SANDBOX_NEW_EDITOR_tt=编辑一个新的文件
--SANDBOX_OPEN_FILE=打开
--SANDBOX_OPEN_FILE_tt=打开一个文件编辑
--SANDBOX_SAVE_FILE=保存
--SANDBOX_SAVE_FILE_tt=保存当前文件
--SANDBOX_CONFIGURE=配置沙盒
--SANDBOX_RESET=重置沙盒
--SANDBOX_RUN=运行
--SANDBOX_VIEW_OUTPUT=查看输出
--COMPILE_AND_RUNTIME_CLASSPATH=Compile and runtime classpath
--
--#==============================
--# TRIVIEW
--#==============================
--COMPILE_CHAIN=Chain
--COMPILE_CHAIN_tt=Show chain of compiled and inlined children
--JIT_JOURNAL=Journal
--JIT_JOURNAL_tt=Show journal of JIT events for this member
--LINE_NUMBER_TABLE=LNT
--LINE_NUMBER_TABLE_tt=Show LineNumberTable for current bytecode
--INLINED_INTO=Inlined into
--INLINED_INTO_tt=Show where this method was inlined into
--
--# these checkboxes have an underscore to indicate the first letter is an ALT+letter shortcut
--CHECKBOX_SOURCE=_Source
--CHECKBOX_BYTECODE=_Bytecode
--CHECKBOX_ASSEMBLY=_Assembly
--CHECKBOX_MOUSEOVER=_Mouseover
--CHECKBOX_LABELS=_Labels
--CHECKBOX_LABELS_tt=Simplified labels for local assembly addresses
--
--BYTECODE_SIZE=字节码大小
--NATIVE_SIZE=本地代码大小
--COMPILE_TIME=编译时间
--
--SOURCE=Source
--BYTECODE=Bytecode
--ASSEMBLY=Assembly
--BYTECODE_DOUBLE_CLICK_FOR_JVM_SPEC=Bytecode (double click for JVM spec)
-+START=开始
 \ No newline at end of file
++#==============================
++# MAIN WINDOW
++#==============================
++SANDBOX=沙盒
++SANDBOX_tt=在沙盒中实验JIT特性
++OPEN_LOG=打开日志
++OPEN_LOG_tt=选择 LogCompilation 文件
++START=开始
++START_tt=开始处理
++STOP=停止
++STOP_tt=停止处理
++CONFIG=配置
++CONFIG_tt=配置 JITWatch
++TIMELINE=时间线
++TIMELINE_tt=编译事件时间线
++HISTO=直方图
++HISTO_tt=事件直方图
++CACHE=缓存
++CACHE_tt=Code cache usage
++NMETHODS=NMethods
++NMETHODS_tt=NMethod layout in the code cache
++TOPLIST=Toplist
++TOPLIST_tt=Compilation activity toplists
++THREADS=Threads
++THREADS_tt=Compiler thread activity
++TRIVIEW=TriView
++TRIVIEW_tt=Show source, bytecode, and assembly
++SUGGEST=Suggest {0}
++SUGGEST_tt=JITWatch suggestions
++ELIM_ALLOCS=-Allocs {0}
++ELIM_ALLOCS_tt=已消除的堆(heap)分配
++ELIM_LOCKS=-Locks {0}
++ELIM_LOCKS_tt=已消除的锁
++STATS=统计数据
++STATS_tt=统计数据
++RESET=重置
++RESET_tt=清除所有数据
++HIDE_INTERFACES=隐藏 interfaces
++HIDE_INTERFACES_tt=Hide interfaces from the class tree
++HIDE_UNCOMPILED_CLASSES=Hide uncompiled classes
++HIDE_UNCOMPILED_CLASSES_tt=Hide classes with no JIT-compiled members from the class tree
++HIDE_UNCOMPILED_MEMBERS=Hide non JIT-compiled class members
++HIDE_UNCOMPILED_MEMBERS_tt=Hide class members (methods and constructors) that were not JIT-compiled
++CT_QUEUED=排队中
++CT_COMPILE_START=编译开始
++CT_NMETHOD_EMIT=NMethod Emit
++CT_NATIVE_SIZE=Native Size
++CT_COMPILER=编译器
++CT_LEVEL=等级
++
++#==============================
++# COMMON
++#==============================
++OK=OK
++CANCEL=取消
++YES=Yes
++NO=No
++SAVE=保存
++CLASS=Class
++MEMBER=Member
++
++#==============================
++# CONFIGURATION
++#==============================
++NEW_PROFILE=创建
++NEW_PROFILE_tt=创建新的配置文件
++DELETE_PROFILE=删除
++DELETE_PROFILE_tt=删除配置
++SAVE_PROFILE=保存
++SAVE_PROFILE_tt=保存配置文件
++CONFIG_ADD_FILE=添加文件(s)
++CONFIG_ADD_FOLDER=添加文件夹
++CONFIG_REMOVE=移除
++CONFIG_ADD_JDK_SRC=Add JDK src
++SOURCE_LOCATIONS=Source locations
++CLASS_LOCATIONS=Class locations
++PROFILE=Profile
++
++#==============================
++# SANDBOX
++#==============================
++SANDBOX_NEW_EDITOR=新编辑器
++SANDBOX_NEW_EDITOR_tt=编辑一个新的文件
++SANDBOX_OPEN_FILE=打开
++SANDBOX_OPEN_FILE_tt=打开一个文件编辑
++SANDBOX_SAVE_FILE=保存
++SANDBOX_SAVE_FILE_tt=保存当前文件
++SANDBOX_CONFIGURE=配置沙盒
++SANDBOX_RESET=重置沙盒
++SANDBOX_RUN=运行
++SANDBOX_VIEW_OUTPUT=查看输出
++COMPILE_AND_RUNTIME_CLASSPATH=Compile and runtime classpath
++
++#==============================
++# TRIVIEW
++#==============================
++COMPILE_CHAIN=Chain
++COMPILE_CHAIN_tt=Show chain of compiled and inlined children
++JIT_JOURNAL=Journal
++JIT_JOURNAL_tt=Show journal of JIT events for this member
++LINE_NUMBER_TABLE=LNT
++LINE_NUMBER_TABLE_tt=Show LineNumberTable for current bytecode
++INLINED_INTO=Inlined into
++INLINED_INTO_tt=Show where this method was inlined into
++
++# these checkboxes have an underscore to indicate the first letter is an ALT+letter shortcut
++CHECKBOX_SOURCE=_Source
++CHECKBOX_BYTECODE=_Bytecode
++CHECKBOX_ASSEMBLY=_Assembly
++CHECKBOX_MOUSEOVER=_Mouseover
++CHECKBOX_LABELS=_Labels
++CHECKBOX_LABELS_tt=Simplified labels for local assembly addresses
++
++BYTECODE_SIZE=字节码大小
++NATIVE_SIZE=本地代码大小
++COMPILE_TIME=编译时间
++
++SOURCE=Source
++BYTECODE=Bytecode
++ASSEMBLY=Assembly
++BYTECODE_DOUBLE_CLICK_FOR_JVM_SPEC=Bytecode (double click for JVM spec)

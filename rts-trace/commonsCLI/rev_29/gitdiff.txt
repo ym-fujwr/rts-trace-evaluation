@@ -1,30 +1,30 @@
 diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
-index 0d0b9f5f..22940a79 100644
+index 22940a79..0d0b9f5f 100644
 --- a/src/main/java/org/apache/commons/cli/CommandLine.java
 +++ b/src/main/java/org/apache/commons/cli/CommandLine.java
-@@ -102,3 +102 @@ public class CommandLine implements Serializable {
--        if (arg != null) {
--            args.add(arg);
--        }
-+        args.add(arg);
+@@ -102 +102,3 @@ public class CommandLine implements Serializable {
+-        args.add(arg);
++        if (arg != null) {
++            args.add(arg);
++        }
 diff --git a/src/test/java/org/apache/commons/cli/CommandLineTest.java b/src/test/java/org/apache/commons/cli/CommandLineTest.java
-index 4522fb03..812c65e8 100644
+index 812c65e8..4522fb03 100644
 --- a/src/test/java/org/apache/commons/cli/CommandLineTest.java
 +++ b/src/test/java/org/apache/commons/cli/CommandLineTest.java
-@@ -44,12 +44 @@ public class CommandLineTest {
--    public void testBuilderNullArgs() {
--        final CommandLine.Builder builder = new CommandLine.Builder();
--        builder.addArg(null).addArg(null);
--        builder.addOption(Option.builder("T").build());
--        final CommandLine cmd = builder.build();
--
--        assertEquals(0, cmd.getArgs().length);
--        assertEquals("T", cmd.getOptions()[0].getOpt());
--    }
--
--    @Test
--    public void testBuilderNullOption() {
-+    public void testBuilderNulls() {
-@@ -59,2 +47,0 @@ public class CommandLineTest {
--        builder.addOption(null);
--        builder.addOption(null);
+@@ -44 +44,12 @@ public class CommandLineTest {
+-    public void testBuilderNulls() {
++    public void testBuilderNullArgs() {
++        final CommandLine.Builder builder = new CommandLine.Builder();
++        builder.addArg(null).addArg(null);
++        builder.addOption(Option.builder("T").build());
++        final CommandLine cmd = builder.build();
++
++        assertEquals(0, cmd.getArgs().length);
++        assertEquals("T", cmd.getOptions()[0].getOpt());
++    }
++
++    @Test
++    public void testBuilderNullOption() {
+@@ -47,0 +59,2 @@ public class CommandLineTest {
++        builder.addOption(null);
++        builder.addOption(null);

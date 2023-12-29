@@ -21,6 +21,7 @@ public
 int
 getIndexed
 (
+final
 int
 i
 )

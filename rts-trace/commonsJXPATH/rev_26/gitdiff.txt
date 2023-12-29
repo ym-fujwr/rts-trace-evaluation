@@ -1,14 +1,14 @@
 diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContext.java b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
-index 8823c313..c4aac2c6 100644
+index c4aac2c6..8823c313 100644
 --- a/src/main/java/org/apache/commons/jxpath/JXPathContext.java
 +++ b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
 @@ -576 +576 @@ public abstract class JXPathContext {
--     * attribute as well as the lang() function will be
-+     * attribute as well as the the lang() function will be
+-     * attribute as well as the the lang() function will be
++     * attribute as well as the lang() function will be
 diff --git a/src/main/java/org/apache/commons/jxpath/Pointer.java b/src/main/java/org/apache/commons/jxpath/Pointer.java
-index 3bf49db7..a8256682 100644
+index a8256682..3bf49db7 100644
 --- a/src/main/java/org/apache/commons/jxpath/Pointer.java
 +++ b/src/main/java/org/apache/commons/jxpath/Pointer.java
 @@ -27 +27 @@ import java.io.Serializable;
-- * or properties described the path. For example, <code>ctx.getPointer
-+ * or properties described the the path. For example, <code>ctx.getPointer
+- * or properties described the the path. For example, <code>ctx.getPointer
++ * or properties described the path. For example, <code>ctx.getPointer

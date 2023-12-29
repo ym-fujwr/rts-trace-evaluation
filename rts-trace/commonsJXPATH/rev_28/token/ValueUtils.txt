@@ -218,6 +218,7 @@ static
 int
 getCollectionHint
 (
+final
 Class
 clazz
 )
@@ -306,9 +307,11 @@ static
 int
 getIndexedPropertyLength
 (
+final
 Object
 object
 ,
+final
 IndexedPropertyDescriptor
 pd
 )
@@ -336,6 +339,7 @@ pd
 )
 ;
 }
+final
 Method
 readMethod
 =
@@ -389,8 +393,9 @@ invoke
 (
 object
 ,
-new
 Integer
+.
+valueOf
 (
 i
 )
@@ -399,6 +404,7 @@ i
 }
 catch
 (
+final
 Throwable
 t
 )
@@ -500,6 +506,7 @@ static
 Iterator
 iterate
 (
+final
 Object
 collection
 )
@@ -534,6 +541,7 @@ isArray
 )
 )
 {
+final
 int
 length
 =
@@ -561,6 +569,7 @@ iterator
 )
 ;
 }
+final
 ArrayList
 list
 =
@@ -645,9 +654,11 @@ static
 Object
 expandCollection
 (
+final
 Object
 collection
 ,
+final
 int
 size
 )
@@ -702,6 +713,7 @@ isArray
 )
 )
 {
+final
 Object
 bigger
 =
@@ -816,6 +828,7 @@ remove
 Object
 collection
 ,
+final
 int
 index
 )
@@ -871,6 +884,7 @@ isArray
 )
 )
 {
+final
 int
 length
 =
@@ -881,6 +895,7 @@ getLength
 collection
 )
 ;
+final
 Object
 smaller
 =
@@ -968,6 +983,7 @@ instanceof
 List
 )
 {
+final
 int
 size
 =
@@ -1013,6 +1029,7 @@ instanceof
 Collection
 )
 {
+final
 Iterator
 it
 =
@@ -1120,6 +1137,7 @@ getValue
 Object
 collection
 ,
+final
 int
 index
 )
@@ -1272,6 +1290,7 @@ i
 =
 0
 ;
+final
 Iterator
 it
 =
@@ -1343,9 +1362,11 @@ setValue
 Object
 collection
 ,
+final
 int
 index
 ,
+final
 Object
 value
 )
@@ -1458,9 +1479,11 @@ static
 Object
 getValue
 (
+final
 Object
 bean
 ,
+final
 PropertyDescriptor
 propertyDescriptor
 )
@@ -1470,6 +1493,7 @@ value
 ;
 try
 {
+final
 Method
 method
 =
@@ -1509,6 +1533,7 @@ bean
 }
 catch
 (
+final
 Exception
 ex
 )
@@ -1558,9 +1583,11 @@ static
 void
 setValue
 (
+final
 Object
 bean
 ,
+final
 PropertyDescriptor
 propertyDescriptor
 ,
@@ -1570,6 +1597,7 @@ value
 {
 try
 {
+final
 Method
 method
 =
@@ -1622,6 +1650,7 @@ value
 }
 catch
 (
+final
 Exception
 ex
 )
@@ -1668,9 +1697,11 @@ static
 Object
 convert
 (
+final
 Object
 value
 ,
+final
 Class
 type
 )
@@ -1690,6 +1721,7 @@ type
 }
 catch
 (
+final
 Exception
 ex
 )
@@ -1732,12 +1764,15 @@ static
 Object
 getValue
 (
+final
 Object
 bean
 ,
+final
 PropertyDescriptor
 propertyDescriptor
 ,
+final
 int
 index
 )
@@ -1751,6 +1786,7 @@ IndexedPropertyDescriptor
 {
 try
 {
+final
 IndexedPropertyDescriptor
 ipd
 =
@@ -1759,6 +1795,7 @@ IndexedPropertyDescriptor
 )
 propertyDescriptor
 ;
+final
 Method
 method
 =
@@ -1782,8 +1819,9 @@ invoke
 (
 bean
 ,
-new
 Integer
+.
+valueOf
 (
 index
 )
@@ -1793,10 +1831,12 @@ index
 }
 catch
 (
+final
 InvocationTargetException
 ex
 )
 {
+final
 Throwable
 t
 =
@@ -1835,6 +1875,7 @@ t
 }
 catch
 (
+final
 Throwable
 ex
 )
@@ -1875,15 +1916,19 @@ static
 void
 setValue
 (
+final
 Object
 bean
 ,
+final
 PropertyDescriptor
 propertyDescriptor
 ,
+final
 int
 index
 ,
+final
 Object
 value
 )
@@ -1897,6 +1942,7 @@ IndexedPropertyDescriptor
 {
 try
 {
+final
 IndexedPropertyDescriptor
 ipd
 =
@@ -1905,6 +1951,7 @@ IndexedPropertyDescriptor
 )
 propertyDescriptor
 ;
+final
 Method
 method
 =
@@ -1927,8 +1974,9 @@ invoke
 (
 bean
 ,
-new
 Integer
+.
+valueOf
 (
 index
 )
@@ -1951,6 +1999,7 @@ return
 }
 catch
 (
+final
 Exception
 ex
 )
@@ -1978,6 +2027,7 @@ getMessage
 ;
 }
 }
+final
 Object
 collection
 =
@@ -2080,6 +2130,7 @@ static
 DynamicPropertyHandler
 getDynamicPropertyHandler
 (
+final
 Class
 clazz
 )
@@ -2120,6 +2171,7 @@ newInstance
 }
 catch
 (
+final
 Exception
 ex
 )
@@ -2159,6 +2211,7 @@ static
 Method
 getAccessibleMethod
 (
+final
 Method
 method
 )
@@ -2171,9 +2224,7 @@ null
 )
 {
 return
-(
 null
-)
 ;
 }
 if
@@ -2192,9 +2243,7 @@ getModifiers
 )
 {
 return
-(
 null
-)
 ;
 }
 Class
@@ -2221,11 +2270,10 @@ getModifiers
 )
 {
 return
-(
 method
-)
 ;
 }
+final
 String
 name
 =
@@ -2235,6 +2283,7 @@ getName
 (
 )
 ;
+final
 Class
 [
 ]
@@ -2253,6 +2302,7 @@ clazz
 null
 )
 {
+final
 Method
 aMethod
 =
@@ -2317,8 +2367,9 @@ parameterTypes
 }
 catch
 (
+final
 NoSuchMethodException
-e
+ignore
 )
 {
 }
@@ -2333,12 +2384,15 @@ static
 Method
 getAccessibleMethodFromInterfaceNest
 (
+final
 Class
 clazz
 ,
+final
 String
 methodName
 ,
+final
 Class
 [
 ]
@@ -2350,6 +2404,7 @@ method
 =
 null
 ;
+final
 Class
 [
 ]
@@ -2363,19 +2418,11 @@ getInterfaces
 ;
 for
 (
-int
-i
-=
-0
-;
-i
-<
+final
+Class
+element
+:
 interfaces
-.
-length
-;
-i
-++
 )
 {
 if
@@ -2385,10 +2432,7 @@ Modifier
 .
 isPublic
 (
-interfaces
-[
-i
-]
+element
 .
 getModifiers
 (
@@ -2403,10 +2447,7 @@ try
 {
 method
 =
-interfaces
-[
-i
-]
+element
 .
 getDeclaredMethod
 (
@@ -2418,8 +2459,9 @@ parameterTypes
 }
 catch
 (
+final
 NoSuchMethodException
-e
+ignore
 )
 {
 }
@@ -2437,10 +2479,7 @@ method
 =
 getAccessibleMethodFromInterfaceNest
 (
-interfaces
-[
-i
-]
+element
 ,
 methodName
 ,
@@ -2459,9 +2498,7 @@ break
 }
 }
 return
-(
 method
-)
 ;
 }
 }

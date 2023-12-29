@@ -54,6 +54,8 @@ private
 JXPathContext
 context
 ;
+@
+Override
 public
 void
 setUp
@@ -76,6 +78,7 @@ newContext
 null
 )
 ;
+final
 Variables
 vars
 =
@@ -91,8 +94,9 @@ declareVariable
 (
 "integer"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -123,8 +127,9 @@ declareVariable
 (
 "nan"
 ,
-new
 Double
+.
+valueOf
 (
 Double
 .
@@ -146,8 +151,9 @@ context
 ,
 "1"
 ,
-new
 Double
+.
+valueOf
 (
 1.0
 )
@@ -170,8 +176,9 @@ context
 ,
 list
 (
-new
 Double
+.
+valueOf
 (
 1.0
 )
@@ -196,8 +203,9 @@ context
 ,
 "-1"
 ,
-new
 Double
+.
+valueOf
 (
 -
 1.0
@@ -210,8 +218,9 @@ context
 ,
 "2 + 2"
 ,
-new
 Double
+.
+valueOf
 (
 4.0
 )
@@ -223,8 +232,9 @@ context
 ,
 "3 - 2"
 ,
-new
 Double
+.
+valueOf
 (
 1.0
 )
@@ -236,8 +246,9 @@ context
 ,
 "1 + 2 + 3 - 4 + 5"
 ,
-new
 Double
+.
+valueOf
 (
 7.0
 )
@@ -249,8 +260,9 @@ context
 ,
 "3 * 2"
 ,
-new
 Double
+.
+valueOf
 (
 3.0
 *
@@ -264,8 +276,9 @@ context
 ,
 "3 div 2"
 ,
-new
 Double
+.
+valueOf
 (
 3.0
 /
@@ -279,8 +292,9 @@ context
 ,
 "5 mod 2"
 ,
-new
 Double
+.
+valueOf
 (
 1.0
 )
@@ -292,8 +306,9 @@ context
 ,
 "5.9 mod 2.1"
 ,
-new
 Double
+.
+valueOf
 (
 1.0
 )
@@ -305,8 +320,9 @@ context
 ,
 "5 mod -2"
 ,
-new
 Double
+.
+valueOf
 (
 1.0
 )
@@ -318,8 +334,9 @@ context
 ,
 "-5 mod 2"
 ,
-new
 Double
+.
+valueOf
 (
 -
 1.0
@@ -332,8 +349,9 @@ context
 ,
 "-5 mod -2"
 ,
-new
 Double
+.
+valueOf
 (
 -
 1.0
@@ -500,8 +518,9 @@ context
 ,
 "$integer"
 ,
-new
 Double
+.
+valueOf
 (
 1
 )

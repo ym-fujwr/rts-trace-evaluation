@@ -1,48 +1,48 @@
 diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
-index 74ab2cc9..560a58b1 100644
+index 560a58b1..74ab2cc9 100644
 --- a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
 +++ b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
 @@ -105 +105 @@ public abstract class JXPathContextFactory {
--            factoryImpl = (JXPathContextFactory) clazz.getConstructor().newInstance();
-+            factoryImpl = (JXPathContextFactory) clazz.newInstance();
+-            factoryImpl = (JXPathContextFactory) clazz.newInstance();
++            factoryImpl = (JXPathContextFactory) clazz.getConstructor().newInstance();
 @@ -107 +107 @@ public abstract class JXPathContextFactory {
--        catch (final ReflectiveOperationException ie) {
-+        catch (final ClassNotFoundException | IllegalAccessException | InstantiationException ie) {
+-        catch (final ClassNotFoundException | IllegalAccessException | InstantiationException ie) {
++        catch (final ReflectiveOperationException ie) {
 diff --git a/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java b/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java
-index 57952759..9a7d1abc 100644
+index 9a7d1abc..57952759 100644
 --- a/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java
 +++ b/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java
 @@ -186 +186 @@ public class JXPathIntrospector {
--                return (JXPathBeanInfo) beanClass.getConstructor().newInstance();
-+                return (JXPathBeanInfo) beanClass.newInstance();
+-                return (JXPathBeanInfo) beanClass.newInstance();
++                return (JXPathBeanInfo) beanClass.getConstructor().newInstance();
 @@ -213 +213 @@ public class JXPathIntrospector {
--                return cls.getConstructor().newInstance();
-+                return cls.newInstance();
+-                return cls.newInstance();
++                return cls.getConstructor().newInstance();
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
-index 7a350a14..ce39fea2 100644
+index ce39fea2..7a350a14 100644
 --- a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
 +++ b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
 @@ -850 +850 @@ public class JXPathContextReferenceImpl extends JXPathContext {
--            return cls.getConstructor().newInstance();
-+            return cls.newInstance();
+-            return cls.newInstance();
++            return cls.getConstructor().newInstance();
 diff --git a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
-index 482de3d8..e5eb0593 100644
+index e5eb0593..482de3d8 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
 @@ -432 +432 @@ public class BasicTypeConverter implements TypeConverter {
--                return (Collection) type.getConstructor().newInstance();
-+                return (Collection) type.newInstance();
+-                return (Collection) type.newInstance();
++                return (Collection) type.getConstructor().newInstance();
 diff --git a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
-index 669f7ddd..cdd04193 100644
+index cdd04193..669f7ddd 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
 @@ -527 +527 @@ public class ValueUtils {
--                return (DynamicPropertyHandler) clazz.getConstructor().newInstance();
-+                return (DynamicPropertyHandler) clazz.newInstance();
+-                return (DynamicPropertyHandler) clazz.newInstance();
++                return (DynamicPropertyHandler) clazz.getConstructor().newInstance();
 diff --git a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
-index c1d929a2..f7f1599c 100644
+index f7f1599c..c1d929a2 100644
 --- a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
 +++ b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
 @@ -182 +182 @@ public class DocumentContainer extends XMLParser2 implements Container {
--                return (XMLParser) clazz.getConstructor().newInstance();
-+                return (XMLParser) clazz.newInstance();
+-                return (XMLParser) clazz.newInstance();
++                return (XMLParser) clazz.getConstructor().newInstance();

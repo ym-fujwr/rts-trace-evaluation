@@ -1,129 +1,99 @@
 diff --git a/README.md b/README.md
-index 2b3d951..9dca7d5 100644
+index 9dca7d5..2b3d951 100644
 --- a/README.md
 +++ b/README.md
-@@ -150,4 +150 @@ This is one of the very useful applications of the Hilbert curve. By mapping n-d
--#### Perimeter algorithm for finding ranges
--Given an n-dimensional search box **the exact hilbert curve ranges that cover the search box can be determined just by looking at the hilbert curve values on the perimeter of the box**. I didn't manage to find any discussion of this very useful fact on the web and am confused as to why this isn't covered anywhere. Surely this is not an unpublished discovery (because it's a pretty trivial one to come across). Let me know if you find discussion of this technique elsewhere!
--
--Let's first establish why this is so.
-+Given an n-dimensional search box the exact hilbert curve ranges that cover that box can be determined just by looking at the hilbert curve values on the perimeter of the search box. Let's first establish why this is so.
-@@ -159,3 +156 @@ Proof: TODO
--Secondly, based on the first statement we make the observation that given exact covering ranges of the Hilbert curve over a search box that the extremes of those ranges must be on the perimeter of the search region.
--
--Proof: TODO. Easily demonstrable by contradiction.
-+Secondly, we make the observation that given exact covering ranges of the Hilbert curve over a search box that the extremes of those ranges must be on the perimeter of the search region.
-@@ -163 +158 @@ Proof: TODO. Easily demonstrable by contradiction.
--I'll get around to the above proofs one day, just need to come up with some precise language.
-+Proof: TODO
-@@ -180,3 +174,0 @@ continue as above with the rest of the remaining perimeter values in the sorted
--#### Query examples
--Note that for the moment range queries have been implemented for the `SmallHilbertCurve` only. Raise an issue if you need them for the `HilbertCurve` object as well.
--
-@@ -190,2 +182 @@ long[] point2 = new long[] {8, 10};
--int maxRanges = 1;
--Ranges ranges = c.query(point1, point2, maxRanges);
-+Ranges ranges = c.query(point1, point2, 1);
-@@ -229,0 +221 @@ Range [low=227, high=229]
+@@ -150 +150,4 @@ This is one of the very useful applications of the Hilbert curve. By mapping n-d
+-Given an n-dimensional search box the exact hilbert curve ranges that cover that box can be determined just by looking at the hilbert curve values on the perimeter of the search box. Let's first establish why this is so.
++#### Perimeter algorithm for finding ranges
++Given an n-dimensional search box **the exact hilbert curve ranges that cover the search box can be determined just by looking at the hilbert curve values on the perimeter of the box**. I didn't manage to find any discussion of this very useful fact on the web and am confused as to why this isn't covered anywhere. Surely this is not an unpublished discovery (because it's a pretty trivial one to come across). Let me know if you find discussion of this technique elsewhere!
 +
-@@ -234 +226 @@ When using querying do experiments with the number of bits and `maxRanges` (quer
--The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>splitDepth + bits*(dimensions-1)</sup>). In a recent experiment with spatio-temporal data (3 dimensions, 20m points) I found that 10 bits and `maxRanges` of 12 looked promising. Ranges were returned in about 50ms and `maxRanges` of 4 gave me a 64% hit rate. With a `maxRanges` of 20, hit rate is 67%. 
-+OBSOLETE: The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>splitDepth + bits*(dimensions-1)</sup>). In a recent experiment with spatio-temporal data (3 dimensions, 20m points) I found that 10 bits and `splitDepth` of 4 looked promising. Ranges were returned in about 50ms and the `splitDepth` of 4 gave me a 64% hit rate with 12 or so ranges (which could be queried in parallel). With a splitDepth of 5, numRanges is 20, hit rate 67%. With a splitDepth of 6, numRanges is still 20, same hit rate, and query ranges are calculated in 370ms.
++Let's first establish why this is so.
+@@ -156 +159 @@ Proof: TODO
+-Secondly, we make the observation that given exact covering ranges of the Hilbert curve over a search box that the extremes of those ranges must be on the perimeter of the search region.
++Secondly, based on the first statement we make the observation that given exact covering ranges of the Hilbert curve over a search box that the extremes of those ranges must be on the perimeter of the search region.
+@@ -158 +161,3 @@ Secondly, we make the observation that given exact covering ranges of the Hilber
+-Proof: TODO
++Proof: TODO. Easily demonstrable by contradiction.
++
++I'll get around to the above proofs one day, just need to come up with some precise language.
+@@ -174,0 +180,3 @@ continue as above with the rest of the remaining perimeter values in the sorted
++#### Query examples
++Note that for the moment range queries have been implemented for the `SmallHilbertCurve` only. Raise an issue if you need them for the `HilbertCurve` object as well.
++
+@@ -182 +190,2 @@ long[] point2 = new long[] {8, 10};
+-Ranges ranges = c.query(point1, point2, 1);
++int maxRanges = 1;
++Ranges ranges = c.query(point1, point2, maxRanges);
+@@ -221 +229,0 @@ Range [low=227, high=229]
+-
+@@ -226 +234 @@ When using querying do experiments with the number of bits and `maxRanges` (quer
+-OBSOLETE: The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>splitDepth + bits*(dimensions-1)</sup>). In a recent experiment with spatio-temporal data (3 dimensions, 20m points) I found that 10 bits and `splitDepth` of 4 looked promising. Ranges were returned in about 50ms and the `splitDepth` of 4 gave me a 64% hit rate with 12 or so ranges (which could be queried in parallel). With a splitDepth of 5, numRanges is 20, hit rate 67%. With a splitDepth of 6, numRanges is still 20, same hit rate, and query ranges are calculated in 370ms.
++The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>splitDepth + bits*(dimensions-1)</sup>). In a recent experiment with spatio-temporal data (3 dimensions, 20m points) I found that 10 bits and `maxRanges` of 12 looked promising. Ranges were returned in about 50ms and `maxRanges` of 4 gave me a 64% hit rate. With a `maxRanges` of 20, hit rate is 67%. 
 diff --git a/src/test/java/org/davidmoten/hilbert/Benchmarks.java b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
-index fba826b..a201973 100644
+index a201973..fba826b 100644
 --- a/src/test/java/org/davidmoten/hilbert/Benchmarks.java
 +++ b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
-@@ -5 +4,0 @@ import java.util.List;
--import java.util.concurrent.TimeUnit;
-@@ -16,2 +15 @@ public class Benchmarks {
--    private static final SmallHilbertCurve small = HilbertCurve.small().bits(BITS)
--            .dimensions(DIMENSIONS);
-+    private static final SmallHilbertCurve small = HilbertCurve.small().bits(BITS).dimensions(DIMENSIONS);
-@@ -28 +26 @@ public class Benchmarks {
--
-+    
-@@ -35 +33 @@ public class Benchmarks {
--
-+    
-@@ -97,28 +94,0 @@ public class Benchmarks {
--    private static final Query query = new Query();
--
--    @Benchmark
--    public Ranges querySydney() {
--        return query.query();
--    }
--
--    private static final class Query {
--        float lat1 = -33.806477f;
--        float lon1 = 151.181767f;
--        long minTime = 1510779675000L;
--        long maxTime = 1510876800000L;
--        long t1 = minTime + (maxTime - minTime) / 2;
--        float lat2 = -33.882896f;
--        float lon2 = 151.281330f;
--        long t2 = t1 + TimeUnit.HOURS.toMillis(1);
--        int bits = 10;
--        int dimensions = 3;
--        SmallHilbertCurve h = HilbertCurve.small().bits(bits).dimensions(dimensions);
--        long maxOrdinates = 1L << bits;
--        long[] point1 = GeoUtil.scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates);
--        long[] point2 = GeoUtil.scalePoint(lat2, lon2, t2, minTime, maxTime, maxOrdinates);
--
--        Ranges query() {
--            return h.query(point1, point2);
--        }
--    }
--
-diff --git a/src/test/java/org/davidmoten/hilbert/GeoUtil.java b/src/test/java/org/davidmoten/hilbert/GeoUtil.java
-deleted file mode 100644
-index 9528551..0000000
---- a/src/test/java/org/davidmoten/hilbert/GeoUtil.java
-+++ /dev/null
-@@ -1,24 +0,0 @@
--package org.davidmoten.hilbert;
--
--import com.github.davidmoten.guavamini.Preconditions;
--
--public class GeoUtil {
--
--    public static long[] scalePoint(float lat, float lon, long time, long minTime, long maxTime,
--            long max) {
--        long x = scale((lat + 90.0f) / 180, max);
--        long y = scale((lon + 180.0f) / 360, max);
--        long z = scale(((float) time - minTime) / (maxTime - minTime), max);
--        return new long[] { x, y, z };
--    }
+@@ -4,0 +5 @@ import java.util.List;
++import java.util.concurrent.TimeUnit;
+@@ -15 +16,2 @@ public class Benchmarks {
+-    private static final SmallHilbertCurve small = HilbertCurve.small().bits(BITS).dimensions(DIMENSIONS);
++    private static final SmallHilbertCurve small = HilbertCurve.small().bits(BITS)
++            .dimensions(DIMENSIONS);
+@@ -26 +28 @@ public class Benchmarks {
 -    
--    private static long scale(float d, long max) {
--        Preconditions.checkArgument(d >= 0 && d <= 1);
--        if (d == 1) {
--            return max;
--        } else {
--            return Math.round(Math.floor(d * (max + 1)));
--        }
--    }
--
--}
-diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
-index e7ce267..ea1eca0 100644
---- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
-+++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
-@@ -3 +2,0 @@ package org.davidmoten.hilbert;
--import static org.davidmoten.hilbert.GeoUtil.scalePoint;
-@@ -335 +334 @@ public class HilbertCurveTest {
--        Ranges r = h.query(scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates),
-+        h.query(scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates),
-@@ -337 +335,0 @@ public class HilbertCurveTest {
--        System.out.println(r.get().size());
-@@ -427,0 +426,16 @@ public class HilbertCurveTest {
-+    private static long[] scalePoint(float lat, float lon, long time, long minTime, long maxTime,
++
+@@ -33 +35 @@ public class Benchmarks {
+-    
++
+@@ -94,0 +97,28 @@ public class Benchmarks {
++    private static final Query query = new Query();
++
++    @Benchmark
++    public Ranges querySydney() {
++        return query.query();
++    }
++
++    private static final class Query {
++        float lat1 = -33.806477f;
++        float lon1 = 151.181767f;
++        long minTime = 1510779675000L;
++        long maxTime = 1510876800000L;
++        long t1 = minTime + (maxTime - minTime) / 2;
++        float lat2 = -33.882896f;
++        float lon2 = 151.281330f;
++        long t2 = t1 + TimeUnit.HOURS.toMillis(1);
++        int bits = 10;
++        int dimensions = 3;
++        SmallHilbertCurve h = HilbertCurve.small().bits(bits).dimensions(dimensions);
++        long maxOrdinates = 1L << bits;
++        long[] point1 = GeoUtil.scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates);
++        long[] point2 = GeoUtil.scalePoint(lat2, lon2, t2, minTime, maxTime, maxOrdinates);
++
++        Ranges query() {
++            return h.query(point1, point2);
++        }
++    }
++
+diff --git a/src/test/java/org/davidmoten/hilbert/GeoUtil.java b/src/test/java/org/davidmoten/hilbert/GeoUtil.java
+new file mode 100644
+index 0000000..9528551
+--- /dev/null
++++ b/src/test/java/org/davidmoten/hilbert/GeoUtil.java
+@@ -0,0 +1,24 @@
++package org.davidmoten.hilbert;
++
++import com.github.davidmoten.guavamini.Preconditions;
++
++public class GeoUtil {
++
++    public static long[] scalePoint(float lat, float lon, long time, long minTime, long maxTime,
 +            long max) {
 +        long x = scale((lat + 90.0f) / 180, max);
 +        long y = scale((lon + 180.0f) / 360, max);
 +        long z = scale(((float) time - minTime) / (maxTime - minTime), max);
 +        return new long[] { x, y, z };
 +    }
-+
++    
 +    private static long scale(float d, long max) {
 +        Preconditions.checkArgument(d >= 0 && d <= 1);
 +        if (d == 1) {
@@ -132,3 +102,33 @@ index e7ce267..ea1eca0 100644
 +            return Math.round(Math.floor(d * (max + 1)));
 +        }
 +    }
++
++}
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index ea1eca0..e7ce267 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -2,0 +3 @@ package org.davidmoten.hilbert;
++import static org.davidmoten.hilbert.GeoUtil.scalePoint;
+@@ -334 +335 @@ public class HilbertCurveTest {
+-        h.query(scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates),
++        Ranges r = h.query(scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates),
+@@ -335,0 +337 @@ public class HilbertCurveTest {
++        System.out.println(r.get().size());
+@@ -426,16 +427,0 @@ public class HilbertCurveTest {
+-    private static long[] scalePoint(float lat, float lon, long time, long minTime, long maxTime,
+-            long max) {
+-        long x = scale((lat + 90.0f) / 180, max);
+-        long y = scale((lon + 180.0f) / 360, max);
+-        long z = scale(((float) time - minTime) / (maxTime - minTime), max);
+-        return new long[] { x, y, z };
+-    }
+-
+-    private static long scale(float d, long max) {
+-        Preconditions.checkArgument(d >= 0 && d <= 1);
+-        if (d == 1) {
+-            return max;
+-        } else {
+-            return Math.round(Math.floor(d * (max + 1)));
+-        }
+-    }

@@ -76,14 +76,17 @@ implements
 NodeIterator
 {
 private
+final
 CollectionPointer
 pointer
 ;
 private
+final
 boolean
 reverse
 ;
 private
+final
 NodePointer
 startWith
 ;
@@ -98,12 +101,15 @@ collection
 protected
 CollectionNodeIterator
 (
+final
 CollectionPointer
 pointer
 ,
+final
 boolean
 reverse
 ,
+final
 NodePointer
 startWith
 )
@@ -136,6 +142,8 @@ NodePointer
 elementPointer
 )
 ;
+@
+Override
 public
 int
 getPosition
@@ -146,10 +154,13 @@ return
 position
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )
@@ -195,6 +206,8 @@ return
 true
 ;
 }
+@
+Override
 public
 NodePointer
 getNodePointer
@@ -239,6 +252,7 @@ ArrayList
 (
 )
 ;
+final
 NodePointer
 ptr
 =
@@ -251,6 +265,7 @@ clone
 (
 )
 ;
+final
 int
 length
 =
@@ -282,6 +297,7 @@ setIndex
 i
 )
 ;
+final
 NodePointer
 elementPointer
 =
@@ -291,6 +307,7 @@ getValuePointer
 (
 )
 ;
+final
 NodeIterator
 iter
 =
@@ -317,6 +334,7 @@ j
 ++
 )
 {
+final
 NodePointer
 childPointer
 =
@@ -360,6 +378,7 @@ startWith
 null
 )
 {
+final
 int
 index
 =

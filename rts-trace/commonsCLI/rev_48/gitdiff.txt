@@ -1,13 +1,13 @@
 diff --git a/src/test/java/org/apache/commons/cli/bug/BugCLI265Test.java b/src/test/java/org/apache/commons/cli/bug/BugCLI265Test.java
-index 51df09c9..b1880ea4 100644
+index b1880ea4..51df09c9 100644
 --- a/src/test/java/org/apache/commons/cli/bug/BugCLI265Test.java
 +++ b/src/test/java/org/apache/commons/cli/bug/BugCLI265Test.java
 @@ -56 +56 @@ public class BugCLI265Test {
--    public void testShouldParseConcatenatedShortOptions() throws Exception {
-+    public void shouldParseConcatenatedShortOptions() throws Exception {
+-    public void shouldParseConcatenatedShortOptions() throws Exception {
++    public void testShouldParseConcatenatedShortOptions() throws Exception {
 @@ -69 +69 @@ public class BugCLI265Test {
--    public void testShouldParseShortOptionWithoutValue() throws Exception {
-+    public void shouldParseShortOptionWithoutValue() throws Exception {
+-    public void shouldParseShortOptionWithoutValue() throws Exception {
++    public void testShouldParseShortOptionWithoutValue() throws Exception {
 @@ -80 +80 @@ public class BugCLI265Test {
--    public void testShouldParseShortOptionWithValue() throws Exception {
-+    public void shouldParseShortOptionWithValue() throws Exception {
+-    public void shouldParseShortOptionWithValue() throws Exception {
++    public void testShouldParseShortOptionWithValue() throws Exception {

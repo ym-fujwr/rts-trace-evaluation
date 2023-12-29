@@ -1,26 +1,26 @@
 diff --git a/src/test/java/org/apache/commons/cli/OptionTest.java b/src/test/java/org/apache/commons/cli/OptionTest.java
-index 0ee40055..debf6268 100644
+index debf6268..0ee40055 100644
 --- a/src/test/java/org/apache/commons/cli/OptionTest.java
 +++ b/src/test/java/org/apache/commons/cli/OptionTest.java
-@@ -19,0 +20 @@ package org.apache.commons.cli;
-+import static org.junit.jupiter.api.Assertions.assertThrows;
-@@ -26 +26,0 @@ import static org.junit.Assert.assertTrue;
+@@ -20 +19,0 @@ package org.apache.commons.cli;
 -import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -26,0 +26 @@ import static org.junit.Assert.assertTrue;
++import static org.junit.jupiter.api.Assertions.assertThrows;
 diff --git a/src/test/java/org/apache/commons/cli/TypeHandlerTest.java b/src/test/java/org/apache/commons/cli/TypeHandlerTest.java
-index c288622e..de9e89c6 100644
+index de9e89c6..c288622e 100644
 --- a/src/test/java/org/apache/commons/cli/TypeHandlerTest.java
 +++ b/src/test/java/org/apache/commons/cli/TypeHandlerTest.java
-@@ -19,0 +20 @@ package org.apache.commons.cli;
-+import static org.junit.jupiter.api.Assertions.assertThrows;
-@@ -23 +23,0 @@ import static org.junit.Assert.assertTrue;
+@@ -20 +19,0 @@ package org.apache.commons.cli;
 -import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -23,0 +23 @@ import static org.junit.Assert.assertTrue;
++import static org.junit.jupiter.api.Assertions.assertThrows;
 diff --git a/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java b/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java
-index c916325f..b1efe80e 100644
+index b1efe80e..c916325f 100644
 --- a/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java
 +++ b/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java
-@@ -20,2 +19,0 @@ package org.apache.commons.cli.bug;
--import static org.junit.jupiter.api.Assertions.assertThrows;
--
-@@ -28,0 +27,2 @@ import org.junit.Test;
+@@ -19,0 +20,2 @@ package org.apache.commons.cli.bug;
 +import static org.junit.jupiter.api.Assertions.assertThrows;
 +
+@@ -27,2 +28,0 @@ import org.junit.Test;
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+-

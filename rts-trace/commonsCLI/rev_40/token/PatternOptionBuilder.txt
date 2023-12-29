@@ -439,10 +439,6 @@ type
 =
 null
 ;
-opt
-=
-' '
-;
 }
 opt
 =

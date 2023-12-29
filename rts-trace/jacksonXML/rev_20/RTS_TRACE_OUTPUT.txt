@@ -33,7 +33,6 @@
 [WARNING] bootstrap class path not set in conjunction with -source 8
 [INFO] 
 [INFO] --- maven-bundle-plugin:5.1.8:manifest (bundle-manifest) @ jackson-dataformat-xml ---
-[INFO] No MANIFEST.MF file found, generating manifest.
 [INFO] Writing manifest: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jacksonXML/workingDir/target/classes/META-INF/MANIFEST.MF
 [INFO] 
 [INFO] --- maven-resources-plugin:3.3.0:testResources (default-testResources) @ jackson-dataformat-xml ---
@@ -45,13 +44,63 @@
 [WARNING] bootstrap class path not set in conjunction with -source 8
 [INFO] 
 [INFO] --- maven-surefire-plugin:3.0.0-M9:test (default-test) @ jackson-dataformat-xml ---
-[INFO] Tests are skipped.
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
 [INFO] 
-[INFO] --- jacoco-maven-plugin:0.8.8:report (report) @ jackson-dataformat-xml ---
-[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.fasterxml.jackson.dataformat.xml.failing.JsonAppend508Test
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.912 s <<< FAILURE! - in com.fasterxml.jackson.dataformat.xml.failing.JsonAppend508Test
+[ERROR] com.fasterxml.jackson.dataformat.xml.failing.JsonAppend508Test.testJsonAppend  Time elapsed: 0.271 s  <<< FAILURE!
+junit.framework.ComparisonFailure: expected:<<Pojo[><name>foo</name><virtual>bar</virtual></Pojo]>> but was:<<Pojo[508><name>foo</name><virtual>bar</virtual><virtual>bar</virtual></Pojo508]>>
+	at junit.framework.Assert.assertEquals(Assert.java:100)
+	at junit.framework.Assert.assertEquals(Assert.java:107)
+	at junit.framework.TestCase.assertEquals(TestCase.java:260)
+	at com.fasterxml.jackson.dataformat.xml.failing.JsonAppend508Test.testJsonAppend(JsonAppend508Test.java:56)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at junit.framework.TestCase.runTest(TestCase.java:177)
+	at junit.framework.TestCase.runBare(TestCase.java:142)
+	at junit.framework.TestResult$1.protect(TestResult.java:122)
+	at junit.framework.TestResult.runProtected(TestResult.java:142)
+	at junit.framework.TestResult.run(TestResult.java:125)
+	at junit.framework.TestCase.run(TestCase.java:130)
+	at junit.framework.TestSuite.runTest(TestSuite.java:241)
+	at junit.framework.TestSuite.run(TestSuite.java:236)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:90)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:377)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:284)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:248)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:167)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:456)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:169)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   JsonAppend508Test.testJsonAppend:56 expected:<<Pojo[><name>foo</name><virtual>bar</virtual></Pojo]>> but was:<<Pojo[508><name>foo</name><virtual>bar</virtual><virtual>bar</virtual></Pojo508]>>
+[INFO] 
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
+[INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  11.756 s
-[INFO] Finished at: 2023-12-26T15:33:46+09:00
+[INFO] Total time:  16.359 s
+[INFO] Finished at: 2023-12-28T00:45:37+09:00
 [INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.0.0-M9:test (default-test) on project jackson-dataformat-xml: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jacksonXML/workingDir/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

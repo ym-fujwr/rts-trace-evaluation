@@ -41,6 +41,14 @@ HashMap
 (
 )
 {
+private
+static
+final
+long
+serialVersionUID
+=
+1L
+;
 {
 put
 (
@@ -139,6 +147,7 @@ synchronized
 void
 setTypeConverter
 (
+final
 TypeConverter
 converter
 )
@@ -164,9 +173,11 @@ static
 boolean
 canConvert
 (
+final
 Object
 object
 ,
+final
 Class
 toType
 )
@@ -187,9 +198,11 @@ static
 Object
 convert
 (
+final
 Object
 object
 ,
+final
 Class
 toType
 )
@@ -210,6 +223,7 @@ static
 Class
 wrapPrimitive
 (
+final
 Class
 p
 )

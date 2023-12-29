@@ -30,8 +30,8 @@
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running com.zaxxer.nuprocess.InterruptTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.872 s -- in com.zaxxer.nuprocess.InterruptTest
+[INFO] Running com.zaxxer.nuprocess.linux.EpollEventTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.163 s -- in com.zaxxer.nuprocess.linux.EpollEventTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -40,6 +40,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  9.829 s
-[INFO] Finished at: 2023-12-26T15:58:04+09:00
+[INFO] Total time:  4.733 s
+[INFO] Finished at: 2023-12-28T00:26:04+09:00
 [INFO] ------------------------------------------------------------------------

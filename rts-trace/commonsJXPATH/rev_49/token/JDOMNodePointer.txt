@@ -1123,9 +1123,8 @@ null
 &&
 ns
 .
-equals
+isEmpty
 (
-""
 )
 )
 {
@@ -1466,9 +1465,8 @@ null
 !
 string
 .
-equals
+isEmpty
 (
-""
 )
 )
 {
@@ -1712,9 +1710,8 @@ null
 !
 string
 .
-equals
+isEmpty
 (
-""
 )
 )
 {
@@ -2363,9 +2360,8 @@ null
 ||
 prefix
 .
-equals
+isEmpty
 (
-""
 )
 ?
 null
@@ -2402,9 +2398,8 @@ null
 ||
 prefix
 .
-equals
+isEmpty
 (
-""
 )
 ?
 null
@@ -2604,9 +2599,8 @@ null
 !
 attr
 .
-equals
+isEmpty
 (
-""
 )
 )
 {

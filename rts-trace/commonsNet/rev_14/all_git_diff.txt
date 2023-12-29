@@ -1,8 +1,9 @@
 diff --git a/src/main/java/org/apache/commons/net/examples/ntp/NTPClient.java b/src/main/java/org/apache/commons/net/examples/ntp/NTPClient.java
-index 8b2ff648a..1f067f7a4 100644
+index 1f067f7a4..8b2ff648a 100644
 --- a/src/main/java/org/apache/commons/net/examples/ntp/NTPClient.java
 +++ b/src/main/java/org/apache/commons/net/examples/ntp/NTPClient.java
-@@ -1,181 +1,180 @@
+@@ -1,180 +1,181 @@
+-package org.apache.commons.net.examples.ntp;
 -/*
 - * Licensed to the Apache Software Foundation (ASF) under one or more
 - * contributor license agreements.  See the NOTICE file distributed with
@@ -20,7 +21,6 @@ index 8b2ff648a..1f067f7a4 100644
 - * limitations under the License.
 - */
 -
--package org.apache.commons.net.examples.ntp;
 -
 -import java.io.IOException;
 -import java.net.InetAddress;
@@ -45,10 +45,9 @@ index 8b2ff648a..1f067f7a4 100644
 - * for details.
 - * <p>
 - * Usage: NTPClient <hostname-or-address-list>
-- * </p>
-- * <p>
+- * <br>
 - * Example: NTPClient clock.psu.edu
-- * </p>
+- *
 - */
 -public final class NTPClient
 -{
@@ -184,7 +183,6 @@ index 8b2ff648a..1f067f7a4 100644
 -    }
 -
 -}
-+package org.apache.commons.net.examples.ntp;
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more
 + * contributor license agreements.  See the NOTICE file distributed with
@@ -202,6 +200,7 @@ index 8b2ff648a..1f067f7a4 100644
 + * limitations under the License.
 + */
 +
++package org.apache.commons.net.examples.ntp;
 +
 +import java.io.IOException;
 +import java.net.InetAddress;
@@ -226,9 +225,10 @@ index 8b2ff648a..1f067f7a4 100644
 + * for details.
 + * <p>
 + * Usage: NTPClient <hostname-or-address-list>
-+ * <br>
++ * </p>
++ * <p>
 + * Example: NTPClient clock.psu.edu
-+ *
++ * </p>
 + */
 +public final class NTPClient
 +{
@@ -365,10 +365,12 @@ index 8b2ff648a..1f067f7a4 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/examples/ntp/TimeClient.java b/src/main/java/org/apache/commons/net/examples/ntp/TimeClient.java
-index cfd49375b..967b0d7a6 100644
+index 967b0d7a6..cfd49375b 100644
 --- a/src/main/java/org/apache/commons/net/examples/ntp/TimeClient.java
 +++ b/src/main/java/org/apache/commons/net/examples/ntp/TimeClient.java
 @@ -1,101 +1,101 @@
+-package org.apache.commons.net.examples.ntp;
+-
 -/*
 - * Licensed to the Apache Software Foundation (ASF) under one or more
 - * contributor license agreements.  See the NOTICE file distributed with
@@ -386,7 +388,6 @@ index cfd49375b..967b0d7a6 100644
 - * limitations under the License.
 - */
 -
--package org.apache.commons.net.examples.ntp;
 -
 -import java.io.IOException;
 -import java.net.InetAddress;
@@ -404,7 +405,6 @@ index cfd49375b..967b0d7a6 100644
 - * use the UDP port.
 - * <p>
 - * Usage: TimeClient [-udp] <hostname>
-- * </p>
 - */
 -public final class TimeClient
 -{
@@ -470,8 +470,6 @@ index cfd49375b..967b0d7a6 100644
 -
 -}
 -
-+package org.apache.commons.net.examples.ntp;
-+
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more
 + * contributor license agreements.  See the NOTICE file distributed with
@@ -489,6 +487,7 @@ index cfd49375b..967b0d7a6 100644
 + * limitations under the License.
 + */
 +
++package org.apache.commons.net.examples.ntp;
 +
 +import java.io.IOException;
 +import java.net.InetAddress;
@@ -506,6 +505,7 @@ index cfd49375b..967b0d7a6 100644
 + * use the UDP port.
 + * <p>
 + * Usage: TimeClient [-udp] <hostname>
++ * </p>
 + */
 +public final class TimeClient
 +{
@@ -572,54 +572,55 @@ index cfd49375b..967b0d7a6 100644
 +}
 +
 diff --git a/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java b/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
-index bfaa7f1b6..bb1189d53 100644
+index bb1189d53..bfaa7f1b6 100644
 --- a/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
 +++ b/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
-@@ -28 +27,0 @@ import java.util.ListIterator;
--import java.util.stream.Collectors;
-@@ -143,2 +142,11 @@ public class FTPListParseEngine {
--        return getFileList(filter).toArray(EMPTY_FTP_FILE_ARRAY);
--    }
-+        final List<FTPFile> tmpResults = new ArrayList<>();
-+        for (final String entry : entries) {
-+            FTPFile temp = this.parser.parseFTPEntry(entry);
-+            if (temp == null && saveUnparseableEntries) {
-+                temp = new FTPFile(entry);
-+            }
-+            if (filter.accept(temp)) {
-+                tmpResults.add(temp);
-+            }
-+        }
-+        return tmpResults.toArray(EMPTY_FTP_FILE_ARRAY);
-@@ -146,23 +153,0 @@ public class FTPListParseEngine {
--    /**
--     * Returns a list of FTPFile objects containing the whole list of
--     * files returned by the server as read by this object's parser.
--     * The files are filtered before being added to the array.
--     *
--     * @param filter FTPFileFilter, must not be <code>null</code>.
--     *
--     * @return a list of FTPFile objects containing the whole list of
--     *         files returned by the server as read by this object's parser.
--     * <p><b>
--     * NOTE:</b> This array may contain null members if any of the
--     * individual file listings failed to parse.  The caller should
--     * check each entry for null before referencing it, or use the
--     * a filter such as {@link FTPFileFilters#NON_NULL} which does not
--     * allow null entries.
--     * @since 3.9.0
--     */
--    public List<FTPFile> getFileList(final FTPFileFilter filter)
--    {
--        return entries.stream().map(e -> {
--            final FTPFile file = parser.parseFTPEntry(e);
--            return file == null && saveUnparseableEntries ? new FTPFile(e) : file;
--        }).filter(file -> filter.accept(file)).collect(Collectors.toList());
+@@ -27,0 +28 @@ import java.util.ListIterator;
++import java.util.stream.Collectors;
+@@ -142,11 +143,2 @@ public class FTPListParseEngine {
+-        final List<FTPFile> tmpResults = new ArrayList<>();
+-        for (final String entry : entries) {
+-            FTPFile temp = this.parser.parseFTPEntry(entry);
+-            if (temp == null && saveUnparseableEntries) {
+-                temp = new FTPFile(entry);
+-            }
+-            if (filter.accept(temp)) {
+-                tmpResults.add(temp);
+-            }
+-        }
+-        return tmpResults.toArray(EMPTY_FTP_FILE_ARRAY);
++        return getFileList(filter).toArray(EMPTY_FTP_FILE_ARRAY);
++    }
+@@ -153,0 +146,23 @@ public class FTPListParseEngine {
++    /**
++     * Returns a list of FTPFile objects containing the whole list of
++     * files returned by the server as read by this object's parser.
++     * The files are filtered before being added to the array.
++     *
++     * @param filter FTPFileFilter, must not be <code>null</code>.
++     *
++     * @return a list of FTPFile objects containing the whole list of
++     *         files returned by the server as read by this object's parser.
++     * <p><b>
++     * NOTE:</b> This array may contain null members if any of the
++     * individual file listings failed to parse.  The caller should
++     * check each entry for null before referencing it, or use the
++     * a filter such as {@link FTPFileFilters#NON_NULL} which does not
++     * allow null entries.
++     * @since 3.9.0
++     */
++    public List<FTPFile> getFileList(final FTPFileFilter filter)
++    {
++        return entries.stream().map(e -> {
++            final FTPFile file = parser.parseFTPEntry(e);
++            return file == null && saveUnparseableEntries ? new FTPFile(e) : file;
++        }).filter(file -> filter.accept(file)).collect(Collectors.toList());
 diff --git a/src/main/java/org/apache/commons/net/ntp/NTPUDPClient.java b/src/main/java/org/apache/commons/net/ntp/NTPUDPClient.java
-index 5939a4ca4..cb0d465d6 100644
+index cb0d465d6..5939a4ca4 100644
 --- a/src/main/java/org/apache/commons/net/ntp/NTPUDPClient.java
 +++ b/src/main/java/org/apache/commons/net/ntp/NTPUDPClient.java
 @@ -1,144 +1,144 @@
+-package org.apache.commons.net.ntp;
 -/*
 - * Licensed to the Apache Software Foundation (ASF) under one or more
 - * contributor license agreements.  See the NOTICE file distributed with
@@ -637,7 +638,6 @@ index 5939a4ca4..cb0d465d6 100644
 - * limitations under the License.
 - */
 -
--package org.apache.commons.net.ntp;
 -
 -import java.io.IOException;
 -import java.net.DatagramPacket;
@@ -764,7 +764,6 @@ index 5939a4ca4..cb0d465d6 100644
 -    }
 -
 -}
-+package org.apache.commons.net.ntp;
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more
 + * contributor license agreements.  See the NOTICE file distributed with
@@ -782,6 +781,7 @@ index 5939a4ca4..cb0d465d6 100644
 + * limitations under the License.
 + */
 +
++package org.apache.commons.net.ntp;
 +
 +import java.io.IOException;
 +import java.net.DatagramPacket;
@@ -909,10 +909,11 @@ index 5939a4ca4..cb0d465d6 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/NtpUtils.java b/src/main/java/org/apache/commons/net/ntp/NtpUtils.java
-index 6164779bd..548c0c105 100644
+index 548c0c105..6164779bd 100644
 --- a/src/main/java/org/apache/commons/net/ntp/NtpUtils.java
 +++ b/src/main/java/org/apache/commons/net/ntp/NtpUtils.java
 @@ -1,115 +1,115 @@
+-package org.apache.commons.net.ntp;
 -/*
 - * Licensed to the Apache Software Foundation (ASF) under one or more
 - * contributor license agreements.  See the NOTICE file distributed with
@@ -930,7 +931,6 @@ index 6164779bd..548c0c105 100644
 - * limitations under the License.
 - */
 -
--package org.apache.commons.net.ntp;
 -
 -/**
 - * Common NtpUtils Helper class.
@@ -1028,7 +1028,6 @@ index 6164779bd..548c0c105 100644
 -    }
 -
 -}
-+package org.apache.commons.net.ntp;
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more
 + * contributor license agreements.  See the NOTICE file distributed with
@@ -1046,6 +1045,7 @@ index 6164779bd..548c0c105 100644
 + * limitations under the License.
 + */
 +
++package org.apache.commons.net.ntp;
 +
 +/**
 + * Common NtpUtils Helper class.
@@ -1144,10 +1144,11 @@ index 6164779bd..548c0c105 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/NtpV3Impl.java b/src/main/java/org/apache/commons/net/ntp/NtpV3Impl.java
-index 318a7145b..650c854ef 100644
+index 650c854ef..318a7145b 100644
 --- a/src/main/java/org/apache/commons/net/ntp/NtpV3Impl.java
 +++ b/src/main/java/org/apache/commons/net/ntp/NtpV3Impl.java
-@@ -1,699 +1,698 @@
+@@ -1,698 +1,699 @@
+-package org.apache.commons.net.ntp;
 -/*
 - * Licensed to the Apache Software Foundation (ASF) under one or more
 - * contributor license agreements.  See the NOTICE file distributed with
@@ -1164,8 +1165,6 @@ index 318a7145b..650c854ef 100644
 - * See the License for the specific language governing permissions and
 - * limitations under the License.
 - */
--
--package org.apache.commons.net.ntp;
 -
 -import java.net.DatagramPacket;
 -
@@ -1847,7 +1846,6 @@ index 318a7145b..650c854ef 100644
 -    }
 -
 -}
-+package org.apache.commons.net.ntp;
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more
 + * contributor license agreements.  See the NOTICE file distributed with
@@ -1864,6 +1862,8 @@ index 318a7145b..650c854ef 100644
 + * See the License for the specific language governing permissions and
 + * limitations under the License.
 + */
++
++package org.apache.commons.net.ntp;
 +
 +import java.net.DatagramPacket;
 +
@@ -2546,10 +2546,11 @@ index 318a7145b..650c854ef 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/NtpV3Packet.java b/src/main/java/org/apache/commons/net/ntp/NtpV3Packet.java
-index d97128547..353595b45 100644
+index 353595b45..d97128547 100644
 --- a/src/main/java/org/apache/commons/net/ntp/NtpV3Packet.java
 +++ b/src/main/java/org/apache/commons/net/ntp/NtpV3Packet.java
 @@ -1,259 +1,259 @@
+-package org.apache.commons.net.ntp;
 -/*
 - * Licensed to the Apache Software Foundation (ASF) under one or more
 - * contributor license agreements.  See the NOTICE file distributed with
@@ -2567,7 +2568,6 @@ index d97128547..353595b45 100644
 - * limitations under the License.
 - */
 -
--package org.apache.commons.net.ntp;
 -
 -import java.net.DatagramPacket;
 -
@@ -2809,7 +2809,6 @@ index d97128547..353595b45 100644
 -    void setVersion(int version);
 -
 -}
-+package org.apache.commons.net.ntp;
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more
 + * contributor license agreements.  See the NOTICE file distributed with
@@ -2827,6 +2826,7 @@ index d97128547..353595b45 100644
 + * limitations under the License.
 + */
 +
++package org.apache.commons.net.ntp;
 +
 +import java.net.DatagramPacket;
 +
@@ -3069,10 +3069,11 @@ index d97128547..353595b45 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/TimeInfo.java b/src/main/java/org/apache/commons/net/ntp/TimeInfo.java
-index 685419b57..c12346527 100644
+index c12346527..685419b57 100644
 --- a/src/main/java/org/apache/commons/net/ntp/TimeInfo.java
 +++ b/src/main/java/org/apache/commons/net/ntp/TimeInfo.java
 @@ -1,343 +1,343 @@
+-package org.apache.commons.net.ntp;
 -/*
 - * Licensed to the Apache Software Foundation (ASF) under one or more
 - * contributor license agreements.  See the NOTICE file distributed with
@@ -3090,7 +3091,6 @@ index 685419b57..c12346527 100644
 - * limitations under the License.
 - */
 -
--package org.apache.commons.net.ntp;
 -
 -import java.net.DatagramPacket;
 -import java.net.InetAddress;
@@ -3416,7 +3416,6 @@ index 685419b57..c12346527 100644
 -    }
 -
 -}
-+package org.apache.commons.net.ntp;
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more
 + * contributor license agreements.  See the NOTICE file distributed with
@@ -3434,6 +3433,7 @@ index 685419b57..c12346527 100644
 + * limitations under the License.
 + */
 +
++package org.apache.commons.net.ntp;
 +
 +import java.net.DatagramPacket;
 +import java.net.InetAddress;
@@ -3760,19 +3760,21 @@ index 685419b57..c12346527 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
-index 5b247dd3c..f9aa8b95e 100644
+index f9aa8b95e..5b247dd3c 100644
 --- a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
 +++ b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
-@@ -0,0 +1 @@
-+package org.apache.commons.net.ntp;
-@@ -18 +19 @@
+@@ -1 +0,0 @@
 -package org.apache.commons.net.ntp;
-+
+@@ -19 +18 @@ package org.apache.commons.net.ntp;
+-
++package org.apache.commons.net.ntp;
 diff --git a/src/test/java/org/apache/commons/net/time/TimeTestSimpleServer.java b/src/test/java/org/apache/commons/net/time/TimeTestSimpleServer.java
-index 59777fb87..e9b6780c6 100644
+index e9b6780c6..59777fb87 100644
 --- a/src/test/java/org/apache/commons/net/time/TimeTestSimpleServer.java
 +++ b/src/test/java/org/apache/commons/net/time/TimeTestSimpleServer.java
 @@ -1,160 +1,160 @@
+-package org.apache.commons.net.time;
+-
 -/*
 - * Licensed to the Apache Software Foundation (ASF) under one or more
 - * contributor license agreements.  See the NOTICE file distributed with
@@ -3789,8 +3791,6 @@ index 59777fb87..e9b6780c6 100644
 - * See the License for the specific language governing permissions and
 - * limitations under the License.
 - */
--
--package org.apache.commons.net.time;
 -
 -import java.io.DataOutputStream;
 -import java.io.IOException;
@@ -3933,8 +3933,6 @@ index 59777fb87..e9b6780c6 100644
 -    }
 -
 -}
-+package org.apache.commons.net.time;
-+
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more
 + * contributor license agreements.  See the NOTICE file distributed with
@@ -3951,6 +3949,8 @@ index 59777fb87..e9b6780c6 100644
 + * See the License for the specific language governing permissions and
 + * limitations under the License.
 + */
++
++package org.apache.commons.net.time;
 +
 +import java.io.DataOutputStream;
 +import java.io.IOException;

@@ -474,9 +474,6 @@ IOException
 int
 localPort
 ;
-ServerSocket
-server
-;
 final
 Socket
 socket
@@ -485,6 +482,7 @@ localPort
 =
 MAX_CLIENT_PORT
 ;
+ServerSocket
 server
 =
 null

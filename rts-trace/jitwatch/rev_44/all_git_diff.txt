@@ -1,50 +1,50 @@
 diff --git a/build.properties b/build.properties
-index 00b660db..ab1de3f1 100644
+index ab1de3f1..00b660db 100644
 --- a/build.properties
 +++ b/build.properties
 @@ -1 +1 @@
--version=1.4.7
-+version=1.4.6
+-version=1.4.6
++version=1.4.7
 diff --git a/core/pom.xml b/core/pom.xml
-index 75e45689..123e0d1b 100644
+index 123e0d1b..75e45689 100644
 --- a/core/pom.xml
 +++ b/core/pom.xml
 @@ -9 +9 @@
--        <version>1.4.7</version>
-+        <version>1.4.6</version>
+-        <version>1.4.6</version>
++        <version>1.4.7</version>
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java b/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
-index fe12b311..70e0e3db 100644
+index 70e0e3db..fe12b311 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
 @@ -227 +227 @@ public final class BytecodeLoader
--			BytecodeSection nextSection = getNextSection(section, line);
-+			BytecodeSection nextSection = getNextSection(line);
+-			BytecodeSection nextSection = getNextSection(line);
++			BytecodeSection nextSection = getNextSection(section, line);
 @@ -637,2 +637,2 @@ public final class BytecodeLoader
--	
--	private static BytecodeSection getNextSection(BytecodeSection currentSection, final String line)
-+
-+	private static BytecodeSection getNextSection(final String line)
-@@ -644,5 +644 @@ public final class BytecodeLoader
--			if (line.isEmpty())
--			{
--				nextSection = BytecodeSection.NONE;
--			}
--			else if ( currentSection != BytecodeSection.CODE &&  "}".equals(line.trim()))
-+			if (line.isEmpty() || "}".equals(line.trim()))
+-
+-	private static BytecodeSection getNextSection(final String line)
++	
++	private static BytecodeSection getNextSection(BytecodeSection currentSection, final String line)
+@@ -644 +644,5 @@ public final class BytecodeLoader
+-			if (line.isEmpty() || "}".equals(line.trim()))
++			if (line.isEmpty())
++			{
++				nextSection = BytecodeSection.NONE;
++			}
++			else if ( currentSection != BytecodeSection.CODE &&  "}".equals(line.trim()))
 diff --git a/pom.xml b/pom.xml
-index cdb0ec0d..aa99328f 100644
+index aa99328f..cdb0ec0d 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -8 +8 @@
--    <version>1.4.7</version>
-+    <version>1.4.6</version>
+-    <version>1.4.6</version>
++    <version>1.4.7</version>
 diff --git a/ui/pom.xml b/ui/pom.xml
-index 48beb1d5..fbbc34f1 100644
+index fbbc34f1..48beb1d5 100644
 --- a/ui/pom.xml
 +++ b/ui/pom.xml
 @@ -9 +9 @@
--		<version>1.4.7</version>
-+		<version>1.4.6</version>
+-		<version>1.4.6</version>
++		<version>1.4.7</version>
 @@ -17 +17 @@
--		<openjfx.version>17.0.2</openjfx.version>
-+		<openjfx.version>17.0.1</openjfx.version>
+-		<openjfx.version>17.0.1</openjfx.version>
++		<openjfx.version>17.0.2</openjfx.version>

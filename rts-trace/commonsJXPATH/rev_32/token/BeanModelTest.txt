@@ -67,6 +67,8 @@ BeanModelTest
 extends
 BeanModelTestCase
 {
+@
+Override
 protected
 Object
 createContextBean
@@ -80,6 +82,8 @@ TestBean
 )
 ;
 }
+@
+Override
 protected
 AbstractFactory
 getAbstractFactory
@@ -99,6 +103,7 @@ testIndexedProperty
 (
 )
 {
+final
 JXPathContext
 context
 =
@@ -120,8 +125,9 @@ context
 ,
 "indexed[1]"
 ,
-new
 Integer
+.
+valueOf
 (
 0
 )

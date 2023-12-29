@@ -75,7 +75,8 @@ removeNodePointerFactory
 factory
 )
 )
-;
+{
+}
 }
 }
 }

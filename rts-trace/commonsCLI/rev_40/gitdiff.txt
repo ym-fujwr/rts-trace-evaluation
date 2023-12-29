@@ -1,10 +1,10 @@
 diff --git a/src/test/java/org/apache/commons/cli/OptionTest.java b/src/test/java/org/apache/commons/cli/OptionTest.java
-index 7cc84f82..6650357e 100644
+index 6650357e..7cc84f82 100644
 --- a/src/test/java/org/apache/commons/cli/OptionTest.java
 +++ b/src/test/java/org/apache/commons/cli/OptionTest.java
 @@ -32 +32 @@ public class OptionTest {
--    private static final class DefaultOption extends Option {
-+    private static class DefaultOption extends Option {
+-    private static class DefaultOption extends Option {
++    private static final class DefaultOption extends Option {
 @@ -48 +48 @@ public class OptionTest {
--    private static final class TestOption extends Option {
-+    private static class TestOption extends Option {
+-    private static class TestOption extends Option {
++    private static final class TestOption extends Option {

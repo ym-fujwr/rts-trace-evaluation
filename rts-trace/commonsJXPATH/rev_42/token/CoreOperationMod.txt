@@ -46,9 +46,11 @@ CoreOperation
 public
 CoreOperationMod
 (
+final
 Expression
 arg1
 ,
+final
 Expression
 arg2
 )
@@ -67,14 +69,18 @@ arg2
 )
 ;
 }
+@
+Override
 public
 Object
 computeValue
 (
+final
 EvalContext
 context
 )
 {
+final
 long
 l
 =
@@ -96,6 +102,7 @@ context
 )
 )
 ;
+final
 long
 r
 =
@@ -118,8 +125,9 @@ context
 )
 ;
 return
-new
 Double
+.
+valueOf
 (
 l
 %
@@ -127,6 +135,8 @@ r
 )
 ;
 }
+@
+Override
 protected
 int
 getPrecedence
@@ -137,6 +147,8 @@ return
 MULTIPLY_PRECEDENCE
 ;
 }
+@
+Override
 protected
 boolean
 isSymmetric
@@ -147,6 +159,8 @@ return
 false
 ;
 }
+@
+Override
 public
 String
 getSymbol

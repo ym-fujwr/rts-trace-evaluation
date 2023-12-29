@@ -102,6 +102,7 @@ implements
 Function
 {
 private
+final
 Method
 method
 ;
@@ -113,15 +114,13 @@ Object
 ]
 EMPTY_ARRAY
 =
-new
-Object
-[
-0
-]
+{
+}
 ;
 public
 MethodFunction
 (
+final
 Method
 method
 )
@@ -138,10 +137,13 @@ method
 )
 ;
 }
+@
+Override
 public
 Object
 invoke
 (
+final
 ExpressionContext
 context
 ,
@@ -196,6 +198,7 @@ pi
 =
 0
 ;
+final
 Class
 [
 ]
@@ -310,6 +313,7 @@ pi
 =
 0
 ;
+final
 Class
 [
 ]
@@ -492,6 +496,8 @@ ex
 ;
 }
 }
+@
+Override
 public
 String
 toString

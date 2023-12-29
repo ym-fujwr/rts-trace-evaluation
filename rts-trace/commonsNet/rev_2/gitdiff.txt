@@ -1,16 +1,16 @@
 diff --git a/src/test/java/org/apache/commons/net/ftp/FTPClientConfigFunctionalTest.java b/src/test/java/org/apache/commons/net/ftp/FTPClientConfigFunctionalTest.java
-index bb549c0ae..080b93975 100644
+index 080b93975..bb549c0ae 100644
 --- a/src/test/java/org/apache/commons/net/ftp/FTPClientConfigFunctionalTest.java
 +++ b/src/test/java/org/apache/commons/net/ftp/FTPClientConfigFunctionalTest.java
-@@ -69 +69,5 @@ public class FTPClientConfigFunctionalTest extends TestCase {
--        final TreeSet<FTPFile> sorted = new TreeSet<>((o1, o2) -> o1.getTimestamp().getTime().compareTo(o2.getTimestamp().getTime()));
-+        final TreeSet<FTPFile> sorted = new TreeSet<>((o1, o2) -> {
-+            final FTPFile f1 = (FTPFile) o1;
-+            final FTPFile f2 = (FTPFile) o2;
-+            return f1.getTimestamp().getTime().compareTo(f2.getTimestamp().getTime());
-+        });
-@@ -71 +75,3 @@ public class FTPClientConfigFunctionalTest extends TestCase {
--        for (final FTPFile file : files) {
-+
-+        for (final FTPFile file : files)
-+        {
+@@ -69,5 +69 @@ public class FTPClientConfigFunctionalTest extends TestCase {
+-        final TreeSet<FTPFile> sorted = new TreeSet<>((o1, o2) -> {
+-            final FTPFile f1 = (FTPFile) o1;
+-            final FTPFile f2 = (FTPFile) o2;
+-            return f1.getTimestamp().getTime().compareTo(f2.getTimestamp().getTime());
+-        });
++        final TreeSet<FTPFile> sorted = new TreeSet<>((o1, o2) -> o1.getTimestamp().getTime().compareTo(o2.getTimestamp().getTime()));
+@@ -75,3 +71 @@ public class FTPClientConfigFunctionalTest extends TestCase {
+-
+-        for (final FTPFile file : files)
+-        {
++        for (final FTPFile file : files) {

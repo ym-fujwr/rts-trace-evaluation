@@ -1042,9 +1042,8 @@ EOL_DEFAULT
 =
 System
 .
-getProperty
+lineSeparator
 (
-"line.separator"
 )
 ;
 private

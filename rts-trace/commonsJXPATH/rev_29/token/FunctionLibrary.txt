@@ -73,6 +73,7 @@ public
 void
 addFunctions
 (
+final
 Functions
 functions
 )
@@ -99,6 +100,7 @@ public
 void
 removeFunctions
 (
+final
 Functions
 functions
 )
@@ -121,6 +123,8 @@ null
 ;
 }
 }
+@
+Override
 public
 Set
 getUsedNamespaces
@@ -137,22 +141,28 @@ keySet
 )
 ;
 }
+@
+Override
 public
 Function
 getFunction
 (
+final
 String
 namespace
 ,
+final
 String
 name
 ,
+final
 Object
 [
 ]
 parameters
 )
 {
+final
 Object
 candidates
 =
@@ -197,6 +207,7 @@ instanceof
 List
 )
 {
+final
 List
 list
 =
@@ -205,6 +216,7 @@ List
 )
 candidates
 ;
+final
 int
 count
 =
@@ -229,6 +241,7 @@ i
 ++
 )
 {
+final
 Function
 function
 =
@@ -291,6 +304,7 @@ HashMap
 (
 )
 ;
+final
 int
 count
 =
@@ -315,6 +329,7 @@ i
 ++
 )
 {
+final
 Functions
 funcs
 =
@@ -328,6 +343,7 @@ get
 i
 )
 ;
+final
 Set
 namespaces
 =
@@ -339,6 +355,7 @@ getUsedNamespaces
 ;
 for
 (
+final
 Iterator
 it
 =
@@ -356,6 +373,7 @@ hasNext
 ;
 )
 {
+final
 String
 ns
 =
@@ -368,6 +386,7 @@ next
 (
 )
 ;
+final
 Object
 candidates
 =
@@ -403,6 +422,7 @@ instanceof
 Functions
 )
 {
+final
 List
 lst
 =

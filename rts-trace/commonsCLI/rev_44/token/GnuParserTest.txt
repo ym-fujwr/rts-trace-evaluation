@@ -37,7 +37,7 @@ public
 class
 GnuParserTest
 extends
-ParserTestCase
+AbstractParserTestCase
 {
 @
 Override
@@ -75,6 +75,24 @@ Ignore
 public
 void
 testAmbiguousLongWithoutEqualSingleDash
+(
+)
+throws
+Exception
+{
+}
+@
+Override
+@
+Test
+@
+Ignore
+(
+"not supported by the GnuParser"
+)
+public
+void
+testAmbiguousLongWithoutEqualSingleDash2
 (
 )
 throws

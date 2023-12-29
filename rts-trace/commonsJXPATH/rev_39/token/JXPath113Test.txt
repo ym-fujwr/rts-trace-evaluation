@@ -97,6 +97,7 @@ testIssue113
 throws
 Exception
 {
+final
 Document
 doc
 =
@@ -107,6 +108,7 @@ getDocument
 "<xml/>"
 )
 ;
+final
 JXPathContext
 context
 =
@@ -134,6 +136,7 @@ static
 Document
 getDocument
 (
+final
 String
 xml
 )
@@ -160,6 +163,7 @@ static
 Document
 getDocument
 (
+final
 InputSource
 is
 )
@@ -192,6 +196,7 @@ getDocumentBuilder
 {
 try
 {
+final
 DocumentBuilderFactory
 factory
 =
@@ -232,6 +237,7 @@ newDocumentBuilder
 }
 catch
 (
+final
 ParserConfigurationException
 e
 )

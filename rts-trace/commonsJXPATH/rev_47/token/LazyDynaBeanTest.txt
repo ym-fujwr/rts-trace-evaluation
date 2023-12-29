@@ -84,6 +84,7 @@ testLazyProperty
 throws
 JXPathNotFoundException
 {
+final
 LazyDynaBean
 bean
 =
@@ -92,6 +93,7 @@ LazyDynaBean
 (
 )
 ;
+final
 JXPathContext
 context
 =
@@ -145,6 +147,7 @@ fail
 }
 catch
 (
+final
 JXPathNotFoundException
 e
 )
@@ -161,7 +164,8 @@ removeNodePointerFactory
 factory
 )
 )
-;
+{
+}
 }
 }
 }

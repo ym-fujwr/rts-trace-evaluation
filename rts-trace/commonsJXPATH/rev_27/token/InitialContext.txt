@@ -67,12 +67,14 @@ boolean
 collection
 ;
 private
+final
 NodePointer
 nodePointer
 ;
 public
 InitialContext
 (
+final
 EvalContext
 parentContext
 )
@@ -106,7 +108,6 @@ null
 {
 collection
 =
-(
 nodePointer
 .
 getIndex
@@ -116,10 +117,11 @@ getIndex
 NodePointer
 .
 WHOLE_COLLECTION
-)
 ;
 }
 }
+@
+Override
 public
 Pointer
 getSingleNodePointer
@@ -130,6 +132,8 @@ return
 nodePointer
 ;
 }
+@
+Override
 public
 NodePointer
 getCurrentNodePointer
@@ -140,6 +144,8 @@ return
 nodePointer
 ;
 }
+@
+Override
 public
 Object
 getValue
@@ -154,6 +160,8 @@ getValue
 )
 ;
 }
+@
+Override
 public
 boolean
 nextNode
@@ -169,10 +177,13 @@ position
 )
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )
@@ -226,6 +237,8 @@ position
 1
 ;
 }
+@
+Override
 public
 boolean
 nextSet

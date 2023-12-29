@@ -135,11 +135,8 @@ NewsgroupInfo
 ]
 EMPTY_NEWSGROUP_INFO_ARRAY
 =
-new
-NewsgroupInfo
-[
-0
-]
+{
+}
 ;
 static
 Article

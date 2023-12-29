@@ -1,19 +1,19 @@
 diff --git a/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java b/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
-index fe12b311..70e0e3db 100644
+index 70e0e3db..fe12b311 100644
 --- a/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
 +++ b/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
 @@ -227 +227 @@ public final class BytecodeLoader
--			BytecodeSection nextSection = getNextSection(section, line);
-+			BytecodeSection nextSection = getNextSection(line);
+-			BytecodeSection nextSection = getNextSection(line);
++			BytecodeSection nextSection = getNextSection(section, line);
 @@ -637,2 +637,2 @@ public final class BytecodeLoader
--	
--	private static BytecodeSection getNextSection(BytecodeSection currentSection, final String line)
-+
-+	private static BytecodeSection getNextSection(final String line)
-@@ -644,5 +644 @@ public final class BytecodeLoader
--			if (line.isEmpty())
--			{
--				nextSection = BytecodeSection.NONE;
--			}
--			else if ( currentSection != BytecodeSection.CODE &&  "}".equals(line.trim()))
-+			if (line.isEmpty() || "}".equals(line.trim()))
+-
+-	private static BytecodeSection getNextSection(final String line)
++	
++	private static BytecodeSection getNextSection(BytecodeSection currentSection, final String line)
+@@ -644 +644,5 @@ public final class BytecodeLoader
+-			if (line.isEmpty() || "}".equals(line.trim()))
++			if (line.isEmpty())
++			{
++				nextSection = BytecodeSection.NONE;
++			}
++			else if ( currentSection != BytecodeSection.CODE &&  "}".equals(line.trim()))

@@ -1,17 +1,17 @@
 diff --git a/src/main/java/org/apache/commons/cli/DefaultParser.java b/src/main/java/org/apache/commons/cli/DefaultParser.java
-index 8b69a766..3bbd0422 100644
+index 3bbd0422..8b69a766 100644
 --- a/src/main/java/org/apache/commons/cli/DefaultParser.java
 +++ b/src/main/java/org/apache/commons/cli/DefaultParser.java
 @@ -109 +109 @@ public class DefaultParser implements CommandLineParser {
--         * kept in other cases, which is the historic behavior.
-+         * kept in other cases, which is the historic behaviour.
+-         * kept in other cases, which is the historic behaviour.
++         * kept in other cases, which is the historic behavior.
 @@ -160 +160 @@ public class DefaultParser implements CommandLineParser {
--     * null represents the historic arbitrary behavior */
-+     * null represents the historic arbitrary behaviour */
+-     * null represents the historic arbitrary behaviour */
++     * null represents the historic arbitrary behavior */
 diff --git a/src/test/java/org/apache/commons/cli/DefaultParserTest.java b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
-index c3ccf9ab..0fd835a1 100644
+index 0fd835a1..c3ccf9ab 100644
 --- a/src/test/java/org/apache/commons/cli/DefaultParserTest.java
 +++ b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
 @@ -100 +100 @@ public class DefaultParserTest extends ParserTestCase {
--        //This is behavior is not consistent with the other parsers, but is required for backwards compatibility
-+        //This is behaviour is not consistent with the other parsers, but is required for backwards compatibility
+-        //This is behaviour is not consistent with the other parsers, but is required for backwards compatibility
++        //This is behavior is not consistent with the other parsers, but is required for backwards compatibility

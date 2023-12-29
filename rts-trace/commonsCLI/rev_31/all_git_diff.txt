@@ -1,32 +1,32 @@
 diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
-index cea5b932..0d0b9f5f 100644
+index 0d0b9f5f..cea5b932 100644
 --- a/src/main/java/org/apache/commons/cli/CommandLine.java
 +++ b/src/main/java/org/apache/commons/cli/CommandLine.java
-@@ -75,5 +74,0 @@ public class CommandLine implements Serializable {
--        /**
--         * Returns the new instance.
--         *
--         * @return the new instance.
--         */
+@@ -74,0 +75,5 @@ public class CommandLine implements Serializable {
++        /**
++         * Returns the new instance.
++         *
++         * @return the new instance.
++         */
 diff --git a/src/main/java/org/apache/commons/cli/Parser.java b/src/main/java/org/apache/commons/cli/Parser.java
-index 22d9f0ac..8543d9c1 100644
+index 8543d9c1..22d9f0ac 100644
 --- a/src/main/java/org/apache/commons/cli/Parser.java
 +++ b/src/main/java/org/apache/commons/cli/Parser.java
-@@ -66,5 +65,0 @@ public abstract class Parser implements CommandLineParser {
--    /**
--     * Gets the options.
--     *
--     * @return the options.
--     */
-@@ -75,5 +69,0 @@ public abstract class Parser implements CommandLineParser {
--    /**
--     * Gets the required options.
--     *
--     * @return the required options.
--     */
-@@ -339,5 +328,0 @@ public abstract class Parser implements CommandLineParser {
--    /**
--     * Sets the options.
--     *
--     * @param options the options.
--     */
+@@ -65,0 +66,5 @@ public abstract class Parser implements CommandLineParser {
++    /**
++     * Gets the options.
++     *
++     * @return the options.
++     */
+@@ -69,0 +75,5 @@ public abstract class Parser implements CommandLineParser {
++    /**
++     * Gets the required options.
++     *
++     * @return the required options.
++     */
+@@ -328,0 +339,5 @@ public abstract class Parser implements CommandLineParser {
++    /**
++     * Sets the options.
++     *
++     * @param options the options.
++     */

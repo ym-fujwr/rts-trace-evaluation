@@ -1524,7 +1524,7 @@ assertEquals
 ,
 xp
 .
-getCurrentName
+currentName
 (
 )
 )
@@ -1572,7 +1572,7 @@ assertEquals
 ,
 xp
 .
-getCurrentName
+currentName
 (
 )
 )
@@ -1609,7 +1609,7 @@ assertEquals
 ,
 xp
 .
-getCurrentName
+currentName
 (
 )
 )
@@ -1670,7 +1670,7 @@ assertEquals
 ,
 xp
 .
-getCurrentName
+currentName
 (
 )
 )
@@ -1888,7 +1888,7 @@ assertEquals
 ,
 xp
 .
-getCurrentName
+currentName
 (
 )
 )
@@ -2116,7 +2116,7 @@ assertEquals
 ,
 xp
 .
-getCurrentName
+currentName
 (
 )
 )
@@ -2164,7 +2164,7 @@ assertEquals
 ,
 xp
 .
-getCurrentName
+currentName
 (
 )
 )
@@ -2422,7 +2422,7 @@ assertEquals
 ,
 xp
 .
-getCurrentName
+currentName
 (
 )
 )
@@ -2505,7 +2505,7 @@ assertEquals
 ,
 xp
 .
-getCurrentName
+currentName
 (
 )
 )

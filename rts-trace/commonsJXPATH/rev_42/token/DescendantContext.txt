@@ -122,6 +122,7 @@ extends
 EvalContext
 {
 private
+final
 NodeTest
 nodeTest
 ;
@@ -144,6 +145,7 @@ currentNodePointer
 null
 ;
 private
+final
 boolean
 includeSelf
 ;
@@ -164,12 +166,15 @@ NODE_TYPE_NODE
 public
 DescendantContext
 (
+final
 EvalContext
 parentContext
 ,
+final
 boolean
 includeSelf
 ,
+final
 NodeTest
 nodeTest
 )
@@ -192,6 +197,8 @@ nodeTest
 nodeTest
 ;
 }
+@
+Override
 public
 boolean
 isChildOrderingRequired
@@ -202,6 +209,8 @@ return
 true
 ;
 }
+@
+Override
 public
 NodePointer
 getCurrentNodePointer
@@ -229,6 +238,8 @@ return
 currentNodePointer
 ;
 }
+@
+Override
 public
 void
 reset
@@ -246,10 +257,13 @@ setStarted
 false
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )
@@ -294,6 +308,8 @@ return
 true
 ;
 }
+@
+Override
 public
 boolean
 nextNode
@@ -407,6 +423,7 @@ isEmpty
 )
 )
 {
+final
 NodeIterator
 it
 =
@@ -517,6 +534,7 @@ isRecursive
 (
 )
 {
+final
 Object
 node
 =
@@ -546,6 +564,7 @@ i
 ;
 )
 {
+final
 NodeIterator
 it
 =
@@ -559,6 +578,7 @@ get
 i
 )
 ;
+final
 Pointer
 pointer
 =

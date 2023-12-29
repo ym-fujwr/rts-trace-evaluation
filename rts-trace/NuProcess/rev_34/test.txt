@@ -1,1 +1,1 @@
-com.zaxxer.nuprocess.CatTest#lotOfProcesses,com.zaxxer.nuprocess.InterruptTest#testDestroy
+com.zaxxer.nuprocess.linux.EpollEventTest,com.zaxxer.nuprocess.CatTest#lotOfProcesses

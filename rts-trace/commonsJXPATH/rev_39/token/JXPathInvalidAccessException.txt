@@ -25,6 +25,7 @@ serialVersionUID
 public
 JXPathInvalidAccessException
 (
+final
 String
 message
 )
@@ -38,9 +39,11 @@ message
 public
 JXPathInvalidAccessException
 (
+final
 String
 message
 ,
+final
 Throwable
 ex
 )

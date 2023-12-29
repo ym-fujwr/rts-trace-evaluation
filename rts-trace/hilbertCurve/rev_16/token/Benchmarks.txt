@@ -152,8 +152,6 @@ createPoints
 (
 )
 ;
-@
-Benchmark
 public
 void
 roundTripTimes512
@@ -207,8 +205,6 @@ longValue
 ;
 }
 }
-@
-Benchmark
 public
 void
 toIndexTimes512
@@ -255,8 +251,6 @@ longValue
 ;
 }
 }
-@
-Benchmark
 public
 void
 toIndexTimes512Small
@@ -299,8 +293,6 @@ i
 ;
 }
 }
-@
-Benchmark
 public
 void
 pointTimes512
@@ -338,8 +330,6 @@ i
 ;
 }
 }
-@
-Benchmark
 public
 void
 roundTripSmallTimes512
@@ -389,8 +379,6 @@ point
 ;
 }
 }
-@
-Benchmark
 public
 void
 pointSmallTimes512
@@ -428,8 +416,6 @@ i
 ;
 }
 }
-@
-Benchmark
 public
 void
 roundTripTimes512LowAllocation
@@ -480,8 +466,6 @@ longValue
 ;
 }
 }
-@
-Benchmark
 public
 void
 pointTimes512LowAllocation
@@ -523,8 +507,6 @@ point
 ;
 }
 }
-@
-Benchmark
 public
 void
 roundTripSmallTimes512LowAllocation
@@ -571,8 +553,6 @@ point
 ;
 }
 }
-@
-Benchmark
 public
 void
 pointSmallTimes512LowAllocation

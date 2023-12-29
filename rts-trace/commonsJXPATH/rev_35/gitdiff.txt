@@ -1,12 +1,12 @@
 diff --git a/src/main/java/org/apache/commons/jxpath/XMLDocumentContainer.java b/src/main/java/org/apache/commons/jxpath/XMLDocumentContainer.java
-index 0079d72e..6ca37586 100644
+index 6ca37586..0079d72e 100644
 --- a/src/main/java/org/apache/commons/jxpath/XMLDocumentContainer.java
 +++ b/src/main/java/org/apache/commons/jxpath/XMLDocumentContainer.java
-@@ -20 +19,0 @@ import java.net.URL;
--import java.util.Objects;
-@@ -65 +64,4 @@ public class XMLDocumentContainer implements Container {
--        this.source = Objects.requireNonNull(source);
-+        this.source = source;
-+        if (source == null) {
-+            throw new RuntimeException("Source is null");
-+        }
+@@ -19,0 +20 @@ import java.net.URL;
++import java.util.Objects;
+@@ -64,4 +65 @@ public class XMLDocumentContainer implements Container {
+-        this.source = source;
+-        if (source == null) {
+-            throw new RuntimeException("Source is null");
+-        }
++        this.source = Objects.requireNonNull(source);

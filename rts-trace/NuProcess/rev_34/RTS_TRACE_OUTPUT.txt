@@ -31,9 +31,9 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running com.zaxxer.nuprocess.CatTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.31 s -- in com.zaxxer.nuprocess.CatTest
-[INFO] Running com.zaxxer.nuprocess.InterruptTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s -- in com.zaxxer.nuprocess.InterruptTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.28 s -- in com.zaxxer.nuprocess.CatTest
+[INFO] Running com.zaxxer.nuprocess.linux.EpollEventTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.zaxxer.nuprocess.linux.EpollEventTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -42,6 +42,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  18.053 s
-[INFO] Finished at: 2023-12-26T15:58:26+09:00
+[INFO] Total time:  17.943 s
+[INFO] Finished at: 2023-12-28T00:26:26+09:00
 [INFO] ------------------------------------------------------------------------

@@ -1,21 +1,21 @@
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index 9d6560da..6f07cb81 100644
+index 6f07cb81..9d6560da 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
-@@ -95,3 +94,0 @@ The <action> type attribute can be add,update,fix,remove.
--      <action dev="ggregory" type="fix" due-to="Gary Gregory">
--        ClassLoaderUtil.toCanonicalName() now calls Objects.requireNonNull() instead of throwing a RuntimeException.
--      </action>
+@@ -94,0 +95,3 @@ The <action> type attribute can be add,update,fix,remove.
++      <action dev="ggregory" type="fix" due-to="Gary Gregory">
++        ClassLoaderUtil.toCanonicalName() now calls Objects.requireNonNull() instead of throwing a RuntimeException.
++      </action>
 diff --git a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
-index eb6eabc0..1994b53b 100644
+index 1994b53b..eb6eabc0 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
-@@ -21 +20,0 @@ import java.util.Map;
--import java.util.Objects;
-@@ -149,2 +148,4 @@ public class ClassLoaderUtil {
--        Objects.requireNonNull(className, "className");
--        if (className.endsWith("[]")) {
-+        if (className == null) {
-+            throw new RuntimeException("Argument className was null.");
-+        }
-+        else if (className.endsWith("[]")) {
+@@ -20,0 +21 @@ import java.util.Map;
++import java.util.Objects;
+@@ -148,4 +149,2 @@ public class ClassLoaderUtil {
+-        if (className == null) {
+-            throw new RuntimeException("Argument className was null.");
+-        }
+-        else if (className.endsWith("[]")) {
++        Objects.requireNonNull(className, "className");
++        if (className.endsWith("[]")) {

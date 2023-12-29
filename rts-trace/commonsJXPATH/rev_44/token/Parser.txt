@@ -97,9 +97,11 @@ static
 Object
 parseExpression
 (
+final
 String
 expression
 ,
+final
 Compiler
 compiler
 )
@@ -143,6 +145,7 @@ parseExpression
 }
 catch
 (
+final
 TokenMgrError
 e
 )
@@ -191,6 +194,7 @@ getPosition
 }
 catch
 (
+final
 ParseException
 e
 )
@@ -231,9 +235,11 @@ static
 String
 describePosition
 (
+final
 String
 expression
 ,
+final
 int
 position
 )
@@ -287,6 +293,7 @@ static
 String
 addEscapes
 (
+final
 String
 string
 )

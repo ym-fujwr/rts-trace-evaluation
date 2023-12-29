@@ -98,6 +98,7 @@ UNION_PRECEDENCE
 public
 CoreOperation
 (
+final
 Expression
 [
 ]
@@ -110,10 +111,13 @@ args
 )
 ;
 }
+@
+Override
 public
 Object
 compute
 (
+final
 EvalContext
 context
 )
@@ -125,6 +129,8 @@ context
 )
 ;
 }
+@
+Override
 public
 abstract
 Object
@@ -155,6 +161,8 @@ getPrecedence
 (
 )
 ;
+@
+Override
 public
 String
 toString
@@ -186,6 +194,7 @@ false
 )
 ;
 }
+final
 StringBuffer
 buffer
 =
@@ -272,13 +281,16 @@ private
 String
 parenthesize
 (
+final
 Expression
 expression
 ,
+final
 boolean
 left
 )
 {
+final
 String
 s
 =
@@ -302,6 +314,7 @@ return
 s
 ;
 }
+final
 int
 compared
 =

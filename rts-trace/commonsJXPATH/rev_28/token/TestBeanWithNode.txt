@@ -101,6 +101,7 @@ public
 void
 setVendor
 (
+final
 Object
 node
 )
@@ -112,6 +113,8 @@ node
 node
 ;
 }
+@
+Override
 public
 Object
 getObject
@@ -126,6 +129,7 @@ public
 void
 setObject
 (
+final
 Object
 object
 )
@@ -144,6 +148,7 @@ createTestBeanWithDOM
 (
 )
 {
+final
 DocumentContainer
 docCtr
 =
@@ -160,6 +165,7 @@ getResource
 )
 )
 ;
+final
 Document
 doc
 =
@@ -172,6 +178,7 @@ getValue
 (
 )
 ;
+final
 TestBeanWithNode
 tbwdom
 =

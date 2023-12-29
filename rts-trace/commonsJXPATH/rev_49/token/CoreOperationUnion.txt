@@ -48,6 +48,7 @@ CoreOperation
 public
 CoreOperationUnion
 (
+final
 Expression
 [
 ]
@@ -60,14 +61,18 @@ args
 )
 ;
 }
+@
+Override
 public
 Object
 computeValue
 (
+final
 EvalContext
 context
 )
 {
+final
 EvalContext
 [
 ]
@@ -98,6 +103,7 @@ i
 ++
 )
 {
+final
 Object
 value
 =
@@ -163,6 +169,8 @@ argCtxs
 )
 ;
 }
+@
+Override
 protected
 int
 getPrecedence
@@ -173,6 +181,8 @@ return
 UNION_PRECEDENCE
 ;
 }
+@
+Override
 protected
 boolean
 isSymmetric
@@ -183,6 +193,8 @@ return
 true
 ;
 }
+@
+Override
 public
 String
 getSymbol

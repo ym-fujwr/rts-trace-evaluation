@@ -77,6 +77,13 @@ util
 List
 ;
 import
+java
+.
+util
+.
+Map
+;
+import
 org
 .
 adoptopenjdk
@@ -206,6 +213,14 @@ classpathEntries
 ,
 File
 outputDir
+,
+Map
+<
+String
+,
+String
+>
+environment
 ,
 ILogListener
 logListener
@@ -342,6 +357,8 @@ success
 runCommands
 (
 commands
+,
+environment
 ,
 logListener
 )

@@ -1,241 +1,241 @@
 diff --git a/.github/GH-ROBOTS.txt b/.github/GH-ROBOTS.txt
-deleted file mode 100644
-index e3329e55..00000000
---- a/.github/GH-ROBOTS.txt
-+++ /dev/null
-@@ -1,19 +0,0 @@
--# Licensed to the Apache Software Foundation (ASF) under one or more
--# contributor license agreements.  See the NOTICE file distributed with
--# this work for additional information regarding copyright ownership.
--# The ASF licenses this file to You under the Apache License, Version 2.0
--# (the "License"); you may not use this file except in compliance with
--# the License.  You may obtain a copy of the License at
--#
--#      http://www.apache.org/licenses/LICENSE-2.0
--#
--# Unless required by applicable law or agreed to in writing, software
--# distributed under the License is distributed on an "AS IS" BASIS,
--# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
--# See the License for the specific language governing permissions and
--# limitations under the License.
--
--# Keeps on creating FUD PRs in test code
--# Does not follow Apache disclosure policies
--User-agent: JLLeitschuh/security-research
--Disallow: *
+new file mode 100644
+index 00000000..e3329e55
+--- /dev/null
++++ b/.github/GH-ROBOTS.txt
+@@ -0,0 +1,19 @@
++# Licensed to the Apache Software Foundation (ASF) under one or more
++# contributor license agreements.  See the NOTICE file distributed with
++# this work for additional information regarding copyright ownership.
++# The ASF licenses this file to You under the Apache License, Version 2.0
++# (the "License"); you may not use this file except in compliance with
++# the License.  You may obtain a copy of the License at
++#
++#      http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++# Keeps on creating FUD PRs in test code
++# Does not follow Apache disclosure policies
++User-agent: JLLeitschuh/security-research
++Disallow: *
 diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
-index 7a96e8ee..73b5dc9b 100644
+index 73b5dc9b..7a96e8ee 100644
 --- a/.github/workflows/codeql-analysis.yml
 +++ b/.github/workflows/codeql-analysis.yml
 @@ -48 +48 @@ jobs:
--      uses: actions/checkout@v3.3.0
-+      uses: actions/checkout@v3.1.0
+-      uses: actions/checkout@v3.1.0
++      uses: actions/checkout@v3.3.0
 @@ -51 +51 @@ jobs:
--    - uses: actions/cache@v3.2.3
-+    - uses: actions/cache@v3.0.11
+-    - uses: actions/cache@v3.0.11
++    - uses: actions/cache@v3.2.3
 diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
-index 63768ff1..6c6476f6 100644
+index 6c6476f6..63768ff1 100644
 --- a/.github/workflows/coverage.yml
 +++ b/.github/workflows/coverage.yml
 @@ -32 +32 @@ jobs:
--    - uses: actions/checkout@v3.3.0
-+    - uses: actions/checkout@v3.1.0
+-    - uses: actions/checkout@v3.1.0
++    - uses: actions/checkout@v3.3.0
 @@ -35 +35 @@ jobs:
--    - uses: actions/cache@v3.2.3
-+    - uses: actions/cache@v3.0.11
+-    - uses: actions/cache@v3.0.11
++    - uses: actions/cache@v3.2.3
 @@ -42 +42 @@ jobs:
--      uses: actions/setup-java@v3.9.0
-+      uses: actions/setup-java@v3.5.1
+-      uses: actions/setup-java@v3.5.1
++      uses: actions/setup-java@v3.9.0
 diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index e9d54f21..33acae09 100644
+index 33acae09..e9d54f21 100644
 --- a/.github/workflows/maven.yml
 +++ b/.github/workflows/maven.yml
 @@ -48 +48 @@ jobs:
--    - uses: actions/checkout@v3.3.0
-+    - uses: actions/checkout@v3.1.0
+-    - uses: actions/checkout@v3.1.0
++    - uses: actions/checkout@v3.3.0
 @@ -51 +51 @@ jobs:
--    - uses: actions/cache@v3.2.3
-+    - uses: actions/cache@v3.0.11
+-    - uses: actions/cache@v3.0.11
++    - uses: actions/cache@v3.2.3
 @@ -58 +58 @@ jobs:
--      uses: actions/setup-java@v3.9.0
-+      uses: actions/setup-java@v3.5.1
+-      uses: actions/setup-java@v3.5.1
++      uses: actions/setup-java@v3.9.0
 diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
-index f6750464..fd03907c 100644
+index fd03907c..f6750464 100644
 --- a/.github/workflows/scorecards-analysis.yml
 +++ b/.github/workflows/scorecards-analysis.yml
-@@ -36,2 +36 @@ jobs:
--      id-token: write # This is required for requesting the JWT
--      contents: read  # This is required for actions/checkout
-+      contents: read
-@@ -42 +41 @@ jobs:
--        uses: actions/checkout@v3.3.0   # 3.0.2
-+        uses: actions/checkout@v3.1.0   # 3.0.2
-@@ -47 +46 @@ jobs:
--        uses: ossf/scorecard-action@e38b1902ae4f44df626f11ba0734b14fb91f8f86    # 2.1.2
-+        uses: ossf/scorecard-action@ce330fde6b1a5c9c75b417e7efc510b822a35564    # 1.1.2
-@@ -59 +58 @@ jobs:
--        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce    # 3.1.0
-+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8    # 3.1.0
+@@ -36 +36,2 @@ jobs:
+-      contents: read
++      id-token: write # This is required for requesting the JWT
++      contents: read  # This is required for actions/checkout
+@@ -41 +42 @@ jobs:
+-        uses: actions/checkout@v3.1.0   # 3.0.2
++        uses: actions/checkout@v3.3.0   # 3.0.2
+@@ -46 +47 @@ jobs:
+-        uses: ossf/scorecard-action@ce330fde6b1a5c9c75b417e7efc510b822a35564    # 1.1.2
++        uses: ossf/scorecard-action@e38b1902ae4f44df626f11ba0734b14fb91f8f86    # 2.1.2
+@@ -58 +59 @@ jobs:
+-        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8    # 3.1.0
++        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce    # 3.1.0
 diff --git a/CODE_OF_CONDUCT.md b/CODE_OF_CONDUCT.md
-deleted file mode 100644
-index 3ed50150..00000000
---- a/CODE_OF_CONDUCT.md
-+++ /dev/null
-@@ -1,17 +0,0 @@
--<!---
-- Licensed to the Apache Software Foundation (ASF) under one or more
-- contributor license agreements.  See the NOTICE file distributed with
-- this work for additional information regarding copyright ownership.
-- The ASF licenses this file to You under the Apache License, Version 2.0
-- (the "License"); you may not use this file except in compliance with
-- the License.  You may obtain a copy of the License at
--
--      http://www.apache.org/licenses/LICENSE-2.0
--
-- Unless required by applicable law or agreed to in writing, software
-- distributed under the License is distributed on an "AS IS" BASIS,
-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- See the License for the specific language governing permissions and
-- limitations under the License.
---->
--The Apache code of conduct page is [https://www.apache.org/foundation/policies/conduct.html](https://www.apache.org/foundation/policies/conduct.html).
+new file mode 100644
+index 00000000..3ed50150
+--- /dev/null
++++ b/CODE_OF_CONDUCT.md
+@@ -0,0 +1,17 @@
++<!---
++ Licensed to the Apache Software Foundation (ASF) under one or more
++ contributor license agreements.  See the NOTICE file distributed with
++ this work for additional information regarding copyright ownership.
++ The ASF licenses this file to You under the Apache License, Version 2.0
++ (the "License"); you may not use this file except in compliance with
++ the License.  You may obtain a copy of the License at
++
++      http://www.apache.org/licenses/LICENSE-2.0
++
++ Unless required by applicable law or agreed to in writing, software
++ distributed under the License is distributed on an "AS IS" BASIS,
++ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ See the License for the specific language governing permissions and
++ limitations under the License.
++-->
++The Apache code of conduct page is [https://www.apache.org/foundation/policies/conduct.html](https://www.apache.org/foundation/policies/conduct.html).
 diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
-index 9af61c5f..9949eb86 100644
+index 9949eb86..9af61c5f 100644
 --- a/CONTRIBUTING.md
 +++ b/CONTRIBUTING.md
 @@ -28 +28 @@
-- | 1) Re-generate using: mvn commons-build:contributing-md              |
-+ | 1) Re-generate using: mvn commons:contributing-md                    |
+- | 1) Re-generate using: mvn commons:contributing-md                    |
++ | 1) Re-generate using: mvn commons-build:contributing-md              |
 @@ -54 +54 @@ Getting Started
--+ Submit a [Jira Ticket][jira] for your issue, assuming one does not already exist.
-++ Submit a ticket for your issue, assuming one does not already exist.
-@@ -57,2 +57 @@ Getting Started
--+ Find the corresponding [repository on GitHub](https://github.com/apache/?query=commons-),
--[fork](https://help.github.com/articles/fork-a-repo/) and check out your forked repository.
-++ Fork the repository on GitHub.
-@@ -63,4 +62 @@ Making Changes
--+ Create a _topic branch_ for your isolated work.
--  * Usually you should base your branch on the `master` branch.
--  * A good topic branch name can be the JIRA bug id plus a keyword, e.g. `JXPATH-123-InputStream`.
--  * If you have submitted multiple JIRA issues, try to maintain separate branches and pull requests.
-++ Create a topic branch from where you want to base your work (this is usually the master/trunk branch).
-@@ -68,2 +63,0 @@ Making Changes
--  * Make sure your commit messages are meaningful and in the proper format. Your commit message should contain the key of the JIRA issue.
--  * e.g. `JXPATH-123: Close input stream earlier`
-@@ -72,3 +66,4 @@ Making Changes
--  + Create minimal diffs - disable _On Save_ actions like _Reformat Source Code_ or _Organize Imports_. If you feel the source code should be reformatted create a separate PR for this change first.
--  + Check for unnecessary whitespace with `git diff` -- check before committing.
--+ Make sure you have added the necessary tests for your changes, typically in `src/test/java`.
-+  + Create minimal diffs - disable on save actions like reformat source code or organize imports. If you feel the source code should be reformatted create a separate PR for this change.
-+  + Check for unnecessary whitespace with git diff --check before committing.
-++ Make sure your commit messages are in the proper format. Your commit message should contain the key of the JIRA issue.
-++ Make sure you have added the necessary tests for your changes.
-@@ -80,2 +74,0 @@ Making Trivial Changes
--The JIRA tickets are used to generate the changelog for the next release.
--
-@@ -85 +77,0 @@ In this case, it is appropriate to start the first line of a commit with '(doc)'
--
-@@ -89,4 +81 @@ Submitting Changes
--+ Sign and submit the Apache [Contributor License Agreement][cla] if you haven't already.
--  * Note that small patches & typical bug fixes do not require a CLA as
--    clause 5 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0.html#contributions)
--    covers them.
-++ Sign the [Contributor License Agreement][cla] if you haven't already.
-@@ -94,3 +83 @@ Submitting Changes
--+ Submit a _Pull Request_ to the corresponding repository in the `apache` organization.
--  * Verify _Files Changed_ shows only your intended changes and does not
--  include additional files like `target/*.class`
-++ Submit a pull request to the repository in the apache organization.
-@@ -99,4 +85,0 @@ Submitting Changes
--If you prefer to not use GitHub, then you can instead use
--`git format-patch` (or `svn diff`) and attach the patch file to the JIRA issue.
--
--
-@@ -107 +90 @@ Additional Resources
--+ [Apache Commons JXpath JIRA project page][jira]
-++ [Apache Commons JXPath JIRA project page](https://issues.apache.org/jira/browse/JXPATH)
-@@ -110 +93 @@ Additional Resources
--+ [GitHub pull request documentation](https://help.github.com/articles/creating-a-pull-request/)
-++ [GitHub pull request documentation](https://help.github.com/send-pull-requests/)
-@@ -112 +95 @@ Additional Resources
--+ `#apache-commons` IRC channel on `irc.freenode.net`
-++ #apachecommons IRC channel on freenode.org
-@@ -115 +97,0 @@ Additional Resources
--[jira]:https://issues.apache.org/jira/browse/JXPATH
+-+ Submit a ticket for your issue, assuming one does not already exist.
+++ Submit a [Jira Ticket][jira] for your issue, assuming one does not already exist.
+@@ -57 +57,2 @@ Getting Started
+-+ Fork the repository on GitHub.
+++ Find the corresponding [repository on GitHub](https://github.com/apache/?query=commons-),
++[fork](https://help.github.com/articles/fork-a-repo/) and check out your forked repository.
+@@ -62 +63,4 @@ Making Changes
+-+ Create a topic branch from where you want to base your work (this is usually the master/trunk branch).
+++ Create a _topic branch_ for your isolated work.
++  * Usually you should base your branch on the `master` branch.
++  * A good topic branch name can be the JIRA bug id plus a keyword, e.g. `JXPATH-123-InputStream`.
++  * If you have submitted multiple JIRA issues, try to maintain separate branches and pull requests.
+@@ -63,0 +68,2 @@ Making Changes
++  * Make sure your commit messages are meaningful and in the proper format. Your commit message should contain the key of the JIRA issue.
++  * e.g. `JXPATH-123: Close input stream earlier`
+@@ -66,4 +72,3 @@ Making Changes
+-  + Create minimal diffs - disable on save actions like reformat source code or organize imports. If you feel the source code should be reformatted create a separate PR for this change.
+-  + Check for unnecessary whitespace with git diff --check before committing.
+-+ Make sure your commit messages are in the proper format. Your commit message should contain the key of the JIRA issue.
+-+ Make sure you have added the necessary tests for your changes.
++  + Create minimal diffs - disable _On Save_ actions like _Reformat Source Code_ or _Organize Imports_. If you feel the source code should be reformatted create a separate PR for this change first.
++  + Check for unnecessary whitespace with `git diff` -- check before committing.
+++ Make sure you have added the necessary tests for your changes, typically in `src/test/java`.
+@@ -74,0 +80,2 @@ Making Trivial Changes
++The JIRA tickets are used to generate the changelog for the next release.
++
+@@ -77,0 +85 @@ In this case, it is appropriate to start the first line of a commit with '(doc)'
++
+@@ -81 +89,4 @@ Submitting Changes
+-+ Sign the [Contributor License Agreement][cla] if you haven't already.
+++ Sign and submit the Apache [Contributor License Agreement][cla] if you haven't already.
++  * Note that small patches & typical bug fixes do not require a CLA as
++    clause 5 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0.html#contributions)
++    covers them.
+@@ -83 +94,3 @@ Submitting Changes
+-+ Submit a pull request to the repository in the apache organization.
+++ Submit a _Pull Request_ to the corresponding repository in the `apache` organization.
++  * Verify _Files Changed_ shows only your intended changes and does not
++  include additional files like `target/*.class`
+@@ -85,0 +99,4 @@ Submitting Changes
++If you prefer to not use GitHub, then you can instead use
++`git format-patch` (or `svn diff`) and attach the patch file to the JIRA issue.
++
++
+@@ -90 +107 @@ Additional Resources
+-+ [Apache Commons JXPath JIRA project page](https://issues.apache.org/jira/browse/JXPATH)
+++ [Apache Commons JXpath JIRA project page][jira]
+@@ -93 +110 @@ Additional Resources
+-+ [GitHub pull request documentation](https://help.github.com/send-pull-requests/)
+++ [GitHub pull request documentation](https://help.github.com/articles/creating-a-pull-request/)
+@@ -95 +112 @@ Additional Resources
+-+ #apachecommons IRC channel on freenode.org
+++ `#apache-commons` IRC channel on `irc.freenode.net`
+@@ -97,0 +115 @@ Additional Resources
++[jira]:https://issues.apache.org/jira/browse/JXPATH
 diff --git a/NOTICE.txt b/NOTICE.txt
-index 360399dc..e33f4598 100644
+index e33f4598..360399dc 100644
 --- a/NOTICE.txt
 +++ b/NOTICE.txt
 @@ -2 +2 @@ Apache Commons JXPath
--Copyright 2001-2023 The Apache Software Foundation
-+Copyright 2001-2016 The Apache Software Foundation
+-Copyright 2001-2016 The Apache Software Foundation
++Copyright 2001-2023 The Apache Software Foundation
 diff --git a/SECURITY.md b/SECURITY.md
-deleted file mode 100644
-index 51943ba7..00000000
---- a/SECURITY.md
-+++ /dev/null
-@@ -1,17 +0,0 @@
--<!---
-- Licensed to the Apache Software Foundation (ASF) under one or more
-- contributor license agreements.  See the NOTICE file distributed with
-- this work for additional information regarding copyright ownership.
-- The ASF licenses this file to You under the Apache License, Version 2.0
-- (the "License"); you may not use this file except in compliance with
-- the License.  You may obtain a copy of the License at
--
--      http://www.apache.org/licenses/LICENSE-2.0
--
-- Unless required by applicable law or agreed to in writing, software
-- distributed under the License is distributed on an "AS IS" BASIS,
-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-- See the License for the specific language governing permissions and
-- limitations under the License.
---->
--The Apache Commons security page is [https://commons.apache.org/security.html](https://commons.apache.org/security.html).
+new file mode 100644
+index 00000000..51943ba7
+--- /dev/null
++++ b/SECURITY.md
+@@ -0,0 +1,17 @@
++<!---
++ Licensed to the Apache Software Foundation (ASF) under one or more
++ contributor license agreements.  See the NOTICE file distributed with
++ this work for additional information regarding copyright ownership.
++ The ASF licenses this file to You under the Apache License, Version 2.0
++ (the "License"); you may not use this file except in compliance with
++ the License.  You may obtain a copy of the License at
++
++      http://www.apache.org/licenses/LICENSE-2.0
++
++ Unless required by applicable law or agreed to in writing, software
++ distributed under the License is distributed on an "AS IS" BASIS,
++ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ See the License for the specific language governing permissions and
++ limitations under the License.
++-->
++The Apache Commons security page is [https://commons.apache.org/security.html](https://commons.apache.org/security.html).
 diff --git a/pom.xml b/pom.xml
-index 1df81f34..3fb247d3 100644
+index 3fb247d3..1df81f34 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -22 +22 @@
--    <version>56</version>
-+    <version>54</version>
+-    <version>54</version>
++    <version>56</version>
 @@ -194 +194 @@
--      <version>2.5</version>
-+      <version>2.4</version>
+-      <version>2.4</version>
++      <version>2.5</version>
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index 2f0512d3..09f71e05 100644
+index 09f71e05..2f0512d3 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
 @@ -95 +95 @@ The <action> type attribute can be add,update,fix,remove.
--      <action dev="ggregory" type="update" due-to="britter, Gary Gregory">
-+      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="britter, Gary Gregory">
+-      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="britter, Gary Gregory">
++      <action dev="ggregory" type="update" due-to="britter, Gary Gregory">
 @@ -98 +98 @@ The <action> type attribute can be add,update,fix,remove.
--      <action dev="ggregory" type="update" due-to="Dependabot">
-+      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
+-      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
++      <action dev="ggregory" type="update" due-to="Dependabot">
 @@ -101 +101 @@ The <action> type attribute can be add,update,fix,remove.
--      <action dev="ggregory" type="update" due-to="Dependabot">
-+      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
+-      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
++      <action dev="ggregory" type="update" due-to="Dependabot">
 @@ -104 +104 @@ The <action> type attribute can be add,update,fix,remove.
--      <action dev="ggregory" type="update" due-to="Dependabot">
-+      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
-@@ -107,6 +106,0 @@ The <action> type attribute can be add,update,fix,remove.
--      <action dev="ggregory" type="update" due-to="Dependabot">
--        Bump servlet-api from 2.4 to 2.5 #29.
--      </action>
--      <action dev="ggregory" type="update" due-to="Dependabot">
--        Bump commons-parent from 54 to 56 #45, #49.
--      </action>
+-      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
++      <action dev="ggregory" type="update" due-to="Dependabot">
+@@ -106,0 +107,6 @@ The <action> type attribute can be add,update,fix,remove.
++      <action dev="ggregory" type="update" due-to="Dependabot">
++        Bump servlet-api from 2.4 to 2.5 #29.
++      </action>
++      <action dev="ggregory" type="update" due-to="Dependabot">
++        Bump commons-parent from 54 to 56 #45, #49.
++      </action>
 diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContext.java b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
-index 8823c313..c4aac2c6 100644
+index c4aac2c6..8823c313 100644
 --- a/src/main/java/org/apache/commons/jxpath/JXPathContext.java
 +++ b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
 @@ -576 +576 @@ public abstract class JXPathContext {
--     * attribute as well as the lang() function will be
-+     * attribute as well as the the lang() function will be
+-     * attribute as well as the the lang() function will be
++     * attribute as well as the lang() function will be
 diff --git a/src/main/java/org/apache/commons/jxpath/Pointer.java b/src/main/java/org/apache/commons/jxpath/Pointer.java
-index 3bf49db7..a8256682 100644
+index a8256682..3bf49db7 100644
 --- a/src/main/java/org/apache/commons/jxpath/Pointer.java
 +++ b/src/main/java/org/apache/commons/jxpath/Pointer.java
 @@ -27 +27 @@ import java.io.Serializable;
-- * or properties described the path. For example, <code>ctx.getPointer
-+ * or properties described the the path. For example, <code>ctx.getPointer
+- * or properties described the the path. For example, <code>ctx.getPointer
++ * or properties described the path. For example, <code>ctx.getPointer

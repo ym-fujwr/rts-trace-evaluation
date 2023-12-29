@@ -46,6 +46,13 @@ NativeLibrary
 import
 java
 .
+io
+.
+IOException
+;
+import
+java
+.
 util
 .
 HashMap
@@ -227,6 +234,8 @@ fds
 byte
 redirectErrorStream
 )
+throws
+IOException
 ;
 }
 <EOF>

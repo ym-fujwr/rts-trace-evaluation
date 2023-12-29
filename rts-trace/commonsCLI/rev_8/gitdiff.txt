@@ -1,51 +1,51 @@
 diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
-index 333ef9d4..a8e8d190 100644
+index a8e8d190..333ef9d4 100644
 --- a/src/main/java/org/apache/commons/cli/CommandLine.java
 +++ b/src/main/java/org/apache/commons/cli/CommandLine.java
 @@ -170 +170 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -261 +261 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -277 +277 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -320 +320 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -351 +351 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -364 +364 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -423 +423 @@ public class CommandLine implements Serializable {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 diff --git a/src/main/java/org/apache/commons/cli/DefaultParser.java b/src/main/java/org/apache/commons/cli/DefaultParser.java
-index 3bbd0422..81dbc204 100644
+index 81dbc204..3bbd0422 100644
 --- a/src/main/java/org/apache/commons/cli/DefaultParser.java
 +++ b/src/main/java/org/apache/commons/cli/DefaultParser.java
 @@ -44 +44 @@ public class DefaultParser implements CommandLineParser {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 @@ -67 +67 @@ public class DefaultParser implements CommandLineParser {
--         * @since 1.5.0
-+         * @since 1.5
+-         * @since 1.5
++         * @since 1.5.0
 @@ -93 +93 @@ public class DefaultParser implements CommandLineParser {
--         * @since 1.5.0
-+         * @since 1.5
+-         * @since 1.5
++         * @since 1.5.0
 @@ -113 +113 @@ public class DefaultParser implements CommandLineParser {
--         * @since 1.5.0
-+         * @since 1.5
+-         * @since 1.5
++         * @since 1.5.0
 @@ -126 +126 @@ public class DefaultParser implements CommandLineParser {
--     * @since 1.5.0
-+     * @since 1.5
+-     * @since 1.5
++     * @since 1.5.0
 diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
-index 7ca95186..8ae5a02c 100644
+index 8ae5a02c..7ca95186 100644
 --- a/src/main/java/org/apache/commons/cli/Option.java
 +++ b/src/main/java/org/apache/commons/cli/Option.java
 @@ -188 +188 @@ public class Option implements Cloneable, Serializable {
--         * @since 1.5.0
-+         * @since 1.5
+-         * @since 1.5
++         * @since 1.5.0

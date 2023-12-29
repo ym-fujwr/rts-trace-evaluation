@@ -1,0 +1,2 @@
+org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses
+org.adoptopenjdk.jitwatch.test.TestCompilationUtil

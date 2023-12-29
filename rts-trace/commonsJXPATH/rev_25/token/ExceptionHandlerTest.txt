@@ -84,6 +84,7 @@ JXPathContext
 context
 ;
 private
+final
 Bar
 bar
 =
@@ -92,6 +93,8 @@ Bar
 (
 )
 ;
+@
+Override
 public
 void
 setUp
@@ -118,13 +121,17 @@ ExceptionHandler
 (
 )
 {
+@
+Override
 public
 void
 handle
 (
+final
 Throwable
 t
 ,
+final
 Pointer
 ptr
 )

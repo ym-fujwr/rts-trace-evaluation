@@ -68,12 +68,15 @@ private
 JXPathContext
 context
 ;
+@
+Override
 public
 void
 setUp
 (
 )
 {
+final
 TestBean
 testBean
 =
@@ -82,6 +85,7 @@ TestBean
 (
 )
 ;
+final
 HashMap
 m
 =

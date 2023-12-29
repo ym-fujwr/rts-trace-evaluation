@@ -104,6 +104,7 @@ extends
 EvalContext
 {
 private
+final
 NodeTest
 nodeTest
 ;
@@ -124,9 +125,11 @@ currentNodePointer
 public
 NamespaceContext
 (
+final
 EvalContext
 parentContext
 ,
+final
 NodeTest
 nodeTest
 )
@@ -143,6 +146,8 @@ nodeTest
 nodeTest
 ;
 }
+@
+Override
 public
 NodePointer
 getCurrentNodePointer
@@ -153,6 +158,8 @@ return
 currentNodePointer
 ;
 }
+@
+Override
 public
 void
 reset
@@ -174,10 +181,13 @@ reset
 )
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )
@@ -222,6 +232,8 @@ return
 true
 ;
 }
+@
+Override
 public
 boolean
 nextNode
@@ -263,6 +275,7 @@ return
 false
 ;
 }
+final
 NodeNameTest
 nodeNameTest
 =
@@ -271,6 +284,7 @@ NodeNameTest
 )
 nodeTest
 ;
+final
 QName
 testName
 =

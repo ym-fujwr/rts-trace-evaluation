@@ -1,49 +1,49 @@
 diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
-index cce187db..4605ce10 100644
+index 4605ce10..cce187db 100644
 --- a/.github/workflows/codeql-analysis.yml
 +++ b/.github/workflows/codeql-analysis.yml
 @@ -60 +60 @@ jobs:
--      uses: github/codeql-action/init@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
-+      uses: github/codeql-action/init@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
+-      uses: github/codeql-action/init@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
++      uses: github/codeql-action/init@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
 @@ -71 +71 @@ jobs:
--      uses: github/codeql-action/autobuild@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
-+      uses: github/codeql-action/autobuild@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
+-      uses: github/codeql-action/autobuild@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
++      uses: github/codeql-action/autobuild@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
 @@ -85 +85 @@ jobs:
--      uses: github/codeql-action/analyze@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
-+      uses: github/codeql-action/analyze@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
+-      uses: github/codeql-action/analyze@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
++      uses: github/codeql-action/analyze@a09933a12a80f87b87005513f0abb1494c27a716 # v2.21.4
 diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
-index a55c9bea..d984e1f3 100644
+index d984e1f3..a55c9bea 100644
 --- a/.github/workflows/coverage.yml
 +++ b/.github/workflows/coverage.yml
 @@ -42 +42 @@ jobs:
--      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
-+      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
+-      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
++      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
 diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index 7cf2ac3b..75fdc0b1 100644
+index 75fdc0b1..7cf2ac3b 100644
 --- a/.github/workflows/maven.yml
 +++ b/.github/workflows/maven.yml
 @@ -58 +58 @@ jobs:
--      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
-+      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
+-      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
++      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
 diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
-index d62d866b..d6fb0340 100644
+index d6fb0340..d62d866b 100644
 --- a/.github/workflows/scorecards-analysis.yml
 +++ b/.github/workflows/scorecards-analysis.yml
 @@ -66 +66 @@ jobs:
--        uses: github/codeql-action/upload-sarif@a09933a12a80f87b87005513f0abb1494c27a716    # 2.21.4
-+        uses: github/codeql-action/upload-sarif@46ed16ded91731b2df79a2893d3aea8e9f03b5c4    # 2.20.3
+-        uses: github/codeql-action/upload-sarif@46ed16ded91731b2df79a2893d3aea8e9f03b5c4    # 2.20.3
++        uses: github/codeql-action/upload-sarif@a09933a12a80f87b87005513f0abb1494c27a716    # 2.21.4
 diff --git a/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java b/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
-index f6dc4e85..eb7575c2 100644
+index eb7575c2..f6dc4e85 100644
 --- a/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
 +++ b/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
 @@ -157 +157 @@ public void tearDown() {
--      if (e.getCause() instanceof RuntimeException) {
-+      if( e.getCause() instanceof RuntimeException ) {
+-      if( e.getCause() instanceof RuntimeException ) {
++      if (e.getCause() instanceof RuntimeException) {
 @@ -183 +183 @@ public void tearDown() {
--      if ( EXAMPLE_CLASS_NAME.equals(name) ) {
-+      if( EXAMPLE_CLASS_NAME.equals(name) ) {
+-      if( EXAMPLE_CLASS_NAME.equals(name) ) {
++      if ( EXAMPLE_CLASS_NAME.equals(name) ) {
 @@ -186,2 +186,2 @@ public void tearDown() {
--      else if ( TEST_CASE_CLASS_NAME.equals(name) ) {
--        if ( testCaseClass == null ) {
-+      else if( TEST_CASE_CLASS_NAME.equals(name) ) {
-+        if( testCaseClass == null ) {
+-      else if( TEST_CASE_CLASS_NAME.equals(name) ) {
+-        if( testCaseClass == null ) {
++      else if ( TEST_CASE_CLASS_NAME.equals(name) ) {
++        if ( testCaseClass == null ) {

@@ -1,23 +1,23 @@
 diff --git a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
-index 91a45faa..482de3d8 100644
+index 482de3d8..91a45faa 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
 @@ -381 +381 @@ public class BasicTypeConverter implements TypeConverter {
--        final String className = type.getName();
-+        final String classname = type.getName();
+-        final String classname = type.getName();
++        final String className = type.getName();
 @@ -383 +383 @@ public class BasicTypeConverter implements TypeConverter {
--        if ("java.util.concurrent.atomic.AtomicInteger".equals(className)) {
-+        if ("java.util.concurrent.atomic.AtomicInteger".equals(classname)) {
+-        if ("java.util.concurrent.atomic.AtomicInteger".equals(classname)) {
++        if ("java.util.concurrent.atomic.AtomicInteger".equals(className)) {
 @@ -386 +386 @@ public class BasicTypeConverter implements TypeConverter {
--        if ("java.util.concurrent.atomic.AtomicLong".equals(className)) {
-+        if ("java.util.concurrent.atomic.AtomicLong".equals(classname)) {
+-        if ("java.util.concurrent.atomic.AtomicLong".equals(classname)) {
++        if ("java.util.concurrent.atomic.AtomicLong".equals(className)) {
 @@ -398 +398 @@ public class BasicTypeConverter implements TypeConverter {
--                throw new JXPathTypeConversionException(className, e);
-+                throw new JXPathTypeConversionException(classname, e);
+-                throw new JXPathTypeConversionException(classname, e);
++                throw new JXPathTypeConversionException(className, e);
 diff --git a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
-index 9d55d9c6..c1d929a2 100644
+index c1d929a2..9d55d9c6 100644
 --- a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
 +++ b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
 @@ -76 +76 @@ public class DocumentContainer extends XMLParser2 implements Container {
--     * @param parserClassName parser class name
-+     * @param parserClassName parser classname
+-     * @param parserClassName parser classname
++     * @param parserClassName parser class name

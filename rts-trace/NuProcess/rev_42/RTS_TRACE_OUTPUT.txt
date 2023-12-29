@@ -31,7 +31,7 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running com.zaxxer.nuprocess.CatTest
-[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 39.47 s -- in com.zaxxer.nuprocess.CatTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 39.23 s -- in com.zaxxer.nuprocess.CatTest
 [INFO] Running com.zaxxer.nuprocess.DirectWriteTest
 Writing: 128K of data, waiting for checksum -65536
 Reading.  Current checksum -32768
@@ -41,13 +41,13 @@ Reading.  Current checksum -65536
 Checksums matched, exiting.
 Writing: This is a test
 Read: This is a test
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.906 s -- in com.zaxxer.nuprocess.DirectWriteTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.618 s -- in com.zaxxer.nuprocess.DirectWriteTest
 [INFO] Running com.zaxxer.nuprocess.EnvironmentTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.zaxxer.nuprocess.EnvironmentTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.zaxxer.nuprocess.EnvironmentTest
 [INFO] Running com.zaxxer.nuprocess.FastExitingProcessTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.55 s -- in com.zaxxer.nuprocess.FastExitingProcessTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.71 s -- in com.zaxxer.nuprocess.FastExitingProcessTest
 [INFO] Running com.zaxxer.nuprocess.InterruptTest
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.864 s -- in com.zaxxer.nuprocess.InterruptTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.492 s -- in com.zaxxer.nuprocess.InterruptTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -56,6 +56,6 @@ Read: This is a test
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  01:09 min
-[INFO] Finished at: 2023-12-26T16:04:53+09:00
+[INFO] Total time:  01:05 min
+[INFO] Finished at: 2023-12-28T00:32:26+09:00
 [INFO] ------------------------------------------------------------------------

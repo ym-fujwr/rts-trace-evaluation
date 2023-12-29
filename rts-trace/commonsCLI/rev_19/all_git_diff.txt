@@ -1,101 +1,101 @@
 diff --git a/.asf.yaml b/.asf.yaml
-index a1019a85..c5ed8174 100644
+index c5ed8174..a1019a85 100644
 --- a/.asf.yaml
 +++ b/.asf.yaml
-@@ -1,15 +0,0 @@
--# Licensed to the Apache Software Foundation (ASF) under one or more
--# contributor license agreements.  See the NOTICE file distributed with
--# this work for additional information regarding copyright ownership.
--# The ASF licenses this file to You under the Apache License, Version 2.0
--# (the "License"); you may not use this file except in compliance with
--# the License.  You may obtain a copy of the License at
--#
--#      http://www.apache.org/licenses/LICENSE-2.0
--#
--# Unless required by applicable law or agreed to in writing, software
--# distributed under the License is distributed on an "AS IS" BASIS,
--# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
--# See the License for the specific language governing permissions and
--# limitations under the License.
--
-@@ -18,10 +3 @@ github:
--  homepage: http://commons.apache.org/cli/
--
--notifications:
--    commits:      commits@commons.apache.org
--    issues:       issues@commons.apache.org
--    pullrequests: issues@commons.apache.org
--    jira_options: link label
--    jobs:         notifications@commons.apache.org
--    issues_bot_dependabot: notifications@commons.apache.org
--    pullrequests_bot_dependabot: notifications@commons.apache.org
-+  homepage: http://commons.apache.org/proper/commons-cli/
+@@ -0,0 +1,15 @@
++# Licensed to the Apache Software Foundation (ASF) under one or more
++# contributor license agreements.  See the NOTICE file distributed with
++# this work for additional information regarding copyright ownership.
++# The ASF licenses this file to You under the Apache License, Version 2.0
++# (the "License"); you may not use this file except in compliance with
++# the License.  You may obtain a copy of the License at
++#
++#      http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
+@@ -3 +18,10 @@ github:
+-  homepage: http://commons.apache.org/proper/commons-cli/
++  homepage: http://commons.apache.org/cli/
++
++notifications:
++    commits:      commits@commons.apache.org
++    issues:       issues@commons.apache.org
++    pullrequests: issues@commons.apache.org
++    jira_options: link label
++    jobs:         notifications@commons.apache.org
++    issues_bot_dependabot: notifications@commons.apache.org
++    pullrequests_bot_dependabot: notifications@commons.apache.org
 diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
-index 92d97b0e..f737294e 100644
+index f737294e..92d97b0e 100644
 --- a/.github/workflows/codeql-analysis.yml
 +++ b/.github/workflows/codeql-analysis.yml
 @@ -51 +51 @@ jobs:
--    - uses: actions/cache@v3.2.4
-+    - uses: actions/cache@v3.2.3
+-    - uses: actions/cache@v3.2.3
++    - uses: actions/cache@v3.2.4
 diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
-index a51504d9..2f1d4f0d 100644
+index 2f1d4f0d..a51504d9 100644
 --- a/.github/workflows/coverage.yml
 +++ b/.github/workflows/coverage.yml
 @@ -35 +35 @@ jobs:
--    - uses: actions/cache@v3.2.4
-+    - uses: actions/cache@v3.2.3
+-    - uses: actions/cache@v3.2.3
++    - uses: actions/cache@v3.2.4
 diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index ad305237..02e0c60a 100644
+index 02e0c60a..ad305237 100644
 --- a/.github/workflows/maven.yml
 +++ b/.github/workflows/maven.yml
 @@ -40 +40 @@ jobs:
--    - uses: actions/cache@v3.2.4
-+    - uses: actions/cache@v3.2.3
+-    - uses: actions/cache@v3.2.3
++    - uses: actions/cache@v3.2.4
 diff --git a/pom.xml b/pom.xml
-index af71c17d..c516051c 100644
+index c516051c..af71c17d 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -214,0 +215,4 @@
-+    <commons.checkstyle.impl.version>9.3</commons.checkstyle.impl.version>
-+    <commons.javadoc.java.link>${commons.javadoc7.java.link}</commons.javadoc.java.link>
-+    <spotbugs.plugin.version>4.7.3.0</spotbugs.plugin.version>
-+    <spotbugs.impl.version>4.7.3</spotbugs.impl.version>
-@@ -238,0 +243 @@
-+          <version>${commons.checkstyle-plugin.version}</version>
-@@ -244,0 +250,7 @@
-+          <dependencies>
-+            <dependency>
-+              <groupId>com.puppycrawl.tools</groupId>
-+              <artifactId>checkstyle</artifactId>
-+              <version>${commons.checkstyle.impl.version}</version>
-+            </dependency>
-+          </dependencies>
-@@ -248,0 +261,8 @@
-+        <version>${spotbugs.plugin.version}</version>
-+        <dependencies>
-+          <dependency>
-+            <groupId>com.github.spotbugs</groupId>
-+            <artifactId>spotbugs</artifactId>
-+            <version>${spotbugs.impl.version}</version>
-+         </dependency>
-+        </dependencies>
-@@ -282,0 +303,12 @@
-+      <!--
-+        Fix for https://bugs.openjdk.java.net/browse/JDK-8212233
-+        which is addressed in maven-javadoc-plugin:3.1.0, see https://issues.apache.org/jira/browse/MJAVADOC-562
-+      -->
-+      <plugin>
-+        <groupId>org.apache.maven.plugins</groupId>
-+        <artifactId>maven-javadoc-plugin</artifactId>
-+        <version>${commons.javadoc.version}</version>
-+        <configuration>
-+          <source>7</source>
-+        </configuration>
-+      </plugin>
+@@ -215,4 +214,0 @@
+-    <commons.checkstyle.impl.version>9.3</commons.checkstyle.impl.version>
+-    <commons.javadoc.java.link>${commons.javadoc7.java.link}</commons.javadoc.java.link>
+-    <spotbugs.plugin.version>4.7.3.0</spotbugs.plugin.version>
+-    <spotbugs.impl.version>4.7.3</spotbugs.impl.version>
+@@ -243 +238,0 @@
+-          <version>${commons.checkstyle-plugin.version}</version>
+@@ -250,7 +244,0 @@
+-          <dependencies>
+-            <dependency>
+-              <groupId>com.puppycrawl.tools</groupId>
+-              <artifactId>checkstyle</artifactId>
+-              <version>${commons.checkstyle.impl.version}</version>
+-            </dependency>
+-          </dependencies>
+@@ -261,8 +248,0 @@
+-        <version>${spotbugs.plugin.version}</version>
+-        <dependencies>
+-          <dependency>
+-            <groupId>com.github.spotbugs</groupId>
+-            <artifactId>spotbugs</artifactId>
+-            <version>${spotbugs.impl.version}</version>
+-         </dependency>
+-        </dependencies>
+@@ -303,12 +282,0 @@
+-      <!--
+-        Fix for https://bugs.openjdk.java.net/browse/JDK-8212233
+-        which is addressed in maven-javadoc-plugin:3.1.0, see https://issues.apache.org/jira/browse/MJAVADOC-562
+-      -->
+-      <plugin>
+-        <groupId>org.apache.maven.plugins</groupId>
+-        <artifactId>maven-javadoc-plugin</artifactId>
+-        <version>${commons.javadoc.version}</version>
+-        <configuration>
+-          <source>7</source>
+-        </configuration>
+-      </plugin>
 diff --git a/src/main/java/org/apache/commons/cli/HelpFormatter.java b/src/main/java/org/apache/commons/cli/HelpFormatter.java
-index b8ef6704..911e3f87 100644
+index 911e3f87..b8ef6704 100644
 --- a/src/main/java/org/apache/commons/cli/HelpFormatter.java
 +++ b/src/main/java/org/apache/commons/cli/HelpFormatter.java
 @@ -711 +711 @@ public class HelpFormatter {
--            max = Math.max(optBuf.length(), max);
-+            max = optBuf.length() > max ? optBuf.length() : max;
+-            max = optBuf.length() > max ? optBuf.length() : max;
++            max = Math.max(optBuf.length(), max);

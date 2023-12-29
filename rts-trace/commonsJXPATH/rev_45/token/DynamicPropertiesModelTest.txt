@@ -84,6 +84,8 @@ private
 JXPathContext
 context
 ;
+@
+Override
 public
 void
 setUp
@@ -321,8 +323,9 @@ context
 ,
 "map/Key1"
 ,
-new
 Integer
+.
+valueOf
 (
 6
 )
@@ -346,14 +349,16 @@ Integer
 [
 ]
 {
-new
 Integer
+.
+valueOf
 (
 7
 )
 ,
-new
 Integer
+.
+valueOf
 (
 8
 )
@@ -366,8 +371,9 @@ context
 ,
 "map/Key1[1]"
 ,
-new
 Integer
+.
+valueOf
 (
 9
 )
@@ -386,8 +392,9 @@ context
 ,
 "map/Key4"
 ,
-new
 Integer
+.
+valueOf
 (
 7
 )
@@ -408,8 +415,9 @@ context
 ,
 "//map/Key5"
 ,
-new
 Integer
+.
+valueOf
 (
 8
 )
@@ -422,6 +430,7 @@ testCreatePath
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -459,6 +468,7 @@ testCreatePathAndSetValue
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -496,6 +506,7 @@ testCreatePathCreateBean
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -521,8 +532,9 @@ context
 ,
 "/map[@name='TestKey2']/int"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -537,6 +549,7 @@ testCreatePathAndSetValueCreateBean
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -562,8 +575,9 @@ context
 ,
 "/map[@name='TestKey2']/int"
 ,
-new
 Integer
+.
+valueOf
 (
 4
 )
@@ -578,6 +592,7 @@ testCreatePathCollectionElement
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -626,6 +641,7 @@ testCreatePathAndSetValueCollectionElement
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -674,6 +690,7 @@ testCreatePathNewCollectionElement
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -699,8 +716,9 @@ context
 ,
 "/map/TestKey4[1]/int"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -725,8 +743,9 @@ context
 ,
 "/map/TestKey4[1]/int"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -741,6 +760,7 @@ testCreatePathAndSetValueNewCollectionElement
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -766,8 +786,9 @@ context
 ,
 "/map/TestKey4[1]/int"
 ,
-new
 Integer
+.
+valueOf
 (
 2
 )
@@ -792,8 +813,9 @@ context
 ,
 "/map/TestKey4[1]/int"
 ,
-new
 Integer
+.
+valueOf
 (
 3
 )
@@ -808,6 +830,7 @@ testRemovePath
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -861,6 +884,7 @@ testRemovePathArrayElement
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -922,6 +946,7 @@ testCollectionOfMaps
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -934,6 +959,7 @@ getContextBean
 (
 )
 ;
+final
 List
 list
 =
@@ -1060,6 +1086,7 @@ testMapOfMaps
 (
 )
 {
+final
 TestBean
 bean
 =
@@ -1072,6 +1099,7 @@ getContextBean
 (
 )
 ;
+final
 Map
 fruit
 =
@@ -1098,6 +1126,7 @@ put
 "red"
 )
 ;
+final
 Map
 meat
 =

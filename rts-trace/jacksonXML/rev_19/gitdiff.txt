@@ -1,16 +1,16 @@
 diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/StaxUtil.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/StaxUtil.java
-index fc05ba2e0..d53866225 100644
+index d53866225..fc05ba2e0 100644
 --- a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/StaxUtil.java
 +++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/StaxUtil.java
 @@ -129 +129 @@ public class StaxUtil
--        } catch (FactoryConfigurationError|NoSuchMethodError e) {
-+        } catch (FactoryConfigurationError e) {
+-        } catch (FactoryConfigurationError e) {
++        } catch (FactoryConfigurationError|NoSuchMethodError e) {
 @@ -131 +131 @@ public class StaxUtil
--            return XMLInputFactory.newInstance();
-+            return XMLInputFactory.newFactory();
+-            return XMLInputFactory.newFactory();
++            return XMLInputFactory.newInstance();
 @@ -142 +142 @@ public class StaxUtil
--        } catch (FactoryConfigurationError|NoSuchMethodError e) {
-+        } catch (FactoryConfigurationError e) {
+-        } catch (FactoryConfigurationError e) {
++        } catch (FactoryConfigurationError|NoSuchMethodError e) {
 @@ -144 +144 @@ public class StaxUtil
--            return XMLOutputFactory.newInstance();
-+            return XMLOutputFactory.newFactory();
+-            return XMLOutputFactory.newFactory();
++            return XMLOutputFactory.newInstance();

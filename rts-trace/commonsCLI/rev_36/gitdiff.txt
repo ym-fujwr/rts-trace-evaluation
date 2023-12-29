@@ -1,21 +1,21 @@
 diff --git a/src/main/java/org/apache/commons/cli/DefaultParser.java b/src/main/java/org/apache/commons/cli/DefaultParser.java
-index 8a027094..8b69a766 100644
+index 8b69a766..8a027094 100644
 --- a/src/main/java/org/apache/commons/cli/DefaultParser.java
 +++ b/src/main/java/org/apache/commons/cli/DefaultParser.java
 @@ -583 +583 @@ public class DefaultParser implements CommandLineParser {
--        final String opt = token.isEmpty() ? null : token.substring(0, 1);
-+        final String opt = token.substring(0, 1);
+-        final String opt = token.substring(0, 1);
++        final String opt = token.isEmpty() ? null : token.substring(0, 1);
 diff --git a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
-index 36affcc7..534939a9 100644
+index 534939a9..36affcc7 100644
 --- a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
 +++ b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
-@@ -1024,8 +1024 @@ public abstract class AbstractParserTestCase {
--    
--    @Test(expected = UnrecognizedOptionException.class)
--    public void testAmbiguousArgParsing() throws Exception {
--        final String[] args = {"-=-"};
--        final Options options = new Options();
--        
--        final CommandLine cl = parser.parse(options, args);
--    }
-+
+@@ -1024 +1024,8 @@ public abstract class AbstractParserTestCase {
+-
++    
++    @Test(expected = UnrecognizedOptionException.class)
++    public void testAmbiguousArgParsing() throws Exception {
++        final String[] args = {"-=-"};
++        final Options options = new Options();
++        
++        final CommandLine cl = parser.parse(options, args);
++    }

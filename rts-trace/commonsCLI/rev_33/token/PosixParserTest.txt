@@ -32,7 +32,7 @@ public
 class
 PosixParserTest
 extends
-ParserTestCase
+AbstractParserTestCase
 {
 @
 Override

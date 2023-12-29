@@ -1,1 +1,1 @@
-org.apache.commons.net.io.ToNetASCIIInputStreamTest#testToNetASCIIInputStream1,org.apache.commons.net.nntp.TestThreader#testEmptyArray,org.apache.commons.net.nntp.TestThreader#testEmptyIterable,org.apache.commons.net.nntp.TestThreader#testNullArray,org.apache.commons.net.ntp.TestNtpPacket#testCreateFromBadPacket
+org.apache.commons.net.ntp.TestNtpPacket

@@ -154,12 +154,15 @@ private
 JXPathContext
 context
 ;
+@
+Override
 public
 void
 setUp
 (
 )
 {
+final
 TestMixedModelBean
 bean
 =
@@ -196,6 +199,7 @@ Locale
 US
 )
 ;
+final
 Variables
 vars
 =
@@ -308,6 +312,7 @@ TestNull
 )
 )
 ;
+final
 int
 [
 ]
@@ -415,8 +420,9 @@ context
 ,
 "$bean/int"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -545,8 +551,9 @@ context
 ,
 "bean/int"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -675,8 +682,9 @@ context
 ,
 "map/bean/int"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -809,8 +817,9 @@ context
 ,
 "list[2]/int"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -972,6 +981,7 @@ null
 )
 )
 ;
+final
 JXPathContext
 ctx
 =
@@ -1075,6 +1085,7 @@ TestMixedModelFactory
 )
 )
 ;
+final
 TestBean
 bean
 =
@@ -1100,8 +1111,9 @@ context
 ,
 "/map[@name='TestKey5']/nestedBean/int"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -1122,8 +1134,9 @@ context
 ,
 "/map[@name='TestKey5']/beans[2]/int"
 ,
-new
 Integer
+.
+valueOf
 (
 1
 )
@@ -1138,6 +1151,7 @@ testIterateArray
 (
 )
 {
+final
 Map
 map
 =
@@ -1165,6 +1179,7 @@ String
 }
 )
 ;
+final
 JXPathContext
 context
 =
@@ -1198,6 +1213,7 @@ testIteratePointersArray
 (
 )
 {
+final
 Map
 map
 =
@@ -1225,6 +1241,7 @@ String
 }
 )
 ;
+final
 JXPathContext
 context
 =
@@ -1235,6 +1252,7 @@ newContext
 map
 )
 ;
+final
 Iterator
 it
 =
@@ -1245,6 +1263,7 @@ iteratePointers
 "foo"
 )
 ;
+final
 List
 actual
 =
@@ -1262,6 +1281,7 @@ hasNext
 )
 )
 {
+final
 Pointer
 ptr
 =
@@ -1318,6 +1338,7 @@ testIteratePointersArrayElementWithVariable
 (
 )
 {
+final
 Map
 map
 =
@@ -1345,6 +1366,7 @@ String
 }
 )
 ;
+final
 JXPathContext
 context
 =
@@ -1365,13 +1387,15 @@ declareVariable
 (
 "x"
 ,
-new
 Integer
+.
+valueOf
 (
 2
 )
 )
 ;
+final
 Iterator
 it
 =
@@ -1382,6 +1406,7 @@ iteratePointers
 "foo[$x]"
 )
 ;
+final
 List
 actual
 =
@@ -1399,6 +1424,7 @@ hasNext
 )
 )
 {
+final
 Pointer
 ptr
 =
@@ -1451,6 +1477,7 @@ testIterateVector
 (
 )
 {
+final
 Map
 map
 =
@@ -1459,6 +1486,7 @@ HashMap
 (
 )
 ;
+final
 Vector
 vec
 =
@@ -1496,6 +1524,7 @@ put
 vec
 )
 ;
+final
 JXPathContext
 context
 =
@@ -1562,6 +1591,7 @@ null
 }
 catch
 (
+final
 Throwable
 t
 )
@@ -1632,8 +1662,9 @@ context
 ,
 "$matrix[1]/.[1]"
 ,
-new
 Integer
+.
+valueOf
 (
 3
 )
@@ -1647,8 +1678,9 @@ setValue
 (
 "$matrix[1]/.[1]"
 ,
-new
 Integer
+.
+valueOf
 (
 2
 )
@@ -1660,8 +1692,9 @@ context
 ,
 "matrix[1]/.[1]"
 ,
-new
 Integer
+.
+valueOf
 (
 3
 )
@@ -1684,8 +1717,9 @@ context
 ,
 "matrix[1]/.[1]"
 ,
-new
 Integer
+.
+valueOf
 (
 2
 )
@@ -1714,8 +1748,9 @@ context
 ,
 "$wholebean/matrix[1]/.[1]"
 ,
-new
 Integer
+.
+valueOf
 (
 2
 )
@@ -1742,6 +1777,7 @@ setValue
 }
 catch
 (
+final
 Exception
 e
 )
@@ -1776,6 +1812,7 @@ setValue
 }
 catch
 (
+final
 Exception
 e
 )
@@ -1814,8 +1851,9 @@ context
 ,
 "/matrix[1]/.[1]"
 ,
-new
 Integer
+.
+valueOf
 (
 4
 )
@@ -1830,6 +1868,7 @@ testCollectionPointer
 (
 )
 {
+final
 List
 list
 =
@@ -1838,6 +1877,7 @@ ArrayList
 (
 )
 ;
+final
 Map
 map
 =
@@ -1864,6 +1904,7 @@ put
 "SomeStringTwo"
 )
 ;
+final
 Map
 map2
 =
@@ -1906,6 +1947,7 @@ add
 map
 )
 ;
+final
 List
 list2
 =
@@ -1977,8 +2019,9 @@ getValue
 ;
 assertEquals
 (
-new
 Integer
+.
+valueOf
 (
 3
 )
@@ -1993,8 +2036,9 @@ getValue
 ;
 assertEquals
 (
-new
 Double
+.
+valueOf
 (
 6.0
 )
@@ -2009,8 +2053,9 @@ getValue
 ;
 assertEquals
 (
-new
 Double
+.
+valueOf
 (
 3.0
 )

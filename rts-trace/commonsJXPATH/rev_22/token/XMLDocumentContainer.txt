@@ -65,12 +65,22 @@ xml
 .
 DocumentContainer
 ;
+@
+Deprecated
 public
 class
 XMLDocumentContainer
 implements
 Container
 {
+private
+static
+final
+long
+serialVersionUID
+=
+1L
+;
 private
 DocumentContainer
 delegate
@@ -90,6 +100,7 @@ source
 public
 XMLDocumentContainer
 (
+final
 URL
 xmlURL
 )
@@ -112,6 +123,7 @@ xmlURL
 public
 XMLDocumentContainer
 (
+final
 Source
 source
 )
@@ -138,6 +150,8 @@ RuntimeException
 ;
 }
 }
+@
+Override
 public
 Object
 getValue
@@ -160,6 +174,7 @@ source
 null
 )
 {
+final
 DOMResult
 result
 =
@@ -168,6 +183,7 @@ DOMResult
 (
 )
 ;
+final
 Transformer
 trans
 =
@@ -213,6 +229,7 @@ getValue
 }
 catch
 (
+final
 Exception
 ex
 )
@@ -234,7 +251,6 @@ toString
 (
 )
 :
-(
 source
 !=
 null
@@ -247,7 +263,6 @@ getSystemId
 :
 "<<undefined source>>"
 )
-)
 ,
 ex
 )
@@ -258,10 +273,13 @@ return
 document
 ;
 }
+@
+Override
 public
 void
 setValue
 (
+final
 Object
 value
 )

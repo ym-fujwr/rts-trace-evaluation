@@ -1,36 +1,36 @@
 diff --git a/src/main/java/com/zaxxer/nuprocess/osx/OsxProcess.java b/src/main/java/com/zaxxer/nuprocess/osx/OsxProcess.java
-index 3430d43..939e8ab 100644
+index 939e8ab..3430d43 100644
 --- a/src/main/java/com/zaxxer/nuprocess/osx/OsxProcess.java
 +++ b/src/main/java/com/zaxxer/nuprocess/osx/OsxProcess.java
 @@ -191 +191 @@ class OsxProcess extends BasePosixProcess
--      return new Memory(Native.POINTER_SIZE);
-+      return new Memory(Pointer.SIZE);
+-      return new Memory(Pointer.SIZE);
++      return new Memory(Native.POINTER_SIZE);
 @@ -196 +196 @@ class OsxProcess extends BasePosixProcess
--      return new Memory(Native.POINTER_SIZE);
-+      return new Memory(Pointer.SIZE);
+-      return new Memory(Pointer.SIZE);
++      return new Memory(Native.POINTER_SIZE);
 diff --git a/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java b/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java
-index 380f231..16b6f06 100644
+index 16b6f06..380f231 100644
 --- a/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java
 +++ b/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java
-@@ -25 +25,5 @@ import java.util.List;
--import com.sun.jna.*;
-+import com.sun.jna.FromNativeContext;
-+import com.sun.jna.IntegerType;
-+import com.sun.jna.Pointer;
-+import com.sun.jna.PointerType;
-+import com.sun.jna.Structure;
-@@ -61 +65 @@ public interface NuWinNT
--   HANDLE INVALID_HANDLE_VALUE = new HANDLE(Pointer.createConstant(Native.POINTER_SIZE == 8 ? -1 : 0xFFFFFFFFL));
-+   HANDLE INVALID_HANDLE_VALUE = new HANDLE(Pointer.createConstant(Pointer.SIZE == 8 ? -1 : 0xFFFFFFFFL));
-@@ -124 +128 @@ public interface NuWinNT
--         super(Native.POINTER_SIZE, value, true);
-+         super(Pointer.SIZE, value, true);
-@@ -142 +146 @@ public interface NuWinNT
--         super(Native.POINTER_SIZE);
-+         super(Pointer.SIZE);
-@@ -148 +152 @@ public interface NuWinNT
--         if (Native.POINTER_SIZE == 4) {
-+         if (Pointer.SIZE == 4) {
-@@ -158 +162 @@ public interface NuWinNT
--         return new ULONG_PTR(Native.POINTER_SIZE == 4 ? getPointer().getInt(0) : getPointer().getLong(0));
-+         return new ULONG_PTR(Pointer.SIZE == 4 ? getPointer().getInt(0) : getPointer().getLong(0));
+@@ -25,5 +25 @@ import java.util.List;
+-import com.sun.jna.FromNativeContext;
+-import com.sun.jna.IntegerType;
+-import com.sun.jna.Pointer;
+-import com.sun.jna.PointerType;
+-import com.sun.jna.Structure;
++import com.sun.jna.*;
+@@ -65 +61 @@ public interface NuWinNT
+-   HANDLE INVALID_HANDLE_VALUE = new HANDLE(Pointer.createConstant(Pointer.SIZE == 8 ? -1 : 0xFFFFFFFFL));
++   HANDLE INVALID_HANDLE_VALUE = new HANDLE(Pointer.createConstant(Native.POINTER_SIZE == 8 ? -1 : 0xFFFFFFFFL));
+@@ -128 +124 @@ public interface NuWinNT
+-         super(Pointer.SIZE, value, true);
++         super(Native.POINTER_SIZE, value, true);
+@@ -146 +142 @@ public interface NuWinNT
+-         super(Pointer.SIZE);
++         super(Native.POINTER_SIZE);
+@@ -152 +148 @@ public interface NuWinNT
+-         if (Pointer.SIZE == 4) {
++         if (Native.POINTER_SIZE == 4) {
+@@ -162 +158 @@ public interface NuWinNT
+-         return new ULONG_PTR(Pointer.SIZE == 4 ? getPointer().getInt(0) : getPointer().getLong(0));
++         return new ULONG_PTR(Native.POINTER_SIZE == 4 ? getPointer().getInt(0) : getPointer().getLong(0));

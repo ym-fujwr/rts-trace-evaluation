@@ -1,2 +1,2 @@
 com.zaxxer.nuprocess.CatTest
-com.zaxxer.nuprocess.InterruptTest
+com.zaxxer.nuprocess.linux.EpollEventTest

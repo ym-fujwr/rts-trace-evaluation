@@ -87,21 +87,28 @@ implements
 Container
 {
 private
+static
+final
+long
+serialVersionUID
+=
+1L
+;
+private
+final
 String
 [
 ]
 array
 =
-new
-String
-[
-]
 {
 "foo"
 ,
 "bar"
 }
 ;
+@
+Override
 public
 Object
 getValue
@@ -112,10 +119,13 @@ return
 array
 ;
 }
+@
+Override
 public
 void
 setValue
 (
+final
 Object
 value
 )
@@ -135,6 +145,15 @@ implements
 Container
 {
 private
+static
+final
+long
+serialVersionUID
+=
+1L
+;
+private
+final
 List
 list
 ;
@@ -165,6 +184,8 @@ add
 )
 ;
 }
+@
+Override
 public
 Object
 getValue
@@ -175,10 +196,13 @@ return
 list
 ;
 }
+@
+Override
 public
 void
 setValue
 (
+final
 Object
 value
 )
@@ -196,6 +220,7 @@ class
 Bean
 {
 private
+final
 ListContainer
 container
 =
@@ -221,6 +246,7 @@ testContainerVariableWithCollection
 (
 )
 {
+final
 ArrayContainer
 container
 =
@@ -229,6 +255,7 @@ ArrayContainer
 (
 )
 ;
+final
 String
 [
 ]
@@ -245,6 +272,7 @@ getValue
 (
 )
 ;
+final
 JXPathContext
 context
 =
@@ -329,6 +357,7 @@ testContainerPropertyWithCollection
 (
 )
 {
+final
 Bean
 bean
 =
@@ -337,6 +366,7 @@ Bean
 (
 )
 ;
+final
 List
 list
 =
@@ -353,6 +383,7 @@ getValue
 (
 )
 ;
+final
 JXPathContext
 context
 =
@@ -436,6 +467,7 @@ testContainerMapWithCollection
 (
 )
 {
+final
 ListContainer
 container
 =
@@ -444,6 +476,7 @@ ListContainer
 (
 )
 ;
+final
 List
 list
 =
@@ -456,6 +489,7 @@ getValue
 (
 )
 ;
+final
 Map
 map
 =
@@ -473,6 +507,7 @@ put
 container
 )
 ;
+final
 JXPathContext
 context
 =
@@ -556,6 +591,7 @@ testContainerRootWithCollection
 (
 )
 {
+final
 ArrayContainer
 container
 =
@@ -564,6 +600,7 @@ ArrayContainer
 (
 )
 ;
+final
 String
 [
 ]
@@ -580,6 +617,7 @@ getValue
 (
 )
 ;
+final
 JXPathContext
 context
 =

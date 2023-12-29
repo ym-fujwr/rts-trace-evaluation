@@ -77,6 +77,13 @@ util
 List
 ;
 import
+java
+.
+util
+.
+Map
+;
+import
 org
 .
 adoptopenjdk
@@ -307,6 +314,14 @@ String
 >
 vmOptions
 ,
+Map
+<
+String
+,
+String
+>
+environment
+,
 ILogListener
 logListener
 )
@@ -387,6 +402,8 @@ return
 runCommands
 (
 commands
+,
+environment
 ,
 logListener
 )

@@ -1,21 +1,21 @@
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index cbc70e07e..cfec29f73 100644
+index cfec29f73..cbc70e07e 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
-@@ -80,3 +79,0 @@ The <action> type attribute can be add,update,fix,remove.
--      <action issue="NET-642" type="fix" dev="ggregory" due-to="Yani Mihaylov, Gary Gregory">
--        FTPSClient execPROT removes proxy settings #90.
--      </action>
+@@ -79,0 +80,3 @@ The <action> type attribute can be add,update,fix,remove.
++      <action issue="NET-642" type="fix" dev="ggregory" due-to="Yani Mihaylov, Gary Gregory">
++        FTPSClient execPROT removes proxy settings #90.
++      </action>
 diff --git a/src/main/java/org/apache/commons/net/ftp/FTPClient.java b/src/main/java/org/apache/commons/net/ftp/FTPClient.java
-index 5edb8ef62..2d2d726f3 100644
+index 2d2d726f3..5edb8ef62 100644
 --- a/src/main/java/org/apache/commons/net/ftp/FTPClient.java
 +++ b/src/main/java/org/apache/commons/net/ftp/FTPClient.java
 @@ -1708 +1708 @@ public class FTPClient extends FTP implements Configurable {
--    int getActivePort()
-+    protected int getActivePort()
+-    protected int getActivePort()
++    int getActivePort()
 @@ -1874 +1874 @@ public class FTPClient extends FTP implements Configurable {
--    InetAddress getHostAddress()
-+    protected InetAddress getHostAddress()
+-    protected InetAddress getHostAddress()
++    InetAddress getHostAddress()
 @@ -1995 +1995 @@ public class FTPClient extends FTP implements Configurable {
--    InetAddress getReportHostAddress() {
-+    protected InetAddress getReportHostAddress() {
+-    protected InetAddress getReportHostAddress() {
++    InetAddress getReportHostAddress() {

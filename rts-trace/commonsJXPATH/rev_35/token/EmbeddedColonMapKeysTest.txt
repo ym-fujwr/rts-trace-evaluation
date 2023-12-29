@@ -50,6 +50,8 @@ private
 JXPathContext
 context
 ;
+@
+Override
 protected
 void
 setUp
@@ -64,6 +66,7 @@ setUp
 (
 )
 ;
+final
 HashMap
 m
 =

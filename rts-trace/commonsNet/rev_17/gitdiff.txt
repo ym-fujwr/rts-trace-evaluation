@@ -1,5 +1,5 @@
 diff --git a/src/main/java/org/apache/commons/net/examples/ntp/NTPClient.java b/src/main/java/org/apache/commons/net/examples/ntp/NTPClient.java
-index 2c753c43b..8b2ff648a 100644
+index 8b2ff648a..2c753c43b 100644
 --- a/src/main/java/org/apache/commons/net/examples/ntp/NTPClient.java
 +++ b/src/main/java/org/apache/commons/net/examples/ntp/NTPClient.java
 @@ -1,181 +1,181 @@
@@ -366,7 +366,7 @@ index 2c753c43b..8b2ff648a 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/examples/ntp/TimeClient.java b/src/main/java/org/apache/commons/net/examples/ntp/TimeClient.java
-index 3eb56c375..cfd49375b 100644
+index cfd49375b..3eb56c375 100644
 --- a/src/main/java/org/apache/commons/net/examples/ntp/TimeClient.java
 +++ b/src/main/java/org/apache/commons/net/examples/ntp/TimeClient.java
 @@ -1,101 +1,101 @@
@@ -573,7 +573,7 @@ index 3eb56c375..cfd49375b 100644
 +}
 +
 diff --git a/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java b/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
-index a55a45878..63d504904 100644
+index 63d504904..a55a45878 100644
 --- a/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
 +++ b/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
 @@ -1,333 +1,333 @@
@@ -1244,7 +1244,7 @@ index a55a45878..63d504904 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ftp/FTPSClient.java b/src/main/java/org/apache/commons/net/ftp/FTPSClient.java
-index 3d864643f..df4de5cfa 100644
+index df4de5cfa..3d864643f 100644
 --- a/src/main/java/org/apache/commons/net/ftp/FTPSClient.java
 +++ b/src/main/java/org/apache/commons/net/ftp/FTPSClient.java
 @@ -1,914 +1,914 @@
@@ -3077,7 +3077,7 @@ index 3d864643f..df4de5cfa 100644
 +}
 +/* kate: indent-width 4; replace-tabs on; */
 diff --git a/src/main/java/org/apache/commons/net/nntp/Threader.java b/src/main/java/org/apache/commons/net/nntp/Threader.java
-index 55f476ec7..481fcde09 100644
+index 481fcde09..55f476ec7 100644
 --- a/src/main/java/org/apache/commons/net/nntp/Threader.java
 +++ b/src/main/java/org/apache/commons/net/nntp/Threader.java
 @@ -1,464 +1,464 @@
@@ -4010,7 +4010,7 @@ index 55f476ec7..481fcde09 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/NTPUDPClient.java b/src/main/java/org/apache/commons/net/ntp/NTPUDPClient.java
-index 3bce8f7da..5939a4ca4 100644
+index 5939a4ca4..3bce8f7da 100644
 --- a/src/main/java/org/apache/commons/net/ntp/NTPUDPClient.java
 +++ b/src/main/java/org/apache/commons/net/ntp/NTPUDPClient.java
 @@ -1,144 +1,144 @@
@@ -4303,7 +4303,7 @@ index 3bce8f7da..5939a4ca4 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/NtpUtils.java b/src/main/java/org/apache/commons/net/ntp/NtpUtils.java
-index 2e406c662..6164779bd 100644
+index 6164779bd..2e406c662 100644
 --- a/src/main/java/org/apache/commons/net/ntp/NtpUtils.java
 +++ b/src/main/java/org/apache/commons/net/ntp/NtpUtils.java
 @@ -1,115 +1,115 @@
@@ -4538,7 +4538,7 @@ index 2e406c662..6164779bd 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/NtpV3Impl.java b/src/main/java/org/apache/commons/net/ntp/NtpV3Impl.java
-index 02fb0031a..318a7145b 100644
+index 318a7145b..02fb0031a 100644
 --- a/src/main/java/org/apache/commons/net/ntp/NtpV3Impl.java
 +++ b/src/main/java/org/apache/commons/net/ntp/NtpV3Impl.java
 @@ -1,699 +1,699 @@
@@ -5941,7 +5941,7 @@ index 02fb0031a..318a7145b 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/NtpV3Packet.java b/src/main/java/org/apache/commons/net/ntp/NtpV3Packet.java
-index a1446ed15..d97128547 100644
+index d97128547..a1446ed15 100644
 --- a/src/main/java/org/apache/commons/net/ntp/NtpV3Packet.java
 +++ b/src/main/java/org/apache/commons/net/ntp/NtpV3Packet.java
 @@ -1,259 +1,259 @@
@@ -6464,7 +6464,7 @@ index a1446ed15..d97128547 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/TimeInfo.java b/src/main/java/org/apache/commons/net/ntp/TimeInfo.java
-index e0a1d42f1..685419b57 100644
+index 685419b57..e0a1d42f1 100644
 --- a/src/main/java/org/apache/commons/net/ntp/TimeInfo.java
 +++ b/src/main/java/org/apache/commons/net/ntp/TimeInfo.java
 @@ -1,343 +1,343 @@
@@ -7155,7 +7155,7 @@ index e0a1d42f1..685419b57 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
-index 9b888b762..a552a4183 100644
+index a552a4183..9b888b762 100644
 --- a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
 +++ b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
 @@ -1,468 +1,468 @@
@@ -8096,42 +8096,42 @@ index 9b888b762..a552a4183 100644
 +
 +}
 diff --git a/src/main/java/org/apache/commons/net/pop3/POP3Client.java b/src/main/java/org/apache/commons/net/pop3/POP3Client.java
-index 112d76a8d..542026b71 100644
+index 542026b71..112d76a8d 100644
 --- a/src/main/java/org/apache/commons/net/pop3/POP3Client.java
 +++ b/src/main/java/org/apache/commons/net/pop3/POP3Client.java
-@@ -24 +23,0 @@ import java.security.NoSuchAlgorithmException;
--import java.util.Arrays;
-@@ -222 +221,3 @@ public class POP3Client extends POP3
--        Arrays.setAll(messages, i -> parseStatus(en.next()));
-+        for (int line = 0; line < messages.length; line++) {
-+            messages[line] = parseStatus(en.next());
-+        }
-@@ -292 +293,3 @@ public class POP3Client extends POP3
--        Arrays.setAll(messages, i -> parseUID(en.next()));
-+        for (int line = 0; line < messages.length; line++) {
-+            messages[line] = parseUID(en.next());
-+        }
+@@ -23,0 +24 @@ import java.security.NoSuchAlgorithmException;
++import java.util.Arrays;
+@@ -221,3 +222 @@ public class POP3Client extends POP3
+-        for (int line = 0; line < messages.length; line++) {
+-            messages[line] = parseStatus(en.next());
+-        }
++        Arrays.setAll(messages, i -> parseStatus(en.next()));
+@@ -293,3 +292 @@ public class POP3Client extends POP3
+-        for (int line = 0; line < messages.length; line++) {
+-            messages[line] = parseUID(en.next());
+-        }
++        Arrays.setAll(messages, i -> parseUID(en.next()));
 diff --git a/src/main/java/org/apache/commons/net/smtp/AuthenticatingSMTPClient.java b/src/main/java/org/apache/commons/net/smtp/AuthenticatingSMTPClient.java
-index 7c6409b8c..6204ccd59 100644
+index 6204ccd59..7c6409b8c 100644
 --- a/src/main/java/org/apache/commons/net/smtp/AuthenticatingSMTPClient.java
 +++ b/src/main/java/org/apache/commons/net/smtp/AuthenticatingSMTPClient.java
-@@ -25 +24,0 @@ import java.security.spec.InvalidKeySpecException;
--import java.util.Arrays;
-@@ -325 +324,4 @@ public class AuthenticatingSMTPClient extends SMTPSClient
--        Arrays.setAll(res, i -> Integer.parseInt(parts[i]));
-+        for (int i = 0; i < parts.length; i++)
-+        {
-+            res[i] = Integer.parseInt (parts[i]);
-+        }
+@@ -24,0 +25 @@ import java.security.spec.InvalidKeySpecException;
++import java.util.Arrays;
+@@ -324,4 +325 @@ public class AuthenticatingSMTPClient extends SMTPSClient
+-        for (int i = 0; i < parts.length; i++)
+-        {
+-            res[i] = Integer.parseInt (parts[i]);
+-        }
++        Arrays.setAll(res, i -> Integer.parseInt(parts[i]));
 diff --git a/src/main/java/org/apache/commons/net/util/SubnetUtils.java b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
-index 1a18afd55..359ee7ebd 100644
+index 359ee7ebd..1a18afd55 100644
 --- a/src/main/java/org/apache/commons/net/util/SubnetUtils.java
 +++ b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
 @@ -98 +98 @@ public class SubnetUtils {
--            for (int add = low(), j = 0; add <= high(); ++add, ++j) {
-+            for (int add = low(), j=0; add <= high(); ++add, ++j) {
+-            for (int add = low(), j=0; add <= high(); ++add, ++j) {
++            for (int add = low(), j = 0; add <= high(); ++add, ++j) {
 diff --git a/src/test/java/org/apache/commons/net/tftp/TFTPServer.java b/src/test/java/org/apache/commons/net/tftp/TFTPServer.java
-index 5e322954c..cddedf422 100644
+index cddedf422..5e322954c 100644
 --- a/src/test/java/org/apache/commons/net/tftp/TFTPServer.java
 +++ b/src/test/java/org/apache/commons/net/tftp/TFTPServer.java
 @@ -1,947 +1,947 @@
@@ -10030,7 +10030,7 @@ index 5e322954c..cddedf422 100644
 +    }
 +}
 diff --git a/src/test/java/org/apache/commons/net/time/TimeTestSimpleServer.java b/src/test/java/org/apache/commons/net/time/TimeTestSimpleServer.java
-index f9a197acc..59777fb87 100644
+index 59777fb87..f9a197acc 100644
 --- a/src/test/java/org/apache/commons/net/time/TimeTestSimpleServer.java
 +++ b/src/test/java/org/apache/commons/net/time/TimeTestSimpleServer.java
 @@ -1,160 +1,160 @@

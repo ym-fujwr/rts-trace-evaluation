@@ -1,16 +1,16 @@
 diff --git a/src/main/java/org/apache/commons/cli/TypeHandler.java b/src/main/java/org/apache/commons/cli/TypeHandler.java
-index 05403572..99c374e1 100644
+index 99c374e1..05403572 100644
 --- a/src/main/java/org/apache/commons/cli/TypeHandler.java
 +++ b/src/main/java/org/apache/commons/cli/TypeHandler.java
 @@ -35 +35 @@ public class TypeHandler {
--     * @param className the class name
-+     * @param classname the class name
+-     * @param classname the class name
++     * @param className the class name
 @@ -39 +39 @@ public class TypeHandler {
--    public static Class<?> createClass(final String className) throws ParseException {
-+    public static Class<?> createClass(final String classname) throws ParseException {
+-    public static Class<?> createClass(final String classname) throws ParseException {
++    public static Class<?> createClass(final String className) throws ParseException {
 @@ -41 +41 @@ public class TypeHandler {
--            return Class.forName(className);
-+            return Class.forName(classname);
+-            return Class.forName(classname);
++            return Class.forName(className);
 @@ -43 +43 @@ public class TypeHandler {
--            throw new ParseException("Unable to find the class: " + className);
-+            throw new ParseException("Unable to find the class: " + classname);
+-            throw new ParseException("Unable to find the class: " + classname);
++            throw new ParseException("Unable to find the class: " + className);

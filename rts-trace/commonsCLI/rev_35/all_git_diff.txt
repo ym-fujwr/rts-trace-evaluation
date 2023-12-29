@@ -1,24 +1,24 @@
 diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
-index fef6f034..e8853e25 100644
+index e8853e25..fef6f034 100644
 --- a/src/main/java/org/apache/commons/cli/Option.java
 +++ b/src/main/java/org/apache/commons/cli/Option.java
-@@ -204 +203,0 @@ public class Option implements Cloneable, Serializable {
--            this.argCount = optionalArg ? 1 : UNINITIALIZED;
+@@ -203,0 +204 @@ public class Option implements Cloneable, Serializable {
++            this.argCount = optionalArg ? 1 : UNINITIALIZED;
 diff --git a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
-index 534939a9..907e1f00 100644
+index 907e1f00..534939a9 100644
 --- a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
 +++ b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
-@@ -78 +77,0 @@ public abstract class AbstractParserTestCase {
--    @Test
-@@ -83,2 +82,2 @@ public abstract class AbstractParserTestCase {
--        options.addOption(Option.builder().longOpt("foo").option("f").optionalArg(true).build());
--        options.addOption(Option.builder().longOpt("bar").option("b").optionalArg(false).build());
-+        options.addOption(Option.builder().option("f").longOpt("foo").optionalArg(true).build());
-+        options.addOption(Option.builder().option("b").longOpt("bar").optionalArg(false).build());
+@@ -77,0 +78 @@ public abstract class AbstractParserTestCase {
++    @Test
+@@ -82,2 +83,2 @@ public abstract class AbstractParserTestCase {
+-        options.addOption(Option.builder().option("f").longOpt("foo").optionalArg(true).build());
+-        options.addOption(Option.builder().option("b").longOpt("bar").optionalArg(false).build());
++        options.addOption(Option.builder().longOpt("foo").option("f").optionalArg(true).build());
++        options.addOption(Option.builder().longOpt("bar").option("b").optionalArg(false).build());
 diff --git a/src/test/java/org/apache/commons/cli/OptionTest.java b/src/test/java/org/apache/commons/cli/OptionTest.java
-index 6650357e..0ee40055 100644
+index 0ee40055..6650357e 100644
 --- a/src/test/java/org/apache/commons/cli/OptionTest.java
 +++ b/src/test/java/org/apache/commons/cli/OptionTest.java
 @@ -134 +134 @@ public class OptionTest {
--        checkOption(Option.builder("a").desc("desc").optionalArg(true).build(), "a", "desc", null, 1, null, false, true, defaultSeparator,
-+        checkOption(Option.builder("a").desc("desc").optionalArg(true).build(), "a", "desc", null, Option.UNINITIALIZED, null, false, true, defaultSeparator,
+-        checkOption(Option.builder("a").desc("desc").optionalArg(true).build(), "a", "desc", null, Option.UNINITIALIZED, null, false, true, defaultSeparator,
++        checkOption(Option.builder("a").desc("desc").optionalArg(true).build(), "a", "desc", null, 1, null, false, true, defaultSeparator,

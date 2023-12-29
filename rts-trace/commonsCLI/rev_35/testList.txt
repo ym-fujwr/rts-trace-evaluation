@@ -1,7 +1,5 @@
 org.apache.commons.cli.ApplicationTest
-org.apache.commons.cli.ArgumentIsOptionTest
 org.apache.commons.cli.bug.BugCLI13Test
-org.apache.commons.cli.bug.BugCLI148Test
 org.apache.commons.cli.bug.BugCLI162Test
 org.apache.commons.cli.bug.BugCLI252Test
 org.apache.commons.cli.bug.BugCLI265Test
@@ -9,8 +7,6 @@ org.apache.commons.cli.bug.BugCLI266Test
 org.apache.commons.cli.bug.BugCLI71Test
 org.apache.commons.cli.bug.BugsTest
 org.apache.commons.cli.CommandLineTest
-org.apache.commons.cli.DefaultParserTest
-org.apache.commons.cli.DisablePartialMatchingTest
 org.apache.commons.cli.HelpFormatterTest
 org.apache.commons.cli.OptionBuilderTest
 org.apache.commons.cli.OptionGroupTest

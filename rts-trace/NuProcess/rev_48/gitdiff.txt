@@ -1,18 +1,18 @@
 diff --git a/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java b/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
-index 890cfc1..ae4c490 100644
+index ae4c490..890cfc1 100644
 --- a/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
 +++ b/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
-@@ -109,0 +110 @@ public class NuProcessBuilder
-+      ensureNoNullCharacters(commands);
-@@ -128,0 +130 @@ public class NuProcessBuilder
-+      ensureNoNullCharacters(commands);
-@@ -146,0 +149,2 @@ public class NuProcessBuilder
-+      List<String> commandsList = Arrays.asList(commands);
-+      ensureNoNullCharacters(commandsList);
-@@ -149 +153 @@ public class NuProcessBuilder
--      this.command = new ArrayList<String>(Arrays.asList(commands));
-+      this.command = new ArrayList<String>(commandsList);
-@@ -256 +259,0 @@ public class NuProcessBuilder
--      ensureNoNullCharacters(command);
-@@ -271 +273,0 @@ public class NuProcessBuilder
--      ensureNoNullCharacters(command);
+@@ -110 +109,0 @@ public class NuProcessBuilder
+-      ensureNoNullCharacters(commands);
+@@ -130 +128,0 @@ public class NuProcessBuilder
+-      ensureNoNullCharacters(commands);
+@@ -149,2 +146,0 @@ public class NuProcessBuilder
+-      List<String> commandsList = Arrays.asList(commands);
+-      ensureNoNullCharacters(commandsList);
+@@ -153 +149 @@ public class NuProcessBuilder
+-      this.command = new ArrayList<String>(commandsList);
++      this.command = new ArrayList<String>(Arrays.asList(commands));
+@@ -259,0 +256 @@ public class NuProcessBuilder
++      ensureNoNullCharacters(command);
+@@ -273,0 +271 @@ public class NuProcessBuilder
++      ensureNoNullCharacters(command);

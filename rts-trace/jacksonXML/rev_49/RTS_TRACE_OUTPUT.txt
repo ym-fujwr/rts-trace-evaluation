@@ -49,12 +49,14 @@
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.NonNamespaceAwareDeser422Test
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.503 s -- in com.fasterxml.jackson.dataformat.xml.deser.NonNamespaceAwareDeser422Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.stream.dos.DeepNestingParserTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.131 s -- in com.fasterxml.jackson.dataformat.xml.stream.dos.DeepNestingParserTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.woodstox.DeepNestingWoodstoxParserTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in com.fasterxml.jackson.dataformat.xml.woodstox.DeepNestingWoodstoxParserTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] 
 [INFO] --- jacoco-maven-plugin:0.8.10:report (report) @ jackson-dataformat-xml ---
@@ -62,6 +64,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  15.561 s
-[INFO] Finished at: 2023-12-26T15:49:41+09:00
+[INFO] Total time:  16.290 s
+[INFO] Finished at: 2023-12-28T00:51:38+09:00
 [INFO] ------------------------------------------------------------------------

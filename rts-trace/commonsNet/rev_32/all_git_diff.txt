@@ -1,25 +1,25 @@
 diff --git a/pom.xml b/pom.xml
-index 6ca775b92..0db5107fb 100644
+index 0db5107fb..6ca775b92 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -98,5 +97,0 @@ Supported protocols include: Echo, Finger, FTP, NNTP, NTP, POP3(S), SMTP(S), Tel
--        <dependency>
--            <groupId>org.junit.jupiter</groupId>
--            <artifactId>junit-jupiter-api</artifactId>
--            <scope>test</scope>
--        </dependency>
+@@ -97,0 +98,5 @@ Supported protocols include: Echo, Finger, FTP, NNTP, NTP, POP3(S), SMTP(S), Tel
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter-api</artifactId>
++            <scope>test</scope>
++        </dependency>
 diff --git a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
-index 62a73a9cc..ae30ef5d1 100644
+index ae30ef5d1..62a73a9cc 100644
 --- a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
 +++ b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
-@@ -22 +21,0 @@ import static org.junit.Assert.fail;
--import static org.junit.jupiter.api.Assertions.assertThrows;
-@@ -33 +31,0 @@ import org.junit.Test;
--import org.junit.jupiter.api.function.Executable;
-@@ -108 +106 @@ public class SimpleSMTPHeaderTestCase {
--    @Test
-+    @Test(expected=IllegalArgumentException.class)
-@@ -110,2 +108 @@ public class SimpleSMTPHeaderTestCase {
--        final Executable testMethod = () -> new SimpleSMTPHeader(null, null, null);
--        assertThrows(IllegalArgumentException.class, testMethod);
-+        new SimpleSMTPHeader(null, null, null);
+@@ -21,0 +22 @@ import static org.junit.Assert.fail;
++import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -31,0 +33 @@ import org.junit.Test;
++import org.junit.jupiter.api.function.Executable;
+@@ -106 +108 @@ public class SimpleSMTPHeaderTestCase {
+-    @Test(expected=IllegalArgumentException.class)
++    @Test
+@@ -108 +110,2 @@ public class SimpleSMTPHeaderTestCase {
+-        new SimpleSMTPHeader(null, null, null);
++        final Executable testMethod = () -> new SimpleSMTPHeader(null, null, null);
++        assertThrows(IllegalArgumentException.class, testMethod);

@@ -1,30 +1,30 @@
 diff --git a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
-index 9a075fbc3..14c06d067 100644
+index 14c06d067..9a075fbc3 100644
 --- a/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
 +++ b/src/test/java/org/apache/commons/net/ntp/TestTimeInfo.java
-@@ -25,0 +26,3 @@ import org.junit.Test;
-+import org.junit.jupiter.api.function.Executable;
-+
-+import static org.junit.jupiter.api.Assertions.assertThrows;
-@@ -89 +92 @@ public class TestTimeInfo {
--    @Test(expected=IllegalArgumentException.class)
-+    @Test
-@@ -92 +95,2 @@ public class TestTimeInfo {
--        new TimeInfo(packet, 1L);
-+        final Executable testMethod = () -> new TimeInfo(packet, 1L);
-+        assertThrows(IllegalArgumentException.class, testMethod);
-diff --git a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
-index 62a73a9cc..ae30ef5d1 100644
---- a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
-+++ b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
-@@ -22 +21,0 @@ import static org.junit.Assert.fail;
--import static org.junit.jupiter.api.Assertions.assertThrows;
-@@ -33 +31,0 @@ import org.junit.Test;
+@@ -26,3 +25,0 @@ import org.junit.Test;
 -import org.junit.jupiter.api.function.Executable;
-@@ -108 +106 @@ public class SimpleSMTPHeaderTestCase {
+-
+-import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -92 +89 @@ public class TestTimeInfo {
 -    @Test
 +    @Test(expected=IllegalArgumentException.class)
-@@ -110,2 +108 @@ public class SimpleSMTPHeaderTestCase {
--        final Executable testMethod = () -> new SimpleSMTPHeader(null, null, null);
+@@ -95,2 +92 @@ public class TestTimeInfo {
+-        final Executable testMethod = () -> new TimeInfo(packet, 1L);
 -        assertThrows(IllegalArgumentException.class, testMethod);
-+        new SimpleSMTPHeader(null, null, null);
++        new TimeInfo(packet, 1L);
+diff --git a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
+index ae30ef5d1..62a73a9cc 100644
+--- a/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
++++ b/src/test/java/org/apache/commons/net/smtp/SimpleSMTPHeaderTestCase.java
+@@ -21,0 +22 @@ import static org.junit.Assert.fail;
++import static org.junit.jupiter.api.Assertions.assertThrows;
+@@ -31,0 +33 @@ import org.junit.Test;
++import org.junit.jupiter.api.function.Executable;
+@@ -106 +108 @@ public class SimpleSMTPHeaderTestCase {
+-    @Test(expected=IllegalArgumentException.class)
++    @Test
+@@ -108 +110,2 @@ public class SimpleSMTPHeaderTestCase {
+-        new SimpleSMTPHeader(null, null, null);
++        final Executable testMethod = () -> new SimpleSMTPHeader(null, null, null);
++        assertThrows(IllegalArgumentException.class, testMethod);

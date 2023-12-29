@@ -1,83 +1,83 @@
 diff --git a/src/main/java/org/apache/commons/net/util/SubnetUtils.java b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
-index e4c78d472..96bcc19a8 100644
+index 96bcc19a8..e4c78d472 100644
 --- a/src/main/java/org/apache/commons/net/util/SubnetUtils.java
 +++ b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
 @@ -78 +78 @@ public class SubnetUtils {
--            return (int) countLong;
-+            return (int)countLong;
+-            return (int)countLong;
++            return (int) countLong;
 @@ -197,7 +197,7 @@ public class SubnetUtils {
--       private int[] toArray(final int val) {
--           final int ret[] = new int[4];
--           for (int j = 3; j >= 0; --j) {
--               ret[j] |= val >>> 8 * (3 - j) & 0xff;
--           }
--           return ret;
--       }
-+        private int[] toArray(final int val) {
-+            final int ret[] = new int[4];
-+            for (int j = 3; j >= 0; --j) {
-+                ret[j] |= val >>> 8*(3-j) & 0xff;
-+            }
-+            return ret;
-+        }
-@@ -226,2 +226,2 @@ public class SubnetUtils {
--    private static final Pattern ADDRESS_PATTERN = Pattern.compile(IP_ADDRESS);
--    private static final Pattern CIDR_PATTERN = Pattern.compile(SLASH_FORMAT);
-+    private static final Pattern addressPattern = Pattern.compile(IP_ADDRESS);
-+    private static final Pattern cidrPattern = Pattern.compile(SLASH_FORMAT);
-@@ -241 +241 @@ public class SubnetUtils {
--            addr |= (n & 0xff) << 8 * (4 - i);
-+            addr |= (n & 0xff) << 8*(4-i);
-@@ -255 +255 @@ public class SubnetUtils {
--        throw new IllegalArgumentException("Value [" + value + "] not in range [" + begin + "," + end + "]");
-+        throw new IllegalArgumentException("Value [" + value + "] not in range ["+begin+","+end+"]");
-@@ -262 +262 @@ public class SubnetUtils {
--        final Matcher matcher = ADDRESS_PATTERN.matcher(address);
-+        final Matcher matcher = addressPattern.matcher(address);
-@@ -287 +287 @@ public class SubnetUtils {
--        final Matcher matcher = CIDR_PATTERN.matcher(cidrNotation);
-+      final Matcher matcher = cidrPattern.matcher(cidrNotation);
-@@ -289,4 +289,4 @@ public class SubnetUtils {
--        if (!matcher.matches()) {
--            throw new IllegalArgumentException(String.format(PARSE_FAIL, cidrNotation));
+-        private int[] toArray(final int val) {
+-            final int ret[] = new int[4];
+-            for (int j = 3; j >= 0; --j) {
+-                ret[j] |= val >>> 8*(3-j) & 0xff;
+-            }
+-            return ret;
 -        }
--        this.address = matchAddress(matcher);
-+      if (!matcher.matches()) {
-+          throw new IllegalArgumentException(String.format(PARSE_FAIL, cidrNotation));
-+      }
-+      this.address = matchAddress(matcher);
++       private int[] toArray(final int val) {
++           final int ret[] = new int[4];
++           for (int j = 3; j >= 0; --j) {
++               ret[j] |= val >>> 8 * (3 - j) & 0xff;
++           }
++           return ret;
++       }
+@@ -226,2 +226,2 @@ public class SubnetUtils {
+-    private static final Pattern addressPattern = Pattern.compile(IP_ADDRESS);
+-    private static final Pattern cidrPattern = Pattern.compile(SLASH_FORMAT);
++    private static final Pattern ADDRESS_PATTERN = Pattern.compile(IP_ADDRESS);
++    private static final Pattern CIDR_PATTERN = Pattern.compile(SLASH_FORMAT);
+@@ -241 +241 @@ public class SubnetUtils {
+-            addr |= (n & 0xff) << 8*(4-i);
++            addr |= (n & 0xff) << 8 * (4 - i);
+@@ -255 +255 @@ public class SubnetUtils {
+-        throw new IllegalArgumentException("Value [" + value + "] not in range ["+begin+","+end+"]");
++        throw new IllegalArgumentException("Value [" + value + "] not in range [" + begin + "," + end + "]");
+@@ -262 +262 @@ public class SubnetUtils {
+-        final Matcher matcher = addressPattern.matcher(address);
++        final Matcher matcher = ADDRESS_PATTERN.matcher(address);
+@@ -287 +287 @@ public class SubnetUtils {
+-      final Matcher matcher = cidrPattern.matcher(cidrNotation);
++        final Matcher matcher = CIDR_PATTERN.matcher(cidrNotation);
+@@ -289,4 +289,4 @@ public class SubnetUtils {
+-      if (!matcher.matches()) {
+-          throw new IllegalArgumentException(String.format(PARSE_FAIL, cidrNotation));
+-      }
+-      this.address = matchAddress(matcher);
++        if (!matcher.matches()) {
++            throw new IllegalArgumentException(String.format(PARSE_FAIL, cidrNotation));
++        }
++        this.address = matchAddress(matcher);
 @@ -294 +294 @@ public class SubnetUtils {
--        // Create a binary netmask from the number of bits specification /x
-+      // Create a binary netmask from the number of bits specification /x
+-      // Create a binary netmask from the number of bits specification /x
++        // Create a binary netmask from the number of bits specification /x
 @@ -296 +296 @@ public class SubnetUtils {
--        final int trailingZeroes = NBITS - rangeCheck(Integer.parseInt(matcher.group(5)), 0, NBITS);
-+      final int trailingZeroes = NBITS - rangeCheck(Integer.parseInt(matcher.group(5)), 0, NBITS);
+-      final int trailingZeroes = NBITS - rangeCheck(Integer.parseInt(matcher.group(5)), 0, NBITS);
++        final int trailingZeroes = NBITS - rangeCheck(Integer.parseInt(matcher.group(5)), 0, NBITS);
 @@ -298,9 +298,9 @@ public class SubnetUtils {
--        //
--        // An IPv4 netmask consists of 32 bits, a contiguous sequence
--        // of the specified number of ones followed by all zeros.
--        // So, it can be obtained by shifting an unsigned integer (32 bits) to the left by
--        // the number of trailing zeros which is (32 - the # bits specification).
--        // Note that there is no unsigned left shift operator, so we have to use
--        // a long to ensure that the left-most bit is shifted out correctly.
--        //
--        this.netmask = (int) (0x0FFFFFFFFL << trailingZeroes);
-+      //
-+      // An IPv4 netmask consists of 32 bits, a contiguous sequence
-+      // of the specified number of ones followed by all zeros.
-+      // So, it can be obtained by shifting an unsigned integer (32 bits) to the left by
-+      // the number of trailing zeros which is (32 - the # bits specification).
-+      // Note that there is no unsigned left shift operator, so we have to use
-+      // a long to ensure that the left-most bit is shifted out correctly.
-+      //
-+      this.netmask = (int) (0x0FFFFFFFFL << trailingZeroes );
+-      //
+-      // An IPv4 netmask consists of 32 bits, a contiguous sequence
+-      // of the specified number of ones followed by all zeros.
+-      // So, it can be obtained by shifting an unsigned integer (32 bits) to the left by
+-      // the number of trailing zeros which is (32 - the # bits specification).
+-      // Note that there is no unsigned left shift operator, so we have to use
+-      // a long to ensure that the left-most bit is shifted out correctly.
+-      //
+-      this.netmask = (int) (0x0FFFFFFFFL << trailingZeroes );
++        //
++        // An IPv4 netmask consists of 32 bits, a contiguous sequence
++        // of the specified number of ones followed by all zeros.
++        // So, it can be obtained by shifting an unsigned integer (32 bits) to the left by
++        // the number of trailing zeros which is (32 - the # bits specification).
++        // Note that there is no unsigned left shift operator, so we have to use
++        // a long to ensure that the left-most bit is shifted out correctly.
++        //
++        this.netmask = (int) (0x0FFFFFFFFL << trailingZeroes);
 @@ -308,2 +308,2 @@ public class SubnetUtils {
--        // Calculate base network address
--        this.network = address & netmask;
-+      // Calculate base network address
-+      this.network = address & netmask;
+-      // Calculate base network address
+-      this.network = address & netmask;
++        // Calculate base network address
++        this.network = address & netmask;
 @@ -311,2 +311,2 @@ public class SubnetUtils {
--        // Calculate broadcast address
--        this.broadcast = network | ~netmask;
-+      // Calculate broadcast address
-+      this.broadcast = network | ~netmask;
+-      // Calculate broadcast address
+-      this.broadcast = network | ~netmask;
++        // Calculate broadcast address
++        this.broadcast = network | ~netmask;

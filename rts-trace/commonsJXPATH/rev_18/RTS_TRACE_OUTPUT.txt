@@ -3,6 +3,7 @@
 [INFO] -------------------< commons-jxpath:commons-jxpath >--------------------
 [INFO] Building Apache Commons JXPath 1.4-SNAPSHOT
 [INFO] --------------------------------[ jar ]---------------------------------
+Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/codehaus/mojo/javancss-maven-plugin/maven-metadata.xml
 [INFO] 
 [INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-maven-version) @ commons-jxpath ---
 [INFO] 
@@ -26,7 +27,7 @@
 [INFO] --- buildnumber-maven-plugin:3.0.0:create (default) @ commons-jxpath ---
 [INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsJXPATH/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/commonsJXPATH/workingDir
-[INFO] Storing buildNumber: null at timestamp: 1703570516730
+[INFO] Storing buildNumber: null at timestamp: 1703692458965
 [WARNING] Cannot get the branch information from the git repository: 
 Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 
@@ -81,83 +82,83 @@ Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running org.apache.commons.jxpath.BasicNodeSetTest
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.37 s - in org.apache.commons.jxpath.BasicNodeSetTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.008 s - in org.apache.commons.jxpath.BasicNodeSetTest
 [INFO] Running org.apache.commons.jxpath.issues.JXPath113Test
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s - in org.apache.commons.jxpath.issues.JXPath113Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s - in org.apache.commons.jxpath.issues.JXPath113Test
 [INFO] Running org.apache.commons.jxpath.issues.JXPath118Test
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.apache.commons.jxpath.issues.JXPath118Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s - in org.apache.commons.jxpath.issues.JXPath118Test
 [INFO] Running org.apache.commons.jxpath.issues.JXPath149Test
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.162 s - in org.apache.commons.jxpath.issues.JXPath149Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.153 s - in org.apache.commons.jxpath.issues.JXPath149Test
 [INFO] Running org.apache.commons.jxpath.issues.JXPath172DynamicTest
-[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.263 s - in org.apache.commons.jxpath.issues.JXPath172DynamicTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.262 s - in org.apache.commons.jxpath.issues.JXPath172DynamicTest
 [INFO] Running org.apache.commons.jxpath.issues.JXPath172Test
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in org.apache.commons.jxpath.issues.JXPath172Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in org.apache.commons.jxpath.issues.JXPath172Test
 [INFO] Running org.apache.commons.jxpath.issues.JXPath177Test
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 s - in org.apache.commons.jxpath.issues.JXPath177Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 s - in org.apache.commons.jxpath.issues.JXPath177Test
 [INFO] Running org.apache.commons.jxpath.ri.axes.RecursiveAxesTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s - in org.apache.commons.jxpath.ri.axes.RecursiveAxesTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s - in org.apache.commons.jxpath.ri.axes.RecursiveAxesTest
 [INFO] Running org.apache.commons.jxpath.ri.axes.SimplePathInterpreterTest
-[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.364 s - in org.apache.commons.jxpath.ri.axes.SimplePathInterpreterTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.363 s - in org.apache.commons.jxpath.ri.axes.SimplePathInterpreterTest
 [INFO] Running org.apache.commons.jxpath.ri.compiler.ContextDependencyTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s - in org.apache.commons.jxpath.ri.compiler.ContextDependencyTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s - in org.apache.commons.jxpath.ri.compiler.ContextDependencyTest
 [INFO] Running org.apache.commons.jxpath.ri.compiler.CoreFunctionTest
 [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.391 s - in org.apache.commons.jxpath.ri.compiler.CoreFunctionTest
 [INFO] Running org.apache.commons.jxpath.ri.compiler.CoreOperationTest
 [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.295 s - in org.apache.commons.jxpath.ri.compiler.CoreOperationTest
 [INFO] Running org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
-[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.454 s - in org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.457 s - in org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
 [INFO] Running org.apache.commons.jxpath.ri.compiler.VariableTest
-[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.124 s - in org.apache.commons.jxpath.ri.compiler.VariableTest
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.117 s - in org.apache.commons.jxpath.ri.compiler.VariableTest
 [INFO] Running org.apache.commons.jxpath.ri.ExceptionHandlerTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s - in org.apache.commons.jxpath.ri.ExceptionHandlerTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s - in org.apache.commons.jxpath.ri.ExceptionHandlerTest
 [INFO] Running org.apache.commons.jxpath.ri.JXPathCompiledExpressionTest
-[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.142 s - in org.apache.commons.jxpath.ri.JXPathCompiledExpressionTest
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.141 s - in org.apache.commons.jxpath.ri.JXPathCompiledExpressionTest
 [INFO] Running org.apache.commons.jxpath.ri.model.AliasedNamespaceIterationTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.152 s - in org.apache.commons.jxpath.ri.model.AliasedNamespaceIterationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.164 s - in org.apache.commons.jxpath.ri.model.AliasedNamespaceIterationTest
 [INFO] Running org.apache.commons.jxpath.ri.model.beans.BadlyImplementedFactoryTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.apache.commons.jxpath.ri.model.beans.BadlyImplementedFactoryTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in org.apache.commons.jxpath.ri.model.beans.BadlyImplementedFactoryTest
 [INFO] Running org.apache.commons.jxpath.ri.model.beans.BeanModelTest
-[INFO] Tests run: 51, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.292 s - in org.apache.commons.jxpath.ri.model.beans.BeanModelTest
+[INFO] Tests run: 51, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.28 s - in org.apache.commons.jxpath.ri.model.beans.BeanModelTest
 [INFO] Running org.apache.commons.jxpath.ri.model.container.ContainerModelTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s - in org.apache.commons.jxpath.ri.model.container.ContainerModelTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 s - in org.apache.commons.jxpath.ri.model.container.ContainerModelTest
 [INFO] Running org.apache.commons.jxpath.ri.model.dom.DOMModelTest
-[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.455 s - in org.apache.commons.jxpath.ri.model.dom.DOMModelTest
+[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.439 s - in org.apache.commons.jxpath.ri.model.dom.DOMModelTest
 [INFO] Running org.apache.commons.jxpath.ri.model.dynabeans.DynaBeanModelTest
-[INFO] Tests run: 50, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.294 s - in org.apache.commons.jxpath.ri.model.dynabeans.DynaBeanModelTest
+[INFO] Tests run: 50, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.286 s - in org.apache.commons.jxpath.ri.model.dynabeans.DynaBeanModelTest
 [INFO] Running org.apache.commons.jxpath.ri.model.dynabeans.LazyDynaBeanTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s - in org.apache.commons.jxpath.ri.model.dynabeans.LazyDynaBeanTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 s - in org.apache.commons.jxpath.ri.model.dynabeans.LazyDynaBeanTest
 [INFO] Running org.apache.commons.jxpath.ri.model.dynamic.DynamicPropertiesModelTest
 [INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 s - in org.apache.commons.jxpath.ri.model.dynamic.DynamicPropertiesModelTest
 [INFO] Running org.apache.commons.jxpath.ri.model.EmbeddedColonMapKeysTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.apache.commons.jxpath.ri.model.EmbeddedColonMapKeysTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.apache.commons.jxpath.ri.model.EmbeddedColonMapKeysTest
 [INFO] Running org.apache.commons.jxpath.ri.model.EmptyCollectionTest
-[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s - in org.apache.commons.jxpath.ri.model.EmptyCollectionTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 s - in org.apache.commons.jxpath.ri.model.EmptyCollectionTest
 [INFO] Running org.apache.commons.jxpath.ri.model.ExternalXMLNamespaceTest
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s - in org.apache.commons.jxpath.ri.model.ExternalXMLNamespaceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s - in org.apache.commons.jxpath.ri.model.ExternalXMLNamespaceTest
 [INFO] Running org.apache.commons.jxpath.ri.model.jdom.JDOMModelTest
-[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.453 s - in org.apache.commons.jxpath.ri.model.jdom.JDOMModelTest
+[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.45 s - in org.apache.commons.jxpath.ri.model.jdom.JDOMModelTest
 [INFO] Running org.apache.commons.jxpath.ri.model.JXPath151Test
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s - in org.apache.commons.jxpath.ri.model.JXPath151Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in org.apache.commons.jxpath.ri.model.JXPath151Test
 [INFO] Running org.apache.commons.jxpath.ri.model.JXPath154Test
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.jxpath.ri.model.JXPath154Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in org.apache.commons.jxpath.ri.model.JXPath154Test
 [INFO] Running org.apache.commons.jxpath.ri.model.MixedModelTest
-[INFO] Tests run: 40, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.253 s - in org.apache.commons.jxpath.ri.model.MixedModelTest
+[INFO] Tests run: 40, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.248 s - in org.apache.commons.jxpath.ri.model.MixedModelTest
 [INFO] Running org.apache.commons.jxpath.ri.model.XMLPreserveSpaceTest
-[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.05 s - in org.apache.commons.jxpath.ri.model.XMLPreserveSpaceTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s - in org.apache.commons.jxpath.ri.model.XMLPreserveSpaceTest
 [INFO] Running org.apache.commons.jxpath.ri.model.XMLSpaceTest
-[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s - in org.apache.commons.jxpath.ri.model.XMLSpaceTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 s - in org.apache.commons.jxpath.ri.model.XMLSpaceTest
 [INFO] Running org.apache.commons.jxpath.ri.model.XMLUpperCaseElementsTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in org.apache.commons.jxpath.ri.model.XMLUpperCaseElementsTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in org.apache.commons.jxpath.ri.model.XMLUpperCaseElementsTest
 [INFO] Running org.apache.commons.jxpath.ri.StressTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.665 s - in org.apache.commons.jxpath.ri.StressTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.738 s - in org.apache.commons.jxpath.ri.StressTest
 [INFO] Running org.apache.commons.jxpath.servlet.JXPathServletContextTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.18 s - in org.apache.commons.jxpath.servlet.JXPathServletContextTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.173 s - in org.apache.commons.jxpath.servlet.JXPathServletContextTest
 [INFO] Running org.apache.commons.jxpath.util.BasicTypeConverterTest
-[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 s - in org.apache.commons.jxpath.util.BasicTypeConverterTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.124 s - in org.apache.commons.jxpath.util.BasicTypeConverterTest
 [INFO] Running org.apache.commons.jxpath.util.ClassLoaderUtilTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s - in org.apache.commons.jxpath.util.ClassLoaderUtilTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s - in org.apache.commons.jxpath.util.ClassLoaderUtilTest
 [INFO] Running org.apache.commons.jxpath.util.ValueUtilsTest
-[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.apache.commons.jxpath.util.ValueUtilsTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in org.apache.commons.jxpath.util.ValueUtilsTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -166,6 +167,6 @@ Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  42.246 s
-[INFO] Finished at: 2023-12-26T15:02:36+09:00
+[INFO] Total time:  37.676 s
+[INFO] Finished at: 2023-12-28T00:54:52+09:00
 [INFO] ------------------------------------------------------------------------

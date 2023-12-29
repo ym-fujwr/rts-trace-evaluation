@@ -18,12 +18,14 @@ extends
 NodeTest
 {
 private
+final
 String
 target
 ;
 public
 ProcessingInstructionTest
 (
+final
 String
 target
 )
@@ -45,6 +47,8 @@ return
 target
 ;
 }
+@
+Override
 public
 String
 toString

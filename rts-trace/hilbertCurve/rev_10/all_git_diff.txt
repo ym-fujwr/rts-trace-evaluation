@@ -1,185 +1,185 @@
 diff --git a/README.md b/README.md
-index 889cea3..2b3d951 100644
+index 2b3d951..889cea3 100644
 --- a/README.md
 +++ b/README.md
-@@ -234,28 +234 @@ When using querying do experiments with the number of bits and `maxRanges` (quer
--The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>bits*(dimensions-1)</sup>). 
--
--### Spatio-temporal querying
--Let's consider 3 dimensions of information being latitude, longitude and time. We'll index the full world for one day using 10 bits. When I search the Sydney (Australia) region for an hour at midday I get exact coverage with 20 ranges. When we limit the number of ranges the ratio of coverage to exact coverage is below:
--
--```
--20 1.00
--19 1.05
--18 1.11
--17 1.16
--16 1.22
--15 1.49
--14 1.75
--13 2.01
--12 2.28
--11 2.54
--10 2.80
--09 3.49
--08 4.17
--07 4.86
--06 5.54
--05 7.70
--04 11.54
--03 17.07
--02 56.29
--01 370.03
--```
--So if you use 12 ranges you will be returned points from a region that is 2.28 times bigger than required for exact coverage. If your points were uniformly distributed then you would throw away roughly half the returned points because they were outside your search region. However, the tradeoff of query overhead may mean this is worthwhile. Your own benchmarks are the only way to really check this because your datastore will have its own concurrency and overhead characteristics.
-+The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>splitDepth + bits*(dimensions-1)</sup>). In a recent experiment with spatio-temporal data (3 dimensions, 20m points) I found that 10 bits and `maxRanges` of 12 looked promising. Ranges were returned in about 50ms and `maxRanges` of 4 gave me a 64% hit rate. With a `maxRanges` of 20, hit rate is 67%. 
+@@ -234 +234,28 @@ When using querying do experiments with the number of bits and `maxRanges` (quer
+-The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>splitDepth + bits*(dimensions-1)</sup>). In a recent experiment with spatio-temporal data (3 dimensions, 20m points) I found that 10 bits and `maxRanges` of 12 looked promising. Ranges were returned in about 50ms and `maxRanges` of 4 gave me a 64% hit rate. With a `maxRanges` of 20, hit rate is 67%. 
++The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>bits*(dimensions-1)</sup>). 
++
++### Spatio-temporal querying
++Let's consider 3 dimensions of information being latitude, longitude and time. We'll index the full world for one day using 10 bits. When I search the Sydney (Australia) region for an hour at midday I get exact coverage with 20 ranges. When we limit the number of ranges the ratio of coverage to exact coverage is below:
++
++```
++20 1.00
++19 1.05
++18 1.11
++17 1.16
++16 1.22
++15 1.49
++14 1.75
++13 2.01
++12 2.28
++11 2.54
++10 2.80
++09 3.49
++08 4.17
++07 4.86
++06 5.54
++05 7.70
++04 11.54
++03 17.07
++02 56.29
++01 370.03
++```
++So if you use 12 ranges you will be returned points from a region that is 2.28 times bigger than required for exact coverage. If your points were uniformly distributed then you would throw away roughly half the returned points because they were outside your search region. However, the tradeoff of query overhead may mean this is worthwhile. Your own benchmarks are the only way to really check this because your datastore will have its own concurrency and overhead characteristics.
 diff --git a/src/main/java/org/davidmoten/hilbert/Ranges.java b/src/main/java/org/davidmoten/hilbert/Ranges.java
-index 796340f..4ba005f 100644
+index 4ba005f..796340f 100644
 --- a/src/main/java/org/davidmoten/hilbert/Ranges.java
 +++ b/src/main/java/org/davidmoten/hilbert/Ranges.java
-@@ -5 +4,0 @@ import java.util.List;
--import java.util.stream.Collectors;
-@@ -87,11 +86,7 @@ public final class Ranges {
--        Preconditions.checkArgument(n >= 0);
--        if (n == 0) {
--            return this;
--        } else {
--            // TODO replace this with an efficient algorithm like a Max Heap which is kept
--            // at size k so runtime complexity is O(n + klogk)
--            Ranges r = this;
--            for (int i = 0; i < n; i++) {
--                r = r.joinOnePair();
--            }
--            return r;
-+        Preconditions.checkArgument(n > 0);
+@@ -4,0 +5 @@ import java.util.List;
++import java.util.stream.Collectors;
+@@ -86,7 +87,11 @@ public final class Ranges {
+-        Preconditions.checkArgument(n > 0);
+-
+-        // TODO replace this with an efficient algorithm like a Max Heap which is kept
+-        // at size k so runtime complexity is O(n + klogk)
+-        Ranges r = this;
+-        for (int i = 0; i < n; i++) {
+-            r = r.joinOnePair();
++        Preconditions.checkArgument(n >= 0);
++        if (n == 0) {
++            return this;
++        } else {
++            // TODO replace this with an efficient algorithm like a Max Heap which is kept
++            // at size k so runtime complexity is O(n + klogk)
++            Ranges r = this;
++            for (int i = 0; i < n; i++) {
++                r = r.joinOnePair();
++            }
++            return r;
+@@ -94 +98,0 @@ public final class Ranges {
+-        return r;
+@@ -129 +133 @@ public final class Ranges {
+-    
 +
-+        // TODO replace this with an efficient algorithm like a Max Heap which is kept
-+        // at size k so runtime complexity is O(n + klogk)
-+        Ranges r = this;
-+        for (int i = 0; i < n; i++) {
-+            r = r.joinOnePair();
-@@ -98,0 +94 @@ public final class Ranges {
-+        return r;
-@@ -133 +129 @@ public final class Ranges {
--
-+    
-@@ -138,8 +133,0 @@ public final class Ranges {
--    public long totalLength() {
--        return ranges //
--                .stream() //
--                .map(x -> x.high() - x.low() + 1) //
--                .collect(Collectors.reducing((x, y) -> x + y)) //
--                .orElse(0L);
--    }
--
+@@ -133,0 +138,8 @@ public final class Ranges {
++    public long totalLength() {
++        return ranges //
++                .stream() //
++                .map(x -> x.high() - x.low() + 1) //
++                .collect(Collectors.reducing((x, y) -> x + y)) //
++                .orElse(0L);
++    }
++
 diff --git a/src/test/java/org/davidmoten/hilbert/Benchmarks.java b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
-index d6e509f..fba826b 100644
+index fba826b..d6e509f 100644
 --- a/src/test/java/org/davidmoten/hilbert/Benchmarks.java
 +++ b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
 @@ -21 +21 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 @@ -29 +29 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 @@ -36 +36 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 @@ -43 +43 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 @@ -50 +50 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 @@ -58 +58 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 @@ -65 +65 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 @@ -73 +73 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 @@ -81 +81 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 @@ -89 +89 @@ public class Benchmarks {
--//    @Benchmark
-+    @Benchmark
+-    @Benchmark
++//    @Benchmark
 diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
-index 815e7de..e7ce267 100644
+index e7ce267..815e7de 100644
 --- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
 +++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
-@@ -13 +12,0 @@ import java.nio.file.Files;
--import java.text.DecimalFormat;
-@@ -22,0 +22 @@ import com.github.davidmoten.guavamini.Lists;
-+import com.github.davidmoten.guavamini.Preconditions;
+@@ -12,0 +13 @@ import java.nio.file.Files;
++import java.text.DecimalFormat;
+@@ -22 +22,0 @@ import com.github.davidmoten.guavamini.Lists;
+-import com.github.davidmoten.guavamini.Preconditions;
 @@ -311 +311 @@ public class HilbertCurveTest {
--
-+    
-@@ -335,11 +335,3 @@ public class HilbertCurveTest {
--        long[] point1 = scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates);
--        long[] point2 = scalePoint(lat2, lon2, t2, minTime, maxTime, maxOrdinates);
--        Ranges ranges = h.query(point1, point2);
--        DecimalFormat df = new DecimalFormat("0.00");
--        DecimalFormat df2 = new DecimalFormat("00");
--        for (int i = 0; i < ranges.get().size(); i++) {
--            Ranges r = ranges.join(i);
--            System.out.println(df2.format(r.get().size()) + " "
--                    + df.format((double) r.totalLength() / ranges.totalLength()));
--        }
--
-+        Ranges r = h.query(scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates),
-+                scalePoint(lat2, lon2, t2, minTime, maxTime, maxOrdinates));
-+        System.out.println(r.get().size());
-@@ -355 +347 @@ public class HilbertCurveTest {
--
-+        
-@@ -360 +352 @@ public class HilbertCurveTest {
--
-+    
-@@ -369 +361 @@ public class HilbertCurveTest {
--
-+    
-@@ -378 +370 @@ public class HilbertCurveTest {
--                .add(6, 13) //
-+                .add(6,13) //
-@@ -382 +374 @@ public class HilbertCurveTest {
--                .add(53, 54) //
-+                .add(53,  54) //
-@@ -394 +386 @@ public class HilbertCurveTest {
--
-+        
-@@ -399 +391 @@ public class HilbertCurveTest {
--
-+    
-@@ -403,2 +395,2 @@ public class HilbertCurveTest {
--        long[] point1 = new long[] { 3, 3 };
--        long[] point2 = new long[] { 8, 10 };
-+        long[] point1 = new long[] {3, 3};
-+        long[] point2 = new long[] {8, 10};
-@@ -408 +400 @@ public class HilbertCurveTest {
--
-+    
-@@ -412,2 +404,2 @@ public class HilbertCurveTest {
--        long[] point1 = new long[] { 3, 3 };
--        long[] point2 = new long[] { 8, 10 };
-+        long[] point1 = new long[] {3, 3};
-+        long[] point2 = new long[] {8, 10};
-@@ -417 +409 @@ public class HilbertCurveTest {
--
-+    
-@@ -421,2 +413,2 @@ public class HilbertCurveTest {
--        long[] point1 = new long[] { 3, 3 };
--        long[] point2 = new long[] { 8, 10 };
-+        long[] point1 = new long[] {3, 3};
-+        long[] point2 = new long[] {8, 10};
-@@ -426 +418 @@ public class HilbertCurveTest {
--
-+    
-@@ -430,2 +422,2 @@ public class HilbertCurveTest {
--        long[] point1 = new long[] { 3, 3 };
--        long[] point2 = new long[] { 8, 10 };
-+        long[] point1 = new long[] {3, 3};
-+        long[] point2 = new long[] {8, 10};
-@@ -435,0 +428 @@ public class HilbertCurveTest {
+-    
 +
+@@ -335,3 +335,11 @@ public class HilbertCurveTest {
+-        Ranges r = h.query(scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates),
+-                scalePoint(lat2, lon2, t2, minTime, maxTime, maxOrdinates));
+-        System.out.println(r.get().size());
++        long[] point1 = scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates);
++        long[] point2 = scalePoint(lat2, lon2, t2, minTime, maxTime, maxOrdinates);
++        Ranges ranges = h.query(point1, point2);
++        DecimalFormat df = new DecimalFormat("0.00");
++        DecimalFormat df2 = new DecimalFormat("00");
++        for (int i = 0; i < ranges.get().size(); i++) {
++            Ranges r = ranges.join(i);
++            System.out.println(df2.format(r.get().size()) + " "
++                    + df.format((double) r.totalLength() / ranges.totalLength()));
++        }
++
+@@ -347 +355 @@ public class HilbertCurveTest {
+-        
++
+@@ -352 +360 @@ public class HilbertCurveTest {
+-    
++
+@@ -361 +369 @@ public class HilbertCurveTest {
+-    
++
+@@ -370 +378 @@ public class HilbertCurveTest {
+-                .add(6,13) //
++                .add(6, 13) //
+@@ -374 +382 @@ public class HilbertCurveTest {
+-                .add(53,  54) //
++                .add(53, 54) //
+@@ -386 +394 @@ public class HilbertCurveTest {
+-        
++
+@@ -391 +399 @@ public class HilbertCurveTest {
+-    
++
+@@ -395,2 +403,2 @@ public class HilbertCurveTest {
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
++        long[] point1 = new long[] { 3, 3 };
++        long[] point2 = new long[] { 8, 10 };
+@@ -400 +408 @@ public class HilbertCurveTest {
+-    
++
+@@ -404,2 +412,2 @@ public class HilbertCurveTest {
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
++        long[] point1 = new long[] { 3, 3 };
++        long[] point2 = new long[] { 8, 10 };
+@@ -409 +417 @@ public class HilbertCurveTest {
+-    
++
+@@ -413,2 +421,2 @@ public class HilbertCurveTest {
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
++        long[] point1 = new long[] { 3, 3 };
++        long[] point2 = new long[] { 8, 10 };
+@@ -418 +426 @@ public class HilbertCurveTest {
+-    
++
+@@ -422,2 +430,2 @@ public class HilbertCurveTest {
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
++        long[] point1 = new long[] { 3, 3 };
++        long[] point2 = new long[] { 8, 10 };
+@@ -428 +435,0 @@ public class HilbertCurveTest {
+-

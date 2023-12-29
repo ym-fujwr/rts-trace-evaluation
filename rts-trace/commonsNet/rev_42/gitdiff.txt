@@ -1,7 +1,7 @@
 diff --git a/src/main/java/org/apache/commons/net/ftp/parser/MacOsPeterFTPEntryParser.java b/src/main/java/org/apache/commons/net/ftp/parser/MacOsPeterFTPEntryParser.java
-index 18bc49157..d0db91801 100644
+index d0db91801..18bc49157 100644
 --- a/src/main/java/org/apache/commons/net/ftp/parser/MacOsPeterFTPEntryParser.java
 +++ b/src/main/java/org/apache/commons/net/ftp/parser/MacOsPeterFTPEntryParser.java
-@@ -111,0 +112,2 @@ public class MacOsPeterFTPEntryParser extends ConfigurableFTPFileEntryParserImpl
-+            final String usr = null;
-+            final String grp = null;
+@@ -112,2 +111,0 @@ public class MacOsPeterFTPEntryParser extends ConfigurableFTPFileEntryParserImpl
+-            final String usr = null;
+-            final String grp = null;

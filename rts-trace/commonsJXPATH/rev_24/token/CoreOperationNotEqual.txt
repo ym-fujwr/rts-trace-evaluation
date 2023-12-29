@@ -20,9 +20,11 @@ CoreOperationCompare
 public
 CoreOperationNotEqual
 (
+final
 Expression
 arg1
 ,
+final
 Expression
 arg2
 )
@@ -37,6 +39,8 @@ true
 )
 ;
 }
+@
+Override
 public
 String
 getSymbol

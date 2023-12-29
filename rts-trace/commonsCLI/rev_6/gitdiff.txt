@@ -1,36 +1,36 @@
 diff --git a/src/main/java/org/apache/commons/cli/GnuParser.java b/src/main/java/org/apache/commons/cli/GnuParser.java
-index 8369c805..41263522 100644
+index 41263522..8369c805 100644
 --- a/src/main/java/org/apache/commons/cli/GnuParser.java
 +++ b/src/main/java/org/apache/commons/cli/GnuParser.java
-@@ -81 +81,2 @@ public class GnuParser extends Parser {
--                for (i++; i < arguments.length; i++) { // NOPMD
-+                for (i++; i < arguments.length; i++) // NOPMD
-+                {
+@@ -81,2 +81 @@ public class GnuParser extends Parser {
+-                for (i++; i < arguments.length; i++) // NOPMD
+-                {
++                for (i++; i < arguments.length; i++) { // NOPMD
 diff --git a/src/main/java/org/apache/commons/cli/HelpFormatter.java b/src/main/java/org/apache/commons/cli/HelpFormatter.java
-index 911e3f87..81cc03c7 100644
+index 81cc03c7..911e3f87 100644
 --- a/src/main/java/org/apache/commons/cli/HelpFormatter.java
 +++ b/src/main/java/org/apache/commons/cli/HelpFormatter.java
-@@ -810 +810,2 @@ public class HelpFormatter {
--        } catch (final IOException e) { // NOPMD
-+        } catch (final IOException e) // NOPMD
-+        {
+@@ -810,2 +810 @@ public class HelpFormatter {
+-        } catch (final IOException e) // NOPMD
+-        {
++        } catch (final IOException e) { // NOPMD
 diff --git a/src/main/java/org/apache/commons/cli/Parser.java b/src/main/java/org/apache/commons/cli/Parser.java
-index 8543d9c1..a28d47ab 100644
+index a28d47ab..8543d9c1 100644
 --- a/src/main/java/org/apache/commons/cli/Parser.java
 +++ b/src/main/java/org/apache/commons/cli/Parser.java
-@@ -313 +313,2 @@ public abstract class Parser implements CommandLineParser {
--                        } catch (final RuntimeException exp) { // NOPMD
-+                        } catch (final RuntimeException exp) // NOPMD
-+                        {
+@@ -313,2 +313 @@ public abstract class Parser implements CommandLineParser {
+-                        } catch (final RuntimeException exp) // NOPMD
+-                        {
++                        } catch (final RuntimeException exp) { // NOPMD
 diff --git a/src/test/java/org/apache/commons/cli/HelpFormatterTest.java b/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
-index d836f996..30420349 100644
+index 30420349..d836f996 100644
 --- a/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
 +++ b/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
-@@ -297 +297,2 @@ public class HelpFormatterTest {
--    public void testPrintHelpNewlineFooter() {
-+    public void testPrintHelpNewlineFooter()
-+    {
-@@ -324 +325,2 @@ public class HelpFormatterTest {
--    public void testPrintHelpNewlineHeader() {
-+    public void testPrintHelpNewlineHeader()
-+    {
+@@ -297,2 +297 @@ public class HelpFormatterTest {
+-    public void testPrintHelpNewlineFooter()
+-    {
++    public void testPrintHelpNewlineFooter() {
+@@ -325,2 +324 @@ public class HelpFormatterTest {
+-    public void testPrintHelpNewlineHeader()
+-    {
++    public void testPrintHelpNewlineHeader() {

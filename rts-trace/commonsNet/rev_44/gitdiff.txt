@@ -1,15 +1,15 @@
 diff --git a/src/main/java/org/apache/commons/net/ftp/FTPClient.java b/src/main/java/org/apache/commons/net/ftp/FTPClient.java
-index f5081fb32..99c71455c 100644
+index 99c71455c..f5081fb32 100644
 --- a/src/main/java/org/apache/commons/net/ftp/FTPClient.java
 +++ b/src/main/java/org/apache/commons/net/ftp/FTPClient.java
-@@ -854,2 +853,0 @@ public class FTPClient extends FTP implements Configurable {
--        } else if (_socket_ == null) {
--            pasvHost = null; // For unit testing.
-@@ -857 +855,6 @@ public class FTPClient extends FTP implements Configurable {
--            pasvHost = _socket_.getInetAddress().getHostAddress();
-+            // Post-3.8 behavior
-+            if (_socket_ == null) {
-+                pasvHost = null; // For unit testing.
-+            } else {
-+                pasvHost = _socket_.getInetAddress().getHostAddress();
-+            }
+@@ -853,0 +854,2 @@ public class FTPClient extends FTP implements Configurable {
++        } else if (_socket_ == null) {
++            pasvHost = null; // For unit testing.
+@@ -855,6 +857 @@ public class FTPClient extends FTP implements Configurable {
+-            // Post-3.8 behavior
+-            if (_socket_ == null) {
+-                pasvHost = null; // For unit testing.
+-            } else {
+-                pasvHost = _socket_.getInetAddress().getHostAddress();
+-            }
++            pasvHost = _socket_.getInetAddress().getHostAddress();

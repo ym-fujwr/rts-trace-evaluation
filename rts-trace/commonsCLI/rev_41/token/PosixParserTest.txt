@@ -32,7 +32,7 @@ public
 class
 PosixParserTest
 extends
-ParserTestCase
+AbstractParserTestCase
 {
 @
 Override
@@ -75,6 +75,24 @@ Ignore
 public
 void
 testAmbiguousLongWithoutEqualSingleDash
+(
+)
+throws
+Exception
+{
+}
+@
+Override
+@
+Test
+@
+Ignore
+(
+"not supported by the PosixParser"
+)
+public
+void
+testAmbiguousLongWithoutEqualSingleDash2
 (
 )
 throws

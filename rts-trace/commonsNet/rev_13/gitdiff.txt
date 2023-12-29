@@ -1,5 +1,5 @@
 diff --git a/src/main/java/org/apache/commons/net/ftp/FTPSClient.java b/src/main/java/org/apache/commons/net/ftp/FTPSClient.java
-index df4de5cfa..7f0875b8d 100644
+index 7f0875b8d..df4de5cfa 100644
 --- a/src/main/java/org/apache/commons/net/ftp/FTPSClient.java
 +++ b/src/main/java/org/apache/commons/net/ftp/FTPSClient.java
 @@ -1,914 +1,914 @@
@@ -739,7 +739,7 @@ index df4de5cfa..7f0875b8d 100644
 -     * @return server reply.
 -     * @throws IOException If an I/O error occurs while sending the command.
 -     * @throws SSLException if a CCC command fails
--     * @see org.apache.commons.net.ftp.FTP#sendCommand(String)
+-     * @see org.apache.commons.net.ftp.FTP#sendCommand(java.lang.String)
 -     */
 -    // Would like to remove this method, but that will break any existing clients that are using CCC
 -    @Override
@@ -1653,7 +1653,7 @@ index df4de5cfa..7f0875b8d 100644
 +     * @return server reply.
 +     * @throws IOException If an I/O error occurs while sending the command.
 +     * @throws SSLException if a CCC command fails
-+     * @see org.apache.commons.net.ftp.FTP#sendCommand(java.lang.String)
++     * @see org.apache.commons.net.ftp.FTP#sendCommand(String)
 +     */
 +    // Would like to remove this method, but that will break any existing clients that are using CCC
 +    @Override
@@ -1832,7 +1832,7 @@ index df4de5cfa..7f0875b8d 100644
 +}
 +/* kate: indent-width 4; replace-tabs on; */
 diff --git a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
-index f9aa8b95e..20a107552 100644
+index 20a107552..f9aa8b95e 100644
 --- a/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
 +++ b/src/main/java/org/apache/commons/net/ntp/TimeStamp.java
 @@ -1,468 +1,468 @@
@@ -1944,7 +1944,7 @@ index f9aa8b95e..20a107552 100644
 -     * it represents the time at which it was allocated, measured to the
 -     * nearest millisecond.
 -     * @return NTP timestamp object set to the current time.
--     * @see     System#currentTimeMillis()
+-     * @see     java.lang.System#currentTimeMillis()
 -     */
 -    public static TimeStamp getCurrentTime()
 -    {
@@ -2412,7 +2412,7 @@ index f9aa8b95e..20a107552 100644
 +     * it represents the time at which it was allocated, measured to the
 +     * nearest millisecond.
 +     * @return NTP timestamp object set to the current time.
-+     * @see     java.lang.System#currentTimeMillis()
++     * @see     System#currentTimeMillis()
 +     */
 +    public static TimeStamp getCurrentTime()
 +    {

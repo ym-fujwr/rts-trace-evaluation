@@ -33,7 +33,7 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running com.zaxxer.nuprocess.CatTest
-[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 39.77 s -- in com.zaxxer.nuprocess.CatTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 37.20 s -- in com.zaxxer.nuprocess.CatTest
 [INFO] Running com.zaxxer.nuprocess.DirectWriteTest
 Writing: 128K of data, waiting for checksum -65536
 Reading.  Current checksum -32768
@@ -43,21 +43,21 @@ Reading.  Current checksum -65536
 Checksums matched, exiting.
 Writing: This is a test
 Read: This is a test
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.716 s -- in com.zaxxer.nuprocess.DirectWriteTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.391 s -- in com.zaxxer.nuprocess.DirectWriteTest
 [INFO] Running com.zaxxer.nuprocess.EnvironmentTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in com.zaxxer.nuprocess.EnvironmentTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in com.zaxxer.nuprocess.EnvironmentTest
 [INFO] Running com.zaxxer.nuprocess.FastExitingProcessTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.44 s -- in com.zaxxer.nuprocess.FastExitingProcessTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.58 s -- in com.zaxxer.nuprocess.FastExitingProcessTest
 [INFO] Running com.zaxxer.nuprocess.InterruptTest
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.584 s -- in com.zaxxer.nuprocess.InterruptTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.496 s -- in com.zaxxer.nuprocess.InterruptTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  01:04 min
-[INFO] Finished at: 2023-12-26T16:06:15+09:00
+[INFO] Total time:  01:02 min
+[INFO] Finished at: 2023-12-28T00:33:45+09:00
 [INFO] ------------------------------------------------------------------------

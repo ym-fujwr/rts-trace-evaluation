@@ -3949,7 +3949,7 @@ return
 null
 ;
 }
-private
+protected
 int
 getActivePort
 (
@@ -4190,7 +4190,7 @@ return
 entryParser
 ;
 }
-private
+protected
 InetAddress
 getHostAddress
 (
@@ -4376,7 +4376,7 @@ return
 receiveDataSocketBufferSize
 ;
 }
-private
+protected
 InetAddress
 getReportHostAddress
 (

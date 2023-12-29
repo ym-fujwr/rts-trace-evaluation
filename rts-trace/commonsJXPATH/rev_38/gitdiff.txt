@@ -1,15 +1,15 @@
 diff --git a/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java b/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
-index f6dc4e85..eb7575c2 100644
+index eb7575c2..f6dc4e85 100644
 --- a/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
 +++ b/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
 @@ -157 +157 @@ public void tearDown() {
--      if (e.getCause() instanceof RuntimeException) {
-+      if( e.getCause() instanceof RuntimeException ) {
+-      if( e.getCause() instanceof RuntimeException ) {
++      if (e.getCause() instanceof RuntimeException) {
 @@ -183 +183 @@ public void tearDown() {
--      if ( EXAMPLE_CLASS_NAME.equals(name) ) {
-+      if( EXAMPLE_CLASS_NAME.equals(name) ) {
+-      if( EXAMPLE_CLASS_NAME.equals(name) ) {
++      if ( EXAMPLE_CLASS_NAME.equals(name) ) {
 @@ -186,2 +186,2 @@ public void tearDown() {
--      else if ( TEST_CASE_CLASS_NAME.equals(name) ) {
--        if ( testCaseClass == null ) {
-+      else if( TEST_CASE_CLASS_NAME.equals(name) ) {
-+        if( testCaseClass == null ) {
+-      else if( TEST_CASE_CLASS_NAME.equals(name) ) {
+-        if( testCaseClass == null ) {
++      else if ( TEST_CASE_CLASS_NAME.equals(name) ) {
++        if ( testCaseClass == null ) {

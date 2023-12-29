@@ -1,7 +1,7 @@
 diff --git a/src/main/java/org/apache/commons/net/examples/Main.java b/src/main/java/org/apache/commons/net/examples/Main.java
-index 65615afc4..93af10c0f 100644
+index 93af10c0f..65615afc4 100644
 --- a/src/main/java/org/apache/commons/net/examples/Main.java
 +++ b/src/main/java/org/apache/commons/net/examples/Main.java
 @@ -71 +71 @@ public class Main {
--                    "Usage: java -cp target/classes org.apache.commons.net.examples.Main <alias or exampleClass> <exampleClass parameters>");
-+                    "Usage: java -cp target/classes examples/Main <alias or exampleClass> <exampleClass parameters>");
+-                    "Usage: java -cp target/classes examples/Main <alias or exampleClass> <exampleClass parameters>");
++                    "Usage: java -cp target/classes org.apache.commons.net.examples.Main <alias or exampleClass> <exampleClass parameters>");

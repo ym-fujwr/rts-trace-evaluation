@@ -1,8 +1,0 @@
-org.apache.commons.jxpath.issues.JXPath113Test
-org.apache.commons.jxpath.ri.model.dom.DOMModelTest
-org.apache.commons.jxpath.ri.model.dynabeans.LazyDynaBeanTest
-org.apache.commons.jxpath.ri.model.EmptyCollectionTest
-org.apache.commons.jxpath.ri.model.ExternalXMLNamespaceTest
-org.apache.commons.jxpath.ri.model.jdom.JDOMModelTest
-org.apache.commons.jxpath.ri.model.MixedModelTest
-org.apache.commons.jxpath.ri.model.XMLPreserveSpaceTest

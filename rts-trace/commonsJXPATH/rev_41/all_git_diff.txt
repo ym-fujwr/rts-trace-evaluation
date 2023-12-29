@@ -1,72 +1,72 @@
 diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
-index 779e1321..11e15ef4 100644
+index 11e15ef4..779e1321 100644
 --- a/.github/workflows/coverage.yml
 +++ b/.github/workflows/coverage.yml
 @@ -47 +47 @@ jobs:
--      run: mvn --show-version --batch-mode --no-transfer-progress test jacoco:report
-+      run: mvn -V test jacoco:report --file pom.xml --no-transfer-progress
+-      run: mvn -V test jacoco:report --file pom.xml --no-transfer-progress
++      run: mvn --show-version --batch-mode --no-transfer-progress test jacoco:report
 diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index 8f063a26..14b32ada 100644
+index 14b32ada..8f063a26 100644
 --- a/.github/workflows/maven.yml
 +++ b/.github/workflows/maven.yml
 @@ -63 +63 @@ jobs:
--      run: mvn --show-version --batch-mode --no-transfer-progress -DtrimStackTrace=false
-+      run: mvn -V --file pom.xml --no-transfer-progress -DtrimStackTrace=false
+-      run: mvn -V --file pom.xml --no-transfer-progress -DtrimStackTrace=false
++      run: mvn --show-version --batch-mode --no-transfer-progress -DtrimStackTrace=false
 diff --git a/pom.xml b/pom.xml
-index 9646a494..519185f9 100644
+index 519185f9..9646a494 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -22 +22 @@
--    <version>64</version>
-+    <version>58</version>
+-    <version>58</version>
++    <version>64</version>
 @@ -212 +212 @@
--      <groupId>org.jdom</groupId>
-+      <groupId>jdom</groupId>
+-      <groupId>jdom</groupId>
++      <groupId>org.jdom</groupId>
 @@ -214 +214 @@
--      <version>1.1.3</version>
-+      <version>1.0</version>
+-      <version>1.0</version>
++      <version>1.1.3</version>
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index 81b5c3ac..eeaa238f 100644
+index eeaa238f..81b5c3ac 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
-@@ -128,4 +128 @@ The <action> type attribute can be add,update,fix,remove.
--        Bump commons-parent from 54 to 64 #45, #49, #64.
--      </action>
--      <action dev="ggregory" type="update" due-to="Dependabot">
--        Bump JDOM from jdom:jdom 1.0 to org.jdom:jdom 1.1.3.
-+        Bump commons-parent from 54 to 58 #45, #49, #64.
+@@ -128 +128,4 @@ The <action> type attribute can be add,update,fix,remove.
+-        Bump commons-parent from 54 to 58 #45, #49, #64.
++        Bump commons-parent from 54 to 64 #45, #49, #64.
++      </action>
++      <action dev="ggregory" type="update" due-to="Dependabot">
++        Bump JDOM from jdom:jdom 1.0 to org.jdom:jdom 1.1.3.
 diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java
-index 22de80fe..2ded4273 100644
+index 2ded4273..22de80fe 100644
 --- a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java
 +++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java
 @@ -40 +40 @@ public class StrictLazyDynaBeanPointerFactory implements NodePointerFactory {
--    private static final class StrictLazyDynaBeanPointer extends DynaBeanPointer {
-+    private static class StrictLazyDynaBeanPointer extends DynaBeanPointer {
+-    private static class StrictLazyDynaBeanPointer extends DynaBeanPointer {
++    private static final class StrictLazyDynaBeanPointer extends DynaBeanPointer {
 diff --git a/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java b/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java
-index 76c2acab..4115ff48 100644
+index 4115ff48..76c2acab 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java
 @@ -35 +35 @@ public class KeyManagerUtils {
--    private static final class SingleNodeExtendedKeyManager implements
-+    private static class SingleNodeExtendedKeyManager implements
+-    private static class SingleNodeExtendedKeyManager implements
++    private static final class SingleNodeExtendedKeyManager implements
 diff --git a/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java b/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java
-index 4edab2ab..f3dd7279 100644
+index f3dd7279..4edab2ab 100644
 --- a/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java
 +++ b/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java
 @@ -67 +67 @@ public class JXPath177Test extends TestCase
--    private static final class JXPathVariablesResolver implements Variables
-+    private static class JXPathVariablesResolver implements Variables
+-    private static class JXPathVariablesResolver implements Variables
++    private static final class JXPathVariablesResolver implements Variables
 diff --git a/src/test/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunctionTest.java b/src/test/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunctionTest.java
-index 4486d825..7ab105e9 100644
+index 7ab105e9..4486d825 100644
 --- a/src/test/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunctionTest.java
 +++ b/src/test/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunctionTest.java
 @@ -387 +387 @@ public class ExtensionFunctionTest extends JXPathTestCase {
--    private static final class Context implements ExpressionContext {
-+    private static class Context implements ExpressionContext {
+-    private static class Context implements ExpressionContext {
++    private static final class Context implements ExpressionContext {
 diff --git a/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java b/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
-index eb62b7bf..f6dc4e85 100644
+index f6dc4e85..eb62b7bf 100644
 --- a/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
 +++ b/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
 @@ -174 +174 @@ public void tearDown() {
--  private static final class TestClassLoader extends ClassLoader {
-+  private static class TestClassLoader extends ClassLoader {
+-  private static class TestClassLoader extends ClassLoader {
++  private static final class TestClassLoader extends ClassLoader {

@@ -7,6 +7,6 @@ commons
 .
 jxpath
 .
-functions
+xml
 ;
 <EOF>

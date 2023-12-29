@@ -22,6 +22,7 @@ serialVersionUID
 4306409701468017766L
 ;
 private
+final
 Throwable
 exception
 ;
@@ -30,10 +31,6 @@ JXPathException
 (
 )
 {
-super
-(
-)
-;
 this
 .
 exception
@@ -44,6 +41,7 @@ null
 public
 JXPathException
 (
+final
 String
 msg
 )
@@ -63,6 +61,7 @@ null
 public
 JXPathException
 (
+final
 Throwable
 e
 )
@@ -86,9 +85,11 @@ e
 public
 JXPathException
 (
+final
 String
 msg
 ,
+final
 Throwable
 e
 )
@@ -105,12 +106,15 @@ exception
 e
 ;
 }
+@
+Override
 public
 String
 getMessage
 (
 )
 {
+final
 String
 message
 =
@@ -131,11 +135,12 @@ return
 message
 ;
 }
-StringBuffer
+final
+StringBuilder
 buf
 =
 new
-StringBuffer
+StringBuilder
 (
 )
 ;
@@ -159,6 +164,7 @@ append
 )
 ;
 }
+final
 String
 eMsg
 =
@@ -207,6 +213,8 @@ return
 exception
 ;
 }
+@
+Override
 public
 Throwable
 getCause

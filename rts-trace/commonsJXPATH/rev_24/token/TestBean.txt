@@ -130,6 +130,7 @@ public
 void
 setBeans
 (
+final
 NestedTestBean
 [
 ]
@@ -163,6 +164,7 @@ public
 void
 setBoolean
 (
+final
 boolean
 bool
 )
@@ -194,6 +196,7 @@ public
 void
 setInt
 (
+final
 int
 integer
 )
@@ -237,6 +240,7 @@ public
 int
 getIntegers
 (
+final
 int
 index
 )
@@ -252,9 +256,11 @@ public
 void
 setIntegers
 (
+final
 int
 index
 ,
+final
 int
 value
 )
@@ -330,8 +336,9 @@ list
 .
 add
 (
-new
 Integer
+.
+valueOf
 (
 3
 )
@@ -402,6 +409,7 @@ public
 void
 setMap
 (
+final
 Map
 map
 )
@@ -440,6 +448,7 @@ public
 void
 setNestedBean
 (
+final
 NestedTestBean
 bean
 )
@@ -452,6 +461,7 @@ bean
 ;
 }
 private
+final
 NestedTestBean
 object
 =
@@ -518,8 +528,9 @@ set
 .
 add
 (
-new
 Integer
+.
+valueOf
 (
 4
 )
@@ -541,6 +552,8 @@ return
 set
 ;
 }
+@
+Override
 public
 String
 toString

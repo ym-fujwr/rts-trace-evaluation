@@ -41,6 +41,8 @@ public
 Token
 specialToken
 ;
+@
+Override
 public
 String
 toString
@@ -57,6 +59,7 @@ final
 Token
 newToken
 (
+final
 int
 ofKind
 )

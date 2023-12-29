@@ -1,0 +1,3 @@
+org.apache.commons.cli.bug.BugCLI252Test
+org.apache.commons.cli.OptionTest
+org.apache.commons.cli.TypeHandlerTest

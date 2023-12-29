@@ -69,9 +69,11 @@ BeanAttributeIterator
 public
 DynamicAttributeIterator
 (
+final
 PropertyOwnerPointer
 parent
 ,
+final
 QName
 name
 )
@@ -84,10 +86,13 @@ name
 )
 ;
 }
+@
+Override
 protected
 void
 prepareForIndividualProperty
 (
+final
 String
 name
 )

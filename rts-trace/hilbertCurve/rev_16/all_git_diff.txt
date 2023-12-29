@@ -1,18 +1,18 @@
 diff --git a/src/main/java/org/davidmoten/hilbert/Ranges2.java b/src/main/java/org/davidmoten/hilbert/Ranges2.java
-index 7451ed5..49e58c3 100644
+index 49e58c3..7451ed5 100644
 --- a/src/main/java/org/davidmoten/hilbert/Ranges2.java
 +++ b/src/main/java/org/davidmoten/hilbert/Ranges2.java
 @@ -10 +10 @@ public class Ranges2 {
--    private final int bufferSize;
-+    private final int maxRanges;
+-    private final int maxRanges;
++    private final int bufferSize;
 @@ -15,2 +15,2 @@ public class Ranges2 {
--    public Ranges2(int bufferSize) {
--        this.bufferSize = bufferSize;
-+    public Ranges2(int maxRanges) {
-+        this.maxRanges = maxRanges;
+-    public Ranges2(int maxRanges) {
+-        this.maxRanges = maxRanges;
++    public Ranges2(int bufferSize) {
++        this.bufferSize = bufferSize;
 @@ -28 +28 @@ public class Ranges2 {
--            if (count > bufferSize) {
-+            if (count > maxRanges) {
+-            if (count > maxRanges) {
++            if (count > bufferSize) {
 @@ -54 +54 @@ public class Ranges2 {
--    
-+
+-
++    

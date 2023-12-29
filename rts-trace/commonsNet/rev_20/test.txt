@@ -1,1 +1,1 @@
-org.apache.commons.net.ntp.TestNtpClient#testGetTime,org.apache.commons.net.ntp.TestNtpPacket#testCreateFromBadPacket
+org.apache.commons.net.ntp.TestTimeInfo,org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase

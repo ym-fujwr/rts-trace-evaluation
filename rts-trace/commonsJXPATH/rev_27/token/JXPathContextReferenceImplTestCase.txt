@@ -10,13 +10,6 @@ jxpath
 ri
 ;
 import
-junit
-.
-framework
-.
-TestCase
-;
-import
 org
 .
 apache
@@ -32,6 +25,13 @@ model
 container
 .
 ContainerPointerFactory
+;
+import
+junit
+.
+framework
+.
+TestCase
 ;
 public
 class
@@ -75,7 +75,8 @@ removeNodePointerFactory
 factory
 )
 )
-;
+{
+}
 }
 }
 }

@@ -120,6 +120,7 @@ final
 NodePointer
 pointer
 ,
+final
 String
 namespaceURI
 )
@@ -136,6 +137,7 @@ currentPointer
 null
 )
 {
+final
 NodeIterator
 ni
 =
@@ -167,6 +169,7 @@ position
 ++
 )
 {
+final
 NodePointer
 nsPointer
 =
@@ -176,6 +179,7 @@ getNodePointer
 (
 )
 ;
+final
 String
 uri
 =
@@ -195,6 +199,7 @@ namespaceURI
 )
 )
 {
+final
 String
 prefix
 =
@@ -252,6 +257,7 @@ null
 public
 NamespaceResolver
 (
+final
 NamespaceResolver
 parent
 )
@@ -268,9 +274,11 @@ synchronized
 void
 registerNamespace
 (
+final
 String
 prefix
 ,
+final
 String
 namespaceURI
 )
@@ -313,6 +321,7 @@ public
 void
 setNamespaceContextPointer
 (
+final
 NodePointer
 pointer
 )
@@ -358,10 +367,12 @@ synchronized
 String
 getNamespaceURI
 (
+final
 String
 prefix
 )
 {
+final
 String
 uri
 =
@@ -394,10 +405,12 @@ synchronized
 String
 getExternallyRegisteredNamespaceURI
 (
+final
 String
 prefix
 )
 {
+final
 String
 uri
 =
@@ -435,10 +448,12 @@ synchronized
 String
 getPrefix
 (
+final
 String
 namespaceURI
 )
 {
+final
 String
 prefix
 =
@@ -471,10 +486,12 @@ synchronized
 String
 getExternallyRegisteredPrefix
 (
+final
 String
 namespaceURI
 )
 {
+final
 String
 prefix
 =
@@ -542,6 +559,8 @@ seal
 ;
 }
 }
+@
+Override
 public
 Object
 clone
@@ -550,6 +569,7 @@ clone
 {
 try
 {
+final
 NamespaceResolver
 result
 =
@@ -574,6 +594,7 @@ result
 }
 catch
 (
+final
 CloneNotSupportedException
 e
 )

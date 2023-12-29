@@ -42,10 +42,13 @@ JDOMParser
 extends
 XMLParser2
 {
+@
+Override
 public
 Object
 parseXML
 (
+final
 InputStream
 stream
 )
@@ -70,6 +73,7 @@ JXPathException
 }
 try
 {
+final
 SAXBuilder
 builder
 =
@@ -116,6 +120,7 @@ stream
 }
 catch
 (
+final
 Exception
 ex
 )

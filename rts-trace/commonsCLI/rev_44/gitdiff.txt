@@ -1,23 +1,23 @@
 diff --git a/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java b/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java
-index 4e6919f9..184b45e8 100644
+index 184b45e8..4e6919f9 100644
 --- a/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java
 +++ b/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java
 @@ -37 +37 @@ import java.util.Date;
-- * <td>-b [class name]</td>
-+ * <td>-b [classname]</td>
+- * <td>-b [classname]</td>
++ * <td>-b [class name]</td>
 @@ -41 +41 @@ import java.util.Date;
-- * <td>-c [file name]</td>
-+ * <td>-c [filename]</td>
+- * <td>-c [filename]</td>
++ * <td>-c [file name]</td>
 @@ -45 +45 @@ import java.util.Date;
-- * <td>-d [class name] (creates object via empty constructor)</td>
-+ * <td>-d [classname] (creates object via empty constructor)</td>
+- * <td>-d [classname] (creates object via empty constructor)</td>
++ * <td>-d [class name] (creates object via empty constructor)</td>
 @@ -53 +53 @@ import java.util.Date;
-- * <td>-f [URL]</td>
-+ * <td>-f [url]</td>
+- * <td>-f [url]</td>
++ * <td>-f [URL]</td>
 diff --git a/src/main/java/org/apache/commons/cli/TypeHandler.java b/src/main/java/org/apache/commons/cli/TypeHandler.java
-index 25648f44..05403572 100644
+index 05403572..25648f44 100644
 --- a/src/main/java/org/apache/commons/cli/TypeHandler.java
 +++ b/src/main/java/org/apache/commons/cli/TypeHandler.java
 @@ -33 +33 @@ public class TypeHandler {
--     * Returns the class whose name is {@code className}.
-+     * Returns the class whose name is {@code classname}.
+-     * Returns the class whose name is {@code classname}.
++     * Returns the class whose name is {@code className}.

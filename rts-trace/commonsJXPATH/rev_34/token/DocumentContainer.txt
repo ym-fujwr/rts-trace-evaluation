@@ -151,10 +151,12 @@ Object
 document
 ;
 private
+final
 URL
 xmlURL
 ;
 private
+final
 String
 model
 ;
@@ -163,9 +165,11 @@ static
 void
 registerXMLParser
 (
+final
 String
 model
 ,
+final
 XMLParser
 parser
 )
@@ -185,9 +189,11 @@ static
 void
 registerXMLParser
 (
+final
 String
 model
 ,
+final
 String
 parserClassName
 )
@@ -205,6 +211,7 @@ parserClassName
 public
 DocumentContainer
 (
+final
 URL
 xmlURL
 )
@@ -220,9 +227,11 @@ MODEL_DOM
 public
 DocumentContainer
 (
+final
 URL
 xmlURL
 ,
+final
 String
 model
 )
@@ -255,6 +264,8 @@ model
 model
 ;
 }
+@
+Override
 public
 Object
 getValue
@@ -321,6 +332,7 @@ close
 }
 catch
 (
+final
 IOException
 ex
 )
@@ -346,14 +358,18 @@ return
 document
 ;
 }
+@
+Override
 public
 Object
 parseXML
 (
+final
 InputStream
 stream
 )
 {
+final
 XMLParser
 parser
 =
@@ -369,6 +385,7 @@ instanceof
 XMLParser2
 )
 {
+final
 XMLParser2
 parser2
 =
@@ -441,10 +458,13 @@ stream
 )
 ;
 }
+@
+Override
 public
 void
 setValue
 (
+final
 Object
 value
 )
@@ -461,6 +481,7 @@ static
 XMLParser
 getParser
 (
+final
 String
 model
 )
@@ -485,6 +506,7 @@ parser
 null
 )
 {
+final
 String
 className
 =
@@ -517,6 +539,7 @@ model
 }
 try
 {
+final
 Class
 clazz
 =
@@ -543,6 +566,7 @@ newInstance
 }
 catch
 (
+final
 Exception
 ex
 )

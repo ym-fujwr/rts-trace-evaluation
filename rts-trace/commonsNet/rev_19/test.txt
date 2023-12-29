@@ -1,1 +1,1 @@
-org.apache.commons.net.nntp.TestThreader#testNullIterable
+org.apache.commons.net.ntp.TestTimeInfo

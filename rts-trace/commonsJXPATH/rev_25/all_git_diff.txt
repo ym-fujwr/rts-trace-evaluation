@@ -1,61 +1,61 @@
 diff --git a/pom.xml b/pom.xml
-index 3fb247d3..6df11680 100644
+index 6df11680..3fb247d3 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -105 +105 @@
--    <defaultGoal>clean apache-rat:check package japicmp:cmp checkstyle:check pmd:check javadoc:javadoc</defaultGoal>
-+    <defaultGoal>clean apache-rat:check package japicmp:cmp checkstyle:check javadoc:javadoc</defaultGoal>
-@@ -168,10 +167,0 @@
--      <plugin>
--        <groupId>org.apache.maven.plugins</groupId>
--        <artifactId>maven-pmd-plugin</artifactId>
--        <configuration>
--          <targetJdk>1.8</targetJdk>
--          <excludes>
--            <exclude>org/apache/commons/jxpath/ri/parser/*</exclude>
--          </excludes>
--        </configuration>
--      </plugin>
-@@ -220 +210 @@
--      <version>1.9.4</version>
-+      <version>1.8.2</version>
-@@ -265 +255 @@
--        <version>3.0.0</version>
-+        <version>2.2</version>
+-    <defaultGoal>clean apache-rat:check package japicmp:cmp checkstyle:check javadoc:javadoc</defaultGoal>
++    <defaultGoal>clean apache-rat:check package japicmp:cmp checkstyle:check pmd:check javadoc:javadoc</defaultGoal>
+@@ -167,0 +168,10 @@
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-pmd-plugin</artifactId>
++        <configuration>
++          <targetJdk>1.8</targetJdk>
++          <excludes>
++            <exclude>org/apache/commons/jxpath/ri/parser/*</exclude>
++          </excludes>
++        </configuration>
++      </plugin>
+@@ -210 +220 @@
+-      <version>1.8.2</version>
++      <version>1.9.4</version>
+@@ -255 +265 @@
+-        <version>2.2</version>
++        <version>3.0.0</version>
 diff --git a/src/changes/changes.xml b/src/changes/changes.xml
-index 09f71e05..130633cf 100644
+index 130633cf..09f71e05 100644
 --- a/src/changes/changes.xml
 +++ b/src/changes/changes.xml
-@@ -101,6 +100,0 @@ The <action> type attribute can be add,update,fix,remove.
--      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
--        Bump commons-beanutils from 1.8.2 to 1.9.4 #24.
--      </action>
--      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
--        Bump taglist-maven-plugin from 2.2 to 3.0.0 #32.
--      </action>
+@@ -100,0 +101,6 @@ The <action> type attribute can be add,update,fix,remove.
++      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
++        Bump commons-beanutils from 1.8.2 to 1.9.4 #24.
++      </action>
++      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
++        Bump taglist-maven-plugin from 2.2 to 3.0.0 #32.
++      </action>
 diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
-index 560a58b1..42ba1575 100644
+index 42ba1575..560a58b1 100644
 --- a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
 +++ b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
 @@ -139 +139 @@ public abstract class JXPathContextFactory {
--        catch (final SecurityException ignore) { // NOPMD
-+        catch (final SecurityException ignore) {
+-        catch (final SecurityException ignore) {
++        catch (final SecurityException ignore) { // NOPMD
 @@ -165 +165 @@ public abstract class JXPathContextFactory {
--        catch (final SecurityException ignore) { // NOPMD
-+        catch (final SecurityException ignore) {
+-        catch (final SecurityException ignore) {
++        catch (final SecurityException ignore) { // NOPMD
 @@ -190 +190 @@ public abstract class JXPathContextFactory {
--                        catch (final IOException ignore) { // NOPMD
-+                        catch (final IOException ignore) {
+-                        catch (final IOException ignore) {
++                        catch (final IOException ignore) { // NOPMD
 @@ -237,2 +237,2 @@ public abstract class JXPathContextFactory {
--                    catch (final IOException ignore) { // NOPMD
--                        // Ignore
-+                    catch (final IOException ignore) {
-+                        //swallow
+-                    catch (final IOException ignore) {
+-                        //swallow
++                    catch (final IOException ignore) { // NOPMD
++                        // Ignore
 diff --git a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
-index e5eb0593..a5fffe72 100644
+index a5fffe72..e5eb0593 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
-@@ -378,2 +378 @@ public class BasicTypeConverter implements TypeConverter {
--            // TODO ? https://pmd.sourceforge.io/pmd-6.50.0/pmd_rules_java_errorprone.html#avoiddecimalliteralsinbigdecimalconstructor
--            return new BigDecimal(value); // NOPMD
-+            return new BigDecimal(value);
+@@ -378 +378,2 @@ public class BasicTypeConverter implements TypeConverter {
+-            return new BigDecimal(value);
++            // TODO ? https://pmd.sourceforge.io/pmd-6.50.0/pmd_rules_java_errorprone.html#avoiddecimalliteralsinbigdecimalconstructor
++            return new BigDecimal(value); // NOPMD

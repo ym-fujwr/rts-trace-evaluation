@@ -87,14 +87,12 @@ suite
 )
 {
 return
-(
 new
 TestSuite
 (
 JXPath172DynamicTest
 .
 class
-)
 )
 ;
 }
@@ -539,6 +537,7 @@ final
 String
 val
 ,
+final
 boolean
 lenient
 )

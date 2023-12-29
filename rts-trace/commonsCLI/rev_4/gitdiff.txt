@@ -1,27 +1,27 @@
 diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
-index 8ae5a02c..7db03723 100644
+index 7db03723..8ae5a02c 100644
 --- a/src/main/java/org/apache/commons/cli/Option.java
 +++ b/src/main/java/org/apache/commons/cli/Option.java
-@@ -32 +31,0 @@ import java.util.Objects;
-- * </p>
-@@ -36 +34,0 @@ import java.util.Objects;
-- * </p>
-@@ -42 +39,0 @@ public class Option implements Cloneable, Serializable {
--
-@@ -47 +43,0 @@ public class Option implements Cloneable, Serializable {
--     * </p>
-@@ -91 +87 @@ public class Option implements Cloneable, Serializable {
--            option(option);
-+            this.option = OptionValidator.validate(option);
-@@ -250 +245,0 @@ public class Option implements Cloneable, Serializable {
--         * </p>
-@@ -294 +289 @@ public class Option implements Cloneable, Serializable {
--     * @param option short representation of the option
-+     * @param opt short representation of the option
-@@ -299,2 +294,2 @@ public class Option implements Cloneable, Serializable {
--    public static Builder builder(final String option) {
--        return new Builder(option);
-+    public static Builder builder(final String opt) {
-+        return new Builder(opt);
-@@ -843 +837,0 @@ public class Option implements Cloneable, Serializable {
--     * </p>
+@@ -31,0 +32 @@ import java.util.Objects;
++ * </p>
+@@ -34,0 +36 @@ import java.util.Objects;
++ * </p>
+@@ -39,0 +42 @@ public class Option implements Cloneable, Serializable {
++
+@@ -43,0 +47 @@ public class Option implements Cloneable, Serializable {
++     * </p>
+@@ -87 +91 @@ public class Option implements Cloneable, Serializable {
+-            this.option = OptionValidator.validate(option);
++            option(option);
+@@ -245,0 +250 @@ public class Option implements Cloneable, Serializable {
++         * </p>
+@@ -289 +294 @@ public class Option implements Cloneable, Serializable {
+-     * @param opt short representation of the option
++     * @param option short representation of the option
+@@ -294,2 +299,2 @@ public class Option implements Cloneable, Serializable {
+-    public static Builder builder(final String opt) {
+-        return new Builder(opt);
++    public static Builder builder(final String option) {
++        return new Builder(option);
+@@ -837,0 +843 @@ public class Option implements Cloneable, Serializable {
++     * </p>

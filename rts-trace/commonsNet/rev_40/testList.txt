@@ -1,0 +1,4 @@
+org.apache.commons.net.ftp.FTPSClientTest
+org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest
+org.apache.commons.net.telnet.SimpleOptionHandlerTest
+org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest

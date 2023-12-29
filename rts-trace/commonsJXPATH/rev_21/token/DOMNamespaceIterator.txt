@@ -100,10 +100,12 @@ implements
 NodeIterator
 {
 private
+final
 NodePointer
 parent
 ;
 private
+final
 List
 attributes
 ;
@@ -116,6 +118,7 @@ position
 public
 DOMNamespaceIterator
 (
+final
 NodePointer
 parent
 )
@@ -152,6 +155,7 @@ private
 void
 collectNamespaces
 (
+final
 List
 attributes
 ,
@@ -159,6 +163,7 @@ Node
 node
 )
 {
+final
 Node
 parent
 =
@@ -223,6 +228,7 @@ Node
 ELEMENT_NODE
 )
 {
+final
 NamedNodeMap
 map
 =
@@ -232,6 +238,7 @@ getAttributes
 (
 )
 ;
+final
 int
 count
 =
@@ -256,6 +263,7 @@ i
 ++
 )
 {
+final
 Attr
 attr
 =
@@ -269,6 +277,7 @@ item
 i
 )
 ;
+final
 String
 prefix
 =
@@ -279,6 +288,7 @@ getPrefix
 attr
 )
 ;
+final
 String
 name
 =
@@ -291,7 +301,6 @@ attr
 ;
 if
 (
-(
 prefix
 !=
 null
@@ -302,9 +311,7 @@ equals
 (
 "xmlns"
 )
-)
 ||
-(
 prefix
 ==
 null
@@ -314,7 +321,6 @@ name
 equals
 (
 "xmlns"
-)
 )
 )
 {
@@ -329,6 +335,8 @@ attr
 }
 }
 }
+@
+Override
 public
 NodePointer
 getNodePointer
@@ -384,6 +392,7 @@ prefix
 =
 ""
 ;
+final
 Attr
 attr
 =
@@ -397,6 +406,7 @@ get
 index
 )
 ;
+final
 String
 name
 =
@@ -446,6 +456,8 @@ getValue
 )
 ;
 }
+@
+Override
 public
 int
 getPosition
@@ -456,10 +468,13 @@ return
 position
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )

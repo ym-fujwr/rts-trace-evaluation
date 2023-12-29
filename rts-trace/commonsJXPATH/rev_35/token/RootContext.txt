@@ -105,10 +105,12 @@ extends
 EvalContext
 {
 private
+final
 JXPathContextReferenceImpl
 jxpathContext
 ;
 private
+final
 NodePointer
 pointer
 ;
@@ -146,9 +148,11 @@ MAX_REGISTER
 public
 RootContext
 (
+final
 JXPathContextReferenceImpl
 jxpathContext
 ,
+final
 NodePointer
 pointer
 )
@@ -190,6 +194,8 @@ getNamespaceResolver
 ;
 }
 }
+@
+Override
 public
 JXPathContext
 getJXPathContext
@@ -200,6 +206,8 @@ return
 jxpathContext
 ;
 }
+@
+Override
 public
 RootContext
 getRootContext
@@ -224,6 +232,8 @@ getAbsoluteRootContext
 )
 ;
 }
+@
+Override
 public
 NodePointer
 getCurrentNodePointer
@@ -234,6 +244,8 @@ return
 pointer
 ;
 }
+@
+Override
 public
 Object
 getValue
@@ -244,6 +256,8 @@ return
 pointer
 ;
 }
+@
+Override
 public
 int
 getCurrentPosition
@@ -257,6 +271,8 @@ UnsupportedOperationException
 )
 ;
 }
+@
+Override
 public
 boolean
 nextNode
@@ -270,6 +286,8 @@ UnsupportedOperationException
 )
 ;
 }
+@
+Override
 public
 boolean
 nextSet
@@ -283,10 +301,13 @@ UnsupportedOperationException
 )
 ;
 }
+@
+Override
 public
 boolean
 setPosition
 (
+final
 int
 position
 )
@@ -302,6 +323,7 @@ public
 EvalContext
 getConstantContext
 (
+final
 Object
 constant
 )
@@ -390,6 +412,7 @@ public
 EvalContext
 getVariableContext
 (
+final
 QName
 variableName
 )
@@ -417,9 +440,11 @@ public
 Function
 getFunction
 (
+final
 QName
 functionName
 ,
+final
 Object
 [
 ]
@@ -441,6 +466,7 @@ public
 Object
 getRegisteredValue
 (
+final
 int
 id
 )
@@ -476,6 +502,7 @@ public
 int
 setRegisteredValue
 (
+final
 Object
 value
 )
@@ -547,6 +574,8 @@ availableRegister
 1
 ;
 }
+@
+Override
 public
 String
 toString

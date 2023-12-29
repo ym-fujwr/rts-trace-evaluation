@@ -1,45 +1,45 @@
 diff --git a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
-index cdd04193..ecee382b 100644
+index ecee382b..cdd04193 100644
 --- a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
 +++ b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
-@@ -525 +525,3 @@ public class ValueUtils {
--        return (DynamicPropertyHandler) dynamicPropertyHandlerMap.computeIfAbsent(clazz, k -> {
-+        DynamicPropertyHandler handler =
-+            (DynamicPropertyHandler) dynamicPropertyHandlerMap.get(clazz);
-+        if (handler == null) {
-@@ -527,2 +529,2 @@ public class ValueUtils {
--                return (DynamicPropertyHandler) clazz.newInstance();
--            } 
-+                handler = (DynamicPropertyHandler) clazz.newInstance();
-+            }
-@@ -530 +532,4 @@ public class ValueUtils {
--                throw new JXPathException("Cannot allocate dynamic property handler of class " + clazz.getName(), ex);
-+                throw new JXPathException(
-+                    "Cannot allocate dynamic property handler of class "
-+                        + clazz.getName(),
-+                    ex);
-@@ -532 +537,3 @@ public class ValueUtils {
--        });
-+            dynamicPropertyHandlerMap.put(clazz, handler);
-+        }
-+        return handler;
+@@ -525,3 +525 @@ public class ValueUtils {
+-        DynamicPropertyHandler handler =
+-            (DynamicPropertyHandler) dynamicPropertyHandlerMap.get(clazz);
+-        if (handler == null) {
++        return (DynamicPropertyHandler) dynamicPropertyHandlerMap.computeIfAbsent(clazz, k -> {
+@@ -529,2 +527,2 @@ public class ValueUtils {
+-                handler = (DynamicPropertyHandler) clazz.newInstance();
+-            }
++                return (DynamicPropertyHandler) clazz.newInstance();
++            } 
+@@ -532,4 +530 @@ public class ValueUtils {
+-                throw new JXPathException(
+-                    "Cannot allocate dynamic property handler of class "
+-                        + clazz.getName(),
+-                    ex);
++                throw new JXPathException("Cannot allocate dynamic property handler of class " + clazz.getName(), ex);
+@@ -537,3 +532 @@ public class ValueUtils {
+-            dynamicPropertyHandlerMap.put(clazz, handler);
+-        }
+-        return handler;
++        });
 diff --git a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
-index f7f1599c..e87b7153 100644
+index e87b7153..f7f1599c 100644
 --- a/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
 +++ b/src/main/java/org/apache/commons/jxpath/xml/DocumentContainer.java
-@@ -175 +175,2 @@ public class DocumentContainer extends XMLParser2 implements Container {
--        return (XMLParser) parsers.computeIfAbsent(model, k -> {
-+        XMLParser parser = (XMLParser) parsers.get(model);
-+        if (parser == null) {
-@@ -182 +183 @@ public class DocumentContainer extends XMLParser2 implements Container {
--                return (XMLParser) clazz.newInstance();
-+                parser = (XMLParser) clazz.newInstance();
-@@ -185 +186,2 @@ public class DocumentContainer extends XMLParser2 implements Container {
--                throw new JXPathException("Cannot allocate XMLParser: " + className, ex);
-+                throw new JXPathException(
-+                    "Cannot allocate XMLParser: " + className, ex);
-@@ -187 +189,3 @@ public class DocumentContainer extends XMLParser2 implements Container {
--        });
-+            parsers.put(model, parser);
-+        }
-+        return parser;
+@@ -175,2 +175 @@ public class DocumentContainer extends XMLParser2 implements Container {
+-        XMLParser parser = (XMLParser) parsers.get(model);
+-        if (parser == null) {
++        return (XMLParser) parsers.computeIfAbsent(model, k -> {
+@@ -183 +182 @@ public class DocumentContainer extends XMLParser2 implements Container {
+-                parser = (XMLParser) clazz.newInstance();
++                return (XMLParser) clazz.newInstance();
+@@ -186,2 +185 @@ public class DocumentContainer extends XMLParser2 implements Container {
+-                throw new JXPathException(
+-                    "Cannot allocate XMLParser: " + className, ex);
++                throw new JXPathException("Cannot allocate XMLParser: " + className, ex);
+@@ -189,3 +187 @@ public class DocumentContainer extends XMLParser2 implements Container {
+-            parsers.put(model, parser);
+-        }
+-        return parser;
++        });

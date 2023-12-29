@@ -1,322 +1,63 @@
 diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
-index e8f676ef..8d01658f 100644
+index 8d01658f..e8f676ef 100644
 --- a/CONTRIBUTING.md
 +++ b/CONTRIBUTING.md
 @@ -3 +3 @@ Thanks for considering contributing to JITWatch!
--Please make sure any changes compile with Java 8 as I have no plans to drop support for this Java version.
-+Please make sure any changes compile with Java 7 as I have no plans to drop support for this Java version.
+-Please make sure any changes compile with Java 7 as I have no plans to drop support for this Java version.
++Please make sure any changes compile with Java 8 as I have no plans to drop support for this Java version.
 diff --git a/QUICKSTART.txt b/QUICKSTART.txt
-index f6a0831f..87e08815 100644
+index 87e08815..f6a0831f 100644
 --- a/QUICKSTART.txt
 +++ b/QUICKSTART.txt
 @@ -16 +16 @@ Launch JITWatch on Linux or OSX
--cd scripts
-+
+-
++cd scripts
 @@ -22 +22 @@ Launch JITWatch on Windows
--cd scripts
-+
+-
++cd scripts
 diff --git a/build.properties b/build.properties
-index 93dd6b9c..af5c7e2a 100644
+index af5c7e2a..93dd6b9c 100644
 --- a/build.properties
 +++ b/build.properties
 @@ -1 +1 @@
--version=1.4.5
-+version=1.4.4
+-version=1.4.4
++version=1.4.5
 diff --git a/core/pom.xml b/core/pom.xml
-index aeff1196..d824eb43 100644
+index d824eb43..aeff1196 100644
 --- a/core/pom.xml
 +++ b/core/pom.xml
 @@ -9 +9 @@
--        <version>1.4.5</version>
-+        <version>1.4.4</version>
+-        <version>1.4.4</version>
++        <version>1.4.5</version>
 diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java b/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
-index baeb07d1..37f53f40 100644
+index 37f53f40..baeb07d1 100644
 --- a/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
 +++ b/core/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
-@@ -68,0 +69 @@ public final class DisassemblyUtil
-+		Architecture arch = OSUtil.getArchitecture();
-@@ -70,3 +71 @@ public final class DisassemblyUtil
--		String archName =  System.getProperty("os.arch");
--
--		if ("x86_64".equals(archName))
-+		if (DEBUG_LOGGING_ASSEMBLY)
-@@ -74 +73 @@ public final class DisassemblyUtil
--			archName = "amd64";
-+			logger.debug("OS: {} Arch: {}", os, arch);
-@@ -77 +76 @@ public final class DisassemblyUtil
--		String binaryName = "hsdis-" + archName;
-+		String binaryName = "hsdis-" + System.getProperty("os.arch");
-@@ -154 +153 @@ public final class DisassemblyUtil
--		String[] serverPath = new String[] { "server", "client", "" };
-+		String[] serverPath = new String[] { "server", "" };
-@@ -156 +155 @@ public final class DisassemblyUtil
--		String[] archPath = new String[] { "i386", "amd64", "arm", "aarch64", "" };
-+		String[] archPath = new String[] { "i386", "amd64", "" };
+@@ -69 +68,0 @@ public final class DisassemblyUtil
+-		Architecture arch = OSUtil.getArchitecture();
+@@ -71 +70,3 @@ public final class DisassemblyUtil
+-		if (DEBUG_LOGGING_ASSEMBLY)
++		String archName =  System.getProperty("os.arch");
++
++		if ("x86_64".equals(archName))
+@@ -73 +74 @@ public final class DisassemblyUtil
+-			logger.debug("OS: {} Arch: {}", os, arch);
++			archName = "amd64";
+@@ -76 +77 @@ public final class DisassemblyUtil
+-		String binaryName = "hsdis-" + System.getProperty("os.arch");
++		String binaryName = "hsdis-" + archName;
+@@ -153 +154 @@ public final class DisassemblyUtil
+-		String[] serverPath = new String[] { "server", "" };
++		String[] serverPath = new String[] { "server", "client", "" };
+@@ -155 +156 @@ public final class DisassemblyUtil
+-		String[] archPath = new String[] { "i386", "amd64", "" };
++		String[] archPath = new String[] { "i386", "amd64", "arm", "aarch64", "" };
 diff --git a/histoPlotter.bat b/histoPlotter.bat
-new file mode 100644
-index 00000000..b39d31ab
---- /dev/null
-+++ b/histoPlotter.bat
-@@ -0,0 +1,23 @@
-+@REM ---------------------------------------------------------------
-+@REM JITWatch
-+@REM ---------------------------------------------------------------
-+
-+@REM Startup script for JITWatch on Windows
-+@ECHO OFF
-+
-+@REM ---------------------------------------------------------------
-+
-+set CLASSPATH=lib\logback-classic-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
-+set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\jre\lib\jfxrt.jar
-+set CLASSPATH=%CLASSPATH%;core\target\classes
-+set CLASSPATH=%CLASSPATH%;ui\target\classes
-+set CLASSPATH=%CLASSPATH%;core\build\classes\java\main
-+set CLASSPATH=%CLASSPATH%;ui\build\classes\java\main
-+
-+echo %CLASSPATH%
-+
-+"%JAVA_HOME%\bin\java" -Djava.library.path=%JAVA_HOME%\lib\amd64 -classpath "%CLASSPATH%" org.adoptopenjdk.jitwatch.jarscan.visualiser.HistoPlotter %1
-+@REM ---------------------------------------------------------------
-+
-diff --git a/scripts/histoPlotter.sh b/histoPlotter.sh
-similarity index 53%
-rename from scripts/histoPlotter.sh
-rename to histoPlotter.sh
-index 271caa0d..bf204a6d 100755
---- a/scripts/histoPlotter.sh
-+++ b/histoPlotter.sh
-@@ -14 +14,4 @@ fi
--# mvn clean package
-+# mvn package
-+# or
-+# ant jar
-+#
-@@ -19 +22,8 @@ fi
--export CLASSPATH=../ui/target/jitwatch-ui-shaded.jar
-+CLASSPATH=$CLASSPATH:lib/logback-classic-1.1.2.jar
-+CLASSPATH=$CLASSPATH:lib/logback-core-1.1.2.jar
-+CLASSPATH=$CLASSPATH:lib/slf4j-api-1.7.7.jar
-+CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/jfxrt.jar
-+CLASSPATH=$CLASSPATH:core/target/classes
-+CLASSPATH=$CLASSPATH:ui/target/classes
-+CLASSPATH=$CLASSPATH:core/build/classes/java/main
-+CLASSPATH=$CLASSPATH:ui/build/classes/java/main
-diff --git a/scripts/jarScan.bat b/jarScan.bat
-similarity index 51%
-rename from scripts/jarScan.bat
-rename to jarScan.bat
-index 506bc3e2..4d113794 100644
---- a/scripts/jarScan.bat
-+++ b/jarScan.bat
-@@ -10 +10,8 @@
--set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
-+set CLASSPATH=lib\logback-classic-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
-+set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\jre\lib\jfxrt.jar
-+set CLASSPATH=%CLASSPATH%;core\target\classes
-+set CLASSPATH=%CLASSPATH%;ui\target\classes
-+set CLASSPATH=%CLASSPATH%;core\build\classes\java\main
-+set CLASSPATH=%CLASSPATH%;ui\build\classes\java\main
-diff --git a/scripts/jarScan.sh b/jarScan.sh
-similarity index 82%
-rename from scripts/jarScan.sh
-rename to jarScan.sh
-index 539ea9dc..250e07af 100755
---- a/scripts/jarScan.sh
-+++ b/jarScan.sh
-@@ -51 +51,15 @@ fi
--export CLASSPATH=../ui/target/jitwatch-ui-shaded.jar
-+# make jarScan.sh runnable from any directory (only works on Linux where readlink -f returns canonical path)
-+if [ "$unamestr" = 'Darwin' ]; then
-+  export JITWATCH=`dirname $0`
-+else
-+  export JARSCAN=`readlink -f $0`
-+  export JITWATCH=`dirname $JARSCAN`
-+fi
-+
-+CLASSPATH=$CLASSPATH:$JITWATCH/lib/logback-classic-1.1.2.jar
-+CLASSPATH=$CLASSPATH:$JITWATCH/lib/logback-core-1.1.2.jar
-+CLASSPATH=$CLASSPATH:$JITWATCH/lib/slf4j-api-1.7.7.jar
-+CLASSPATH=$CLASSPATH:$JITWATCH/core/target/classes
-+CLASSPATH=$CLASSPATH:$JITWATCH/ui/target/classes
-+CLASSPATH=$CLASSPATH:$JITWATCH/core/build/classes/java/main
-+CLASSPATH=$CLASSPATH:$JITWATCH/ui/build/classes/java/main
-diff --git a/launchHeadless.bat b/launchHeadless.bat
-new file mode 100755
-index 00000000..3b1696ed
---- /dev/null
-+++ b/launchHeadless.bat
-@@ -0,0 +1,11 @@
-+@ECHO OFF
-+
-+set CLASSPATH=lib\logback-classic-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
-+set CLASSPATH=%CLASSPATH%;core\target\classes
-+set CLASSPATH=%CLASSPATH%;ui\target\classes
-+set CLASSPATH=%CLASSPATH%;core\build\classes\java\main
-+set CLASSPATH=%CLASSPATH%;ui\build\classes\java\main
-+
-+"%JAVA_HOME%\bin\java" -cp "%CLASSPATH%" org.adoptopenjdk.jitwatch.launch.LaunchHeadless %*
-diff --git a/launchHeadless.sh b/launchHeadless.sh
-new file mode 100755
-index 00000000..661c6dd9
---- /dev/null
-+++ b/launchHeadless.sh
-@@ -0,0 +1,21 @@
-+#!/bin/sh
-+
-+unamestr=`uname`
-+if [ "$JAVA_HOME" = '' ]; then
-+  if [ "$unamestr" = 'Darwin' ]; then
-+     export JAVA_HOME=`/usr/libexec/java_home`
-+  else
-+     echo "JAVA_HOME has not been set."
-+     exit 0;
-+  fi
-+fi
-+
-+CLASSPATH=$CLASSPATH:lib/logback-classic-1.1.2.jar
-+CLASSPATH=$CLASSPATH:lib/logback-core-1.1.2.jar
-+CLASSPATH=$CLASSPATH:lib/slf4j-api-1.7.7.jar
-+CLASSPATH=$CLASSPATH:core/target/classes
-+CLASSPATH=$CLASSPATH:ui/target/classes
-+CLASSPATH=$CLASSPATH:core/build/classes/java/main
-+CLASSPATH=$CLASSPATH:ui/build/classes/java/main
-+
-+"$JAVA_HOME/bin/java" -cp "$CLASSPATH" org.adoptopenjdk.jitwatch.launch.LaunchHeadless $@
-diff --git a/launchUI.bat b/launchUI.bat
-new file mode 100644
-index 00000000..3572dad3
---- /dev/null
-+++ b/launchUI.bat
-@@ -0,0 +1,24 @@
-+@REM ---------------------------------------------------------------
-+@REM JITWatch
-+@REM ---------------------------------------------------------------
-+
-+@REM Startup script for JITWatch on Windows
-+@ECHO OFF
-+
-+@REM ---------------------------------------------------------------
-+
-+set CLASSPATH=lib\logback-classic-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
-+set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\jre\lib\jfxrt.jar
-+set CLASSPATH=%CLASSPATH%;core\target\classes
-+set CLASSPATH=%CLASSPATH%;ui\target\classes
-+set CLASSPATH=%CLASSPATH%;core\build\classes\java\main
-+set CLASSPATH=%CLASSPATH%;ui\build\classes\java\main
-+set CLASSPATH=%CLASSPATH%;ui\src\main\resources
-+
-+echo %CLASSPATH%
-+
-+"%JAVA_HOME%\bin\java" -Djava.library.path="%JAVA_HOME%\lib\amd64" -classpath "%CLASSPATH%" org.adoptopenjdk.jitwatch.launch.LaunchUI
-+@REM ---------------------------------------------------------------
-+
-diff --git a/launchUI.sh b/launchUI.sh
-new file mode 100755
-index 00000000..e091ae48
---- /dev/null
-+++ b/launchUI.sh
-@@ -0,0 +1,32 @@
-+#!/bin/sh
-+
-+unamestr=`uname`
-+if [ "$JAVA_HOME" = '' ]; then
-+  if [ "$unamestr" = 'Darwin' ]; then
-+     export JAVA_HOME=`/usr/libexec/java_home`
-+  else
-+     echo "JAVA_HOME has not been set."
-+     exit 0;
-+  fi
-+fi
-+
-+# Requires the jar to be built using
-+# mvn package
-+# or
-+# ant jar
-+#
-+#
-+# You may need to set -Xmx (max heap) and -XX:MaxPermSize
-+# if your hotspot.log references a lot of classes
-+
-+CLASSPATH=$CLASSPATH:lib/logback-classic-1.1.2.jar
-+CLASSPATH=$CLASSPATH:lib/logback-core-1.1.2.jar
-+CLASSPATH=$CLASSPATH:lib/slf4j-api-1.7.7.jar
-+CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/jfxrt.jar
-+CLASSPATH=$CLASSPATH:core/target/classes
-+CLASSPATH=$CLASSPATH:ui/target/classes
-+CLASSPATH=$CLASSPATH:core/build/classes/java/main
-+CLASSPATH=$CLASSPATH:ui/build/classes/java/main
-+CLASSPATH=$CLASSPATH:ui/src/main/resources
-+
-+"$JAVA_HOME/bin/java" -Djava.library.path=$JAVA_HOME/lib/amd64 -cp "$CLASSPATH" "$@" org.adoptopenjdk.jitwatch.launch.LaunchUI
-diff --git a/scripts/makeDemoLogFile.bat b/makeDemoLogFile.bat
-similarity index 88%
-rename from scripts/makeDemoLogFile.bat
-rename to makeDemoLogFile.bat
-index fd9e6da2..36359412 100644
---- a/scripts/makeDemoLogFile.bat
-+++ b/makeDemoLogFile.bat
-@@ -63 +63,7 @@ echo "Building example HotSpot log"
--set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
-+set CLASSPATH=core\target\classes
-+set CLASSPATH=ui\target\classes
-+set CLASSPATH=core\build\classes\java\main
-+set CLASSPATH=ui\build\classes\java\main
-+set CLASSPATH=%CLASSPATH%;lib\logback-classic-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
-+set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
-diff --git a/scripts/makeDemoLogFile.sh b/makeDemoLogFile.sh
-similarity index 86%
-rename from scripts/makeDemoLogFile.sh
-rename to makeDemoLogFile.sh
-index 11ed45fa..b577c818 100755
---- a/scripts/makeDemoLogFile.sh
-+++ b/makeDemoLogFile.sh
-@@ -10 +10 @@
--# mvn clean package
-+# mvn clean compile test
-@@ -13,2 +13 @@
--# java -jar ui/target/jitwatch-ui-shaded.jar
--
-+# mvn exec:java
-@@ -68,0 +68,3 @@ fi
-+
-+$JAVA_HOME/bin/java -version
-+
-@@ -73,5 +75,7 @@ echo "Building example HotSpot log"
--if [ "$unamestr" = 'Darwin' ]; then
--   export CLASSPATH=../ui/target/jitwatch-ui-1.4.4-shaded-mac.jar
--else
--   export CLASSPATH=../ui/target/jitwatch-ui-1.4.4-shaded-linux.jar
--fi
-+CLASSPATH=$CLASSPATH:core/target/classes
-+CLASSPATH=$CLASSPATH:ui/target/classes
-+CLASSPATH=$CLASSPATH:core/build/classes/java/main
-+CLASSPATH=$CLASSPATH:ui/build/classes/java/main
-+CLASSPATH=$CLASSPATH:lib/logback-classic-1.1.2.jar
-+CLASSPATH=$CLASSPATH:lib/logback-core-1.1.2.jar
-+CLASSPATH=$CLASSPATH:lib/slf4j-api-1.7.7.jar
-diff --git a/pom.xml b/pom.xml
-index a51b29b8..57dea25e 100644
---- a/pom.xml
-+++ b/pom.xml
-@@ -8 +8 @@
--    <version>1.4.5</version>
-+    <version>1.4.4</version>
-diff --git a/scripts/histoPlotter.bat b/scripts/histoPlotter.bat
 deleted file mode 100644
-index feff4b42..00000000
---- a/scripts/histoPlotter.bat
+index b39d31ab..00000000
+--- a/histoPlotter.bat
 +++ /dev/null
-@@ -1,16 +0,0 @@
+@@ -1,23 +0,0 @@
 -@REM ---------------------------------------------------------------
 -@REM JITWatch
 -@REM ---------------------------------------------------------------
@@ -326,71 +67,41 @@ index feff4b42..00000000
 -
 -@REM ---------------------------------------------------------------
 -
--set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
+-set CLASSPATH=lib\logback-classic-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
+-set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\jre\lib\jfxrt.jar
+-set CLASSPATH=%CLASSPATH%;core\target\classes
+-set CLASSPATH=%CLASSPATH%;ui\target\classes
+-set CLASSPATH=%CLASSPATH%;core\build\classes\java\main
+-set CLASSPATH=%CLASSPATH%;ui\build\classes\java\main
 -
 -echo %CLASSPATH%
 -
--"%JAVA_HOME%\bin\java" -classpath "%CLASSPATH%" org.adoptopenjdk.jitwatch.jarscan.visualiser.HistoPlotter %1
+-"%JAVA_HOME%\bin\java" -Djava.library.path=%JAVA_HOME%\lib\amd64 -classpath "%CLASSPATH%" org.adoptopenjdk.jitwatch.jarscan.visualiser.HistoPlotter %1
 -@REM ---------------------------------------------------------------
 -
-diff --git a/scripts/launchHeadless.bat b/scripts/launchHeadless.bat
+diff --git a/launchHeadless.bat b/launchHeadless.bat
 deleted file mode 100755
-index a579b038..00000000
---- a/scripts/launchHeadless.bat
+index 3b1696ed..00000000
+--- a/launchHeadless.bat
 +++ /dev/null
-@@ -1,5 +0,0 @@
+@@ -1,11 +0,0 @@
 -@ECHO OFF
 -
--set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
+-set CLASSPATH=lib\logback-classic-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
+-set CLASSPATH=%CLASSPATH%;core\target\classes
+-set CLASSPATH=%CLASSPATH%;ui\target\classes
+-set CLASSPATH=%CLASSPATH%;core\build\classes\java\main
+-set CLASSPATH=%CLASSPATH%;ui\build\classes\java\main
 -
 -"%JAVA_HOME%\bin\java" -cp "%CLASSPATH%" org.adoptopenjdk.jitwatch.launch.LaunchHeadless %*
-diff --git a/scripts/launchHeadless.sh b/scripts/launchHeadless.sh
+diff --git a/launchHeadless.sh b/launchHeadless.sh
 deleted file mode 100755
-index c4cf48a8..00000000
---- a/scripts/launchHeadless.sh
-+++ /dev/null
-@@ -1,15 +0,0 @@
--#!/bin/sh
--
--unamestr=`uname`
--if [ "$JAVA_HOME" = '' ]; then
--  if [ "$unamestr" = 'Darwin' ]; then
--     export JAVA_HOME=`/usr/libexec/java_home`
--  else
--     echo "JAVA_HOME has not been set."
--     exit 0;
--  fi
--fi
--
--export CLASSPATH=../ui/target/jitwatch-ui-shaded.jar
--
--"$JAVA_HOME/bin/java" -cp "$CLASSPATH" org.adoptopenjdk.jitwatch.launch.LaunchHeadless $@
-diff --git a/scripts/launchUI.bat b/scripts/launchUI.bat
-deleted file mode 100644
-index a42cf28b..00000000
---- a/scripts/launchUI.bat
-+++ /dev/null
-@@ -1,16 +0,0 @@
--@REM ---------------------------------------------------------------
--@REM JITWatch
--@REM ---------------------------------------------------------------
--
--@REM Startup script for JITWatch on Windows
--@ECHO OFF
--
--@REM ---------------------------------------------------------------
--
--set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
--
--echo %CLASSPATH%
--
--"%JAVA_HOME%\bin\java" -classpath "%CLASSPATH%" org.adoptopenjdk.jitwatch.launch.LaunchUI
--@REM ---------------------------------------------------------------
--
-diff --git a/scripts/launchUI.sh b/scripts/launchUI.sh
-deleted file mode 100755
-index 186ef35a..00000000
---- a/scripts/launchUI.sh
+index 661c6dd9..00000000
+--- a/launchHeadless.sh
 +++ /dev/null
 @@ -1,21 +0,0 @@
 -#!/bin/sh
@@ -405,536 +116,825 @@ index 186ef35a..00000000
 -  fi
 -fi
 -
+-CLASSPATH=$CLASSPATH:lib/logback-classic-1.1.2.jar
+-CLASSPATH=$CLASSPATH:lib/logback-core-1.1.2.jar
+-CLASSPATH=$CLASSPATH:lib/slf4j-api-1.7.7.jar
+-CLASSPATH=$CLASSPATH:core/target/classes
+-CLASSPATH=$CLASSPATH:ui/target/classes
+-CLASSPATH=$CLASSPATH:core/build/classes/java/main
+-CLASSPATH=$CLASSPATH:ui/build/classes/java/main
+-
+-"$JAVA_HOME/bin/java" -cp "$CLASSPATH" org.adoptopenjdk.jitwatch.launch.LaunchHeadless $@
+diff --git a/launchUI.bat b/launchUI.bat
+deleted file mode 100644
+index 3572dad3..00000000
+--- a/launchUI.bat
++++ /dev/null
+@@ -1,24 +0,0 @@
+-@REM ---------------------------------------------------------------
+-@REM JITWatch
+-@REM ---------------------------------------------------------------
+-
+-@REM Startup script for JITWatch on Windows
+-@ECHO OFF
+-
+-@REM ---------------------------------------------------------------
+-
+-set CLASSPATH=lib\logback-classic-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
+-set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\jre\lib\jfxrt.jar
+-set CLASSPATH=%CLASSPATH%;core\target\classes
+-set CLASSPATH=%CLASSPATH%;ui\target\classes
+-set CLASSPATH=%CLASSPATH%;core\build\classes\java\main
+-set CLASSPATH=%CLASSPATH%;ui\build\classes\java\main
+-set CLASSPATH=%CLASSPATH%;ui\src\main\resources
+-
+-echo %CLASSPATH%
+-
+-"%JAVA_HOME%\bin\java" -Djava.library.path="%JAVA_HOME%\lib\amd64" -classpath "%CLASSPATH%" org.adoptopenjdk.jitwatch.launch.LaunchUI
+-@REM ---------------------------------------------------------------
+-
+diff --git a/launchUI.sh b/launchUI.sh
+deleted file mode 100755
+index e091ae48..00000000
+--- a/launchUI.sh
++++ /dev/null
+@@ -1,32 +0,0 @@
+-#!/bin/sh
+-
+-unamestr=`uname`
+-if [ "$JAVA_HOME" = '' ]; then
+-  if [ "$unamestr" = 'Darwin' ]; then
+-     export JAVA_HOME=`/usr/libexec/java_home`
+-  else
+-     echo "JAVA_HOME has not been set."
+-     exit 0;
+-  fi
+-fi
+-
 -# Requires the jar to be built using
--# mvn clean package
+-# mvn package
+-# or
+-# ant jar
+-#
 -#
 -# You may need to set -Xmx (max heap) and -XX:MaxPermSize
 -# if your hotspot.log references a lot of classes
 -
--export CLASSPATH=../ui/target/jitwatch-ui-shaded.jar
+-CLASSPATH=$CLASSPATH:lib/logback-classic-1.1.2.jar
+-CLASSPATH=$CLASSPATH:lib/logback-core-1.1.2.jar
+-CLASSPATH=$CLASSPATH:lib/slf4j-api-1.7.7.jar
+-CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/jfxrt.jar
+-CLASSPATH=$CLASSPATH:core/target/classes
+-CLASSPATH=$CLASSPATH:ui/target/classes
+-CLASSPATH=$CLASSPATH:core/build/classes/java/main
+-CLASSPATH=$CLASSPATH:ui/build/classes/java/main
+-CLASSPATH=$CLASSPATH:ui/src/main/resources
 -
--"$JAVA_HOME/bin/java" -cp "$CLASSPATH" "$@" org.adoptopenjdk.jitwatch.launch.LaunchUI
-diff --git a/scripts/showLines.sh b/showLines.sh
+-"$JAVA_HOME/bin/java" -Djava.library.path=$JAVA_HOME/lib/amd64 -cp "$CLASSPATH" "$@" org.adoptopenjdk.jitwatch.launch.LaunchUI
+diff --git a/pom.xml b/pom.xml
+index 57dea25e..a51b29b8 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -8 +8 @@
+-    <version>1.4.4</version>
++    <version>1.4.5</version>
+diff --git a/scripts/histoPlotter.bat b/scripts/histoPlotter.bat
+new file mode 100644
+index 00000000..feff4b42
+--- /dev/null
++++ b/scripts/histoPlotter.bat
+@@ -0,0 +1,16 @@
++@REM ---------------------------------------------------------------
++@REM JITWatch
++@REM ---------------------------------------------------------------
++
++@REM Startup script for JITWatch on Windows
++@ECHO OFF
++
++@REM ---------------------------------------------------------------
++
++set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
++
++echo %CLASSPATH%
++
++"%JAVA_HOME%\bin\java" -classpath "%CLASSPATH%" org.adoptopenjdk.jitwatch.jarscan.visualiser.HistoPlotter %1
++@REM ---------------------------------------------------------------
++
+diff --git a/histoPlotter.sh b/scripts/histoPlotter.sh
+similarity index 53%
+rename from histoPlotter.sh
+rename to scripts/histoPlotter.sh
+index bf204a6d..271caa0d 100755
+--- a/histoPlotter.sh
++++ b/scripts/histoPlotter.sh
+@@ -14,4 +14 @@ fi
+-# mvn package
+-# or
+-# ant jar
+-#
++# mvn clean package
+@@ -22,8 +19 @@ fi
+-CLASSPATH=$CLASSPATH:lib/logback-classic-1.1.2.jar
+-CLASSPATH=$CLASSPATH:lib/logback-core-1.1.2.jar
+-CLASSPATH=$CLASSPATH:lib/slf4j-api-1.7.7.jar
+-CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/jfxrt.jar
+-CLASSPATH=$CLASSPATH:core/target/classes
+-CLASSPATH=$CLASSPATH:ui/target/classes
+-CLASSPATH=$CLASSPATH:core/build/classes/java/main
+-CLASSPATH=$CLASSPATH:ui/build/classes/java/main
++export CLASSPATH=../ui/target/jitwatch-ui-shaded.jar
+diff --git a/jarScan.bat b/scripts/jarScan.bat
+similarity index 51%
+rename from jarScan.bat
+rename to scripts/jarScan.bat
+index 4d113794..506bc3e2 100644
+--- a/jarScan.bat
++++ b/scripts/jarScan.bat
+@@ -10,8 +10 @@
+-set CLASSPATH=lib\logback-classic-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
+-set CLASSPATH=%CLASSPATH%;%JAVA_HOME%\jre\lib\jfxrt.jar
+-set CLASSPATH=%CLASSPATH%;core\target\classes
+-set CLASSPATH=%CLASSPATH%;ui\target\classes
+-set CLASSPATH=%CLASSPATH%;core\build\classes\java\main
+-set CLASSPATH=%CLASSPATH%;ui\build\classes\java\main
++set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
+diff --git a/jarScan.sh b/scripts/jarScan.sh
+similarity index 82%
+rename from jarScan.sh
+rename to scripts/jarScan.sh
+index 250e07af..539ea9dc 100755
+--- a/jarScan.sh
++++ b/scripts/jarScan.sh
+@@ -51,15 +51 @@ fi
+-# make jarScan.sh runnable from any directory (only works on Linux where readlink -f returns canonical path)
+-if [ "$unamestr" = 'Darwin' ]; then
+-  export JITWATCH=`dirname $0`
+-else
+-  export JARSCAN=`readlink -f $0`
+-  export JITWATCH=`dirname $JARSCAN`
+-fi
+-
+-CLASSPATH=$CLASSPATH:$JITWATCH/lib/logback-classic-1.1.2.jar
+-CLASSPATH=$CLASSPATH:$JITWATCH/lib/logback-core-1.1.2.jar
+-CLASSPATH=$CLASSPATH:$JITWATCH/lib/slf4j-api-1.7.7.jar
+-CLASSPATH=$CLASSPATH:$JITWATCH/core/target/classes
+-CLASSPATH=$CLASSPATH:$JITWATCH/ui/target/classes
+-CLASSPATH=$CLASSPATH:$JITWATCH/core/build/classes/java/main
+-CLASSPATH=$CLASSPATH:$JITWATCH/ui/build/classes/java/main
++export CLASSPATH=../ui/target/jitwatch-ui-shaded.jar
+diff --git a/scripts/launchHeadless.bat b/scripts/launchHeadless.bat
+new file mode 100755
+index 00000000..a579b038
+--- /dev/null
++++ b/scripts/launchHeadless.bat
+@@ -0,0 +1,5 @@
++@ECHO OFF
++
++set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
++
++"%JAVA_HOME%\bin\java" -cp "%CLASSPATH%" org.adoptopenjdk.jitwatch.launch.LaunchHeadless %*
+diff --git a/scripts/launchHeadless.sh b/scripts/launchHeadless.sh
+new file mode 100755
+index 00000000..c4cf48a8
+--- /dev/null
++++ b/scripts/launchHeadless.sh
+@@ -0,0 +1,15 @@
++#!/bin/sh
++
++unamestr=`uname`
++if [ "$JAVA_HOME" = '' ]; then
++  if [ "$unamestr" = 'Darwin' ]; then
++     export JAVA_HOME=`/usr/libexec/java_home`
++  else
++     echo "JAVA_HOME has not been set."
++     exit 0;
++  fi
++fi
++
++export CLASSPATH=../ui/target/jitwatch-ui-shaded.jar
++
++"$JAVA_HOME/bin/java" -cp "$CLASSPATH" org.adoptopenjdk.jitwatch.launch.LaunchHeadless $@
+diff --git a/scripts/launchUI.bat b/scripts/launchUI.bat
+new file mode 100644
+index 00000000..a42cf28b
+--- /dev/null
++++ b/scripts/launchUI.bat
+@@ -0,0 +1,16 @@
++@REM ---------------------------------------------------------------
++@REM JITWatch
++@REM ---------------------------------------------------------------
++
++@REM Startup script for JITWatch on Windows
++@ECHO OFF
++
++@REM ---------------------------------------------------------------
++
++set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
++
++echo %CLASSPATH%
++
++"%JAVA_HOME%\bin\java" -classpath "%CLASSPATH%" org.adoptopenjdk.jitwatch.launch.LaunchUI
++@REM ---------------------------------------------------------------
++
+diff --git a/scripts/launchUI.sh b/scripts/launchUI.sh
+new file mode 100755
+index 00000000..186ef35a
+--- /dev/null
++++ b/scripts/launchUI.sh
+@@ -0,0 +1,21 @@
++#!/bin/sh
++
++unamestr=`uname`
++if [ "$JAVA_HOME" = '' ]; then
++  if [ "$unamestr" = 'Darwin' ]; then
++     export JAVA_HOME=`/usr/libexec/java_home`
++  else
++     echo "JAVA_HOME has not been set."
++     exit 0;
++  fi
++fi
++
++# Requires the jar to be built using
++# mvn clean package
++#
++# You may need to set -Xmx (max heap) and -XX:MaxPermSize
++# if your hotspot.log references a lot of classes
++
++export CLASSPATH=../ui/target/jitwatch-ui-shaded.jar
++
++"$JAVA_HOME/bin/java" -cp "$CLASSPATH" "$@" org.adoptopenjdk.jitwatch.launch.LaunchUI
+diff --git a/makeDemoLogFile.bat b/scripts/makeDemoLogFile.bat
+similarity index 88%
+rename from makeDemoLogFile.bat
+rename to scripts/makeDemoLogFile.bat
+index 36359412..fd9e6da2 100644
+--- a/makeDemoLogFile.bat
++++ b/scripts/makeDemoLogFile.bat
+@@ -63,7 +63 @@ echo "Building example HotSpot log"
+-set CLASSPATH=core\target\classes
+-set CLASSPATH=ui\target\classes
+-set CLASSPATH=core\build\classes\java\main
+-set CLASSPATH=ui\build\classes\java\main
+-set CLASSPATH=%CLASSPATH%;lib\logback-classic-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\logback-core-1.1.2.jar
+-set CLASSPATH=%CLASSPATH%;lib\slf4j-api-1.7.7.jar
++set CLASSPATH=..\ui\target\jitwatch-ui-shaded.jar
+diff --git a/makeDemoLogFile.sh b/scripts/makeDemoLogFile.sh
+similarity index 86%
+rename from makeDemoLogFile.sh
+rename to scripts/makeDemoLogFile.sh
+index b577c818..11ed45fa 100755
+--- a/makeDemoLogFile.sh
++++ b/scripts/makeDemoLogFile.sh
+@@ -10 +10 @@
+-# mvn clean compile test
++# mvn clean package
+@@ -13 +13,2 @@
+-# mvn exec:java
++# java -jar ui/target/jitwatch-ui-shaded.jar
++
+@@ -68,3 +68,0 @@ fi
+-
+-$JAVA_HOME/bin/java -version
+-
+@@ -75,7 +73,5 @@ echo "Building example HotSpot log"
+-CLASSPATH=$CLASSPATH:core/target/classes
+-CLASSPATH=$CLASSPATH:ui/target/classes
+-CLASSPATH=$CLASSPATH:core/build/classes/java/main
+-CLASSPATH=$CLASSPATH:ui/build/classes/java/main
+-CLASSPATH=$CLASSPATH:lib/logback-classic-1.1.2.jar
+-CLASSPATH=$CLASSPATH:lib/logback-core-1.1.2.jar
+-CLASSPATH=$CLASSPATH:lib/slf4j-api-1.7.7.jar
++if [ "$unamestr" = 'Darwin' ]; then
++   export CLASSPATH=../ui/target/jitwatch-ui-1.4.4-shaded-mac.jar
++else
++   export CLASSPATH=../ui/target/jitwatch-ui-1.4.4-shaded-linux.jar
++fi
+diff --git a/showLines.sh b/scripts/showLines.sh
 similarity index 100%
-rename from scripts/showLines.sh
-rename to showLines.sh
+rename from showLines.sh
+rename to scripts/showLines.sh
 diff --git a/ui/pom.xml b/ui/pom.xml
-index c09a6107..b2ca37da 100644
+index b2ca37da..c09a6107 100644
 --- a/ui/pom.xml
 +++ b/ui/pom.xml
 @@ -9 +9 @@
--		<version>1.4.5</version>
-+		<version>1.4.4</version>
+-		<version>1.4.4</version>
++		<version>1.4.5</version>
 @@ -74 +74 @@
--									<outputFile>target/jitwatch-ui-shaded.jar</outputFile>
-+									<outputFile>target/jitwatch-ui-${project.version}-shaded.jar</outputFile>
+-									<outputFile>target/jitwatch-ui-${project.version}-shaded.jar</outputFile>
++									<outputFile>target/jitwatch-ui-shaded.jar</outputFile>
 @@ -129 +129 @@
--                                                                        <outputFile>target/jitwatch-ui-shaded.jar</outputFile>
-+                                                                        <outputFile>target/jitwatch-ui-${project.version}-shaded-${javafx.platform}.jar</outputFile>
+-                                                                        <outputFile>target/jitwatch-ui-${project.version}-shaded-${javafx.platform}.jar</outputFile>
++                                                                        <outputFile>target/jitwatch-ui-shaded.jar</outputFile>
 @@ -202 +202 @@
 -</project>
-+</project>
 \ No newline at end of file
++</project>
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/Dialogs.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/Dialogs.java
-index 1eb586d2..006c702f 100644
+index 006c702f..1eb586d2 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/Dialogs.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/Dialogs.java
-@@ -138,10 +138 @@ public final class Dialogs
--		String[] messageParts = message.split("\n");
--
--		int width = 320;
--
--		for (String part : messageParts)
--		{
--			vBox.getChildren().add(new Label(part));
--
--			width = Math.max(width, part.length() * 10);
--		}
-+		int width = Math.max(320, message == null ? 0 : message.length() * 10);
-@@ -149 +140 @@ public final class Dialogs
--		Scene scene = UserInterfaceUtil.getScene(vBox, width, 80+ messageParts.length * 30);
-+		Scene scene = UserInterfaceUtil.getScene(vBox, width, 80);
-@@ -189 +180 @@ public final class Dialogs
--		BorderPane borderPane = new BorderPane();
-+		BorderPane bp = new BorderPane();
-@@ -198 +189 @@ public final class Dialogs
--		vBox.getChildren().add(borderPane);
-+		bp.setCenter(hBox);
-@@ -200 +191 @@ public final class Dialogs
--		borderPane.setCenter(hBox);
-+		vBox.getChildren().addAll(new Label(message), bp);
+@@ -138 +138 @@ public final class Dialogs
+-		int width = Math.max(320, message == null ? 0 : message.length() * 10);
++		String[] messageParts = message.split("\n");
+@@ -140 +140,10 @@ public final class Dialogs
+-		Scene scene = UserInterfaceUtil.getScene(vBox, width, 80);
++		int width = 320;
++
++		for (String part : messageParts)
++		{
++			vBox.getChildren().add(new Label(part));
++
++			width = Math.max(width, part.length() * 10);
++		}
++
++		Scene scene = UserInterfaceUtil.getScene(vBox, width, 80+ messageParts.length * 30);
+@@ -180 +189 @@ public final class Dialogs
+-		BorderPane bp = new BorderPane();
++		BorderPane borderPane = new BorderPane();
+@@ -189 +198 @@ public final class Dialogs
+-		bp.setCenter(hBox);
++		vBox.getChildren().add(borderPane);
+@@ -191 +200 @@ public final class Dialogs
+-		vBox.getChildren().addAll(new Label(message), bp);
++		borderPane.setCenter(hBox);
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
-index 7e8619e8..f4719d15 100644
+index f4719d15..7e8619e8 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
-@@ -244,2 +244 @@ public class JITWatchUI extends Application
--			@Override
--			public void run()
-+			@Override public void run()
-@@ -261,2 +260 @@ public class JITWatchUI extends Application
--	@Override
--	public void handleReadStart()
-+	@Override public void handleReadStart()
-@@ -272,2 +270 @@ public class JITWatchUI extends Application
--			@Override
--			public void run()
-+			@Override public void run()
-@@ -298,2 +295 @@ public class JITWatchUI extends Application
--			@Override
--			public void run()
-+			@Override public void run()
-@@ -324,2 +320 @@ public class JITWatchUI extends Application
--	@Override
--	public void handleReadComplete()
-+	@Override public void handleReadComplete()
-@@ -339,2 +334 @@ public class JITWatchUI extends Application
--			@Override
--			public void run()
-+			@Override public void run()
-@@ -363,2 +357 @@ public class JITWatchUI extends Application
--						@Override
--						public void run()
-+						@Override public void run()
-@@ -423,2 +416 @@ public class JITWatchUI extends Application
--		if (codeCacheWalkerResult == null || codeCacheWalkerResult.getEvents()
--																  .isEmpty())
-+		if (codeCacheWalkerResult == null || codeCacheWalkerResult.getEvents().isEmpty())
-@@ -432,2 +424 @@ public class JITWatchUI extends Application
--	@Override
--	public void handleError(final String title, final String body)
-+	@Override public void handleError(final String title, final String body)
-@@ -439,2 +430 @@ public class JITWatchUI extends Application
--			@Override
--			public void run()
-+			@Override public void run()
-@@ -462,2 +452 @@ public class JITWatchUI extends Application
--	@Override
--	public JITWatchConfig getConfig()
-+	@Override public JITWatchConfig getConfig()
-@@ -468,2 +457 @@ public class JITWatchUI extends Application
--	@Override
--	public void start(final Stage stage)
-+	@Override public void start(final Stage stage)
-@@ -477,2 +465 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(WindowEvent arg0)
-+			@Override public void handle(WindowEvent arg0)
-@@ -496,2 +483 @@ public class JITWatchUI extends Application
--		comboParser.getSelectionModel()
--				   .select(ParserType.fromString(parserProperty));
-+		comboParser.getSelectionModel().select(ParserType.fromString(parserProperty));
-@@ -502,2 +488 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -514,2 +499 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -519,4 +503,2 @@ public class JITWatchUI extends Application
--					int classCount = getConfig().getConfiguredClassLocations()
--												.size();
--					int sourceCount = getConfig().getSourceLocations()
--												 .size();
-+					int classCount = getConfig().getConfiguredClassLocations().size();
-+					int sourceCount = getConfig().getSourceLocations().size();
-@@ -547,2 +529 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -557,2 +538 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -567,2 +547 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -581,2 +560 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -595,2 +573 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -609,2 +586 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -623,2 +599 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -640,2 +615 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -657,2 +631 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -672,2 +645 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -687,2 +659 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -702,2 +673 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -717,2 +687 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -728,2 +697 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -735 +703 @@ public class JITWatchUI extends Application
--		btnStats = UserInterfaceUtil.createButton("STATS");
-+		btnStats =  UserInterfaceUtil.createButton("STATS");
-@@ -739,2 +707 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -750 +717 @@ public class JITWatchUI extends Application
--		btnReset = UserInterfaceUtil.createButton("RESET");
-+		btnReset =  UserInterfaceUtil.createButton("RESET");
-@@ -754,2 +721 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent e)
-+			@Override public void handle(ActionEvent e)
-@@ -788,30 +754,15 @@ public class JITWatchUI extends Application
--		hboxTop.getChildren()
--			   .add(btnSandbox);
--		hboxTop.getChildren()
--			   .add(btnChooseWatchFile);
--		hboxTop.getChildren()
--			   .add(btnStart);
--		hboxTop.getChildren()
--			   .add(btnStop);
--		hboxTop.getChildren()
--			   .add(btnConfigure);
--		hboxTop.getChildren()
--			   .add(btnTimeLine);
--		hboxTop.getChildren()
--			   .add(btnHisto);
--		hboxTop.getChildren()
--			   .add(btnTopList);
--		hboxTop.getChildren()
--			   .add(btnCodeCacheTimeline);
--		hboxTop.getChildren()
--			   .add(btnNMethods);
--		hboxTop.getChildren()
--			   .add(btnCompilerThreads);
--		hboxTop.getChildren()
--			   .add(btnTriView);
--		hboxTop.getChildren()
--			   .add(btnReportSuggestions);
--		hboxTop.getChildren()
--			   .add(btnReportEliminatedAllocations);
--		hboxTop.getChildren()
--			   .add(btnReportOptimisedLocks);
-+		hboxTop.getChildren().add(btnSandbox);
-+		hboxTop.getChildren().add(btnChooseWatchFile);
-+		hboxTop.getChildren().add(btnStart);
-+		hboxTop.getChildren().add(btnStop);
-+		hboxTop.getChildren().add(btnConfigure);
-+		hboxTop.getChildren().add(btnTimeLine);
-+		hboxTop.getChildren().add(btnHisto);
-+		hboxTop.getChildren().add(btnTopList);
-+		hboxTop.getChildren().add(btnCodeCacheTimeline);
-+		hboxTop.getChildren().add(btnNMethods);
-+		hboxTop.getChildren().add(btnCompilerThreads);
-+		hboxTop.getChildren().add(btnTriView);
-+		hboxTop.getChildren().add(btnReportSuggestions);
-+		hboxTop.getChildren().add(btnReportEliminatedAllocations);
-+		hboxTop.getChildren().add(btnReportOptimisedLocks);
-@@ -823,19 +774,16 @@ public class JITWatchUI extends Application
--		compilationTable.getSelectionModel()
--						.selectedItemProperty()
--						.addListener(new ChangeListener<CompilationTableRow>()
--						{
--							@Override
--							public void changed(ObservableValue<? extends CompilationTableRow> arg0, CompilationTableRow oldVal,
--									CompilationTableRow newVal)
--							{
--								if (!selectedProgrammatically)
--								{
--									if (selectedMember != null && newVal != null)
--									{
--										selectedMember.setSelectedCompilation(newVal.getIndex());
+@@ -244 +244,2 @@ public class JITWatchUI extends Application
+-			@Override public void run()
++			@Override
++			public void run()
+@@ -260 +261,2 @@ public class JITWatchUI extends Application
+-	@Override public void handleReadStart()
++	@Override
++	public void handleReadStart()
+@@ -270 +272,2 @@ public class JITWatchUI extends Application
+-			@Override public void run()
++			@Override
++			public void run()
+@@ -295 +298,2 @@ public class JITWatchUI extends Application
+-			@Override public void run()
++			@Override
++			public void run()
+@@ -320 +324,2 @@ public class JITWatchUI extends Application
+-	@Override public void handleReadComplete()
++	@Override
++	public void handleReadComplete()
+@@ -334 +339,2 @@ public class JITWatchUI extends Application
+-			@Override public void run()
++			@Override
++			public void run()
+@@ -357 +363,2 @@ public class JITWatchUI extends Application
+-						@Override public void run()
++						@Override
++						public void run()
+@@ -416 +423,2 @@ public class JITWatchUI extends Application
+-		if (codeCacheWalkerResult == null || codeCacheWalkerResult.getEvents().isEmpty())
++		if (codeCacheWalkerResult == null || codeCacheWalkerResult.getEvents()
++																  .isEmpty())
+@@ -424 +432,2 @@ public class JITWatchUI extends Application
+-	@Override public void handleError(final String title, final String body)
++	@Override
++	public void handleError(final String title, final String body)
+@@ -430 +439,2 @@ public class JITWatchUI extends Application
+-			@Override public void run()
++			@Override
++			public void run()
+@@ -452 +462,2 @@ public class JITWatchUI extends Application
+-	@Override public JITWatchConfig getConfig()
++	@Override
++	public JITWatchConfig getConfig()
+@@ -457 +468,2 @@ public class JITWatchUI extends Application
+-	@Override public void start(final Stage stage)
++	@Override
++	public void start(final Stage stage)
+@@ -465 +477,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(WindowEvent arg0)
++			@Override
++			public void handle(WindowEvent arg0)
+@@ -483 +496,2 @@ public class JITWatchUI extends Application
+-		comboParser.getSelectionModel().select(ParserType.fromString(parserProperty));
++		comboParser.getSelectionModel()
++				   .select(ParserType.fromString(parserProperty));
+@@ -488 +502,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -499 +514,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -503,2 +519,4 @@ public class JITWatchUI extends Application
+-					int classCount = getConfig().getConfiguredClassLocations().size();
+-					int sourceCount = getConfig().getSourceLocations().size();
++					int classCount = getConfig().getConfiguredClassLocations()
++												.size();
++					int sourceCount = getConfig().getSourceLocations()
++												 .size();
+@@ -529 +547,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -538 +557,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -547 +567,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -560 +581,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -573 +595,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -586 +609,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -599 +623,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -615 +640,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -631 +657,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -645 +672,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -659 +687,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -673 +702,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -687 +717,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -697 +728,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -703 +735 @@ public class JITWatchUI extends Application
+-		btnStats =  UserInterfaceUtil.createButton("STATS");
++		btnStats = UserInterfaceUtil.createButton("STATS");
+@@ -707 +739,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -717 +750 @@ public class JITWatchUI extends Application
+-		btnReset =  UserInterfaceUtil.createButton("RESET");
++		btnReset = UserInterfaceUtil.createButton("RESET");
+@@ -721 +754,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent e)
++			@Override
++			public void handle(ActionEvent e)
+@@ -754,15 +788,30 @@ public class JITWatchUI extends Application
+-		hboxTop.getChildren().add(btnSandbox);
+-		hboxTop.getChildren().add(btnChooseWatchFile);
+-		hboxTop.getChildren().add(btnStart);
+-		hboxTop.getChildren().add(btnStop);
+-		hboxTop.getChildren().add(btnConfigure);
+-		hboxTop.getChildren().add(btnTimeLine);
+-		hboxTop.getChildren().add(btnHisto);
+-		hboxTop.getChildren().add(btnTopList);
+-		hboxTop.getChildren().add(btnCodeCacheTimeline);
+-		hboxTop.getChildren().add(btnNMethods);
+-		hboxTop.getChildren().add(btnCompilerThreads);
+-		hboxTop.getChildren().add(btnTriView);
+-		hboxTop.getChildren().add(btnReportSuggestions);
+-		hboxTop.getChildren().add(btnReportEliminatedAllocations);
+-		hboxTop.getChildren().add(btnReportOptimisedLocks);
++		hboxTop.getChildren()
++			   .add(btnSandbox);
++		hboxTop.getChildren()
++			   .add(btnChooseWatchFile);
++		hboxTop.getChildren()
++			   .add(btnStart);
++		hboxTop.getChildren()
++			   .add(btnStop);
++		hboxTop.getChildren()
++			   .add(btnConfigure);
++		hboxTop.getChildren()
++			   .add(btnTimeLine);
++		hboxTop.getChildren()
++			   .add(btnHisto);
++		hboxTop.getChildren()
++			   .add(btnTopList);
++		hboxTop.getChildren()
++			   .add(btnCodeCacheTimeline);
++		hboxTop.getChildren()
++			   .add(btnNMethods);
++		hboxTop.getChildren()
++			   .add(btnCompilerThreads);
++		hboxTop.getChildren()
++			   .add(btnTriView);
++		hboxTop.getChildren()
++			   .add(btnReportSuggestions);
++		hboxTop.getChildren()
++			   .add(btnReportEliminatedAllocations);
++		hboxTop.getChildren()
++			   .add(btnReportOptimisedLocks);
+@@ -774,16 +823,19 @@ public class JITWatchUI extends Application
+-		compilationTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CompilationTableRow>()
+-		{
+-			@Override public void changed(ObservableValue<? extends CompilationTableRow> arg0, CompilationTableRow oldVal,
+-					CompilationTableRow newVal)
+-			{
+-				if (!selectedProgrammatically)
+-				{
+-					if (selectedMember != null && newVal != null)
+-					{
+-						selectedMember.setSelectedCompilation(newVal.getIndex());
 -
--										setSelectedMetaMemberFromCompilationTable();
--									}
--								}
--							}
--						});
-+		compilationTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CompilationTableRow>()
+-						setSelectedMetaMemberFromCompilationTable();
+-					}
+-				}
+-			}
+-		});
++		compilationTable.getSelectionModel()
++						.selectedItemProperty()
++						.addListener(new ChangeListener<CompilationTableRow>()
++						{
++							@Override
++							public void changed(ObservableValue<? extends CompilationTableRow> arg0, CompilationTableRow oldVal,
++									CompilationTableRow newVal)
++							{
++								if (!selectedProgrammatically)
++								{
++									if (selectedMember != null && newVal != null)
++									{
++										selectedMember.setSelectedCompilation(newVal.getIndex());
++
++										setSelectedMetaMemberFromCompilationTable();
++									}
++								}
++							}
++						});
+@@ -797,2 +849,4 @@ public class JITWatchUI extends Application
+-		spMethodInfo.getItems().add(classMemberList);
+-		spMethodInfo.getItems().add(compilationTable);
++		spMethodInfo.getItems()
++					.add(classMemberList);
++		spMethodInfo.getItems()
++					.add(compilationTable);
+@@ -800,2 +854,4 @@ public class JITWatchUI extends Application
+-		classMemberList.prefHeightProperty().bind(scene.heightProperty());
+-		compilationTable.prefHeightProperty().bind(scene.heightProperty());
++		classMemberList.prefHeightProperty()
++					   .bind(scene.heightProperty());
++		compilationTable.prefHeightProperty()
++						.bind(scene.heightProperty());
+@@ -804 +860,2 @@ public class JITWatchUI extends Application
+-		classTree.prefWidthProperty().bind(scene.widthProperty());
++		classTree.prefWidthProperty()
++				 .bind(scene.widthProperty());
+@@ -810,2 +867,4 @@ public class JITWatchUI extends Application
+-		spCentre.getItems().add(classTree);
+-		spCentre.getItems().add(spMethodInfo);
++		spCentre.getItems()
++				.add(classTree);
++		spCentre.getItems()
++				.add(spMethodInfo);
+@@ -820 +879 @@ public class JITWatchUI extends Application
+-		log("Please send feedback to our mailing list (https://groups.google.com/forum/#!forum/jitwatch) \nor come and find us on GitHub (https://github.com/AdoptOpenJDK/jitwatch).\n");
++		log("Please report issues via GitHub (https://github.com/AdoptOpenJDK/jitwatch).\n");
+@@ -822 +881 @@ public class JITWatchUI extends Application
+-		log("Includes assembly reference from x86asm.net licenced under http://ref.x86asm.net/index.html#License\n");
++		log("Includes an assembly reference from x86asm.net licenced under http://ref.x86asm.net/index.html#License\n");
+@@ -838 +897,2 @@ public class JITWatchUI extends Application
+-					@Override public void run()
++					@Override
++					public void run()
+@@ -862,2 +922,4 @@ public class JITWatchUI extends Application
+-		spMain.getItems().add(spCentre);
+-		spMain.getItems().add(textAreaLog);
++		spMain.getItems()
++			  .add(spCentre);
++		spMain.getItems()
++			  .add(textAreaLog);
+@@ -886 +948,3 @@ public class JITWatchUI extends Application
+-		comboLanguage.getItems().addAll(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH, Locale.SIMPLIFIED_CHINESE, Locale.forLanguageTag("pl"), Locale.forLanguageTag("es"), Locale.forLanguageTag("pt-BR"));
++		comboLanguage.getItems()
++					 .addAll(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH, Locale.SIMPLIFIED_CHINESE, Locale.forLanguageTag("pl"),
++							 Locale.forLanguageTag("es"), Locale.forLanguageTag("pt-BR"));
+@@ -891,5 +955,7 @@ public class JITWatchUI extends Application
+-		comboLanguage.valueProperty().addListener((obs, oldValue, newValue) -> {
+-			if (newValue != null) {
+-				UserInterfaceUtil.configureLocale(newValue);
+-			}
+-		});
++		comboLanguage.valueProperty()
++					 .addListener((obs, oldValue, newValue) -> {
++						 if (newValue != null)
++						 {
++							 UserInterfaceUtil.configureLocale(newValue);
++						 }
++					 });
+@@ -903,16 +969,29 @@ public class JITWatchUI extends Application
+-		hboxBottom.getChildren().add(labelLanguage);
+-		hboxBottom.getChildren().add(comboLanguage);
+-
+-		hboxBottom.getChildren().add(labelParser);
+-		hboxBottom.getChildren().add(comboParser);
+-
+-		hboxBottom.getChildren().add(btnErrorLog);
+-		hboxBottom.getChildren().add(btnStats);
+-		hboxBottom.getChildren().add(btnReset);
+-		hboxBottom.getChildren().add(lblHeap);
+-		hboxBottom.getChildren().add(springLeft);
+-
+-		hboxBottom.getChildren().add(lblTweakLog);
+-		hboxBottom.getChildren().add(springRight);
+-		hboxBottom.getChildren().add(lblVmVersion);
+-		hboxBottom.getChildren().add(buttonSnapShot);
++		hboxBottom.getChildren()
++				  .add(labelLanguage);
++		hboxBottom.getChildren()
++				  .add(comboLanguage);
++
++		hboxBottom.getChildren()
++				  .add(labelParser);
++		hboxBottom.getChildren()
++				  .add(comboParser);
++
++		hboxBottom.getChildren()
++				  .add(btnErrorLog);
++		hboxBottom.getChildren()
++				  .add(btnStats);
++		hboxBottom.getChildren()
++				  .add(btnReset);
++		hboxBottom.getChildren()
++				  .add(lblHeap);
++		hboxBottom.getChildren()
++				  .add(springLeft);
++
++		hboxBottom.getChildren()
++				  .add(lblTweakLog);
++		hboxBottom.getChildren()
++				  .add(springRight);
++		hboxBottom.getChildren()
++				  .add(lblVmVersion);
++		hboxBottom.getChildren()
++				  .add(buttonSnapShot);
+@@ -934 +1013,2 @@ public class JITWatchUI extends Application
+-			@Override public void handle(ActionEvent arg0)
++			@Override
++			public void handle(ActionEvent arg0)
+@@ -942 +1022,2 @@ public class JITWatchUI extends Application
+-		timeline.getKeyFrames().add(oneFrame);
++		timeline.getKeyFrames()
++				.add(oneFrame);
+@@ -960 +1041,2 @@ public class JITWatchUI extends Application
+-	@Override public void openTriView(IMetaMember member)
++	@Override
++	public void openTriView(IMetaMember member)
+@@ -965 +1047,2 @@ public class JITWatchUI extends Application
+-	@Override public void openTriView(IMetaMember member, int highlightBCI)
++	@Override
++	public void openTriView(IMetaMember member, int highlightBCI)
+@@ -1005 +1088,2 @@ public class JITWatchUI extends Application
+-	@Override public void openBrowser(String title, String html, String stylesheet)
++	@Override
++	public void openBrowser(String title, String html, String stylesheet)
+@@ -1032 +1116,2 @@ public class JITWatchUI extends Application
+-		if (reportListSuggestions.size() != 0) {
++		if (reportListSuggestions.size() != 0)
 +		{
-+			@Override public void changed(ObservableValue<? extends CompilationTableRow> arg0, CompilationTableRow oldVal,
-+					CompilationTableRow newVal)
-+			{
-+				if (!selectedProgrammatically)
-+				{
-+					if (selectedMember != null && newVal != null)
-+					{
-+						selectedMember.setSelectedCompilation(newVal.getIndex());
-+
-+						setSelectedMetaMemberFromCompilationTable();
-+					}
-+				}
-+			}
-+		});
-@@ -849,4 +797,2 @@ public class JITWatchUI extends Application
--		spMethodInfo.getItems()
--					.add(classMemberList);
--		spMethodInfo.getItems()
--					.add(compilationTable);
-+		spMethodInfo.getItems().add(classMemberList);
-+		spMethodInfo.getItems().add(compilationTable);
-@@ -854,4 +800,2 @@ public class JITWatchUI extends Application
--		classMemberList.prefHeightProperty()
--					   .bind(scene.heightProperty());
--		compilationTable.prefHeightProperty()
--						.bind(scene.heightProperty());
-+		classMemberList.prefHeightProperty().bind(scene.heightProperty());
-+		compilationTable.prefHeightProperty().bind(scene.heightProperty());
-@@ -860,2 +804 @@ public class JITWatchUI extends Application
--		classTree.prefWidthProperty()
--				 .bind(scene.widthProperty());
-+		classTree.prefWidthProperty().bind(scene.widthProperty());
-@@ -867,4 +810,2 @@ public class JITWatchUI extends Application
--		spCentre.getItems()
--				.add(classTree);
--		spCentre.getItems()
--				.add(spMethodInfo);
-+		spCentre.getItems().add(classTree);
-+		spCentre.getItems().add(spMethodInfo);
-@@ -879 +820 @@ public class JITWatchUI extends Application
--		log("Please report issues via GitHub (https://github.com/AdoptOpenJDK/jitwatch).\n");
-+		log("Please send feedback to our mailing list (https://groups.google.com/forum/#!forum/jitwatch) \nor come and find us on GitHub (https://github.com/AdoptOpenJDK/jitwatch).\n");
-@@ -881 +822 @@ public class JITWatchUI extends Application
--		log("Includes an assembly reference from x86asm.net licenced under http://ref.x86asm.net/index.html#License\n");
-+		log("Includes assembly reference from x86asm.net licenced under http://ref.x86asm.net/index.html#License\n");
-@@ -897,2 +838 @@ public class JITWatchUI extends Application
--					@Override
--					public void run()
-+					@Override public void run()
-@@ -922,4 +862,2 @@ public class JITWatchUI extends Application
--		spMain.getItems()
--			  .add(spCentre);
--		spMain.getItems()
--			  .add(textAreaLog);
-+		spMain.getItems().add(spCentre);
-+		spMain.getItems().add(textAreaLog);
-@@ -948,3 +886 @@ public class JITWatchUI extends Application
--		comboLanguage.getItems()
--					 .addAll(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH, Locale.SIMPLIFIED_CHINESE, Locale.forLanguageTag("pl"),
--							 Locale.forLanguageTag("es"), Locale.forLanguageTag("pt-BR"));
-+		comboLanguage.getItems().addAll(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH, Locale.SIMPLIFIED_CHINESE, Locale.forLanguageTag("pl"), Locale.forLanguageTag("es"), Locale.forLanguageTag("pt-BR"));
-@@ -955,7 +891,5 @@ public class JITWatchUI extends Application
--		comboLanguage.valueProperty()
--					 .addListener((obs, oldValue, newValue) -> {
--						 if (newValue != null)
--						 {
--							 UserInterfaceUtil.configureLocale(newValue);
--						 }
--					 });
-+		comboLanguage.valueProperty().addListener((obs, oldValue, newValue) -> {
-+			if (newValue != null) {
-+				UserInterfaceUtil.configureLocale(newValue);
-+			}
-+		});
-@@ -969,29 +903,16 @@ public class JITWatchUI extends Application
--		hboxBottom.getChildren()
--				  .add(labelLanguage);
--		hboxBottom.getChildren()
--				  .add(comboLanguage);
+@@ -1036,2 +1121,4 @@ public class JITWatchUI extends Application
+-		if (reportListEliminatedAllocations.size() != 0) {
+-			eliminatedAllocationsCounterMessage.setValue(S_OPEN_PARENTHESES + reportListEliminatedAllocations.size() + S_CLOSE_PARENTHESES);
++		if (reportListEliminatedAllocations.size() != 0)
++		{
++			eliminatedAllocationsCounterMessage.setValue(
++					S_OPEN_PARENTHESES + reportListEliminatedAllocations.size() + S_CLOSE_PARENTHESES);
+@@ -1040 +1127,2 @@ public class JITWatchUI extends Application
+-		if (reportListOptimisedLocks.size() != 0) {
++		if (reportListOptimisedLocks.size() != 0)
++		{
+@@ -1083 +1171,2 @@ public class JITWatchUI extends Application
+-				String nodeText = node.getValue().toString();
++				String nodeText = node.getValue()
++									  .toString();
+@@ -1163 +1252,2 @@ public class JITWatchUI extends Application
+-	@Override public void openTextViewer(String title, String content, boolean lineNumbers, boolean highlighting)
++	@Override
++	public void openTextViewer(String title, String content, boolean lineNumbers, boolean highlighting)
+@@ -1174 +1264,2 @@ public class JITWatchUI extends Application
+-	@Override public void openCompileChain(IMetaMember member)
++	@Override
++	public void openCompileChain(IMetaMember member)
+@@ -1186 +1277,2 @@ public class JITWatchUI extends Application
+-	@Override public void openInlinedIntoReport(IMetaMember member)
++	@Override
++	public void openInlinedIntoReport(IMetaMember member)
+@@ -1223 +1315,2 @@ public class JITWatchUI extends Application
+-		if (osNameProperty != null && !osNameProperty.toLowerCase().contains("mac"))
++		if (osNameProperty != null && !osNameProperty.toLowerCase()
++													 .contains("mac"))
+@@ -1255 +1348,2 @@ public class JITWatchUI extends Application
+-				logParser.getConfig().switchFromSandbox();
++				logParser.getConfig()
++						 .switchFromSandbox();
+@@ -1303 +1397,2 @@ public class JITWatchUI extends Application
+-	@Override public synchronized void selectMember(IMetaMember member, boolean updateTree, boolean updateTriView)
++	@Override
++	public synchronized void selectMember(IMetaMember member, boolean updateTree, boolean updateTriView)
+@@ -1340 +1435,2 @@ public class JITWatchUI extends Application
+-				compilationTable.getSelectionModel().clearAndSelect(selectedCompilation.getIndex());
++				compilationTable.getSelectionModel()
++								.clearAndSelect(selectedCompilation.getIndex());
+@@ -1349 +1445,2 @@ public class JITWatchUI extends Application
+-	@Override public synchronized void selectCompilation(IMetaMember member, int compilationIndex)
++	@Override
++	public synchronized void selectCompilation(IMetaMember member, int compilationIndex)
+@@ -1458 +1555,2 @@ public class JITWatchUI extends Application
+-	@Override public void handleStageClosed(Stage stage)
++	@Override
++	public void handleStageClosed(Stage stage)
+@@ -1550 +1648,2 @@ public class JITWatchUI extends Application
+-	@Override public void handleJITEvent(JITEvent event)
++	@Override
++	public void handleJITEvent(JITEvent event)
+@@ -1556 +1655,2 @@ public class JITWatchUI extends Application
+-	@Override public void handleLogEntry(String entry)
++	@Override
++	public void handleLogEntry(String entry)
+@@ -1561 +1661,2 @@ public class JITWatchUI extends Application
+-	@Override public void handleErrorEntry(String entry)
++	@Override
++	public void handleErrorEntry(String entry)
+@@ -1585 +1686,2 @@ public class JITWatchUI extends Application
+-		return logParser.getModel().getPackageManager();
++		return logParser.getModel()
++						.getPackageManager();
+@@ -1588 +1690,2 @@ public class JITWatchUI extends Application
+-	@Override public Stage getStageForDialog()
++	@Override
++	public Stage getStageForDialog()
+@@ -1593 +1696,2 @@ public class JITWatchUI extends Application
+-	@Override public void parserSelected(ParserType parserType)
++	@Override
++	public void parserSelected(ParserType parserType)
+@@ -1595,2 +1698,0 @@ public class JITWatchUI extends Application
+-		log("Selected Parser: " + parserType);
 -
--		hboxBottom.getChildren()
--				  .add(labelParser);
--		hboxBottom.getChildren()
--				  .add(comboParser);
--
--		hboxBottom.getChildren()
--				  .add(btnErrorLog);
--		hboxBottom.getChildren()
--				  .add(btnStats);
--		hboxBottom.getChildren()
--				  .add(btnReset);
--		hboxBottom.getChildren()
--				  .add(lblHeap);
--		hboxBottom.getChildren()
--				  .add(springLeft);
--
--		hboxBottom.getChildren()
--				  .add(lblTweakLog);
--		hboxBottom.getChildren()
--				  .add(springRight);
--		hboxBottom.getChildren()
--				  .add(lblVmVersion);
--		hboxBottom.getChildren()
--				  .add(buttonSnapShot);
-+		hboxBottom.getChildren().add(labelLanguage);
-+		hboxBottom.getChildren().add(comboLanguage);
-+
-+		hboxBottom.getChildren().add(labelParser);
-+		hboxBottom.getChildren().add(comboParser);
-+
-+		hboxBottom.getChildren().add(btnErrorLog);
-+		hboxBottom.getChildren().add(btnStats);
-+		hboxBottom.getChildren().add(btnReset);
-+		hboxBottom.getChildren().add(lblHeap);
-+		hboxBottom.getChildren().add(springLeft);
-+
-+		hboxBottom.getChildren().add(lblTweakLog);
-+		hboxBottom.getChildren().add(springRight);
-+		hboxBottom.getChildren().add(lblVmVersion);
-+		hboxBottom.getChildren().add(buttonSnapShot);
-@@ -1013,2 +934 @@ public class JITWatchUI extends Application
--			@Override
--			public void handle(ActionEvent arg0)
-+			@Override public void handle(ActionEvent arg0)
-@@ -1022,2 +942 @@ public class JITWatchUI extends Application
--		timeline.getKeyFrames()
--				.add(oneFrame);
-+		timeline.getKeyFrames().add(oneFrame);
-@@ -1041,2 +960 @@ public class JITWatchUI extends Application
--	@Override
--	public void openTriView(IMetaMember member)
-+	@Override public void openTriView(IMetaMember member)
-@@ -1047,2 +965 @@ public class JITWatchUI extends Application
--	@Override
--	public void openTriView(IMetaMember member, int highlightBCI)
-+	@Override public void openTriView(IMetaMember member, int highlightBCI)
-@@ -1088,2 +1005 @@ public class JITWatchUI extends Application
--	@Override
--	public void openBrowser(String title, String html, String stylesheet)
-+	@Override public void openBrowser(String title, String html, String stylesheet)
-@@ -1116,2 +1032 @@ public class JITWatchUI extends Application
--		if (reportListSuggestions.size() != 0)
--		{
-+		if (reportListSuggestions.size() != 0) {
-@@ -1121,4 +1036,2 @@ public class JITWatchUI extends Application
--		if (reportListEliminatedAllocations.size() != 0)
--		{
--			eliminatedAllocationsCounterMessage.setValue(
--					S_OPEN_PARENTHESES + reportListEliminatedAllocations.size() + S_CLOSE_PARENTHESES);
-+		if (reportListEliminatedAllocations.size() != 0) {
-+			eliminatedAllocationsCounterMessage.setValue(S_OPEN_PARENTHESES + reportListEliminatedAllocations.size() + S_CLOSE_PARENTHESES);
-@@ -1127,2 +1040 @@ public class JITWatchUI extends Application
--		if (reportListOptimisedLocks.size() != 0)
--		{
-+		if (reportListOptimisedLocks.size() != 0) {
-@@ -1171,2 +1083 @@ public class JITWatchUI extends Application
--				String nodeText = node.getValue()
--									  .toString();
-+				String nodeText = node.getValue().toString();
-@@ -1252,2 +1163 @@ public class JITWatchUI extends Application
--	@Override
--	public void openTextViewer(String title, String content, boolean lineNumbers, boolean highlighting)
-+	@Override public void openTextViewer(String title, String content, boolean lineNumbers, boolean highlighting)
-@@ -1264,2 +1174 @@ public class JITWatchUI extends Application
--	@Override
--	public void openCompileChain(IMetaMember member)
-+	@Override public void openCompileChain(IMetaMember member)
-@@ -1277,2 +1186 @@ public class JITWatchUI extends Application
--	@Override
--	public void openInlinedIntoReport(IMetaMember member)
-+	@Override public void openInlinedIntoReport(IMetaMember member)
-@@ -1315,2 +1223 @@ public class JITWatchUI extends Application
--		if (osNameProperty != null && !osNameProperty.toLowerCase()
--													 .contains("mac"))
-+		if (osNameProperty != null && !osNameProperty.toLowerCase().contains("mac"))
-@@ -1348,2 +1255 @@ public class JITWatchUI extends Application
--				logParser.getConfig()
--						 .switchFromSandbox();
-+				logParser.getConfig().switchFromSandbox();
-@@ -1397,2 +1303 @@ public class JITWatchUI extends Application
--	@Override
--	public synchronized void selectMember(IMetaMember member, boolean updateTree, boolean updateTriView)
-+	@Override public synchronized void selectMember(IMetaMember member, boolean updateTree, boolean updateTriView)
-@@ -1435,2 +1340 @@ public class JITWatchUI extends Application
--				compilationTable.getSelectionModel()
--								.clearAndSelect(selectedCompilation.getIndex());
-+				compilationTable.getSelectionModel().clearAndSelect(selectedCompilation.getIndex());
-@@ -1445,2 +1349 @@ public class JITWatchUI extends Application
--	@Override
--	public synchronized void selectCompilation(IMetaMember member, int compilationIndex)
-+	@Override public synchronized void selectCompilation(IMetaMember member, int compilationIndex)
-@@ -1555,2 +1458 @@ public class JITWatchUI extends Application
--	@Override
--	public void handleStageClosed(Stage stage)
-+	@Override public void handleStageClosed(Stage stage)
-@@ -1648,2 +1550 @@ public class JITWatchUI extends Application
--	@Override
--	public void handleJITEvent(JITEvent event)
-+	@Override public void handleJITEvent(JITEvent event)
-@@ -1655,2 +1556 @@ public class JITWatchUI extends Application
--	@Override
--	public void handleLogEntry(String entry)
-+	@Override public void handleLogEntry(String entry)
-@@ -1661,2 +1561 @@ public class JITWatchUI extends Application
--	@Override
--	public void handleErrorEntry(String entry)
-+	@Override public void handleErrorEntry(String entry)
-@@ -1686,2 +1585 @@ public class JITWatchUI extends Application
--		return logParser.getModel()
--						.getPackageManager();
-+		return logParser.getModel().getPackageManager();
-@@ -1690,2 +1588 @@ public class JITWatchUI extends Application
--	@Override
--	public Stage getStageForDialog()
-+	@Override public Stage getStageForDialog()
-@@ -1696,2 +1593 @@ public class JITWatchUI extends Application
--	@Override
--	public void parserSelected(ParserType parserType)
-+	@Override public void parserSelected(ParserType parserType)
-@@ -1698,0 +1595,2 @@ public class JITWatchUI extends Application
-+		log("Selected Parser: " + parserType);
-+
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java
-index df505a5b..0f686a39 100644
+index 0f686a39..df505a5b 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxStage.java
-@@ -411,2 +410,0 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
--		log("Looking for disassembler: " + disassemblerFilename);
--
-@@ -423,3 +421 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
--			String hsdisDownloadUrl = "https://chriswhocodes.com/hsdis/";
--
--			String message = "The disassembly plugin " + disassemblerFilename + " could not be found.\n Would you like to download it from "+hsdisDownloadUrl+" ?";
-+			String message = "The hsdis plugin " + disassemblerFilename + " could not be found. Would you like to download it?";
-@@ -427 +423 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
--			Response response = Dialogs.showYesNoDialogNever(SandboxStage.this, "Download disassembly plugin", message);
-+			Response response = Dialogs.showYesNoDialogNever(SandboxStage.this, "Download hsdis plugin", message);
-@@ -433 +429 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
--				String url = hsdisDownloadUrl + disassemblerFilename;
-+				String url = "https://chriswhocodes.com/hsdis/" + disassemblerFilename;
+@@ -410,0 +411,2 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
++		log("Looking for disassembler: " + disassemblerFilename);
++
+@@ -421 +423,3 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
+-			String message = "The hsdis plugin " + disassemblerFilename + " could not be found. Would you like to download it?";
++			String hsdisDownloadUrl = "https://chriswhocodes.com/hsdis/";
++
++			String message = "The disassembly plugin " + disassemblerFilename + " could not be found.\n Would you like to download it from "+hsdisDownloadUrl+" ?";
+@@ -423 +427 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
+-			Response response = Dialogs.showYesNoDialogNever(SandboxStage.this, "Download hsdis plugin", message);
++			Response response = Dialogs.showYesNoDialogNever(SandboxStage.this, "Download disassembly plugin", message);
+@@ -429 +433 @@ public class SandboxStage extends Stage implements ISandboxStage, IStageClosedLi
+-				String url = "https://chriswhocodes.com/hsdis/" + disassemblerFilename;
++				String url = hsdisDownloadUrl + disassemblerFilename;
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/VMLanguageList.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/VMLanguageList.java
-index 99aaa448..9f77ea66 100644
+index 9f77ea66..99aaa448 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/VMLanguageList.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/VMLanguageList.java
-@@ -79 +78,0 @@ public class VMLanguageList extends FlowPane implements IStageClosedListener
--
+@@ -78,0 +79 @@ public class VMLanguageList extends FlowPane implements IStageClosedListener
++
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/stage/StageManager.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/stage/StageManager.java
-index 08ab585e..ff4e44af 100644
+index ff4e44af..08ab585e 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/stage/StageManager.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/stage/StageManager.java
-@@ -209,4 +208,0 @@ public class StageManager
--
--		childStage.requestFocus();
--
--		childStage.toFront();
+@@ -208,0 +209,4 @@ public class StageManager
++
++		childStage.requestFocus();
++
++		childStage.toFront();
 diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/Viewer.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/Viewer.java
-index fe79c64a..bcabe9bb 100644
+index bcabe9bb..fe79c64a 100644
 --- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/Viewer.java
 +++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/triview/Viewer.java
 @@ -73 +73 @@ public class Viewer extends VBox
--	public static final String STYLE_HIGHLIGHTED = FONT_STYLE + "-fx-background-color:#ff6666;";
-+	public static final String STYLE_HIGHLIGHTED = FONT_STYLE + "-fx-background-color:red;";
+-	public static final String STYLE_HIGHLIGHTED = FONT_STYLE + "-fx-background-color:red;";
++	public static final String STYLE_HIGHLIGHTED = FONT_STYLE + "-fx-background-color:#ff6666;";

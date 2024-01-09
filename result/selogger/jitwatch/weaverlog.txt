@@ -1,0 +1,1552 @@
+Weaving configuration: EXEC,CALL,FIELD,ARRAY,SYNC,LABEL,PARAM,LOCAL,OBJECT,LINE
+Selected File Format: Frequency
+Excluded by name filter: sun/launcher/LauncherHelper
+Excluded by name filter: org/apache/maven/surefire/booter/ForkedBooter
+Excluded by name filter: java/lang/reflect/InvocationTargetException
+Excluded by name filter: org/apache/maven/surefire/report/StackTraceWriter
+Excluded by name filter: java/security/AccessControlException
+Excluded by name filter: java/lang/SecurityException
+Excluded by name filter: java/util/concurrent/Executor
+Excluded by name filter: java/util/concurrent/ExecutorService
+Excluded by name filter: org/apache/maven/surefire/booter/CommandListener
+Excluded by name filter: java/lang/InterruptedException
+Excluded by name filter: org/apache/maven/surefire/report/ReporterFactory
+Excluded by name filter: java/util/concurrent/ScheduledExecutorService
+Excluded by name filter: org/apache/maven/surefire/booter/CommandReader
+Excluded by name filter: org/apache/maven/plugin/surefire/log/api/ConsoleLogger
+Excluded by name filter: org/apache/maven/surefire/testset/TestSetFailedException
+Excluded by name filter: java/util/concurrent/ConcurrentLinkedQueue
+Excluded by name filter: java/util/AbstractQueue
+Excluded by name filter: java/util/concurrent/ConcurrentLinkedQueue$Node
+Excluded by name filter: java/lang/invoke/VarHandles
+Excluded by name filter: java/lang/ClassValue
+Excluded by name filter: java/lang/invoke/VarHandles$1
+Excluded by name filter: java/lang/ClassValue$Entry
+Excluded by name filter: java/lang/ClassValue$Identity
+Excluded by name filter: java/lang/ClassValue$Version
+Excluded by name filter: java/lang/invoke/VarHandleReferences$FieldInstanceReadOnly
+Excluded by name filter: java/lang/invoke/VarHandleReferences$FieldInstanceReadWrite
+Excluded by name filter: java/lang/invoke/VarHandle$1
+Excluded by name filter: jdk/internal/util/Preconditions$1
+Excluded by name filter: java/lang/invoke/VarHandleGuards
+Excluded by name filter: java/lang/invoke/VarForm
+Excluded by name filter: org/apache/maven/surefire/booter/CommandReader$CommandRunnable
+Excluded by name filter: java/io/EOFException
+Excluded by name filter: org/apache/maven/surefire/util/internal/DaemonThreadFactory
+Excluded by name filter: java/util/concurrent/atomic/AtomicReference
+Excluded by name filter: java/lang/Thread$State
+Excluded by name filter: java/util/concurrent/CountDownLatch
+Excluded by name filter: java/util/concurrent/CountDownLatch$Sync
+Excluded by name filter: java/util/concurrent/locks/AbstractQueuedSynchronizer
+Excluded by name filter: java/util/concurrent/Semaphore
+Excluded by name filter: java/util/concurrent/Semaphore$NonfairSync
+Excluded by name filter: java/util/concurrent/Semaphore$Sync
+Excluded by name filter: org/apache/maven/plugin/surefire/log/api/NullConsoleLogger
+Excluded by name filter: java/lang/invoke/VarHandle$AccessDescriptor
+Excluded by name filter: java/lang/management/ManagementFactory
+Excluded by name filter: java/io/DataInputStream
+Excluded by name filter: java/lang/NoSuchMethodError
+Excluded by name filter: org/apache/maven/surefire/booter/MasterProcessCommand
+Excluded by name filter: java/io/UnsupportedEncodingException
+Excluded by name filter: java/lang/IllegalStateException
+Excluded by name filter: org/apache/maven/surefire/util/internal/ObjectUtils
+Excluded by name filter: sun/nio/cs/US_ASCII
+Excluded by name filter: java/lang/management/RuntimeMXBean
+Excluded by name filter: java/lang/management/PlatformManagedObject
+Excluded by name filter: org/apache/maven/surefire/booter/Command
+Excluded by name filter: java/lang/management/ManagementFactory$PlatformMBeanFinder
+Excluded by name filter: java/lang/management/ManagementFactory$PlatformMBeanFinder$1
+Excluded by name filter: java/io/FilePermission
+Excluded by name filter: org/apache/maven/surefire/booter/CommandReader$1
+Excluded by name filter: java/io/FilePermission$1
+Excluded by name filter: jdk/internal/access/JavaIOFilePermissionAccess
+Excluded by name filter: java/util/concurrent/ConcurrentLinkedQueue$Itr
+Excluded by name filter: sun/security/util/FilePermCompat
+Excluded by name filter: sun/security/util/SecurityProperties
+Excluded by name filter: sun/management/spi/PlatformMBeanProvider
+Excluded by name filter: java/util/ServiceLoader
+Excluded by name filter: java/util/ServiceLoader$ModuleServicesLookupIterator
+Excluded by name filter: java/util/ServiceLoader$LazyClassPathLookupIterator
+Excluded by name filter: java/util/ServiceLoader$2
+Excluded by name filter: java/util/ServiceLoader$3
+Excluded by name filter: java/util/concurrent/CopyOnWriteArrayList$COWIterator
+Excluded by name filter: com/sun/management/internal/PlatformMBeanProviderImpl
+Excluded by name filter: java/util/ServiceLoader$1
+Excluded by name filter: java/util/ServiceLoader$Provider
+Excluded by name filter: java/util/ServiceLoader$ProviderImpl
+Excluded by name filter: com/sun/management/internal/PlatformMBeanProviderImpl$1
+Excluded by name filter: sun/management/spi/PlatformMBeanProvider$PlatformComponent
+Excluded by name filter: java/util/Spliterators$ArraySpliterator
+Excluded by name filter: com/sun/management/internal/PlatformMBeanProviderImpl$2
+Excluded by name filter: com/sun/management/internal/PlatformMBeanProviderImpl$3
+Excluded by name filter: com/sun/management/internal/PlatformMBeanProviderImpl$4
+Excluded by name filter: java/util/Collections$SingletonSet
+Excluded by name filter: com/sun/management/internal/DiagnosticCommandImpl
+Excluded by name filter: com/sun/management/DiagnosticCommandMBean
+Excluded by name filter: javax/management/DynamicMBean
+Excluded by name filter: sun/management/NotificationEmitterSupport
+Excluded by name filter: javax/management/NotificationEmitter
+Excluded by name filter: javax/management/NotificationBroadcaster
+Excluded by name filter: sun/management/ManagementFactoryHelper
+Excluded by name filter: sun/management/VMManagementImpl
+Excluded by name filter: sun/management/VMManagement
+Excluded by name filter: com/sun/management/internal/PlatformMBeanProviderImpl$5
+Excluded by name filter: java/util/Collections$UnmodifiableList
+Excluded by name filter: java/util/Collections$UnmodifiableRandomAccessList
+Excluded by name filter: jdk/management/jfr/internal/FlightRecorderMXBeanProvider
+Excluded by name filter: java/util/concurrent/Callable
+Excluded by name filter: jdk/internal/module/Resources
+Excluded by name filter: jdk/internal/loader/BuiltinClassLoader$2
+Excluded by name filter: jdk/internal/loader/BuiltinClassLoader$5
+Excluded by name filter: java/lang/module/ModuleReader
+Excluded by name filter: jdk/internal/module/SystemModuleFinders$SystemModuleReader
+Excluded by name filter: jdk/internal/module/SystemModuleFinders$SystemImage
+Excluded by name filter: jdk/internal/jimage/ImageReaderFactory
+Excluded by name filter: java/nio/file/Paths
+Excluded by name filter: jdk/internal/jimage/ImageReaderFactory$1
+Excluded by name filter: jdk/internal/jimage/ImageReader
+Excluded by name filter: jdk/internal/jimage/BasicImageReader
+Excluded by name filter: jdk/internal/jimage/ImageReader$SharedImageReader
+Excluded by name filter: jdk/internal/jimage/BasicImageReader$1
+Excluded by name filter: jdk/internal/jimage/NativeImageBuffer
+Excluded by name filter: jdk/internal/jimage/NativeImageBuffer$1
+Excluded by name filter: jdk/internal/jimage/ImageHeader
+Excluded by name filter: java/nio/IntBuffer
+Excluded by name filter: java/nio/DirectIntBufferU
+Excluded by name filter: java/nio/DirectByteBufferR
+Excluded by name filter: java/nio/DirectIntBufferRU
+Excluded by name filter: jdk/internal/jimage/ImageStrings
+Excluded by name filter: jdk/internal/jimage/ImageStringsReader
+Excluded by name filter: jdk/internal/jimage/decompressor/Decompressor
+Excluded by name filter: jdk/internal/jimage/ImageLocation
+Excluded by name filter: jdk/internal/loader/URLClassPath$1
+Excluded by name filter: jdk/internal/loader/BuiltinClassLoader$1
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$1
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$2
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$3
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$4
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$5
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$6
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$7
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$8
+Excluded by name filter: sun/management/ManagementFactoryHelper$LoggingMXBeanAccess
+Excluded by name filter: sun/management/ManagementFactoryHelper$LoggingMXBeanAccess$1
+Excluded by name filter: java/util/logging/LogManager
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$9
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$10
+Excluded by name filter: java/lang/management/DefaultPlatformMBeanProvider$11
+Excluded by name filter: jdk/management/jfr/FlightRecorderMXBean
+Excluded by name filter: jdk/management/jfr/internal/FlightRecorderMXBeanProvider$SingleMBeanComponent
+Excluded by name filter: java/util/Collections$SingletonList
+Excluded by name filter: java/util/Collections$1
+Excluded by name filter: java/util/HashMap$HashMapSpliterator
+Excluded by name filter: java/util/HashMap$ValueSpliterator
+Excluded by name filter: java/util/stream/ReduceOps$2
+Excluded by name filter: java/util/stream/ReduceOps$2ReducingSink
+Excluded by name filter: sun/management/RuntimeImpl
+Excluded by name filter: java/util/Collections$SingletonMap
+Excluded by name filter: java/util/Collections$2
+Excluded by name filter: sun/management/Util
+Excluded by name filter: java/lang/management/ManagementPermission
+Excluded by name filter: java/util/Arrays$ArrayList
+Excluded by name filter: java/util/Arrays$ArrayItr
+Excluded by name filter: org/apache/maven/surefire/booter/ForkedBooter$3
+Excluded by name filter: org/apache/maven/surefire/booter/BiProperty
+Excluded by name filter: java/util/concurrent/atomic/AtomicBoolean
+Excluded by name filter: java/lang/invoke/VarHandleInts$FieldInstanceReadOnly
+Excluded by name filter: java/lang/invoke/VarHandleInts$FieldInstanceReadWrite
+Excluded by name filter: org/apache/maven/surefire/booter/ForkedBooter$2
+Excluded by name filter: org/apache/maven/surefire/booter/ForkedBooter$4
+Excluded by name filter: org/apache/maven/surefire/util/internal/DaemonThreadFactory$NamedThreadFactory
+Excluded by name filter: java/util/concurrent/ScheduledThreadPoolExecutor
+Excluded by name filter: java/util/concurrent/ThreadPoolExecutor
+Excluded by name filter: java/util/concurrent/AbstractExecutorService
+Excluded by name filter: java/util/concurrent/ThreadPoolExecutor$AbortPolicy
+Excluded by name filter: java/util/concurrent/RejectedExecutionHandler
+Excluded by name filter: java/util/concurrent/ScheduledThreadPoolExecutor$DelayedWorkQueue
+Excluded by name filter: java/util/concurrent/BlockingQueue
+Excluded by name filter: java/util/concurrent/RunnableScheduledFuture
+Excluded by name filter: java/util/concurrent/RunnableFuture
+Excluded by name filter: java/util/concurrent/Future
+Excluded by name filter: java/util/concurrent/ScheduledFuture
+Excluded by name filter: java/util/concurrent/Delayed
+Excluded by name filter: java/util/concurrent/locks/ReentrantLock$Sync
+Excluded by name filter: java/util/concurrent/locks/ReentrantLock$NonfairSync
+Excluded by name filter: java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject
+Excluded by name filter: java/util/concurrent/locks/Condition
+Excluded by name filter: java/util/concurrent/ThreadPoolExecutor$Worker
+Excluded by name filter: java/util/concurrent/ScheduledThreadPoolExecutor$ScheduledFutureTask
+Excluded by name filter: java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionNode
+Excluded by name filter: java/util/concurrent/FutureTask
+Excluded by name filter: java/util/concurrent/ForkJoinPool$ManagedBlocker
+Excluded by name filter: java/util/concurrent/locks/AbstractQueuedSynchronizer$Node
+Excluded by name filter: java/util/concurrent/FutureTask$WaitNode
+Excluded by name filter: java/util/concurrent/Executors
+Excluded by name filter: java/util/concurrent/ForkJoinPool
+Excluded by name filter: java/util/concurrent/Executors$RunnableAdapter
+Excluded by name filter: java/lang/invoke/VarHandleLongs$FieldInstanceReadOnly
+Excluded by name filter: java/util/concurrent/locks/AbstractQueuedSynchronizer$ExclusiveNode
+Excluded by name filter: java/lang/invoke/VarHandleLongs$FieldInstanceReadWrite
+Excluded by name filter: java/lang/invoke/VarHandleInts$FieldStaticReadOnly
+Excluded by name filter: org/apache/maven/surefire/booter/BooterDeserializer
+Excluded by name filter: java/lang/invoke/VarHandleInts$FieldStaticReadWrite
+Excluded by name filter: java/util/concurrent/ForkJoinPool$ForkJoinWorkerThreadFactory
+Excluded by name filter: java/util/concurrent/ForkJoinPool$DefaultForkJoinWorkerThreadFactory
+Excluded by name filter: org/apache/maven/surefire/booter/SystemPropertyManager
+Excluded by name filter: java/util/concurrent/ForkJoinPool$1
+Excluded by name filter: java/util/concurrent/ForkJoinPool$DefaultCommonPoolForkJoinWorkerThreadFactory
+Excluded by name filter: java/util/concurrent/ForkJoinPool$WorkQueue
+Excluded by name filter: java/util/concurrent/ForkJoinWorkerThread
+Excluded by name filter: java/util/concurrent/TimeUnit$1
+Excluded by name filter: java/util/Properties$EntrySet
+Excluded by name filter: java/time/temporal/TemporalUnit
+Excluded by name filter: java/util/concurrent/ConcurrentHashMap$EntrySetView
+Excluded by name filter: java/time/temporal/ChronoUnit
+Excluded by name filter: java/util/Collections$SynchronizedCollection
+Excluded by name filter: java/util/Collections$SynchronizedSet
+Excluded by name filter: java/time/temporal/TemporalAmount
+Excluded by name filter: java/util/concurrent/ConcurrentHashMap$EntryIterator
+Excluded by name filter: java/time/Duration
+Excluded by name filter: java/util/concurrent/ConcurrentHashMap$MapEntry
+Excluded by name filter: java/math/BigInteger
+Excluded by name filter: org/apache/maven/surefire/booter/PropertiesWrapper
+Excluded by name filter: org/apache/maven/surefire/booter/KeyValueSource
+Excluded by name filter: org/apache/maven/surefire/booter/TypeEncodedValue
+Excluded by name filter: org/apache/maven/surefire/testset/DirectoryScannerParameters
+Excluded by name filter: org/apache/maven/surefire/util/RunOrder
+Excluded by name filter: java/util/StringTokenizer
+Excluded by name filter: org/apache/maven/surefire/testset/RunOrderParameters
+Excluded by name filter: org/apache/maven/surefire/testset/TestArtifactInfo
+Excluded by name filter: org/apache/maven/surefire/testset/TestRequest
+Excluded by name filter: org/apache/maven/surefire/testset/TestListResolver
+Excluded by name filter: org/apache/maven/surefire/testset/GenericTestPattern
+Excluded by name filter: org/apache/maven/surefire/testset/TestFilter
+Excluded by name filter: org/apache/maven/surefire/testset/IncludedExcludedPatterns
+Excluded by name filter: org/apache/maven/surefire/shade/org/apache/maven/shared/utils/StringUtils
+Excluded by name filter: java/lang/StringIndexOutOfBoundsException
+Excluded by name filter: java/lang/IndexOutOfBoundsException
+Excluded by name filter: org/apache/maven/surefire/testset/ResolvedTest
+Excluded by name filter: org/apache/maven/surefire/testset/ResolvedTest$Type
+Excluded by name filter: org/apache/maven/surefire/testset/ResolvedTest$ClassMatcher
+Excluded by name filter: org/apache/maven/surefire/testset/ResolvedTest$MethodMatcher
+Excluded by name filter: org/apache/maven/surefire/report/ReporterConfiguration
+Excluded by name filter: org/apache/maven/surefire/booter/Shutdown
+Excluded by name filter: org/apache/maven/surefire/booter/ProviderConfiguration
+Excluded by name filter: org/apache/maven/surefire/cli/CommandLineOption
+Excluded by name filter: org/apache/maven/surefire/booter/DumpErrorSingleton
+Excluded by name filter: org/apache/maven/surefire/util/internal/DumpFileUtils
+Excluded by name filter: org/apache/maven/surefire/booter/ClassLoaderConfiguration
+Excluded by name filter: org/apache/maven/surefire/booter/ClasspathConfiguration
+Excluded by name filter: org/apache/maven/surefire/booter/Classpath
+Excluded by name filter: java/net/MalformedURLException
+Excluded by name filter: org/apache/maven/surefire/booter/IsolatedClassLoader
+Excluded by name filter: java/net/URLClassLoader
+Excluded by name filter: org/apache/maven/surefire/booter/SurefireExecutionException
+Excluded by name filter: org/apache/maven/surefire/booter/StartupConfiguration
+Excluded by name filter: org/apache/maven/surefire/booter/ForkingReporterFactory
+Excluded by name filter: org/apache/maven/surefire/report/RunListener
+Excluded by name filter: org/apache/maven/surefire/booter/BaseProviderFactory
+Excluded by name filter: org/apache/maven/surefire/booter/DirectoryScannerParametersAware
+Excluded by name filter: org/apache/maven/surefire/booter/ReporterConfigurationAware
+Excluded by name filter: org/apache/maven/surefire/booter/SurefireClassLoadersAware
+Excluded by name filter: org/apache/maven/surefire/booter/TestRequestAware
+Excluded by name filter: org/apache/maven/surefire/booter/ProviderPropertiesAware
+Excluded by name filter: org/apache/maven/surefire/providerapi/ProviderParameters
+Excluded by name filter: org/apache/maven/surefire/booter/TestArtifactInfoAware
+Excluded by name filter: org/apache/maven/surefire/booter/RunOrderParametersAware
+Excluded by name filter: org/apache/maven/surefire/booter/MainCliOptionsAware
+Excluded by name filter: org/apache/maven/surefire/booter/FailFastAware
+Excluded by name filter: org/apache/maven/surefire/booter/ShutdownAware
+Excluded by name filter: org/apache/maven/surefire/util/DirectoryScanner
+Excluded by name filter: org/apache/maven/surefire/util/ScanResult
+Excluded by name filter: org/apache/maven/surefire/util/RunOrderCalculator
+Excluded by name filter: org/apache/maven/surefire/report/ConsoleStream
+Excluded by name filter: org/apache/maven/surefire/util/ReflectionUtils
+Excluded by name filter: org/apache/maven/surefire/util/SurefireReflectionException
+Excluded by name filter: java/lang/InstantiationException
+Excluded by name filter: java/lang/IllegalAccessException
+Excluded by name filter: org/apache/maven/surefire/junit4/JUnit4Provider
+Excluded by name filter: org/apache/maven/surefire/providerapi/AbstractProvider
+Excluded by name filter: org/apache/maven/surefire/providerapi/SurefireProvider
+Excluded by name filter: org/junit/runner/notification/RunNotifier
+Excluded by name filter: org/apache/maven/surefire/common/junit4/Notifier
+Excluded by name filter: org/apache/maven/surefire/report/ReportEntry
+Excluded by name filter: org/junit/runner/notification/RunListener
+Excluded by name filter: org/apache/maven/surefire/common/junit4/JUnitTestFailureListener
+Excluded by name filter: org/apache/maven/surefire/util/ScannerFilter
+Excluded by name filter: org/junit/runner/manipulation/Filter
+Excluded by name filter: org/apache/maven/surefire/junit4/TestResolverFilter
+Excluded by name filter: org/apache/maven/surefire/util/DefaultScanResult
+Excluded by name filter: org/apache/maven/surefire/util/DefaultRunOrderCalculator
+Excluded by name filter: org/apache/maven/surefire/common/junit4/JUnit4TestChecker
+Excluded by name filter: org/apache/maven/surefire/common/junit3/JUnit3TestChecker
+Excluded by name filter: org/apache/maven/surefire/NonAbstractClassFilter
+Excluded by name filter: junit/framework/Test
+Excluded by name filter: org/junit/runner/RunWith
+Excluded by name filter: org/apache/maven/surefire/booter/ForkingRunListener
+Excluded by name filter: org/apache/maven/surefire/report/ConsoleOutputReceiver
+Excluded by name filter: org/apache/maven/surefire/util/internal/StringUtils
+Excluded by name filter: java/nio/charset/CharacterCodingException
+Excluded by name filter: sun/nio/cs/ISO_8859_1
+Excluded by name filter: org/apache/maven/surefire/report/ConsoleOutputCapture
+Excluded by name filter: org/apache/maven/surefire/report/ConsoleOutputCapture$ForwardingPrintStream
+Excluded by name filter: jdk/internal/loader/URLClassPath$FileLoader$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/AbstractAssemblyTest
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestAssemblyLabels
+Excluded by name filter: java/lang/Class$AnnotationData
+Excluded by name filter: sun/reflect/generics/parser/SignatureParser
+Excluded by name filter: sun/reflect/generics/tree/TypeArgument
+Excluded by name filter: sun/reflect/generics/tree/TypeTree
+Excluded by name filter: sun/reflect/generics/tree/Tree
+Excluded by name filter: sun/reflect/generics/tree/SimpleClassTypeSignature
+Excluded by name filter: sun/reflect/generics/tree/FieldTypeSignature
+Excluded by name filter: sun/reflect/generics/tree/BaseType
+Excluded by name filter: sun/reflect/generics/tree/TypeSignature
+Excluded by name filter: sun/reflect/generics/tree/ReturnType
+Excluded by name filter: sun/reflect/generics/tree/ClassTypeSignature
+Excluded by name filter: sun/reflect/generics/scope/ClassScope
+Excluded by name filter: sun/reflect/generics/scope/Scope
+Excluded by name filter: sun/reflect/generics/scope/AbstractScope
+Excluded by name filter: sun/reflect/generics/factory/CoreReflectionFactory
+Excluded by name filter: sun/reflect/generics/factory/GenericsFactory
+Excluded by name filter: sun/reflect/generics/visitor/Reifier
+Excluded by name filter: sun/reflect/generics/visitor/TypeTreeVisitor
+Excluded by name filter: org/junit/Test
+Excluded by name filter: java/lang/reflect/GenericArrayType
+Excluded by name filter: sun/reflect/annotation/AnnotationType
+Excluded by name filter: sun/reflect/annotation/AnnotationType$1
+Excluded by name filter: org/junit/Test$None
+Excluded by name filter: sun/reflect/annotation/ExceptionProxy
+Excluded by name filter: java/lang/annotation/Retention
+Excluded by name filter: java/lang/annotation/Inherited
+Excluded by name filter: java/lang/annotation/RetentionPolicy
+Excluded by name filter: sun/reflect/annotation/AnnotationTypeMismatchExceptionProxy
+Excluded by name filter: sun/reflect/annotation/AnnotationParser$1
+Excluded by name filter: sun/reflect/annotation/AnnotationInvocationHandler
+Excluded by name filter: java/lang/reflect/InvocationHandler
+Excluded by name filter: java/lang/reflect/Proxy
+Excluded by name filter: java/lang/reflect/Proxy$1
+Excluded by name filter: jdk/internal/loader/AbstractClassLoaderValue$Sub
+Excluded by name filter: java/lang/reflect/Proxy$ProxyBuilder
+Excluded by name filter: java/lang/PublicMethods
+Excluded by name filter: java/util/LinkedHashMap$LinkedValues
+Excluded by name filter: java/util/LinkedHashMap$LinkedValueIterator
+Excluded by name filter: java/lang/module/ModuleDescriptor$Builder
+Excluded by name filter: jdk/internal/module/Checks
+Excluded by name filter: java/lang/WeakPairMap$Pair$Weak
+Excluded by name filter: java/lang/WeakPairMap$WeakRefPeer
+Excluded by name filter: java/lang/WeakPairMap$Pair$Weak$1
+Excluded by name filter: java/lang/reflect/ProxyGenerator
+Excluded by name filter: java/lang/reflect/ProxyGenerator$ProxyMethod
+Excluded by name filter: java/util/StringJoiner
+Excluded by name filter: java/lang/reflect/ProxyGenerator$PrimitiveTypeInfo
+Excluded by name filter: jdk/internal/org/objectweb/asm/Edge
+Excluded by name filter: jdk/proxy1/$Proxy0
+Excluded by name filter: java/lang/reflect/Proxy$ProxyBuilder$1
+Excluded by name filter: java/lang/annotation/Target
+Excluded by name filter: jdk/proxy2/$Proxy1
+Excluded by name filter: java/lang/reflect/UndeclaredThrowableException
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestAssemblyParserARM
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestAssemblyParserX86
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/AbstractAssemblyTest$OperandType
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestAssemblyProcessor
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/AssemblyProcessor
+Excluded by name filter: org/junit/Before
+Excluded by name filter: jdk/proxy2/$Proxy2
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/IMetaMember
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/IReadOnlyJITDataModel
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/IParseDictionary
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/LogParseException
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/Tag
+Excluded by name filter: org/junit/After
+Excluded by name filter: jdk/proxy2/$Proxy3
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestBytecodeLoader
+Excluded by name filter: java/lang/ArrayIndexOutOfBoundsException
+Excluded by name filter: java/net/URISyntaxException
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses
+Excluded by name filter: org/adoptopenjdk/jitwatch/logger/ILogListener
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/ClassBC
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestClassWithGenerics
+Excluded by name filter: java/lang/CloneNotSupportedException
+Excluded by name filter: java/lang/Deprecated
+Excluded by name filter: java/lang/annotation/Documented
+Excluded by name filter: jdk/proxy1/$Proxy4
+Excluded by name filter: jdk/internal/vm/annotation/IntrinsicCandidate
+Excluded by name filter: com/sun/proxy/jdk/proxy1/$Proxy5
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestCompilationUtil
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestCompileChain
+Excluded by name filter: org/adoptopenjdk/jitwatch/chain/CompileNode
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestCompositeObjectEquality
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestExecutionUtil
+Excluded by name filter: java/io/FilenameFilter
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestHisto
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestInnerClassRelationship
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestIntrinsicFinder
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestJ9Parser
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestJarScan
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/Opcode
+Excluded by name filter: org/adoptopenjdk/jitwatch/jarscan/sequencecount/InstructionSequence
+Excluded by name filter: jdk/internal/reflect/MethodAccessorGenerator
+Excluded by name filter: jdk/internal/reflect/AccessorGenerator
+Excluded by name filter: jdk/internal/reflect/ClassFileConstants
+Excluded by name filter: jdk/internal/reflect/ByteVectorFactory
+Excluded by name filter: jdk/internal/reflect/ByteVectorImpl
+Excluded by name filter: jdk/internal/reflect/ByteVector
+Excluded by name filter: jdk/internal/reflect/ClassFileAssembler
+Excluded by name filter: jdk/internal/reflect/UTF8
+Excluded by name filter: jdk/internal/reflect/Label
+Excluded by name filter: jdk/internal/reflect/Label$PatchInfo
+Excluded by name filter: jdk/internal/reflect/MethodAccessorGenerator$1
+Excluded by name filter: jdk/internal/reflect/ClassDefiner
+Excluded by name filter: jdk/internal/reflect/ClassDefiner$1
+Excluded by name filter: jdk/internal/reflect/GeneratedConstructorAccessor1
+Excluded by name filter: java/lang/Class$1
+Excluded by name filter: jdk/internal/reflect/BootstrapConstructorAccessorImpl
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestJITWatchConfig
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestLineTable
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestLocales
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestLogSplitting
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/ILogParser
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestMemberBytecode
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestMemberSignatureParts
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/MemberSignatureParts
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestMetaClass
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestOpcode
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestPackageManager
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestParseUtil
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestReport
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestResourceLoader
+Excluded by name filter: java/util/jar/JarOutputStream
+Excluded by name filter: java/util/zip/ZipOutputStream
+Excluded by name filter: java/util/zip/DeflaterOutputStream
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestStringUtil
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestTagProcessor
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestVmVersionDetector
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestZingParser
+Excluded by name filter: org/adoptopenjdk/jitwatch/core/IJITListener
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/zing/ZingLogParser
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/AbstractLogParser
+Excluded by name filter: org/apache/maven/surefire/util/TestsToRun
+Excluded by name filter: org/apache/maven/surefire/util/TestsToRun$ClassesIterator
+Excluded by name filter: org/apache/maven/surefire/util/CloseableIterator
+Excluded by name filter: java/util/NoSuchElementException
+Excluded by name filter: java/lang/UnsupportedOperationException
+Excluded by name filter: org/junit/runner/notification/StoppedByUserException
+Excluded by name filter: org/junit/runner/notification/SynchronizedRunListener
+Excluded by name filter: org/apache/maven/surefire/common/junit4/JUnit4RunListener
+Excluded by name filter: org/apache/maven/surefire/common/junit4/Notifier$1
+Excluded by name filter: java/lang/InheritableThreadLocal
+Excluded by name filter: org/junit/runner/notification/RunListener$ThreadSafe
+Excluded by name filter: org/junit/runner/Result
+Excluded by name filter: org/junit/runner/Result$Listener
+Excluded by name filter: org/junit/runner/Result$SerializedForm
+Excluded by name filter: java/io/ObjectStreamClass
+Excluded by name filter: java/io/ObjectStreamClass$Caches
+Excluded by name filter: java/io/ObjectStreamClass$Caches$1
+Excluded by name filter: java/io/ClassCache
+Excluded by name filter: java/io/ClassCache$1
+Excluded by name filter: java/io/ObjectStreamClass$Caches$2
+Excluded by name filter: java/lang/ClassValue$ClassValueMap
+Excluded by name filter: java/io/Externalizable
+Excluded by name filter: java/io/ObjectStreamClass$2
+Excluded by name filter: jdk/internal/reflect/UnsafeFieldAccessorFactory
+Excluded by name filter: jdk/internal/reflect/UnsafeQualifiedStaticLongFieldAccessorImpl
+Excluded by name filter: jdk/internal/reflect/UnsafeQualifiedStaticFieldAccessorImpl
+Excluded by name filter: java/util/Arrays$LegacyMergeSort
+Excluded by name filter: java/util/ComparableTimSort
+Excluded by name filter: jdk/internal/reflect/GeneratedSerializationConstructorAccessor1
+Excluded by name filter: jdk/internal/reflect/SerializationConstructorAccessorImpl
+Excluded by name filter: java/io/ObjectOutputStream
+Excluded by name filter: java/io/ObjectOutput
+Excluded by name filter: java/io/ObjectStreamConstants
+Excluded by name filter: java/io/ObjectInputStream
+Excluded by name filter: java/io/ObjectInput
+Excluded by name filter: java/io/ClassCache$CacheRef
+Excluded by name filter: java/io/ObjectStreamClass$FieldReflectorKey
+Excluded by name filter: java/io/ObjectStreamClass$FieldReflector
+Excluded by name filter: org/apache/maven/surefire/common/junit4/JUnit4RunListenerFactory
+Excluded by name filter: java/util/AbstractSequentialList
+Excluded by name filter: java/util/LinkedList
+Excluded by name filter: java/util/LinkedList$ListItr
+Excluded by name filter: jdk/proxy2/$Proxy6
+Excluded by name filter: org/apache/maven/surefire/common/junit4/JUnit4Reflector
+Excluded by name filter: org/junit/Ignore
+Excluded by name filter: org/junit/runner/Description
+Excluded by name filter: java/util/regex/CharPredicates
+Excluded by name filter: jdk/internal/reflect/GeneratedMethodAccessor1
+Excluded by name filter: org/junit/runner/notification/RunNotifier$1
+Excluded by name filter: org/junit/runner/notification/RunNotifier$SafeNotifier
+Excluded by name filter: org/apache/maven/surefire/junit4/JUnit4Provider$1
+Excluded by name filter: org/apache/maven/surefire/report/SimpleReportEntry
+Excluded by name filter: org/junit/runner/Request
+Excluded by name filter: org/junit/runner/Runner
+Excluded by name filter: org/junit/runner/Describable
+Excluded by name filter: org/junit/internal/runners/ErrorReportingRunner
+Excluded by name filter: org/junit/internal/requests/ClassRequest
+Excluded by name filter: org/junit/internal/requests/MemoizingRequest
+Excluded by name filter: org/junit/internal/requests/OrderingRequest
+Excluded by name filter: org/junit/internal/requests/SortingRequest
+Excluded by name filter: org/junit/internal/requests/FilterRequest
+Excluded by name filter: org/junit/runner/Request$1
+Excluded by name filter: org/junit/runners/model/InitializationError
+Excluded by name filter: org/junit/runners/model/RunnerBuilder
+Excluded by name filter: org/junit/internal/builders/AllDefaultPossibilitiesBuilder
+Excluded by name filter: org/junit/internal/requests/ClassRequest$CustomAllDefaultPossibilitiesBuilder
+Excluded by name filter: org/junit/internal/builders/SuiteMethodBuilder
+Excluded by name filter: org/junit/internal/builders/NullBuilder
+Excluded by name filter: org/junit/internal/requests/ClassRequest$CustomSuiteMethodBuilder
+Excluded by name filter: org/junit/internal/builders/IgnoredBuilder
+Excluded by name filter: org/junit/internal/builders/IgnoredClassRunner
+Excluded by name filter: org/junit/internal/builders/AnnotatedBuilder
+Excluded by name filter: org/junit/internal/runners/SuiteMethod
+Excluded by name filter: org/junit/internal/runners/JUnit38ClassRunner
+Excluded by name filter: org/junit/runner/manipulation/Filterable
+Excluded by name filter: org/junit/runner/manipulation/Orderable
+Excluded by name filter: org/junit/runner/manipulation/Sortable
+Excluded by name filter: org/junit/internal/builders/JUnit3Builder
+Excluded by name filter: org/junit/internal/builders/JUnit4Builder
+Excluded by name filter: org/junit/runners/JUnit4
+Excluded by name filter: org/junit/runners/BlockJUnit4ClassRunner
+Excluded by name filter: org/junit/runners/ParentRunner
+Excluded by name filter: junit/framework/TestCase
+Excluded by name filter: junit/framework/Assert
+Excluded by name filter: org/junit/runners/model/Statement
+Excluded by name filter: org/junit/runners/ParentRunner$2
+Excluded by name filter: org/junit/runners/model/MemberValueConsumer
+Excluded by name filter: org/junit/rules/RunRules
+Excluded by name filter: org/junit/internal/runners/statements/RunAfters
+Excluded by name filter: org/junit/internal/runners/statements/RunBefores
+Excluded by name filter: org/junit/runners/ParentRunner$3
+Excluded by name filter: org/junit/internal/AssumptionViolatedException
+Excluded by name filter: org/hamcrest/SelfDescribing
+Excluded by name filter: org/junit/runner/manipulation/NoTestsRemainException
+Excluded by name filter: org/junit/runners/model/InvalidTestClassError
+Excluded by name filter: org/junit/runners/model/RunnerScheduler
+Excluded by name filter: org/junit/internal/runners/statements/FailOnTimeout
+Excluded by name filter: org/junit/internal/runners/statements/ExpectException
+Excluded by name filter: org/junit/internal/runners/statements/InvokeMethod
+Excluded by name filter: org/junit/internal/runners/statements/Fail
+Excluded by name filter: org/junit/runners/BlockJUnit4ClassRunner$1
+Excluded by name filter: org/junit/validator/TestClassValidator
+Excluded by name filter: org/junit/validator/AnnotationsValidator
+Excluded by name filter: org/junit/validator/AnnotationsValidator$AnnotatableValidator
+Excluded by name filter: org/junit/validator/AnnotationsValidator$ClassValidator
+Excluded by name filter: org/junit/validator/AnnotationValidatorFactory
+Excluded by name filter: org/junit/validator/AnnotationsValidator$MethodValidator
+Excluded by name filter: org/junit/validator/AnnotationsValidator$FieldValidator
+Excluded by name filter: org/junit/validator/PublicClassValidator
+Excluded by name filter: org/junit/runners/model/TestClass
+Excluded by name filter: org/junit/runners/model/Annotatable
+Excluded by name filter: org/junit/runners/model/FrameworkMember
+Excluded by name filter: org/junit/runners/model/FrameworkField
+Excluded by name filter: org/junit/runners/model/FrameworkMethod
+Excluded by name filter: org/junit/runners/model/TestClass$FieldComparator
+Excluded by name filter: org/junit/runners/model/TestClass$MethodComparator
+Excluded by name filter: org/junit/internal/MethodSorter
+Excluded by name filter: org/junit/internal/MethodSorter$1
+Excluded by name filter: org/junit/internal/MethodSorter$2
+Excluded by name filter: org/junit/FixMethodOrder
+Excluded by name filter: java/util/TimSort
+Excluded by name filter: org/junit/BeforeClass
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/AssemblyLabels
+Excluded by name filter: java/util/LinkedHashMap$LinkedEntrySet
+Excluded by name filter: java/util/LinkedHashMap$LinkedEntryIterator
+Excluded by name filter: org/junit/runners/ParentRunner$1
+Excluded by name filter: org/junit/internal/Checks
+Excluded by name filter: org/junit/AfterClass
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$RuleValidator
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$Builder
+Excluded by name filter: org/junit/ClassRule
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$DeclaringClassMustBePublic
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$MemberMustBeStatic
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$MemberMustBePublic
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$FieldMustBeATestRule
+Excluded by name filter: org/junit/Rule
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$MemberMustBeNonStaticOrAlsoClassRule
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$FieldMustBeARule
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$MethodMustBeATestRule
+Excluded by name filter: org/junit/internal/runners/rules/RuleMemberValidator$MethodMustBeARule
+Excluded by name filter: org/junit/validator/ValidateWith
+Excluded by name filter: java/lang/annotation/ElementType
+Excluded by name filter: jdk/proxy1/$Proxy7
+Excluded by name filter: jdk/proxy1/$Proxy8
+Excluded by name filter: org/junit/Assert
+Excluded by name filter: org/junit/ComparisonFailure
+Excluded by name filter: java/util/Formatter
+Excluded by name filter: java/util/regex/Pattern$BmpCharPropertyGreedy
+Excluded by name filter: java/util/regex/Pattern$Ques
+Excluded by name filter: java/util/regex/Pattern$BranchConn
+Excluded by name filter: java/util/regex/Pattern$Branch
+Excluded by name filter: java/util/Locale$Category
+Excluded by name filter: java/util/Formatter$Conversion
+Excluded by name filter: java/util/Formatter$FormatString
+Excluded by name filter: java/util/Formatter$FormatSpecifier
+Excluded by name filter: java/util/Formatter$Flags
+Excluded by name filter: java/util/Formatter$FixedString
+Excluded by name filter: java/util/Formattable
+Excluded by name filter: org/junit/runner/OrderWith
+Excluded by name filter: org/junit/internal/runners/model/EachTestNotifier
+Excluded by name filter: org/junit/runner/notification/RunNotifier$3
+Excluded by name filter: org/junit/runners/ParentRunner$ClassRuleCollector
+Excluded by name filter: org/junit/rules/TestRule
+Excluded by name filter: org/junit/runners/RuleContainer
+Excluded by name filter: org/junit/runners/RuleContainer$1
+Excluded by name filter: org/junit/runners/ParentRunner$4
+Excluded by name filter: org/junit/runner/notification/RunNotifier$5
+Excluded by name filter: org/apache/maven/surefire/util/internal/TestClassMethodNameUtils
+Excluded by name filter: java/util/regex/ASCII
+Excluded by name filter: org/junit/runners/BlockJUnit4ClassRunner$2
+Excluded by name filter: org/junit/internal/runners/model/ReflectiveCallable
+Excluded by name filter: java/lang/NumberFormatException
+Excluded by name filter: org/junit/runners/BlockJUnit4ClassRunner$RuleCollector
+Excluded by name filter: org/junit/rules/MethodRule
+Excluded by name filter: org/junit/runners/model/FrameworkMethod$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/AssemblyInstruction
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/IAssemblyParser
+Weaving executed: Class=org/slf4j/LoggerFactory, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=e20f1554f03fbeca686d702ce2fabfc518477fb2, ClassLoaderID=Loader@251a69d7:org/slf4j/LoggerFactory
+Weaving executed: Class=org/slf4j/ILoggerFactory, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=2c68b73a3105142d2f998ebff9194203e235bca6, ClassLoaderID=Loader@251a69d7:org/slf4j/ILoggerFactory
+Weaving executed: Class=org/slf4j/event/LoggingEvent, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=a26e4b3bc6224e2af36cfaf9b0330249092f14f0, ClassLoaderID=Loader@251a69d7:org/slf4j/event/LoggingEvent
+Weaving executed: Class=org/slf4j/helpers/SubstituteLoggerFactory, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=6b6cbd7e1d409d97b0e3a5db23ebac5f16c21a87, ClassLoaderID=Loader@251a69d7:org/slf4j/helpers/SubstituteLoggerFactory
+Weaving executed: Class=org/slf4j/Logger, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=3a5bafbd648603799ce50eb1d7c6d2ea2958ab4b, ClassLoaderID=Loader@251a69d7:org/slf4j/Logger
+Excluded by name filter: java/util/concurrent/LinkedBlockingQueue
+Excluded by name filter: java/util/concurrent/LinkedBlockingQueue$Node
+Weaving executed: Class=org/slf4j/helpers/NOPLoggerFactory, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=3c60a7505f3debe2c40c537412a09becc9198cdc, ClassLoaderID=Loader@251a69d7:org/slf4j/helpers/NOPLoggerFactory
+Weaving executed: Class=org/slf4j/helpers/Util, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=92479b5e519a70c75067155d65aaab398e3cdecd, ClassLoaderID=Loader@251a69d7:org/slf4j/helpers/Util
+Excluded by name filter: java/util/Collections$EmptyEnumeration
+Excluded by name filter: java/lang/CompoundEnumeration
+Weaving executed: Class=org/slf4j/impl/StaticLoggerBinder, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=a73a347cb75081cd92ed79d7d46f4b44cdea9f0b, ClassLoaderID=Loader@251a69d7:org/slf4j/impl/StaticLoggerBinder
+Weaving executed: Class=org/slf4j/spi/LoggerFactoryBinder, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=5dc7e79920f59606775379be25fe975615f1ad27, ClassLoaderID=Loader@251a69d7:org/slf4j/spi/LoggerFactoryBinder
+Weaving executed: Class=ch/qos/logback/core/joran/spi/JoranException, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=7f97ee5434cb5e96d2ea655455e6e94a55b1dd1f, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/JoranException
+Weaving executed: Class=ch/qos/logback/core/Context, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=781fc8f724ef6153553f842881d8e5a258db540d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/Context
+Weaving executed: Class=ch/qos/logback/core/spi/PropertyContainer, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=3521ee23a4415a2b7d485853e5f36347d57a631b, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/PropertyContainer
+Weaving executed: Class=ch/qos/logback/classic/LoggerContext, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=76940511f15c1505b638cfcf933ffa70973ffaa8, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/LoggerContext
+Weaving executed: Class=ch/qos/logback/core/spi/LifeCycle, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d24dc53e95e30ffc538658f992e0a4dc9480d6a1, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/LifeCycle
+Weaving executed: Class=ch/qos/logback/core/ContextBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=21e311c239202115b61a651ef48d5dff15f0fdd8, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/ContextBase
+Weaving executed: Class=ch/qos/logback/core/status/StatusManager, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=5cd22e6835651a951c7d29a2599e8d316e11dd59, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/status/StatusManager
+Weaving executed: Class=ch/qos/logback/core/status/Status, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=7347fd584128943dc02eef4843a0faf0abb82dd7, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/status/Status
+Weaving executed: Class=ch/qos/logback/core/BasicStatusManager, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=930646165a18baa7593ac3e0c1303b05d8cea668, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/BasicStatusManager
+Weaving executed: Class=ch/qos/logback/core/helpers/CyclicBuffer, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=777527b43c1b0bf6d02486010e18f685d3bb9f07, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/helpers/CyclicBuffer
+Weaving executed: Class=ch/qos/logback/core/spi/LogbackLock, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=f837859473d902033b879000f1622f9a92061e32, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/LogbackLock
+Weaving executed: Class=ch/qos/logback/classic/spi/TurboFilterList, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=ff43c9077f77c5fffa7f1f3f01382d143d5aae75, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/spi/TurboFilterList
+Weaving executed: Class=ch/qos/logback/classic/spi/LoggerContextVO, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=308c9782b1266fb5483c2183aee7df0ff98e5602, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/spi/LoggerContextVO
+Weaving executed: Class=ch/qos/logback/classic/Logger, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=429953d17d79fa89bf7ad13757faaaf7fc7ebd5d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/Logger
+Weaving executed: Class=org/slf4j/spi/LocationAwareLogger, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=9cf617b855d530dc8a409efa1da4871fb35b941b, ClassLoaderID=Loader@251a69d7:org/slf4j/spi/LocationAwareLogger
+Weaving executed: Class=ch/qos/logback/core/spi/AppenderAttachable, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=a4f6cae2f230b167cced995e8537ef40bca0f088, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/AppenderAttachable
+Weaving executed: Class=ch/qos/logback/classic/spi/ILoggingEvent, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=02bec711fac24f60ae82970831b6c6966cef827b, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/spi/ILoggingEvent
+Weaving executed: Class=ch/qos/logback/core/spi/DeferredProcessingAware, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=44b9ccf86920e6ae2782fd2177ebf2bcaa8cbd68, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/DeferredProcessingAware
+Weaving executed: Class=ch/qos/logback/classic/Level, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=aabb2e1879c73bea1a2a09d7e8b520033db297eb, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/Level
+Weaving executed: Class=ch/qos/logback/classic/util/ContextSelectorStaticBinder, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=ae1976d50d3f375f730bfcba5fbf107e8eb7a293, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/util/ContextSelectorStaticBinder
+Weaving executed: Class=ch/qos/logback/classic/selector/ContextSelector, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=0ce1d147bc5181fc7f0e728390546fe12409773c, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/selector/ContextSelector
+Weaving executed: Class=ch/qos/logback/classic/util/ContextInitializer, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=b75629bb60f7019aca29e04afb70639bf4921d86, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/util/ContextInitializer
+Weaving executed: Class=ch/qos/logback/core/LogbackException, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=b080155f6caba1528bbfeb46dfa055750d4b5f39, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/LogbackException
+Weaving executed: Class=ch/qos/logback/core/util/StatusListenerConfigHelper, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=37d843551a9e2cbcb5132a4aaa884ac6e94189f0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/StatusListenerConfigHelper
+Weaving executed: Class=ch/qos/logback/core/status/StatusListener, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=cc880fc734e3ebd4f5e80366551b0e807e4a2e1f, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/status/StatusListener
+Weaving executed: Class=ch/qos/logback/core/util/OptionHelper, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=1dc862f3326853081b8d0b5b7688db94f780e0dc, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/OptionHelper
+Weaving executed: Class=ch/qos/logback/core/util/IncompatibleClassException, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=6d0cb52b294d6307611d901a88f401c7200b9197, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/IncompatibleClassException
+Weaving executed: Class=ch/qos/logback/core/util/DynamicClassLoadingException, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=705365e05cb7cb3fe8b551b9e98fcdadf1a553a1, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/DynamicClassLoadingException
+Weaving executed: Class=ch/qos/logback/core/spi/ScanException, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=cc2d346366caa6f9edd37748eef95bc2e44c25d3, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/ScanException
+Weaving executed: Class=ch/qos/logback/core/util/Loader, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=175b05e302517c6e4ef1a01dbbcc29f41daa1d25, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/Loader
+Weaving executed: Class=ch/qos/logback/core/util/Loader$1, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=cee1d4eb1364ddbb664680dc09abd160a09e7adc, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/Loader$1
+Excluded by name filter: java/security/Policy
+Excluded by name filter: java/security/Policy$UnsupportedEmptyCollection
+Excluded by name filter: java/security/Policy$PolicyInfo
+Excluded by name filter: java/security/Policy$1
+Excluded by name filter: sun/security/provider/PolicyFile
+Excluded by name filter: java/util/concurrent/ConcurrentHashMap$KeySetView
+Excluded by name filter: sun/security/provider/PolicyFile$1
+Excluded by name filter: sun/security/provider/PolicyFile$PolicyInfo
+Excluded by name filter: java/util/Collections$SynchronizedMap
+Excluded by name filter: jdk/internal/access/JavaSecurityAccess$ProtectionDomainCache
+Excluded by name filter: java/security/ProtectionDomain$JavaSecurityAccessImpl$1
+Excluded by name filter: sun/security/provider/PolicyFile$2
+Excluded by name filter: java/io/InputStreamReader
+Excluded by name filter: java/io/Reader
+Excluded by name filter: java/nio/file/attribute/FileAttribute
+Excluded by name filter: sun/nio/fs/UnixFileModeAttribute
+Excluded by name filter: sun/nio/fs/UnixChannelFactory
+Excluded by name filter: sun/nio/fs/UnixChannelFactory$Flags
+Excluded by name filter: sun/nio/ch/FileChannelImpl
+Excluded by name filter: java/nio/channels/FileChannel
+Excluded by name filter: java/nio/channels/SeekableByteChannel
+Excluded by name filter: java/nio/channels/ByteChannel
+Excluded by name filter: java/nio/channels/ReadableByteChannel
+Excluded by name filter: java/nio/channels/Channel
+Excluded by name filter: java/nio/channels/WritableByteChannel
+Excluded by name filter: java/nio/channels/GatheringByteChannel
+Excluded by name filter: java/nio/channels/ScatteringByteChannel
+Excluded by name filter: java/nio/channels/spi/AbstractInterruptibleChannel
+Excluded by name filter: java/nio/channels/InterruptibleChannel
+Excluded by name filter: sun/nio/ch/IOUtil
+Excluded by name filter: sun/nio/ch/NativeThreadSet
+Excluded by name filter: sun/nio/ch/FileDispatcherImpl
+Excluded by name filter: sun/nio/ch/FileDispatcher
+Excluded by name filter: sun/nio/ch/NativeDispatcher
+Excluded by name filter: sun/nio/ch/FileChannelImpl$Closer
+Excluded by name filter: java/nio/channels/Channels
+Excluded by name filter: sun/nio/ch/ChannelInputStream
+Excluded by name filter: sun/nio/cs/StreamDecoder
+Excluded by name filter: java/io/BufferedReader
+Excluded by name filter: sun/security/provider/PolicyParser
+Excluded by name filter: java/io/StreamTokenizer
+Excluded by name filter: java/nio/channels/SelectableChannel
+Excluded by name filter: sun/nio/ch/NativeThread
+Excluded by name filter: sun/nio/ch/Util
+Excluded by name filter: sun/nio/ch/Util$1
+Excluded by name filter: sun/nio/ch/Util$BufferCache
+Excluded by name filter: java/nio/DirectByteBuffer$Deallocator
+Excluded by name filter: sun/nio/ch/IOStatus
+Excluded by name filter: sun/security/provider/PolicyParser$GrantEntry
+Excluded by name filter: sun/security/provider/PolicyParser$PermissionEntry
+Excluded by name filter: sun/security/util/PropertyExpander
+Excluded by name filter: java/util/Vector$1
+Excluded by name filter: sun/security/provider/PolicyFile$PolicyEntry
+Excluded by name filter: java/util/PropertyPermission
+Excluded by name filter: java/net/URLPermission
+Excluded by name filter: java/net/URLPermission$Authority
+Excluded by name filter: java/net/HostPortrange
+Excluded by name filter: sun/security/provider/PolicyFile$4
+Excluded by name filter: sun/security/util/PolicyUtil
+Excluded by name filter: java/nio/charset/StandardCharsets
+Excluded by name filter: sun/nio/cs/UTF_16BE
+Excluded by name filter: sun/nio/cs/UTF_16LE
+Excluded by name filter: sun/nio/cs/UTF_16
+Excluded by name filter: sun/security/provider/PolicyParser$ParsingException
+Excluded by name filter: sun/security/provider/PolicyFile$6
+Excluded by name filter: sun/security/provider/PolicyFile$8
+Excluded by name filter: sun/security/provider/PolicyFile$SelfPermission
+Excluded by name filter: java/net/SocketPermissionCollection
+Excluded by name filter: java/net/SocketPermissionCollection$1
+Excluded by name filter: java/util/PropertyPermissionCollection
+Excluded by name filter: java/util/PropertyPermissionCollection$1
+Excluded by name filter: java/io/FilePermissionCollection
+Excluded by name filter: java/io/FilePermissionCollection$1
+Excluded by name filter: java/security/PermissionsEnumerator
+Weaving executed: Class=ch/qos/logback/core/status/InfoStatus, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=7e952a1f3456b5c1fc000a968464ed958bcb9769, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/status/InfoStatus
+Weaving executed: Class=ch/qos/logback/core/status/StatusBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=c412af5dab207877cce1652396bef19b803f09a2, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/status/StatusBase
+Weaving executed: Class=ch/qos/logback/classic/joran/JoranConfigurator, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=a24ecf84a178b1287fae5f30855e1d5bfa50f687, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/JoranConfigurator
+Weaving executed: Class=ch/qos/logback/core/joran/JoranConfiguratorBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9ca16aef98617110165763706dc4a3e3cc294057, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/JoranConfiguratorBase
+Weaving executed: Class=ch/qos/logback/core/joran/GenericConfigurator, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=dd64be68f6e385fefc1c48eefa3c1334264a3299, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/GenericConfigurator
+Weaving executed: Class=ch/qos/logback/core/spi/ContextAwareBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=47740f2bdbc1fb7948815aa2457fd636c19453de, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/ContextAwareBase
+Weaving executed: Class=ch/qos/logback/core/spi/ContextAware, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=1860d50aa24113038aa63d70d4fcf4b6585ce0f4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/ContextAware
+Weaving executed: Class=ch/qos/logback/core/joran/spi/RuleStore, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=2b27397d8570b427601b46c0e31c0bbfd7c51bef, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/RuleStore
+Weaving executed: Class=ch/qos/logback/core/joran/action/Action, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=fb4bba0b0f49180f65bff152704e088ba2b9d3dc, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/Action
+Weaving executed: Class=ch/qos/logback/core/joran/action/PropertyAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=e2c9c7514e93d50144c2e632a36ea444c4c7e3a1, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/PropertyAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/TimestampAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=5b6fbafd9dcf1cc1f4f9192953926644cf821368, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/TimestampAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/ShutdownHookAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=a41fdfa73c2e34ad6099b0feb3d4744468436fc0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/ShutdownHookAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/DefinePropertyAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=fbe36f5762331c405e830622ac545aa358bdcefe, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/DefinePropertyAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/ContextPropertyAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=a3b52182be06a6fe7a270c4667c07f45fc47660d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/ContextPropertyAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/ConversionRuleAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=0a8f2f8042d147ad4c8e1da08818249488ff4529, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/ConversionRuleAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/StatusListenerAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=73287cd32597e399a5266c8cfb2ccc985790ec78, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/StatusListenerAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/AppenderAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=360caa1c1e6756a00a5654fa1fbe3d709cb093d8, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/AppenderAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/AppenderRefAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=b00b241e1196d2b94217318a9186d5cc62c1c56b, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/AppenderRefAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/NewRuleAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=efb148360af3b387aa7bb604cf4a11b4701accd7, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/NewRuleAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/ParamAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=8455ccd4e2daafd5e3d492f71ff5a0042496af69, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/ParamAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/ImplicitAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=5299a060cd07a3b1eedeaf4f42e8f509d8487674, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/ImplicitAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/NestedComplexPropertyIA, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=e4a5e6905a1d1d11ec463c8fb7a90b10b57cab7f, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/NestedComplexPropertyIA
+Weaving executed: Class=ch/qos/logback/core/joran/action/NestedBasicPropertyIA, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=5220431781841effb7a4033b5ed63d6aabedec2a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/NestedBasicPropertyIA
+Weaving executed: Class=ch/qos/logback/classic/joran/action/ConfigurationAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=2ad8a0bfdfbfc5a5ebe1541c22f621b39a857092, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/ConfigurationAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/ContextNameAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=8b3b3ec6776f63562600384a696b3341710a400b, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/ContextNameAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/LoggerContextListenerAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=82fd8db45bb868ff60c7b62becac9585afc3ab5b, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/LoggerContextListenerAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/InsertFromJNDIAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=6fe98a14c3942fb4686339e84a9045677fe8f3f9, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/InsertFromJNDIAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/EvaluatorAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=d374132b31abdfdec3cd31454e1dd3dc67e453c2, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/EvaluatorAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/AbstractEventEvaluatorAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=4e2308e4067efdbac69e8938588a54be9f1acfca, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/AbstractEventEvaluatorAction
+Weaving executed: Class=ch/qos/logback/classic/sift/SiftAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=640c07f6f9e6d2f34d8370e0b745fc6c9e793801, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/sift/SiftAction
+Weaving executed: Class=ch/qos/logback/core/joran/event/InPlayListener, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=cb248b67ddd4cd6f9cf1aa42b4cf5ce74ab2dcc8, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/event/InPlayListener
+Weaving executed: Class=ch/qos/logback/core/joran/action/NOPAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=76e9cc2d78cbea65384e24db8d207a432c27f00e, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/NOPAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/LoggerAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=81a1f4dab654c71ae7ba205d41cb64811adb74db, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/LoggerAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/LevelAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=4231e752e05092e2d7b7f6818f7c39ce53e44e52, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/LevelAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/RootLoggerAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=e17b0222a8caff5338ac78c82b9cc997030da0c1, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/RootLoggerAction
+Weaving executed: Class=ch/qos/logback/core/joran/conditional/IfAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=3c19b964a632bfb9b4f21bdf87313af1e3957c17, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/conditional/IfAction
+Weaving executed: Class=ch/qos/logback/core/joran/conditional/ThenAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=b612a175c1272bd086044918f570df610684f6cf, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/conditional/ThenAction
+Weaving executed: Class=ch/qos/logback/core/joran/conditional/ThenOrElseActionBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=401041a8e53907efdc7382bd16fbda5bea804b1c, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/conditional/ThenOrElseActionBase
+Weaving executed: Class=ch/qos/logback/core/joran/conditional/ElseAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=2eb4ddac07e616342488403bf581bba1fce0e5a7, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/conditional/ElseAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/JMXConfiguratorAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=b8ab214c6e5cb4ac33151d2b50691986c576df11, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/JMXConfiguratorAction
+Weaving executed: Class=ch/qos/logback/core/joran/action/IncludeAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=42f710441cdb828119445b12e12f169f4ee2bbb3, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/IncludeAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/ConsolePluginAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=c8a15cf1e1f2e66157edb0feb47dacaf42fd4b61, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/ConsolePluginAction
+Weaving executed: Class=ch/qos/logback/classic/joran/action/ReceiverAction, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=7d3d399a13fc63b0add552356e185726b3f70bef, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/joran/action/ReceiverAction
+Weaving executed: Class=ch/qos/logback/core/joran/util/ConfigurationWatchListUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=f34dbe5ccde38f8a32337d84a0ffb57f4329b3b7, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/util/ConfigurationWatchListUtil
+Weaving executed: Class=ch/qos/logback/core/joran/spi/ConfigurationWatchList, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9d7f8a382519dea666e2f739920c4c18b876b914, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/ConfigurationWatchList
+Excluded by name filter: java/net/URLDecoder
+Excluded by name filter: java/net/URLEncoder
+Excluded by name filter: sun/net/ProgressMonitor
+Excluded by name filter: sun/net/DefaultProgressMeteringPolicy
+Excluded by name filter: sun/net/ProgressMeteringPolicy
+Weaving executed: Class=ch/qos/logback/core/joran/event/SaxEventRecorder, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=3706f5b89251f3bcfb5c938d0d0cdd481468850a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/event/SaxEventRecorder
+Weaving executed: Class=ch/qos/logback/core/joran/spi/ElementPath, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=86270048291fe7ebfad53b5a2fe2a21695cf85d8, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/ElementPath
+Weaving executed: Class=ch/qos/logback/core/spi/ContextAwareImpl, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=6fbea9261fd54aba9e9ac26cfaaa1b73f3899818, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/ContextAwareImpl
+Excluded by name filter: javax/xml/parsers/SAXParserFactory
+Excluded by name filter: javax/xml/parsers/FactoryFinder
+Excluded by name filter: jdk/xml/internal/SecuritySupport
+Excluded by name filter: java/lang/invoke/MethodHandleImpl$AsVarargsCollector
+Excluded by name filter: java/lang/invoke/BoundMethodHandle$Species_LL
+Excluded by name filter: java/lang/invoke/BoundMethodHandle$Species_LLL
+Excluded by name filter: java/lang/invoke/BoundMethodHandle$Species_LLLL
+Excluded by name filter: java/lang/invoke/BoundMethodHandle$Species_LLLLL
+Excluded by name filter: java/lang/invoke/BoundMethodHandle$Species_LLLLLL
+Excluded by name filter: java/lang/invoke/BoundMethodHandle$Species_LLLLLLL
+Excluded by name filter: java/lang/invoke/MethodHandles$1
+Excluded by name filter: java/lang/invoke/BoundMethodHandle$Species_LJ
+Excluded by name filter: java/lang/invoke/BoundMethodHandle$Species_LLLLLLLL
+Excluded by name filter: java/lang/invoke/BoundMethodHandle$Species_LLLLLLLLL
+Excluded by name filter: java/lang/invoke/LambdaFormEditor$1
+Excluded by name filter: java/util/TreeMap$EntrySet
+Excluded by name filter: java/util/TreeMap$EntryIterator
+Excluded by name filter: javax/xml/parsers/FactoryFinder$1
+Excluded by name filter: java/util/Spliterators$1Adapter
+Excluded by name filter: com/sun/org/apache/xerces/internal/jaxp/SAXParserFactoryImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/jaxp/SAXParserImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/jaxp/JAXPConstants
+Excluded by name filter: com/sun/org/apache/xerces/internal/xs/PSVIProvider
+Excluded by name filter: javax/xml/parsers/SAXParser
+Excluded by name filter: com/sun/org/apache/xerces/internal/utils/XMLSecurityManager
+Excluded by name filter: com/sun/org/apache/xerces/internal/utils/XMLSecurityManager$Limit
+Excluded by name filter: jdk/xml/internal/JdkProperty$State
+Excluded by name filter: com/sun/org/apache/xerces/internal/utils/XMLSecurityManager$NameMap
+Excluded by name filter: com/sun/org/apache/xerces/internal/utils/XMLSecurityPropertyManager
+Excluded by name filter: com/sun/org/apache/xerces/internal/utils/XMLSecurityPropertyManager$State
+Excluded by name filter: com/sun/org/apache/xerces/internal/utils/XMLSecurityPropertyManager$Property
+Excluded by name filter: com/sun/org/apache/xerces/internal/jaxp/SAXParserImpl$JAXPSAXParser
+Excluded by name filter: com/sun/org/apache/xerces/internal/parsers/SAXParser
+Excluded by name filter: com/sun/org/apache/xerces/internal/parsers/AbstractSAXParser
+Excluded by name filter: com/sun/org/apache/xerces/internal/parsers/AbstractXMLDocumentParser
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/XMLDocumentHandler
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/XMLDTDHandler
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/XMLDTDContentModelHandler
+Excluded by name filter: com/sun/org/apache/xerces/internal/parsers/XMLParser
+Excluded by name filter: com/sun/org/apache/xerces/internal/parsers/XIncludeAwareParserConfiguration
+Excluded by name filter: com/sun/org/apache/xerces/internal/parsers/XML11Configuration
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLPullParserConfiguration
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLParserConfiguration
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLComponentManager
+Excluded by name filter: com/sun/org/apache/xerces/internal/parsers/XML11Configurable
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/ParserConfigurationSettings
+Excluded by name filter: jdk/xml/internal/JdkXmlUtils
+Excluded by name filter: javax/xml/catalog/CatalogFeatures$Feature
+Excluded by name filter: jdk/xml/internal/JdkConstants
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/SymbolTable
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/SymbolTable$Entry
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLEntityManager
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLComponent
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLEntityResolver
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/XMLResourceIdentifierImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/XMLResourceIdentifier
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/AugmentationsImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/Augmentations
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/AugmentationsImpl$SmallContainer
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/AugmentationsImpl$AugmentationsItemsContainer
+Excluded by name filter: com/sun/xml/internal/stream/XMLEntityStorage
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLEntityScanner
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/XMLLocator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLEntityScanner$1
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLErrorReporter
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLNSDocumentScannerImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentScannerImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentFragmentScannerImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLDocumentScanner
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLDocumentSource
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLEntityHandler
+Excluded by name filter: com/sun/xml/internal/stream/XMLBufferListener
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLScanner
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/XMLString
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/XMLStringBuffer
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentFragmentScannerImpl$ElementStack
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/QName
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentFragmentScannerImpl$ElementStack2
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLNSDocumentScannerImpl$NSContentDriver
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentScannerImpl$ContentDriver
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentFragmentScannerImpl$FragmentContentDriver
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentFragmentScannerImpl$Driver
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/XMLAttributesIteratorImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/XMLAttributesImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/XMLAttributes
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/XMLAttributesImpl$Attribute
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/NamespaceSupport
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/NamespaceContext
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentScannerImpl$XMLDeclDriver
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentScannerImpl$PrologDriver
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDocumentScannerImpl$TrailingMiscDriver
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/XMLDTDDescription
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/grammars/XMLDTDDescription
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/grammars/XMLGrammarDescription
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLDTDScannerImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLDTDScanner
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLDTDSource
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLDTDContentModelSource
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/XMLDTDProcessor
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLDTDFilter
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLDTDContentModelFilter
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/XMLEntityDecl
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/XMLNSDTDValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/XMLDTDValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLDocumentFilter
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/XMLDTDValidatorFilter
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/RevalidationHandler
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/validation/ValidationState
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/ValidationContext
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/XMLElementDecl
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/XMLSimpleType
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/XMLAttributeDecl
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dtd/DTDGrammarBucket
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/DTDDVFactory
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/dtd/DTDDVFactoryImpl
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/dtd/StringDatatypeValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/DatatypeValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/dtd/IDDatatypeValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/dtd/IDREFDatatypeValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/dtd/ListDatatypeValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/dtd/ENTITYDatatypeValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/dtd/NOTATIONDatatypeValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/dv/dtd/NMTOKENDatatypeValidator
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/validation/ValidationManager
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLVersionDetector
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/msg/XMLMessageFormatter
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/MessageFormatter
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/PropertyState
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/Status
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/FeatureState
+Excluded by name filter: com/sun/org/apache/xerces/internal/parsers/AbstractSAXParser$AttributesProxy
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/EntityResolverWrapper
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/ExternalSubsetResolver
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/ErrorHandlerWrapper
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLErrorHandler
+Excluded by name filter: com/sun/org/apache/xerces/internal/xni/parser/XMLInputSource
+Excluded by name filter: com/sun/org/apache/xerces/internal/utils/XMLLimitAnalyzer
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/URI
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLEntityManager$RewindableInputStream
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLEntityManager$EncodingInfo
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/io/UTF8Reader
+Excluded by name filter: com/sun/xml/internal/stream/util/ThreadLocalBufferAllocator
+Excluded by name filter: com/sun/xml/internal/stream/util/BufferAllocator
+Excluded by name filter: com/sun/xml/internal/stream/Entity$ScannedEntity
+Excluded by name filter: com/sun/xml/internal/stream/Entity
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/XMLChar
+Excluded by name filter: com/sun/org/apache/xerces/internal/util/XMLSymbols
+Excluded by name filter: com/sun/org/apache/xerces/internal/parsers/AbstractSAXParser$LocatorProxy
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/XMLScanner$NameType
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/Constants
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/Constants$ArrayEnumeration
+Weaving executed: Class=ch/qos/logback/core/joran/event/StartEvent, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=ab30d136a0afc437d15c5c833a1da0d4ba4f7df0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/event/StartEvent
+Weaving executed: Class=ch/qos/logback/core/joran/event/SaxEvent, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=a5bffb43788fbc7d19e5e2f4af28661361a74664, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/event/SaxEvent
+Weaving executed: Class=ch/qos/logback/core/joran/event/BodyEvent, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=8f45aeedf5c223422dbd6267d359685ba71a4b7c, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/event/BodyEvent
+Weaving executed: Class=ch/qos/logback/core/joran/event/EndEvent, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=847ef6c52dee7f82802922bf1672539448e53653, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/event/EndEvent
+Excluded by name filter: com/sun/org/apache/xerces/internal/impl/io/MalformedByteSequenceException
+Excluded by name filter: java/io/CharConversionException
+Weaving executed: Class=ch/qos/logback/core/joran/spi/SimpleRuleStore, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=e594b5c25f008fc0d7f74b136c460e1f5a229998, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/SimpleRuleStore
+Weaving executed: Class=ch/qos/logback/core/joran/spi/ElementSelector, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=739de2d0a9727b5d5bc0b5503da1f4a837960afb, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/ElementSelector
+Weaving executed: Class=ch/qos/logback/core/joran/spi/ActionException, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=fea790f563c86049f8cc9cf3e649357ca61f060b, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/ActionException
+Weaving executed: Class=ch/qos/logback/core/joran/util/beans/BeanDescriptionCache, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=7d16804e9f300e0c1dec1da21611ddcf0770abe5, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/util/beans/BeanDescriptionCache
+Excluded by name filter: javax/naming/NamingException
+Weaving executed: Class=ch/qos/logback/core/sift/AppenderFactory, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=0e3e0862bf73c8b8d79174aa4756137b9ff241ba, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/sift/AppenderFactory
+Weaving executed: Class=ch/qos/logback/classic/spi/PlatformInfo, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=b57f3b71d1a2dee927f903df078209040614d74c, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/spi/PlatformInfo
+Excluded by name filter: javax/management/ObjectName
+Excluded by name filter: javax/management/QueryExp
+Excluded by name filter: com/sun/jmx/mbeanserver/GetPropertyAction
+Excluded by name filter: javax/management/ObjectName$Property
+Excluded by name filter: com/sun/jmx/mbeanserver/Util
+Weaving executed: Class=ch/qos/logback/core/Appender, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=1a217043477f4ec9808aa806a79f3da5f9da72ef, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/Appender
+Weaving executed: Class=ch/qos/logback/core/spi/FilterAttachable, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d6890f23b1e86d2fe69e9298047fb66d3b6d82a7, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/FilterAttachable
+Weaving executed: Class=ch/qos/logback/core/joran/spi/Interpreter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=56e538f8f6be0b5c405fa7ecf4fcd0aa66a74090, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/Interpreter
+Weaving executed: Class=ch/qos/logback/core/joran/spi/CAI_WithLocatorSupport, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=2c38abae04b483dc4b2a5d207821e03af7fd5927, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/CAI_WithLocatorSupport
+Weaving executed: Class=ch/qos/logback/core/joran/spi/InterpretationContext, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9bfd48286d699e5846c2960763b4e3fe956c3d8d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/InterpretationContext
+Weaving executed: Class=ch/qos/logback/core/joran/spi/DefaultNestedComponentRegistry, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=10c463a2ed4572e464326db88eb322775da39ff0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/DefaultNestedComponentRegistry
+Weaving executed: Class=ch/qos/logback/core/joran/spi/EventPlayer, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=a809f6e6e1a5df175b95c683a52813acd28f3a3d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/EventPlayer
+Weaving executed: Class=ch/qos/logback/classic/util/DefaultNestedComponentRules, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=ac53a4633b1f050eba46c638f5c4f6e2fc206470, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/util/DefaultNestedComponentRules
+Weaving executed: Class=ch/qos/logback/core/AppenderBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=e7c0c618ad1e2e84c7792305290c9007700c2d36, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/AppenderBase
+Weaving executed: Class=ch/qos/logback/classic/PatternLayout, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=775c8030fa450b74e2ff5608120ce71713c60b1d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/PatternLayout
+Weaving executed: Class=ch/qos/logback/core/pattern/PatternLayoutBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d47266ab45088c15f2a00d1c77a2f38c1fab7e59, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/PatternLayoutBase
+Weaving executed: Class=ch/qos/logback/core/LayoutBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=4fc1e7c6d362fe50c38707412c1811f221d27018, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/LayoutBase
+Weaving executed: Class=ch/qos/logback/core/Layout, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=3a686054b77de175c5c39724eb70347ff40451c5, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/Layout
+Weaving executed: Class=ch/qos/logback/core/joran/spi/HostClassAndPropertyDouble, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=3cbb9d6d18636aeb9769fc6eef7ebbc1b362e15f, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/HostClassAndPropertyDouble
+Weaving executed: Class=ch/qos/logback/core/UnsynchronizedAppenderBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=64bfa45c5bd5c521026c791614c07fb40171fc9b, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/UnsynchronizedAppenderBase
+Weaving executed: Class=ch/qos/logback/classic/encoder/PatternLayoutEncoder, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=e21bd2ef72bef523532bf7876bd8eb880c63be9f, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/encoder/PatternLayoutEncoder
+Weaving executed: Class=ch/qos/logback/core/pattern/PatternLayoutEncoderBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=8c874f3d572690d3f2b31ef3f9d187750aa1589e, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/PatternLayoutEncoderBase
+Weaving executed: Class=ch/qos/logback/core/encoder/LayoutWrappingEncoder, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=0980deacec248c929f3d2eb2b6f91b1bda8bc80c, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/encoder/LayoutWrappingEncoder
+Weaving executed: Class=ch/qos/logback/core/encoder/EncoderBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=2e47956742b8c1dbe917fc3217e6e04bf17bcda5, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/encoder/EncoderBase
+Weaving executed: Class=ch/qos/logback/core/encoder/Encoder, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=6839d60053400ee7ae0bcca09a813d977a51bb9e, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/encoder/Encoder
+Weaving executed: Class=ch/qos/logback/core/filter/EvaluatorFilter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=cf0f214f952ff91ee3ff7efcd2d15e9567c74b22, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/filter/EvaluatorFilter
+Weaving executed: Class=ch/qos/logback/core/filter/AbstractMatcherFilter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=38642a862284fb3938a9329d245683a16dd971fe, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/filter/AbstractMatcherFilter
+Weaving executed: Class=ch/qos/logback/core/filter/Filter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=ae41efa05c90ee27b97d01e458d275cdd1313180, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/filter/Filter
+Weaving executed: Class=ch/qos/logback/classic/boolex/JaninoEventEvaluator, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=f9803968532cb8c968d3480397c22d3a5ff9b975, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/boolex/JaninoEventEvaluator
+Weaving executed: Class=ch/qos/logback/core/boolex/JaninoEventEvaluatorBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=8547434bc3c215d15348a3a4ef53ff618d3b41dc, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/boolex/JaninoEventEvaluatorBase
+Weaving executed: Class=ch/qos/logback/core/boolex/EventEvaluatorBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=db9682d11bca9350fd852aad606f100d6c4816c9, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/boolex/EventEvaluatorBase
+Weaving executed: Class=ch/qos/logback/core/boolex/EventEvaluator, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=4d99e7465cbd7a3f76479d330547fe7b458a533a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/boolex/EventEvaluator
+Weaving executed: Class=ch/qos/logback/core/net/ssl/SSLNestedComponentRegistryRules, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=cbdc3fb65f1ffbd36847024feda72217fd968eaf, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/net/ssl/SSLNestedComponentRegistryRules
+Weaving executed: Class=ch/qos/logback/core/net/ssl/SSLComponent, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=c98596f15b29a539b13f47154a2354545e89b9e4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/net/ssl/SSLComponent
+Weaving executed: Class=ch/qos/logback/core/net/ssl/SSLConfiguration, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=4cbabe4167d106c3164eb9c89b70f3da6a5f96a5, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/net/ssl/SSLConfiguration
+Weaving executed: Class=ch/qos/logback/core/net/ssl/SSLContextFactoryBean, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=ffac49ff50871352a6566d71e8680284ad1ece3d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/net/ssl/SSLContextFactoryBean
+Weaving executed: Class=ch/qos/logback/core/net/ssl/SSLParametersConfiguration, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=f40bff986a9dd3d8ced8b00d4ba00fcc5145f2ff, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/net/ssl/SSLParametersConfiguration
+Weaving executed: Class=ch/qos/logback/core/net/ssl/KeyStoreFactoryBean, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=7abe461f1e37ee53ff9ebdab06ad9bc733add7c7, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/net/ssl/KeyStoreFactoryBean
+Weaving executed: Class=ch/qos/logback/core/net/ssl/KeyManagerFactoryFactoryBean, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=1a00db74ed5dff803e879221ac1ef32c00eac404, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/net/ssl/KeyManagerFactoryFactoryBean
+Weaving executed: Class=ch/qos/logback/core/net/ssl/TrustManagerFactoryFactoryBean, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9b5e9f8fda5c9d06ba95d247552635e228db1f2a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/net/ssl/TrustManagerFactoryFactoryBean
+Weaving executed: Class=ch/qos/logback/core/net/ssl/SecureRandomFactoryBean, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9024b02fc9d9abf2c90968a9a0fd6ae32b36e8ec, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/net/ssl/SecureRandomFactoryBean
+Weaving executed: Class=ch/qos/logback/core/subst/NodeToStringTransformer, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=67bd66f82a7295ff98aff010bc73b032e8a9757e, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/NodeToStringTransformer
+Weaving executed: Class=ch/qos/logback/core/subst/Tokenizer, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=616ca63883d82987894e24ff1689031eb1917cb6, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/Tokenizer
+Weaving executed: Class=ch/qos/logback/core/subst/Tokenizer$TokenizerState, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=286d07eef00ea1f73617830399dedc397ddfdc02, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/Tokenizer$TokenizerState
+Weaving executed: Class=ch/qos/logback/core/subst/Tokenizer$1, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=dbb7238a55c7fd11b5d1868d2dd50ad36730266a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/Tokenizer$1
+Weaving executed: Class=ch/qos/logback/core/subst/Token, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=629af4e5af28fde27ca55199959fb71ad46a9f40, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/Token
+Weaving executed: Class=ch/qos/logback/core/subst/Token$Type, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=433f025f846e579b6ccae23bcd230c8a12a8a257, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/Token$Type
+Weaving executed: Class=ch/qos/logback/core/subst/Parser, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=df52e07352ca3fcd0c9c49b5d5ac4b83c4661f5e, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/Parser
+Weaving executed: Class=ch/qos/logback/core/subst/Parser$1, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=6d7b8225fda3a863cb123cc4af84f066e331c310, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/Parser$1
+Weaving executed: Class=ch/qos/logback/core/subst/Node, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9fedbbee0dfd29a15231eb8abf82f27ab736449d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/Node
+Weaving executed: Class=ch/qos/logback/core/subst/Node$Type, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=e6867afd758ab3c491c9e616c6fea43a416a88a6, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/Node$Type
+Weaving executed: Class=ch/qos/logback/core/subst/NodeToStringTransformer$1, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=3d66a657b592e640376dc234e848b5611cc53954, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/subst/NodeToStringTransformer$1
+Weaving executed: Class=ch/qos/logback/classic/util/EnvUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=2b13a32d1bc4f92db75502ccef702bdbb21970fe, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/util/EnvUtil
+Weaving executed: Class=ch/qos/logback/core/status/NopStatusListener, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=db618625f03e76c54d6214a596e8c8f897081724, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/status/NopStatusListener
+Weaving executed: Class=ch/qos/logback/core/status/OnConsoleStatusListener, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=37d107fc5634d189d6cb196a2426a6d486e02dc6, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/status/OnConsoleStatusListener
+Weaving executed: Class=ch/qos/logback/core/status/OnPrintStreamStatusListenerBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=b5d1d7b1ae593d556cc34a28f8f5fe59de41c772, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/status/OnPrintStreamStatusListenerBase
+Weaving executed: Class=ch/qos/logback/core/ConsoleAppender, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=a32cc53a5d65253b61f5ed12e50ad9e0094655c0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/ConsoleAppender
+Weaving executed: Class=ch/qos/logback/core/OutputStreamAppender, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=e63cdb9e321886839139c6508a4fd87be16c60eb, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/OutputStreamAppender
+Weaving executed: Class=ch/qos/logback/core/spi/FilterAttachableImpl, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9dd5aa0b40a930c850d572971062cf63ff4ccf3d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/FilterAttachableImpl
+Weaving executed: Class=ch/qos/logback/core/util/COWArrayList, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=204105e804015a1d760fc9baa400ef07f22ca3aa, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/COWArrayList
+Weaving executed: Class=ch/qos/logback/core/joran/spi/ConsoleTarget, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=770f07d86cd14c197e2abd4ed9434e47276b7d99, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/ConsoleTarget
+Weaving executed: Class=ch/qos/logback/core/joran/spi/ConsoleTarget$1, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9b0ca5116c19896b163ba628f8c53ef7b2dbdb37, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/ConsoleTarget$1
+Weaving executed: Class=ch/qos/logback/core/joran/spi/ConsoleTarget$2, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=16fc2a7cc4635a5149d2bbe89271d49f94796d4f, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/ConsoleTarget$2
+Weaving executed: Class=ch/qos/logback/core/joran/util/PropertySetter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=c9f03d4df307f9e07878b8dca2664fa0c6801ad3, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/util/PropertySetter
+Weaving executed: Class=ch/qos/logback/core/util/PropertySetterException, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=c46a170b2871718a5b02c54c29244ce271d7ac2c, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/PropertySetterException
+Weaving executed: Class=ch/qos/logback/core/joran/util/beans/BeanDescriptionFactory, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=e8f452506bba9b4d3c69bd97b45b29192d9c3b40, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/util/beans/BeanDescriptionFactory
+Weaving executed: Class=ch/qos/logback/core/spi/FilterReply, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d7afb4983dc47fdf8ff2a4b575752018a3dc0cfd, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/FilterReply
+Weaving executed: Class=ch/qos/logback/core/joran/util/beans/BeanUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=431a7bcf4e3fa6199ca68ed63172b2c650e89bc9, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/util/beans/BeanUtil
+Weaving executed: Class=ch/qos/logback/core/joran/util/beans/BeanDescription, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=7d840ddf414281b056e4eadfcf08eb6d7da8aa63, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/util/beans/BeanDescription
+Weaving executed: Class=ch/qos/logback/core/joran/util/StringToObjectConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=5c75ccf4288ecb97997fc31964cc9f6cfaced3b0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/util/StringToObjectConverter
+Excluded by name filter: java/nio/charset/UnsupportedCharsetException
+Weaving executed: Class=ch/qos/logback/core/util/AggregationType, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=8c7e9a982627f029912986f5e0a46b9534f6066d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/AggregationType
+Weaving executed: Class=ch/qos/logback/core/joran/action/NestedComplexPropertyIA$1, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9494fe7633def9e579ac36f0d86f9a4725342db6, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/NestedComplexPropertyIA$1
+Weaving executed: Class=ch/qos/logback/core/joran/action/IADataForComplexProperty, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=3179cf33e796ef71ef06ebc60b16b7d68d246cdc, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/IADataForComplexProperty
+Excluded by name filter: jdk/internal/loader/BootLoader$PackageHelper
+Weaving executed: Class=ch/qos/logback/core/joran/action/NestedBasicPropertyIA$1, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=fc4c9680db478a2d448b4cc20376f575f7226828, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/NestedBasicPropertyIA$1
+Weaving executed: Class=ch/qos/logback/core/joran/action/IADataForBasicProperty, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=ba884e1d4958a20e9975f658ec9b03f1d79a5573, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/action/IADataForBasicProperty
+Weaving executed: Class=ch/qos/logback/core/CoreConstants, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=13403da227d324bc989254145c946c890cfd63fb, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/CoreConstants
+Weaving executed: Class=ch/qos/logback/core/joran/spi/NoAutoStartUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=efd479f6fc17d019c9cd11cdf5168eb2e8ea2046, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/NoAutoStartUtil
+Weaving executed: Class=ch/qos/logback/core/joran/spi/NoAutoStart, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=21eb1558e9cd98d145ed0de53f7afbcc15ccbf47, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/joran/spi/NoAutoStart
+Weaving executed: Class=ch/qos/logback/core/pattern/PostCompileProcessor, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=96ea3f1ef4cb63d86fa57de87eeff2c3d6e1d50a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/PostCompileProcessor
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/Parser, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=3d9d1f0a68e51730a99b78a7033786249f11c426, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/Parser
+Weaving executed: Class=ch/qos/logback/core/pattern/util/IEscapeUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d2fa3d0c2762f9058f0d28655704d066c93dcde3, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/util/IEscapeUtil
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/Node, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=b9d3dc68fcdcc8f4354ffe4c50878215a3de15dc, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/Node
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/FormattingNode, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d0ac83acc8692a6f2642402db7afe74b65993fa4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/FormattingNode
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/SimpleKeywordNode, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=6b87ccc584211ce0e1eeb0457dafea723e1f43bf, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/SimpleKeywordNode
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/CompositeNode, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=af33e5d1b2c6c0ead7ca09fbd2cffd0ec2f52dca, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/CompositeNode
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/Token, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=6742f5bf90961a841cbf527a3c1b9d2b12c930cc, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/Token
+Weaving executed: Class=ch/qos/logback/core/pattern/IdentityCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=f94ab0cabf4e222048cab3035df3d8bdeaab0af4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/IdentityCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/CompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=79b94756a6ae281587343012ac96c7ff07ed76c4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/CompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/DynamicConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=550261b6b21a685334c30806dc6c9dfdc400a115, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/DynamicConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/FormattingConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=c20471b7388a24ecd8cdbf5be0e9b8dafd8556e0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/FormattingConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/Converter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9363986f830e89b1f6730d898365c1f741b5ac92, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/Converter
+Weaving executed: Class=ch/qos/logback/core/pattern/ReplacingCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=220ba9d360ee306ac38a54e22bd2d6bbd594b1c0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/ReplacingCompositeConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/DateConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=27daf522fa9ebacbac45882f433b7d96de7cd409, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/DateConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/ClassicConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=b65904cf0d5c3f5cd57d41717b1a877ce440bbb4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/ClassicConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/RelativeTimeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=d5bd1d40e6c871ea31632b78a448d93c41c2c7fc, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/RelativeTimeConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/LevelConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=6aa236870ad69b050a5dc2972b2f2473515d7a42, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/LevelConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/ThreadConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=a2164e621261a2178d2eec655896349efde77947, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/ThreadConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/LoggerConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=48c69b06d2429ba35baa0a035f747be129cc1412, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/LoggerConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/NamedConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=81ddbae4a0bc164054385f36b153ae1cfea4eb8c, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/NamedConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/MessageConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=a677caf1a44a61857f595ee3978656f36db6089d, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/MessageConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/ClassOfCallerConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=d1face06cf564af20ca60a2af07db0a2a081fb16, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/ClassOfCallerConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/MethodOfCallerConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=0fd0b758994d356b0e285d3b18575e11e0b81903, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/MethodOfCallerConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/LineOfCallerConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=507102bdfc319f262613194f393231ffb4306d12, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/LineOfCallerConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/FileOfCallerConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=e298415c59ad07492ecba54b559b38945ce7f947, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/FileOfCallerConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/MDCConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=ec1007dfb5fb9d36a3b284e79399185814c4ff50, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/MDCConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/ThrowableProxyConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=8016fa8f90ef967bef88e3ab34c4c076a8452601, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/ThrowableProxyConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/ThrowableHandlingConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=b840c2c677c33664a99de85cac9563ec5d00b7cf, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/ThrowableHandlingConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/RootCauseFirstThrowableProxyConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=0d4f164027390fcaed09c32144fe7caafac275a8, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/RootCauseFirstThrowableProxyConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/ExtendedThrowableProxyConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=cc2916cf46c4a5a00ed570ad627e18129e8dcd6f, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/ExtendedThrowableProxyConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/NopThrowableInformationConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=5717813a1199064bef7a8d038f75db342c259f86, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/NopThrowableInformationConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/ContextNameConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=d37452491b3466a61d813667f4317407933ee719, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/ContextNameConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/CallerDataConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=1b136998a7d17783956f26d56b86a65cef64a505, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/CallerDataConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/MarkerConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=b546b89590802dc308eae7b340c95d2fb95b2c68, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/MarkerConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/PropertyConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=b651bb8121f022bebaa12a9f842fd903ca06cc0a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/PropertyConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/LineSeparatorConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=c38e62fefded80dd862b358dc03f1d88c701c7c1, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/LineSeparatorConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/BlackCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d8944a1b7797ab130ccddbde2fd1d5e9277ee5e4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/BlackCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/ForegroundCompositeConverterBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=bf29e808a87397413e9df7eeaf4ea28fd62328e8, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/ForegroundCompositeConverterBase
+Weaving executed: Class=ch/qos/logback/core/pattern/color/RedCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=e9f155f74f5649be259376e9f2595d32298576e5, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/RedCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/GreenCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=31744950393a49cd0f94777a37b627a27040b062, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/GreenCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/YellowCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=0bbe0ae5b753e583857dd096fed116af156c9d23, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/YellowCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/BlueCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=2f44ca1d1218b90f561c4e7a00be753ad1884089, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/BlueCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/MagentaCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d254d50c6a3bfeab2ac047c8618127788b21ac4a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/MagentaCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/CyanCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=0a3531807768e7c3c4c6161fe815769560ded27b, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/CyanCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/WhiteCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=def8f3f536607dad1ce8322424ca9bc10f4d6409, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/WhiteCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/GrayCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=0fa961b5b5e436bf8c07414ec4ed96007d8e032f, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/GrayCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/BoldRedCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d34e13478416d1aea40d5c9ee0b0f18313febcdb, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/BoldRedCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/BoldGreenCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=f4ca4488377a6b109de44f56bdf3e7c2290433c1, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/BoldGreenCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/BoldYellowCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=707d34f2ad0aedc64d84e61c15219c60f5d2bfe9, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/BoldYellowCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/BoldBlueCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=b197c33d4398f8d613e0dc98ddec74a0b9b29b86, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/BoldBlueCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/BoldMagentaCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=e541fd1c25b3d1c8c167108bc5c19ce3ca999f77, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/BoldMagentaCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/BoldCyanCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=55fa205eb54ce5330379c3eb784ea4395ccd84ee, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/BoldCyanCompositeConverter
+Weaving executed: Class=ch/qos/logback/core/pattern/color/BoldWhiteCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=fc80de4e38621355156cdb9b28d824912a35123c, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/color/BoldWhiteCompositeConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/color/HighlightingCompositeConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=93689400b9a08aa29885d5ab07e774699bafee68, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/color/HighlightingCompositeConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/LocalSequenceNumberConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=52332edca82d830409ec0d5d3fead0c239926bc4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/LocalSequenceNumberConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/EnsureExceptionHandling, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=55a83e7ca76f63d14109bdcbf832bbff74627600, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/EnsureExceptionHandling
+Weaving executed: Class=ch/qos/logback/core/pattern/util/RegularEscapeUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=4be5bc6f744f2d0dc72abaec7df7a13a583d67f7, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/util/RegularEscapeUtil
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/TokenStream, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=8ed39491eb15503461fcbf352275a098abe84ad4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/TokenStream
+Weaving executed: Class=ch/qos/logback/core/pattern/util/RestrictedEscapeUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=2c6eab5474dd0df739314a041c9854441010d504, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/util/RestrictedEscapeUtil
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/TokenStream$TokenizerState, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=64e3d03668f2931d81827736c5f592459ff3cad0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/TokenStream$TokenizerState
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/TokenStream$1, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=8c91ea3b79a3ce50b7a74c96546f7b2c70dc59c9, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/TokenStream$1
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/OptionTokenizer, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=b9337ca9bf762b03e490b6485b8f940f07bc0904, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/OptionTokenizer
+Weaving executed: Class=ch/qos/logback/core/pattern/util/AsIsEscapeUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=849a32781240ba5a6b4da6a31f48e5ea3b3feb18, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/util/AsIsEscapeUtil
+Weaving executed: Class=ch/qos/logback/core/pattern/FormatInfo, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=96e09b44eedef69c19e85c63108000f8227e458f, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/FormatInfo
+Weaving executed: Class=ch/qos/logback/core/pattern/parser/Compiler, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=f28fae7f1b76d727146ab8dec90b4d34a99105ff, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/parser/Compiler
+Weaving executed: Class=ch/qos/logback/core/pattern/LiteralConverter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=1f7920c5061e918eec3445e9dc3d32cf9da49446, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/LiteralConverter
+Weaving executed: Class=ch/qos/logback/classic/pattern/Abbreviator, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=8158c5264a27c2a2d25f0ddb8a1988f6151d2380, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/Abbreviator
+Weaving executed: Class=ch/qos/logback/core/pattern/ConverterUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=3346680856f73ba0d34dba8630fd9a450f6e4dbb, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/ConverterUtil
+Weaving executed: Class=ch/qos/logback/core/boolex/EvaluationException, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=5ac4bead88f5ecc8938008fb75a29bfc2d5e3ae4, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/boolex/EvaluationException
+Weaving executed: Class=ch/qos/logback/core/util/CachingDateFormatter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=9d4502b67028508f15c495bcf693d2fd46fd25c0, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/CachingDateFormatter
+Excluded by name filter: java/text/Format
+Excluded by name filter: java/text/DateFormat
+Excluded by name filter: java/text/SimpleDateFormat
+Excluded by name filter: java/text/AttributedCharacterIterator$Attribute
+Excluded by name filter: java/text/Format$Field
+Excluded by name filter: java/text/DateFormat$Field
+Excluded by name filter: java/util/Calendar
+Excluded by name filter: java/util/TimeZone
+Excluded by name filter: sun/util/calendar/ZoneInfo
+Excluded by name filter: sun/util/calendar/ZoneInfoFile
+Excluded by name filter: sun/util/calendar/ZoneInfoFile$1
+Excluded by name filter: sun/util/calendar/ZoneInfoFile$ZoneOffsetTransitionRule
+Excluded by name filter: sun/util/calendar/ZoneInfoFile$Checksum
+Excluded by name filter: java/util/spi/LocaleServiceProvider
+Excluded by name filter: sun/util/spi/CalendarProvider
+Excluded by name filter: sun/util/locale/provider/LocaleProviderAdapter
+Excluded by name filter: sun/util/locale/provider/LocaleProviderAdapter$Type
+Excluded by name filter: sun/util/locale/provider/LocaleProviderAdapter$1
+Excluded by name filter: sun/util/locale/provider/ResourceBundleBasedAdapter
+Excluded by name filter: sun/util/locale/provider/JRELocaleProviderAdapter
+Excluded by name filter: sun/util/cldr/CLDRLocaleProviderAdapter
+Excluded by name filter: sun/util/locale/provider/LocaleDataMetaInfo
+Excluded by name filter: sun/util/cldr/CLDRBaseLocaleDataMetaInfo
+Excluded by name filter: sun/util/locale/LanguageTag
+Excluded by name filter: sun/util/locale/ParseStatus
+Excluded by name filter: sun/util/locale/StringTokenIterator
+Excluded by name filter: sun/util/locale/InternalLocaleBuilder
+Excluded by name filter: sun/util/locale/InternalLocaleBuilder$CaseInsensitiveChar
+Excluded by name filter: sun/util/locale/BaseLocale$Key
+Excluded by name filter: sun/util/locale/LocaleObjectCache
+Excluded by name filter: sun/util/locale/BaseLocale$Cache
+Excluded by name filter: sun/util/locale/LocaleObjectCache$CacheEntry
+Excluded by name filter: java/util/Locale$Cache
+Excluded by name filter: jdk/internal/module/ModulePatcher$PatchedModuleReader
+Excluded by name filter: sun/util/resources/cldr/provider/CLDRLocaleDataMetaInfo
+Excluded by name filter: sun/util/locale/provider/AvailableLanguageTags
+Excluded by name filter: sun/util/locale/provider/CalendarProviderImpl
+Excluded by name filter: java/util/Calendar$Builder
+Excluded by name filter: java/util/GregorianCalendar
+Excluded by name filter: sun/util/locale/provider/CalendarDataUtility
+Excluded by name filter: java/util/Locale$Builder
+Excluded by name filter: java/util/spi/CalendarDataProvider
+Excluded by name filter: sun/util/locale/provider/LocaleServiceProviderPool
+Excluded by name filter: java/text/spi/BreakIteratorProvider
+Excluded by name filter: java/text/spi/CollatorProvider
+Excluded by name filter: java/text/spi/DateFormatProvider
+Excluded by name filter: java/text/spi/DateFormatSymbolsProvider
+Excluded by name filter: java/text/spi/DecimalFormatSymbolsProvider
+Excluded by name filter: java/text/spi/NumberFormatProvider
+Excluded by name filter: java/util/spi/CurrencyNameProvider
+Excluded by name filter: java/util/spi/LocaleNameProvider
+Excluded by name filter: java/util/spi/TimeZoneNameProvider
+Excluded by name filter: sun/util/locale/provider/LocaleServiceProviderPool$LocalizedObjectGetter
+Excluded by name filter: sun/util/locale/provider/CalendarDataUtility$CalendarWeekParameterGetter
+Excluded by name filter: java/util/ResourceBundle$Control
+Excluded by name filter: java/util/ResourceBundle
+Excluded by name filter: java/util/ResourceBundle$Control$CandidateListCache
+Excluded by name filter: java/util/ResourceBundle$SingleFormatControl
+Excluded by name filter: java/util/ResourceBundle$NoFallbackControl
+Excluded by name filter: java/util/LinkedList$Node
+Excluded by name filter: sun/util/locale/provider/CalendarDataProviderImpl
+Excluded by name filter: sun/util/cldr/CLDRCalendarDataProviderImpl
+Excluded by name filter: sun/util/locale/provider/LocaleResources
+Excluded by name filter: sun/util/resources/LocaleData
+Excluded by name filter: sun/util/resources/LocaleData$1
+Excluded by name filter: sun/util/resources/Bundles$Strategy
+Excluded by name filter: sun/util/resources/LocaleData$LocaleDataStrategy
+Excluded by name filter: sun/util/resources/Bundles
+Excluded by name filter: sun/util/resources/Bundles$1
+Excluded by name filter: jdk/internal/access/JavaUtilResourceBundleAccess
+Excluded by name filter: java/util/ResourceBundle$1
+Excluded by name filter: java/util/ResourceBundle$2
+Excluded by name filter: sun/util/resources/Bundles$CacheKey
+Excluded by name filter: java/util/ListResourceBundle
+Excluded by name filter: sun/util/resources/cldr/CalendarData
+Excluded by name filter: java/util/ResourceBundle$ResourceBundleProviderHelper
+Excluded by name filter: sun/util/resources/Bundles$CacheKeyReference
+Excluded by name filter: sun/util/resources/Bundles$BundleReference
+Excluded by name filter: sun/util/locale/provider/LocaleResources$ResourceReference
+Excluded by name filter: sun/util/calendar/CalendarDate
+Excluded by name filter: sun/util/calendar/BaseCalendar$Date
+Excluded by name filter: sun/util/calendar/Gregorian$Date
+Excluded by name filter: sun/util/calendar/CalendarUtils
+Excluded by name filter: java/text/DateFormatSymbols
+Excluded by name filter: sun/util/locale/provider/DateFormatSymbolsProviderImpl
+Excluded by name filter: sun/text/resources/cldr/FormatData
+Excluded by name filter: sun/text/resources/cldr/FormatData_en
+Excluded by name filter: java/text/NumberFormat
+Excluded by name filter: sun/util/locale/provider/NumberFormatProviderImpl
+Excluded by name filter: java/text/DecimalFormatSymbols
+Excluded by name filter: sun/util/locale/provider/DecimalFormatSymbolsProviderImpl
+Excluded by name filter: java/lang/StringLatin1$CharsSpliterator
+Excluded by name filter: java/util/stream/IntStream
+Excluded by name filter: java/util/stream/IntPipeline
+Excluded by name filter: java/util/stream/IntPipeline$Head
+Excluded by name filter: java/util/function/IntPredicate
+Excluded by name filter: java/util/stream/IntPipeline$StatelessOp
+Excluded by name filter: java/util/stream/IntPipeline$10
+Excluded by name filter: java/util/function/IntConsumer
+Excluded by name filter: java/util/stream/Sink$OfInt
+Excluded by name filter: java/util/stream/FindOps$FindSink$OfInt
+Excluded by name filter: java/util/OptionalInt
+Excluded by name filter: java/util/stream/Sink$ChainedInt
+Excluded by name filter: java/util/stream/IntPipeline$10$1
+Excluded by name filter: java/lang/StringUTF16$CharsSpliterator
+Excluded by name filter: java/lang/CharacterData00
+Excluded by name filter: java/text/DecimalFormat
+Excluded by name filter: java/text/FieldPosition
+Excluded by name filter: java/text/DigitList
+Excluded by name filter: java/math/RoundingMode
+Weaving executed: Class=ch/qos/logback/classic/pattern/TargetLengthBasedClassNameAbbreviator, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=70df47f7ee579801071386ec72ebd7867fe7a908, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/pattern/TargetLengthBasedClassNameAbbreviator
+Weaving executed: Class=ch/qos/logback/core/util/EnvUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=2f021535c8a52c56de0a9270db33cde443aeb40e, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/EnvUtil
+Weaving executed: Class=ch/qos/logback/core/FileAppender, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=ab60720b048c16cb543cd96e2c53037b07217022, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/FileAppender
+Weaving executed: Class=ch/qos/logback/core/recovery/ResilientFileOutputStream, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=00f98b041aa3899266de9386d17f62e8b86e489a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/recovery/ResilientFileOutputStream
+Weaving executed: Class=ch/qos/logback/core/recovery/ResilientOutputStreamBase, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d5e915b62c11e1e2c1f698f7df949d2d816c2cb6, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/recovery/ResilientOutputStreamBase
+Weaving executed: Class=ch/qos/logback/core/util/FileSize, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=631710881119a70104216b0a8d2a9c9c9b359955, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/FileSize
+Excluded by name filter: java/util/regex/Pattern$SliceI
+Weaving executed: Class=ch/qos/logback/core/util/FileUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=d6fa91fc7f6a6c6175eaa8d5f058eaa1050cd8d5, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/util/FileUtil
+Weaving executed: Class=ch/qos/logback/core/rolling/RolloverFailure, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=cdb280e5c55d5394421b9fc2ea1e53208cc94f32, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/rolling/RolloverFailure
+Weaving executed: Class=ch/qos/logback/core/spi/AppenderAttachableImpl, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=6c53c6188c5d931371313c4b1457fc71e2f76ed5, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/spi/AppenderAttachableImpl
+Weaving executed: Class=ch/qos/logback/core/status/StatusUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=27be2aced216ca9da5868e6056dbf1caff2a5444, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/status/StatusUtil
+Excluded by name filter: java/util/regex/Pattern$BnM
+Excluded by name filter: java/util/regex/Pattern$SliceS
+Weaving executed: Class=ch/qos/logback/classic/selector/DefaultContextSelector, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=af2067863c90a4f281a690cd8e1a1f3f9ac28b60, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/selector/DefaultContextSelector
+Weaving executed: Class=ch/qos/logback/classic/util/LoggerNameUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=9ca99b732877b6516ce195b6c25ca9d1a4877d2a, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/util/LoggerNameUtil
+Excluded by name filter: org/adoptopenjdk/jitwatch/util/StringUtil
+Excluded by name filter: java/util/TreeMap$AscendingSubMap
+Excluded by name filter: java/util/TreeMap$NavigableSubMap
+Excluded by name filter: java/util/TreeMap$NavigableSubMap$SubMapKeyIterator
+Excluded by name filter: java/util/TreeMap$NavigableSubMap$SubMapIterator
+Excluded by name filter: org/junit/runner/notification/RunNotifier$9
+Excluded by name filter: org/junit/runner/notification/RunNotifier$4
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/Architecture
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/x86/AssemblyParserX86
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser
+Excluded by name filter: java/util/regex/Pattern$Dollar
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/AssemblyBlock
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestAssemblyParserX86$1
+Excluded by name filter: java/util/regex/Pattern$1
+Excluded by name filter: jdk/internal/reflect/GeneratedConstructorAccessor3
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/JITDataModel
+Excluded by name filter: java/lang/IllegalAccessError
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/PackageManager
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/JITStats
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/UnitTestUtil
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/AnnotationException
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/ILogParseErrorListener
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/MetaPackage
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/MetaClass
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/MetaMethod
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/AbstractMetaMember
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/MetaConstructor
+Excluded by name filter: org/adoptopenjdk/jitwatch/util/ParseUtil
+Excluded by name filter: java/text/ParseException
+Excluded by name filter: org/adoptopenjdk/jitwatch/util/ClassUtil
+Excluded by name filter: org/adoptopenjdk/jitwatch/loader/DisposableURLClassLoader
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/UnitTestLogParser
+Excluded by name filter: java/io/FileReader
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/Task
+Excluded by name filter: java/lang/UnsupportedClassVersionError
+Excluded by name filter: java/lang/ClassFormatError
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/UnitTestUtil$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/core/JITWatchConfig
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/ParsedClasspath
+Excluded by name filter: org/adoptopenjdk/jitwatch/core/JITWatchConfig$TieredCompilation
+Excluded by name filter: org/adoptopenjdk/jitwatch/core/JITWatchConfig$CompressedOops
+Excluded by name filter: org/adoptopenjdk/jitwatch/core/JITWatchConfig$BackgroundCompilation
+Excluded by name filter: org/adoptopenjdk/jitwatch/core/JITWatchConfig$OnStackReplacement
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/SplitLog
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/CompilerThread
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/Compilation
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/assembly/arm/AssemblyParserARM
+Excluded by name filter: jdk/internal/vm/annotation/ForceInline
+Excluded by name filter: com/sun/proxy/jdk/proxy1/$Proxy9
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/HelperMetaMethod
+Excluded by name filter: org/adoptopenjdk/jitwatch/core/TagProcessor
+Excluded by name filter: java/text/ParsePosition
+Excluded by name filter: org/adoptopenjdk/jitwatch/compilation/CompilationUtil
+Excluded by name filter: org/junit/runners/model/MultipleFailureException
+Excluded by name filter: org/junit/internal/runners/model/MultipleFailureException
+Excluded by name filter: org/junit/TestCouldNotBeSkippedException
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/ParseDictionary
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/BCIOpcodeMap
+Excluded by name filter: org/adoptopenjdk/jitwatch/loader/BytecodeLoader
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/IBytecodeParam
+Excluded by name filter: org/adoptopenjdk/jitwatch/loader/BytecodeLoader$BytecodeSection
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/BCParamSwitch
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/BytecodeInstruction
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/BCParamConstant
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/BCParamNumeric
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationBuilder
+Excluded by name filter: org/adoptopenjdk/jitwatch/compilation/AbstractCompilationVisitable
+Excluded by name filter: org/adoptopenjdk/jitwatch/compilation/ICompilationVisitable
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotations
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/BCAnnotationType
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/LineAnnotation
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationList
+Excluded by name filter: org/adoptopenjdk/jitwatch/util/TooltipUtil
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/UncommonTrap
+Excluded by name filter: java/util/random/RandomGenerator
+Excluded by name filter: java/util/Random
+Excluded by name filter: java/util/stream/DoubleStream
+Excluded by name filter: java/util/stream/LongStream
+Excluded by name filter: java/net/URLClassLoader$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/core/JITWatchConstants
+Weaving executed: Class=ch/qos/logback/classic/spi/LoggingEvent, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=c6dc278a25a0c348165e80dccd2b4115fe5db2e6, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/spi/LoggingEvent
+Weaving executed: Class=ch/qos/logback/classic/spi/IThrowableProxy, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=411b2c1bb25db5a1e052526471d33c42506bcdda, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/spi/IThrowableProxy
+Weaving executed: Class=ch/qos/logback/classic/spi/EventArgUtil, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=c4345f7e539b8cc632c1fd8784094971562e55c6, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/spi/EventArgUtil
+Weaving executed: Class=org/slf4j/MDC, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=74642a9105eb9853f480d4a0d7ee463f9cda9f53, ClassLoaderID=Loader@251a69d7:org/slf4j/MDC
+Weaving executed: Class=org/slf4j/spi/MDCAdapter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=ecea77354f6a2d5b6f47a09ff8191996362cea14, ClassLoaderID=Loader@251a69d7:org/slf4j/spi/MDCAdapter
+Weaving executed: Class=org/slf4j/impl/StaticMDCBinder, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=36fda920e8affaec06867799be250dcb9618f495, ClassLoaderID=Loader@251a69d7:org/slf4j/impl/StaticMDCBinder
+Weaving executed: Class=ch/qos/logback/classic/util/LogbackMDCAdapter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar, LogLevel=Normal, ClassHash=31c2291be9046a8e1bd8b4af80ad220217bd316b, ClassLoaderID=Loader@251a69d7:ch/qos/logback/classic/util/LogbackMDCAdapter
+Excluded by name filter: java/text/DontCareFieldPosition
+Excluded by name filter: java/text/Format$FieldDelegate
+Excluded by name filter: java/text/DontCareFieldPosition$1
+Excluded by name filter: java/text/NumberFormat$Field
+Weaving executed: Class=org/slf4j/helpers/MessageFormatter, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=601f046d323d1ed40df7d854a71bb8dbf93efeaf, ClassLoaderID=Loader@251a69d7:org/slf4j/helpers/MessageFormatter
+Weaving executed: Class=org/slf4j/helpers/FormattingTuple, LoadedFrom=file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar, LogLevel=Normal, ClassHash=bd3574edee14c33937414e43d6aa19e9f8ed52f5, ClassLoaderID=Loader@251a69d7:org/slf4j/helpers/FormattingTuple
+Excluded by name filter: org/adoptopenjdk/jitwatch/demo/MakeHotSpotLog
+Excluded by name filter: jdk/internal/reflect/GeneratedConstructorAccessor4
+Weaving executed: Class=ch/qos/logback/core/pattern/SpacePadder, LoadedFrom=file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar, LogLevel=Normal, ClassHash=46782e1233b0be39b6d60c8301a2eea84e9c73e9, ClassLoaderID=Loader@251a69d7:ch/qos/logback/core/pattern/SpacePadder
+Excluded by name filter: jdk/internal/reflect/GeneratedConstructorAccessor5
+Excluded by name filter: jdk/internal/reflect/GeneratedMethodAccessor2
+Excluded by name filter: org/adoptopenjdk/jitwatch/loader/BytecodeLoader$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/MemberBytecode
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/LineTable
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/ExceptionTable
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/LineTableEntry
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/LineTable$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap
+Excluded by name filter: com/sun/tools/javap/JavapTask
+Excluded by name filter: com/sun/tools/javap/DisassemblerTool$DisassemblerTask
+Excluded by name filter: com/sun/tools/javap/Messages
+Excluded by name filter: com/sun/tools/javap/JavapTask$BadArgs
+Excluded by name filter: com/sun/tools/classfile/ConstantPoolException
+Excluded by name filter: java/nio/file/NoSuchFileException
+Excluded by name filter: java/nio/file/FileSystemException
+Excluded by name filter: com/sun/tools/classfile/FatalError
+Excluded by name filter: com/sun/tools/javap/InternalError
+Excluded by name filter: java/util/MissingResourceException
+Excluded by name filter: java/security/DigestInputStream
+Excluded by name filter: com/sun/tools/javap/JavapTask$SizeInputStream
+Excluded by name filter: javax/tools/JavaFileObject
+Excluded by name filter: javax/tools/FileObject
+Excluded by name filter: javax/tools/JavaFileManager
+Excluded by name filter: javax/tools/OptionChecker
+Excluded by name filter: javax/tools/JavaFileManager$Location
+Excluded by name filter: javax/tools/Diagnostic
+Excluded by name filter: com/sun/tools/javap/JavapTask$Option
+Excluded by name filter: com/sun/tools/javap/JavapTask$1
+Excluded by name filter: com/sun/tools/javap/JavapTask$2
+Excluded by name filter: com/sun/tools/javap/JavapTask$3
+Excluded by name filter: com/sun/tools/javap/JavapTask$4
+Excluded by name filter: com/sun/tools/javap/JavapTask$5
+Excluded by name filter: com/sun/tools/javap/JavapTask$6
+Excluded by name filter: com/sun/tools/javap/JavapTask$7
+Excluded by name filter: com/sun/tools/javap/JavapTask$8
+Excluded by name filter: com/sun/tools/javap/JavapTask$9
+Excluded by name filter: com/sun/tools/javap/JavapTask$10
+Excluded by name filter: com/sun/tools/javap/JavapTask$11
+Excluded by name filter: com/sun/tools/javap/JavapTask$12
+Excluded by name filter: com/sun/tools/javap/JavapTask$13
+Excluded by name filter: com/sun/tools/javap/JavapTask$14
+Excluded by name filter: com/sun/tools/javap/JavapTask$15
+Excluded by name filter: com/sun/tools/javap/JavapTask$16
+Excluded by name filter: com/sun/tools/javap/JavapTask$17
+Excluded by name filter: com/sun/tools/javap/JavapTask$18
+Excluded by name filter: com/sun/tools/javap/JavapTask$19
+Excluded by name filter: com/sun/tools/javap/JavapTask$20
+Excluded by name filter: com/sun/tools/javap/JavapTask$ClassFileInfo
+Excluded by name filter: javax/tools/DiagnosticListener
+Excluded by name filter: org/adoptopenjdk/jitwatch/process/javap/JavapProcess
+Excluded by name filter: org/adoptopenjdk/jitwatch/process/AbstractProcess
+Excluded by name filter: org/adoptopenjdk/jitwatch/process/IExternalProcess
+Excluded by name filter: org/adoptopenjdk/jitwatch/process/runtime/RuntimeJava
+Excluded by name filter: org/adoptopenjdk/jitwatch/process/runtime/IRuntime
+Excluded by name filter: java/nio/file/TempFileHelper
+Excluded by name filter: sun/nio/fs/LinuxFileSystem$SupportedFileFileAttributeViewsHolder
+Excluded by name filter: java/security/SecureRandom
+Excluded by name filter: java/util/AbstractList$Itr
+Excluded by name filter: java/security/SecureRandomParameters
+Excluded by name filter: java/nio/file/TempFileHelper$PosixPermissions
+Excluded by name filter: java/nio/file/attribute/PosixFilePermission
+Excluded by name filter: java/nio/file/attribute/PosixFilePermissions
+Excluded by name filter: java/util/RegularEnumSet$EnumSetIterator
+Excluded by name filter: java/nio/file/attribute/PosixFilePermissions$1
+Excluded by name filter: sun/security/provider/SecureRandom
+Excluded by name filter: sun/nio/fs/UnixFileModeAttribute$1
+Excluded by name filter: sun/nio/fs/UnixChannelFactory$1
+Excluded by name filter: java/lang/ProcessBuilder
+Excluded by name filter: java/lang/ProcessBuilder$Redirect
+Excluded by name filter: java/lang/ProcessBuilder$Redirect$1
+Excluded by name filter: java/lang/ProcessBuilder$Redirect$2
+Excluded by name filter: java/lang/ProcessBuilder$Redirect$3
+Excluded by name filter: java/lang/ProcessBuilder$Redirect$5
+Excluded by name filter: java/lang/ProcessBuilder$Redirect$Type
+Excluded by name filter: java/lang/ProcessImpl
+Excluded by name filter: java/lang/Process
+Excluded by name filter: java/lang/ProcessImpl$Platform
+Excluded by name filter: java/lang/ProcessImpl$LaunchMechanism
+Excluded by name filter: java/lang/ProcessEnvironment
+Excluded by name filter: java/lang/ProcessEnvironment$Variable
+Excluded by name filter: java/lang/ProcessEnvironment$ExternalData
+Excluded by name filter: java/lang/ProcessEnvironment$Value
+Excluded by name filter: java/lang/ProcessEnvironment$StringEnvironment
+Excluded by name filter: java/lang/ProcessBuilder$RedirectPipeImpl
+Excluded by name filter: java/lang/ProcessHandleImpl
+Excluded by name filter: java/lang/ProcessHandle
+Excluded by name filter: java/util/concurrent/ThreadLocalRandom
+Excluded by name filter: jdk/internal/util/random/RandomSupport
+Excluded by name filter: java/util/concurrent/SynchronousQueue
+Excluded by name filter: java/util/concurrent/SynchronousQueue$TransferStack
+Excluded by name filter: java/util/concurrent/SynchronousQueue$Transferer
+Excluded by name filter: java/util/concurrent/SynchronousQueue$TransferStack$SNode
+Excluded by name filter: java/lang/ProcessImpl$1
+Excluded by name filter: java/lang/ProcessImpl$ProcessPipeOutputStream
+Excluded by name filter: java/lang/ProcessBuilder$NullInputStream
+Excluded by name filter: java/lang/ProcessHandleImpl$ExitCompletion
+Excluded by name filter: java/util/concurrent/CompletableFuture
+Excluded by name filter: java/util/concurrent/CompletionStage
+Excluded by name filter: java/util/concurrent/CompletableFuture$AltResult
+Excluded by name filter: java/util/concurrent/CompletableFuture$Completion
+Excluded by name filter: java/util/concurrent/CompletableFuture$AsynchronousCompletionTask
+Excluded by name filter: java/util/concurrent/ForkJoinTask
+Excluded by name filter: java/lang/ProcessHandleImpl$1
+Excluded by name filter: java/util/concurrent/CompletableFuture$UniHandle
+Excluded by name filter: java/util/concurrent/CompletableFuture$UniCompletion
+Excluded by name filter: java/util/concurrent/ForkJoinTask$Aux
+Excluded by name filter: java/io/FileOutputStream$1
+Excluded by name filter: jdk/internal/event/ProcessStartEvent
+Excluded by name filter: jdk/internal/event/Event
+Excluded by name filter: java/lang/ProcessImpl$ProcessPipeInputStream
+Excluded by name filter: java/lang/ProcessBuilder$NullOutputStream
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/BCParamString
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/ExceptionTableEntry
+Excluded by name filter: jdk/internal/reflect/GeneratedConstructorAccessor6
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/SourceMapper
+Excluded by name filter: org/adoptopenjdk/jitwatch/process/compiler/CompilerJava
+Excluded by name filter: org/adoptopenjdk/jitwatch/process/compiler/ICompiler
+Excluded by name filter: org/adoptopenjdk/jitwatch/logger/NullLogListener
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/bytecode/InnerClassRelationship
+Excluded by name filter: java/io/DeleteOnExitHook
+Excluded by name filter: java/io/DeleteOnExitHook$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/util/FileUtil
+Excluded by name filter: org/adoptopenjdk/jitwatch/chain/CompileChainWalker
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestExecutionUtil$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/logger/StdLogListener
+Excluded by name filter: org/adoptopenjdk/jitwatch/histo/Histo
+Excluded by name filter: org/adoptopenjdk/jitwatch/intrinsic/IntrinsicFinder
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/j9/J9Util
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/j9/J9Line
+Excluded by name filter: org/adoptopenjdk/jitwatch/jarscan/sequencecount/SequenceCountOperation
+Excluded by name filter: org/adoptopenjdk/jitwatch/jarscan/IJarScanOperation
+Excluded by name filter: org/adoptopenjdk/jitwatch/jarscan/sequencecount/SequenceCountOperation$2
+Excluded by name filter: java/io/File$TempDirectory
+Excluded by name filter: org/adoptopenjdk/jitwatch/core/JITWatchConfig$1
+Excluded by name filter: sun/util/locale/provider/TimeZoneNameUtility
+Excluded by name filter: sun/util/locale/provider/TimeZoneNameUtility$TimeZoneNameGetter
+Excluded by name filter: sun/util/cldr/CLDRTimeZoneNameProviderImpl
+Excluded by name filter: sun/util/locale/provider/TimeZoneNameProviderImpl
+Excluded by name filter: sun/util/locale/provider/BaseLocaleDataMetaInfo
+Excluded by name filter: sun/util/resources/provider/NonBaseLocaleDataMetaInfo
+Excluded by name filter: sun/util/resources/cldr/TimeZoneNames
+Excluded by name filter: sun/util/resources/TimeZoneNamesBundle
+Excluded by name filter: sun/util/resources/OpenListResourceBundle
+Excluded by name filter: sun/util/resources/cldr/TimeZoneNames_en
+Excluded by name filter: sun/util/resources/TimeZoneNames
+Excluded by name filter: sun/util/resources/TimeZoneNames_en
+Excluded by name filter: java/util/concurrent/ConcurrentHashMap$KeyIterator
+Excluded by name filter: java/util/Locale$1
+Excluded by name filter: sun/util/resources/LocaleData$CommonResourceBundleProvider
+Excluded by name filter: sun/util/resources/LocaleData$LocaleDataResourceBundleProvider
+Excluded by name filter: java/util/spi/ResourceBundleProvider
+Excluded by name filter: sun/util/resources/Bundles$2
+Excluded by name filter: sun/util/resources/provider/LocaleDataProvider
+Excluded by name filter: sun/text/resources/cldr/ext/FormatData_fr
+Excluded by name filter: java/util/ArrayList$SubList$1
+Excluded by name filter: sun/text/resources/cldr/ext/FormatData_en_001
+Excluded by name filter: sun/text/resources/cldr/ext/FormatData_en_GB
+Excluded by name filter: java/nio/channels/Channels$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/hotspot/HotSpotLogParser
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/UnitTestUtil$2
+Excluded by name filter: java/util/WeakHashMap$KeyIterator
+Excluded by name filter: java/util/WeakHashMap$HashIterator
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/NumberedLine
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/EventType
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/AbstractLogParser$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/model/JITEvent
+Excluded by name filter: org/adoptopenjdk/jitwatch/util/VmVersionDetector
+Excluded by name filter: java/lang/reflect/TypeVariable
+Excluded by name filter: jdk/internal/reflect/GeneratedConstructorAccessor7
+Excluded by name filter: FooClassInDefaultPackage
+Excluded by name filter: IsUsedForTestingDefaultPackage
+Excluded by name filter: org/hamcrest/CoreMatchers
+Excluded by name filter: org/hamcrest/core/IsEqual
+Excluded by name filter: org/hamcrest/BaseMatcher
+Excluded by name filter: org/hamcrest/Matcher
+Excluded by name filter: org/hamcrest/core/Is
+Excluded by name filter: org/hamcrest/MatcherAssert
+Excluded by name filter: org/hamcrest/Description
+Excluded by name filter: jdk/internal/reflect/GeneratedConstructorAccessor8
+Excluded by name filter: java/util/function/IntBinaryOperator
+Excluded by name filter: java/util/function/DoubleBinaryOperator
+Excluded by name filter: java/util/function/LongBinaryOperator
+Excluded by name filter: java/util/function/IntToDoubleFunction
+Excluded by name filter: java/util/function/IntUnaryOperator
+Excluded by name filter: java/util/function/IntFunction
+Excluded by name filter: java/util/function/IntToLongFunction
+Excluded by name filter: java/lang/invoke/MethodHandle$PolymorphicSignature
+Excluded by name filter: java/lang/invoke/$Proxy10
+Excluded by name filter: java/util/zip/Deflater
+Excluded by name filter: java/util/zip/Deflater$DeflaterZStreamRef
+Excluded by name filter: java/time/temporal/TemporalAccessor
+Excluded by name filter: java/time/temporal/Temporal
+Excluded by name filter: java/time/temporal/TemporalAdjuster
+Excluded by name filter: java/time/Instant
+Excluded by name filter: java/time/ZoneId
+Excluded by name filter: java/time/ZoneRegion
+Excluded by name filter: java/time/zone/ZoneRulesProvider
+Excluded by name filter: java/time/zone/ZoneRulesProvider$1
+Excluded by name filter: java/time/zone/TzdbZoneRulesProvider
+Excluded by name filter: java/time/zone/Ser
+Excluded by name filter: java/time/zone/ZoneRules
+Excluded by name filter: java/time/zone/ZoneOffsetTransitionRule
+Excluded by name filter: java/time/chrono/ChronoLocalDateTime
+Excluded by name filter: java/time/LocalDateTime
+Excluded by name filter: java/time/ZoneOffset
+Excluded by name filter: java/time/zone/ZoneOffsetTransition
+Excluded by name filter: java/time/chrono/ChronoLocalDate
+Excluded by name filter: java/time/LocalDate
+Excluded by name filter: java/time/temporal/TemporalField
+Excluded by name filter: java/time/temporal/ChronoField
+Excluded by name filter: java/time/temporal/ValueRange
+Excluded by name filter: java/time/LocalTime
+Excluded by name filter: java/util/zip/ZipOutputStream$XEntry
+Excluded by name filter: java/io/DataOutputStream
+Excluded by name filter: java/util/Vector$Itr
+Excluded by name filter: org/adoptopenjdk/jitwatch/loader/ResourceLoader
+Excluded by name filter: java/io/StringReader
+Excluded by name filter: org/adoptopenjdk/jitwatch/jvmlang/LanguageManager
+Excluded by name filter: java/io/RandomAccessFile$1
+Excluded by name filter: java/lang/StrictMath
+Excluded by name filter: org/adoptopenjdk/jitwatch/test/TestZingParser$1
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/zing/ZingLine
+Excluded by name filter: org/adoptopenjdk/jitwatch/parser/zing/ZingLineType
+Excluded by name filter: org/junit/runner/notification/RunNotifier$2
+Excluded by name filter: org/apache/maven/surefire/suite/RunResult
+Excluded by name filter: org/apache/maven/surefire/booter/ForkedBooter$5
+Excluded by name filter: org/apache/maven/surefire/booter/ForkedBooter$6
+Excluded by name filter: java/util/concurrent/locks/AbstractQueuedSynchronizer$SharedNode
+Excluded by name filter: org/apache/maven/surefire/booter/ForkedBooter$1
+Excluded by name filter: java/util/IdentityHashMap$IdentityHashMapIterator
+Excluded by name filter: java/util/IdentityHashMap$KeyIterator
+Excluded by name filter: selogger/logging/util/JsonBuffer
+Excluded by name filter: jdk/internal/access/foreign/MemorySegmentProxy

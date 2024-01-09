@@ -1,0 +1,5 @@
+Branches:	172Statements:	398Methods:	70Classes:	12Files:	8Packages:	2LOC:	1,040NCLOC:	728Total complexity:	160Complexity density:	0.4Statements/Method:	5.69Methods/Class:	5.83Classes/Package:	6Average method complexity:	2.29
+
+Branches:	94Statements:	404Methods:	80Classes:	7Files:	7Packages:	1LOC:	928NCLOC:	792Total complexity:	128Complexity density:	0.32Statements/Method:	5.05Methods/Class:	11.43Classes/Package:	7Average method complexity:	1.6
+
+87.2%

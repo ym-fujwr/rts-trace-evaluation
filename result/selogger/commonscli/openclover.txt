@@ -1,0 +1,33 @@
+プロダクトコート側
+Branches:	476
+Statements:	1,049
+Methods:	274
+Classes:	26
+Files:	22
+Packages:	1
+LOC:	5,696
+NCLOC:	2,153
+Total complexity:	591
+Complexity density:	0.56
+Statements/Method:	3.83
+Methods/Class:	10.54
+Classes/Package:	26
+Average method complexity:	2.16
+
+テストコード側
+Branches:	16
+Statements:	1,996
+Methods:	328
+Classes:	33
+Files:	29
+Packages:	2
+LOC:	5,686
+NCLOC:	4,020
+Total complexity:	382
+Complexity density:	0.19
+Statements/Method:	6.09
+Methods/Class:	9.94
+Classes/Package:	16.5
+Average method complexity:	1.16
+
+Code coverage　96.6%

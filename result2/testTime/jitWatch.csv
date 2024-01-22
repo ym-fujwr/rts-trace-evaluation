@@ -1,0 +1,51 @@
+rev, All, Ekstazi, rts-trace
+rev_1, fail
+rev_2, fail
+rev_3, fail
+rev_4, fail
+rev_5, fail
+rev_6, fail
+rev_7, fail
+rev_8, fail
+rev_9, fail
+rev_10, fail
+rev_11, fail
+rev_12, fail
+rev_13, fail
+rev_14, fail
+rev_15, fail
+rev_16, fail
+rev_17, fail
+rev_18, fail
+rev_19, fail
+rev_20, fail
+rev_21, fail
+rev_22, fail
+rev_23, fail
+rev_24, fail
+rev_25, fail
+rev_26, fail
+rev_27, fail
+rev_28, fail
+rev_29, fail
+rev_30, fail
+rev_31, fail
+rev_32, fail
+rev_33, fail
+rev_34, fail
+rev_35, fail
+rev_36, fail
+rev_37, fail
+rev_38,  42.481,  46.911, 57.228
+rev_39,  41.051,  39.655, 17.801
+rev_40,  46.345,  40.053, 17.998
+rev_41,  36.089,  41.847, fail
+rev_42,  35.736,  10.950, 8.175
+rev_43,  36.137,  9.458, 8.594
+rev_44,  36.067,  38.949, 15.748
+rev_45,  41.113,  37.466, 8.232
+rev_46,  46.274,  9.903, 11.531
+rev_47,  46.875,  10.703, 15.380
+rev_48,  39.124,  38.972, 37.674
+rev_49,  41.935,  11.816, 9.482
+rev_50,  16.568,  13.326, 14.854

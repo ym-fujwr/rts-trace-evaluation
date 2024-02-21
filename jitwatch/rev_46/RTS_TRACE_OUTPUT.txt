@@ -1,0 +1,36 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.chrisnewland:jitwatch-core >-------------------
+[INFO] Building JITWatch Core 1.4.7
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ jitwatch-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 39 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 180 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ jitwatch-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 39 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/target/test-classes
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[49,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[70,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[307,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[327,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[350,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[371,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ jitwatch-core ---
+[INFO] Tests are skipped.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.705 s
+[INFO] Finished at: 2023-12-22T13:31:51+09:00
+[INFO] ------------------------------------------------------------------------

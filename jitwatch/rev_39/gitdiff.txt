@@ -1,0 +1,12 @@
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java b/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
+index 0033d744..0f3cf65d 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
+@@ -49,6 +49 @@ public class JavapProcess extends AbstractProcess
+-				executablePath = Paths.get(System.getenv("JAVA_HOME"), "bin", EXECUTABLE_NAME);
+-
+-				if (!executablePath.toFile().exists()) 
+-				{
+-					throw new FileNotFoundException("Could not find " + EXECUTABLE_NAME);
+-				}
++				throw new FileNotFoundException("Could not find " + EXECUTABLE_NAME);

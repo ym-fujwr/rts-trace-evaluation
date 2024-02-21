@@ -1,0 +1,1 @@
+org.apache.commons.net.examples.MainTest,org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testDefaultPrecision,org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testRecentPrecision

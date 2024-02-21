@@ -1,0 +1,14 @@
+diff --git a/src/main/java/org/apache/commons/net/util/SubnetUtils.java b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
+index f1014b1ee..88bbe83c8 100644
+--- a/src/main/java/org/apache/commons/net/util/SubnetUtils.java
++++ b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
+@@ -209,0 +210 @@ public class SubnetUtils {
++            // @formatter:off
+@@ -216,0 +218 @@ public class SubnetUtils {
++            // @formatter:on
+@@ -289 +291 @@ public class SubnetUtils {
+-      // Create a binary netmask from the number of bits specification /x 
++      // Create a binary netmask from the number of bits specification /x
+@@ -292 +294 @@ public class SubnetUtils {
+-      
++

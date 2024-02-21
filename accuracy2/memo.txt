@@ -1,0 +1,39 @@
+・commons-cli
+rev_11,12 フィールド変数をimportして新たに利用
+・commons-net
+rev_5 メソッドの先頭に追加
+rev_9 【実際には問題ない】正解データに無駄なテストが含まれている
+-        name = name.replace("/", ".");
+-        name = name.replace("\\", "."); // Allow for Windows
++        name = name.replace(File.separatorChar, '.');
+Fileのメソッド使った際に，java/lang/System内のフィールド変数を参照していて，同じフィールド変数を参照しているテストを選択していた模様．
+java/lang/System　のフィールド変数情報を取得していた模様．
+
+rev_10 複数行に跨って記述がある場合
+下記のような場合，トークン列でdiffをとった場合，12行目に変更ありとみなされるが，SELoggerでは11行目が実行されたと記録される．ここで漏れる．
+-                System.out.println(
+-                    "Usage: java -cp target/classes org.apache.commons.net.examples.Main <alias or exampleClass> <exampleClass parameters>");
++                System.out.println("Usage: java -cp target/classes org.apache.commons.net.examples.Main" + 
++                                   " <alias or exampleClass> <exampleClass parameters>");
+
+rev_21
+下記が追加されて，SocketClientTestが下記を通過するようになった．なぜだろう
++        assertThrows(IllegalArgumentException.class, () -> new SubnetUtils("bad"));
+
+rev_43
+下記のように，文の先頭に追加された場合，トークン列で差分をとっているから，この行の前の行を選択するようになって，漏れている
+（修飾子を変えた場合，本来テストは必要ない（ekstaziでは選択されない）から，大きな影響にはならなさそう）
+-                    Set<String> entries = featuresMap.computeIfAbsent(key, k -> new HashSet<>());
++                    final Set<String> entries = featuresMap.computeIfAbsent(key, k -> new HashSet<>());
+
+・hilbert-curve
+rev_15
+フィールド変数を使った編集．（フィールド変数なし　＝＞　あり　になった）
+
+・jacksonXML
+rev_8
+フィールド変数を使った編集
+rev_17
+rev_23
+rev_27
+rev_45

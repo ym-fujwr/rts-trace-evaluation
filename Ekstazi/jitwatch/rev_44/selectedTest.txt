@@ -1,0 +1,1 @@
+org.adoptopenjdk.jitwatch.test.TestBytecodeAnnotationBuilder,org.adoptopenjdk.jitwatch.test.TestBytecodeLoader,org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses,org.adoptopenjdk.jitwatch.test.TestJarScan,org.adoptopenjdk.jitwatch.test.TestMemberBytecode,org.adoptopenjdk.jitwatch.test.TestReport

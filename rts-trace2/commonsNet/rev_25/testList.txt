@@ -1,0 +1,3 @@
+org.apache.commons.net.ntp.TimeStampTest
+org.apache.commons.net.SocketClientTest
+org.apache.commons.net.SubnetUtilsTest

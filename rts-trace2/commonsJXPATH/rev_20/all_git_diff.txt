@@ -1,0 +1,72 @@
+diff --git a/pom.xml b/pom.xml
+index 20ef9035..e6bda861 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -167 +167 @@
+-        <version>1.1.1</version>
++        <version>1.2</version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 654aacc0..431d0af2 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -53 +53 @@ The <action> type attribute can be add,update,fix,remove.
+-      <action issue="JXPATH-184" dev="britter" type="update" due-to="britter, Gary Gregory">
++      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="britter, Gary Gregory">
+@@ -55,0 +56,3 @@ The <action> type attribute can be add,update,fix,remove.
++      <action issue="JXPATH-184" dev="ggregory" type="update" due-to="Dependabot">
++        Bump commons-logging from 1.1.1 to 1.2 #34
++      </action>
+diff --git a/src/main/java/org/apache/commons/jxpath/PackageFunctions.java b/src/main/java/org/apache/commons/jxpath/PackageFunctions.java
+index 2059587d..3a2e4a1e 100644
+--- a/src/main/java/org/apache/commons/jxpath/PackageFunctions.java
++++ b/src/main/java/org/apache/commons/jxpath/PackageFunctions.java
+@@ -23,0 +24 @@ import java.util.Iterator;
++import java.util.Objects;
+@@ -69,3 +70,3 @@ public class PackageFunctions implements Functions {
+-    private String classPrefix;
+-    private String namespace;
+-    private static final Object[] EMPTY_ARRAY = new Object[0];
++    private final String classPrefix;
++    private final String namespace;
++    private static final Object[] EMPTY_ARRAY = {};
+@@ -78 +79 @@ public class PackageFunctions implements Functions {
+-    public PackageFunctions(String classPrefix, String namespace) {
++    public PackageFunctions(final String classPrefix, final String namespace) {
+@@ -86,0 +88 @@ public class PackageFunctions implements Functions {
++    @Override
+@@ -111,0 +114 @@ public class PackageFunctions implements Functions {
++    @Override
+@@ -113,2 +116,2 @@ public class PackageFunctions implements Functions {
+-        String namespace,
+-        String name,
++        final String namespace,
++        final String name,
+@@ -116,2 +119 @@ public class PackageFunctions implements Functions {
+-        if ((namespace == null && this.namespace != null) //NOPMD
+-            || (namespace != null && !namespace.equals(this.namespace))) {
++        if (!Objects.equals(this.namespace, namespace)) {
+@@ -151 +153 @@ public class PackageFunctions implements Functions {
+-                    Iterator iter = ((Collection) target).iterator();
++                    final Iterator iter = ((Collection) target).iterator();
+@@ -164 +166 @@ public class PackageFunctions implements Functions {
+-                Method method =
++                final Method method =
+@@ -175,2 +177,2 @@ public class PackageFunctions implements Functions {
+-        String fullName = classPrefix + name;
+-        int inx = fullName.lastIndexOf('.');
++        final String fullName = classPrefix + name;
++        final int inx = fullName.lastIndexOf('.');
+@@ -181,2 +183,2 @@ public class PackageFunctions implements Functions {
+-        String className = fullName.substring(0, inx);
+-        String methodName = fullName.substring(inx + 1);
++        final String className = fullName.substring(0, inx);
++        final String methodName = fullName.substring(inx + 1);
+@@ -188 +190 @@ public class PackageFunctions implements Functions {
+-        catch (ClassNotFoundException ex) {
++        catch (final ClassNotFoundException ex) {
+@@ -196 +198 @@ public class PackageFunctions implements Functions {
+-            Constructor constructor =
++            final Constructor constructor =
+@@ -203 +205 @@ public class PackageFunctions implements Functions {
+-            Method method =
++            final Method method =

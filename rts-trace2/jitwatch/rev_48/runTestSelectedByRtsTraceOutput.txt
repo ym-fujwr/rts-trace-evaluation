@@ -1,0 +1,171 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.chrisnewland:jitwatch-core >-------------------
+[INFO] Building JITWatch Core 1.4.7
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ jitwatch-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 38 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ jitwatch-core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ jitwatch-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ jitwatch-core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ jitwatch-core ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses
+2024-01-30T09:14:40.817366800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses4503268448445872727 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:41.626762100Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:41.629912500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:41.630108Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses4503268448445872727 TestInner 
+2024-01-30T09:14:42.091876700Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:42.093385800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:42.093532200Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses4503268448445872727 TestInner$Inner1 
+2024-01-30T09:14:42.470306900Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:42.471936700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:42.472075100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses4503268448445872727 TestInner$Inner1$Inner2 
+2024-01-30T09:14:42.876667600Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses16297464992062749673 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:43.642671700Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:43.644513100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:43.644679200Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses16297464992062749673 TestInner 
+2024-01-30T09:14:44.043963100Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:44.045606Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:44.045781900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses16297464992062749673 TestInner$Inner1 
+2024-01-30T09:14:44.419867600Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:44.421536900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:44.421683400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses16297464992062749673 TestInner$Inner1$Inner2 
+2024-01-30T09:14:44.799659Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses5645731395344349831 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:45.558579100Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:45.560236700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:45.560386400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses5645731395344349831 TestInner 
+2024-01-30T09:14:45.978179300Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:45.979758300Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:45.979939100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses5645731395344349831 TestInner$Inner1 
+2024-01-30T09:14:46.354842100Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:46.356510800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:46.356652Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses5645731395344349831 TestInner$Inner1$Inner2 
+2024-01-30T09:14:46.741367200Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses212441614881533584 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:47.508919200Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:47.510586Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:47.510734400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses212441614881533584 TestInner 
+2024-01-30T09:14:47.890033500Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:47.891618900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:47.891770800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses212441614881533584 TestInner$Inner1 
+2024-01-30T09:14:48.286887900Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:48.288492100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:48.288614800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses212441614881533584 TestInner$Inner1$Inner2 
+2024-01-30T09:14:48.659996400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses15559227993957222473 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:49.432794800Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:49.434385900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:49.434514900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses15559227993957222473 TestInner 
+2024-01-30T09:14:49.812929200Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:49.814525500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:49.814659900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses15559227993957222473 TestInner$Inner1 
+2024-01-30T09:14:50.197813900Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:50.199365500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:50.199492Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses15559227993957222473 TestInner$Inner1$Inner2 
+2024-01-30T09:14:50.582801700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses6850477450338325635 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:51.324698300Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:51.326312700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:51.326452100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses6850477450338325635 TestInner 
+2024-01-30T09:14:51.717364300Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:51.719348900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:51.719507500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses6850477450338325635 TestInner$Inner1 
+2024-01-30T09:14:52.100712700Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:52.102682500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:52.102838Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses6850477450338325635 TestInner$Inner1$Inner2 
+2024-01-30T09:14:52.519897300Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses15833009115880773235 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:53.292798600Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:53.294441800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:53.294600800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses15833009115880773235 TestInner 
+2024-01-30T09:14:53.673964700Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:53.675566900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:53.675739200Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses15833009115880773235 TestInner$Inner1 
+2024-01-30T09:14:54.091561100Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:54.093247Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:54.093359100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses15833009115880773235 TestInner$Inner1$Inner2 
+2024-01-30T09:14:54.477596700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses7967767729039867173 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:55.210936200Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:55.212518Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:55.212636700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses7967767729039867173 TestInner 
+2024-01-30T09:14:55.592120400Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:55.593668400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:55.593793200Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses7967767729039867173 TestInner$Inner1 
+2024-01-30T09:14:55.994740600Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:55.996309600Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:55.996423800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses7967767729039867173 TestInner$Inner1$Inner2 
+2024-01-30T09:14:56.401731300Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses36081913660238701 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:57.159422400Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:57.161120500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:57.161274200Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses36081913660238701 TestInner 
+2024-01-30T09:14:57.549395400Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:57.550925100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:57.551054500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses36081913660238701 TestInner$Inner1 
+2024-01-30T09:14:57.922660100Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:57.924281800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:57.924401400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses36081913660238701 TestInner$Inner1$Inner2 
+2024-01-30T09:14:58.316436400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses10518328800510024168 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:14:59.077637600Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:59.079303900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:59.079451900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses10518328800510024168 TestInner 
+2024-01-30T09:14:59.459224100Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:59.460816700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:59.460940300Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses10518328800510024168 TestInner$Inner1 
+2024-01-30T09:14:59.841952300Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:14:59.843486Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:14:59.843605500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses10518328800510024168 TestInner$Inner1$Inner2 
+2024-01-30T09:15:00.230373700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses9308257817840405460 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:15:00.976080Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:15:00.977654800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:15:00.977762500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses9308257817840405460 TestInner 
+2024-01-30T09:15:01.358583500Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:15:01.360241100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:15:01.360365400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses9308257817840405460 TestInner$Inner1 
+2024-01-30T09:15:01.773427600Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:15:01.774998300Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:15:01.775109500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses9308257817840405460 TestInner$Inner1$Inner2 
+2024-01-30T09:15:02.155573900Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses5437907218397618959 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:15:02.926310100Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:15:02.927962700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:15:02.928093700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses5437907218397618959 TestInner 
+2024-01-30T09:15:03.302682Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:15:03.304553500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:15:03.304676100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses5437907218397618959 TestInner$Inner1 
+2024-01-30T09:15:03.717466200Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:15:03.719091800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:15:03.719344600Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses5437907218397618959 TestInner$Inner1$Inner2 
+2024-01-30T09:15:04.112651100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/testInnerClasses10163488213692315387 /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_48/core/src/main/resources/examples/TestInner.java 
+2024-01-30T09:15:04.860240800Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:15:04.862075200Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:15:04.862206800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses10163488213692315387 TestInner 
+2024-01-30T09:15:05.243328400Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:15:05.244740800Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:15:05.244871100Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses10163488213692315387 TestInner$Inner1 
+2024-01-30T09:15:05.644692100Z INF org.adoptopenjdk.jitwatch.loader.BytecodeLoader Could not fetch bytecode via reflection, trying Process
+2024-01-30T09:15:05.646348400Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava JavapProcess() executablePath: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap
+2024-01-30T09:15:05.646475700Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javap -c -p -v -classpath /tmp/testInnerClasses10163488213692315387 TestInner$Inner1$Inner2 
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.33 s - in org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestCompilationUtil
+2024-01-30T09:15:06.028637600Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/javac -g -d /tmp/test_compilation_util8566289560126468409 /tmp/test_compilation_util8566289560126468409/org/adoptopenjdk/jitwatch/compiletest/CompileTest.java 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.756 s - in org.adoptopenjdk.jitwatch.test.TestCompilationUtil
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.812 s
+[INFO] Finished at: 2024-01-30T18:15:07+09:00
+[INFO] ------------------------------------------------------------------------

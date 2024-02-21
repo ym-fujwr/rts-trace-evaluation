@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="41" failures="0" name="org.davidmoten.hilbert.HilbertCurveTest" time="17.275" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.vm.version" value="17.0.6+10-Debian-1"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
+    <property name="maven.multiModuleProjectDirectory" value="/mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir"/>
+    <property name="java.vm.vendor" value="Debian"/>
+    <property name="java.vendor.url" value="https://tracker.debian.org/openjdk-17"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="17.0.6+10-Debian-1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/mnt/c/Program Files/apache-maven-3.8.5/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="maven.conf" value="/mnt/c/Program Files/apache-maven-3.8.5/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="61.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="4.4.0-19041-Microsoft"/>
+    <property name="library.jansi.path" value="/mnt/c/Program Files/apache-maven-3.8.5/lib/jansi-native"/>
+    <property name="user.home" value="/home/ym-fujwr"/>
+    <property name="user.timezone" value="Asia/Tokyo"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="17"/>
+    <property name="user.name" value="ym-fujwr"/>
+    <property name="java.class.path" value="/mnt/c/Program Files/apache-maven-3.8.5/boot/plexus-classworlds-2.6.0.jar"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Drat.skip=true test"/>
+    <property name="java.home" value="/usr/lib/jvm/java-17-openjdk-amd64"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="17.0.6"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Debian"/>
+    <property name="rat.skip" value="true"/>
+    <property name="sun.stderr.encoding" value="UTF-8"/>
+    <property name="maven.home" value="/mnt/c/Program Files/apache-maven-3.8.5"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.version.date" value="2023-01-17"/>
+    <property name="java.vendor.url.bug" value="https://bugs.debian.org/openjdk-17"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+  </properties>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testIndexCannotBeNegative" time="0.002"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testTooManyBits" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testPointFromIndexBits1Point0_1MutateAllowed" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testMaxOrdinate" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testSmallQueryVisitWholeRegion" time="0.008"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testPointSaveAllocationsSmall" time="0.005"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testDimensionAtLeastTwo" time="0.001"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testToBigInteger" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testRoundTripLotsOfDimensions" time="0.504"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testBitsPositive" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testPrintOutIndexValues" time="0.379"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testRoundTrip3Dimensions3BitsIndex1" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testQueryJoin0" time="0.005"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testQueryJoin3" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testQueryJoin6" time="0.003"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testRoundTrips" time="0.05"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testPointFromIndexBits1" time="0.001"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="smallPointDimensionsForSmallCurve" time="0.001"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testSmallQueryPerimeterAlgorithm" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testPointSaveAllocations" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testPointMatchesDimensions" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="smallBitsTimesDimensionsMustBeLessThan63" time="0.001"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="checkPathIsSingleStepOnly" time="0.022"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testIndexCannotBeNull" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testRoundTripsSmall" time="0.024"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testTransposeZero" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testTotalRangeExpandingWithIncreasingSplitDepth" time="14.421"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testRoundTripLotsOfBits" time="0.508"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="exhaustiveTestOfWholeDomain2DQueries" time="1.339"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testPointFromIndexBits1Point0_1" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testPointFromIndexBits1Point1_1" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testMaxIndex" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testBitSet" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testSmallQueryVisitWholeRegionMultipleRanges" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testFullDomainSearch" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testIndex1" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testIndex2" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testIssue1" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testQuery1" time="0.001"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testPointManyBits" time="0"/>
+  <testcase classname="org.davidmoten.hilbert.HilbertCurveTest" name="testTranspose" time="0"/>
+</testsuite>

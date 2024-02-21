@@ -1,0 +1,4 @@
+org.adoptopenjdk.jitwatch.test.TestBytecodeLoader
+org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses
+org.adoptopenjdk.jitwatch.test.TestCompositeObjectEquality
+org.adoptopenjdk.jitwatch.test.TestExecutionUtil

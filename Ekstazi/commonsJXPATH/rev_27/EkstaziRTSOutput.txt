@@ -1,0 +1,173 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for commons-jxpath:commons-jxpath:jar:1.4-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-surefire-plugin @ line 178, column 13
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -------------------< commons-jxpath:commons-jxpath >--------------------
+[INFO] Building Apache Commons JXPath 1.4-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-maven-version) @ commons-jxpath ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-java-version) @ commons-jxpath ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-maven-3) @ commons-jxpath ---
+[INFO] 
+[INFO] --- apache-rat-plugin:0.15:check (rat-check) @ commons-jxpath ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.3.0:parse-version (parse-version) @ commons-jxpath ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:3.1.0:run (javadoc.resources) @ commons-jxpath ---
+[INFO] Executing tasks
+[INFO]      [copy] Copying 2 files to /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/target/apidocs/META-INF
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.7.0:process (process-resource-bundles) @ commons-jxpath ---
+[INFO] Skipping remote resources execution.
+[INFO] 
+[INFO] --- buildnumber-maven-plugin:3.0.0:create (default) @ commons-jxpath ---
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir
+[INFO] Storing buildNumber: ?????? at timestamp: 1703054110899
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir
+[INFO] Storing buildScmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ commons-jxpath ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/main/resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ commons-jxpath ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 187 source files to /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/target/classes
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java: Some input files use or override a deprecated API.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java: Recompile with -Xlint:deprecation for details.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java: Some input files use unchecked or unsafe operations.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.8:manifest (bundle-manifest) @ commons-jxpath ---
+[INFO] Writing manifest: /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/target/osgi/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.0:testResources (default-testResources) @ commons-jxpath ---
+[INFO] Copying 7 resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ commons-jxpath ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 61 source files to /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/target/test-classes
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java: /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java uses or overrides a deprecated API.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java: Recompile with -Xlint:deprecation for details.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java: Some input files use unchecked or unsafe operations.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.22:check (checkAPIcompatibility) @ commons-jxpath ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (prepare-agent) @ commons-jxpath ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsJXPATH/workingDir/target/jacoco.exec"
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M7:test (default-test) @ commons-jxpath ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.commons.jxpath.BasicNodeSetTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.77 s - in org.apache.commons.jxpath.BasicNodeSetTest
+[INFO] Running org.apache.commons.jxpath.issues.JXPath113Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s - in org.apache.commons.jxpath.issues.JXPath113Test
+[INFO] Running org.apache.commons.jxpath.issues.JXPath118Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s - in org.apache.commons.jxpath.issues.JXPath118Test
+[INFO] Running org.apache.commons.jxpath.issues.JXPath149Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.jxpath.issues.JXPath149Test
+[INFO] Running org.apache.commons.jxpath.issues.JXPath172DynamicTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s - in org.apache.commons.jxpath.issues.JXPath172DynamicTest
+[INFO] Running org.apache.commons.jxpath.issues.JXPath172Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.077 s - in org.apache.commons.jxpath.issues.JXPath172Test
+[INFO] Running org.apache.commons.jxpath.issues.JXPath177Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 s - in org.apache.commons.jxpath.issues.JXPath177Test
+[INFO] Running org.apache.commons.jxpath.ri.axes.RecursiveAxesTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in org.apache.commons.jxpath.ri.axes.RecursiveAxesTest
+[INFO] Running org.apache.commons.jxpath.ri.axes.SimplePathInterpreterTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.186 s - in org.apache.commons.jxpath.ri.axes.SimplePathInterpreterTest
+[INFO] Running org.apache.commons.jxpath.ri.compiler.ContextDependencyTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s - in org.apache.commons.jxpath.ri.compiler.ContextDependencyTest
+[INFO] Running org.apache.commons.jxpath.ri.compiler.CoreFunctionTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.172 s - in org.apache.commons.jxpath.ri.compiler.CoreFunctionTest
+[INFO] Running org.apache.commons.jxpath.ri.compiler.CoreOperationTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.113 s - in org.apache.commons.jxpath.ri.compiler.CoreOperationTest
+[INFO] Running org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.432 s - in org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
+[INFO] Running org.apache.commons.jxpath.ri.compiler.VariableTest
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.167 s - in org.apache.commons.jxpath.ri.compiler.VariableTest
+[INFO] Running org.apache.commons.jxpath.ri.ExceptionHandlerTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.125 s - in org.apache.commons.jxpath.ri.ExceptionHandlerTest
+[INFO] Running org.apache.commons.jxpath.ri.JXPathCompiledExpressionTest
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 s - in org.apache.commons.jxpath.ri.JXPathCompiledExpressionTest
+[INFO] Running org.apache.commons.jxpath.ri.model.AliasedNamespaceIterationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.133 s - in org.apache.commons.jxpath.ri.model.AliasedNamespaceIterationTest
+[INFO] Running org.apache.commons.jxpath.ri.model.beans.BadlyImplementedFactoryTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s - in org.apache.commons.jxpath.ri.model.beans.BadlyImplementedFactoryTest
+[INFO] Running org.apache.commons.jxpath.ri.model.beans.BeanModelTest
+[INFO] Tests run: 51, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.167 s - in org.apache.commons.jxpath.ri.model.beans.BeanModelTest
+[INFO] Running org.apache.commons.jxpath.ri.model.container.ContainerModelTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.jxpath.ri.model.container.ContainerModelTest
+[INFO] Running org.apache.commons.jxpath.ri.model.dom.DOMModelTest
+[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.34 s - in org.apache.commons.jxpath.ri.model.dom.DOMModelTest
+[INFO] Running org.apache.commons.jxpath.ri.model.dynabeans.DynaBeanModelTest
+[INFO] Tests run: 50, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.289 s - in org.apache.commons.jxpath.ri.model.dynabeans.DynaBeanModelTest
+[INFO] Running org.apache.commons.jxpath.ri.model.dynabeans.LazyDynaBeanTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s - in org.apache.commons.jxpath.ri.model.dynabeans.LazyDynaBeanTest
+[INFO] Running org.apache.commons.jxpath.ri.model.dynamic.DynamicPropertiesModelTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s - in org.apache.commons.jxpath.ri.model.dynamic.DynamicPropertiesModelTest
+[INFO] Running org.apache.commons.jxpath.ri.model.EmbeddedColonMapKeysTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.04 s - in org.apache.commons.jxpath.ri.model.EmbeddedColonMapKeysTest
+[INFO] Running org.apache.commons.jxpath.ri.model.EmptyCollectionTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 s - in org.apache.commons.jxpath.ri.model.EmptyCollectionTest
+[INFO] Running org.apache.commons.jxpath.ri.model.ExternalXMLNamespaceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s - in org.apache.commons.jxpath.ri.model.ExternalXMLNamespaceTest
+[INFO] Running org.apache.commons.jxpath.ri.model.jdom.JDOMModelTest
+[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.342 s - in org.apache.commons.jxpath.ri.model.jdom.JDOMModelTest
+[INFO] Running org.apache.commons.jxpath.ri.model.JXPath151Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.046 s - in org.apache.commons.jxpath.ri.model.JXPath151Test
+[INFO] Running org.apache.commons.jxpath.ri.model.JXPath154Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s - in org.apache.commons.jxpath.ri.model.JXPath154Test
+[INFO] Running org.apache.commons.jxpath.ri.model.MixedModelTest
+[INFO] Tests run: 40, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.229 s - in org.apache.commons.jxpath.ri.model.MixedModelTest
+[INFO] Running org.apache.commons.jxpath.ri.model.XMLPreserveSpaceTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 s - in org.apache.commons.jxpath.ri.model.XMLPreserveSpaceTest
+[INFO] Running org.apache.commons.jxpath.ri.model.XMLSpaceTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s - in org.apache.commons.jxpath.ri.model.XMLSpaceTest
+[INFO] Running org.apache.commons.jxpath.ri.model.XMLUpperCaseElementsTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s - in org.apache.commons.jxpath.ri.model.XMLUpperCaseElementsTest
+[INFO] Running org.apache.commons.jxpath.ri.StressTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.029 s - in org.apache.commons.jxpath.ri.StressTest
+[INFO] Running org.apache.commons.jxpath.servlet.JXPathServletContextTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 s - in org.apache.commons.jxpath.servlet.JXPathServletContextTest
+[INFO] Running org.apache.commons.jxpath.util.BasicTypeConverterTest
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.apache.commons.jxpath.util.BasicTypeConverterTest
+[INFO] Running org.apache.commons.jxpath.util.ClassLoaderUtilTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s - in org.apache.commons.jxpath.util.ClassLoaderUtilTest
+[INFO] Running org.apache.commons.jxpath.util.ValueUtilsTest
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.apache.commons.jxpath.util.ValueUtilsTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 391, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.635 s
+[INFO] Finished at: 2023-12-20T15:35:29+09:00
+[INFO] ------------------------------------------------------------------------

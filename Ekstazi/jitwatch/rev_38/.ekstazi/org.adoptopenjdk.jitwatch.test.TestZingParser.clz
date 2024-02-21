@@ -1,0 +1,19 @@
+# 1
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig$BackgroundCompilation.class _ 3532846769
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig$CompressedOops.class _ 2827066400
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig$OnStackReplacement.class _ 1079528893
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig$TieredCompilation.class _ 774819361
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig.class _ 2447123834
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/CompilerThread.class _ 2081971554
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/JITDataModel.class _ 390015601
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/JITStats.class _ 4169342948
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/PackageManager.class _ 2070013954
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/ParsedClasspath.class _ 3137490168
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/SplitLog.class _ 1356270501
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/parser/AbstractLogParser.class _ 3040024130
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/parser/zing/ZingLine.class _ 2810241961
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/parser/zing/ZingLineType.class _ 3288563387
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/parser/zing/ZingLogParser.class _ 3466444286
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/util/ParseUtil.class _ 4257828731
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestZingParser$1.class _ 2048498937
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestZingParser.class _ 3214699348

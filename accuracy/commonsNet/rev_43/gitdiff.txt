@@ -1,0 +1,45 @@
+diff --git a/src/main/java/org/apache/commons/net/ftp/FTPClient.java b/src/main/java/org/apache/commons/net/ftp/FTPClient.java
+index 21c1d5625..99c71455c 100644
+--- a/src/main/java/org/apache/commons/net/ftp/FTPClient.java
++++ b/src/main/java/org/apache/commons/net/ftp/FTPClient.java
+@@ -1948 +1948 @@ public class FTPClient extends FTP implements Configurable {
+-                    Set<String> entries = featuresMap.computeIfAbsent(key, k -> new HashSet<>());
++                    final Set<String> entries = featuresMap.computeIfAbsent(key, k -> new HashSet<>());
+@@ -3111 +3111 @@ public class FTPClient extends FTP implements Configurable {
+-    public void setIpAddressFromPasvResponse(boolean usingIpAddressFromPasvResponse) {
++    public void setIpAddressFromPasvResponse(final boolean usingIpAddressFromPasvResponse) {
+diff --git a/src/main/java/org/apache/commons/net/ftp/FTPSClient.java b/src/main/java/org/apache/commons/net/ftp/FTPSClient.java
+index 15d7f3a24..74cad43d6 100644
+--- a/src/main/java/org/apache/commons/net/ftp/FTPSClient.java
++++ b/src/main/java/org/apache/commons/net/ftp/FTPSClient.java
+@@ -317 +317 @@ public class FTPSClient extends FTPClient {
+-    private void closeSockets(Socket socket, Socket sslSocket) throws IOException {
++    private void closeSockets(final Socket socket, final Socket sslSocket) throws IOException {
+@@ -688 +688 @@ public class FTPSClient extends FTPClient {
+-    private Socket openDataSecureConnection(String command, String arg) throws IOException {
++    private Socket openDataSecureConnection(final String command, final String arg) throws IOException {
+diff --git a/src/test/java/org/apache/commons/net/ftp/FTPSClientTest.java b/src/test/java/org/apache/commons/net/ftp/FTPSClientTest.java
+index 780c6d060..ee9cc228b 100644
+--- a/src/test/java/org/apache/commons/net/ftp/FTPSClientTest.java
++++ b/src/test/java/org/apache/commons/net/ftp/FTPSClientTest.java
+@@ -136,2 +136,2 @@ public class FTPSClientTest {
+-        SslConfiguration sslConfiguration = sllConfigFactory.createSslConfiguration();
+-        NoProtocolSslConfigurationProxy noProtocolSslConfigurationProxy = new NoProtocolSslConfigurationProxy(sslConfiguration);
++        final SslConfiguration sslConfiguration = sllConfigFactory.createSslConfiguration();
++        final NoProtocolSslConfigurationProxy noProtocolSslConfigurationProxy = new NoProtocolSslConfigurationProxy(sslConfiguration);
+@@ -157 +157 @@ public class FTPSClientTest {
+-    private static void trace(String msg) {
++    private static void trace(final String msg) {
+@@ -206 +206 @@ public class FTPSClientTest {
+-        } catch (InterruptedException e) {
++        } catch (final InterruptedException e) {
+diff --git a/src/test/java/org/apache/commons/net/ftp/NoProtocolSslConfigurationProxy.java b/src/test/java/org/apache/commons/net/ftp/NoProtocolSslConfigurationProxy.java
+index 65bd9517b..33381544c 100644
+--- a/src/test/java/org/apache/commons/net/ftp/NoProtocolSslConfigurationProxy.java
++++ b/src/test/java/org/apache/commons/net/ftp/NoProtocolSslConfigurationProxy.java
+@@ -35 +35 @@ public class NoProtocolSslConfigurationProxy implements SslConfiguration {
+-    public NoProtocolSslConfigurationProxy(SslConfiguration sslConfiguration) {
++    public NoProtocolSslConfigurationProxy(final SslConfiguration sslConfiguration) {
+@@ -65 +65 @@ public class NoProtocolSslConfigurationProxy implements SslConfiguration {
+-    public SSLContext getSSLContext(String protocol) throws GeneralSecurityException {
++    public SSLContext getSSLContext(final String protocol) throws GeneralSecurityException {

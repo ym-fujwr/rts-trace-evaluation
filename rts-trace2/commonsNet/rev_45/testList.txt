@@ -1,0 +1,9 @@
+org.apache.commons.net.ftp.parser.MLSxEntryParserTest
+org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest
+org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest
+org.apache.commons.net.ftp.TestConnectTimeout
+org.apache.commons.net.imap.IMAPTest
+org.apache.commons.net.io.DotTerminatedMessageReaderTest
+org.apache.commons.net.SubnetUtilsTest
+org.apache.commons.net.telnet.SimpleOptionHandlerTest
+org.apache.commons.net.telnet.TelnetClientTest

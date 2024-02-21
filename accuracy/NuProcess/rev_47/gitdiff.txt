@@ -1,0 +1,23 @@
+diff --git a/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java b/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
+index d0276ec..ae4c490 100644
+--- a/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
++++ b/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java
+@@ -109,0 +110 @@ public class NuProcessBuilder
++      ensureNoNullCharacters(commands);
+@@ -128,0 +130 @@ public class NuProcessBuilder
++      ensureNoNullCharacters(commands);
+@@ -146,0 +149,2 @@ public class NuProcessBuilder
++      List<String> commandsList = Arrays.asList(commands);
++      ensureNoNullCharacters(commandsList);
+@@ -149 +153 @@ public class NuProcessBuilder
+-      this.command = new ArrayList<String>(Arrays.asList(commands));
++      this.command = new ArrayList<String>(commandsList);
+@@ -282,0 +287,8 @@ public class NuProcessBuilder
++   private void ensureNoNullCharacters(List<String> commands) {
++      for (String command : commands) {
++         if (command.indexOf('\u0000') >= 0) {
++            throw new IllegalArgumentException("Commands may not contain null characters");
++         }
++      }
++   }
++

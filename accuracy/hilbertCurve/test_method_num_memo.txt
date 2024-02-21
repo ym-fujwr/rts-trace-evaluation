@@ -1,0 +1,5 @@
+BoundedPriorityQueueTest,15
+HilbertCurveTest,40
+GeoUtil,0
+Benchmarks,0
+Ranges2Test,5

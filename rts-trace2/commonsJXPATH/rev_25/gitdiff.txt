@@ -1,0 +1,26 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
+index 42ba1575..560a58b1 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
+@@ -139 +139 @@ public abstract class JXPathContextFactory {
+-        catch (final SecurityException ignore) {
++        catch (final SecurityException ignore) { // NOPMD
+@@ -165 +165 @@ public abstract class JXPathContextFactory {
+-        catch (final SecurityException ignore) {
++        catch (final SecurityException ignore) { // NOPMD
+@@ -190 +190 @@ public abstract class JXPathContextFactory {
+-                        catch (final IOException ignore) {
++                        catch (final IOException ignore) { // NOPMD
+@@ -237,2 +237,2 @@ public abstract class JXPathContextFactory {
+-                    catch (final IOException ignore) {
+-                        //swallow
++                    catch (final IOException ignore) { // NOPMD
++                        // Ignore
+diff --git a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
+index a5fffe72..e5eb0593 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
++++ b/src/main/java/org/apache/commons/jxpath/util/BasicTypeConverter.java
+@@ -378 +378,2 @@ public class BasicTypeConverter implements TypeConverter {
+-            return new BigDecimal(value);
++            // TODO ? https://pmd.sourceforge.io/pmd-6.50.0/pmd_rules_java_errorprone.html#avoiddecimalliteralsinbigdecimalconstructor
++            return new BigDecimal(value); // NOPMD

@@ -1,0 +1,11 @@
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 72 org.davidmoten.hilbert.generated.Benchmarks_toIndexTimes512Small_jmhTest S 20 toIndexTimes512Small S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 83 org.davidmoten.hilbert.generated.Benchmarks_pointSmallTimes512LowAllocation_jmhTest S 31 pointSmallTimes512LowAllocation S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 65 org.davidmoten.hilbert.generated.Benchmarks_pointTimes512_jmhTest S 13 pointTimes512 S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 87 org.davidmoten.hilbert.generated.Benchmarks_roundTripSmallTimes512LowAllocation_jmhTest S 35 roundTripSmallTimes512LowAllocation S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 78 org.davidmoten.hilbert.generated.Benchmarks_pointTimes512LowAllocation_jmhTest S 26 pointTimes512LowAllocation S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 82 org.davidmoten.hilbert.generated.Benchmarks_roundTripTimes512LowAllocation_jmhTest S 30 roundTripTimes512LowAllocation S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 63 org.davidmoten.hilbert.generated.Benchmarks_querySydney_jmhTest S 11 querySydney S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 69 org.davidmoten.hilbert.generated.Benchmarks_roundTripTimes512_jmhTest S 17 roundTripTimes512 S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 74 org.davidmoten.hilbert.generated.Benchmarks_roundTripSmallTimes512_jmhTest S 22 roundTripSmallTimes512 S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 67 org.davidmoten.hilbert.generated.Benchmarks_toIndexTimes512_jmhTest S 15 toIndexTimes512 S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 33 org.davidmoten.hilbert.Benchmarks S 70 org.davidmoten.hilbert.generated.Benchmarks_pointSmallTimes512_jmhTest S 18 pointSmallTimes512 S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 

@@ -1,0 +1,192 @@
+リビジョン：rev_2
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：{'org.apache.commons.net.ftp.FTPClientConfigFunctionalTest'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_3
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_4
+選択すべきテストメソッド：{'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testStartSubnegotiation', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testOwnerAndGroupNameWithSpaces', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.FTPSClientTest#testOpenClose', 'org.apache.commons.net.telnet.WindowSizeOptionHandlerTest#testStartSubnegotiation', 'org.apache.commons.net.telnet.WindowSizeOptionHandlerTest#testAnswerSubnegotiation', 'org.apache.commons.net.ftp.FTPClientTest#testUnparseableFiles', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testGroupNameWithSpaces', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testAnswerSubnegotiation', 'org.apache.commons.net.telnet.TelnetOptionTest#testisValidOption', 'org.apache.commons.net.telnet.WindowSizeOptionHandlerTest#testStartSubnegotiationLocal', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameRoot', 'org.apache.commons.net.ftp.FTPSClientTest#testRetrieveFilePathNameRoot', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testConstructors'},14
+選択すべきテストクラス：{'org.apache.commons.net.tftp.TFTPServer'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_5
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseShortPastDates1', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testReadSimpleStringLfLineEnding'},2
+選択すべきテストクラス：{'org.apache.commons.net.examples.MainTest'}
+提案手法で漏れていたテスト：{'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseShortPastDates1', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testReadSimpleStringLfLineEnding'},2
+リビジョン：rev_6
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseShortPastDates1', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testReadSimpleStringLfLineEnding'},2
+選択すべきテストクラス：{'org.apache.commons.net.examples.MainTest'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_7
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：{'org.apache.commons.net.examples.MainTest'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_8
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_9
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testDefaultPrecision'},2
+選択すべきテストクラス：{'org.apache.commons.net.examples.MainTest'}
+提案手法で漏れていたテスト：{'org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testDefaultPrecision'},2
+リビジョン：rev_10
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseShortPastDates1', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testReadSimpleStringLfLineEnding'},2
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：{'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseShortPastDates1', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testReadSimpleStringLfLineEnding'},2
+リビジョン：rev_11
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_12
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testRecentPrecision'},2
+選択すべきテストクラス：{'org.apache.commons.net.examples.MainTest'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_13
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_14
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.FTPSClientTest#testOpenClose', 'org.apache.commons.net.ftp.FTPSClientTest#testRetrieveFilePathNameRoot', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testGroupNameWithSpaces', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testOwnerAndGroupNameWithSpaces', 'org.apache.commons.net.ftp.FTPClientTest#testUnparseableFiles', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameRoot'},7
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_15
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_16
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_17
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_18
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_19
+選択すべきテストメソッド：{'org.apache.commons.net.nntp.TestThreader#testNullIterable'},1
+選択すべきテストクラス：{'org.apache.commons.net.ntp.TestTimeInfo'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_20
+選択すべきテストメソッド：{'org.apache.commons.net.ntp.TimeStampTest#testCompare'},1
+選択すべきテストクラス：{'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase', 'org.apache.commons.net.ntp.TestTimeInfo'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_21
+選択すべきテストメソッド：{'org.apache.commons.net.SocketClientTest#testProxySettings'},1
+選択すべきテストクラス：{'org.apache.commons.net.SubnetUtilsTest', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase'}
+提案手法で漏れていたテスト：{'org.apache.commons.net.SocketClientTest#testProxySettings'},1
+リビジョン：rev_22
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_23
+選択すべきテストメソッド：{'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringNoSubject', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToString', 'org.apache.commons.net.SubnetUtilsTest#testNET428_31', 'org.apache.commons.net.SubnetUtilsTest#testParseSimpleNetmaskExclusive', 'org.apache.commons.net.SubnetUtilsTest#testParseSimpleNetmaskInclusive', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringNoFrom', 'org.apache.commons.net.SubnetUtilsTest#testAddressIllegalArgument', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringAddHeaderDate', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringAddHeader', 'org.apache.commons.net.SubnetUtilsTest#testNET428_32'},10
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_24
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_25
+選択すべきテストメソッド：{'org.apache.commons.net.SubnetUtilsTest#testAddressIllegalArgument', 'org.apache.commons.net.ntp.TimeStampTest#testDateConversion', 'org.apache.commons.net.SubnetUtilsTest#testNext', 'org.apache.commons.net.SubnetUtilsTest#testToString', 'org.apache.commons.net.ntp.TimeStampTest#testUTCString', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringNoSubject', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToString', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringAddHeader', 'org.apache.commons.net.SocketClientTest#testProxySettings', 'org.apache.commons.net.SubnetUtilsTest#testZeroAddressAndCidr', 'org.apache.commons.net.SubnetUtilsTest#testPrevious', 'org.apache.commons.net.SubnetUtilsTest#testParseSimpleNetmaskInclusive', 'org.apache.commons.net.SubnetUtilsTest#testParseSimpleNetmaskExclusive', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringNoFrom', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringNoTo', 'org.apache.commons.net.SubnetUtilsTest#testNET428_31', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringAddHeaderDate', 'org.apache.commons.net.SubnetUtilsTest#testParseSimpleNetmask', 'org.apache.commons.net.SubnetUtilsTest#testNET428_32'},19
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_26
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_27
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_28
+選択すべきテストメソッド：{'org.apache.commons.net.SubnetUtilsTest#testNET428_32', 'org.apache.commons.net.SubnetUtilsTest#testAddressIllegalArgument', 'org.apache.commons.net.SubnetUtilsTest#testToString', 'org.apache.commons.net.SubnetUtilsTest#testZeroAddressAndCidr', 'org.apache.commons.net.ntp.TimeStampTest#testUTCString', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringAddHeader', 'org.apache.commons.net.SubnetUtilsTest#testPrevious', 'org.apache.commons.net.SubnetUtilsTest#testParseSimpleNetmaskExclusive', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToString', 'org.apache.commons.net.SubnetUtilsTest#testParseSimpleNetmaskInclusive', 'org.apache.commons.net.ntp.TimeStampTest#testDateConversion', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringNoFrom', 'org.apache.commons.net.SubnetUtilsTest#testNET428_31', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringNoSubject', 'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase#testToStringAddHeaderDate'},15
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_29
+選択すべきテストメソッド：{'org.apache.commons.net.telnet.TelnetOptionTest#testisValidOption', 'org.apache.commons.net.ftp.FTPClientConfigTest#testFTPClientConfigStringStringStringStringStringString', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameJunk', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameNull', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testStartSubnegotiation', 'org.apache.commons.net.ftp.FTPSClientTest#testMdtmCalendar', 'org.apache.commons.net.ntp.TestTimeInfo#testAddress', 'org.apache.commons.net.ftp.parser.FTPParseTestFramework#testGoodListing', 'org.apache.commons.net.ftp.parser.MacOsPeterFTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.telnet.WindowSizeOptionHandlerTest#testStartSubnegotiation', 'org.apache.commons.net.ftp.FTPSClientTest#testMdtmFile', 'org.apache.commons.net.ftp.FTPClientConfigTest#testGetDateFormatSymbols', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testAnswerSubnegotiation', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameRoot', 'org.apache.commons.net.telnet.WindowSizeOptionHandlerTest#testAnswerSubnegotiation', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseTimestampAcrossTimeZones', 'org.apache.commons.net.ftp.FTPSClientTest#testMdtmInstant', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testConstructors', 'org.apache.commons.net.ftp.FTPSClientTest#testHasFeature', 'org.apache.commons.net.ntp.TestTimeInfo#testEquals', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameEmpty', 'org.apache.commons.net.ftp.FTPSClientTest#testOpenClose', 'org.apache.commons.net.ntp.TimeStampTest#testNotSame', 'org.apache.commons.net.ftp.FTPSClientTest#testRetrieveFilePathNameRoot', 'org.apache.commons.net.ntp.TestTimeInfo#testZeroTime', 'org.apache.commons.net.ntp.TestTimeInfo#testNotEquals', 'org.apache.commons.net.ftp.parser.MacOsPeterFTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ntp.TestTimeInfo#testComputeDetails'},28
+選択すべきテストクラス：{'org.apache.commons.net.ftp.FTPClientTest'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_30
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameNull', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameJunk', 'org.apache.commons.net.ftp.FTPSClientTest#testRetrieveFilePathNameRoot', 'org.apache.commons.net.ftp.FTPSClientTest#testOpenClose', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameRoot', 'org.apache.commons.net.ftp.FTPSClientTest#testMdtmFile'},6
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_31
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_32
+選択すべきテストメソッド：{'org.apache.commons.net.ntp.TimeStampTest#testCompare'},1
+選択すべきテストクラス：{'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_33
+選択すべきテストメソッド：{'org.apache.commons.net.ntp.TimeStampTest#testCompare'},1
+選択すべきテストクラス：{'org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_34
+選択すべきテストメソッド：{'org.apache.commons.net.nntp.TestThreader#testNullIterable'},1
+選択すべきテストクラス：{'org.apache.commons.net.ntp.TestTimeInfo'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_35
+選択すべきテストメソッド：{'org.apache.commons.net.nntp.TestThreader#testNullIterable'},1
+選択すべきテストクラス：{'org.apache.commons.net.ntp.TestTimeInfo'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_36
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：{'org.apache.commons.net.ntp.TestNtpPacket'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_37
+選択すべきテストメソッド：{'org.apache.commons.net.nntp.TestThreader#testEmptyArray'},1
+選択すべきテストクラス：{'org.apache.commons.net.ntp.TestNtpPacket'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_38
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：{'org.apache.commons.net.ftp.ListingFunctionalTest', 'org.apache.commons.net.ntp.TestTimeInfo'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_39
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testFeb29NonLeapYear', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParser', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseShortFutureDates2', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseTimestamp', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseShortFutureDates1'},5
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_41
+選択すべきテストメソッド：{'org.apache.commons.net.telnet.WindowSizeOptionHandlerTest#testStartSubnegotiation', 'org.apache.commons.net.telnet.WindowSizeOptionHandlerTest#testAnswerSubnegotiation', 'org.apache.commons.net.ftp.parser.FTPParseTestFramework#testGoodListing', 'org.apache.commons.net.ftp.FTPClientConfigTest#testFTPClientConfigStringStringStringStringStringString', 'org.apache.commons.net.ftp.FTPClientConfigTest#testGetDateFormatSymbols', 'org.apache.commons.net.ntp.TestTimeInfo#testComputeDetails', 'org.apache.commons.net.ftp.FTPClientTest#testParserCachingWithKey', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testGroupNameWithSpaces', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithNatWorkaroundDisabled', 'org.apache.commons.net.ftp.parser.MacOsPeterFTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.MacOsPeterFTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithSimpleNatWorkaroundStrategy', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForNonLocalAddressWithNatWorkaround', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testStartSubnegotiation', 'org.apache.commons.net.ftp.FTPClientTest#testUnparseableFiles', 'org.apache.commons.net.ntp.TestTimeInfo#testEquals', 'org.apache.commons.net.telnet.TelnetOptionTest#testisValidOption', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testOwnerAndGroupNameWithSpaces', 'org.apache.commons.net.ntp.TestTimeInfo#testAddress', 'org.apache.commons.net.ntp.TimeStampTest#testNotSame', 'org.apache.commons.net.ntp.TestTimeInfo#testZeroTime', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithoutNatWorkaroundStrategy', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForNonLocalAddressWithNatWorkaroundDisabled', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testConstructors', 'org.apache.commons.net.ntp.TestTimeInfo#testNotEquals', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testAnswerSubnegotiation', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseTimestampAcrossTimeZones', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForNonLocalAddressWithoutNatWorkaroundStrategy', 'org.apache.commons.net.ftp.FTPClientTest#testParserCachingNullKey', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithNatWorkaround', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testParseFieldsOnDirectory'},31
+選択すべきテストクラス：{'org.apache.commons.net.ftp.NoProtocolSslConfigurationProxy', 'org.apache.commons.net.ftp.FTPSClientTest'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_42
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_43
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForNonLocalAddressWithNatWorkaround', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testConstructors', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithSimpleNatWorkaroundStrategy', 'org.apache.commons.net.ftp.FTPClientConfigTest#testFTPClientConfigStringStringStringStringStringString', 'org.apache.commons.net.ftp.FTPClientConfigTest#testGetDateFormatSymbols', 'org.apache.commons.net.ntp.TestTimeInfo#testComputeDetails', 'org.apache.commons.net.telnet.TelnetOptionTest#testisValidOption', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForNonLocalAddressWithoutNatWorkaroundStrategy', 'org.apache.commons.net.ntp.TestTimeInfo#testAddress', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForNonLocalAddressWithNatWorkaroundDisabled', 'org.apache.commons.net.ntp.TestTimeInfo#testEquals', 'org.apache.commons.net.ntp.TimeStampTest#testNotSame', 'org.apache.commons.net.ntp.TestTimeInfo#testZeroTime', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testAnswerSubnegotiation', 'org.apache.commons.net.ftp.parser.MacOsPeterFTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.telnet.WindowSizeOptionHandlerTest#testStartSubnegotiation', 'org.apache.commons.net.ftp.FTPClientTest#testParserCachingNullKey', 'org.apache.commons.net.ftp.FTPClientTest#testParserCachingWithKey', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseTimestampAcrossTimeZones', 'org.apache.commons.net.telnet.WindowSizeOptionHandlerTest#testAnswerSubnegotiation', 'org.apache.commons.net.ntp.TestTimeInfo#testNotEquals', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithNatWorkaround', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testStartSubnegotiation', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithoutNatWorkaroundStrategy', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithNatWorkaroundDisabled', 'org.apache.commons.net.ftp.parser.FTPParseTestFramework#testGoodListing', 'org.apache.commons.net.ftp.parser.MacOsPeterFTPEntryParserTest#testDefaultPrecision'},27
+選択すべきテストクラス：{'org.apache.commons.net.ftp.NoProtocolSslConfigurationProxy', 'org.apache.commons.net.ftp.FTPSClientTest'}
+提案手法で漏れていたテスト：{'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithNatWorkaround', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForNonLocalAddressWithoutNatWorkaroundStrategy', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForNonLocalAddressWithNatWorkaround', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithoutNatWorkaroundStrategy', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithSimpleNatWorkaroundStrategy', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForLocalAddressWithNatWorkaroundDisabled', 'org.apache.commons.net.ftp.FTPClientTest#testParsePassiveModeReplyForNonLocalAddressWithNatWorkaroundDisabled'},7
+リビジョン：rev_44
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_45
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testParseFieldsOnFile', 'org.apache.commons.net.ftp.TestConnectTimeout#testConnectTimeout', 'org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testEmbeddedDot3', 'org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.FTPSClientTest#testMdtmInstant', 'org.apache.commons.net.imap.IMAPTest#checkGenerator', 'org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest#testWholeListParse', 'org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.telnet.SuppressGAOptionHandlerTest#testStartSubnegotiation', 'org.apache.commons.net.ftp.parser.FTPParseTestFramework#testGoodListing', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testEmbeddedDot1', 'org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest#testWholeListParseWithVersioning', 'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testUnixListings', 'org.apache.commons.net.ftp.parser.FTPParseTestFramework#testBadListing', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testEmbeddedDot2', 'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testParseFieldsOnFile'},21
+選択すべきテストクラス：{'org.apache.commons.net.telnet.TelnetClientTest'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_46
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testMemberListing', 'org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.FTPSClientTest#testMdtmCalendar', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.parser.OS400FTPEntryParserAdditionalTest#testParseFieldsOnFile', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testNET444', 'org.apache.commons.net.ftp.parser.OS400FTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.parser.OS400FTPEntryParserTest#testParseFieldsOnFile', 'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testGoodListing', 'org.apache.commons.net.ftp.parser.OS400FTPEntryParserAdditionalTest#testRecentPrecision', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testGroupNameWithSpaces', 'org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseShortFutureDates1', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testParseLeadingDigits', 'org.apache.commons.net.ftp.FTPSClientTest#testOpenClose', 'org.apache.commons.net.ftp.FTPClientTest#testUnparseableFiles', 'org.apache.commons.net.ftp.parser.CompositeFTPParseTestFramework#testConsistentListing', 'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseTimestamp', 'org.apache.commons.net.ftp.parser.CompositeFTPParseTestFramework#testInconsistentListing', 'org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testParseFieldsOnFileJapaneseYear', 'org.apache.commons.net.ftp.parser.DefaultFTPFileEntryParserFactoryTest#testDefaultParserFactory', 'org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testNET339', 'org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testNameWIthPunctuation', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParser', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testNumericDateFormat', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testFilenamesWithEmbeddedNumbers', 'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testParseFieldsOnFile', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testParseFieldsOnFile', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testOwnerAndGroupNameWithSpaces', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testParseFieldsOnFileJapaneseTime', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameRoot', 'org.apache.commons.net.ftp.parser.DefaultFTPFileEntryParserFactoryTest#testDefaultParserFactoryConfig', 'org.apache.commons.net.ftp.parser.EnterpriseUnixFTPEntryParserTest#testParseFieldsOnFile', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testParseShortFutureDates2', 'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testJesLevel2Listing', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testParseFieldsOnFile', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testLeadingSpacesDefault', 'org.apache.commons.net.ftp.parser.NetwareFTPEntryParserTest#testParseFieldsOnFile', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testTrimLeadingSpacesNET566', 'org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest#testConstructors', 'org.apache.commons.net.ftp.parser.NetwareFTPEntryParserTest#testRecentPrecision', 'org.apache.commons.net.ftp.FTPSClientTest#testRetrieveFilePathNameRoot', 'org.apache.commons.net.ftp.parser.MLSxEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.OS400FTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.NetwareFTPEntryParserTest#testDefaultPrecision', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testParseFieldsOnFile', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testLeadingSpacesNET566', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testNoSpacesBeforeFileSize', 'org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest#testFeb29NonLeapYear', 'org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest#testUnixListings', 'org.apache.commons.net.ftp.parser.OS400FTPEntryParserAdditionalTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.EnterpriseUnixFTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.OS400FTPEntryParserAdditionalTest#testDefaultPrecision', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameEmpty', 'org.apache.commons.net.ftp.parser.OS400FTPEntryParserTest#testNET573', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testCorrectGroupNameParsing', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testGroupNameWithSpaces', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testDirectoryBeginningWithNumber', 'org.apache.commons.net.ftp.parser.CompositeFTPParseTestFramework#testBadListing', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testTrailingSpaces', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testOwnerNameWithSpaces', 'org.apache.commons.net.ftp.parser.NetwareFTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.parser.OS400FTPEntryParserTest#testParseFieldsOnDirectory'},73
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_47
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testGroupNameWithSpaces', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testDoubleCrBeforeDot', 'org.apache.commons.net.ftp.FTPSClientTest#testOpenClose', 'org.apache.commons.net.tftp.TFTPServerPathTest#testWriteOutsideHome', 'org.apache.commons.net.ftp.FTPSClientTest#testRetrieveFilePathNameRoot', 'org.apache.commons.net.ftp.parser.NTFTPEntryParserTest#testParseFieldsOnDirectory', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameRoot', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testReadLine1', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameJunk', 'org.apache.commons.net.ftp.FTPClientTest#testUnparseableFiles', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameNull', 'org.apache.commons.net.ftp.FTPSClientTest#testMdtmFile', 'org.apache.commons.net.io.DotTerminatedMessageReaderTest#testReadLine2', 'org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest#testOwnerAndGroupNameWithSpaces'},14
+選択すべきテストクラス：{'org.apache.commons.net.nntp.TestThreader'}
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_48
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_49
+選択すべきテストメソッド：set(),0
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0
+リビジョン：rev_50
+選択すべきテストメソッド：{'org.apache.commons.net.ftp.FTPSClientTest#testMdtmFile', 'org.apache.commons.net.ftp.FTPSClientTest#testRetrieveFilePathNameRoot', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameJunk', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameNull', 'org.apache.commons.net.ftp.FTPSClientTest#testOpenClose', 'org.apache.commons.net.ftp.FTPSClientTest#testListFilesPathNameRoot'},6
+選択すべきテストクラス：set()
+提案手法で漏れていたテスト：set(),0

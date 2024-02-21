@@ -1,0 +1,113 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.chrisnewland:jitwatch-core >-------------------
+[INFO] Building JITWatch Core 1.4.7
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ jitwatch-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 39 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 180 source files to /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ jitwatch-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 39 source files to /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[307,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[327,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[350,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[371,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[49,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[70,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ jitwatch-core ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestAssemblyLabels
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s - in org.adoptopenjdk.jitwatch.test.TestAssemblyLabels
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestAssemblyParserARM
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestAssemblyParserARM
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestAssemblyParserX86
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s - in org.adoptopenjdk.jitwatch.test.TestAssemblyParserX86
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestAssemblyProcessor
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 s - in org.adoptopenjdk.jitwatch.test.TestAssemblyProcessor
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestBytecodeAnnotationBuilder
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 s - in org.adoptopenjdk.jitwatch.test.TestBytecodeAnnotationBuilder
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestBytecodeLoader
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in org.adoptopenjdk.jitwatch.test.TestBytecodeLoader
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestBytecodeLoaderWithInnerClasses
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestCompilationUtil
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestCompilationUtil
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestCompileChain
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestCompileChain
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestCompositeObjectEquality
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestCompositeObjectEquality
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestExecutionUtil
+2023-12-21T08:43:56.289842500Z INF org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava Process: /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+UnlockDiagnosticVMOptions -XX:+LogCompilation -cp /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes org.adoptopenjdk.jitwatch.test.DummyClassWithMain 
+Running: /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+UnlockDiagnosticVMOptions -XX:+LogCompilation -cp /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes org.adoptopenjdk.jitwatch.test.DummyClassWithMain 
+Hello World!
+
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.447 s - in org.adoptopenjdk.jitwatch.test.TestExecutionUtil
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestHisto
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.adoptopenjdk.jitwatch.test.TestHisto
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestInnerClassRelationship
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestInnerClassRelationship
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestIntrinsicFinder
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.adoptopenjdk.jitwatch.test.TestIntrinsicFinder
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestJ9Parser
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestJ9Parser
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestJarScan
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in org.adoptopenjdk.jitwatch.test.TestJarScan
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestJITWatchConfig
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestJITWatchConfig
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestLineTable
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestLineTable
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestLocales
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestLocales
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestLogSplitting
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in org.adoptopenjdk.jitwatch.test.TestLogSplitting
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestMemberBytecode
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestMemberBytecode
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestMemberSignatureParts
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestMemberSignatureParts
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestMetaClass
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestMetaClass
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestOpcode
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestOpcode
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestPackageManager
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in org.adoptopenjdk.jitwatch.test.TestPackageManager
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestParseUtil
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestParseUtil
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestReport
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestReport
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestResourceLoader
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestResourceLoader
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestStringUtil
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestStringUtil
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestTagProcessor
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestTagProcessor
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestVmVersionDetector
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.adoptopenjdk.jitwatch.test.TestVmVersionDetector
+[INFO] Running org.adoptopenjdk.jitwatch.test.TestZingParser
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in org.adoptopenjdk.jitwatch.test.TestZingParser
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.903 s
+[INFO] Finished at: 2023-12-21T17:43:57+09:00
+[INFO] ------------------------------------------------------------------------

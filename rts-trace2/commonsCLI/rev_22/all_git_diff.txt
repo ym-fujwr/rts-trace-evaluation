@@ -1,0 +1,120 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index 9a4ba50c..567b3745 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -48 +48 @@ jobs:
+-      uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
++      uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
+@@ -51 +51 @@ jobs:
+-    - uses: actions/cache@v3.3.1
++    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
+@@ -60 +60 @@ jobs:
+-      uses: github/codeql-action/init@v2
++      uses: github/codeql-action/init@f6e388ebf0efc915c6c5b165b019ee61a6746a38 # v2.20.1
+@@ -71 +71 @@ jobs:
+-      uses: github/codeql-action/autobuild@v2
++      uses: github/codeql-action/autobuild@f6e388ebf0efc915c6c5b165b019ee61a6746a38 # v2.20.1
+@@ -85 +85 @@ jobs:
+-      uses: github/codeql-action/analyze@v2
++      uses: github/codeql-action/analyze@f6e388ebf0efc915c6c5b165b019ee61a6746a38 # v2.20.1
+diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
+index 3e4af086..502cb4be 100644
+--- a/.github/workflows/coverage.yml
++++ b/.github/workflows/coverage.yml
+@@ -32 +32 @@ jobs:
+-    - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
++    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
+@@ -35 +35 @@ jobs:
+-    - uses: actions/cache@v3.3.1
++    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
+@@ -42 +42 @@ jobs:
+-      uses: actions/setup-java@v3.11.0
++      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
+@@ -50 +50 @@ jobs:
+-      uses: codecov/codecov-action@v3
++      uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index c232799d..bd836a3f 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -37 +37 @@ jobs:
+-    - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
++    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
+@@ -40 +40 @@ jobs:
+-    - uses: actions/cache@v3.3.1
++    - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
+@@ -47 +47 @@ jobs:
+-      uses: actions/setup-java@v3.11.0
++      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index 0d5dbc81..ddf9b95c 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -43 +43 @@ jobs:
+-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab   # 3.5.2
++        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9   # 3.5.3
+@@ -48 +48 @@ jobs:
+-        uses: ossf/scorecard-action@80e868c13c90f172d68d1f4501dee99e2479f7af    # 2.1.3
++        uses: ossf/scorecard-action@08b4669551908b1024bb425080c797723083c031    # 2.2.0
+@@ -67 +67 @@ jobs:
+-        uses: github/codeql-action/upload-sarif@b398f525a5587552e573b247ac661067fafa920b    # 2.1.22
++        uses: github/codeql-action/upload-sarif@f6e388ebf0efc915c6c5b165b019ee61a6746a38    # 2.20.1
+diff --git a/README.md b/README.md
+index 7ffdc8d6..7a2e6833 100644
+--- a/README.md
++++ b/README.md
+@@ -65 +65 @@ You can download source and binaries from our [download page](https://commons.ap
+-Alternatively you can pull it from the central Maven repositories:
++Alternatively, you can pull it from the central Maven repositories:
+diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+index 135af61d..bbb86fb6 100644
+--- a/RELEASE-NOTES.txt
++++ b/RELEASE-NOTES.txt
+@@ -246 +246 @@ o CLI-137: The number of arguments defined for an option specifies the
+-           arguments per occurence of the option and not for all occurrences.
++           arguments per occurrence of the option and not for all occurrences.
+diff --git a/pom.xml b/pom.xml
+index af71c17d..f33e0306 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -22 +22 @@
+-    <version>56</version>
++    <version>58</version>
+@@ -27 +27 @@
+-  <version>1.6-SNAPSHOT</version>
++  <version>1.6.0-SNAPSHOT</version>
+@@ -202 +202 @@
+-    <commons.release.version>1.5.0</commons.release.version>
++    <commons.release.version>1.6.0</commons.release.version>
+@@ -206 +206 @@
+-    <commons.bc.version>1.4</commons.bc.version>
++    <commons.bc.version>1.5.0</commons.bc.version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 33242e1c..13d0c7fb 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -25 +25 @@
+-    <release version="1.6" date="tbd" description="New features and bug fixes">
++    <release version="1.6.0" date="2023-MM-DD" description="New features and bug fixes">
+@@ -45,0 +46,6 @@
++      <action dev="ggregory" type="fix" due-to="step-security-bot, Gary Gregory">
++        [StepSecurity] ci: Harden GitHub Actions #176.
++      </action>
++      <action dev="ggregory" type="fix" due-to="Alexander Veit, Gary Gregory" issue="CLI-318">
++        Inconsistent date format in changes report.
++      </action>
+@@ -70 +76 @@
+-        Bump commons-parent from 52 to 56 #100, #128, #151, #158.
++        Bump commons-parent from 52 to 58 #100, #128, #151, #158.
+@@ -94 +100 @@
+-    <release version="1.5.0" date="10-23-2021" description="New features and bug fixes (Java 7).">
++    <release version="1.5.0" date="2021-10-23" description="New features and bug fixes (Java 7).">
+diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
+index 9c883107..828c995d 100644
+--- a/src/main/java/org/apache/commons/cli/Option.java
++++ b/src/main/java/org/apache/commons/cli/Option.java
+@@ -482,2 +482,2 @@ public class Option implements Cloneable, Serializable {
+-        } catch (final CloneNotSupportedException cnse) {
+-            throw new IllegalStateException("A CloneNotSupportedException was thrown: " + cnse.getMessage());
++        } catch (final CloneNotSupportedException e) {
++            throw new UnsupportedOperationException(e.getMessage(), e);

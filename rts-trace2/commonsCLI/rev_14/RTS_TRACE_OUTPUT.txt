@@ -1,0 +1,92 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< commons-cli:commons-cli >-----------------------
+[INFO] Building Apache Commons CLI 1.6-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-maven-version) @ commons-cli ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-java-version) @ commons-cli ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-maven-3) @ commons-cli ---
+[INFO] 
+[INFO] --- apache-rat-plugin:0.15:check (rat-check) @ commons-cli ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.3.0:parse-version (parse-version) @ commons-cli ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:3.1.0:run (javadoc.resources) @ commons-cli ---
+[INFO] Executing tasks
+[INFO]      [copy] Copying 2 files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/target/apidocs/META-INF
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.7.0:process (process-resource-bundles) @ commons-cli ---
+[INFO] Skipping remote resources execution.
+[INFO] 
+[INFO] --- buildnumber-maven-plugin:3.0.0:create (default) @ commons-cli ---
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir
+[INFO] Storing buildNumber: null at timestamp: 1705566113439
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
+
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir
+[INFO] Storing buildScmBranch: UNKNOWN
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ commons-cli ---
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] Using 'utf-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/src/main/resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ commons-cli ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 23 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/target/classes
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/src/main/java/org/apache/commons/cli/TypeHandler.java: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/src/main/java/org/apache/commons/cli/TypeHandler.java uses or overrides a deprecated API.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/src/main/java/org/apache/commons/cli/TypeHandler.java: Recompile with -Xlint:deprecation for details.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/src/main/java/org/apache/commons/cli/Parser.java: Some input files use unchecked or unsafe operations.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/src/main/java/org/apache/commons/cli/Parser.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.2:manifest (bundle-manifest) @ commons-cli ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ commons-cli ---
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] Using 'utf-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ commons-cli ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 29 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/target/test-classes
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/src/test/java/org/apache/commons/cli/bug/BugCLI133Test.java: Some input files use or override a deprecated API.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/src/test/java/org/apache/commons/cli/bug/BugCLI133Test.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.20:check (checkAPIcompatibility) @ commons-cli ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (prepare-agent) @ commons-cli ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsCLI/workingDir/target/jacoco.exec"
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M5:test (default-test) @ commons-cli ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.commons.cli.CommandLineTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.099 s - in org.apache.commons.cli.CommandLineTest
+[INFO] Running org.apache.commons.cli.PatternOptionBuilderTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.148 s - in org.apache.commons.cli.PatternOptionBuilderTest
+[INFO] Running org.apache.commons.cli.TypeHandlerTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.134 s - in org.apache.commons.cli.TypeHandlerTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 28, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.004 s
+[INFO] Finished at: 2024-01-18T17:22:02+09:00
+[INFO] ------------------------------------------------------------------------

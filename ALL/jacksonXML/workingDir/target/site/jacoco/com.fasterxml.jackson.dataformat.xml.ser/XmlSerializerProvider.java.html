@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlSerializerProvider.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml.ser</a> &gt; <span class="el_source">XmlSerializerProvider.java</span></div><h1>XmlSerializerProvider.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml.ser;
+
+import java.io.IOException;
+import java.util.Map;
+
+import javax.xml.namespace.QName;
+import javax.xml.stream.XMLStreamException;
+
+import com.fasterxml.jackson.core.*;
+
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.cfg.CacheProvider;
+import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.ser.SerializerFactory;
+import com.fasterxml.jackson.databind.ser.DefaultSerializerProvider;
+import com.fasterxml.jackson.databind.util.TokenBuffer;
+
+import com.fasterxml.jackson.dataformat.xml.util.StaxUtil;
+import com.fasterxml.jackson.dataformat.xml.util.TypeUtil;
+import com.fasterxml.jackson.dataformat.xml.util.XmlRootNameLookup;
+
+/**
+ * We need to override some parts of
+ * {@link com.fasterxml.jackson.databind.SerializerProvider}
+ * implementation to handle oddities of XML output, like &quot;extra&quot; root element.
+ */
+public class XmlSerializerProvider extends DefaultSerializerProvider
+{
+    // As of 2.7
+    private static final long serialVersionUID = 1L;
+
+    protected final XmlRootNameLookup _rootNameLookup;
+
+    public XmlSerializerProvider(XmlRootNameLookup rootNames)
+    {
+<span class="fc" id="L37">        super();</span>
+<span class="fc" id="L38">        _rootNameLookup = rootNames;</span>
+<span class="fc" id="L39">    }</span>
+
+    public XmlSerializerProvider(XmlSerializerProvider src,
+            SerializationConfig config, SerializerFactory f)
+    {
+<span class="fc" id="L44">        super(src, config, f);</span>
+<span class="fc" id="L45">        _rootNameLookup  = src._rootNameLookup;</span>
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * @since 2.16
+     */
+    protected XmlSerializerProvider(XmlSerializerProvider src, CacheProvider cp) {
+<span class="nc" id="L52">        super(src, cp);</span>
+<span class="nc" id="L53">        _rootNameLookup  = src._rootNameLookup;</span>
+<span class="nc" id="L54">    }</span>
+
+    /**
+     * @since 2.8.9
+     */
+    protected XmlSerializerProvider(XmlSerializerProvider src) {
+<span class="fc" id="L60">        super(src);</span>
+        // 21-May-2018, tatu: As per [dataformat-xml#282], should NOT really copy
+        //    root name lookup as that may link back to diff version, configuration
+<span class="fc" id="L63">        _rootNameLookup = new XmlRootNameLookup();</span>
+<span class="fc" id="L64">    }</span>
+
+    /*
+    /**********************************************************************
+    /* Overridden methods
+    /**********************************************************************
+     */
+
+    @Override
+    public DefaultSerializerProvider copy() {
+<span class="fc" id="L74">        return new XmlSerializerProvider(this);</span>
+    }
+
+    @Override
+    public DefaultSerializerProvider withCaches(CacheProvider cacheProvider) {
+<span class="nc" id="L79">        return new XmlSerializerProvider(this, cacheProvider);</span>
+    }
+
+    @Override
+    public DefaultSerializerProvider createInstance(SerializationConfig config,
+            SerializerFactory jsf) {
+<span class="fc" id="L85">        return new XmlSerializerProvider(this, config, jsf);</span>
+    }
+
+    @SuppressWarnings(&quot;resource&quot;)
+    @Override
+    public void serializeValue(JsonGenerator gen, Object value) throws IOException
+    {
+<span class="fc" id="L92">        _generator = gen;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        if (value == null) {</span>
+<span class="fc" id="L94">            _serializeXmlNull(gen);</span>
+<span class="fc" id="L95">            return;</span>
+        }
+<span class="fc" id="L97">        final Class&lt;?&gt; cls = value.getClass();</span>
+        final boolean asArray;
+<span class="fc" id="L99">        final ToXmlGenerator xgen = _asXmlGenerator(gen);</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        if (xgen == null) { // called by convertValue()</span>
+<span class="fc" id="L101">            asArray = false;</span>
+        } else {
+            // [dataformat-xml#441]: allow ObjectNode unwrapping
+<span class="fc bfc" id="L104" title="All 2 branches covered.">            if (_shouldUnwrapObjectNode(xgen, value)) {</span>
+<span class="fc" id="L105">                _serializeUnwrappedObjectNode(xgen, value, null);</span>
+<span class="fc" id="L106">                return;</span>
+            }
+<span class="fc" id="L108">            QName rootName = _rootNameFromConfig();</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">            if (rootName == null) {</span>
+<span class="fc" id="L110">                rootName = _rootNameLookup.findRootName(cls, _config);</span>
+            }
+<span class="fc" id="L112">            _initWithRootName(xgen, rootName);</span>
+<span class="fc" id="L113">            asArray = TypeUtil.isIndexedType(_config.constructType(cls));</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">            if (asArray) {</span>
+<span class="fc" id="L115">                _startRootArray(xgen, rootName);</span>
+            }
+        }
+        
+        // From super-class implementation
+<span class="fc" id="L120">        final JsonSerializer&lt;Object&gt; ser = findTypedValueSerializer(cls, true, null);</span>
+        try {
+<span class="fc" id="L122">            ser.serialize(value, gen, this);</span>
+<span class="fc" id="L123">        } catch (Exception e) { // but wrap RuntimeExceptions, to get path information</span>
+<span class="fc" id="L124">            throw _wrapAsIOE(gen, e);</span>
+<span class="fc" id="L125">        }</span>
+        // end of super-class implementation
+
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (asArray) {</span>
+<span class="fc" id="L129">            gen.writeEndObject();</span>
+        }
+<span class="fc" id="L131">    }</span>
+
+    @Override // since 2.11.1, was missing before
+    public void serializeValue(JsonGenerator gen, Object value, JavaType rootType) throws IOException
+    {
+<span class="nc" id="L136">        serializeValue(gen, value, rootType, null);</span>
+<span class="nc" id="L137">    }</span>
+
+    // @since 2.1
+    @SuppressWarnings(&quot;resource&quot;)
+    @Override
+    public void serializeValue(JsonGenerator gen, Object value, JavaType rootType,
+            JsonSerializer&lt;Object&gt; ser) throws IOException
+    {
+<span class="fc" id="L145">        _generator = gen;</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">        if (value == null) {</span>
+<span class="nc" id="L147">            _serializeXmlNull(gen);</span>
+<span class="nc" id="L148">            return;</span>
+        }
+        // Let's ensure types are compatible at this point
+<span class="pc bpc" id="L151" title="1 of 4 branches missed.">        if ((rootType != null) &amp;&amp; !rootType.getRawClass().isAssignableFrom(value.getClass())) {</span>
+<span class="nc" id="L152">            _reportIncompatibleRootType(value, rootType);</span>
+        }
+        final boolean asArray;
+<span class="fc" id="L155">        final ToXmlGenerator xgen = _asXmlGenerator(gen);</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">        if (xgen == null) { // called by convertValue()</span>
+<span class="nc" id="L157">            asArray = false;</span>
+        } else {
+            // [dataformat-xml#441]: allow ObjectNode unwrapping
+<span class="pc bpc" id="L160" title="1 of 2 branches missed.">            if (_shouldUnwrapObjectNode(xgen, value)) {</span>
+<span class="nc" id="L161">                _serializeUnwrappedObjectNode(xgen, value, ser);</span>
+<span class="nc" id="L162">                return;</span>
+            }
+<span class="fc" id="L164">            QName rootName = _rootNameFromConfig();</span>
+<span class="pc bpc" id="L165" title="1 of 2 branches missed.">            if (rootName == null) {</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">                rootName = (rootType == null)</span>
+<span class="fc" id="L167">                        ? _rootNameLookup.findRootName(value.getClass(), _config)</span>
+<span class="fc" id="L168">                        : _rootNameLookup.findRootName(rootType, _config);</span>
+            }
+<span class="fc" id="L170">            _initWithRootName(xgen, rootName);</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">            asArray = (rootType == null)</span>
+<span class="fc" id="L172">                    ? TypeUtil.isIndexedType(_config.constructType(value.getClass()))</span>
+<span class="fc" id="L173">                        : TypeUtil.isIndexedType(rootType);</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">            if (asArray) {</span>
+<span class="nc" id="L175">                _startRootArray(xgen, rootName);</span>
+            }
+        }
+<span class="pc bpc" id="L178" title="1 of 2 branches missed.">        if (ser == null) {</span>
+<span class="nc" id="L179">            ser = findTypedValueSerializer(rootType, true, null);</span>
+        }
+        // From super-class implementation
+        try {
+<span class="fc" id="L183">            ser.serialize(value, gen, this);</span>
+<span class="nc" id="L184">        } catch (Exception e) { // but others do need to be, to get path etc</span>
+<span class="nc" id="L185">            throw _wrapAsIOE(gen, e);</span>
+<span class="fc" id="L186">        }</span>
+        // end of super-class implementation
+<span class="pc bpc" id="L188" title="1 of 2 branches missed.">        if (asArray) {</span>
+<span class="nc" id="L189">            gen.writeEndObject();</span>
+        }
+<span class="fc" id="L191">    }</span>
+
+    @SuppressWarnings(&quot;resource&quot;)
+    @Override // since 2.11.1, was missing before
+    public void serializePolymorphic(JsonGenerator gen, Object value, JavaType rootType,
+            JsonSerializer&lt;Object&gt; valueSer, TypeSerializer typeSer)
+        throws IOException
+    {
+<span class="fc" id="L199">        _generator = gen;</span>
+<span class="pc bpc" id="L200" title="1 of 2 branches missed.">        if (value == null) {</span>
+<span class="nc" id="L201">            _serializeXmlNull(gen);</span>
+<span class="nc" id="L202">            return;</span>
+        }
+        // Let's ensure types are compatible at this point
+<span class="pc bpc" id="L205" title="2 of 4 branches missed.">        if ((rootType != null) &amp;&amp; !rootType.getRawClass().isAssignableFrom(value.getClass())) {</span>
+<span class="nc" id="L206">            _reportIncompatibleRootType(value, rootType);</span>
+        }
+        final boolean asArray;
+<span class="fc" id="L209">        final ToXmlGenerator xgen = _asXmlGenerator(gen);</span>
+<span class="pc bpc" id="L210" title="1 of 2 branches missed.">        if (xgen == null) { // called by convertValue()</span>
+<span class="nc" id="L211">            asArray = false;</span>
+        } else {
+<span class="fc" id="L213">            QName rootName = _rootNameFromConfig();</span>
+<span class="pc bpc" id="L214" title="1 of 2 branches missed.">            if (rootName == null) {</span>
+<span class="pc bpc" id="L215" title="1 of 2 branches missed.">                rootName = (rootType == null)</span>
+<span class="nc" id="L216">                        ? _rootNameLookup.findRootName(value.getClass(), _config)</span>
+<span class="fc" id="L217">                        : _rootNameLookup.findRootName(rootType, _config);</span>
+            }
+<span class="fc" id="L219">            _initWithRootName(xgen, rootName);</span>
+<span class="pc bpc" id="L220" title="1 of 2 branches missed.">            asArray = (rootType == null)</span>
+<span class="nc" id="L221">                    ? TypeUtil.isIndexedType(_config.constructType(value.getClass()))</span>
+<span class="fc" id="L222">                    : TypeUtil.isIndexedType(rootType);</span>
+<span class="pc bpc" id="L223" title="1 of 2 branches missed.">            if (asArray) {</span>
+<span class="nc" id="L224">                _startRootArray(xgen, rootName);</span>
+            }
+        }
+        // 21-May-2020: See comments in `jackson-databind/DefaultSerializerProvider`
+<span class="pc bpc" id="L228" title="1 of 2 branches missed.">        if (valueSer == null) {</span>
+<span class="pc bpc" id="L229" title="2 of 4 branches missed.">            if ((rootType != null) &amp;&amp; rootType.isContainerType()) {</span>
+<span class="nc" id="L230">                valueSer = findValueSerializer(rootType, null);</span>
+            } else {
+<span class="fc" id="L232">                valueSer = findValueSerializer(value.getClass(), null);</span>
+            }
+        }
+        // From super-class implementation
+        try {
+<span class="fc" id="L237">            valueSer.serializeWithType(value, gen, this, typeSer);</span>
+<span class="nc" id="L238">        } catch (Exception e) { // but others do need to be, to get path etc</span>
+<span class="nc" id="L239">            throw _wrapAsIOE(gen, e);</span>
+<span class="fc" id="L240">        }</span>
+        // end of super-class implementation
+<span class="pc bpc" id="L242" title="1 of 2 branches missed.">        if (asArray) {</span>
+<span class="nc" id="L243">            gen.writeEndObject();</span>
+        }
+<span class="fc" id="L245">    }</span>
+
+    protected void _serializeXmlNull(JsonGenerator gen) throws IOException
+    {
+        // 14-Nov-2016, tatu: As per [dataformat-xml#213], we may have explicitly
+        //    configured root name...
+<span class="fc" id="L251">        QName rootName = _rootNameFromConfig();</span>
+<span class="fc bfc" id="L252" title="All 2 branches covered.">        if (rootName == null) {</span>
+<span class="fc" id="L253">            rootName = XmlRootNameLookup.ROOT_NAME_FOR_NULL;</span>
+        }
+<span class="fc bfc" id="L255" title="All 2 branches covered.">        if (gen instanceof ToXmlGenerator) {</span>
+<span class="fc" id="L256">            _initWithRootName((ToXmlGenerator) gen, rootName);</span>
+        }
+<span class="fc" id="L258">        super.serializeValue(gen, null);</span>
+<span class="fc" id="L259">    }</span>
+
+    protected void _startRootArray(ToXmlGenerator xgen, QName rootName) throws IOException
+    {
+<span class="fc" id="L263">        xgen.writeStartObject();</span>
+        // Could repeat root name, but what's the point? How to customize?
+<span class="fc" id="L265">        xgen.writeFieldName(&quot;item&quot;);</span>
+<span class="fc" id="L266">    }    </span>
+
+    protected void _initWithRootName(ToXmlGenerator xgen, QName rootName) throws IOException
+    {
+        // 28-Nov-2012, tatu: We should only initialize the root name if no name has been
+        //   set, as per [dataformat-xml#42], to allow for custom serializers to work.
+<span class="fc bfc" id="L272" title="All 2 branches covered.">        if (!xgen.setNextNameIfMissing(rootName)) {</span>
+            // however, if we are root, we... insist
+<span class="pc bpc" id="L274" title="1 of 2 branches missed.">            if (xgen.inRoot()) {</span>
+<span class="nc" id="L275">                xgen.setNextName(rootName);</span>
+            }
+        }
+<span class="fc" id="L278">        xgen.initGenerator();</span>
+<span class="fc" id="L279">        String ns = rootName.getNamespaceURI();</span>
+        // [dataformat-xml#26] If we just try writing root element with namespace,
+        // we will get an explicit prefix. But we'd rather use the default
+        // namespace, so let's try to force that.
+<span class="pc bpc" id="L283" title="1 of 4 branches missed.">        if (ns != null &amp;&amp; ns.length() &gt; 0) {</span>
+            try {
+<span class="fc" id="L285">                xgen.getStaxWriter().setDefaultNamespace(ns);</span>
+<span class="nc" id="L286">            } catch (XMLStreamException e) {</span>
+<span class="nc" id="L287">                StaxUtil.throwAsGenerationException(e, xgen);</span>
+<span class="fc" id="L288">            }</span>
+        }
+<span class="fc" id="L290">    }</span>
+
+    protected QName _rootNameFromConfig()
+    {
+<span class="fc" id="L294">        PropertyName name = _config.getFullRootName();</span>
+<span class="fc bfc" id="L295" title="All 2 branches covered.">        if (name == null) {</span>
+<span class="fc" id="L296">            return null;</span>
+        }
+<span class="fc" id="L298">        String ns = name.getNamespace();</span>
+<span class="pc bpc" id="L299" title="1 of 4 branches missed.">        if (ns == null || ns.isEmpty()) {</span>
+<span class="fc" id="L300">            return new QName(name.getSimpleName());</span>
+        }
+<span class="fc" id="L302">        return new QName(ns, name.getSimpleName());</span>
+    }
+
+    // @since 2.13
+    protected boolean _shouldUnwrapObjectNode(ToXmlGenerator xgen, Object value)
+    {
+<span class="pc bpc" id="L308" title="1 of 4 branches missed.">        return xgen.isEnabled(ToXmlGenerator.Feature.UNWRAP_ROOT_OBJECT_NODE)</span>
+                &amp;&amp; (value instanceof ObjectNode)
+<span class="pc bpc" id="L310" title="1 of 2 branches missed.">                &amp;&amp; (((ObjectNode) value).size() == 1);</span>
+    }
+
+    // @since 2.13
+    protected void _serializeUnwrappedObjectNode(ToXmlGenerator xgen, Object value,
+            JsonSerializer&lt;Object&gt; ser) throws IOException
+    {
+<span class="fc" id="L317">        ObjectNode root = (ObjectNode) value;</span>
+<span class="fc" id="L318">        Map.Entry&lt;String, JsonNode&gt; entry = root.fields().next();</span>
+<span class="fc" id="L319">        final JsonNode newRoot = entry.getValue();</span>
+
+        // No namespace associated with JsonNode:
+<span class="fc" id="L322">        _initWithRootName(xgen, new QName(entry.getKey()));</span>
+<span class="pc bpc" id="L323" title="1 of 2 branches missed.">        if (ser == null) {</span>
+<span class="fc" id="L324">            ser = findTypedValueSerializer(newRoot.getClass(), true, null);</span>
+        }
+        // From super-class implementation
+        try {
+<span class="fc" id="L328">            ser.serialize(newRoot, xgen, this);</span>
+<span class="nc" id="L329">        } catch (Exception e) { // but others do need to be, to get path etc</span>
+<span class="nc" id="L330">            throw _wrapAsIOE(xgen, e);</span>
+<span class="fc" id="L331">        }</span>
+<span class="fc" id="L332">    }</span>
+
+    protected ToXmlGenerator _asXmlGenerator(JsonGenerator gen)
+        throws JsonMappingException
+    {
+<span class="fc bfc" id="L337" title="All 2 branches covered.">        if (!(gen instanceof ToXmlGenerator)) {</span>
+            // [dataformat-xml#71]: We sometimes get TokenBuffer, which is fine
+<span class="pc bpc" id="L339" title="1 of 2 branches missed.">            if (gen instanceof TokenBuffer) {</span>
+<span class="fc" id="L340">                return null;</span>
+            }
+            // but verify
+<span class="nc" id="L343">            throw JsonMappingException.from(gen,</span>
+                    &quot;XmlMapper does not work with generators of type other than `ToXmlGenerator`; got: `&quot;
+<span class="nc" id="L345">                            +gen.getClass().getName()+&quot;`&quot;);</span>
+        }
+<span class="fc" id="L347">        return (ToXmlGenerator) gen;</span>
+    }    
+
+    protected IOException _wrapAsIOE(JsonGenerator g, Exception e) {
+<span class="pc bpc" id="L351" title="1 of 2 branches missed.">        if (e instanceof IOException) {</span>
+<span class="fc" id="L352">            return (IOException) e;</span>
+        }
+<span class="nc" id="L354">        String msg = e.getMessage();</span>
+<span class="nc bnc" id="L355" title="All 2 branches missed.">        if (msg == null) {</span>
+<span class="nc" id="L356">            msg = &quot;[no message for &quot;+e.getClass().getName()+&quot;]&quot;;</span>
+        }
+<span class="nc" id="L358">        return new JsonMappingException(g, msg, e);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

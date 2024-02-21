@@ -1,0 +1,23 @@
+==========================
+Build and install JITWatch
+==========================
+
+mvn clean package
+
+============================================================
+Create a HotSpot log from your program by adding VM switches
+============================================================
+
+-XX:+UnlockDiagnosticVMOptions -XX:+LogCompilation -XX:+PrintAssembly
+
+===============================
+Launch JITWatch on Linux or OSX
+===============================
+cd scripts
+./launchUI.sh
+
+==========================
+Launch JITWatch on Windows
+==========================
+cd scripts
+./launchUI.bat

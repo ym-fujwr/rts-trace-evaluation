@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Ranges.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hilbert-curve</a> &gt; <a href="index.source.html" class="el_package">org.davidmoten.hilbert</a> &gt; <span class="el_source">Ranges.java</span></div><h1>Ranges.java</h1><pre class="source lang-java linenums">package org.davidmoten.hilbert;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import com.github.davidmoten.guavamini.Preconditions;
+
+//immutable
+public final class Ranges {
+
+    private final List&lt;Range&gt; ranges;
+
+<span class="fc" id="L15">    Ranges(List&lt;Range&gt; ranges) {</span>
+<span class="fc" id="L16">        this.ranges = ranges;</span>
+<span class="fc" id="L17">    }</span>
+
+    public static Ranges create() {
+<span class="fc" id="L20">        return new Ranges(new ArrayList&lt;&gt;());</span>
+    }
+
+    static Builder builder() {
+<span class="fc" id="L24">        return new Builder(new ArrayList&lt;&gt;());</span>
+    }
+
+    static final class Builder {
+
+        private List&lt;Range&gt; ranges;
+
+<span class="fc" id="L31">        Builder(List&lt;Range&gt; ranges) {</span>
+<span class="fc" id="L32">            this.ranges = ranges;</span>
+<span class="fc" id="L33">        }</span>
+
+        void add(long value) {
+<span class="fc" id="L36">            int modifiedIndex = -1;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">            for (int i = 0; i &lt; ranges.size(); i++) {</span>
+<span class="fc" id="L38">                Range range = ranges.get(i);</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">                if (range.contains(value)) {</span>
+<span class="nc" id="L40">                    throw new RuntimeException(&quot;unexpected&quot;);</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">                } else if (range.low() == value + 1) {</span>
+<span class="fc" id="L42">                    ranges.set(i, new Range(value, range.high()));</span>
+<span class="fc" id="L43">                    modifiedIndex = i;</span>
+<span class="fc" id="L44">                    break;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">                } else if (range.high() == value - 1) {</span>
+<span class="fc" id="L46">                    ranges.set(i, new Range(range.low(), value));</span>
+<span class="fc" id="L47">                    modifiedIndex = i;</span>
+<span class="fc" id="L48">                    break;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">                } else if (value &lt; range.low()) {</span>
+<span class="fc" id="L50">                    ranges.add(i, new Range(value, value));</span>
+<span class="fc" id="L51">                    modifiedIndex = i;</span>
+<span class="fc" id="L52">                    break;</span>
+                }
+            }
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            if (modifiedIndex == -1) {</span>
+<span class="fc" id="L56">                ranges.add(new Range(value, value));</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            } else if (modifiedIndex &lt; ranges.size() - 1) {</span>
+<span class="fc" id="L58">                Range modified = ranges.get(modifiedIndex);</span>
+<span class="fc" id="L59">                Range r = ranges.get(modifiedIndex + 1);</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">                if (modified.high() == r.low() - 1) {</span>
+                    // join the two Range objects
+<span class="fc" id="L62">                    ranges.set(modifiedIndex, new Range(modified.low(), r.high()));</span>
+<span class="fc" id="L63">                    ranges.remove(modifiedIndex + 1);</span>
+                }
+            }
+<span class="fc" id="L66">        }</span>
+
+        Ranges build() {
+<span class="fc" id="L69">            return new Ranges(ranges);</span>
+        }
+    }
+
+    public List&lt;Range&gt; get() {
+<span class="fc" id="L74">        return ranges;</span>
+    }
+
+    public Ranges add(long low, long high) {
+<span class="fc" id="L78">        Builder b = new Ranges.Builder(ranges);</span>
+        // TODO this is inefficient (but only used in unit tests)
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        for (long i = low; i &lt;= high; i++) {</span>
+<span class="fc" id="L81">            b.add(i);</span>
+        }
+<span class="fc" id="L83">        return b.build();</span>
+    }
+
+    public Ranges join(int n) {
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">        Preconditions.checkArgument(n &gt;= 0);</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (n == 0) {</span>
+<span class="fc" id="L89">            return this;</span>
+        } else {
+            // TODO replace this with an efficient algorithm like a Max Heap which is kept
+            // at size k so runtime complexity is O(n + klogk)
+<span class="fc" id="L93">            Ranges r = this;</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">            for (int i = 0; i &lt; n; i++) {</span>
+<span class="fc" id="L95">                r = r.joinOnePair();</span>
+            }
+<span class="fc" id="L97">            return r;</span>
+        }
+    }
+
+    private Ranges joinOnePair() {
+        // find the smallest gap and join those ranges
+<span class="fc" id="L103">        int smallestGapIndex = -1;</span>
+        {
+<span class="fc" id="L105">            long smallestGap = Long.MAX_VALUE;</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">            for (int i = 1; i &lt; ranges.size(); i++) {</span>
+<span class="fc" id="L107">                long gap = ranges.get(i).low() - ranges.get(i - 1).high();</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">                if (gap &lt; smallestGap) {</span>
+<span class="fc" id="L109">                    smallestGap = gap;</span>
+<span class="fc" id="L110">                    smallestGapIndex = i - 1;</span>
+                }
+            }
+        }
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">        if (smallestGapIndex != -1) {</span>
+<span class="fc" id="L115">            List&lt;Range&gt; list = new ArrayList&lt;&gt;(ranges.size() - 1);</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">            for (int i = 0; i &lt; smallestGapIndex; i++) {</span>
+<span class="fc" id="L117">                list.add(ranges.get(i));</span>
+            }
+<span class="fc" id="L119">            list.add(Range.create(//</span>
+<span class="fc" id="L120">                    ranges.get(smallestGapIndex).low(), ranges.get(smallestGapIndex + 1).high()));</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">            for (int i = smallestGapIndex + 2; i &lt; ranges.size(); i++) {</span>
+<span class="fc" id="L122">                list.add(ranges.get(i));</span>
+            }
+<span class="fc" id="L124">            return new Ranges(list);</span>
+        } else {
+<span class="nc" id="L126">            return this;</span>
+        }
+    }
+
+    public int size() {
+<span class="fc" id="L131">        return ranges.size();</span>
+    }
+
+    public Stream&lt;Range&gt; stream() {
+<span class="fc" id="L135">        return ranges.stream();</span>
+    }
+
+    public long totalLength() {
+<span class="fc" id="L139">        return ranges //</span>
+<span class="fc" id="L140">                .stream() //</span>
+<span class="fc" id="L141">                .map(x -&gt; x.high() - x.low() + 1) //</span>
+<span class="fc" id="L142">                .collect(Collectors.reducing((x, y) -&gt; x + y)) //</span>
+<span class="fc" id="L143">                .orElse(0L);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

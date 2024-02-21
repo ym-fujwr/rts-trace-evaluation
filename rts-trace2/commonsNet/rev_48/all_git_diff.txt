@@ -1,0 +1,16 @@
+diff --git a/README.md b/README.md
+index d034f3742..1e8d695c7 100644
+--- a/README.md
++++ b/README.md
+@@ -47 +47 @@ Apache Commons Net
+-[![Coverage Status](https://codecov.io/gh/apache/commons-net/branch/master/graph/badge.svg)](https://app.codecov.io/gh/apache/commons-net/branch/master)
++[![Coverage Status](https://codecov.io/gh/apache/commons-net/branch/master/graph/badge.svg)](https://app.codecov.io/gh/apache/commons-net)
+@@ -50,0 +51 @@ Apache Commons Net
++[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/apache/commons-net/badge)](https://api.securityscorecards.dev/projects/github.com/apache/commons-net)
+diff --git a/src/main/java/org/apache/commons/net/bsd/RCommandClient.java b/src/main/java/org/apache/commons/net/bsd/RCommandClient.java
+index c03f5c458..909d9ce93 100644
+--- a/src/main/java/org/apache/commons/net/bsd/RCommandClient.java
++++ b/src/main/java/org/apache/commons/net/bsd/RCommandClient.java
+@@ -226 +226 @@ public class RCommandClient extends RExecClient {
+-        server = null; // Keep compiler from barfing
++        server = null;

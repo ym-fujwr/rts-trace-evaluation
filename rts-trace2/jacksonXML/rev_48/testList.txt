@@ -1,0 +1,9 @@
+com.fasterxml.jackson.dataformat.xml.deser.DefaultTyping325Test
+com.fasterxml.jackson.dataformat.xml.jaxb.JAXBObjectId170Test
+com.fasterxml.jackson.dataformat.xml.lists.DeserializePolyList178Test
+com.fasterxml.jackson.dataformat.xml.lists.StringListRoundtripTest
+com.fasterxml.jackson.dataformat.xml.misc.PolymorphicTypesTest
+com.fasterxml.jackson.dataformat.xml.ser.EmptyPolymorphicTest
+com.fasterxml.jackson.dataformat.xml.stream.dos.DeepNestingParserTest
+com.fasterxml.jackson.dataformat.xml.stream.XmlParserNextXxxTest
+com.fasterxml.jackson.dataformat.xml.stream.XmlParserTest

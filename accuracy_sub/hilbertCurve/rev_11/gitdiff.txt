@@ -1,0 +1,7 @@
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index 815e7de..c35fcc7 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -342 +342 @@ public class HilbertCurveTest {
+-            System.out.println(df2.format(r.get().size()) + " "
++            System.out.println(df2.format(r.get().size()) + "\t"

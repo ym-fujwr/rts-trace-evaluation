@@ -1,0 +1,62 @@
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] ------< com.fasterxml.jackson.dataformat:jackson-dataformat-xml >-------
+[INFO] Building Jackson-dataformat-XML 2.16.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.4.1:enforce (enforce-java) @ jackson-dataformat-xml ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.10:prepare-agent (default) @ jackson-dataformat-xml ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.10/org.jacoco.agent-0.8.10-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/ALL/jacksonXML/workingDir/target/jacoco.exec"
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.4.0:add-source (add-generated-sources) @ jackson-dataformat-xml ---
+[INFO] Source directory: /mnt/c/Users/fujiwara yuma/evaluation/ALL/jacksonXML/workingDir/target/generated-sources added.
+[INFO] 
+[INFO] --- replacer:1.5.3:replace (process-packageVersion) @ jackson-dataformat-xml ---
+[INFO] Replacement run on 1 file.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.4.0:add-resource (add-resource) @ jackson-dataformat-xml ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ jackson-dataformat-xml ---
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from  to target/classes/META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ jackson-dataformat-xml ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 43 source files with javac [debug:lines,source,vars deprecation target 1.8] to target/classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jacksonXML/workingDir/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java:[225,9] GeneratorBase(int,com.fasterxml.jackson.core.ObjectCodec) in com.fasterxml.jackson.core.base.GeneratorBase has been deprecated
+[INFO] 2 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jacksonXML/workingDir/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java:[27,8] com.fasterxml.jackson.dataformat.xml.ser.XmlSerializerProvider is not abstract and does not override abstract method withCaches(com.fasterxml.jackson.databind.cfg.CacheProvider) in com.fasterxml.jackson.databind.ser.DefaultSerializerProvider
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jacksonXML/workingDir/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlDeserializationContext.java:[18,8] com.fasterxml.jackson.dataformat.xml.deser.XmlDeserializationContext is not abstract and does not override abstract method withCaches(com.fasterxml.jackson.databind.cfg.CacheProvider) in com.fasterxml.jackson.databind.deser.DefaultDeserializationContext
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.302 s
+[INFO] Finished at: 2023-12-14T13:50:08+09:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project jackson-dataformat-xml: Compilation failure: Compilation failure: 
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jacksonXML/workingDir/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java:[27,8] com.fasterxml.jackson.dataformat.xml.ser.XmlSerializerProvider is not abstract and does not override abstract method withCaches(com.fasterxml.jackson.databind.cfg.CacheProvider) in com.fasterxml.jackson.databind.ser.DefaultSerializerProvider
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jacksonXML/workingDir/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlDeserializationContext.java:[18,8] com.fasterxml.jackson.dataformat.xml.deser.XmlDeserializationContext is not abstract and does not override abstract method withCaches(com.fasterxml.jackson.databind.cfg.CacheProvider) in com.fasterxml.jackson.databind.deser.DefaultDeserializationContext
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

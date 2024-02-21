@@ -1,0 +1,4 @@
+org.apache.commons.net.ftp.parser.DefaultFTPFileEntryParserFactoryTest
+org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest
+org.apache.commons.net.io.DotTerminatedMessageReaderTest
+org.apache.commons.net.telnet.TelnetClientTest

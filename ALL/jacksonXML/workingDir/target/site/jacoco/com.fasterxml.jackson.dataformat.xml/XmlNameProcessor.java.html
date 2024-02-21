@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlNameProcessor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml</a> &gt; <span class="el_source">XmlNameProcessor.java</span></div><h1>XmlNameProcessor.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml;
+
+import java.io.Serializable;
+
+/**
+ * API of processors primarily used for dealing with XML names
+ * containing invalid characters. Invalid characters in names can,
+ * for instance, easily appear in map keys.
+ * &lt;p&gt;
+ * Processors should be set in the {@link XmlMapper#setXmlNameProcessor}
+ * and/or the {@link XmlMapper.Builder#xmlNameProcessor} methods.
+ * &lt;p&gt;
+ * See {@link XmlNameProcessors} for default processors.
+ *
+ * @since 2.14
+ */
+public interface XmlNameProcessor extends Serializable {
+
+    /**
+     * Representation of an XML element or attribute name
+     */
+    class XmlName {
+        public String namespace;
+        public String localPart;
+
+<span class="fc" id="L26">        public XmlName() { }</span>
+    }
+
+    /**
+     * Used during XML serialization.
+     * &lt;p&gt;
+     * This method should process the provided {@link XmlName} and
+     * escape / encode invalid XML characters.
+     *
+     * @param name The name to encode
+     */
+    void encodeName(XmlName name);
+
+
+    /**
+     * Used during XML deserialization.
+     * &lt;p&gt;
+     * This method should process the provided {@link XmlName} and
+     * revert the encoding done in the {@link #encodeName(XmlName)}
+     * method.
+     * &lt;p&gt;
+     * Note: Depending on the use case, it is not always required (or
+     * even possible) to reverse an encoding with 100% accuracy.
+     *
+     * @param name The name to encode
+     */
+    void decodeName(XmlName name);
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

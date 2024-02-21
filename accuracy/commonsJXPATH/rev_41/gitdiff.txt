@@ -1,0 +1,35 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java
+index 2ded4273..22de80fe 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java
+@@ -40 +40 @@ public class StrictLazyDynaBeanPointerFactory implements NodePointerFactory {
+-    private static class StrictLazyDynaBeanPointer extends DynaBeanPointer {
++    private static final class StrictLazyDynaBeanPointer extends DynaBeanPointer {
+diff --git a/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java b/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java
+index 4115ff48..76c2acab 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java
++++ b/src/main/java/org/apache/commons/jxpath/util/KeyManagerUtils.java
+@@ -35 +35 @@ public class KeyManagerUtils {
+-    private static class SingleNodeExtendedKeyManager implements
++    private static final class SingleNodeExtendedKeyManager implements
+diff --git a/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java b/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java
+index f3dd7279..4edab2ab 100644
+--- a/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java
++++ b/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java
+@@ -67 +67 @@ public class JXPath177Test extends TestCase
+-    private static class JXPathVariablesResolver implements Variables
++    private static final class JXPathVariablesResolver implements Variables
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunctionTest.java b/src/test/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunctionTest.java
+index 7ab105e9..4486d825 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunctionTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunctionTest.java
+@@ -387 +387 @@ public class ExtensionFunctionTest extends JXPathTestCase {
+-    private static class Context implements ExpressionContext {
++    private static final class Context implements ExpressionContext {
+diff --git a/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java b/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
+index f6dc4e85..eb62b7bf 100644
+--- a/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
++++ b/src/test/java/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java
+@@ -174 +174 @@ public void tearDown() {
+-  private static class TestClassLoader extends ClassLoader {
++  private static final class TestClassLoader extends ClassLoader {

@@ -1,0 +1,6 @@
+diff --git a/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java b/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
+index bfaa7f1b6..63d504904 100644
+--- a/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
++++ b/src/main/java/org/apache/commons/net/ftp/FTPListParseEngine.java
+@@ -24 +23,0 @@ import java.io.InputStreamReader;
+-import java.util.ArrayList;

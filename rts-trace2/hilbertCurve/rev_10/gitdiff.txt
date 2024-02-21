@@ -1,0 +1,151 @@
+diff --git a/src/main/java/org/davidmoten/hilbert/Ranges.java b/src/main/java/org/davidmoten/hilbert/Ranges.java
+index 4ba005f..796340f 100644
+--- a/src/main/java/org/davidmoten/hilbert/Ranges.java
++++ b/src/main/java/org/davidmoten/hilbert/Ranges.java
+@@ -4,0 +5 @@ import java.util.List;
++import java.util.stream.Collectors;
+@@ -86,7 +87,11 @@ public final class Ranges {
+-        Preconditions.checkArgument(n > 0);
+-
+-        // TODO replace this with an efficient algorithm like a Max Heap which is kept
+-        // at size k so runtime complexity is O(n + klogk)
+-        Ranges r = this;
+-        for (int i = 0; i < n; i++) {
+-            r = r.joinOnePair();
++        Preconditions.checkArgument(n >= 0);
++        if (n == 0) {
++            return this;
++        } else {
++            // TODO replace this with an efficient algorithm like a Max Heap which is kept
++            // at size k so runtime complexity is O(n + klogk)
++            Ranges r = this;
++            for (int i = 0; i < n; i++) {
++                r = r.joinOnePair();
++            }
++            return r;
+@@ -94 +98,0 @@ public final class Ranges {
+-        return r;
+@@ -129 +133 @@ public final class Ranges {
+-    
++
+@@ -133,0 +138,8 @@ public final class Ranges {
++    public long totalLength() {
++        return ranges //
++                .stream() //
++                .map(x -> x.high() - x.low() + 1) //
++                .collect(Collectors.reducing((x, y) -> x + y)) //
++                .orElse(0L);
++    }
++
+diff --git a/src/test/java/org/davidmoten/hilbert/Benchmarks.java b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
+index fba826b..d6e509f 100644
+--- a/src/test/java/org/davidmoten/hilbert/Benchmarks.java
++++ b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
+@@ -21 +21 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -29 +29 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -36 +36 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -43 +43 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -50 +50 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -58 +58 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -65 +65 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -73 +73 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -81 +81 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+@@ -89 +89 @@ public class Benchmarks {
+-    @Benchmark
++//    @Benchmark
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index e7ce267..815e7de 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -12,0 +13 @@ import java.nio.file.Files;
++import java.text.DecimalFormat;
+@@ -22 +22,0 @@ import com.github.davidmoten.guavamini.Lists;
+-import com.github.davidmoten.guavamini.Preconditions;
+@@ -311 +311 @@ public class HilbertCurveTest {
+-    
++
+@@ -335,3 +335,11 @@ public class HilbertCurveTest {
+-        Ranges r = h.query(scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates),
+-                scalePoint(lat2, lon2, t2, minTime, maxTime, maxOrdinates));
+-        System.out.println(r.get().size());
++        long[] point1 = scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates);
++        long[] point2 = scalePoint(lat2, lon2, t2, minTime, maxTime, maxOrdinates);
++        Ranges ranges = h.query(point1, point2);
++        DecimalFormat df = new DecimalFormat("0.00");
++        DecimalFormat df2 = new DecimalFormat("00");
++        for (int i = 0; i < ranges.get().size(); i++) {
++            Ranges r = ranges.join(i);
++            System.out.println(df2.format(r.get().size()) + " "
++                    + df.format((double) r.totalLength() / ranges.totalLength()));
++        }
++
+@@ -347 +355 @@ public class HilbertCurveTest {
+-        
++
+@@ -352 +360 @@ public class HilbertCurveTest {
+-    
++
+@@ -361 +369 @@ public class HilbertCurveTest {
+-    
++
+@@ -370 +378 @@ public class HilbertCurveTest {
+-                .add(6,13) //
++                .add(6, 13) //
+@@ -374 +382 @@ public class HilbertCurveTest {
+-                .add(53,  54) //
++                .add(53, 54) //
+@@ -386 +394 @@ public class HilbertCurveTest {
+-        
++
+@@ -391 +399 @@ public class HilbertCurveTest {
+-    
++
+@@ -395,2 +403,2 @@ public class HilbertCurveTest {
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
++        long[] point1 = new long[] { 3, 3 };
++        long[] point2 = new long[] { 8, 10 };
+@@ -400 +408 @@ public class HilbertCurveTest {
+-    
++
+@@ -404,2 +412,2 @@ public class HilbertCurveTest {
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
++        long[] point1 = new long[] { 3, 3 };
++        long[] point2 = new long[] { 8, 10 };
+@@ -409 +417 @@ public class HilbertCurveTest {
+-    
++
+@@ -413,2 +421,2 @@ public class HilbertCurveTest {
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
++        long[] point1 = new long[] { 3, 3 };
++        long[] point2 = new long[] { 8, 10 };
+@@ -418 +426 @@ public class HilbertCurveTest {
+-    
++
+@@ -422,2 +430,2 @@ public class HilbertCurveTest {
+-        long[] point1 = new long[] {3, 3};
+-        long[] point2 = new long[] {8, 10};
++        long[] point1 = new long[] { 3, 3 };
++        long[] point2 = new long[] { 8, 10 };
+@@ -428 +435,0 @@ public class HilbertCurveTest {
+-

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HilbertCurve.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hilbert-curve</a> &gt; <a href="index.source.html" class="el_package">org.davidmoten.hilbert</a> &gt; <span class="el_source">HilbertCurve.java</span></div><h1>HilbertCurve.java</h1><pre class="source lang-java linenums">package org.davidmoten.hilbert;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+
+import com.github.davidmoten.guavamini.Preconditions;
+import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
+
+/**
+ * Converts between Hilbert index ({@code BigInteger}) and N-dimensional points.
+ * 
+ * &lt;p&gt;
+ * Note: This algorithm is derived from work done by John Skilling and published
+ * in &quot;Programming the Hilbert curve&quot;. (c) 2004 American Institute of Physics.
+ * With thanks also to Paul Chernoch who published a C# algorithm for Skilling's
+ * work on StackOverflow and
+ * &lt;a href=&quot;https://github.com/paulchernoch/HilbertTransformation&quot;&gt;GitHub&lt;/a&gt;).
+ */
+public final class HilbertCurve {
+
+    private final int bits;
+    private final int dimensions;
+    // cached calculations
+    private final int length;
+
+<span class="fc" id="L26">    private HilbertCurve(int bits, int dimensions) {</span>
+<span class="fc" id="L27">        this.bits = bits;</span>
+<span class="fc" id="L28">        this.dimensions = dimensions;</span>
+        // cache a calculated values for small perf improvements
+<span class="fc" id="L30">        this.length = bits * dimensions;</span>
+<span class="fc" id="L31">    }</span>
+
+    /**
+     * Returns a builder for and object that performs transformations for a Hilbert
+     * curve with the given number of bits.
+     * 
+     * @param bits
+     *            depth of the Hilbert curve. If bits is one, this is the top-level
+     *            Hilbert curve
+     * @return builder for object to do transformations with the Hilbert Curve
+     */
+    public static Builder bits(int bits) {
+<span class="fc" id="L43">        return new Builder(bits);</span>
+    }
+
+    public static SmallHilbertCurve.Builder small() {
+<span class="fc" id="L47">        return new SmallHilbertCurve.Builder();</span>
+    }
+
+    /**
+     * Builds a {@link HilbertCurve} instance.
+     */
+    public static final class Builder {
+        final int bits;
+
+<span class="fc" id="L56">        private Builder(int bits) {</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            Preconditions.checkArgument(bits &gt; 0, &quot;bits must be greater than zero&quot;);</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            Preconditions.checkArgument(bits &lt; 64, &quot;bits must be 63 or less&quot;);</span>
+<span class="fc" id="L59">            this.bits = bits;</span>
+<span class="fc" id="L60">        }</span>
+
+        public HilbertCurve dimensions(int dimensions) {
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            Preconditions.checkArgument(dimensions &gt; 1, &quot;dimensions must be at least 2&quot;);</span>
+<span class="fc" id="L64">            return new HilbertCurve(bits, dimensions);</span>
+        }
+    }
+
+    /**
+     * Converts a point to its Hilbert curve index.
+     * 
+     * @param point
+     *            an array of {@code long}. Each ordinate can be between 0 and
+     *            2&lt;sup&gt;bits&lt;/sup&gt;-1.
+     * @return index (nonnegative {@link BigInteger})
+     * @throws IllegalArgumentException
+     *             if length of point array is not equal to the number of
+     *             dimensions.
+     */
+    public BigInteger index(long... point) {
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        Preconditions.checkArgument(point.length == dimensions);</span>
+<span class="fc" id="L81">        return toIndex(transposedIndex(bits, point));</span>
+    }
+
+    /**
+     * Converts a {@link BigInteger} index (distance along the Hilbert Curve from 0)
+     * to a point of dimensions defined in the constructor of {@code this}.
+     * 
+     * @param index
+     *            index along the Hilbert Curve from 0. Maximum value 2 &lt;sup&gt;bits *
+     *            dimensions&lt;/sup&gt;-1.
+     * @return array of longs being the point
+     * @throws NullPointerException
+     *             if index is null
+     * @throws IllegalArgumentException
+     *             if index is negative
+     */
+    public long[] point(BigInteger index) {
+<span class="fc" id="L98">        Preconditions.checkNotNull(index);</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        Preconditions.checkArgument(index.signum() != -1, &quot;index cannot be negative&quot;);</span>
+<span class="fc" id="L100">        return transposedIndexToPoint(bits, transpose(index));</span>
+    }
+
+    public void point(BigInteger index, long[] x) {
+<span class="fc" id="L104">        Preconditions.checkNotNull(index);</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        Preconditions.checkArgument(index.signum() != -1, &quot;index cannot be negative&quot;);</span>
+<span class="fc" id="L106">        Util.zero(x);</span>
+<span class="fc" id="L107">        transpose(index, x);</span>
+<span class="fc" id="L108">        transposedIndexToPoint(bits, x);</span>
+<span class="fc" id="L109">    }</span>
+
+    public void point(long i, long[] x) {
+<span class="fc" id="L112">        point(BigInteger.valueOf(i), x);</span>
+<span class="fc" id="L113">    }</span>
+
+    /**
+     * Converts a {@code long} index (distance along the Hilbert Curve from 0) to a
+     * point of dimensions defined in the constructor of {@code this}.
+     * 
+     * @param index
+     *            index along the Hilbert Curve from 0. Maximum value 2
+     *            &lt;sup&gt;bits+1&lt;/sup&gt;-1.
+     * @return array of longs being the point
+     * @throws IllegalArgumentException
+     *             if index is negative
+     */
+    public long[] point(long index) {
+<span class="fc" id="L127">        return point(BigInteger.valueOf(index));</span>
+    }
+
+    /**
+     * Returns the transposed representation of the Hilbert curve index.
+     * 
+     * &lt;p&gt;
+     * The Hilbert index is expressed internally as an array of transposed bits.
+     * 
+     * &lt;pre&gt;
+      Example: 5 bits for each of n=3 coordinates.
+         15-bit Hilbert integer = A B C D E F G H I J K L M N O is stored
+         as its Transpose                        ^
+         X[0] = A D G J M                    X[2]|  7
+         X[1] = B E H K N        &amp;lt;-------&amp;gt;       | /X[1]
+         X[2] = C F I L O                   axes |/
+                high low                         0------&amp;gt; X[0]
+     * &lt;/pre&gt;
+     * 
+     * @param index
+     *            index to be tranposed
+     * @return transposed index
+     */
+    @VisibleForTesting
+    long[] transpose(BigInteger index) {
+<span class="fc" id="L152">        long[] x = new long[dimensions];</span>
+<span class="fc" id="L153">        transpose(index, x);</span>
+<span class="fc" id="L154">        return x;</span>
+    }
+
+    private void transpose(BigInteger index, long[] x) {
+<span class="fc" id="L158">        byte[] b = index.toByteArray();</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">        for (int idx = 0; idx &lt; 8 * b.length; idx++) {</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">            if ((b[b.length - 1 - idx / 8] &amp; (1L &lt;&lt; (idx % 8))) != 0) {</span>
+<span class="fc" id="L161">                int dim = (length - idx - 1) % dimensions;</span>
+<span class="fc" id="L162">                int shift = (idx / dimensions) % bits;</span>
+<span class="fc" id="L163">                x[dim] |= 1L &lt;&lt; shift;</span>
+            }
+        }
+<span class="fc" id="L166">    }</span>
+
+    /**
+     * &lt;p&gt;
+     * Given the axes (coordinates) of a point in N-Dimensional space, find the
+     * distance to that point along the Hilbert curve. That distance will be
+     * transposed; broken into pieces and distributed into an array.
+     *
+     * &lt;p&gt;
+     * The number of dimensions is the length of the hilbertAxes array.
+     *
+     * &lt;p&gt;
+     * Note: In Skilling's paper, this function is called AxestoTranspose.
+     * 
+     * @param mutate
+     * 
+     * @param point
+     *            Point in N-space
+     * @return The Hilbert distance (or index) as a transposed Hilbert index
+     */
+    @VisibleForTesting
+    static long[] transposedIndex(int bits, long... point) {
+<span class="fc" id="L188">        final long M = 1L &lt;&lt; (bits - 1);</span>
+<span class="fc" id="L189">        final int n = point.length; // n: Number of dimensions</span>
+<span class="fc" id="L190">        final long[] x = Arrays.copyOf(point, n);</span>
+        long p, q, t;
+        int i;
+        // Inverse undo
+<span class="fc bfc" id="L194" title="All 2 branches covered.">        for (q = M; q &gt; 1; q &gt;&gt;= 1) {</span>
+<span class="fc" id="L195">            p = q - 1;</span>
+<span class="fc bfc" id="L196" title="All 2 branches covered.">            for (i = 0; i &lt; n; i++)</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">                if ((x[i] &amp; q) != 0)</span>
+<span class="fc" id="L198">                    x[0] ^= p; // invert</span>
+                else {
+<span class="fc" id="L200">                    t = (x[0] ^ x[i]) &amp; p;</span>
+<span class="fc" id="L201">                    x[0] ^= t;</span>
+<span class="fc" id="L202">                    x[i] ^= t;</span>
+                }
+        } // exchange
+          // Gray encode
+<span class="fc bfc" id="L206" title="All 2 branches covered.">        for (i = 1; i &lt; n; i++)</span>
+<span class="fc" id="L207">            x[i] ^= x[i - 1];</span>
+<span class="fc" id="L208">        t = 0;</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">        for (q = M; q &gt; 1; q &gt;&gt;= 1)</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">            if ((x[n - 1] &amp; q) != 0)</span>
+<span class="fc" id="L211">                t ^= q - 1;</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">        for (i = 0; i &lt; n; i++)</span>
+<span class="fc" id="L213">            x[i] ^= t;</span>
+
+<span class="fc" id="L215">        return x;</span>
+    }
+
+    /**
+     * Converts the Hilbert transposed index into an N-dimensional point expressed
+     * as a vector of {@code long}.
+     * 
+     * In Skilling's paper this function is named {@code TransposeToAxes}
+     * 
+     * @param transposedIndex
+     *            distance along the Hilbert curve in transposed form
+     * @return the coordinates of the point represented by the transposed index on
+     *         the Hilbert curve
+     */
+    static long[] transposedIndexToPoint(int bits, long... x) {
+<span class="fc" id="L230">        final long N = 2L &lt;&lt; (bits - 1);</span>
+        // Note that x is mutated by this method (as a performance improvement
+        // to avoid allocation)
+<span class="fc" id="L233">        int n = x.length; // number of dimensions</span>
+        long p, q, t;
+        int i;
+        // Gray decode by H ^ (H/2)
+<span class="fc" id="L237">        t = x[n - 1] &gt;&gt; 1;</span>
+        // Corrected error in Skilling's paper on the following line. The
+        // appendix had i &gt;= 0 leading to negative array index.
+<span class="fc bfc" id="L240" title="All 2 branches covered.">        for (i = n - 1; i &gt; 0; i--)</span>
+<span class="fc" id="L241">            x[i] ^= x[i - 1];</span>
+<span class="fc" id="L242">        x[0] ^= t;</span>
+        // Undo excess work
+<span class="fc bfc" id="L244" title="All 2 branches covered.">        for (q = 2; q != N; q &lt;&lt;= 1) {</span>
+<span class="fc" id="L245">            p = q - 1;</span>
+<span class="fc bfc" id="L246" title="All 2 branches covered.">            for (i = n - 1; i &gt;= 0; i--)</span>
+<span class="fc bfc" id="L247" title="All 2 branches covered.">                if ((x[i] &amp; q) != 0L)</span>
+<span class="fc" id="L248">                    x[0] ^= p; // invert</span>
+                else {
+<span class="fc" id="L250">                    t = (x[0] ^ x[i]) &amp; p;</span>
+<span class="fc" id="L251">                    x[0] ^= t;</span>
+<span class="fc" id="L252">                    x[i] ^= t;</span>
+                }
+        } // exchange
+<span class="fc" id="L255">        return x;</span>
+    }
+
+    // Quote from Paul Chernoch
+    // Interleaving means take one bit from the first matrix element, one bit
+    // from the next, etc, then take the second bit from the first matrix
+    // element, second bit from the second, all the way to the last bit of the
+    // last element. Combine those bits in that order into a single BigInteger,
+    // which can have as many bits as necessary. This converts the array into a
+    // single number.
+    @VisibleForTesting
+    BigInteger toIndex(long... transposedIndex) {
+<span class="fc" id="L267">        byte[] b = new byte[length];</span>
+<span class="fc" id="L268">        int bIndex = length - 1;</span>
+<span class="fc" id="L269">        long mask = 1L &lt;&lt; (bits - 1);</span>
+<span class="fc bfc" id="L270" title="All 2 branches covered.">        for (int i = 0; i &lt; bits; i++) {</span>
+<span class="fc bfc" id="L271" title="All 2 branches covered.">            for (int j = 0; j &lt; transposedIndex.length; j++) {</span>
+<span class="fc bfc" id="L272" title="All 2 branches covered.">                if ((transposedIndex[j] &amp; mask) != 0) {</span>
+<span class="fc" id="L273">                    b[length - 1 - bIndex / 8] |= 1 &lt;&lt; (bIndex % 8);</span>
+                }
+<span class="fc" id="L275">                bIndex--;</span>
+            }
+<span class="fc" id="L277">            mask &gt;&gt;= 1;</span>
+        }
+        // b is expected to be BigEndian
+<span class="fc" id="L280">        return new BigInteger(1, b);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

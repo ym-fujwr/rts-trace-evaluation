@@ -1,0 +1,41 @@
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] ----------------< com.github.davidmoten:hilbert-curve >-----------------
+[INFO] Building hilbert-curve 0.1.5-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.3:prepare-agent (default) @ hilbert-curve ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.3/org.jacoco.agent-0.8.3-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/target/jacoco.exec"
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hilbert-curve ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ hilbert-curve ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 11 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java:[112,21] incompatible types: org.davidmoten.hilbert.Ranges2 cannot be converted to org.davidmoten.hilbert.Ranges
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.486 s
+[INFO] Finished at: 2023-12-14T10:26:59+09:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.5.1:compile (default-compile) on project hilbert-curve: Compilation failure
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/src/main/java/org/davidmoten/hilbert/SmallHilbertCurve.java:[112,21] incompatible types: org.davidmoten.hilbert.Ranges2 cannot be converted to org.davidmoten.hilbert.Ranges
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

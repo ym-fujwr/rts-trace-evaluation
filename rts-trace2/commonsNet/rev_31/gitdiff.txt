@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/net/ftp/FTPClient.java b/src/main/java/org/apache/commons/net/ftp/FTPClient.java
+index 2d2d726f3..5edb8ef62 100644
+--- a/src/main/java/org/apache/commons/net/ftp/FTPClient.java
++++ b/src/main/java/org/apache/commons/net/ftp/FTPClient.java
+@@ -1708 +1708 @@ public class FTPClient extends FTP implements Configurable {
+-    protected int getActivePort()
++    int getActivePort()
+@@ -1874 +1874 @@ public class FTPClient extends FTP implements Configurable {
+-    protected InetAddress getHostAddress()
++    InetAddress getHostAddress()
+@@ -1995 +1995 @@ public class FTPClient extends FTP implements Configurable {
+-    protected InetAddress getReportHostAddress() {
++    InetAddress getReportHostAddress() {

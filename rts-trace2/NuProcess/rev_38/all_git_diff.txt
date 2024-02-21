@@ -1,0 +1,65 @@
+diff --git a/CHANGES.md b/CHANGES.md
+index b7a14fe..da4e7d6 100644
+--- a/CHANGES.md
++++ b/CHANGES.md
+@@ -0,0 +1,5 @@
++Changes in 1.2.6
++
++ * Fix linkage issues with Azul JVMs. Special thanks to Bryan Turner for this pull request and extensive testing across
++   a wide variety of JVMs.
++
+diff --git a/pom.xml b/pom.xml
+index 5ea6e02..255f526 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -9 +9 @@
+-    <version>1.2.6-SNAPSHOT</version>
++    <version>1.2.7-SNAPSHOT</version>
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/Constants.java b/src/main/java/com/zaxxer/nuprocess/internal/Constants.java
+index c28c6aa..759873f 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/Constants.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/Constants.java
+@@ -15,0 +16,10 @@ public class Constants
++   static int getJavaMajorVersion(String versionString) {
++       String[] parts = versionString.split("\\.");
++       // Make sure we handle versions like '11-ea' which ships with centos7
++       int major = Integer.parseInt(parts[0].split("\\D")[0]);
++       if (major == 1) {
++         major = Integer.parseInt(parts[1].split("\\D")[0]);
++       }
++       return major;
++   }
++
+@@ -17,5 +27,2 @@ public class Constants
+-      String[] parts = System.getProperty("java.version").split("\\.");
+-      int major = Integer.valueOf(parts[0]);
+-      if (major == 1)
+-        major = Integer.valueOf(parts[1]);
+-      JVM_MAJOR_VERSION = major;
++
++      JVM_MAJOR_VERSION = getJavaMajorVersion(System.getProperty("java.version"));
+diff --git a/src/test/java/com/zaxxer/nuprocess/internal/ConstantsTest.java b/src/test/java/com/zaxxer/nuprocess/internal/ConstantsTest.java
+new file mode 100644
+index 0000000..568c591
+--- /dev/null
++++ b/src/test/java/com/zaxxer/nuprocess/internal/ConstantsTest.java
+@@ -0,0 +1,19 @@
++package com.zaxxer.nuprocess.internal;
++
++import org.junit.Assert;
++import org.junit.Test;
++
++public class ConstantsTest {
++  @Test
++  public void parsesVersionStrings() {
++    Assert.assertEquals(8, Constants.getJavaMajorVersion("1.8.0_foo"));
++    Assert.assertEquals(8, Constants.getJavaMajorVersion("1.8_foo"));
++    Assert.assertEquals(11, Constants.getJavaMajorVersion("11_foo"));
++    Assert.assertEquals(8, Constants.getJavaMajorVersion("1.8.0-foo"));
++    Assert.assertEquals(8, Constants.getJavaMajorVersion("1.8-foo"));
++    Assert.assertEquals(11, Constants.getJavaMajorVersion("11-foo"));
++    Assert.assertEquals(8, Constants.getJavaMajorVersion("1.8.0"));
++    Assert.assertEquals(8, Constants.getJavaMajorVersion("1.8"));
++    Assert.assertEquals(11, Constants.getJavaMajorVersion("11"));
++  }
++}

@@ -1,0 +1,136 @@
+==== 実験手順 ====
+***ほぼすべてスクリプト内でプロジェクト名を指定しないとダメ***
+
+<実験対象のプロジェクトを持ってくる>
+・repository.txtに　プロジェクト名，githubURL，先頭のリビジョンを置く
+・setup.shを実行
+これで先頭のリビジョンから昔にさかのぼって，Javaファイルの編集があった５０コミットのリビジョンIDをrevisions.txtに出力
+・revisions.txtを少しいじる　（１行目になぜかリビジョンID２つあるから，改行して直す）
+
+<RetestAll>
+・runAll.shを実行
+実行されたテストメソッドリストも生成される（提案手法で使う）
+・modifyTestMethodList.shを実行
+テストメソッドリストの先頭の'|'を抜いてる．（正規表現のところでばぐるから）
+
+<Ekstazi>
+・runEkstazi.shを実行
+
+<rts-trace>
+・plugins.txtに抜くプラグインの設定を書く
+・（jitwatchだけgit-diffの出力結果をいじる必要ある）
+jitwatchの場合，gitdiffの出力の中で，ファイル名がa/core/src/...って出てくる．このまま使うとバグるので
+git diffを編集する必要あり
+a/core/src　を a/src
+b/core/src を b/srcに
+
+・runRtsTrace.shを実行
+
+
+==== 個別メモ ====
+jitwatchは38から
+NuProcessは　pom.xmlの<reuseForks>false</reuseForks>　を抜かないといけない．
+==========================================
+
+
+===Ekstaziを利用する際のpomへの記述===
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>-javaagent:../org.ekstazi.core-5.3.0.jar=mode=junit</argLine>
+        </configuration>
+      </plugin>
+
+==========================================
+
+====== Ekstaziをコマンドラインで =======
+mvn -Drat.skip=true -DargLine="-javaagent:../org.ekstazi.core-5.3.0.jar=mode=junit" test
+
+==========================================
+
+
+====== seloggerの使用　コマンドラインで ======
+・commons-cli
+mvn -Drat.skip=true -DargLine="-javaagent:../selogger-0.5.0.jar=output=./data/selogger,format=freq,weave=EXEC+FIELD+LINE,e=org/apache/maven/,e=org/junit/,e=junit/framework/,e=org/hamcrest/,logsave=partial,logstart=#test.+|should.+##METHOD_ENTRY,logend=#test.+|should.+##METHOD_ENTRY" test
+mvn -Drat.skip=true -DargLine="-javaagent:../selogger-0.5.0.jar=output=./data/selogger,format=freq,weave=EXEC+FIELD+LINE,e=org/apache/maven/,e=org/junit/,e=junit/framework/,e=org/hamcrest/,logsave=partial,logstart=###METHOD_ENTRY,logend=###METHOD_ENTRY" test
+
+・commons-net
+<argLine>-javaagent:../selogger-0.5.0.jar=output=./data/selogger,format=freq,weaverlog=data/selogger/log.txt,weave=EXEC+FIELD+LINE,e=org/apache/maven,e=org/junit/platform,e=org/junit/vintage,e=org/junit/jupiter,e=junit/runner/Version,e=org/junit/runner,e=org/junit/runners,e=org/junit/internal,e=org/junit/rules,e=org/hamcrest/SelfDescribing,e=org/junit/validator,e=org/apache/ftpserver,e=org/junit/FixMethodOrder,e=org/junit/Test,e=org/junit/Test$None,e=org/junit/Before,e=org/junit/BeforeClass,e=org/junit/AfterClass,e=org/junit/ClassRule,e=org/junit/Rule,e=org/junit/After,e=org/junit/Ignore,e=org/apiguardian/api,e=org/junit/experimental,e=junit/framework/TestCase,e=junit/framework/Test,e=junit/framework/Assert,e=junit/framework/ComparisonFailure,e=junit/framework/AssertionFailedError,e=junit/framework/TestResult,e=junit/framework/TestListener,e=junit/framework/TestSuite,e=org/junit/Assert,e=org/junit/ComparisonFailure,e=org/opentest4j/MultipleFailuresError,e=org/apache/mina,e=org/slf4j/LoggerFactory,e=org/slf4j/ILoggerFactory,e=org/slf4j/event,e=org/slf4j/helpers,e=org/slf4j/Logger,e=org/jcp/xml,e=org/slf4j/MDC,e=org/slf4j/spi,e=junit/framework/Protectable,e=junit/framework/TestResult$1,e=org/junit/TestCouldNotBeSkippedException,e=org/opentest4j/AssertionFailedError,e=junit/framework/TestFailure,e=org/opentest4j/TestAbortedException,e=org/opentest4j/IncompleteExecutionException,logsave=partial,logstart=#test.+|checkGenerator|checkExamplesPropertiesIsComplete##METHOD_ENTRY,logend=#test.+|checkGenerator|checkExamplesPropertiesIsComplete##METHOD_EXIT</argLine>
+
+==========================================
+
+======  selogger　pomへの記述 ====== 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>-javaagent:../../selogger-0.5.1.jar=output=./data/selogger,format=freq,weaverlog=data/selogger/log.txt,weave=EXEC+FIELD+LINE,logsave=partial,logstart=#test.+##METHOD_ENTRY,logend=#test.+##METHOD_EXIT</argLine>
+        </configuration>
+      </plugin>
+==========================================
+
+====== 提案手法の実行 ======
+java -jar rts-trace-1.0-SNAPSHOT-jar-with-dependencies.jar create
+java -jar rts-trace-1.0-SNAPSHOT-jar-with-dependencies.jar select
+==========================================
+
+====== プラグイン抜くやつ ======
+java -jar extract_plugin-1.0-SNAPSHOT.jar
+==========================================
+
+
+
+=== repo.txt===
+12/12時点で選んだ．ビルドができる最新のやつだけど，commonsNetはEkstaziとか入れたらエラー出たから，昔の選んだ
+
+commonsCLI https://github.com/apache/commons-cli.git c41f5759b10fddbe69503284f29b8ae3644339d2
+commonsNet https://github.com/apache/commons-net.git 6b29c0bed619a34dad55a2dfb6a8b00582bce3ed
+commonsJXPATH https://github.com/apache/commons-jxpath.git 589e8598c63eec052790e43ea1dd6eddf7b0a5f4
+jacksonXML https://github.com/FasterXML/jackson-dataformat-xml.git d7ce61f43370dac3b1c144b72eb953303a91f6db
+NuProcess https://github.com/brettwooldridge/NuProcess.git 9e2f75c3657e08902ca06f2c6b2e8b5b21337c5b
+jitWatch https://github.com/AdoptOpenJDK/jitwatch.git c3b463ba9d0652b797039e424c9bfd5a0123273b 
+hilbertCurve https://github.com/davidmoten/hilbert-curve.git 64bcc8bf7ac0cf0a0a1cd04bcb43055f0dbdfcae
+
+==========================================
+c4c3abc8499f6604909f4781ab71a1bb86075095
+
+==plug.txt==
+e=org/apache/maven/,e=org/junit/,e=junit/framework/,e=org/hamcrest/
+e=org/apache/maven,e=org/junit/platform,e=org/junit/vintage,e=org/junit/jupiter,e=junit/runner/Version,e=org/junit/runner,e=org/junit/runners,e=org/junit/internal,e=org/junit/rules,e=org/hamcrest/SelfDescribing,e=org/junit/validator,e=org/apache/ftpserver,e=org/junit/FixMethodOrder,e=org/junit/Test,e=org/junit/Test$None,e=org/junit/Before,e=org/junit/BeforeClass,e=org/junit/AfterClass,e=org/junit/ClassRule,e=org/junit/Rule,e=org/junit/After,e=org/junit/Ignore,e=org/apiguardian/api,e=org/junit/experimental,e=junit/framework/TestCase,e=junit/framework/Test,e=junit/framework/Assert,e=junit/framework/ComparisonFailure,e=junit/framework/AssertionFailedError,e=junit/framework/TestResult,e=junit/framework/TestListener,e=junit/framework/TestSuite,e=org/junit/Assert,e=org/junit/ComparisonFailure,e=org/opentest4j/MultipleFailuresError,e=org/apache/mina,e=org/slf4j/LoggerFactory,e=org/slf4j/ILoggerFactory,e=org/slf4j/event,e=org/slf4j/helpers,e=org/slf4j/Logger,e=org/jcp/xml,e=org/slf4j/MDC,e=org/slf4j/spi,e=junit/framework/Protectable,e=junit/framework/TestResult$1,e=org/junit/TestCouldNotBeSkippedException,e=org/opentest4j/AssertionFailedError,e=junit/framework/TestFailure,e=org/opentest4j/TestAbortedException,e=org/opentest4j/IncompleteExecutionException,
+e=org/apache/maven,e=org/junit/runner,e=org/apache/commons/beanutils,e=org/apache/commons/logging,e=org/apache/commons/collections,e=junit/framework/Test,e=junit/framework/TestCase,e=junit/framework/Assert,e=org/junit/Ignore,e=org/junit/internal,e=org/junit/runners,e=junit/framework/ComparisonFailure,e=junit/framework/AssertionFailedError,e=junit/framework/TestResult,e=junit/framework/TestListener,e=junit/framework/TestSuite,e=org/junit/FixMethodOrder,e=junit/framework/Protectable,e=junit/framework/TestResult$1,e=org/apache/xerces,e=org/jdom/Document,e=org/jdom/Parent,e=org/jdom/ContentList,e=org/jdom/Content,e=org/jdom/DocType,e=org/jdom/IllegalAddException,e=org/jdom/Comment,e=org/jdom/Element,e=org/jdom/ProcessingInstruction,e=org/jdom/input,e=org/jdom/JDOMException,e=org/jdom/JDOMFactory,e=org/jdom/DefaultJDOMFactory,e=org/jdom/EntityRef,e=org/jdom/CDATA,e=org/jdom/Text,e=org/jdom/IllegalDataException,e=org/jdom/Verifier,e=org/jdom/Namespace,e=org/jdom/IllegalNameException,e=org/jdom/AttributeList,e=org/jdom/filter,e=org/jdom/Attribute,e=org/jdom/DataConversionException,e=org/jdom/IllegalTargetException,e=com/mockrunner/mock,e=com/mockrunner/base,e=com/mockrunner/util,
+e=org/apache/maven,e=com/fasterxml/jackson/annotation,e=com/fasterxml/jackson/databind,e=com/fasterxml/jackson/core,e=com/fasterxml/jackson/module,e=org/junit/runner,e=junit/framework/Test,e=org/junit/Test,e=junit/framework/TestCase,e=junit/framework/Assert,e=org/junit/Test$None,e=org/junit/Ignore,e=org/junit/internal,e=org/junit/runners,e=junit/framework/ComparisonFailure,e=junit/framework/AssertionFailedError,e=junit/framework/TestResult,e=junit/framework/TestListener,e=junit/framework/TestSuite,e=org/junit/FixMethodOrder,e=junit/framework/Protectable,e=junit/framework/TestResult$1,e=com/ctc/wstx,e=org/codehaus/stax2,e=jakarta/xml/bind,e=jakarta/activation/DataHandler,e=jakarta/activation/DataSource,e=org/hamcrest/CoreMatchers,e=org/hamcrest/core,e=org/hamcrest/DiagnosingMatcher,e=org/hamcrest/BaseMatcher,e=org/hamcrest/Matcher,e=org/hamcrest/SelfDescribing,e=org/hamcrest/MatcherAssert,e=org/hamcrest/Description,e=org/hamcrest/Description$NullDescription,e=org/junit/rules,e=org/junit/validator,e=org/junit/Before,e=org/junit/BeforeClass,e=org/junit/AfterClass,e=org/junit/ClassRule,e=org/junit/Rule,e=org/junit/Assert,e=org/junit/ComparisonFailure,e=org/junit/After,
+e=org/apache/maven,e=org/junit/runner,e=junit/framework/Test,e=org/junit/Before,e=org/junit/Test,e=org/junit/Test$None,e=org/junit/Ignore,e=org/junit/internal,e=org/junit/runners,e=junit/framework/TestCase,e=junit/framework/Assert,e=org/junit/rules,e=org/hamcrest/SelfDescribing,e=org/junit/validator,e=org/junit/FixMethodOrder,e=org/junit/BeforeClass,e=org/junit/Rule,e=org/junit/AfterClass,e=org/junit/ClassRule,e=org/junit/Assert,e=org/junit/ComparisonFailure,e=org/junit/After,e=org/junit/TestCouldNotBeSkippedException,e=org/hamcrest/Matchers,e=org/hamcrest/core,e=org/hamcrest/BaseMatcher,e=org/hamcrest/Matcher,e=org/hamcrest/MatcherAssert,e=org/hamcrest/Description,e=org/junit/Assume,e=org/junit/AssumptionViolatedException,e=org/hamcrest/CoreMatchers,
+e=org/apache,e=org/junit,e=junit/framework,e=org/adoptopenjdk,e=org/hamcrest,e=com/chrisnewland,e=FooClassInDefaultPackage,e=IsUsedForTestingDefaultPackage,
+e=org/apache,e=org/junit,e=junit/framework,e=org/openjdk,e=org/hamcrest,e=com/github
+==========================================
+e=org/apache/maven,e=org/junit/runner,e=junit/framework/Test,e=com/fasterxml/jackson,e=org/junit/Test,e=junit/framework/TestCase,e=junit/framework/Assert,e=org/junit/Test$None,e=org/junit/Ignore,e=org/junit/internal,e=org/junit/runners,e=junit/framework/ComparisonFailure,e=junit/framework/AssertionFailedError,e=junit/framework/TestResult,e=junit/framework/TestListener,e=junit/framework/TestSuite,e=org/junit/FixMethodOrder,e=junit/framework/Protectable,e=junit/framework/TestResult$1,e=com/ctc/wstx,e=org/codehaus/stax2,e=jakarta/xml/bind,e=jakarta/activation/DataHandler,e=jakarta/activation/DataSource,e=org/hamcrest/CoreMatchers,e=org/hamcrest/core,e=org/hamcrest/DiagnosingMatcher,e=org/hamcrest/BaseMatcher,e=org/hamcrest/Matcher,e=org/hamcrest/SelfDescribing,e=org/hamcrest/MatcherAssert,e=org/hamcrest/Description,e=org/hamcrest/Description$NullDescription,e=org/junit/rules,e=org/junit/validator,e=org/junit/Before,e=org/junit/BeforeClass,e=org/junit/AfterClass,e=org/junit/ClassRule,e=org/junit/Rule,e=org/junit/Assert,e=org/junit/ComparisonFailure,e=org/junit/After,
+==なんか実行できひんとき==
+dos2unix する
+
+
+==== script ====
+bash extractTest_CollectBuild.sh
+bash collectReduction.sh
+
+==== original_sourceについて ====
+original_source内のプロジェクト名リポジトリは，最新のリビジョンのコードがある．
+rev_1が５０コミット中最も古いもの．
+
+
+==== opencloverの使い方 ====
+      <plugin>
+            <groupId>org.openclover</groupId>
+            <artifactId>clover-maven-plugin</artifactId>
+            <version>4.5.1</version>
+        </plugin>
+
+            <dependency>
+      <groupId>org.openclover</groupId>
+      <artifactId>clover-maven-plugin</artifactId>
+      <version>4.5.1</version>
+    </dependency>
+
+    を入れて，
+    mvn -Drat.skip=true  clean clover:setup test clover:aggregate clover:clover

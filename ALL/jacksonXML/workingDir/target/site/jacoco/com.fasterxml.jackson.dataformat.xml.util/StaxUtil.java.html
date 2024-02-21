@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StaxUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml.util</a> &gt; <span class="el_source">StaxUtil.java</span></div><h1>StaxUtil.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml.util;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.stream.*;
+
+import com.fasterxml.jackson.core.Base64Variant;
+import com.fasterxml.jackson.core.Base64Variants;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonParser;
+
+<span class="nc" id="L16">public class StaxUtil</span>
+{
+    /**
+     * @since 2.9
+     */
+    public static &lt;T&gt; T throwAsParseException(XMLStreamException e,
+            JsonParser p) throws IOException
+    {
+<span class="fc" id="L24">        Throwable t = _unwrap(e);</span>
+<span class="fc" id="L25">        throw new JsonParseException(p, _message(t, e), t);</span>
+    }
+
+    /**
+     * @since 2.9
+     */
+    public static &lt;T&gt; T throwAsGenerationException(XMLStreamException e,
+            JsonGenerator g) throws IOException
+    {
+<span class="fc" id="L34">        Throwable t = _unwrap(e);</span>
+<span class="fc" id="L35">        throw new JsonGenerationException(_message(t, e), t, g);</span>
+    }
+
+    private static Throwable _unwrap(Throwable t) {
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        while (t.getCause() != null) {</span>
+<span class="nc" id="L40">            t = t.getCause();</span>
+        }
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (t instanceof Error) throw (Error) t;</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (t instanceof RuntimeException) throw (RuntimeException) t;</span>
+<span class="fc" id="L44">        return t;</span>
+    }
+
+    private static String _message(Throwable t1, Throwable t2) {
+<span class="fc" id="L48">        String msg = t1.getMessage();</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        if (msg == null) {</span>
+<span class="nc" id="L50">            msg = t2.getMessage();</span>
+        }
+<span class="fc" id="L52">        return msg;</span>
+    }
+
+    /**
+     * Since XML names can not contain all characters JSON names can, we may
+     * need to replace characters. Let's start with trivial replacement of
+     * ASCII characters that can not be included.
+     */
+    public static String sanitizeXmlTypeName(String name)
+    {
+        // [dataformat-xml#451]: with DEDUCTION, at least, won't have property name
+        //   (but probably sensible to check for it anyway)
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (name == null) {</span>
+<span class="fc" id="L65">            return null;</span>
+        }
+        
+        StringBuilder sb;
+<span class="fc" id="L69">        int changes = 0;</span>
+        // First things first: remove array types' trailing[]...
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (name.endsWith(&quot;[]&quot;)) {</span>
+            do {
+<span class="fc" id="L73">                name = name.substring(0, name.length() - 2);</span>
+<span class="fc" id="L74">                ++changes;</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">            } while (name.endsWith(&quot;[]&quot;));</span>
+<span class="fc" id="L76">            sb = new StringBuilder(name);</span>
+            // do trivial pluralization attempt
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">            if (name.endsWith(&quot;s&quot;)) {</span>
+<span class="nc" id="L79">                sb.append(&quot;es&quot;);</span>
+            } else {
+<span class="fc" id="L81">                sb.append('s');</span>
+            }
+        } else {
+<span class="fc" id="L84">            sb = new StringBuilder(name);</span>
+        }
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        for (int i = 0, len = name.length(); i &lt; len; ++i) {</span>
+<span class="fc" id="L87">            char c = name.charAt(i);</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">            if (c &gt; 127) continue;</span>
+<span class="pc bpc" id="L89" title="1 of 4 branches missed.">            if (c &gt;= 'a' &amp;&amp; c &lt;= 'z') continue;</span>
+<span class="pc bpc" id="L90" title="1 of 4 branches missed.">            if (c &gt;= 'A' &amp;&amp; c &lt;= 'Z') continue;</span>
+<span class="pc bpc" id="L91" title="1 of 4 branches missed.">            if (c &gt;= '0' &amp;&amp; c &lt;= '9') continue;</span>
+<span class="pc bpc" id="L92" title="3 of 6 branches missed.">            if (c == '_' || c == '.' || c == '-') continue;</span>
+            // Ok, need to replace
+<span class="fc" id="L94">            ++changes;</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">            if (c == '$') {</span>
+<span class="nc" id="L96">                sb.setCharAt(i, '.');</span>
+            } else {
+<span class="fc" id="L98">                sb.setCharAt(i, '_');</span>
+            }
+        }
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if (changes == 0) {</span>
+<span class="fc" id="L102">            return name;</span>
+        }
+<span class="fc" id="L104">        return sb.toString();</span>
+    }
+
+    /**
+     * Helper method used to &quot;convert&quot; Jackson's {@link Base64Variant} into corresponding
+     * Stax2 equivalent, to try to allow Jackson-style configuration for XML output as well.
+     *
+     * @param j64b Jackson base64 variant to find match for
+     *
+     * @return Stax2 Base64 variant that most closely resembles Jackson canonical Base64 variant
+     *     passed in as argument
+     *
+     * @since 2.12
+     */
+    public static org.codehaus.stax2.typed.Base64Variant toStax2Base64Variant(Base64Variant j64b) {
+<span class="fc" id="L119">        return Base64Mapper.instance.map(j64b);</span>
+    }
+
+    /**
+     * @since 2.14
+     */
+    public static XMLInputFactory defaultInputFactory(ClassLoader cl) {
+        // 05-Jul-2021, tatu: as per [dataformat-xml#483], specify ClassLoader
+        try {
+<span class="fc" id="L128">            return XMLInputFactory.newFactory(XMLInputFactory.class.getName(), cl);</span>
+<span class="nc" id="L129">        } catch (FactoryConfigurationError|NoSuchMethodError e) {</span>
+            // 24-Oct-2022, tatu: as per [dataformat-xml#550] need extra care
+<span class="nc" id="L131">            return XMLInputFactory.newInstance();</span>
+        }
+    }
+
+    /**
+     * @since 2.14
+     */
+    public static XMLOutputFactory defaultOutputFactory(ClassLoader cl) {
+        // 05-Jul-2021, tatu: as per [dataformat-xml#483], specify ClassLoader
+        try {
+<span class="fc" id="L141">            return XMLOutputFactory.newFactory(XMLOutputFactory.class.getName(), cl);</span>
+<span class="nc" id="L142">        } catch (FactoryConfigurationError|NoSuchMethodError e) {</span>
+            // 24-Oct-2022, tatu: as per [dataformat-xml#550] need extra care
+<span class="nc" id="L144">            return XMLOutputFactory.newInstance();</span>
+        }
+    }
+
+    private static class Base64Mapper {
+<span class="fc" id="L149">        public final static Base64Mapper instance = new Base64Mapper();</span>
+
+<span class="fc" id="L151">        private final Map&lt;String, org.codehaus.stax2.typed.Base64Variant&gt; j2stax2</span>
+            = new HashMap&lt;&gt;();
+        {
+<span class="fc" id="L154">            j2stax2.put(Base64Variants.MIME.getName(), org.codehaus.stax2.typed.Base64Variants.MIME);</span>
+<span class="fc" id="L155">            j2stax2.put(Base64Variants.MIME_NO_LINEFEEDS.getName(),</span>
+                    org.codehaus.stax2.typed.Base64Variants.MIME_NO_LINEFEEDS);
+<span class="fc" id="L157">            j2stax2.put(Base64Variants.MODIFIED_FOR_URL.getName(),</span>
+                    org.codehaus.stax2.typed.Base64Variants.MODIFIED_FOR_URL);
+<span class="fc" id="L159">            j2stax2.put(Base64Variants.PEM.getName(), org.codehaus.stax2.typed.Base64Variants.PEM);</span>
+        }
+
+<span class="fc" id="L162">        private Base64Mapper() {</span>
+<span class="fc" id="L163">        }</span>
+
+        public org.codehaus.stax2.typed.Base64Variant map(Base64Variant j64b) {
+<span class="fc" id="L166">            org.codehaus.stax2.typed.Base64Variant result = j2stax2.get(j64b.getName());</span>
+<span class="pc bpc" id="L167" title="1 of 2 branches missed.">            if (result == null) {</span>
+                // 13-May-2020, tatu: in unexpected case of no match, default to what Stax2
+                //    considers default, not Jackson: this for backwards compatibility with
+                //    Jackson 2.11 and earlier
+<span class="nc" id="L171">                result = org.codehaus.stax2.typed.Base64Variants.getDefaultVariant();</span>
+            }
+<span class="fc" id="L173">            return result;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

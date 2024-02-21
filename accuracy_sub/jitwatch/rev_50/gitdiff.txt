@@ -1,0 +1,36 @@
+diff --git a/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java b/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java
+index 704bf894..77cf3f23 100644
+--- a/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java
++++ b/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java
+@@ -28,2 +28,2 @@ import org.adoptopenjdk.jitwatch.process.compiler.CompilerJava;
+-import org.junit.After;
+-import org.junit.Before;
++import org.junit.AfterClass;
++import org.junit.BeforeClass;
+@@ -72,3 +72,3 @@ public class TestBytecodeLoaderWithInnerClasses
+-	private String classNameOuter = "TestInner";
+-	private String classNameInner1 = "TestInner$Inner1";
+-	private String classNameInner2 = "TestInner$Inner1$Inner2";
++	private static String classNameOuter = "TestInner";
++	private static String classNameInner1 = "TestInner$Inner1";
++	private static String classNameInner2 = "TestInner$Inner1$Inner2";
+@@ -76,3 +76,3 @@ public class TestBytecodeLoaderWithInnerClasses
+-	private Path pathToSourceDir;
+-	private Path pathToTempClassDir;
+-	private List<String> classpathLocations;
++	private static Path pathToSourceDir;
++	private static Path pathToTempClassDir;
++	private static List<String> classpathLocations;
+@@ -80,3 +80,3 @@ public class TestBytecodeLoaderWithInnerClasses
+-	private ClassBC classBytecodeForOuter;
+-	private ClassBC classBytecodeForInner1;
+-	private ClassBC classBytecodeForInner2;
++	private static ClassBC classBytecodeForOuter;
++	private static ClassBC classBytecodeForInner1;
++	private static ClassBC classBytecodeForInner2;
+@@ -84 +84 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@Before public void setUp()
++	@BeforeClass public static void setUp()
+@@ -136 +136 @@ public class TestBytecodeLoaderWithInnerClasses
+-	@After public void tearDown()
++	@AfterClass public static void tearDown()

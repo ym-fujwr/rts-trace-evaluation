@@ -1,0 +1,127 @@
+diff --git a/README.md b/README.md
+index dedf29b..9dca7d5 100644
+--- a/README.md
++++ b/README.md
+@@ -148 +148,28 @@ HilbertCurveRenderer.renderToFile(bits, 800, "target/image.png");
+-This is one of the very useful applications of the Hilbert curve. By mapping n-dimensional space onto 1 dimension we enable the use of range lookups on that 1 dimension using a B-tree or binary search. A search region represented as a box in n-dimensions can be mapped to a series of ranges on the hilbert curve. A lot of small ranges may be inefficient due to lookup overheads and constraints so a selectable refinement is chosen for the query called `splitDepth`.
++This is one of the very useful applications of the Hilbert curve. By mapping n-dimensional space onto 1 dimension we enable the use of range lookups on that 1 dimension using a B-tree or binary search. A search region represented as a box in n-dimensions can be mapped to a series of ranges on the hilbert curve. 
++
++Given an n-dimensional search box the exact hilbert curve ranges that cover that box can be determined just by looking at the hilbert curve values on the perimeter of the search box. Let's first establish why this is so.
++
++Firstly, let's state that the points corresponding to 0 on the hilbert curve and the maximum on the hilbert curve are vertices of the domain. 
++
++Proof: TODO
++
++Secondly, we make the observation that given exact covering ranges of the Hilbert curve over a search box that the extremes of those ranges must be on the perimeter of the search region.
++
++Proof: TODO
++
++With these facts we create an algorithm for extracting the exact ranges:
++
++```
++find all the values of the hilbert curve on the perimeter of the search box
++sort those values in ascending order
++at this point the smallest value v<sub>1</sub> in the list will correspond to the start of a range
++continue recording the values in the list to the range while the hilbert curve proceeds along the perimeter (in steps of one along the Hilbert curve)
++If the next point on the curve is in the box (not on the perimeter) then 
++  add all values on the curve till the next perimeter value in the list. 
++  if the next hilbert curve value is on the perimeter then recursively apply this algorithm to continue extending the range
++else // the next point on the curve is outside the box
++  close off the range
++continue as above with the rest of the remaining perimeter values in the sorted list
++```
++
++A lot of small ranges may be inefficient due to lookup overheads and constraints so you can specify the maximum number of ranges returned (ranges are joined that have minimal gap between them). 
+@@ -154,2 +181,2 @@ long[] point2 = new long[] {8, 10};
+-int splitDepth = 0;
+-List<Range> ranges = c.query(point1, point2, splitDepth);
++// return just one range
++Ranges ranges = c.query(point1, point2, 1);
+@@ -162 +189 @@ Range [low=10, high=229]
+-We can improve the ranges by increasing `splitDepth`.
++We can improve the ranges by increasing `maxRanges`.
+@@ -165 +192 @@ We can improve the ranges by increasing `splitDepth`.
+-`splitDepth` is 1
++`maxRanges` is 3
+@@ -167,2 +194,2 @@ We can improve the ranges by increasing `splitDepth`.
+-Range [low=10, high=53]
+-Range [low=69, high=132]
++Range [low=10, high=69]
++Range [low=122, high=132]
+@@ -172 +199 @@ Range [low=210, high=229]
+-`splitDepth` is 2
++`maxRanges` is 6
+@@ -182,12 +209 @@ Range [low=227, high=229]
+-`splitDepth` is 3
+-```java
+-Range [low=10, high=10]
+-Range [low=26, high=53]
+-Range [low=69, high=69]
+-Range [low=122, high=128]
+-Range [low=131, high=132]
+-Range [low=210, high=221]
+-Range [low=227, high=229]
+-```
+-
+-`splitDepth` is 4
++`maxRanges` is 0 (unlimited)
+@@ -204,0 +221 @@ Range [low=227, high=229]
++
+@@ -207 +224 @@ Range [low=227, high=229]
+-When using querying do experiments with the number of bits and `splitDepth` to get your ideal run time. 
++When using querying do experiments with the number of bits and `maxRanges` (querying in parallel on each range) to get your ideal run time. 
+@@ -209 +226 @@ When using querying do experiments with the number of bits and `splitDepth` to g
+-The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>splitDepth + bits*(dimensions-1)</sup>). In a recent experiment with spatio-temporal data (3 dimensions, 20m points) I found that 10 bits and `splitDepth` of 4 looked promising. Ranges were returned in about 50ms and the `splitDepth` of 4 gave me a 64% hit rate with 12 or so ranges (which could be queried in parallel). With a splitDepth of 5, numRanges is 20, hit rate 67%. With a splitDepth of 6, numRanges is still 20, same hit rate, and query ranges are calculated in 370ms.
++OBSOLETE: The perimeter traversal used by the `query` method is O(width<sup>dimensions-1</sup> 2<sup>splitDepth + bits*(dimensions-1)</sup>). In a recent experiment with spatio-temporal data (3 dimensions, 20m points) I found that 10 bits and `splitDepth` of 4 looked promising. Ranges were returned in about 50ms and the `splitDepth` of 4 gave me a 64% hit rate with 12 or so ranges (which could be queried in parallel). With a splitDepth of 5, numRanges is 20, hit rate 67%. With a splitDepth of 6, numRanges is still 20, same hit rate, and query ranges are calculated in 370ms.
+diff --git a/src/main/java/org/davidmoten/hilbert/Ranges.java b/src/main/java/org/davidmoten/hilbert/Ranges.java
+index cadc1b5..4ba005f 100644
+--- a/src/main/java/org/davidmoten/hilbert/Ranges.java
++++ b/src/main/java/org/davidmoten/hilbert/Ranges.java
+@@ -4,0 +5 @@ import java.util.List;
++import java.util.stream.Stream;
+@@ -127,0 +129,4 @@ public final class Ranges {
++    
++    public Stream<Range> stream() {
++        return ranges.stream();
++    }
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index 461b325..ea1eca0 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -388,0 +389,36 @@ public class HilbertCurveTest {
++    
++    @Test
++    public void testQuery1() {
++        SmallHilbertCurve c = HilbertCurve.small().bits(5).dimensions(2);
++        long[] point1 = new long[] {3, 3};
++        long[] point2 = new long[] {8, 10};
++        Ranges ranges = c.query(point1, point2, 1);
++        assertEquals(Lists.newArrayList(Range.create(10, 229)), ranges.get());
++    }
++    
++    @Test
++    public void testQueryJoin0() {
++        SmallHilbertCurve c = HilbertCurve.small().bits(5).dimensions(2);
++        long[] point1 = new long[] {3, 3};
++        long[] point2 = new long[] {8, 10};
++        Ranges ranges = c.query(point1, point2, 0);
++        ranges.stream().forEach(System.out::println);
++    }
++    
++    @Test
++    public void testQueryJoin3() {
++        SmallHilbertCurve c = HilbertCurve.small().bits(5).dimensions(2);
++        long[] point1 = new long[] {3, 3};
++        long[] point2 = new long[] {8, 10};
++        Ranges ranges = c.query(point1, point2, 3);
++        ranges.stream().forEach(System.out::println);
++    }
++    
++    @Test
++    public void testQueryJoin6() {
++        SmallHilbertCurve c = HilbertCurve.small().bits(5).dimensions(2);
++        long[] point1 = new long[] {3, 3};
++        long[] point2 = new long[] {8, 10};
++        Ranges ranges = c.query(point1, point2, 6);
++        ranges.stream().forEach(System.out::println);
++    }

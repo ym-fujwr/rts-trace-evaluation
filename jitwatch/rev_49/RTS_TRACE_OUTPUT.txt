@@ -1,0 +1,118 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.chrisnewland:jitwatch-core >-------------------
+[INFO] Building JITWatch Core 1.4.8
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ jitwatch-core ---
+[INFO] Copying 39 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 180 source files with javac [debug target 1.8] to target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[99,80] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[100,87] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[101,78] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[136,86] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[137,100] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[138,82] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ jitwatch-core ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:testCompile (default-testCompile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 39 source files with javac [debug target 1.8] to target/test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestReport.java:[331,37] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestReport.java:[333,116] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestReport.java:[545,130] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[49,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestPackageManager.java:[70,9] <T>assertThat(T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[98,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[127,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[156,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[183,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[212,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[241,101] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[268,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[293,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[325,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[351,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[379,114] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[392,37] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[420,110] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[433,37] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[461,124] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[474,37] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[504,116] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestMetaClass.java:[517,37] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestParseUtil.java:[440,82] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[307,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[327,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[350,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestTagProcessor.java:[371,17] <T>assertThat(java.lang.String,T,org.hamcrest.Matcher<? super T>) in org.junit.Assert has been deprecated
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[299,37] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[537,37] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[773,37] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[988,37] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1053,99] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1097,41] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1157,41] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1475,97] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1724,97] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1829,115] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1874,41] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[1932,41] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace/jitwatch/workingDir/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeAnnotationBuilder.java:[2401,114] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ jitwatch-core ---
+[INFO] Tests are skipped.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.577 s
+[INFO] Finished at: 2023-12-22T13:32:52+09:00
+[INFO] ------------------------------------------------------------------------

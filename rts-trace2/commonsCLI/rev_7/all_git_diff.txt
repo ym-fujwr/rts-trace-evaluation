@@ -1,0 +1,32 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 517cb70d..cf380a77 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -65 +65 @@
+-      <action type="add" dev="ggregory" due-to="waso, Gary Gregory">
++      <action type="add" dev="ggregory" due-to="Waldemar Sojka, Gary Gregory">
+diff --git a/src/test/java/org/apache/commons/cli/OptionTest.java b/src/test/java/org/apache/commons/cli/OptionTest.java
+index 643cbd9e..14542d98 100644
+--- a/src/test/java/org/apache/commons/cli/OptionTest.java
++++ b/src/test/java/org/apache/commons/cli/OptionTest.java
+@@ -83,0 +84,20 @@ public class OptionTest {
++    @Test(expected = IllegalArgumentException.class)
++    public void testBuilderInvalidOptionName1() {
++        Option.builder().option("invalid?");
++    }
++
++    @Test(expected = IllegalArgumentException.class)
++    public void testBuilderInvalidOptionName2() {
++        Option.builder().option("invalid@");
++    }
++
++    @Test(expected = IllegalArgumentException.class)
++    public void testBuilderInvalidOptionName3() {
++        Option.builder("invalid?");
++    }
++
++    @Test(expected = IllegalArgumentException.class)
++    public void testBuilderInvalidOptionName4() {
++        Option.builder("invalid@");
++    }
++

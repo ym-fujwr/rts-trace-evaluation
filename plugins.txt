@@ -1,0 +1,1 @@
+e=org/apache,e=org/junit,e=junit/framework,e=org/adoptopenjdk,e=org/hamcrest,e=com/chrisnewland,e=FooClassInDefaultPackage,e=IsUsedForTestingDefaultPackage,

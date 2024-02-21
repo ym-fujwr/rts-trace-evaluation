@@ -1,0 +1,20 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+index 0abeb1ac4..0024c2976 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+@@ -164,0 +165,7 @@ public class FromXmlParser
++    protected final IOContext _ioContext;
++
++    /**
++     * @since 2.15
++     */
++    protected final StreamReadConstraints _streamReadConstraints;
++
+@@ -172,2 +178,0 @@ public class FromXmlParser
+-    protected final IOContext _ioContext;
+-
+@@ -261,0 +267 @@ public class FromXmlParser
++        _streamReadConstraints = ctxt.streamReadConstraints();
+@@ -385 +391 @@ public class FromXmlParser
+-        return _ioContext.streamReadConstraints();
++        return _streamReadConstraints;

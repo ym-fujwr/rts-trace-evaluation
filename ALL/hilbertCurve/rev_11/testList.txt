@@ -1,0 +1,7 @@
+org.davidmoten.hilbert.BoxTest
+org.davidmoten.hilbert.HilbertCurveRendererTest
+org.davidmoten.hilbert.HilbertCurveTest
+org.davidmoten.hilbert.internal.util.BoundedPriorityQueueTest
+org.davidmoten.hilbert.RangesTest
+org.davidmoten.hilbert.UtilTest
+org.davidmoten.hilbert.WikipediaHilbertTest

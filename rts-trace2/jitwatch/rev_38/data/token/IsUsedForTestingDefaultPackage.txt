@@ -1,0 +1,18 @@
+public
+class
+IsUsedForTestingDefaultPackage
+{
+@
+Override
+public
+String
+toString
+(
+)
+{
+return
+"Who watches the watchmen?"
+;
+}
+}
+<EOF>

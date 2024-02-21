@@ -1,0 +1,49 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.zaxxer:nuprocess >------------------------
+[INFO] Building NuProcess 2.0.0-SNAPSHOT
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ nuprocess ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ nuprocess ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ nuprocess ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 40 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/target/classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/internal/LibC.java: Some input files use or override a deprecated API.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/internal/LibC.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java: Some input files use unchecked or unsafe operations.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java: Recompile with -Xlint:unchecked for details.
+[INFO] 4 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java:[148,38] cannot find symbol
+  symbol:   variable isAzul
+  location: class com.zaxxer.nuprocess.linux.LinuxProcess
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.076 s
+[INFO] Finished at: 2023-12-14T15:39:05+09:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project nuprocess: Compilation failure
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java:[148,38] cannot find symbol
+[ERROR]   symbol:   variable isAzul
+[ERROR]   location: class com.zaxxer.nuprocess.linux.LinuxProcess
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

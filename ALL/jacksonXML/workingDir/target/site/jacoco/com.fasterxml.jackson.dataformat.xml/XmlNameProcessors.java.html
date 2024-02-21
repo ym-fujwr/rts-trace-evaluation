@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlNameProcessors.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml</a> &gt; <span class="el_source">XmlNameProcessors.java</span></div><h1>XmlNameProcessors.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml;
+
+import java.util.Base64;
+import java.util.regex.Pattern;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
+
+/**
+ * Contains default {@link XmlNameProcessor} implementations.
+ * &lt;p&gt;
+ * Processors should be set in the {@link XmlMapper#setXmlNameProcessor(XmlNameProcessor)}
+ * and/or the {@link XmlMapper.Builder#xmlNameProcessor(XmlNameProcessor)} methods.
+ *
+ * @since 2.14
+ */
+public final class XmlNameProcessors
+{
+    private XmlNameProcessors() {
+        // Nothing to do here; just to prevent instantiation
+    }
+
+    /**
+     * Generates a new processor that does nothing and just passes through the
+     * names as-is. Using this processor may generate invalid XML.
+     * &lt;p&gt;
+     * With this processor set, a map with the keys {@code &quot;123&quot;} and
+     * {@code &quot;$ I am &lt;fancy&gt;! &amp;;&quot;} will be written as:
+     *
+     * &lt;pre&gt;{@code
+     * &lt;DTO&gt;
+     *     &lt;badMap&gt;
+     *         &lt;$ I am &lt;fancy&gt;! &amp;;&gt;xyz&lt;/$ I am &lt;fancy&gt;! &amp;;&gt;
+     *         &lt;123&gt;bar&lt;/123&gt;
+     *     &lt;/badMap&gt;
+     * &lt;/DTO&gt;
+     * }&lt;/pre&gt;
+     * &lt;p&gt;
+     * This is the default behavior for backwards compatibility.
+     *
+     * @since 2.14
+     */
+    public static XmlNameProcessor newPassthroughProcessor() {
+<span class="fc" id="L43">        return new PassthroughProcessor();</span>
+    }
+
+    /**
+     * Generates a new processor that replaces all characters that are NOT one of:
+     *&lt;ul&gt;
+     * &lt;li&gt;Lower- or upper-case ASCII letter (a to z, A to Z)
+     *   &lt;/li&gt;
+     * &lt;li&gt;Digit (0 to 9) in position OTHER than the first character
+     *   &lt;/li&gt;
+     * &lt;li&gt;Underscore
+     *   &lt;/li&gt;
+     * &lt;li&gt;Hyphen ({@code -}) in position OTHER than the first character
+     *   &lt;/li&gt;
+     * &lt;li&gt;Colon (only  exposed if underlying parser is in non-namespace-aware mode)
+     *   &lt;/li&gt;
+     * &lt;/ul&gt;
+     * in an
+     * XML name with a replacement string. This is a one-way processor, since
+     * there is no way to reverse this replacement step.
+     * &lt;p&gt;
+     * With this processor set (and {@code &quot;_&quot;} as the replacement string), a map
+     * with the keys {@code &quot;123&quot;} and {@code &quot;$ I am &lt;fancy&gt;! &amp;;&quot;} will be written as:
+     * &lt;p&gt;
+     * NOTE: this processor works for US-ASCII based element and attribute names
+     * but is unlikely to work well for many &quot;international&quot; use cases.
+     *
+     * &lt;pre&gt;{@code
+     * &lt;DTO&gt;
+     *     &lt;badMap&gt;
+     *         &lt;__I_am__fancy_____&gt;xyz&lt;/__I_am__fancy_____&gt;
+     *         &lt;_23&gt;bar&lt;/_23&gt;
+     *     &lt;/badMap&gt;
+     * &lt;/DTO&gt;
+     * }&lt;/pre&gt;
+     *
+     * @param replacement The replacement string to replace invalid characters with
+     *
+     * @since 2.14
+     */
+    public static XmlNameProcessor newReplacementProcessor(String replacement) {
+<span class="fc" id="L84">        return new ReplaceNameProcessor(replacement);</span>
+    }
+
+    /**
+     * Convenience method 
+     * equivalent to calling {@link #newReplacementProcessor(String)} with {@code &quot;_&quot;}
+     *
+     * @since 2.14
+     */
+    public static XmlNameProcessor newReplacementProcessor() {
+<span class="fc" id="L94">        return newReplacementProcessor(&quot;_&quot;);</span>
+    }
+
+    /**
+     * Generates a new processor that escapes all names that contains characters
+     * OTHER than following characters:
+     *&lt;ul&gt;
+     * &lt;li&gt;Lower- or upper-case ASCII letter (a to z, A to Z)
+     *   &lt;/li&gt;
+     * &lt;li&gt;Digit (0 to 9) in position OTHER than the first characters
+     *   &lt;/li&gt;
+     * &lt;li&gt;Underscore
+     *   &lt;/li&gt;
+     * &lt;li&gt;Hyphen ({@code -}) in position OTHER than the first character
+     *   &lt;/li&gt;
+     * &lt;li&gt;Colon (only  exposed if underlying parser is in non-namespace-aware mode)
+     *   &lt;/li&gt;
+     * &lt;/ul&gt;
+     * with a base64-encoded version. Here the
+     * &lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc4648#section-5&quot;&gt;base64url&lt;/a&gt;
+     * encoder and decoders are used. The {@code =} padding characters are
+     * always omitted.
+     * &lt;p&gt;
+     * With this processor set, a map with the keys {@code &quot;123&quot;} and
+     * {@code &quot;$ I am &lt;fancy&gt;! &amp;;&quot;} will be written as:
+     *
+     * &lt;pre&gt;{@code
+     * &lt;DTO&gt;
+     *     &lt;badMap&gt;
+     *         &lt;base64_tag_JCBJIGFtIDxmYW5jeT4hICY7&gt;xyz&lt;/base64_tag_JCBJIGFtIDxmYW5jeT4hICY7&gt;
+     *         &lt;base64_tag_MTIz&gt;bar&lt;/base64_tag_MTIz&gt;
+     *     &lt;/badMap&gt;
+     * &lt;/DTO&gt;
+     * }&lt;/pre&gt;
+     *&lt;p&gt;
+     * NOTE: you must ensure that no incoming element or attribute name starts
+     * with {@code prefix}, otherwise decoding will not work.
+     *
+     * @param prefix The prefix to use for name that are escaped
+     *
+     * @since 2.14
+     */
+    public static XmlNameProcessor newBase64Processor(String prefix) {
+<span class="fc" id="L137">        return new Base64NameProcessor(prefix);</span>
+    }
+
+    /**
+     * Convenience method
+     * equivalent to calling {@link #newBase64Processor(String)} with {@code &quot;base64_tag_&quot;}
+     *
+     * @since 2.14
+     */
+    public static XmlNameProcessor newBase64Processor() {
+<span class="fc" id="L147">        return newBase64Processor(&quot;base64_tag_&quot;);</span>
+    }
+
+    /**
+     * Similar to {@link #newBase64Processor(String)}, however, names will
+     * &lt;b&gt;always&lt;/b&gt; be escaped with base64. No magic prefix is required
+     * for this case, since adding one would be redundant because all names
+     * will be base64 encoded.
+     */
+    public static XmlNameProcessor newAlwaysOnBase64Processor() {
+<span class="fc" id="L157">        return new AlwaysOnBase64NameProcessor();</span>
+    }
+
+    static class PassthroughProcessor implements XmlNameProcessor {
+        private static final long serialVersionUID = 1L;
+
+<span class="fc" id="L163">        public PassthroughProcessor() { }</span>
+
+        @Override
+<span class="fc" id="L166">        public void encodeName(XmlName name) { }</span>
+
+        @Override
+<span class="fc" id="L169">        public void decodeName(XmlName name) { }</span>
+    }
+
+    static class ReplaceNameProcessor implements XmlNameProcessor {
+        private static final long serialVersionUID = 1L;
+
+<span class="fc" id="L175">        private static final Pattern BEGIN_MATCHER = Pattern.compile(&quot;^[^a-zA-Z_:]&quot;);</span>
+<span class="fc" id="L176">        private static final Pattern MAIN_MATCHER = Pattern.compile(&quot;[^a-zA-Z0-9_:-]&quot;);</span>
+
+        private final String _replacement;
+
+<span class="fc" id="L180">        public ReplaceNameProcessor(String replacement) {</span>
+<span class="fc" id="L181">            _replacement = replacement;</span>
+<span class="fc" id="L182">        }</span>
+
+        @Override
+        public void encodeName(XmlName name) {
+<span class="fc" id="L186">            String newLocalPart = name.localPart;</span>
+<span class="fc" id="L187">            newLocalPart = BEGIN_MATCHER.matcher(newLocalPart).replaceAll(_replacement);</span>
+<span class="fc" id="L188">            name.localPart = MAIN_MATCHER.matcher(newLocalPart).replaceAll(_replacement);</span>
+<span class="fc" id="L189">        }</span>
+
+        @Override
+        public void decodeName(XmlName name) {
+            // One-way transformation; cannot decode
+<span class="fc" id="L194">        }</span>
+    }
+
+    static class Base64NameProcessor implements XmlNameProcessor {
+        private static final long serialVersionUID = 1L;
+
+<span class="fc" id="L200">        private static final Base64.Decoder BASE64_DECODER = Base64.getUrlDecoder();</span>
+<span class="fc" id="L201">        private static final Base64.Encoder BASE64_ENCODER = Base64.getUrlEncoder().withoutPadding();</span>
+<span class="fc" id="L202">        private static final Pattern VALID_XML_NAME = Pattern.compile(&quot;[a-zA-Z_:]([a-zA-Z0-9_:.-])*&quot;);</span>
+
+        private final String _prefix;
+
+<span class="fc" id="L206">        public Base64NameProcessor(String prefix) {</span>
+<span class="fc" id="L207">            _prefix = prefix;</span>
+<span class="fc" id="L208">        }</span>
+
+        @Override
+        public void encodeName(XmlName name) {
+<span class="fc bfc" id="L212" title="All 2 branches covered.">            if (!VALID_XML_NAME.matcher(name.localPart).matches()) {</span>
+<span class="fc" id="L213">                name.localPart = _prefix + new String(BASE64_ENCODER.encode(name.localPart.getBytes(UTF_8)), UTF_8);</span>
+            }
+<span class="fc" id="L215">        }</span>
+
+        @Override
+        public void decodeName(XmlName name) {
+<span class="fc bfc" id="L219" title="All 2 branches covered.">            if (name.localPart.startsWith(_prefix)) {</span>
+<span class="fc" id="L220">                String localName = name.localPart;</span>
+<span class="fc" id="L221">                localName = localName.substring(_prefix.length());</span>
+<span class="fc" id="L222">                name.localPart = new String(BASE64_DECODER.decode(localName), UTF_8);</span>
+            }
+<span class="fc" id="L224">        }</span>
+    }
+
+    static class AlwaysOnBase64NameProcessor implements XmlNameProcessor {
+        private static final long serialVersionUID = 1L;
+
+<span class="fc" id="L230">        private static final Base64.Decoder BASE64_DECODER = Base64.getUrlDecoder();</span>
+<span class="fc" id="L231">        private static final Base64.Encoder BASE64_ENCODER = Base64.getUrlEncoder().withoutPadding();</span>
+
+<span class="fc" id="L233">        public AlwaysOnBase64NameProcessor() { }</span>
+
+        @Override
+        public void encodeName(XmlName name) {
+<span class="fc" id="L237">            name.localPart = new String(BASE64_ENCODER.encode(name.localPart.getBytes(UTF_8)), UTF_8);</span>
+<span class="fc" id="L238">        }</span>
+
+        @Override
+        public void decodeName(XmlName name) {
+<span class="fc" id="L242">            name.localPart = new String(BASE64_DECODER.decode(name.localPart), UTF_8);</span>
+<span class="fc" id="L243">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

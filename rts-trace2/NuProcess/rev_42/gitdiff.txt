@@ -1,0 +1,236 @@
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java b/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
+index 39c86ce..6b526e3 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
+@@ -92 +92 @@ public abstract class BasePosixProcess implements NuProcess
+-      IS_SOFTEXIT_DETECTION = Boolean.valueOf(System.getProperty("com.zaxxer.nuprocess.softExitDetection", "true"));
++      IS_SOFTEXIT_DETECTION = Boolean.parseBoolean(System.getProperty("com.zaxxer.nuprocess.softExitDetection", "true"));
+@@ -96 +96 @@ public abstract class BasePosixProcess implements NuProcess
+-      if (Boolean.valueOf(System.getProperty("com.zaxxer.nuprocess.enableShutdownHook", "true"))) {
++      if (Boolean.parseBoolean(System.getProperty("com.zaxxer.nuprocess.enableShutdownHook", "true"))) {
+@@ -141,12 +140,0 @@ public abstract class BasePosixProcess implements NuProcess
+-   /**
+-    * Check the launched process and return {@code true} if launch was successful,
+-    * or {@code false} if there was an error in launch.
+-    *
+-    * @return {@code true} on success, {@code false} on failure
+-    */
+-   protected boolean checkLaunch()
+-   {
+-      // Can be overridden by subclasses for post-launch checks
+-      return true;
+-   }
+-
+@@ -323,0 +312 @@ public abstract class BasePosixProcess implements NuProcess
++         LOGGER.log(Level.WARNING, "Exception thrown from handler", e);
+@@ -503 +492 @@ public abstract class BasePosixProcess implements NuProcess
+-         Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Exception thrown handling writes to stdin " + processHandler, e);
++         LOGGER.log(Level.SEVERE, "Exception thrown handling writes to stdin " + processHandler, e);
+@@ -578,0 +568 @@ public abstract class BasePosixProcess implements NuProcess
++         LOGGER.log(Level.WARNING, "Exception thrown from handler", e);
+@@ -588,0 +579 @@ public abstract class BasePosixProcess implements NuProcess
++         LOGGER.log(Level.WARNING, "Exception thrown from handler", e);
+@@ -594,2 +584,0 @@ public abstract class BasePosixProcess implements NuProcess
+-      int rc;
+-
+@@ -601 +590 @@ public abstract class BasePosixProcess implements NuProcess
+-         rc = LibC.pipe(in);
++         int rc = LibC.pipe(in);
+@@ -630,19 +619,14 @@ public abstract class BasePosixProcess implements NuProcess
+-      if (in != null) {
+-         unique.add(in[0]);
+-         unique.add(in[1]);
+-      }
+-
+-      if (out != null) {
+-         unique.add(out[0]);
+-         unique.add(out[1]);
+-      }
+-
+-      if (err != null) {
+-         unique.add(err[0]);
+-         unique.add(err[1]);
+-      }
+-
+-      for (int fildes : unique) {
+-         if (fildes != 0) {
+-            LibC.close(fildes);
+-         }
++      // Add stdin pipe descriptors
++      unique.add(in[0]);
++      unique.add(in[1]);
++      // Add stdout pipe descriptors
++      unique.add(out[0]);
++      unique.add(out[1]);
++      // Add stderr pipe descriptors
++      unique.add(err[0]);
++      unique.add(err[1]);
++      // Remove 0, in case any of the above desriptors weren't allocated
++      unique.remove(0);
++
++      for (int fd : unique) {
++         LibC.close(fd);
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/LibJava10.java b/src/main/java/com/zaxxer/nuprocess/internal/LibJava10.java
+index bb85244..4bc4b89 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/LibJava10.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/LibJava10.java
+@@ -23,0 +24 @@ import com.sun.jna.NativeLibrary;
++import java.io.IOException;
+@@ -74 +75 @@ public class LibJava10
+-   );
++   ) throws IOException;
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/LibJava8.java b/src/main/java/com/zaxxer/nuprocess/internal/LibJava8.java
+index caf21fe..ba7a1c4 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/LibJava8.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/LibJava8.java
+@@ -23,0 +24 @@ import com.sun.jna.NativeLibrary;
++import java.io.IOException;
+@@ -73 +74 @@ public class LibJava8
+-   );
++   ) throws IOException;
+diff --git a/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java b/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
+index 203e80a..a0ff29f 100644
+--- a/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
+@@ -20 +19,0 @@ import com.sun.jna.JNIEnv;
+-import com.sun.jna.ptr.IntByReference;
+@@ -26,0 +26 @@ import com.zaxxer.nuprocess.internal.LibC;
++import java.io.IOException;
+@@ -31 +30,0 @@ import java.util.logging.Level;
+-import static com.zaxxer.nuprocess.internal.LibC.*;
+@@ -67 +65,0 @@ public class LinuxProcess extends BasePosixProcess
+-
+@@ -72,2 +69,0 @@ public class LinuxProcess extends BasePosixProcess
+-         closePipes();
+-
+@@ -99 +94,0 @@ public class LinuxProcess extends BasePosixProcess
+-
+@@ -104,2 +98,0 @@ public class LinuxProcess extends BasePosixProcess
+-         closePipes();
+-
+@@ -122 +115 @@ public class LinuxProcess extends BasePosixProcess
+-   private void prepareProcess(List<String> command, String[] environment, Path cwd)
++   private void prepareProcess(List<String> command, String[] environment, Path cwd) throws IOException
+@@ -144 +136,0 @@ public class LinuxProcess extends BasePosixProcess
+-      // See https://github.com/JetBrains/jdk8u_jdk/blob/master/src/solaris/classes/java/lang/ProcessImpl.java#L96
+@@ -146,14 +138,32 @@ public class LinuxProcess extends BasePosixProcess
+-      int[] child_fds = {stdinWidow, stdoutWidow, stderrWidow};
+-
+-      if (JVM_MAJOR_VERSION >= 10) {
+-         pid = com.zaxxer.nuprocess.internal.LibJava10.Java_java_lang_ProcessImpl_forkAndExec(
+-               JNIEnv.CURRENT,
+-               this,
+-               LaunchMechanism.VFORK.ordinal() + 1,
+-               toCString(System.getProperty("java.home") + "/lib/jspawnhelper"), // used on Linux
+-               toCString(cmdarray[0]),
+-               argBlock, args.length,
+-               envBlock, environment.length,
+-               (cwd != null ? toCString(cwd.toString()) : null),
+-               child_fds,
+-               (byte) 0 /*redirectErrorStream*/);
++      try {
++         // createPipes() returns the parent ends of the pipes, but forkAndExec requires the child ends
++         int[] child_fds = {stdinWidow, stdoutWidow, stderrWidow};
++
++         if (JVM_MAJOR_VERSION >= 10) {
++            pid = com.zaxxer.nuprocess.internal.LibJava10.Java_java_lang_ProcessImpl_forkAndExec(
++                    JNIEnv.CURRENT,
++                    this,
++                    LaunchMechanism.VFORK.ordinal() + 1,
++                    toCString(System.getProperty("java.home") + "/lib/jspawnhelper"), // used on Linux
++                    toCString(cmdarray[0]),
++                    argBlock, args.length,
++                    envBlock, environment.length,
++                    (cwd != null ? toCString(cwd.toString()) : null),
++                    child_fds,
++                    (byte) 0 /*redirectErrorStream*/);
++         }
++         else {
++            // See https://github.com/JetBrains/jdk8u_jdk/blob/master/src/solaris/classes/java/lang/UNIXProcess.java#L247
++            // Native source code: https://github.com/JetBrains/jdk8u_jdk/blob/master/src/solaris/native/java/lang/UNIXProcess_md.c#L566
++            pid = com.zaxxer.nuprocess.internal.LibJava8.Java_java_lang_UNIXProcess_forkAndExec(
++                    JNIEnv.CURRENT,
++                    this,
++                    LaunchMechanism.VFORK.ordinal() + 1,
++                    toCString(System.getProperty("java.home") + "/lib/jspawnhelper"), // used on Linux
++                    toCString(cmdarray[0]),
++                    argBlock, args.length,
++                    envBlock, environment.length,
++                    (cwd != null ? toCString(cwd.toString()) : null),
++                    child_fds,
++                    (byte) 0 /*redirectErrorStream*/);
++         }
+@@ -161,14 +171,4 @@ public class LinuxProcess extends BasePosixProcess
+-      else {
+-         // See https://github.com/JetBrains/jdk8u_jdk/blob/master/src/solaris/classes/java/lang/UNIXProcess.java#L247
+-         // Native source code: https://github.com/JetBrains/jdk8u_jdk/blob/master/src/solaris/native/java/lang/UNIXProcess_md.c#L566
+-         pid = com.zaxxer.nuprocess.internal.LibJava8.Java_java_lang_UNIXProcess_forkAndExec(
+-               JNIEnv.CURRENT,
+-               this,
+-               LaunchMechanism.VFORK.ordinal() + 1,
+-               toCString(System.getProperty("java.home") + "/lib/jspawnhelper"), // used on Linux
+-               toCString(cmdarray[0]),
+-               argBlock, args.length,
+-               envBlock, environment.length,
+-               (cwd != null ? toCString(cwd.toString()) : null),
+-               child_fds,
+-               (byte) 0 /*redirectErrorStream*/);
++      finally {
++         // If we call createPipes, even if launching the process then fails, we need to ensure
++         // the child side of the pipes are closed. The parent side will be closed in onExit
++         closePipes();
+@@ -186,35 +185,0 @@ public class LinuxProcess extends BasePosixProcess
+-   @Override
+-   protected boolean checkLaunch()
+-   {
+-      // This is necessary on Linux because spawn failures are not reflected in the rc, and this will reap
+-      // any zombies due to launch failure
+-      IntByReference ret = new IntByReference();
+-      int waitpidRc = LibC.waitpid(pid, ret, LibC.WNOHANG);
+-      int status = ret.getValue();
+-      boolean cleanExit = waitpidRc == pid && WIFEXITED(status) && WEXITSTATUS(status) == 0;
+-
+-      if (cleanExit) {
+-         // If the process already exited cleanly, make sure we run epoll to dispatch any stdout/stderr sent
+-         // before we tear everything down.
+-         cleanlyExitedBeforeProcess.set(true);
+-      }
+-      else if (waitpidRc != 0) {
+-         if (WIFEXITED(status)) {
+-            status = WEXITSTATUS(status);
+-            if (status == 127) {
+-               onExit(Integer.MIN_VALUE);
+-            }
+-            else {
+-               onExit(status);
+-            }
+-         }
+-         else if (WIFSIGNALED(status)) {
+-            onExit(WTERMSIG(status));
+-         }
+-
+-         return false;
+-      }
+-
+-      return true;
+-   }
+-
+@@ -234 +199 @@ public class LinuxProcess extends BasePosixProcess
+-      int count = environment.length;
++      int count = environment.length; // This implicitly adds an extra null byte for each entry
+diff --git a/src/main/java/com/zaxxer/nuprocess/osx/OsxProcess.java b/src/main/java/com/zaxxer/nuprocess/osx/OsxProcess.java
+index 46f48d7..d60b017 100644
+--- a/src/main/java/com/zaxxer/nuprocess/osx/OsxProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/osx/OsxProcess.java
+@@ -64,5 +63,0 @@ class OsxProcess extends BasePosixProcess
+-
+-         if (!checkLaunch()) {
+-            return null;
+-         }
+-
+@@ -108,5 +102,0 @@ class OsxProcess extends BasePosixProcess
+-
+-         if (!checkLaunch()) {
+-            return;
+-         }
+-

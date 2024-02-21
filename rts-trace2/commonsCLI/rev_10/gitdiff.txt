@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
+index a1c2e4ee..616c1126 100644
+--- a/src/main/java/org/apache/commons/cli/Option.java
++++ b/src/main/java/org/apache/commons/cli/Option.java
+@@ -418 +418 @@ public class Option implements Cloneable, Serializable {
+-            throw new RuntimeException("Cannot add value, list full.");
++            throw new IllegalArgumentException("Cannot add value, list full.");
+@@ -447 +447 @@ public class Option implements Cloneable, Serializable {
+-            throw new RuntimeException("NO_ARGS_ALLOWED");
++            throw new IllegalArgumentException("NO_ARGS_ALLOWED");
+@@ -478 +478 @@ public class Option implements Cloneable, Serializable {
+-            throw new RuntimeException("A CloneNotSupportedException was thrown: " + cnse.getMessage());
++            throw new IllegalStateException("A CloneNotSupportedException was thrown: " + cnse.getMessage());

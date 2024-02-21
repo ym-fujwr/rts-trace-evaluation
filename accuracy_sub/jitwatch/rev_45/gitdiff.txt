@@ -1,0 +1,51 @@
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
+index bfaa458d..1e73bcce 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2022 Chris Newland.
+@@ -190,36 +189,0 @@ public class ClassBC
+-		case 62:
+-			result = "Java 18";
+-			break;
+-		case 61:
+-			result = "Java 17";
+-			break;
+-		case 60:
+-			result = "Java 16";
+-			break;
+-		case 59:
+-			result = "Java 15";
+-			break;
+-		case 58:
+-			result = "Java 14";
+-			break;
+-		case 57:
+-			result = "Java 13";
+-			break;
+-		case 56:
+-			result = "Java 12";
+-			break;
+-		case 55:
+-			result = "Java 11";
+-			break;
+-		case 54:
+-			result = "Java 10";
+-			break;
+-		case 53:
+-			result = "Java 9";
+-			break;
+-		case 52:
+-			result = "Java 8";
+-			break;
+-		case 51:
+-			result = "Java 7";
+-			break;
+@@ -245 +209 @@ public class ClassBC
+-			result = "Unknown java version";
++			result = "Java " + (majorVersion - 44);
+@@ -267 +231,2 @@ public class ClassBC
+-	@Override public String toString()
++	@Override
++	public String toString()

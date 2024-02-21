@@ -1,0 +1,26 @@
+# 1
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/TagProcessor.class _ 3442025617
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/ParseDictionary.class _ 1550545007
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/Tag.class _ 2736726929
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/Task.class _ 2237855978
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/util/StringUtil.class _ 1944644263
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestTagProcessor.class _ 396884690
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/Level.class _ 4250415216
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/Logger.class _ 1540281330
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/pattern/Abbreviator.class _ 4103796855
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/pattern/TargetLengthBasedClassNameAbbreviator.class _ 2110747865
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/spi/EventArgUtil.class _ 3825475355
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/spi/ILoggingEvent.class _ 47516739
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/spi/LoggingEvent.class _ 2592660358
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/util/LogbackMDCAdapter.class _ 3092366936
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar!/ch/qos/logback/core/Appender.class _ 208467668
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar!/ch/qos/logback/core/CoreConstants.class _ 2034404722
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar!/ch/qos/logback/core/Layout.class _ 1670608652
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar!/ch/qos/logback/core/encoder/Encoder.class _ 2004831622
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar!/ch/qos/logback/core/pattern/SpacePadder.class _ 397990021
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar!/ch/qos/logback/core/spi/DeferredProcessingAware.class _ 2283748061
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar!/ch/qos/logback/core/spi/FilterReply.class _ 1449076504
+jar:file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar!/org/slf4j/Logger.class _ 847523693
+jar:file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar!/org/slf4j/MDC.class _ 838688014
+jar:file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar!/org/slf4j/helpers/FormattingTuple.class _ 4151672915
+jar:file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar!/org/slf4j/helpers/MessageFormatter.class _ 133900844

@@ -1,0 +1,1 @@
+org.apache.commons.jxpath.ri.compiler.TestFunctions,org.apache.commons.jxpath.ri.model.ExceptionPropertyTestBean,org.apache.commons.jxpath.ri.model.MixedModelTest#testListDocument

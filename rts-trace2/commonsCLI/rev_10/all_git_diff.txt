@@ -1,0 +1,827 @@
+diff --git a/.github/dependabot.yml b/.github/dependabot.yml
+index 5b475095..9ebcd0eb 100644
+--- a/.github/dependabot.yml
++++ b/.github/dependabot.yml
+@@ -21 +21,2 @@ updates:
+-      interval: "daily"
++      interval: "weekly"
++      day: "friday"
+@@ -25 +26,2 @@ updates:
+-      interval: "daily"
++      interval: "weekly"
++      day: "friday"
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+new file mode 100644
+index 00000000..0067a012
+--- /dev/null
++++ b/.github/workflows/codeql-analysis.yml
+@@ -0,0 +1,74 @@
++# Licensed to the Apache Software Foundation (ASF) under one or more
++# contributor license agreements.  See the NOTICE file distributed with
++# this work for additional information regarding copyright ownership.
++# The ASF licenses this file to You under the Apache License, Version 2.0
++# (the "License"); you may not use this file except in compliance with
++# the License.  You may obtain a copy of the License at
++#
++#      http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++name: "CodeQL"
++
++on:
++  push:
++    branches: [ master ]
++  pull_request:
++    # The branches below must be a subset of the branches above
++    branches: [ master ]
++  schedule:
++    - cron: '33 9 * * 4'
++
++jobs:
++  analyze:
++    name: Analyze
++    runs-on: ubuntu-latest
++    permissions:
++      actions: read
++      contents: read
++      security-events: write
++
++    strategy:
++      fail-fast: false
++      matrix:
++        language: [ 'java' ]
++        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
++        # Learn more about CodeQL language support at https://git.io/codeql-language-support
++
++    steps:
++    - name: Checkout repository
++      uses: actions/checkout@v3
++
++    # Initializes the CodeQL tools for scanning.
++    - name: Initialize CodeQL
++      uses: github/codeql-action/init@v2
++      with:
++        languages: ${{ matrix.language }}
++        # If you wish to specify custom queries, you can do so here or in a config file.
++        # By default, queries listed here will override any specified in a config file.
++        # Prefix the list here with "+" to use these queries and those in the config file.
++        # queries: ./path/to/local/query, your-org/your-repo/queries@main
++
++    # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
++    # If this step fails, then you should remove it and run the build manually (see below)
++    - name: Autobuild
++      uses: github/codeql-action/autobuild@v2
++
++    # ℹ️ Command-line programs to run using the OS shell.
++    # 📚 https://git.io/JvXDl
++
++    # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
++    #    and modify them (or add more) to build your code if your project
++    #    uses a compiled language
++
++    #- run: |
++    #   make bootstrap
++    #   make release
++
++    - name: Perform CodeQL Analysis
++      uses: github/codeql-action/analyze@v2
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index cbedb9f1..2169c2de 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -34,2 +34,2 @@ jobs:
+-    - uses: actions/checkout@v2.3.5
+-    - uses: actions/cache@v2.1.6
++    - uses: actions/checkout@v3
++    - uses: actions/cache@v3.0.2
+@@ -42 +42 @@ jobs:
+-      uses: actions/setup-java@v2
++      uses: actions/setup-java@v3
+diff --git a/.travis.yml b/.travis.yml
+deleted file mode 100644
+index f5f56b4f..00000000
+--- a/.travis.yml
++++ /dev/null
+@@ -1,28 +0,0 @@
+-# Licensed to the Apache Software Foundation (ASF) under one or more
+-# contributor license agreements.  See the NOTICE file distributed with
+-# this work for additional information regarding copyright ownership.
+-# The ASF licenses this file to You under the Apache License, Version 2.0
+-# (the "License"); you may not use this file except in compliance with
+-# the License.  You may obtain a copy of the License at
+-#
+-#     http://www.apache.org/licenses/LICENSE-2.0
+-#
+-# Unless required by applicable law or agreed to in writing, software
+-# distributed under the License is distributed on an "AS IS" BASIS,
+-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-# See the License for the specific language governing permissions and
+-# limitations under the License.
+-
+-language: java
+-
+-jdk:
+-  - openjdk8
+-  - openjdk11
+-  - openjdk16
+-  - openjdk-ea
+-
+-script:
+-  - mvn -V --no-transfer-progress
+-
+-after_success:
+-  - mvn clean test jacoco:report coveralls:report -Ptravis-jacoco --no-transfer-progress
+diff --git a/NOTICE.txt b/NOTICE.txt
+index 6c3fe314..dbc817e0 100644
+--- a/NOTICE.txt
++++ b/NOTICE.txt
+@@ -2 +2 @@ Apache Commons CLI
+-Copyright 2002-2021 The Apache Software Foundation
++Copyright 2002-2022 The Apache Software Foundation
+diff --git a/README.md b/README.md
+index 36e975da..579c0d64 100644
+--- a/README.md
++++ b/README.md
+@@ -46 +45,0 @@ Apache Commons CLI
+-[![Travis-CI Status](https://travis-ci.org/apache/commons-cli.svg)](https://travis-ci.org/apache/commons-cli)
+@@ -49 +48 @@ Apache Commons CLI
+-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/commons-cli/commons-cli/badge.svg)](https://maven-badges.herokuapp.com/maven-central/commons-cli/commons-cli/)
++[![Maven Central](https://maven-badges.herokuapp.com/maven-central/commons-cli/commons-cli/badge.svg?gav=true)](https://maven-badges.herokuapp.com/maven-central/commons-cli/commons-cli/)
+@@ -50,0 +50 @@ Apache Commons CLI
++[![CodeQL](https://github.com/apache/commons-cli/workflows/CodeQL/badge.svg)](https://github.com/apache/commons-cli/actions?query=workflow%3ACodeQL)
+diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+index ee4c8264..befcd1e6 100644
+--- a/RELEASE-NOTES.txt
++++ b/RELEASE-NOTES.txt
+@@ -2 +2 @@ Apache Commons CLI
+-Version 1.5.0-SNAPSHOT
++Version 1.5.0
+@@ -74,0 +75,251 @@ The Apache Commons Team
++            Apache Commons CLI
++                Version 1.4
++               Release Notes
++
++
++INTRODUCTION:
++
++This document contains the release notes for this version of the Commons CLI
++package. Commons CLI provides a simple API for working with the command line
++arguments and options.
++
++Commons CLI 1.4 is a feature release and binary compatible with the
++previous versions, except for the OptionValidator class that is no longer public
++(change introduced in v1.2). Commons CLI 1.4 at least requires Java 5.0.
++
++More information can be found on the project site at
++https://commons.apache.org/cli.
++
++
++NEW FEATURES
++============
++
++o CLI-269: Introduce CommandLine.Builder
++o CLI-267: Add an addRequiredOption method to Options.
++           Thanks to Ricardo Ribeiro.
++
++
++BUG FIXES
++=========
++
++o CLI-265: Optional argument picking up next regular option as its argument.
++           Thanks to Martin Sandiford.
++o CLI-266: HelpFormatter.setOptionComparator(null) doesn't display the values
++           in inserted order. Thanks to Ravi Teja.
++
++
++                Release Notes for version 1.3.1
++
++BUG FIXES
++=========
++
++o CLI-252: LongOpt falsely detected as ambiguous. Thanks to Simon Harrer.
++
++
++                Release Notes for version 1.3
++
++NOTES
++=====
++
++A new parser is available: DefaultParser. It combines the features of the
++GnuParser and the PosixParser. It also provides additional features like
++partial matching for the long options, and long options without
++separator (i.e like the JVM memory settings: -Xmx512m). This new parser
++deprecates the previous ones.
++
++DEPRECATIONS
++============
++
++o org.apache.commons.cli.BasicParser
++    replaced by org.apache.commons.cli.DefaultParser
++
++o org.apache.commons.cli.GnuParser
++    replaced by org.apache.commons.cli.DefaultParser
++
++o org.apache.commons.cli.OptionBuilder
++    replaced by org.apache.commons.cli.Option.builder()
++                org.apache.commons.cli.Option.builder(String)
++                org.apache.commons.cli.Option.Builder
++
++o org.apache.commons.cli.Parser
++    replaced by org.apache.commons.cli.DefaultParser
++
++o org.apache.commons.cli.PosixParser
++    replaced by org.apache.commons.cli.DefaultParser
++
++
++NEW FEATURES
++============
++
++o CLI-161: PosixParser doesn't stop the parsing on "--" tokens following an
++           option with an argument
++o CLI-167: Support options like Java memory settings (-Xmx512M)
++o CLI-181: Unified Parser
++o CLI-224: Added new fluent API to create Option instances via builder class
++           Option.Builder. This replaces the now deprecated OptionBuilder.
++           Thanks to Duncan Jones, Brian Blount.
++o CLI-160: PosixParser now supports partial long options (--ver instead of
++           --version).
++o CLI-169: HelpFormatter now supports setting the displayed separator of long
++           options. Thanks to J. Lewis Muir.
++o CLI-214: Added new method Options.addOption(String, String). Thanks to
++           Alexandru Mocanu.
++
++
++BUG FIXES
++=========
++
++o CLI-248: Dead links on doc page.
++o CLI-234: Fixed code example in javadoc of
++           "Option#Builder#valueSeparator(char)". Thanks to Greg Thomas.
++o CLI-241: Clarified behavior of "OptionValidator#validateOption(String)"
++           in case of null input. Thanks to Beluga Behr.
++o CLI-202: Default options will now work correctly with required options that
++           are missing.
++o CLI-203: Default options will now work correctly together with option groups.
++o CLI-205: HelpFormatter.setArgName(String) now correctly sets the argument
++           name.
++o CLI-204: Passing default values for not defined options to a parser will now
++           trigger a ParseException instead of a NullPointerException.
++o CLI-201: Default properties provided as input to the Parser.parse() methods
++           are now correctly processed.
++o CLI-215: CommandLine.getParsedOptionValue() now returns a String object if no
++           option type has been explicitly set. Thanks to Manuel Müller.
++o CLI-212: HelpFormatter now prints command-line options in the same order as
++           they have been added. Thanks to Per Cederberg.
++o CLI-186: Standard help text now shows mandatory arguments also for the first
++           option. Thanks to Kristoff Kiefer.
++o CLI-207: HelpFormatter does not strip anymore leading whitespace in the
++           footer text. Thanks to Uri Moszkowicz.
++o CLI-185: Strip quotes contained in argument values only if there is exactly
++           one at the beginning and one at the end. Thanks to
++           Einar M. R. Rosenvinge.
++o CLI-184: Negative numerical arguments take precedence over numerical options.
++o CLI-193: Fix possible StringIndexOutOfBoundsException in HelpFormatter.
++           Thanks to Travis McLeskey.
++o CLI-183: OptionGroups no longer throw an AlreadySelectedException when reused
++           for several parsings.
++o CLI-182: OptionGroup now selects properly an option with no short name.
++
++
++CHANGES
++=======
++
++o CLI-240: Small cleanup of Option class. Thanks to Beluga Behr.
++o CLI-230: Options.getRequiredOptions() now returns an unmodifiable list.
++o CLI-218: Clarify javadoc for CommandLine.getOptionValue() that the first
++           specified argument will be returned. Thanks to Sven.
++o CLI-227: Changed unit tests to junit 4 annotation style. Thanks to
++           Duncan Jones.
++o CLI-209: The javadoc of OptionBuilder now states that the class is not
++           thread-safe. Thanks to Thomas Herre.
++o CLI-200: Fixed typo in javadoc of class CommandLine. Thanks to
++           Gerard Weatherby.
++o CLI-223: Source code now uses generic types instead of raw types where
++           possible. Thanks to Gerard Weatherby.
++o CLI-220  Corrected javadoc for return type of
++           MissingOptionException.getMissingOptions(). Thanks to Joe Casadonte.
++o CLI-197: Improve description of parameter "stopAtNonOption" in method
++           CommandLine.parse(Options, String[], boolean). Thanks to
++           Anders Larsson.
++o CLI-231: Removed DoubleCheckedLocking test from checkstyle configuration.
++           Thanks to Duncan Jones.
++
++
++                Release Notes for version 1.2
++
++NEW FEATURES
++============
++
++o --     : The method getOptionProperties() in the CommandLine class was added
++           to retrieve easily the key/value pairs specified with options like
++           -Dkey1=value1 -Dkey2=value2.
++o CLI-157: GnuParser now supports long options with an '=' sign
++           (ie. --foo=bar and -foo=bar)
++o CLI-155: The ordering of options can be defined in help messages.
++
++
++BUG FIXES
++=========
++
++o CLI-137: The number of arguments defined for an option specifies the
++           arguments per occurence of the option and not for all occurences.
++o CLI-164: PosixParser no longer ignores unrecognized short options.
++o CLI-163: PosixParser no longer stops the bursting process of a token if
++           stopAtNonOption is enabled and a non option character is
++           encountered.
++o CLI-165: PosixParser no longer keeps processing the tokens after an
++           unrecognized long option when stopAtNonOption is enabled.
++o CLI-156: Required options are properly checked if an Options instance is used
++           twice to parse a command line.
++o CLI-151: The line wrapping in HelpFormatter now works properly.
++
++
++CHANGES
++=======
++
++o CLI-149: The message of MissingOptionException has been improved.
++o CLI-86:  The exceptions have been enhanced with methods to retrieve easily
++           the related options.
++o CLI-141: Option.toString() now reports arguments properly.
++o CLI-142: The Parser class has been changed to be more easily extendable.
++o CLI-140: The following classes are now serializable: Option, OptionGroup,
++           CommandLine and Options.
++o --     : OptionValidator is no longer public, its methods were all private.
++
++
++                Release Notes for version 1.1
++
++NEW FEATURES
++============
++
++o CLI-78:  Setting description of a Option.
++
++CHANGES
++=======
++
++o CLI-2:   Wrong usage summary.
++o CLI-5:   Dependecy on commons-lang-2.0 but commons-lang-1.0 is obtained.
++o CLI-8:   Line separator as first char for helpformatter (footer) throws
++           exception.
++o CLI-13:  CommandLine.getOptionValue() behaves contrary to docs.
++o CLI-21:  clone method in Option should use super.clone().
++o CLI-23:  Passing properties in Parser does not work for options with a single
++           argument.
++o CLI-26:  Only long options without short option seems to be noticed.
++o CLI-28:  Infinite Loop in Command-Line processing.
++o CLI-29:  Options should not be able to be added more than once.
++o CLI-35:  HelpFormatter doesn't sort options properly.
++o CLI-38:  HelpFormatter doesn't function correctly for options with only
++           LongOpt.
++o CLI-44:  Document enhancement.
++o CLI-45:  Documentation errors.
++o CLI-51:  Parameter value "-something" misinterpreted as a parameter.
++o CLI-56:  clone() method doesn't fully clone contents.
++o CLI-59:  No Javadoc for HelpFormatter!.
++o CLI-65:  Parser breaks up command line parms into single characters.
++o CLI-67:  Missing arguments in HelpFormatter.renderOptions(..).
++o CLI-69:  Error parsing option arguments.
++o CLI-71:  A weakness of parser.
++o CLI-129: CLI_1_BRANCH build.xml doesn't work.
++o CLI-130: Remove the Commons Lang dependency.
++o CLI-131: Options class returns options in random order.
++o CLI-132: MissingOptionException should contain a useful error message.
++o CLI-133: NullPointerException in Util.stripLeadingHyphens when passed a null
++           argument.
++o CLI-134: 1.1 is not backwards compatible because it adds methods to the
++           CommandLineParser interface.
++o CLI-135: Backwards compatibility between 1.1 and 1.0 broken due to
++           Option.addValue removal.
++
++
++Historical list of changes: https://commons.apache.org/cli/changes-report.html
++
++For complete information on Commons CLI, including instructions on how to
++submit bug reports, patches, or suggestions for improvement, see the
++Apache Commons CLI website:
++
++https://commons.apache.org/cli/
++
++Have fun!
++-Apache Commons CLI team
+diff --git a/pom.xml b/pom.xml
+index 615b1ce1..a2142fb1 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -22 +22 @@
+-    <version>52</version>
++    <version>53</version>
+@@ -27 +27 @@
+-  <version>1.5.0-SNAPSHOT</version>
++  <version>1.6-SNAPSHOT</version>
+@@ -212,2 +212,2 @@
+-    <commons.checkstyle.impl.version>9.0.1</commons.checkstyle.impl.version>
+-    <commons.javadoc.version>3.3.1</commons.javadoc.version>
++    <commons.checkstyle.impl.version>9.3</commons.checkstyle.impl.version>
++    <commons.javadoc.version>3.4.0</commons.javadoc.version>
+@@ -220,2 +220,2 @@
+-    <spotbugs.plugin.version>4.4.2.2</spotbugs.plugin.version>
+-    <spotbugs.impl.version>4.4.2</spotbugs.impl.version>
++    <spotbugs.plugin.version>4.6.0.0</spotbugs.plugin.version>
++    <spotbugs.impl.version>4.7.0</spotbugs.impl.version>
+@@ -227,2 +227,2 @@
+-    <commons.releaseManagerName>Gary Gregory</commons.releaseManagerName>
+-    <commons.releaseManagerKey>86fdc7e2a11262cb</commons.releaseManagerKey>
++    <commons.releaseManagerName>Rob Tompkins</commons.releaseManagerName>
++    <commons.releaseManagerKey>B6E73D84EA4FCC47166087253FAAD2CD5ECBB314</commons.releaseManagerKey>
+@@ -232 +232 @@
+-    <defaultGoal>clean package apache-rat:check japicmp:cmp checkstyle:check spotbugs:check javadoc:javadoc</defaultGoal>
++    <defaultGoal>clean verify apache-rat:check japicmp:cmp checkstyle:check spotbugs:check javadoc:javadoc</defaultGoal>
+@@ -361 +361 @@
+-        <version>3.15.0</version>
++        <version>3.16.0</version>
+@@ -405 +405 @@
+-            <version>3.0.0</version>
++            <version>3.1.0</version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 1a939ca5..a731c7a9 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -23 +23,39 @@
+-    <release version="1.5.0" date="tba" description="New features and bug fixes (Java 7).">
++    <release version="1.6" date="tbd" description="New features and bug fixes">
++      <!-- FIX -->
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Fix SpotBugs Error: Medium: Method intentionally throws RuntimeException. [org.apache.commons.cli.Option] At Option.java:[lines 417-423] THROWS_METHOD_THROWS_RUNTIMEEXCEPTION
++      </action>
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Fix SpotBugs Error: Medium: Method intentionally throws RuntimeException. [org.apache.commons.cli.Option] At Option.java:[lines 446-450] THROWS_METHOD_THROWS_RUNTIMEEXCEPTION
++      </action>
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Fix SpotBugs Error: Medium: Method intentionally throws RuntimeException. [org.apache.commons.cli.Option] At Option.java:[lines 474-478] THROWS_METHOD_THROWS_RUNTIMEEXCEPTION
++      </action>
++      <!-- ADD -->
++      <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">
++        Add github/codeql-action.
++      </action>
++      <!-- UPDATES -->
++      <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">
++        Bump actions/cache from 2.1.7 to 3.0.2 #97.
++      </action>
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Bump actions/setup-java from 2 to 3.
++      </action>
++      <action type="update" dev="ggregory" due-to="Gary Gregory, Dependabot">
++        Bump spotbugs from 4.5.3 to 4.7.0 #96, #107.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump spotbugs-maven-plugin from 4.5.3.0 to 4.6.0.0 #98.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump commons-parent from 52 to 53 #100.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump maven-antrun-plugin from 3.0.0 to 3.1.0 #103.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump maven-javadoc-plugin from 3.3.2 to 3.4.0 #105.
++      </action>
++    </release>
++    <release version="1.5.0" date="10-23-2021" description="New features and bug fixes (Java 7).">
+@@ -86,37 +124,40 @@
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Dependabot">
+-       Bump maven-pmd-plugin from 3.12.0 to 3.15.0, #44, #54, #67.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Dependabot">
+-       Bump actions/checkout from v2.3.1 to v2.3.5 #46, #72.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">
+-       Bump actions/setup-java from v1.4.2 to v2 #50.
+-      </action>
+-     <action type="update" dev="ggregory" due-to="Dependabot">
+-       Bump maven-antrun-plugin from 1.7 to 3.0.0 #43.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Gary Gregory">
+-       Bump maven-checkstyle-plugin from 2.15 to 3.1.2 #41.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Gary Gregory">
+-       Bump checkstyle to 9.0.1 #68.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Dependabot">
+-       Bump actions/cache from 2 to 2.1.6 #64, #65.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Gary Gregory">
+-       Bump commons.animal-sniffer.version 1.19 -> 1.20.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Gary Gregory">
+-       Bump maven-bundle-plugin 5.1.1 -> 5.1.2.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Gary Gregory">
+-       Bump biz.aQute.bndlib.version 5.1.2 -> 6.0.0.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Dependabot">
+-       Bump spotbugs from 4.4.1 to 4.4.2 #70.
+-     </action>
+-     <action type="update" dev="ggregory" due-to="Dependabot">
+-       Bump spotbugs-maven-plugin from 4.4.1 to 4.4.2.2 #71.
+-     </action>
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump maven-pmd-plugin from 3.12.0 to 3.16.0, #44, #54, #67, #92.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump actions/checkout from 2.3.1 to 3 #46, #72, #78, #93.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">
++        Bump actions/setup-java from v1.4.2 to v2 #50.
++       </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump maven-antrun-plugin from 1.7 to 3.0.0 #43.
++      </action>
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Bump maven-checkstyle-plugin from 2.15 to 3.1.2 #41.
++      </action>
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Bump checkstyle to 9.3 #68, #86, #90.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump actions/cache from 2 to 2.1.7 #64, #65, #81.
++      </action>
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Bump commons.animal-sniffer.version 1.19 -> 1.20.
++      </action>
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Bump maven-bundle-plugin 5.1.1 -> 5.1.2.
++      </action>
++      <action type="update" dev="ggregory" due-to="Gary Gregory">
++        Bump biz.aQute.bndlib.version 5.1.2 -> 6.0.0.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump spotbugs from 4.4.1 to 4.5.3 #70, #88.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump spotbugs-maven-plugin from 4.4.1 to 4.5.3.0 #71, #85, #87.
++      </action>
++      <action type="update" dev="ggregory" due-to="Dependabot">
++        Bump maven-javadoc-plugin from 3.3.1 to 3.3.2, #91.
++      </action>
+diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
+index a1c2e4ee..616c1126 100644
+--- a/src/main/java/org/apache/commons/cli/Option.java
++++ b/src/main/java/org/apache/commons/cli/Option.java
+@@ -418 +418 @@ public class Option implements Cloneable, Serializable {
+-            throw new RuntimeException("Cannot add value, list full.");
++            throw new IllegalArgumentException("Cannot add value, list full.");
+@@ -447 +447 @@ public class Option implements Cloneable, Serializable {
+-            throw new RuntimeException("NO_ARGS_ALLOWED");
++            throw new IllegalArgumentException("NO_ARGS_ALLOWED");
+@@ -478 +478 @@ public class Option implements Cloneable, Serializable {
+-            throw new RuntimeException("A CloneNotSupportedException was thrown: " + cnse.getMessage());
++            throw new IllegalStateException("A CloneNotSupportedException was thrown: " + cnse.getMessage());
+diff --git a/src/site/xdoc/download_cli.xml b/src/site/xdoc/download_cli.xml
+index 845cc7f6..9f6cbc94 100644
+--- a/src/site/xdoc/download_cli.xml
++++ b/src/site/xdoc/download_cli.xml
+@@ -1,115 +1,115 @@
+-<?xml version="1.0"?>
+-<!--
+-Licensed to the Apache Software Foundation (ASF) under one or more
+-contributor license agreements.  See the NOTICE file distributed with
+-this work for additional information regarding copyright ownership.
+-The ASF licenses this file to You under the Apache License, Version 2.0
+-(the "License"); you may not use this file except in compliance with
+-the License.  You may obtain a copy of the License at
+-
+-     http://www.apache.org/licenses/LICENSE-2.0
+-
+-Unless required by applicable law or agreed to in writing, software
+-distributed under the License is distributed on an "AS IS" BASIS,
+-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-See the License for the specific language governing permissions and
+-limitations under the License.
+--->
+-<!--
+- +======================================================================+
+- |****                                                              ****|
+- |****      THIS FILE IS GENERATED BY THE COMMONS BUILD PLUGIN      ****|
+- |****                    DO NOT EDIT DIRECTLY                      ****|
+- |****                                                              ****|
+- +======================================================================+
+- | TEMPLATE FILE: download-page-template.xml                            |
+- | commons-build-plugin/trunk/src/main/resources/commons-xdoc-templates |
+- +======================================================================+
+- |                                                                      |
+- | 1) Re-generate using: mvn commons-build:download-page                |
+- |                                                                      |
+- | 2) Set the following properties in the component's pom:              |
+- |    - commons.componentid     (required, alphabetic, lower case)      |
+- |    - commons.release.version (required)                              |
+- |    - commons.release.name    (required)                              |
+- |    - commons.binary.suffix   (optional)                              |
+- |      (defaults to "-bin", set to "" for pre-maven2 releases)         |
+- |    - commons.release.desc    (optional)                              |
+- |    - commons.release.subdir  (optional)                              |
+- |    - commons.release.hash    (optional, lowercase, default sha512)   |
+- |                                                                      |
+- |    - commons.release.[234].version       (conditional)               |
+- |    - commons.release.[234].name          (conditional)               |
+- |    - commons.release.[234].binary.suffix (optional)                  |
+- |    - commons.release.[234].desc          (optional)                  |
+- |    - commons.release.[234].subdir        (optional)                  |
+- |    - commons.release.[234].hash       (optional, lowercase, [sha512])|
+- |                                                                      |
+- | 3) Example Properties                                                |
+- |    (commons.release.name inherited by parent:                        |
+- |     ${project.artifactId}-${commons.release.version}                 |
+- |                                                                      |
+- |  <properties>                                                        |
+- |    <commons.componentid>math</commons.componentid>                   |
+- |    <commons.release.version>1.2</commons.release.version>            |
+- |  </properties>                                                       |
+- |                                                                      |
+- +======================================================================+
+--->
+-<document>
+-  <properties>
+-    <title>Download Apache Commons CLI</title>
+-    <author email="dev@commons.apache.org">Apache Commons Documentation Team</author>
+-  </properties>
+-  <body>
+-    <section name="Download Apache Commons CLI">
+-    <subsection name="Using a Mirror">
+-      <p>
+-        We recommend you use a mirror to download our release
+-        builds, but you <strong>must</strong> <a href="https://www.apache.org/info/verification.html">verify the integrity</a> of
+-        the downloaded files using signatures downloaded from our main
+-        distribution directories. Recent releases (48 hours) may not yet
+-        be available from all the mirrors.
+-      </p>
+-
+-      <p>
+-        You are currently using <b>[preferred]</b>.  If you
+-        encounter a problem with this mirror, please select another
+-        mirror.  If all mirrors are failing, there are <i>backup</i>
+-        mirrors (at the end of the mirrors list) that should be
+-        available.
+-        <br></br>
+-        [if-any logo]<a href="[link]"><img align="right" src="[logo]" border="0"></img></a>[end]
+-      </p>
+-
+-      <form action="[location]" method="get" id="SelectMirror">
+-        <p>
+-          Other mirrors:
+-          <select name="Preferred">
+-          [if-any http]
+-            [for http]<option value="[http]">[http]</option>[end]
+-          [end]
+-          [if-any ftp]
+-            [for ftp]<option value="[ftp]">[ftp]</option>[end]
+-          [end]
+-          [if-any backup]
+-            [for backup]<option value="[backup]">[backup] (backup)</option>[end]
+-          [end]
+-          </select>
+-          <input type="submit" value="Change"></input>
+-        </p>
+-      </form>
+-
+-      <p>
+-        It is essential that you
+-        <a href="https://www.apache.org/info/verification.html">verify the integrity</a>
+-        of downloaded files, preferably using the <code>PGP</code> signature (<code>*.asc</code> files);
+-        failing that using the <code>SHA512</code> hash (<code>*.sha512</code> checksum files).
+-      </p>
+-      <p>
+-        The <a href="https://www.apache.org/dist/commons/KEYS">KEYS</a>
+-        file contains the public PGP keys used by Apache Commons developers
+-        to sign releases.
+-      </p>
+-    </subsection>
+-    </section>
++<?xml version="1.0"?>
++<!--
++Licensed to the Apache Software Foundation (ASF) under one or more
++contributor license agreements.  See the NOTICE file distributed with
++this work for additional information regarding copyright ownership.
++The ASF licenses this file to You under the Apache License, Version 2.0
++(the "License"); you may not use this file except in compliance with
++the License.  You may obtain a copy of the License at
++
++     http://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
++-->
++<!--
++ +======================================================================+
++ |****                                                              ****|
++ |****      THIS FILE IS GENERATED BY THE COMMONS BUILD PLUGIN      ****|
++ |****                    DO NOT EDIT DIRECTLY                      ****|
++ |****                                                              ****|
++ +======================================================================+
++ | TEMPLATE FILE: download-page-template.xml                            |
++ | commons-build-plugin/trunk/src/main/resources/commons-xdoc-templates |
++ +======================================================================+
++ |                                                                      |
++ | 1) Re-generate using: mvn commons-build:download-page                |
++ |                                                                      |
++ | 2) Set the following properties in the component's pom:              |
++ |    - commons.componentid     (required, alphabetic, lower case)      |
++ |    - commons.release.version (required)                              |
++ |    - commons.release.name    (required)                              |
++ |    - commons.binary.suffix   (optional)                              |
++ |      (defaults to "-bin", set to "" for pre-maven2 releases)         |
++ |    - commons.release.desc    (optional)                              |
++ |    - commons.release.subdir  (optional)                              |
++ |    - commons.release.hash    (optional, lowercase, default sha512)   |
++ |                                                                      |
++ |    - commons.release.[234].version       (conditional)               |
++ |    - commons.release.[234].name          (conditional)               |
++ |    - commons.release.[234].binary.suffix (optional)                  |
++ |    - commons.release.[234].desc          (optional)                  |
++ |    - commons.release.[234].subdir        (optional)                  |
++ |    - commons.release.[234].hash       (optional, lowercase, [sha512])|
++ |                                                                      |
++ | 3) Example Properties                                                |
++ |    (commons.release.name inherited by parent:                        |
++ |     ${project.artifactId}-${commons.release.version}                 |
++ |                                                                      |
++ |  <properties>                                                        |
++ |    <commons.componentid>math</commons.componentid>                   |
++ |    <commons.release.version>1.2</commons.release.version>            |
++ |  </properties>                                                       |
++ |                                                                      |
++ +======================================================================+
++-->
++<document>
++  <properties>
++    <title>Download Apache Commons CLI</title>
++    <author email="dev@commons.apache.org">Apache Commons Documentation Team</author>
++  </properties>
++  <body>
++    <section name="Download Apache Commons CLI">
++    <subsection name="Using a Mirror">
++      <p>
++        We recommend you use a mirror to download our release
++        builds, but you <strong>must</strong> <a href="https://www.apache.org/info/verification.html">verify the integrity</a> of
++        the downloaded files using signatures downloaded from our main
++        distribution directories. Recent releases (48 hours) may not yet
++        be available from all the mirrors.
++      </p>
++
++      <p>
++        You are currently using <b>[preferred]</b>.  If you
++        encounter a problem with this mirror, please select another
++        mirror.  If all mirrors are failing, there are <i>backup</i>
++        mirrors (at the end of the mirrors list) that should be
++        available.
++        <br></br>
++        [if-any logo]<a href="[link]"><img align="right" src="[logo]" border="0"></img></a>[end]
++      </p>
++
++      <form action="[location]" method="get" id="SelectMirror">
++        <p>
++          Other mirrors:
++          <select name="Preferred">
++          [if-any http]
++            [for http]<option value="[http]">[http]</option>[end]
++          [end]
++          [if-any ftp]
++            [for ftp]<option value="[ftp]">[ftp]</option>[end]
++          [end]
++          [if-any backup]
++            [for backup]<option value="[backup]">[backup] (backup)</option>[end]
++          [end]
++          </select>
++          <input type="submit" value="Change"></input>
++        </p>
++      </form>
++
++      <p>
++        It is essential that you
++        <a href="https://www.apache.org/info/verification.html">verify the integrity</a>
++        of downloaded files, preferably using the <code>PGP</code> signature (<code>*.asc</code> files);
++        failing that using the <code>SHA512</code> hash (<code>*.sha512</code> checksum files).
++      </p>
++      <p>
++        The <a href="https://www.apache.org/dist/commons/KEYS">KEYS</a>
++        file contains the public PGP keys used by Apache Commons developers
++        to sign releases.
++      </p>
++    </subsection>
++    </section>
+diff --git a/src/site/xdoc/index.xml b/src/site/xdoc/index.xml
+index fe72dd19..2bb3fdd6 100644
+--- a/src/site/xdoc/index.xml
++++ b/src/site/xdoc/index.xml
+@@ -78 +78 @@ usage: ls
+-        <a href="https://git-wip-us.apache.org/repos/asf?p=commons-cli.git">browsed</a>.
++        <a href="https://gitbox.apache.org/repos/asf?p=commons-cli.git">browsed</a>.

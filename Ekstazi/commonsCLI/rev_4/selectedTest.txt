@@ -1,0 +1,1 @@
+org.apache.commons.cli.bug.BugCLI252Test,org.apache.commons.cli.bug.BugCLI265Test,org.apache.commons.cli.bug.BugCLI266Test,org.apache.commons.cli.CommandLineTest,org.apache.commons.cli.HelpFormatterTest,org.apache.commons.cli.OptionTest,org.apache.commons.cli.PatternOptionBuilderTest

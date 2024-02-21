@@ -1,0 +1,78 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< commons-jxpath:commons-jxpath >--------------------
+[INFO] Building Apache Commons JXPath 1.4-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-maven-version) @ commons-jxpath ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-java-version) @ commons-jxpath ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-maven-3) @ commons-jxpath ---
+[INFO] 
+[INFO] --- apache-rat-plugin:0.15:check (rat-check) @ commons-jxpath ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.3.0:parse-version (parse-version) @ commons-jxpath ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:3.1.0:run (javadoc.resources) @ commons-jxpath ---
+[INFO] Executing tasks
+[INFO]      [copy] Copying 2 files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/target/apidocs/META-INF
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.7.0:process (process-resource-bundles) @ commons-jxpath ---
+[INFO] Skipping remote resources execution.
+[INFO] 
+[INFO] --- buildnumber-maven-plugin:3.0.0:create (default) @ commons-jxpath ---
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir
+[INFO] Storing buildNumber: null at timestamp: 1705567370924
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
+
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir
+[INFO] Storing buildScmBranch: UNKNOWN
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ commons-jxpath ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/main/resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ commons-jxpath ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 187 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/target/classes
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java: Some input files use or override a deprecated API.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java: Recompile with -Xlint:deprecation for details.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java: Some input files use unchecked or unsafe operations.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.8:manifest (bundle-manifest) @ commons-jxpath ---
+[INFO] No MANIFEST.MF file found, generating manifest.
+[INFO] Writing manifest: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/target/osgi/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.0:testResources (default-testResources) @ commons-jxpath ---
+[INFO] Copying 7 resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ commons-jxpath ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 61 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/target/test-classes
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java uses or overrides a deprecated API.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java: Recompile with -Xlint:deprecation for details.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java: Some input files use unchecked or unsafe operations.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.22:check (checkAPIcompatibility) @ commons-jxpath ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (prepare-agent) @ commons-jxpath ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/commonsJXPATH/workingDir/target/jacoco.exec"
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M7:test (default-test) @ commons-jxpath ---
+[INFO] Tests are skipped.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.484 s
+[INFO] Finished at: 2024-01-18T17:43:00+09:00
+[INFO] ------------------------------------------------------------------------

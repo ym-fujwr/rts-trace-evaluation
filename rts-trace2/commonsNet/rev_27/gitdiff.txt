@@ -1,0 +1,37 @@
+diff --git a/src/main/java/org/apache/commons/net/telnet/TelnetInputStream.java b/src/main/java/org/apache/commons/net/telnet/TelnetInputStream.java
+index ca873a67b..eba8aba6e 100644
+--- a/src/main/java/org/apache/commons/net/telnet/TelnetInputStream.java
++++ b/src/main/java/org/apache/commons/net/telnet/TelnetInputStream.java
+@@ -38 +38 @@ final class TelnetInputStream extends BufferedInputStream implements Runnable
+-    private boolean hasReachedEOF; // @GuardedBy("__queue")
++    private boolean hasReachedEOF; // @GuardedBy("queue")
+@@ -86 +86 @@ final class TelnetInputStream extends BufferedInputStream implements Runnable
+-        // Critical section because run() may change __bytesAvailable
++        // Critical section because run() may change bytesAvailable
+@@ -130 +130 @@ final class TelnetInputStream extends BufferedInputStream implements Runnable
+-    // synchronized(__client) critical sections are to protect against
++    // synchronized(client) critical sections are to protect against
+@@ -136,2 +136,2 @@ final class TelnetInputStream extends BufferedInputStream implements Runnable
+-        // Critical section because we're altering __bytesAvailable,
+-        // __queueTail, and the contents of _queue.
++        // Critical section because we're altering bytesAvailable,
++        // queueTail, and the contents of _queue.
+@@ -182,3 +182,3 @@ final class TelnetInputStream extends BufferedInputStream implements Runnable
+-        // Critical section because we're altering __bytesAvailable,
+-        // __queueHead, and the contents of _queue in addition to
+-        // testing value of __hasReachedEOF.
++        // Critical section because we're altering bytesAvailable,
++        // queueHead, and the contents of _queue in addition to
++        // testing value of hasReachedEOF.
+@@ -222 +222 @@ final class TelnetInputStream extends BufferedInputStream implements Runnable
+-                        //__alreadyread = false;
++                        //alreadyread = false;
+@@ -303 +303 @@ final class TelnetInputStream extends BufferedInputStream implements Runnable
+-    // synchronized(__client) critical sections are to protect against
++    // synchronized(client) critical sections are to protect against
+@@ -538 +538 @@ final class TelnetInputStream extends BufferedInputStream implements Runnable
+-        // Critical section because run() may change __bytesAvailable
++        // Critical section because run() may change bytesAvailable
+@@ -558 +558 @@ final class TelnetInputStream extends BufferedInputStream implements Runnable
+-        //__client._spyRead(buffer, off, offset - off);
++        // client._spyRead(buffer, off, offset - off);

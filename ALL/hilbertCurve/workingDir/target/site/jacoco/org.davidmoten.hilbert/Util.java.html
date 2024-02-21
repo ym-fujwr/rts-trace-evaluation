@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Util.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hilbert-curve</a> &gt; <a href="index.source.html" class="el_package">org.davidmoten.hilbert</a> &gt; <span class="el_source">Util.java</span></div><h1>Util.java</h1><pre class="source lang-java linenums">package org.davidmoten.hilbert;
+
+import java.util.Arrays;
+
+final class Util {
+
+    private Util() {
+        // prevent instantiation
+    }
+
+    // visible for testing
+    static void reverse(byte[] array) {
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        if (array == null) {</span>
+<span class="fc" id="L14">            return;</span>
+        }
+<span class="fc" id="L16">        int i = 0;</span>
+<span class="fc" id="L17">        int j = array.length - 1;</span>
+        byte tmp;
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        while (j &gt; i) {</span>
+<span class="fc" id="L20">            tmp = array[j];</span>
+<span class="fc" id="L21">            array[j] = array[i];</span>
+<span class="fc" id="L22">            array[i] = tmp;</span>
+<span class="fc" id="L23">            j--;</span>
+<span class="fc" id="L24">            i++;</span>
+        }
+<span class="fc" id="L26">    }</span>
+
+    /**
+     * Returns the least value x where min(a,b) &lt;= x &lt; max(a,b) and x has the
+     * maximum number of trailing zeroes in its binary representation.
+     * 
+     * @param a
+     *            first value
+     * @param b
+     *            second value
+     * @return most significant (in terms of divisors of powers of 2) between a and
+     *         b
+     */
+    static long mostSignificantBetween(long a, long b) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (a &gt; b) {</span>
+<span class="fc" id="L41">            return mostSignificantBetween(b, a);</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        } else if (a == b) {</span>
+<span class="fc" id="L43">            return a;</span>
+        } else {
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            long x = a == 0 ? 1 : a;</span>
+<span class="fc" id="L46">            int bit = 0;</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">            while (x &lt; b) {</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">                if ((x &amp; (1 &lt;&lt; bit)) == 0) {</span>
+<span class="fc" id="L49">                    bit++;</span>
+                } else {
+<span class="fc" id="L51">                    long y = x + (1 &lt;&lt; bit);</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">                    if (y &lt; b) {</span>
+<span class="fc" id="L53">                        bit++;</span>
+<span class="fc" id="L54">                        x = y;</span>
+                    } else {
+                        break;
+                    }
+<span class="fc" id="L58">                }</span>
+            }
+<span class="fc" id="L60">            return x;</span>
+        }
+    }
+
+    public static void zero(long[] x) {
+<span class="fc" id="L65">        Arrays.fill(x, 0);</span>
+<span class="fc" id="L66">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

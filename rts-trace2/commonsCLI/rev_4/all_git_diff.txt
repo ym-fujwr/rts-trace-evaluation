@@ -1,0 +1,43 @@
+diff --git a/pom.xml b/pom.xml
+index 0dd5975f..a59c6e40 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -220 +220 @@
+-    <spotbugs.plugin.version>4.4.2.1</spotbugs.plugin.version>
++    <spotbugs.plugin.version>4.4.2.2</spotbugs.plugin.version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index d7d56a72..be34f391 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -23 +22,0 @@
+-
+@@ -116 +115 @@
+-       Bump spotbugs-maven-plugin from 4.4.1 to 4.4.2.1 #71.
++       Bump spotbugs-maven-plugin from 4.4.1 to 4.4.2.2 #71.
+diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
+index 7db03723..8ae5a02c 100644
+--- a/src/main/java/org/apache/commons/cli/Option.java
++++ b/src/main/java/org/apache/commons/cli/Option.java
+@@ -31,0 +32 @@ import java.util.Objects;
++ * </p>
+@@ -34,0 +36 @@ import java.util.Objects;
++ * </p>
+@@ -39,0 +42 @@ public class Option implements Cloneable, Serializable {
++
+@@ -43,0 +47 @@ public class Option implements Cloneable, Serializable {
++     * </p>
+@@ -87 +91 @@ public class Option implements Cloneable, Serializable {
+-            this.option = OptionValidator.validate(option);
++            option(option);
+@@ -245,0 +250 @@ public class Option implements Cloneable, Serializable {
++         * </p>
+@@ -289 +294 @@ public class Option implements Cloneable, Serializable {
+-     * @param opt short representation of the option
++     * @param option short representation of the option
+@@ -294,2 +299,2 @@ public class Option implements Cloneable, Serializable {
+-    public static Builder builder(final String opt) {
+-        return new Builder(opt);
++    public static Builder builder(final String option) {
++        return new Builder(option);
+@@ -837,0 +843 @@ public class Option implements Cloneable, Serializable {
++     * </p>

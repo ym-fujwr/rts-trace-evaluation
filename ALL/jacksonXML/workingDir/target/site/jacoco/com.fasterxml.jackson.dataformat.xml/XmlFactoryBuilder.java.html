@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlFactoryBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml</a> &gt; <span class="el_source">XmlFactoryBuilder.java</span></div><h1>XmlFactoryBuilder.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml;
+
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLOutputFactory;
+
+import com.fasterxml.jackson.core.TSFBuilder;
+import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import com.fasterxml.jackson.dataformat.xml.util.StaxUtil;
+
+/**
+ * {@link com.fasterxml.jackson.core.TSFBuilder} implementation
+ * for constructing {@link XmlFactory} instances.
+ */
+public class XmlFactoryBuilder extends TSFBuilder&lt;XmlFactory, XmlFactoryBuilder&gt;
+{
+    /*
+    /**********************************************************
+    /* Configuration
+    /**********************************************************
+     */
+
+    /**
+     * Set of {@code FromXmlParser.Feature}s enabled, as bitmask.
+     */
+    protected int _formatParserFeatures;
+
+    /**
+     * Set of {@@code ToXmlGenerator.Feature}s enabled, as bitmask.
+     */
+    protected int _formatGeneratorFeatures;
+
+    /**
+     * Stax factory for creating underlying input stream readers;
+     * `null` for &quot;use default instance with default settings&quot;
+     */
+    protected XMLInputFactory _xmlInputFactory;
+
+    /**
+     * Stax factory for creating underlying output stream writers;
+     * `null` for &quot;use default instance with default settings&quot;
+     */
+    protected XMLOutputFactory _xmlOutputFactory;
+
+    /**
+     * In cases where a start element has both attributes and non-empty textual
+     * value, we have to create a bogus property; we will use this as
+     * the property name.
+     *&lt;p&gt;
+     * Name used for pseudo-property used for returning XML Text value (which does
+     * not have actual element name to use). Defaults to empty String, but
+     * may be changed for interoperability reasons: JAXB, for example, uses
+     * &quot;value&quot; as name.
+     */
+    protected String _nameForTextElement;
+
+    /**
+     * Optional {@link ClassLoader} to use for constructing
+     * {@link XMLInputFactory} and {@kink XMLOutputFactory} instances if
+     * not explicitly specified by caller. If not specified, will
+     * default to {@link ClassLoader} that loaded this class.
+     *
+     * @since 2.13
+     */
+    protected ClassLoader _classLoaderForStax;
+
+    /**
+     * See {@link XmlNameProcessor} and {@link XmlNameProcessors}
+     *
+     * @since 2.14
+     */
+    protected XmlNameProcessor _nameProcessor;
+
+    /*
+    /**********************************************************
+    /* Life cycle
+    /**********************************************************
+     */
+    
+<span class="fc" id="L80">    protected XmlFactoryBuilder() {</span>
+<span class="fc" id="L81">        _formatParserFeatures = XmlFactory.DEFAULT_XML_PARSER_FEATURE_FLAGS;</span>
+<span class="fc" id="L82">        _formatGeneratorFeatures = XmlFactory.DEFAULT_XML_GENERATOR_FEATURE_FLAGS;</span>
+<span class="fc" id="L83">        _classLoaderForStax = null;</span>
+<span class="fc" id="L84">        _nameProcessor = XmlNameProcessors.newPassthroughProcessor();</span>
+<span class="fc" id="L85">    }</span>
+
+    public XmlFactoryBuilder(XmlFactory base) {
+<span class="nc" id="L88">        super(base);</span>
+<span class="nc" id="L89">        _formatParserFeatures = base._xmlParserFeatures;</span>
+<span class="nc" id="L90">        _formatGeneratorFeatures = base._xmlGeneratorFeatures;</span>
+<span class="nc" id="L91">        _xmlInputFactory = base._xmlInputFactory;</span>
+<span class="nc" id="L92">        _xmlOutputFactory = base._xmlOutputFactory;</span>
+<span class="nc" id="L93">        _nameForTextElement = base._cfgNameForTextElement;</span>
+<span class="nc" id="L94">        _nameProcessor = base._nameProcessor;</span>
+<span class="nc" id="L95">        _classLoaderForStax = null;</span>
+<span class="nc" id="L96">    }</span>
+
+    // // // Accessors
+
+<span class="fc" id="L100">    public int formatParserFeaturesMask() { return _formatParserFeatures; }</span>
+<span class="fc" id="L101">    public int formatGeneratorFeaturesMask() { return _formatGeneratorFeatures; }</span>
+
+<span class="fc" id="L103">    public String nameForTextElement() { return _nameForTextElement; }</span>
+
+    public XMLInputFactory xmlInputFactory() {
+<span class="fc bfc" id="L106" title="All 2 branches covered.">        if (_xmlInputFactory == null) {</span>
+<span class="fc" id="L107">            return defaultInputFactory();</span>
+        }
+<span class="fc" id="L109">        return _xmlInputFactory;</span>
+    }
+
+    protected XMLInputFactory defaultInputFactory() {
+<span class="fc" id="L113">        XMLInputFactory xmlIn = StaxUtil.defaultInputFactory(_classLoaderForStax);</span>
+        // as per [dataformat-xml#190], disable external entity expansion by default
+<span class="fc" id="L115">        xmlIn.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, Boolean.FALSE);</span>
+        // and ditto wrt [dataformat-xml#211], SUPPORT_DTD
+<span class="fc" id="L117">        xmlIn.setProperty(XMLInputFactory.SUPPORT_DTD, Boolean.FALSE);</span>
+<span class="fc" id="L118">        return xmlIn;</span>
+    }
+
+    public XMLOutputFactory xmlOutputFactory() {
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        if (_xmlOutputFactory == null) {</span>
+<span class="fc" id="L123">            return defaultOutputFactory();</span>
+        }
+<span class="fc" id="L125">        return _xmlOutputFactory;</span>
+    }
+
+    protected XMLOutputFactory defaultOutputFactory() {
+<span class="fc" id="L129">        XMLOutputFactory xmlOut = StaxUtil.defaultOutputFactory(_classLoaderForStax);</span>
+        // [dataformat-xml#326]: Better ensure namespaces get built properly:
+<span class="fc" id="L131">        xmlOut.setProperty(XMLOutputFactory.IS_REPAIRING_NAMESPACES, Boolean.TRUE);</span>
+<span class="fc" id="L132">        return xmlOut;</span>
+    }
+
+    // @since 2.13
+    protected ClassLoader staxClassLoader() {
+<span class="nc bnc" id="L137" title="All 2 branches missed.">        return (_classLoaderForStax == null) ?</span>
+<span class="nc" id="L138">                getClass().getClassLoader() : _classLoaderForStax;</span>
+    }
+
+    public XmlNameProcessor xmlNameProcessor() {
+<span class="fc" id="L142">        return _nameProcessor;</span>
+    }
+
+    // // // Parser features
+
+    public XmlFactoryBuilder enable(FromXmlParser.Feature f) {
+<span class="nc" id="L148">        _formatParserFeatures |= f.getMask();</span>
+<span class="nc" id="L149">        return _this();</span>
+    }
+
+    public XmlFactoryBuilder enable(FromXmlParser.Feature first, FromXmlParser.Feature... other) {
+<span class="nc" id="L153">        _formatParserFeatures |= first.getMask();</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">        for (FromXmlParser.Feature f : other) {</span>
+<span class="nc" id="L155">            _formatParserFeatures |= f.getMask();</span>
+        }
+<span class="nc" id="L157">        return _this();</span>
+    }
+
+    public XmlFactoryBuilder disable(FromXmlParser.Feature f) {
+<span class="nc" id="L161">        _formatParserFeatures &amp;= ~f.getMask();</span>
+<span class="nc" id="L162">        return _this();</span>
+    }
+
+    public XmlFactoryBuilder disable(FromXmlParser.Feature first, FromXmlParser.Feature... other) {
+<span class="nc" id="L166">        _formatParserFeatures &amp;= ~first.getMask();</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">        for (FromXmlParser.Feature f : other) {</span>
+<span class="nc" id="L168">            _formatParserFeatures &amp;= ~f.getMask();</span>
+        }
+<span class="nc" id="L170">        return _this();</span>
+    }
+
+    public XmlFactoryBuilder configure(FromXmlParser.Feature f, boolean state) {
+<span class="nc bnc" id="L174" title="All 2 branches missed.">        return state ? enable(f) : disable(f);</span>
+    }
+
+    // // // Generator features
+
+    public XmlFactoryBuilder enable(ToXmlGenerator.Feature f) {
+<span class="nc" id="L180">        _formatGeneratorFeatures |= f.getMask();</span>
+<span class="nc" id="L181">        return _this();</span>
+    }
+
+    public XmlFactoryBuilder enable(ToXmlGenerator.Feature first, ToXmlGenerator.Feature... other) {
+<span class="nc" id="L185">        _formatGeneratorFeatures |= first.getMask();</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">        for (ToXmlGenerator.Feature f : other) {</span>
+<span class="nc" id="L187">            _formatGeneratorFeatures |= f.getMask();</span>
+        }
+<span class="nc" id="L189">        return _this();</span>
+    }
+
+    public XmlFactoryBuilder disable(ToXmlGenerator.Feature f) {
+<span class="nc" id="L193">        _formatGeneratorFeatures &amp;= ~f.getMask();</span>
+<span class="nc" id="L194">        return _this();</span>
+    }
+    
+    public XmlFactoryBuilder disable(ToXmlGenerator.Feature first, ToXmlGenerator.Feature... other) {
+<span class="nc" id="L198">        _formatGeneratorFeatures &amp;= ~first.getMask();</span>
+<span class="nc bnc" id="L199" title="All 2 branches missed.">        for (ToXmlGenerator.Feature f : other) {</span>
+<span class="nc" id="L200">            _formatGeneratorFeatures &amp;= ~f.getMask();</span>
+        }
+<span class="nc" id="L202">        return _this();</span>
+    }
+
+    public XmlFactoryBuilder configure(ToXmlGenerator.Feature f, boolean state) {
+<span class="nc bnc" id="L206" title="All 2 branches missed.">        return state ? enable(f) : disable(f);</span>
+    }
+
+    // // // Other config
+
+    public XmlFactoryBuilder nameForTextElement(String name) {
+<span class="nc" id="L212">        _nameForTextElement = name;</span>
+<span class="nc" id="L213">        return _this();</span>
+    }
+
+    /**
+     * @since 2.13 (was misnamed as {@code inputFactory(in) formerly})
+     */
+    public XmlFactoryBuilder xmlInputFactory(XMLInputFactory xmlIn) {
+<span class="fc" id="L220">        _xmlInputFactory = xmlIn;</span>
+<span class="fc" id="L221">        return _this();</span>
+    }
+
+    /**
+     * @since 2.13 (was misnamed as {@code outputFactory(in) formerly})
+     */
+    public XmlFactoryBuilder xmlOutputFactory(XMLOutputFactory xmlOut)
+    {
+<span class="fc" id="L229">        _xmlOutputFactory = xmlOut;</span>
+<span class="fc" id="L230">        return _this();</span>
+    }
+
+    /**
+     * @deprecated Since 2.13 use {@link #xmlInputFactory()} instead
+     */
+    @Deprecated // since 2.13
+    public XmlFactoryBuilder inputFactory(XMLInputFactory xmlIn) {
+<span class="nc" id="L238">        return xmlInputFactory(xmlIn);</span>
+    }
+
+    /**
+     * @deprecated Since 2.13 use {@link #xmlOutputFactory()} instead
+     */
+    @Deprecated // since 2.13
+    public XmlFactoryBuilder outputFactory(XMLOutputFactory xmlOut) {
+<span class="nc" id="L246">        return xmlOutputFactory(xmlOut);</span>
+    }
+
+    /**
+     * Method that can be used to specific {@link ClassLoader} for creating
+     * {@link XMLInputFactory} and {@link XMLOutputFactory} instances if
+     * those are not explicitly defined by caller: passed to respective
+     * {@code newFactory()} methods.
+     *&lt;br&gt;
+     * NOTE: recommended approach is to explicitly pass {@link XMLInputFactory}
+     * and {@link XMLOutputFactory} methods instead of relying on JDK SPI
+     * mechanism.
+     *
+     * @since 2.13
+     */
+    public XmlFactoryBuilder staxClassLoader(ClassLoader cl) {
+<span class="nc" id="L262">        _classLoaderForStax = cl;</span>
+<span class="nc" id="L263">        return _this();</span>
+    }
+
+    /**
+     * @since 2.14
+     */
+    public XmlFactoryBuilder xmlNameProcessor(XmlNameProcessor nameProcessor) {
+<span class="nc" id="L270">        _nameProcessor = nameProcessor;</span>
+<span class="nc" id="L271">        return _this();</span>
+    }
+    
+    // // // Actual construction
+
+    @Override
+    public XmlFactory build() {
+<span class="fc" id="L278">        return new XmlFactory(this);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

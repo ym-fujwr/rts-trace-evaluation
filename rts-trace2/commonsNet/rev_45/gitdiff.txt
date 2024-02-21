@@ -1,0 +1,71 @@
+diff --git a/src/main/java/org/apache/commons/net/ftp/parser/MVSFTPEntryParser.java b/src/main/java/org/apache/commons/net/ftp/parser/MVSFTPEntryParser.java
+index d961b77df..4b9749415 100644
+--- a/src/main/java/org/apache/commons/net/ftp/parser/MVSFTPEntryParser.java
++++ b/src/main/java/org/apache/commons/net/ftp/parser/MVSFTPEntryParser.java
+@@ -291 +291,2 @@ public class MVSFTPEntryParser extends ConfigurableFTPFileEntryParserImpl {
+-        if (isType == FILE_LIST_TYPE) {
++        switch (isType) {
++        case FILE_LIST_TYPE:
+@@ -293,2 +294 @@ public class MVSFTPEntryParser extends ConfigurableFTPFileEntryParserImpl {
+-        }
+-        if (isType == MEMBER_LIST_TYPE) {
++        case MEMBER_LIST_TYPE:
+@@ -296,2 +296 @@ public class MVSFTPEntryParser extends ConfigurableFTPFileEntryParserImpl {
+-        }
+-        if (isType == UNIX_LIST_TYPE) {
++        case UNIX_LIST_TYPE:
+@@ -299,2 +298 @@ public class MVSFTPEntryParser extends ConfigurableFTPFileEntryParserImpl {
+-        }
+-        if (isType == JES_LEVEL_1_LIST_TYPE) {
++        case JES_LEVEL_1_LIST_TYPE:
+@@ -302,2 +300 @@ public class MVSFTPEntryParser extends ConfigurableFTPFileEntryParserImpl {
+-        }
+-        if (isType == JES_LEVEL_2_LIST_TYPE) {
++        case JES_LEVEL_2_LIST_TYPE:
+@@ -304,0 +302,2 @@ public class MVSFTPEntryParser extends ConfigurableFTPFileEntryParserImpl {
++        default:
++            break;
+diff --git a/src/main/java/org/apache/commons/net/io/DotTerminatedMessageReader.java b/src/main/java/org/apache/commons/net/io/DotTerminatedMessageReader.java
+index e56c52faa..d8d76c5d8 100644
+--- a/src/main/java/org/apache/commons/net/io/DotTerminatedMessageReader.java
++++ b/src/main/java/org/apache/commons/net/io/DotTerminatedMessageReader.java
+@@ -104 +104,2 @@ public final class DotTerminatedMessageReader extends BufferedReader {
+-                    if (chint == NetConstants.EOS) { // Should not happen
++                    switch (chint) {
++                    case NetConstants.EOS:
+@@ -108,2 +109 @@ public final class DotTerminatedMessageReader extends BufferedReader {
+-                    }
+-                    if (chint == DOT) { // Have DOT DOT
++                    case DOT:
+@@ -112,2 +112 @@ public final class DotTerminatedMessageReader extends BufferedReader {
+-                    }
+-                    if (chint == CR) { // Have DOT CR
++                    case CR:
+@@ -125,0 +125,3 @@ public final class DotTerminatedMessageReader extends BufferedReader {
++                        break;
++                    default:
++                        break;
+diff --git a/src/test/java/org/apache/commons/net/telnet/TelnetClientTest.java b/src/test/java/org/apache/commons/net/telnet/TelnetClientTest.java
+index ae60b2ffa..298076e82 100644
+--- a/src/test/java/org/apache/commons/net/telnet/TelnetClientTest.java
++++ b/src/test/java/org/apache/commons/net/telnet/TelnetClientTest.java
+@@ -110 +110,2 @@ public class TelnetClientTest extends TestCase implements TelnetNotificationHand
+-        if (negotiation_code == TelnetNotificationHandler.RECEIVED_DO) {
++        switch (negotiation_code) {
++        case TelnetNotificationHandler.RECEIVED_DO:
+@@ -112 +113,2 @@ public class TelnetClientTest extends TestCase implements TelnetNotificationHand
+-        } else if (negotiation_code == TelnetNotificationHandler.RECEIVED_DONT) {
++            break;
++        case TelnetNotificationHandler.RECEIVED_DONT:
+@@ -114 +116,2 @@ public class TelnetClientTest extends TestCase implements TelnetNotificationHand
+-        } else if (negotiation_code == TelnetNotificationHandler.RECEIVED_WILL) {
++            break;
++        case TelnetNotificationHandler.RECEIVED_WILL:
+@@ -116 +119,2 @@ public class TelnetClientTest extends TestCase implements TelnetNotificationHand
+-        } else if (negotiation_code == TelnetNotificationHandler.RECEIVED_WONT) {
++            break;
++        case TelnetNotificationHandler.RECEIVED_WONT:
+@@ -117,0 +122,3 @@ public class TelnetClientTest extends TestCase implements TelnetNotificationHand
++            break;
++        default:
++            break;

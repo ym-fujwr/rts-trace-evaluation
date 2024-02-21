@@ -1,0 +1,10 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+index 5f2005d69..b46b112d4 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+@@ -935,0 +936,5 @@ XmlTokenStream.XML_END_ELEMENT, XmlTokenStream.XML_START_ELEMENT, token));
++                // 18-Mar-2023, tatu: [dataformat-xml#584 / #585] in 2.14 and before
++                //    returned VALUE_STRING on assumption we never expose `null`s if
++                //    asked text value -- but that seems incorrect. Hoping this won't
++                //    break anything in 2.15+
++

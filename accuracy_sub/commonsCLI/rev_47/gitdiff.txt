@@ -1,0 +1,17 @@
+diff --git a/src/main/java/org/apache/commons/cli/HelpFormatter.java b/src/main/java/org/apache/commons/cli/HelpFormatter.java
+index af685696..2f480e8d 100644
+--- a/src/main/java/org/apache/commons/cli/HelpFormatter.java
++++ b/src/main/java/org/apache/commons/cli/HelpFormatter.java
+@@ -875 +875 @@ public class HelpFormatter {
+-     * Set the separator displayed between a long option and its value. Ensure that the separator specified is supported by
++     * Sets the separator displayed between a long option and its value. Ensure that the separator specified is supported by
+@@ -895 +895 @@ public class HelpFormatter {
+-     * Set the comparator used to sort the options when they output in help text. Passing in a null comparator will keep the
++     * Sets the comparator used to sort the options when they output in help text. Passing in a null comparator will keep the
+diff --git a/src/main/java/org/apache/commons/cli/OptionGroup.java b/src/main/java/org/apache/commons/cli/OptionGroup.java
+index c4c7be47..3e21f2f9 100644
+--- a/src/main/java/org/apache/commons/cli/OptionGroup.java
++++ b/src/main/java/org/apache/commons/cli/OptionGroup.java
+@@ -96 +96 @@ public class OptionGroup implements Serializable {
+-     * Set the selected option of this group to {@code name}.
++     * Sets the selected option of this group to {@code name}.

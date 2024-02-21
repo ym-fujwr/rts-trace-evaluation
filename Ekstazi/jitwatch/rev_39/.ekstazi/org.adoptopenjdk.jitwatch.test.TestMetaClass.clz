@@ -1,0 +1,17 @@
+# 1
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/loader/DisposableURLClassLoader.class _ 475040428
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/AbstractMetaMember.class _ 1508461116
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/IMetaMember.class _ 1597323036
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/MemberSignatureParts.class _ 1875896123
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/MetaClass.class _ 994988987
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/MetaConstructor.class _ 393808278
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/MetaMethod.class _ 1621411190
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/MetaPackage.class _ 1610936323
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.class _ 111500893
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/util/ClassUtil.class _ 3897633289
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/util/ParseUtil.class _ 4257828731
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/util/StringUtil.class _ 1944644263
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/FooClassInDefaultPackage.class _ 2179591039
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/IsUsedForTestingDefaultPackage.class _ 308831283
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestClassWithGenerics.class _ 1106270582
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestMetaClass.class _ 3587636735

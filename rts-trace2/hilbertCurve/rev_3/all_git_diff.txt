@@ -1,0 +1,24 @@
+diff --git a/src/main/java/org/davidmoten/hilbert/Ranges.java b/src/main/java/org/davidmoten/hilbert/Ranges.java
+index a2e524a..cadc1b5 100644
+--- a/src/main/java/org/davidmoten/hilbert/Ranges.java
++++ b/src/main/java/org/davidmoten/hilbert/Ranges.java
+@@ -5,0 +6,2 @@ import java.util.List;
++import com.github.davidmoten.guavamini.Preconditions;
++
+@@ -81,2 +83,14 @@ public final class Ranges {
+-    
+-    public Ranges joinClosestRangePair() {
++
++    public Ranges join(int n) {
++        Preconditions.checkArgument(n > 0);
++
++        // TODO replace this with an efficient algorithm like a Max Heap which is kept
++        // at size k so runtime complexity is O(n + klogk)
++        Ranges r = this;
++        for (int i = 0; i < n; i++) {
++            r = r.joinOnePair();
++        }
++        return r;
++    }
++
++    private Ranges joinOnePair() {

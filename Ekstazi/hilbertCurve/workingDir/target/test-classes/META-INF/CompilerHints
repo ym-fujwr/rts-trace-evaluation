@@ -1,0 +1,16 @@
+dontinline,*.*_all_jmhStub
+dontinline,*.*_avgt_jmhStub
+dontinline,*.*_sample_jmhStub
+dontinline,*.*_ss_jmhStub
+dontinline,*.*_thrpt_jmhStub
+inline,org/davidmoten/hilbert/Benchmarks.pointSmallTimes512
+inline,org/davidmoten/hilbert/Benchmarks.pointSmallTimes512LowAllocation
+inline,org/davidmoten/hilbert/Benchmarks.pointTimes512
+inline,org/davidmoten/hilbert/Benchmarks.pointTimes512LowAllocation
+inline,org/davidmoten/hilbert/Benchmarks.querySydney
+inline,org/davidmoten/hilbert/Benchmarks.roundTripSmallTimes512
+inline,org/davidmoten/hilbert/Benchmarks.roundTripSmallTimes512LowAllocation
+inline,org/davidmoten/hilbert/Benchmarks.roundTripTimes512
+inline,org/davidmoten/hilbert/Benchmarks.roundTripTimes512LowAllocation
+inline,org/davidmoten/hilbert/Benchmarks.toIndexTimes512
+inline,org/davidmoten/hilbert/Benchmarks.toIndexTimes512Small

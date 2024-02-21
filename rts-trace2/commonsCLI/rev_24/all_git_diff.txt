@@ -1,0 +1,77 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index 5b399768..cf421a7c 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -60 +60 @@ jobs:
+-      uses: github/codeql-action/init@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
++      uses: github/codeql-action/init@0ba4244466797eb048eb91a6cd43d5c03ca8bd05 # v2.21.2
+@@ -71 +71 @@ jobs:
+-      uses: github/codeql-action/autobuild@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
++      uses: github/codeql-action/autobuild@0ba4244466797eb048eb91a6cd43d5c03ca8bd05 # v2.21.2
+@@ -85 +85 @@ jobs:
+-      uses: github/codeql-action/analyze@46ed16ded91731b2df79a2893d3aea8e9f03b5c4 # v2.20.3
++      uses: github/codeql-action/analyze@0ba4244466797eb048eb91a6cd43d5c03ca8bd05 # v2.21.2
+diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
+index 502cb4be..596c6f74 100644
+--- a/.github/workflows/coverage.yml
++++ b/.github/workflows/coverage.yml
+@@ -42 +42 @@ jobs:
+-      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
++      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index bd836a3f..c8f11acf 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -47 +47 @@ jobs:
+-      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
++      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index 3abbfe2d..851a2c30 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -67 +67 @@ jobs:
+-        uses: github/codeql-action/upload-sarif@46ed16ded91731b2df79a2893d3aea8e9f03b5c4    # 2.20.3
++        uses: github/codeql-action/upload-sarif@0ba4244466797eb048eb91a6cd43d5c03ca8bd05    # 2.21.2
+diff --git a/README.md b/README.md
+index 7a2e6833..ec08e642 100644
+--- a/README.md
++++ b/README.md
+@@ -90 +90 @@ License
+-This code is under the [Apache Licence v2](https://www.apache.org/licenses/LICENSE-2.0).
++This code is under the [Apache License v2](https://www.apache.org/licenses/LICENSE-2.0).
+diff --git a/pom.xml b/pom.xml
+index f33e0306..84b370da 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -22 +22 @@
+-    <version>58</version>
++    <version>59</version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 13d0c7fb..b94b376b 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -76 +76 @@
+-        Bump commons-parent from 52 to 58 #100, #128, #151, #158.
++        Bump commons-parent from 52 to 59 #100, #128, #151, #158.
+diff --git a/src/test/java/org/apache/commons/cli/ParserTestCase.java b/src/test/java/org/apache/commons/cli/ParserTestCase.java
+index 5a6e5a0e..25ade7e7 100644
+--- a/src/test/java/org/apache/commons/cli/ParserTestCase.java
++++ b/src/test/java/org/apache/commons/cli/ParserTestCase.java
+@@ -77,0 +78,14 @@ public abstract class ParserTestCase {
++    public void testAmbiguousLongWithoutEqualSingleDash2() throws Exception {
++        final String[] args = {"-b", "-foobar"};
++
++        final Options options = new Options();
++        options.addOption(Option.builder().option("f").longOpt("foo").optionalArg(true).build());
++        options.addOption(Option.builder().option("b").longOpt("bar").optionalArg(false).build());
++
++        final CommandLine cl = parser.parse(options, args);
++
++        assertTrue(cl.hasOption("b"));
++        assertTrue(cl.hasOption("f"));
++        assertEquals("bar", cl.getOptionValue("foo"));
++    }
++
+@@ -474 +488 @@ public abstract class ParserTestCase {
+-
++    

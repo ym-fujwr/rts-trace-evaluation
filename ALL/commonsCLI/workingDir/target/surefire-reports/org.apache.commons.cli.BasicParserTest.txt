@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.commons.cli.BasicParserTest
+-------------------------------------------------------------------------------
+Tests run: 64, Failures: 0, Errors: 0, Skipped: 27, Time elapsed: 0.115 s -- in org.apache.commons.cli.BasicParserTest

@@ -1,0 +1,9 @@
+com.zaxxer.nuprocess.CatTest
+com.zaxxer.nuprocess.DirectWriteTest
+com.zaxxer.nuprocess.EnvironmentTest
+com.zaxxer.nuprocess.FastExitingProcessTest
+com.zaxxer.nuprocess.internal.ConstantsTest
+com.zaxxer.nuprocess.InterruptTest
+com.zaxxer.nuprocess.linux.EpollEventTest
+com.zaxxer.nuprocess.RunTest
+com.zaxxer.nuprocess.ThreadedTest

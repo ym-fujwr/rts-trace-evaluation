@@ -1,0 +1,13 @@
+diff --git a/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java b/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
+index 31dd19ff..4ac09f36 100644
+--- a/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
++++ b/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
+@@ -37,0 +38,8 @@ public class TestExecutionUtil
++		// path for gradle build
++		path = FileSystems.getDefault().getPath(userDir, "build", "classes", "java", "test");
++
++		if (Files.exists(path))
++		{
++			cp.add(path.toString());
++		}
++

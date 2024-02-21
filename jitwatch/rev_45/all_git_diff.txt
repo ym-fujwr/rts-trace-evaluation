@@ -1,0 +1,96 @@
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
+index 1e73bcce..bfaa458d 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2022 Chris Newland.
++ * Copyright (c) 2013-2021 Chris Newland.
+@@ -189,0 +190,36 @@ public class ClassBC
++		case 62:
++			result = "Java 18";
++			break;
++		case 61:
++			result = "Java 17";
++			break;
++		case 60:
++			result = "Java 16";
++			break;
++		case 59:
++			result = "Java 15";
++			break;
++		case 58:
++			result = "Java 14";
++			break;
++		case 57:
++			result = "Java 13";
++			break;
++		case 56:
++			result = "Java 12";
++			break;
++		case 55:
++			result = "Java 11";
++			break;
++		case 54:
++			result = "Java 10";
++			break;
++		case 53:
++			result = "Java 9";
++			break;
++		case 52:
++			result = "Java 8";
++			break;
++		case 51:
++			result = "Java 7";
++			break;
+@@ -209 +245 @@ public class ClassBC
+-			result = "Java " + (majorVersion - 44);
++			result = "Unknown java version";
+@@ -231,2 +267 @@ public class ClassBC
+-	@Override
+-	public String toString()
++	@Override public String toString()
+diff --git a/ui/pom.xml b/ui/pom.xml
+index 60142284..48beb1d5 100644
+--- a/ui/pom.xml
++++ b/ui/pom.xml
+@@ -17 +17 @@
+-		<openjfx.version>18.0.2</openjfx.version>
++		<openjfx.version>17.0.2</openjfx.version>
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/compilechain/CompileChainStage.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/compilechain/CompileChainStage.java
+index f3ff7886..f2002e71 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/compilechain/CompileChainStage.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/compilechain/CompileChainStage.java
+@@ -237,0 +238 @@ public class CompileChainStage extends Stage implements ICompilationChangeListen
++		}
+@@ -239,12 +240,11 @@ public class CompileChainStage extends Stage implements ICompilationChangeListen
+-			if (member == null)
+-			{
+-				result = "Unknown";
+-			}
+-			else if (member.isConstructor())
+-			{
+-				result = member.getMetaClass().getAbbreviatedFullyQualifiedName() + "()";
+-			}
+-			else
+-			{
+-				result = member.getAbbreviatedFullyQualifiedMemberName() + "()";
+-			}
++		if (member == null)
++		{
++			result = "Unknown";
++		}
++		else if (member.isConstructor())
++		{
++			result = member.getMetaClass().getAbbreviatedFullyQualifiedName() + "()";
++		}
++		else
++		{
++			result = member.getAbbreviatedFullyQualifiedMemberName() + "()";
+@@ -375,6 +375 @@ public class CompileChainStage extends Stage implements ICompilationChangeListen
+-			title += rootMemberName;
+-
+-			if (root != null)
+-			{
+-				title += " " + root.getCompilation().getSignature();
+-			}
++			title += rootMemberName + " " + root.getCompilation().getSignature();

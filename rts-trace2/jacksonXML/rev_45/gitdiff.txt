@@ -1,0 +1,596 @@
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlAnnotationIntrospector.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlAnnotationIntrospector.java
+index 8080d540f..a86914fca 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlAnnotationIntrospector.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlAnnotationIntrospector.java
+@@ -6,0 +7,2 @@ import com.fasterxml.jackson.annotation.JsonProperty;
++import com.fasterxml.jackson.annotation.JsonTypeInfo;
++import com.fasterxml.jackson.databind.JavaType;
+@@ -9,0 +12 @@ import com.fasterxml.jackson.databind.introspect.*;
++import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
+@@ -227,0 +231,5 @@ public class JacksonXmlAnnotationIntrospector
++    @Override
++    protected TypeResolverBuilder<?> _constructStdTypeResolverBuilder(MapperConfig<?> config, JsonTypeInfo.Value typeInfo, JavaType baseType) {
++        return new XmlTypeResolverBuilder(typeInfo);
++    }
++    
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlTypeResolverBuilder.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlTypeResolverBuilder.java
+index 6f7f21aea..a90f0697d 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlTypeResolverBuilder.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlTypeResolverBuilder.java
+@@ -26,0 +27,7 @@ public class XmlTypeResolverBuilder extends StdTypeResolverBuilder
++    public XmlTypeResolverBuilder() {
++    }
++
++    public XmlTypeResolverBuilder(JsonTypeInfo.Value settings) {
++        super(settings);
++    }
++
+@@ -37,0 +45,9 @@ public class XmlTypeResolverBuilder extends StdTypeResolverBuilder
++    @Override
++    public StdTypeResolverBuilder init(JsonTypeInfo.Value settings, TypeIdResolver idRes) {
++        super.init(settings, idRes);
++        if (_typeProperty != null) {
++            _typeProperty = StaxUtil.sanitizeXmlTypeName(_typeProperty);
++        }
++        return this;
++    }
++
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+index b46b112d4..12a716ed8 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+@@ -520,0 +521 @@ public class FromXmlParser
++            _ioContext.close();
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlDeserializationContext.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlDeserializationContext.java
+index 10b5d6141..84eced5fc 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlDeserializationContext.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlDeserializationContext.java
+@@ -7,0 +8 @@ import com.fasterxml.jackson.databind.*;
++import com.fasterxml.jackson.databind.cfg.CacheProvider;
+@@ -34 +35,3 @@ public class XmlDeserializationContext
+-        super(df, null);
++        // 04-Sep-2023, tatu: Not ideal (wrt not going via CacheProvider) but
++        //     has to do for backwards compatibility:
++        super(df, new DeserializerCache());
+@@ -51,0 +55,5 @@ public class XmlDeserializationContext
++    // @since 2.16
++    private XmlDeserializationContext(XmlDeserializationContext src, CacheProvider cp) {
++        super(src, cp);
++    }
++
+@@ -73,0 +82,5 @@ public class XmlDeserializationContext
++    @Override
++    public DefaultDeserializationContext withCaches(CacheProvider cp) {
++        return new XmlDeserializationContext(this, cp);
++    }
++
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java
+index 2e5c8a552..735a171f4 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java
+@@ -141,2 +141,5 @@ public class ToXmlGenerator
+-    
+-    protected final IOContext _ioContext;
++
++    /**
++     * @since 2.16
++     */
++    protected final StreamWriteConstraints _streamWriteConstraints;
+@@ -225 +228 @@ public class ToXmlGenerator
+-        super(stdFeatures, codec);
++        super(stdFeatures, codec, ctxt);
+@@ -227 +230 @@ public class ToXmlGenerator
+-        _ioContext = ctxt;
++        _streamWriteConstraints = ctxt.streamWriteConstraints();
+@@ -323,0 +327,5 @@ public class ToXmlGenerator
++    @Override
++    public StreamWriteConstraints streamWriteConstraints() {
++        return _streamWriteConstraints;
++    }
++
+@@ -538,0 +547 @@ public class ToXmlGenerator
++        streamWriteConstraints().validateNestingDepth(_writeContext.getNestingDepth());
+@@ -564,0 +574 @@ public class ToXmlGenerator
++        streamWriteConstraints().validateNestingDepth(_writeContext.getNestingDepth());
+@@ -1322,11 +1332,10 @@ public class ToXmlGenerator
+-//        boolean wasClosed = _closed;
+-        super.close();
+-
+-        // First: let's see that we still have buffers...
+-        if (isEnabled(JsonGenerator.Feature.AUTO_CLOSE_JSON_CONTENT)) {
+-            try {
+-                while (true) {
+-		    /* 28-May-2016, tatu: To work around incompatibility introduced by
+-		     *     `jackson-core` 2.8 where return type of `getOutputContext()`
+-		     *     changed, let's do direct access here.
+-		     */
++        if (!isClosed()) {
++
++            // First: let's see that we still have buffers...
++            if (isEnabled(JsonGenerator.Feature.AUTO_CLOSE_JSON_CONTENT)) {
++                try {
++                    while (true) {
++                        /* 28-May-2016, tatu: To work around incompatibility introduced by
++                         *     `jackson-core` 2.8 where return type of `getOutputContext()`
++                         *     changed, let's do direct access here.
++                         */
+@@ -1334,7 +1343,8 @@ public class ToXmlGenerator
+-		    JsonStreamContext ctxt = _writeContext;
+-                    if (ctxt.inArray()) {
+-                        writeEndArray();
+-                    } else if (ctxt.inObject()) {
+-                        writeEndObject();
+-                    } else {
+-                        break;
++                        JsonStreamContext ctxt = _writeContext;
++                        if (ctxt.inArray()) {
++                            writeEndArray();
++                        } else if (ctxt.inObject()) {
++                            writeEndObject();
++                        } else {
++                            break;
++                        }
+@@ -1341,0 +1352,5 @@ public class ToXmlGenerator
++                } catch (ArrayIndexOutOfBoundsException e) {
++                    /* 29-Nov-2010, tatu: Stupid, stupid SJSXP doesn't do array checks, so we get
++                     *   hit by this as a collateral problem in some cases. Yuck.
++                     */
++                    throw new JsonGenerationException(e, this);
+@@ -1343,5 +1357,0 @@ public class ToXmlGenerator
+-            } catch (ArrayIndexOutOfBoundsException e) {
+-                /* 29-Nov-2010, tatu: Stupid, stupid SJSXP doesn't do array checks, so we get
+-                 *   hit by this as a collateral problem in some cases. Yuck.
+-                 */
+-                throw new JsonGenerationException(e, this);
+@@ -1349,6 +1359,8 @@ public class ToXmlGenerator
+-        }
+-        try {
+-            if (_ioContext.isResourceManaged() || isEnabled(JsonGenerator.Feature.AUTO_CLOSE_TARGET)) {
+-                _xmlWriter.closeCompletely();
+-            } else {
+-                _xmlWriter.close();
++            try {
++                if (_ioContext.isResourceManaged() || isEnabled(JsonGenerator.Feature.AUTO_CLOSE_TARGET)) {
++                    _xmlWriter.closeCompletely();
++                } else {
++                    _xmlWriter.close();
++                }
++            } catch (XMLStreamException e) {
++                StaxUtil.throwAsGenerationException(e, this);
+@@ -1356,2 +1368 @@ public class ToXmlGenerator
+-        } catch (XMLStreamException e) {
+-            StaxUtil.throwAsGenerationException(e, this);
++            super.close();
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java
+index 6ef95c32a..f53f90a49 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java
+@@ -11,0 +12 @@ import com.fasterxml.jackson.databind.*;
++import com.fasterxml.jackson.databind.cfg.CacheProvider;
+@@ -14,0 +16 @@ import com.fasterxml.jackson.databind.ser.SerializerFactory;
++import com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.Impl;
+@@ -46,0 +49,8 @@ public class XmlSerializerProvider extends DefaultSerializerProvider
++    /**
++     * @since 2.16
++     */
++    protected XmlSerializerProvider(XmlSerializerProvider src, CacheProvider cp) {
++        super(src, cp);
++        _rootNameLookup  = src._rootNameLookup;
++    }
++
+@@ -67,0 +78,5 @@ public class XmlSerializerProvider extends DefaultSerializerProvider
++    @Override
++    public DefaultSerializerProvider withCaches(CacheProvider cacheProvider) {
++        return new XmlSerializerProvider(this, cacheProvider);
++    }
++
+@@ -99 +114 @@ public class XmlSerializerProvider extends DefaultSerializerProvider
+-            asArray = TypeUtil.isIndexedType(cls);
++            asArray = TypeUtil.isIndexedType(_config.constructType(cls));
+@@ -158 +173 @@ public class XmlSerializerProvider extends DefaultSerializerProvider
+-                    ? TypeUtil.isIndexedType(value.getClass())
++                    ? TypeUtil.isIndexedType(_config.constructType(value.getClass()))
+@@ -207 +222 @@ public class XmlSerializerProvider extends DefaultSerializerProvider
+-                    ? TypeUtil.isIndexedType(value.getClass())
++                    ? TypeUtil.isIndexedType(_config.constructType(value.getClass()))
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/DefaultXmlPrettyPrinter.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/DefaultXmlPrettyPrinter.java
+index aca070536..35d88c036 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/DefaultXmlPrettyPrinter.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/DefaultXmlPrettyPrinter.java
+@@ -73,7 +72,0 @@ public class DefaultXmlPrettyPrinter
+-    /**
+-     * By default we will add spaces around colons used to
+-     * separate object fields and values.
+-     * If disabled, will not use spaces around colon.
+-     */
+-    protected boolean _spacesInObjectEntries = true;
+-
+@@ -134 +126,0 @@ public class DefaultXmlPrettyPrinter
+-        _spacesInObjectEntries = base._spacesInObjectEntries;
+@@ -149,2 +140,0 @@ public class DefaultXmlPrettyPrinter
+-    public void spacesInObjectEntries(boolean b) { _spacesInObjectEntries = b; }
+-
+@@ -182 +172 @@ public class DefaultXmlPrettyPrinter
+-    
++
+@@ -188 +178 @@ public class DefaultXmlPrettyPrinter
+-    
++
+@@ -208 +198 @@ public class DefaultXmlPrettyPrinter
+-    
++
+@@ -244 +234 @@ public class DefaultXmlPrettyPrinter
+-    
++
+@@ -259 +249 @@ public class DefaultXmlPrettyPrinter
+-    
++
+@@ -295 +285 @@ public class DefaultXmlPrettyPrinter
+-    
++
+@@ -332 +322 @@ public class DefaultXmlPrettyPrinter
+-	
++
+@@ -346 +336 @@ public class DefaultXmlPrettyPrinter
+-    
++
+@@ -402 +392 @@ public class DefaultXmlPrettyPrinter
+-	
++
+@@ -556 +546 @@ public class DefaultXmlPrettyPrinter
+-        
++
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/TypeUtil.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/TypeUtil.java
+index dbce035d9..fdfc8d242 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/TypeUtil.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/TypeUtil.java
+@@ -3,2 +2,0 @@ package com.fasterxml.jackson.dataformat.xml.util;
+-import java.util.Collection;
+-
+@@ -15,2 +13,2 @@ public class TypeUtil
+-        if (type.isContainerType()) {
+-            Class<?> cls = type.getRawClass();
++        Class<?> cls = type.getRawClass();
++        if (type.isContainerType() || type.isIterationType()) {
+@@ -31,6 +28,0 @@ public class TypeUtil
+-
+-    public static boolean isIndexedType(Class<?> cls)
+-    {
+-        return (cls.isArray() && cls != byte[].class && cls != char[].class)
+-                || Collection.class.isAssignableFrom(cls);
+-    }
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/FeatureDefaultsTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/FeatureDefaultsTest.java
+new file mode 100644
+index 000000000..07e78340b
+--- /dev/null
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/FeatureDefaultsTest.java
+@@ -0,0 +1,23 @@
++package com.fasterxml.jackson.dataformat.xml;
++
++import com.fasterxml.jackson.databind.ObjectReader;
++import com.fasterxml.jackson.databind.ObjectWriter;
++import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
++import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
++
++public class FeatureDefaultsTest extends XmlTestBase
++{
++    private final XmlMapper MAPPER = newMapper();
++
++    public void testDeserDefaults() throws Exception
++    {
++        ObjectReader r = MAPPER.reader();
++        assertNotSame(r, r.with(FromXmlParser.Feature.EMPTY_ELEMENT_AS_NULL));
++    }
++
++    public void testSerDefaults() throws Exception
++    {
++        ObjectWriter w = MAPPER.writer();
++        assertNotSame(w, w.with(ToXmlGenerator.Feature.WRITE_XML_1_1));
++    }
++}
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/EmptyBeanDeser318Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/EmptyBeanDeser318Test.java
+index 28392f815..dd30204b0 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/EmptyBeanDeser318Test.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/EmptyBeanDeser318Test.java
+@@ -2,0 +3 @@ package com.fasterxml.jackson.dataformat.xml.deser;
++import com.fasterxml.jackson.databind.ObjectReader;
+@@ -28,0 +30,5 @@ public class EmptyBeanDeser318Test extends XmlTestBase
++    // [dataformat-xml#579]
++    static class Bean579 {
++        public String str;
++    }
++
+@@ -99,0 +106,38 @@ public class EmptyBeanDeser318Test extends XmlTestBase
++
++    // [dataformat-xml#579]
++    public void testEmptyRootElem579() throws Exception
++    {
++        Bean579 bean;
++
++        ObjectReader R = MAPPER.readerFor(Bean579.class);
++
++        // By default, no coercion of empty element
++        bean = R.readValue("<Content/>");
++        assertNotNull(bean);
++        assertNull(bean.str);
++
++        // So same as non-empty
++        bean = R.readValue("<Content></Content>");
++        assertNotNull(bean);
++        assertNull(bean.str);
++
++        // But enabling feature we can coerce POJO into null:
++
++        // 29-May-2023, tatu: Alas! Note that we CANNOT use ObjectReader because
++        //   FormatFeature (FromXmlParser.Feature) overrides ARE NOT APPLIED EARLY
++        //   ENOUGH to take effect. Instead we must configure XmlMapper
++       
++        
++        //R = R.with(FromXmlParser.Feature.EMPTY_ELEMENT_AS_NULL);
++
++        R = mapperBuilder().enable(FromXmlParser.Feature.EMPTY_ELEMENT_AS_NULL)
++                .build()
++                .readerFor(Bean579.class);
++        bean = R.readValue("<Content/>");
++        assertNull(bean);
++
++        // which won't affect non-empty variant
++        bean = R.readValue("<Content></Content>");
++        assertNotNull(bean);
++        assertNull(bean.str);
++    }
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NumberDeserWithXMLTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NumberDeserWithXMLTest.java
+index 79e7df06f..da5b5173b 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NumberDeserWithXMLTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NumberDeserWithXMLTest.java
+@@ -140 +140 @@ public class NumberDeserWithXMLTest extends XmlTestBase
+-                    jme.getMessage().startsWith("Number length (1200) exceeds the maximum length (1000)"));
++                    jme.getMessage().startsWith("Number value length (1200) exceeds the maximum allowed"));
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListSerializationTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListSerializationTest.java
+index 11c84c6db..35d544528 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListSerializationTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListSerializationTest.java
+@@ -5 +4,0 @@ import java.util.ArrayList;
+-import java.util.Iterator;
+@@ -8 +6,0 @@ import java.util.List;
+-import com.fasterxml.jackson.annotation.JsonProperty;
+@@ -49,23 +47 @@ public class ListSerializationTest extends XmlTestBase
+-
+-    // [dataformat-xml#148]
+-    static class Bean148 {
+-        @JsonProperty("item")
+-        @JacksonXmlElementWrapper(localName = "list")
+-        public Iterator<String> items() {
+-          return new Iterator<String>() {
+-            int item = 3;
+-
+-            @Override
+-            public boolean hasNext() {
+-              return item > 0;
+-            }
+-
+-            @Override
+-            public String next() {
+-              item--;
+-              return Integer.toString(item);
+-            }
+-          };
+-        }
+-    }
+-
++   
+@@ -109,7 +84,0 @@ public class ListSerializationTest extends XmlTestBase
+-
+-    // [dataformat-xml#148]
+-    public void testIteratorSerialization() throws Exception
+-    {
+-        assertEquals("<Bean148><item>2</item><item>1</item><item>0</item></Bean148>",
+-                MAPPER.writeValueAsString(new Bean148()).trim());
+-    }
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/IterationType302Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/IterationType302Test.java
+new file mode 100644
+index 000000000..914a06701
+--- /dev/null
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/IterationType302Test.java
+@@ -0,0 +1,158 @@
++package com.fasterxml.jackson.dataformat.xml.ser;
++
++import java.util.*;
++import java.util.stream.Stream;
++
++import com.fasterxml.jackson.annotation.JsonProperty;
++import com.fasterxml.jackson.databind.ObjectMapper;
++import com.fasterxml.jackson.dataformat.xml.XmlMapper;
++import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
++import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
++import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
++
++// [dataformat-xml#302] : Unable to serialize top-level Java8 Stream
++public class IterationType302Test extends XmlTestBase
++{
++    public static class StreamWrapper329 {
++        private Stream<String> data;
++
++        @JacksonXmlElementWrapper(localName = "elements")
++        @JacksonXmlProperty(localName = "element")
++        public Stream<String> getData() {
++            return data;
++        }
++
++        public void setData(Stream<String> data) {
++            this.data = data;
++        }
++    }
++
++    public static class CollectionWrapper329 {
++        private Collection<String> data;
++
++        @JacksonXmlElementWrapper(localName = "elements")
++        @JacksonXmlProperty(localName = "element")
++        public Collection<String> getData() {
++            return data;
++        }
++
++        public void setData(Collection<String> data) {
++            this.data = data;
++        }
++    }
++
++    public static class IteratorWrapper329 {
++        private Iterator<String> data;
++
++        @JacksonXmlElementWrapper(localName = "elements")
++        @JacksonXmlProperty(localName = "element")
++        public Iterator<String> getData() {
++            return data;
++        }
++
++        public void setData(Iterator<String> data) {
++            this.data = data;
++        }
++    }
++
++    // [dataformat-xml#148]
++    static class Bean148 {
++        @JsonProperty("item")
++        @JacksonXmlElementWrapper(localName = "list")
++        public Iterator<String> items() {
++            return new Iterator<String>() {
++                int item = 3;
++
++                @Override
++                public boolean hasNext() {
++                    return item > 0;
++                }
++
++                @Override
++                public String next() {
++                    item--;
++                    return Integer.toString(item);
++                }
++            };
++        }
++    }
++
++    /*
++    /**********************************************************
++    /* Unit tests
++    /**********************************************************
++     */
++
++    private final ObjectMapper OBJECT_MAPPER = new XmlMapper();
++
++    public void testCollectionSerialization() throws Exception {
++        Collection<String> list = new ArrayList<>();
++        list.add("a");
++        list.add("b");
++
++        assertEquals("<ArrayList><item>a</item><item>b</item></ArrayList>",
++            OBJECT_MAPPER.writeValueAsString(list));
++    }
++
++    public void testListSerialization() throws Exception {
++        List<String> list = new ArrayList<>();
++        list.add("a");
++        list.add("b");
++        assertEquals("<ArrayList><item>a</item><item>b</item></ArrayList>",
++            OBJECT_MAPPER.writeValueAsString(list));
++    }
++
++    public void testListIteratorSerialization() throws Exception {
++        List<String> list = new ArrayList<>();
++        list.add("a");
++        list.add("b");
++        Iterator<String> listItr = list.iterator();
++
++        assertEquals("<Itr><item>a</item><item>b</item></Itr>",
++            OBJECT_MAPPER.writeValueAsString(listItr));
++    }
++
++
++    public void testStreamIteratorSerialization() throws Exception {
++        assertEquals("<Adapter><item>a</item><item>b</item></Adapter>",
++            OBJECT_MAPPER.writeValueAsString(Stream.of("a", "b").iterator()));
++    }
++
++    // [dataformat-xml#329] : Jackson ignores JacksonXmlElementWrapper on Stream
++    public void testCollectionWrapperSerialization329() throws Exception {
++        Collection<String> collection = new ArrayList<>();
++        collection.add("a");
++        collection.add("b");
++        CollectionWrapper329 wrapper = new CollectionWrapper329();
++        wrapper.setData(collection);
++
++        assertEquals(
++            "<CollectionWrapper329><elements>" +
++                "<element>a</element>" +
++                "<element>b</element>" +
++                "</elements></CollectionWrapper329>",
++            OBJECT_MAPPER.writeValueAsString(wrapper));
++    }
++
++    // [dataformat-xml#329] : Jackson ignores JacksonXmlElementWrapper on Stream
++    public void testIteratorWrapperSerialization329() throws Exception {
++        Collection<String> collection = new ArrayList<>();
++        collection.add("a");
++        collection.add("b");
++        IteratorWrapper329 wrapper = new IteratorWrapper329();
++        wrapper.setData(collection.iterator());
++
++        assertEquals(
++            "<IteratorWrapper329><elements>" +
++                "<element>a</element>" +
++                "<element>b</element>" +
++                "</elements></IteratorWrapper329>",
++            OBJECT_MAPPER.writeValueAsString(wrapper));
++    }
++
++    // [dataformat-xml#148]
++    public void testIteratorSerialization() throws Exception {
++        assertEquals("<Bean148><list><item>2</item><item>1</item><item>0</item></list></Bean148>",
++            OBJECT_MAPPER.writeValueAsString(new Bean148()).trim());
++    }
++}
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/dos/CyclicXMLDataSerTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/dos/CyclicXMLDataSerTest.java
+new file mode 100644
+index 000000000..d640e8e29
+--- /dev/null
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/dos/CyclicXMLDataSerTest.java
+@@ -0,0 +1,37 @@
++package com.fasterxml.jackson.dataformat.xml.ser.dos;
++
++import java.util.ArrayList;
++import java.util.List;
++
++import com.fasterxml.jackson.core.StreamWriteConstraints;
++
++import com.fasterxml.jackson.databind.DatabindException;
++
++import com.fasterxml.jackson.dataformat.xml.XmlMapper;
++import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
++
++/**
++ * Simple unit tests to verify that we fail gracefully if you attempt to serialize
++ * data that is cyclic (eg a list that contains itself).
++ */
++public class CyclicXMLDataSerTest extends XmlTestBase
++{
++    private final XmlMapper MAPPER = newMapper();
++
++    public void testListWithSelfReference() throws Exception {
++        // Avoid direct loop as serializer might be able to catch
++        List<Object> list1 = new ArrayList<>();
++        List<Object> list2 = new ArrayList<>();
++        list1.add(list2);
++        list2.add(list1);
++        try {
++            MAPPER.writeValueAsString(list1);
++            fail("expected DatabindException for infinite recursion");
++        } catch (DatabindException e) {
++            String exceptionPrefix = String.format("Document nesting depth (%d) exceeds the maximum allowed",
++                    StreamWriteConstraints.DEFAULT_MAX_DEPTH + 1);
++            assertTrue("Exception message is as expected?",
++                    e.getMessage().startsWith(exceptionPrefix));
++        }
++    }
++}

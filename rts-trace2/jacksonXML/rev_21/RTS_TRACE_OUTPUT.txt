@@ -1,0 +1,257 @@
+[INFO] Scanning for projects...
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-base/2.15.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 620 B                   Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-base/2.15.0-rc1-SNAPSHOT/maven-metadata.xml (620 B at 500 B/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-bom/2.15.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 619 B                   Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-bom/2.15.0-rc1-SNAPSHOT/maven-metadata.xml (619 B at 1.6 kB/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-parent/2.15-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 618 B                   Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-parent/2.15-rc1-SNAPSHOT/maven-metadata.xml (618 B at 1.6 kB/s)
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] ------< com.fasterxml.jackson.dataformat:jackson-dataformat-xml >-------
+[INFO] Building Jackson-dataformat-XML 2.15.0-rc1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-core/2.15.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 1.2 kB                    Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-core/2.15.0-rc1-SNAPSHOT/maven-metadata.xml (1.2 kB at 3.1 kB/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-annotations/2.15.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 1.2 kB                    Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-annotations/2.15.0-rc1-SNAPSHOT/maven-metadata.xml (1.2 kB at 3.1 kB/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-databind/2.15.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 1.2 kB                    Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-databind/2.15.0-rc1-SNAPSHOT/maven-metadata.xml (1.2 kB at 3.1 kB/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/module/jackson-module-jakarta-xmlbind-annotations/2.15.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 1.2 kB                    Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/module/jackson-module-jakarta-xmlbind-annotations/2.15.0-rc1-SNAPSHOT/maven-metadata.xml (1.2 kB at 3.0 kB/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/module/jackson-modules-base/2.15.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 635 B                   Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/module/jackson-modules-base/2.15.0-rc1-SNAPSHOT/maven-metadata.xml (635 B at 1.7 kB/s)
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.2.1:enforce (enforce-java) @ jackson-dataformat-xml ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (default) @ jackson-dataformat-xml ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/jacksonXML/workingDir/target/jacoco.exec"
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.3.0:add-source (add-generated-sources) @ jackson-dataformat-xml ---
+[INFO] Source directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/jacksonXML/workingDir/target/generated-sources added.
+[INFO] 
+[INFO] --- replacer:1.5.3:replace (process-packageVersion) @ jackson-dataformat-xml ---
+[INFO] Replacement run on 1 file.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.3.0:add-resource (add-resource) @ jackson-dataformat-xml ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ jackson-dataformat-xml ---
+[INFO] Copying 4 resources
+[INFO] Copying 1 resource to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ jackson-dataformat-xml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 43 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/jacksonXML/workingDir/target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.8:manifest (bundle-manifest) @ jackson-dataformat-xml ---
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.15.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml is set to different values in the source (2.15.0-rc1-SNAPSHOT) and in the manifest (2.15.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.15.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.annotation is set to different values in the source (2.15.0-rc1-SNAPSHOT) and in the manifest (2.15.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.15.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.deser is set to different values in the source (2.15.0-rc1-SNAPSHOT) and in the manifest (2.15.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.15.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.jaxb is set to different values in the source (2.15.0-rc1-SNAPSHOT) and in the manifest (2.15.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.15.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.ser is set to different values in the source (2.15.0-rc1-SNAPSHOT) and in the manifest (2.15.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.15.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.util is set to different values in the source (2.15.0-rc1-SNAPSHOT) and in the manifest (2.15.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[INFO] Writing manifest: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/jacksonXML/workingDir/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.0:testResources (default-testResources) @ jackson-dataformat-xml ---
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ jackson-dataformat-xml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 138 source files to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/jacksonXML/workingDir/target/test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M9:test (default-test) @ jackson-dataformat-xml ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.fasterxml.jackson.dataformat.xml.adapters.TestIssue47Attribute
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.957 s - in com.fasterxml.jackson.dataformat.xml.adapters.TestIssue47Attribute
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.builder.BuilderSimpleTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.176 s - in com.fasterxml.jackson.dataformat.xml.deser.builder.BuilderSimpleTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.builder.BuilderWithXmlText345Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s - in com.fasterxml.jackson.dataformat.xml.deser.builder.BuilderWithXmlText345Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.CaseInsensitiveDeserTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 s - in com.fasterxml.jackson.dataformat.xml.deser.CaseInsensitiveDeserTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.CoerceFromEmptyStringTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s - in com.fasterxml.jackson.dataformat.xml.deser.CoerceFromEmptyStringTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.convert.CoerceStringToIntsTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 s - in com.fasterxml.jackson.dataformat.xml.deser.convert.CoerceStringToIntsTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.convert.CoerceToBooleanTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s - in com.fasterxml.jackson.dataformat.xml.deser.convert.CoerceToBooleanTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.creator.NestedSingleArgCtors547Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s - in com.fasterxml.jackson.dataformat.xml.deser.creator.NestedSingleArgCtors547Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.creator.NoArgCtorDeser491Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 s - in com.fasterxml.jackson.dataformat.xml.deser.creator.NoArgCtorDeser491Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.creator.PojoWithCreatorRequired538Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in com.fasterxml.jackson.dataformat.xml.deser.creator.PojoWithCreatorRequired538Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.DefaultTyping325Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s - in com.fasterxml.jackson.dataformat.xml.deser.DefaultTyping325Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.DelegatingCreator254Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in com.fasterxml.jackson.dataformat.xml.deser.DelegatingCreator254Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.DeserErrorHandling236Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in com.fasterxml.jackson.dataformat.xml.deser.DeserErrorHandling236Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.ElementWithScalarAndAttr412Test
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.07 s - in com.fasterxml.jackson.dataformat.xml.deser.ElementWithScalarAndAttr412Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.EmptyBeanDeser318Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s - in com.fasterxml.jackson.dataformat.xml.deser.EmptyBeanDeser318Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.EmptyStringValueTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s - in com.fasterxml.jackson.dataformat.xml.deser.EmptyStringValueTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.EmptyWithScalarsTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s - in com.fasterxml.jackson.dataformat.xml.deser.EmptyWithScalarsTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.EnumDeserTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s - in com.fasterxml.jackson.dataformat.xml.deser.EnumDeserTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.ExceptionDeserializationTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s - in com.fasterxml.jackson.dataformat.xml.deser.ExceptionDeserializationTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.Issue274PropertyNameTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s - in com.fasterxml.jackson.dataformat.xml.deser.Issue274PropertyNameTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.MapDeserializationTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in com.fasterxml.jackson.dataformat.xml.deser.MapDeserializationTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.MapWithDupsDeser498Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.fasterxml.jackson.dataformat.xml.deser.MapWithDupsDeser498Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.NonNamespaceAwareDeser422Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in com.fasterxml.jackson.dataformat.xml.deser.NonNamespaceAwareDeser422Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.NullConversionsSkipTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s - in com.fasterxml.jackson.dataformat.xml.deser.NullConversionsSkipTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.NumberDeserWithXMLTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 s - in com.fasterxml.jackson.dataformat.xml.deser.NumberDeserWithXMLTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.RootValueDeserTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s - in com.fasterxml.jackson.dataformat.xml.deser.RootValueDeserTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.SimpleStringValuesTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s - in com.fasterxml.jackson.dataformat.xml.deser.SimpleStringValuesTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.TestBinaryData
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in com.fasterxml.jackson.dataformat.xml.deser.TestBinaryData
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.TestDeserialization
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s - in com.fasterxml.jackson.dataformat.xml.deser.TestDeserialization
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.TestViews
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s - in com.fasterxml.jackson.dataformat.xml.deser.TestViews
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.TypeAttributeOrder242Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in com.fasterxml.jackson.dataformat.xml.deser.TypeAttributeOrder242Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.UntypedObjectDeserTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s - in com.fasterxml.jackson.dataformat.xml.deser.UntypedObjectDeserTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.XsiNilBasicTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s - in com.fasterxml.jackson.dataformat.xml.deser.XsiNilBasicTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.XsiNilForStringsTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.fasterxml.jackson.dataformat.xml.deser.XsiNilForStringsTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.deser.XsiNilNestingTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.fasterxml.jackson.dataformat.xml.deser.XsiNilNestingTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.fuzz.Fuzz465_32906_CDataReadTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.fasterxml.jackson.dataformat.xml.fuzz.Fuzz465_32906_CDataReadTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.fuzz.FuzzXXX_32969_UTF32Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.fasterxml.jackson.dataformat.xml.fuzz.FuzzXXX_32969_UTF32Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.incr.PartialReadTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in com.fasterxml.jackson.dataformat.xml.incr.PartialReadTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.interop.NonWoodstoxStaxImpl482Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 s - in com.fasterxml.jackson.dataformat.xml.interop.NonWoodstoxStaxImpl482Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.jaxb.BuilderWithJAXB291Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s - in com.fasterxml.jackson.dataformat.xml.jaxb.BuilderWithJAXB291Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.jaxb.JAXBObjectId170Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in com.fasterxml.jackson.dataformat.xml.jaxb.JAXBObjectId170Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.jaxb.WithJAXBAnnotationsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in com.fasterxml.jackson.dataformat.xml.jaxb.WithJAXBAnnotationsTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.DeserializePolyList178Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s - in com.fasterxml.jackson.dataformat.xml.lists.DeserializePolyList178Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.EmptyListDeserTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s - in com.fasterxml.jackson.dataformat.xml.lists.EmptyListDeserTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.Issue101UnwrappedListAttributesTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s - in com.fasterxml.jackson.dataformat.xml.lists.Issue101UnwrappedListAttributesTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.ListAnnotationSharingTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in com.fasterxml.jackson.dataformat.xml.lists.ListAnnotationSharingTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.ListDeser393Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s - in com.fasterxml.jackson.dataformat.xml.lists.ListDeser393Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.ListDeser399Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s - in com.fasterxml.jackson.dataformat.xml.lists.ListDeser399Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.ListDeser469Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 s - in com.fasterxml.jackson.dataformat.xml.lists.ListDeser469Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.ListDeserializationTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 s - in com.fasterxml.jackson.dataformat.xml.lists.ListDeserializationTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.ListRoundtripTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s - in com.fasterxml.jackson.dataformat.xml.lists.ListRoundtripTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.ListWithAttributesDeserTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s - in com.fasterxml.jackson.dataformat.xml.lists.ListWithAttributesDeserTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.NestedUnwrappedLists180Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in com.fasterxml.jackson.dataformat.xml.lists.NestedUnwrappedLists180Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.NestedUnwrappedLists86Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s - in com.fasterxml.jackson.dataformat.xml.lists.NestedUnwrappedLists86Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.NestedUnwrappedListsTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s - in com.fasterxml.jackson.dataformat.xml.lists.NestedUnwrappedListsTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.PolymorphicList97Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s - in com.fasterxml.jackson.dataformat.xml.lists.PolymorphicList97Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.RootListHandlingTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s - in com.fasterxml.jackson.dataformat.xml.lists.RootListHandlingTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.StringListRoundtripTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s - in com.fasterxml.jackson.dataformat.xml.lists.StringListRoundtripTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.UnwrappedListsTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s - in com.fasterxml.jackson.dataformat.xml.lists.UnwrappedListsTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.UnwrappedListWithEmptyCData129Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in com.fasterxml.jackson.dataformat.xml.lists.UnwrappedListWithEmptyCData129Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.lists.UnwrappedPolymorphicList490Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in com.fasterxml.jackson.dataformat.xml.lists.UnwrappedPolymorphicList490Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.BadEncodingTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in com.fasterxml.jackson.dataformat.xml.misc.BadEncodingTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.DTDSupportTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in com.fasterxml.jackson.dataformat.xml.misc.DTDSupportTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.ObjectId104Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in com.fasterxml.jackson.dataformat.xml.misc.ObjectId104Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.PolymorphicTypesTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s - in com.fasterxml.jackson.dataformat.xml.misc.PolymorphicTypesTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.RootNameWrapping374Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in com.fasterxml.jackson.dataformat.xml.misc.RootNameWrapping374Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.StreamingDecoratorsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s - in com.fasterxml.jackson.dataformat.xml.misc.StreamingDecoratorsTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.TagEscapeTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in com.fasterxml.jackson.dataformat.xml.misc.TagEscapeTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.TextValueTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in com.fasterxml.jackson.dataformat.xml.misc.TextValueTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.UnwrappingWithXMLTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s - in com.fasterxml.jackson.dataformat.xml.misc.UnwrappingWithXMLTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.misc.XmlTextTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in com.fasterxml.jackson.dataformat.xml.misc.XmlTextTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.node.JsonNodeBasicDeserTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in com.fasterxml.jackson.dataformat.xml.node.JsonNodeBasicDeserTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.node.JsonNodeMixedContent403Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in com.fasterxml.jackson.dataformat.xml.node.JsonNodeMixedContent403Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.RoundtripContentTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.118 s - in com.fasterxml.jackson.dataformat.xml.RoundtripContentTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.ser.Base64VariantWriteTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in com.fasterxml.jackson.dataformat.xml.ser.Base64VariantWriteTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.ser.EmptyPolymorphicTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in com.fasterxml.jackson.dataformat.xml.ser.EmptyPolymorphicTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.ser.TestJDKSerializability
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.098 s - in com.fasterxml.jackson.dataformat.xml.ser.TestJDKSerializability
+[INFO] Running com.fasterxml.jackson.dataformat.xml.ser.TestSerialization
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in com.fasterxml.jackson.dataformat.xml.ser.TestSerialization
+[INFO] Running com.fasterxml.jackson.dataformat.xml.ser.TestSerializerCustom
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.038 s - in com.fasterxml.jackson.dataformat.xml.ser.TestSerializerCustom
+[INFO] Running com.fasterxml.jackson.dataformat.xml.ser.XmlPrettyPrinterTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s - in com.fasterxml.jackson.dataformat.xml.ser.XmlPrettyPrinterTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.stream.dos.DeepNestingParserTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s - in com.fasterxml.jackson.dataformat.xml.stream.dos.DeepNestingParserTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.stream.FormatDetectionTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.04 s - in com.fasterxml.jackson.dataformat.xml.stream.FormatDetectionTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.stream.XmlParser442Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.fasterxml.jackson.dataformat.xml.stream.XmlParser442Test
+[INFO] Running com.fasterxml.jackson.dataformat.xml.stream.XmlParserNextXxxTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.fasterxml.jackson.dataformat.xml.stream.XmlParserNextXxxTest
+[INFO] Running com.fasterxml.jackson.dataformat.xml.stream.XmlParserTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s - in com.fasterxml.jackson.dataformat.xml.stream.XmlParserTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 232, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:report (report) @ jackson-dataformat-xml ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.608 s
+[INFO] Finished at: 2024-01-23T17:31:24+09:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,94 @@
+diff --git a/.github/workflows/maven_adhoc.yml b/.github/workflows/maven_adhoc.yml
+index d4aaa54c6..68aac5150 100644
+--- a/.github/workflows/maven_adhoc.yml
++++ b/.github/workflows/maven_adhoc.yml
+@@ -32,0 +33,4 @@ jobs:
++    - name: Test exec function
++      run: |
++        mvn -q exec:java
++        mvn -q exec:java -D"exec.arguments=FTPClientExample"
+diff --git a/src/main/java/org/apache/commons/net/examples/Main.java b/src/main/java/org/apache/commons/net/examples/Main.java
+index 27308bf05..4e2fe92a5 100644
+--- a/src/main/java/org/apache/commons/net/examples/Main.java
++++ b/src/main/java/org/apache/commons/net/examples/Main.java
+@@ -92 +91,0 @@ public class Main {
+-        fullName = fullName.replace('/', '.');
+diff --git a/src/main/resources/org/apache/commons/net/examples/examples.properties b/src/main/resources/org/apache/commons/net/examples/examples.properties
+index a77c82796..f295937e8 100644
+--- a/src/main/resources/org/apache/commons/net/examples/examples.properties
++++ b/src/main/resources/org/apache/commons/net/examples/examples.properties
+@@ -21 +20,0 @@
+-# Note that the "/" separators are converted to "."
+@@ -24,29 +23,29 @@
+-SubnetUtilsExample        org/apache/commons/net/examples/cidr/SubnetUtilsExample
+-FTPClientExample          org/apache/commons/net/examples/ftp/FTPClientExample
+-ServerToServerFTP         org/apache/commons/net/examples/ftp/ServerToServerFTP
+-TFTPExample               org/apache/commons/net/examples/ftp/TFTPExample
+-IMAPExportMbox            org/apache/commons/net/examples/mail/IMAPExportMbox
+-IMAPImportMbox            org/apache/commons/net/examples/mail/IMAPImportMbox
+-IMAPMail                  org/apache/commons/net/examples/mail/IMAPMail
+-POP3ExportMbox            org/apache/commons/net/examples/mail/POP3ExportMbox
+-POP3Mail                  org/apache/commons/net/examples/mail/POP3Mail
+-SMTPMail                  org/apache/commons/net/examples/mail/SMTPMail
+-ArticleReader             org/apache/commons/net/examples/nntp/ArticleReader
+-ExtendedNNTPOps           org/apache/commons/net/examples/nntp/ExtendedNNTPOps
+-ListNewsgroups            org/apache/commons/net/examples/nntp/ListNewsgroups
+-MessageThreading          org/apache/commons/net/examples/nntp/MessageThreading
+-PostMessage               org/apache/commons/net/examples/nntp/PostMessage
+-NTPClient                 org/apache/commons/net/examples/ntp/NTPClient
+-SimpleNTPServer           org/apache/commons/net/examples/ntp/SimpleNTPServer
+-TimeClient                org/apache/commons/net/examples/ntp/TimeClient
+-TelnetClientExample       org/apache/commons/net/examples/telnet/TelnetClientExample
+-WeatherTelnet             org/apache/commons/net/examples/telnet/WeatherTelnet
+-chargen                   org/apache/commons/net/examples/unix/chargen
+-daytime                   org/apache/commons/net/examples/unix/daytime
+-echo                      org/apache/commons/net/examples/unix/echo
+-finger                    org/apache/commons/net/examples/unix/finger
+-fwhois                    org/apache/commons/net/examples/unix/fwhois
+-rdate                     org/apache/commons/net/examples/unix/rdate
+-rexec                     org/apache/commons/net/examples/unix/rexec
+-rlogin                    org/apache/commons/net/examples/unix/rlogin
+-rshell                    org/apache/commons/net/examples/unix/rshell
++SubnetUtilsExample        org.apache.commons.net.examples.cidr.SubnetUtilsExample
++FTPClientExample          org.apache.commons.net.examples.ftp.FTPClientExample
++ServerToServerFTP         org.apache.commons.net.examples.ftp.ServerToServerFTP
++TFTPExample               org.apache.commons.net.examples.ftp.TFTPExample
++IMAPExportMbox            org.apache.commons.net.examples.mail.IMAPExportMbox
++IMAPImportMbox            org.apache.commons.net.examples.mail.IMAPImportMbox
++IMAPMail                  org.apache.commons.net.examples.mail.IMAPMail
++POP3ExportMbox            org.apache.commons.net.examples.mail.POP3ExportMbox
++POP3Mail                  org.apache.commons.net.examples.mail.POP3Mail
++SMTPMail                  org.apache.commons.net.examples.mail.SMTPMail
++ArticleReader             org.apache.commons.net.examples.nntp.ArticleReader
++ExtendedNNTPOps           org.apache.commons.net.examples.nntp.ExtendedNNTPOps
++ListNewsgroups            org.apache.commons.net.examples.nntp.ListNewsgroups
++MessageThreading          org.apache.commons.net.examples.nntp.MessageThreading
++PostMessage               org.apache.commons.net.examples.nntp.PostMessage
++NTPClient                 org.apache.commons.net.examples.ntp.NTPClient
++SimpleNTPServer           org.apache.commons.net.examples.ntp.SimpleNTPServer
++TimeClient                org.apache.commons.net.examples.ntp.TimeClient
++TelnetClientExample       org.apache.commons.net.examples.telnet.TelnetClientExample
++WeatherTelnet             org.apache.commons.net.examples.telnet.WeatherTelnet
++chargen                   org.apache.commons.net.examples.unix.chargen
++daytime                   org.apache.commons.net.examples.unix.daytime
++echo                      org.apache.commons.net.examples.unix.echo
++finger                    org.apache.commons.net.examples.unix.finger
++fwhois                    org.apache.commons.net.examples.unix.fwhois
++rdate                     org.apache.commons.net.examples.unix.rdate
++rexec                     org.apache.commons.net.examples.unix.rexec
++rlogin                    org.apache.commons.net.examples.unix.rlogin
++rshell                    org.apache.commons.net.examples.unix.rshell
+diff --git a/src/test/java/org/apache/commons/net/examples/MainTest.java b/src/test/java/org/apache/commons/net/examples/MainTest.java
+index f2e95343a..ca27fed9b 100644
+--- a/src/test/java/org/apache/commons/net/examples/MainTest.java
++++ b/src/test/java/org/apache/commons/net/examples/MainTest.java
+@@ -38 +37,0 @@ public class MainTest {
+-        name = name.replace(File.separatorChar, '.');
+@@ -54,0 +54 @@ public class MainTest {
++        name = name.replace(File.separatorChar, '.');
+@@ -57 +57 @@ public class MainTest {
+-                || name.endsWith("examples"+ File.separator + "Main.class")  // the initial class, don't want to add that
++                || name.endsWith("examples.Main.class")  // the initial class, don't want to add that
+@@ -63 +63 @@ public class MainTest {
+-        final int lastSep = name.lastIndexOf('/');
++        final int lastSep = name.lastIndexOf('.');

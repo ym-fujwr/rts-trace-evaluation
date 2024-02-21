@@ -1,0 +1,134 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.zaxxer:nuprocess >------------------------
+[INFO] Building NuProcess 1.1.3-SNAPSHOT
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ nuprocess ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ nuprocess ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ nuprocess ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 33 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/target/classes
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/internal/ReferenceCountedFileDescriptor.java: Some input files use or override a deprecated API.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/internal/ReferenceCountedFileDescriptor.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java: Some input files use unchecked or unsafe operations.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ nuprocess ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ nuprocess ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ nuprocess ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.zaxxer.nuprocess.CatTest
+[ERROR] Tests run: 9, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 38.15 s <<< FAILURE! -- in com.zaxxer.nuprocess.CatTest
+[ERROR] com.zaxxer.nuprocess.CatTest.noExecutableFound -- Time elapsed: 0.022 s <<< FAILURE!
+java.lang.AssertionError: Output did not matched expected result expected:<-2147483648> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at com.zaxxer.nuprocess.CatTest.noExecutableFound(CatTest.java:200)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+
+[INFO] Running com.zaxxer.nuprocess.DirectWriteTest
+Writing: 128K of data, waiting for checksum -65536
+Reading.  Current checksum -32768
+Reading.  Current checksum -65536
+Checksums matched, exiting.
+Reading.  Current checksum -65536
+Checksums matched, exiting.
+Writing: This is a test
+Read: This is a test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.535 s -- in com.zaxxer.nuprocess.DirectWriteTest
+[INFO] Running com.zaxxer.nuprocess.EnvironmentTest
+Started Java Process
+Waited for Java Process
+env: [VSCODE_GIT_ASKPASS_NODE=/home/ym-fujwr/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/node, , LESS_TERMCAP_me=, TERM_PROGRAM_VERSION=1.83.1, WSL_DISTRO_NAME=kali-linux, TERM=xterm-256color, USER=ym-fujwr, PATH=/home/ym-fujwr/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files/WindowsApps/KaliLinux.54290C8133FEE_1.2023.4.0_x64__ey8k8hqnwqnmg:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Java/jdk-17¥bin:/mnt/c/Program Files/gradle-8.2.1/bin:/mnt/c/Users/fujiwara yuma/AppData/Local/Programs/Python/Python312/Scripts/:/mnt/c/Users/fujiwara yuma/AppData/Local/Programs/Python/Python312/:/mnt/c/Users/fujiwara yuma/AppData/Local/Programs/Python/Launcher/:/mnt/c/Program Files/Java/jdk-17/bin:/mnt/c/Users/fujiwara yuma/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/fujiwara yuma/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/apache-maven-3.8.5/bin, LOGNAME=ym-fujwr, MAVEN_CMD_LINE_ARGS= -Drat.skip=true test, LESS_TERMCAP_us=, _=/mnt/c/Program Files/apache-maven-3.8.5/bin/mvn, VSCODE_GIT_IPC_HANDLE=/tmp/vscode-git-d665347c1c.sock, MAVEN_PROJECTBASEDIR=/mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir, SHELL=/bin/bash, NAME=Code, LESS_TERMCAP_mb=, LANG=en_US.UTF-8, TERM_PROGRAM=vscode, HOME=/home/ym-fujwr, VSCODE_IPC_HOOK_CLI=/tmp/vscode-ipc-0855de77-251d-4be5-ab79-22dbfb8f2874.sock, HOSTTYPE=x86_64, GIT_ASKPASS=/home/ym-fujwr/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/extensions/git/dist/askpass.sh, OLDPWD=/mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir, LESS_TERMCAP_se=, LESS_TERMCAP_md=, LESS_TERMCAP_so=, VSCODE_GIT_ASKPASS_EXTRA_ARGS=, PWD=/mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir, WSLENV=ELECTRON_RUN_AS_NODE/w:, COLORTERM=truecolor, SHLVL=3, VSCODE_GIT_ASKPASS_MAIN=/home/ym-fujwr/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/extensions/git/dist/askpass-main.js, LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90::ow=30;44:, LESS_TERMCAP_ue=]
+Started Nu Process
+Waited for Nu Process
+env: [VSCODE_GIT_ASKPASS_NODE=/home/ym-fujwr/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/node, , LESS_TERMCAP_me=, TERM_PROGRAM_VERSION=1.83.1, WSL_DISTRO_NAME=kali-linux, TERM=xterm-256color, USER=ym-fujwr, LOGNAME=ym-fujwr, PATH=/home/ym-fujwr/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files/WindowsApps/KaliLinux.54290C8133FEE_1.2023.4.0_x64__ey8k8hqnwqnmg:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Java/jdk-17¥bin:/mnt/c/Program Files/gradle-8.2.1/bin:/mnt/c/Users/fujiwara yuma/AppData/Local/Programs/Python/Python312/Scripts/:/mnt/c/Users/fujiwara yuma/AppData/Local/Programs/Python/Python312/:/mnt/c/Users/fujiwara yuma/AppData/Local/Programs/Python/Launcher/:/mnt/c/Program Files/Java/jdk-17/bin:/mnt/c/Users/fujiwara yuma/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/fujiwara yuma/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/apache-maven-3.8.5/bin, MAVEN_CMD_LINE_ARGS= -Drat.skip=true test, LESS_TERMCAP_us=, _=/mnt/c/Program Files/apache-maven-3.8.5/bin/mvn, VSCODE_GIT_IPC_HANDLE=/tmp/vscode-git-d665347c1c.sock, MAVEN_PROJECTBASEDIR=/mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir, SHELL=/bin/bash, NAME=Code, LESS_TERMCAP_mb=, HOME=/home/ym-fujwr, LANG=en_US.UTF-8, TERM_PROGRAM=vscode, HOSTTYPE=x86_64, VSCODE_IPC_HOOK_CLI=/tmp/vscode-ipc-0855de77-251d-4be5-ab79-22dbfb8f2874.sock, GIT_ASKPASS=/home/ym-fujwr/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/extensions/git/dist/askpass.sh, OLDPWD=/mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir, LESS_TERMCAP_se=, LESS_TERMCAP_md=, LESS_TERMCAP_so=, PWD=/mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir, VSCODE_GIT_ASKPASS_EXTRA_ARGS=, WSLENV=ELECTRON_RUN_AS_NODE/w:, COLORTERM=truecolor, SHLVL=3, LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90::ow=30;44:, VSCODE_GIT_ASKPASS_MAIN=/home/ym-fujwr/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/extensions/git/dist/askpass-main.js, LESS_TERMCAP_ue=]
+Started Java Process
+Waited for Java Process
+env: []
+Started Nu Process
+Waited for Nu Process
+env: []
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.315 s -- in com.zaxxer.nuprocess.EnvironmentTest
+[INFO] Running com.zaxxer.nuprocess.FastExitingProcessTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.zaxxer.nuprocess.FastExitingProcessTest
+[INFO] Running com.zaxxer.nuprocess.InterruptTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.750 s -- in com.zaxxer.nuprocess.InterruptTest
+[INFO] Running com.zaxxer.nuprocess.linux.EpollEventTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.zaxxer.nuprocess.linux.EpollEventTest
+[INFO] Running com.zaxxer.nuprocess.ThreadedTest
+0 Maximum memory used: 17370584
+0 Total execution time (ms): 5875
+2 Maximum memory used: 17099456
+2 Total execution time (ms): 5880
+3 Maximum memory used: 17792000
+3 Total execution time (ms): 5888
+1 Maximum memory used: 17967592
+1 Total execution time (ms): 6145
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.135 s -- in com.zaxxer.nuprocess.ThreadedTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   CatTest.noExecutableFound:200 Output did not matched expected result expected:<-2147483648> but was:<0>
+[INFO] 
+[ERROR] Tests run: 22, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  54.294 s
+[INFO] Finished at: 2023-12-14T15:26:19+09:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project nuprocess: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

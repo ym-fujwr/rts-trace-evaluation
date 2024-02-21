@@ -1,0 +1,29 @@
+diff --git a/src/main/java/org/apache/commons/net/util/TrustManagerUtils.java b/src/main/java/org/apache/commons/net/util/TrustManagerUtils.java
+index 058b6d300..7ae108e82 100644
+--- a/src/main/java/org/apache/commons/net/util/TrustManagerUtils.java
++++ b/src/main/java/org/apache/commons/net/util/TrustManagerUtils.java
+@@ -33,2 +33,2 @@ import javax.net.ssl.X509TrustManager;
+-public final class TrustManagerUtils
+-{
++public final class TrustManagerUtils {
++
+@@ -47,2 +47 @@ public final class TrustManagerUtils
+-        public void checkClientTrusted(final X509Certificate[] certificates, final String authType)
+-        {
++        public void checkClientTrusted(final X509Certificate[] certificates, final String authType) {
+@@ -52,3 +51 @@ public final class TrustManagerUtils
+-        public void checkServerTrusted(final X509Certificate[] certificates, final String authType)
+-            throws CertificateException
+-        {
++        public void checkServerTrusted(final X509Certificate[] certificates, final String authType) throws CertificateException {
+@@ -56,2 +53 @@ public final class TrustManagerUtils
+-                for (final X509Certificate certificate : certificates)
+-                {
++                for (final X509Certificate certificate : certificates) {
+@@ -67,2 +63 @@ public final class TrustManagerUtils
+-        public X509Certificate[] getAcceptedIssuers()
+-        {
++        public X509Certificate[] getAcceptedIssuers() {
+@@ -82 +77 @@ public final class TrustManagerUtils
+-    public static X509TrustManager getAcceptAllTrustManager(){
++    public static X509TrustManager getAcceptAllTrustManager() {

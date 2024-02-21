@@ -1,0 +1,8 @@
+/.classpath
+/.project
+/.settings/
+/target/
+/.vscode/
+.idea/
+*.iml
+/site-content/

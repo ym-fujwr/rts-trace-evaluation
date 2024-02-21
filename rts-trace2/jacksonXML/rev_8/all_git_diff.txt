@@ -1,0 +1,67 @@
+diff --git a/pom.xml b/pom.xml
+index 280f8898..35531f3e 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -18 +18 @@
+-  <packaging>bundle</packaging>
++  <packaging>jar</packaging>
+@@ -34,0 +35,3 @@ alternative support for serializing POJOs as XML and deserializing XML as pojos.
++
++    <!-- for Reproducible Builds -->
++    <project.build.outputTimestamp>2022-11-28T00:00:00Z</project.build.outputTimestamp>
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+index 6ad8d9d9..0abeb1ac 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+@@ -383 +383,6 @@ public class FromXmlParser
+-    /*                                                                                       
++    @Override
++    public StreamReadConstraints streamReadConstraints() {
++        return _ioContext.streamReadConstraints();
++    }
++
++    /*
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NumberDeserWithXMLTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NumberDeserWithXMLTest.java
+index 4cba10c5..79e7df06 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NumberDeserWithXMLTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NumberDeserWithXMLTest.java
+@@ -10,0 +11,2 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
++import com.fasterxml.jackson.core.StreamReadConstraints;
++import com.fasterxml.jackson.databind.JsonMappingException;
+@@ -11,0 +14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
++import com.fasterxml.jackson.dataformat.xml.XmlFactory;
+@@ -121,0 +125,34 @@ public class NumberDeserWithXMLTest extends XmlTestBase
++
++    public void testVeryBigDecimalUnwrapped() throws Exception
++    {
++        final int len = 1200;
++        final StringBuilder sb = new StringBuilder();
++        for (int i = 0; i < len; i++) {
++            sb.append("1");
++        }
++        final String value = sb.toString();
++        final String DOC = "<Nested><value>" + value + "</value></Nested>";
++        try {
++            MAPPER.readValue(DOC, NestedBigDecimalHolder2784.class);
++            fail("expected JsonMappingException");
++        } catch (JsonMappingException jme) {
++            assertTrue("unexpected exception message: " + jme.getMessage(),
++                    jme.getMessage().startsWith("Number length (1200) exceeds the maximum length (1000)"));
++        }
++    }
++
++    public void testVeryBigDecimalUnwrappedWithUnlimitedNumLength() throws Exception
++    {
++        final int len = 1200;
++        final StringBuilder sb = new StringBuilder();
++        for (int i = 0; i < len; i++) {
++            sb.append("1");
++        }
++        final String value = sb.toString();
++        final String DOC = "<Nested><value>" + value + "</value></Nested>";
++        XmlFactory f = streamFactoryBuilder()
++                .streamReadConstraints(StreamReadConstraints.builder().maxNumberLength(Integer.MAX_VALUE).build())
++                .build();
++        NestedBigDecimalHolder2784 result = new XmlMapper(f).readValue(DOC, NestedBigDecimalHolder2784.class);
++        assertEquals(new BigDecimal(value), result.holder.value);
++    }

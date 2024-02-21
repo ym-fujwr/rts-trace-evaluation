@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HilbertCurveRenderer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hilbert-curve</a> &gt; <a href="index.source.html" class="el_package">org.davidmoten.hilbert</a> &gt; <span class="el_source">HilbertCurveRenderer.java</span></div><h1>HilbertCurveRenderer.java</h1><pre class="source lang-java linenums">package org.davidmoten.hilbert;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.math.BigInteger;
+
+import javax.imageio.ImageIO;
+
+import org.davidmoten.hilbert.exceptions.IORuntimeException;
+
+public final class HilbertCurveRenderer {
+
+    private HilbertCurveRenderer() {
+        // prevent instantiation
+    }
+
+    public static void renderToFile(int bits, int width, String filename, Option... options) {
+<span class="fc" id="L22">        BufferedImage b = render(bits, width, options);</span>
+        try {
+<span class="fc" id="L24">            ImageIO.write(b, &quot;PNG&quot;, new File(filename));</span>
+<span class="nc" id="L25">        } catch (IOException e) {</span>
+<span class="nc" id="L26">            throw new IORuntimeException(e);</span>
+<span class="fc" id="L27">        }</span>
+<span class="fc" id="L28">    }</span>
+
+<span class="fc" id="L30">    public static enum Option {</span>
+<span class="fc" id="L31">        COLORIZE, LABEL;</span>
+    }
+
+    public static BufferedImage render(int bits, int width, Option... options) {
+<span class="fc" id="L35">        int dimensions = 2;</span>
+<span class="fc" id="L36">        HilbertCurve c = HilbertCurve.bits(bits).dimensions(dimensions);</span>
+<span class="fc" id="L37">        int n = 1 &lt;&lt; bits;</span>
+<span class="fc" id="L38">        int height = width;</span>
+<span class="fc" id="L39">        BufferedImage b = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);</span>
+<span class="fc" id="L40">        Graphics2D g = b.createGraphics();</span>
+<span class="fc" id="L41">        g.setBackground(Color.white);</span>
+<span class="fc" id="L42">        g.fillRect(0, 0, width, height);</span>
+<span class="fc" id="L43">        g.setPaint(Color.black);</span>
+<span class="fc" id="L44">        g.setStroke(new BasicStroke(0.5f));</span>
+<span class="fc" id="L45">        int margin = 10;</span>
+<span class="fc" id="L46">        int cellSize = (width - 2 * margin) / (n);</span>
+
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        if (contains(options, Option.COLORIZE)) {</span>
+<span class="fc" id="L49">            int x = margin + cellSize / 2;</span>
+<span class="fc" id="L50">            int y = margin + cellSize / 2;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">            for (long i = 0; i &lt; n * n; i++) {</span>
+<span class="fc" id="L52">                fill(n, g, cellSize, x, y, i);</span>
+<span class="fc" id="L53">                long[] point = c.point(BigInteger.valueOf(i));</span>
+<span class="fc" id="L54">                int x2 = (int) Math.round((double) point[0] / (n - 1) * (width - 2 * margin - cellSize) + margin)</span>
+                        + cellSize / 2;
+<span class="fc" id="L56">                int y2 = (int) Math.round((double) point[1] / (n - 1) * (height - 2 * margin - cellSize) + margin)</span>
+                        + cellSize / 2;
+<span class="fc" id="L58">                x = x2;</span>
+<span class="fc" id="L59">                y = y2;</span>
+            }
+<span class="fc" id="L61">            fill(n, g, cellSize, x, y, n * n);</span>
+        }
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        if (contains(options, Option.LABEL)) {</span>
+<span class="fc" id="L64">            int x = margin + cellSize / 2;</span>
+<span class="fc" id="L65">            int y = margin + cellSize / 2;</span>
+<span class="fc" id="L66">            x = margin + cellSize / 2;</span>
+<span class="fc" id="L67">            y = margin + cellSize / 2;</span>
+<span class="fc" id="L68">            g.setColor(Color.black);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">            for (long i = 0; i &lt; n * n; i++) {</span>
+<span class="fc" id="L70">                long[] point = c.point(BigInteger.valueOf(i));</span>
+<span class="fc" id="L71">                int x2 = (int) Math.round((double) point[0] / (n - 1) * (width - 2 * margin - cellSize) + margin)</span>
+                        + cellSize / 2;
+<span class="fc" id="L73">                int y2 = (int) Math.round((double) point[1] / (n - 1) * (height - 2 * margin - cellSize) + margin)</span>
+                        + cellSize / 2;
+<span class="fc" id="L75">                x = x2;</span>
+<span class="fc" id="L76">                y = y2;</span>
+<span class="fc" id="L77">                drawNumber(g, x, y, i);</span>
+            }
+        }
+
+<span class="fc" id="L81">        int x = margin + cellSize / 2;</span>
+<span class="fc" id="L82">        int y = margin + cellSize / 2;</span>
+<span class="fc" id="L83">        x = margin + cellSize / 2;</span>
+<span class="fc" id="L84">        y = margin + cellSize / 2;</span>
+<span class="fc" id="L85">        g.setColor(Color.black);</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        for (long i = 0; i &lt; n * n; i++) {</span>
+<span class="fc" id="L87">            long[] point = c.point(BigInteger.valueOf(i));</span>
+<span class="fc" id="L88">            int x2 = (int) Math.round((double) point[0] / (n - 1) * (width - 2 * margin - cellSize) + margin)</span>
+                    + cellSize / 2;
+<span class="fc" id="L90">            int y2 = (int) Math.round((double) point[1] / (n - 1) * (height - 2 * margin - cellSize) + margin)</span>
+                    + cellSize / 2;
+<span class="fc" id="L92">            g.drawLine(x, y, x2, y2);</span>
+<span class="fc" id="L93">            x = x2;</span>
+<span class="fc" id="L94">            y = y2;</span>
+        }
+<span class="fc" id="L96">        return b;</span>
+    }
+
+    private static boolean contains(Option[] options, Option option) {
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        for (Option o : options) {</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            if (o == option) {</span>
+<span class="fc" id="L102">                return true;</span>
+            }
+        }
+<span class="nc" id="L105">        return false;</span>
+    }
+
+    private static void drawNumber(Graphics2D g, int x, int y, long i) {
+<span class="fc" id="L109">        g.drawString(i + &quot;&quot;, x + 2, y - 2);</span>
+<span class="fc" id="L110">    }</span>
+
+    private static void fill(int n, Graphics2D g, int cellSize, int x, int y, long i) {
+<span class="fc" id="L113">        Color color = Color.getHSBColor(((float) i) / n / n, 0.5f, 1.0f);</span>
+<span class="fc" id="L114">        g.setColor(color);</span>
+<span class="fc" id="L115">        g.fillRect(x - cellSize / 2, y - cellSize / 2, cellSize + 1, cellSize + 1);</span>
+<span class="fc" id="L116">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

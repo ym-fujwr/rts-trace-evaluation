@@ -1,0 +1,108 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.zaxxer:nuprocess >------------------------
+[INFO] Building NuProcess 1.0.5-SNAPSHOT
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ nuprocess ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ nuprocess ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ nuprocess ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 32 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/target/classes
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java: /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java uses or overrides a deprecated API.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/main/java/com/zaxxer/nuprocess/NuProcessBuilder.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ nuprocess ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ nuprocess ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 7 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ nuprocess ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.zaxxer.nuprocess.CatTest
+[ERROR] Tests run: 9, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 36.69 s <<< FAILURE! -- in com.zaxxer.nuprocess.CatTest
+[ERROR] com.zaxxer.nuprocess.CatTest.noExecutableFound -- Time elapsed: 0.024 s <<< FAILURE!
+java.lang.AssertionError: Output did not matched expected result expected:<-2147483648> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at com.zaxxer.nuprocess.CatTest.noExecutableFound(CatTest.java:200)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+
+[INFO] Running com.zaxxer.nuprocess.DirectWriteTest
+Writing: This is a test
+Read: This is a test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.538 s -- in com.zaxxer.nuprocess.DirectWriteTest
+[INFO] Running com.zaxxer.nuprocess.FastExitingProcessTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.zaxxer.nuprocess.FastExitingProcessTest
+[INFO] Running com.zaxxer.nuprocess.InterruptTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.453 s -- in com.zaxxer.nuprocess.InterruptTest
+[INFO] Running com.zaxxer.nuprocess.ThreadedTest
+3 Maximum memory used: 71193104
+3 Total execution time (ms): 28966
+1 Maximum memory used: 47994216
+1 Total execution time (ms): 29000
+2 Maximum memory used: 118258912
+2 Total execution time (ms): 29016
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.01 s -- in com.zaxxer.nuprocess.ThreadedTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   CatTest.noExecutableFound:200 Output did not matched expected result expected:<-2147483648> but was:<0>
+[INFO] 
+[ERROR] Tests run: 17, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:17 min
+[INFO] Finished at: 2023-12-14T15:10:26+09:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project nuprocess: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /mnt/c/Users/fujiwara yuma/evaluation/ALL/NuProcess/workingDir/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,0 +1,10 @@
+# 1
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig$1.class _ 3764759396
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig$BackgroundCompilation.class _ 3532846769
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig$CompressedOops.class _ 2827066400
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig$OnStackReplacement.class _ 1079528893
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig$TieredCompilation.class _ 774819361
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/core/JITWatchConfig.class _ 943824281
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/ParsedClasspath.class _ 3137490168
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/util/StringUtil.class _ 1944644263
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestJITWatchConfig.class _ 2951937708

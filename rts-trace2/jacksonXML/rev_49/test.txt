@@ -1,0 +1,1 @@
+com.fasterxml.jackson.dataformat.xml.stream.dos.DeepNestingParserTest,com.fasterxml.jackson.dataformat.xml.woodstox.DeepNestingWoodstoxParserTest,com.fasterxml.jackson.dataformat.xml.woodstox.package-info

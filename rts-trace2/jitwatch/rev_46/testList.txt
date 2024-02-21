@@ -1,0 +1,2 @@
+org.adoptopenjdk.jitwatch.test.TestCompilationUtil
+org.adoptopenjdk.jitwatch.test.TestExecutionUtil

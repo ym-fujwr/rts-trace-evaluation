@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.zaxxer.nuprocess.RunTest" time="2.179" tests="17" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir/target/test-classes:/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes:/home/ym-fujwr/.m2/repository/net/java/dev/jna/jna/5.11.0/jna-5.11.0.jar:/home/ym-fujwr/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/ym-fujwr/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ym-fujwr/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:"/>
+    <property name="java.vm.vendor" value="Debian"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://tracker.debian.org/openjdk-17"/>
+    <property name="user.timezone" value="Asia/Tokyo"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="rat.skip" value="true"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir/target/surefire/surefirebooter-20231222155001719_3.jar /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir/target/surefire 2023-12-22T15-50-01_577-jvmRun1 surefire-20231222155001719_1tmp surefire_0-20231222155001719_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir/target/test-classes:/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes:/home/ym-fujwr/.m2/repository/net/java/dev/jna/jna/5.11.0/jna-5.11.0.jar:/home/ym-fujwr/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/ym-fujwr/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ym-fujwr/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/ym-fujwr"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-01-17"/>
+    <property name="java.home" value="/usr/lib/jvm/java-17-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir/target/surefire/surefirebooter-20231222155001719_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.6+10-Debian-1"/>
+    <property name="user.name" value="ym-fujwr"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="4.4.0-19041-Microsoft"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="jnidispatch.path" value="/home/ym-fujwr/.cache/JNA/temp/jna4004861968185446964.tmp"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="jna.platform.library.path" value="/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu:/usr/lib64:/lib64:/usr/lib:/lib"/>
+    <property name="localRepository" value="/home/ym-fujwr/.m2/repository"/>
+    <property name="jna.loaded" value="true"/>
+    <property name="java.vendor.url.bug" value="https://bugs.debian.org/openjdk-17"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="17.0.6"/>
+    <property name="user.dir" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Debian"/>
+    <property name="java.vm.version" value="17.0.6+10-Debian-1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="nullEnvironmentKeyViaConstructor" classname="com.zaxxer.nuprocess.RunTest" time="0.009"/>
+  <testcase name="nullCommandViaCommandMutationWithRun" classname="com.zaxxer.nuprocess.RunTest" time="0.001"/>
+  <testcase name="nullCommandViaConstructorWithStart" classname="com.zaxxer.nuprocess.RunTest" time="0.001"/>
+  <testcase name="nullCommandViaCommandMutationWithStart" classname="com.zaxxer.nuprocess.RunTest" time="0.001"/>
+  <testcase name="lotOfProcesses" classname="com.zaxxer.nuprocess.RunTest" time="0.327">
+    <system-err><![CDATA[Starting test lotOfProcesses() with 2 threads
+Thread 1: Iteration 1
+Thread 2: Iteration 1
+Thread 2: Iteration 2
+Thread 1: Iteration 2
+Thread 2: Iteration 3
+Thread 1: Iteration 3
+Thread 1: Iteration 4
+Thread 2: Iteration 4
+Thread 1: Iteration 5
+Thread 2: Iteration 5
+Thread 2: Iteration 6
+Thread 1: Iteration 6
+Thread 2: Iteration 7
+Thread 1: Iteration 7
+Thread 1: Iteration 8
+Thread 2: Iteration 8
+Thread 2: Iteration 9
+Thread 1: Iteration 9
+Thread 1: Iteration 10
+Thread 2: Iteration 10
+Thread 2: Iteration 11
+Thread 1: Iteration 11
+Thread 2: Iteration 12
+Thread 1: Iteration 12
+Thread 1: Iteration 13
+Thread 2: Iteration 13
+Thread 2: Iteration 14
+Thread 1: Iteration 14
+Thread 2: Iteration 15
+Thread 1: Iteration 15
+Thread 1: Iteration 16
+Thread 2: Iteration 16
+Thread 2: Iteration 17
+Thread 1: Iteration 17
+Thread 1: Iteration 18
+Thread 2: Iteration 18
+Thread 1: Iteration 19
+Thread 2: Iteration 19
+Thread 2: Iteration 20
+Thread 1: Iteration 20
+Completed test lotOfProcesses()
+]]></system-err>
+  </testcase>
+  <testcase name="decodingShortUtf8Data" classname="com.zaxxer.nuprocess.RunTest" time="0.034">
+    <system-err><![CDATA[Starting test decodingShortUtf8Data()
+Completed test decodingShortUtf8Data()
+]]></system-err>
+  </testcase>
+  <testcase name="nullEnvironmentValueViaConstructor" classname="com.zaxxer.nuprocess.RunTest" time="0.0"/>
+  <testcase name="nullEnvironmentKeyViaEnvironmentMutation" classname="com.zaxxer.nuprocess.RunTest" time="0.0"/>
+  <testcase name="badExit" classname="com.zaxxer.nuprocess.RunTest" time="0.015">
+    <system-err><![CDATA[Starting test badExit()
+Completed test badExit()
+]]></system-err>
+  </testcase>
+  <testcase name="lotOfData" classname="com.zaxxer.nuprocess.RunTest" time="1.695">
+    <system-err><![CDATA[Starting test lotOfData()
+Completed test lotOfData()
+]]></system-err>
+  </testcase>
+  <testcase name="nullCommandViaConstructorWithRun" classname="com.zaxxer.nuprocess.RunTest" time="0.001"/>
+  <testcase name="softCloseStdinAfterWrite" classname="com.zaxxer.nuprocess.RunTest" time="0.012">
+    <system-err><![CDATA[Starting test softCloseStdinAfterWrite()
+Completed test softCloseStdinAfterWrite()
+]]></system-err>
+  </testcase>
+  <testcase name="decodingLongUtf8Data" classname="com.zaxxer.nuprocess.RunTest" time="0.02">
+    <system-err><![CDATA[Starting test decodingLongUtf8Data()
+Completed test decodingLongUtf8Data()
+]]></system-err>
+  </testcase>
+  <testcase name="noExecutableFound" classname="com.zaxxer.nuprocess.RunTest" time="0.007">
+    <system-err><![CDATA[Starting test noExecutableFound()
+Dec 22, 2023 3:51:05 PM com.zaxxer.nuprocess.linux.LinuxProcess start
+WARNING: Failed to start process
+java.io.IOException: error=2, No such file or directory
+	at com.zaxxer.nuprocess.internal.LibJava10.Java_java_lang_ProcessImpl_forkAndExec(Native Method)
+	at com.zaxxer.nuprocess.linux.LinuxProcess.prepareProcess(LinuxProcess.java:158)
+	at com.zaxxer.nuprocess.linux.LinuxProcess.start(LinuxProcess.java:69)
+	at com.zaxxer.nuprocess.linux.LinProcessFactory.createProcess(LinProcessFactory.java:40)
+	at com.zaxxer.nuprocess.NuProcessBuilder.start(NuProcessBuilder.java:260)
+	at com.zaxxer.nuprocess.RunTest.noExecutableFound(RunTest.java:219)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:54)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.ekstazi.junit.CoverageRunner.run(Unknown Source)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+
+Completed test noExecutableFound()
+]]></system-err>
+  </testcase>
+  <testcase name="callbackOrder" classname="com.zaxxer.nuprocess.RunTest" time="0.015"/>
+  <testcase name="changeCwd" classname="com.zaxxer.nuprocess.RunTest" time="0.029">
+    <system-err><![CDATA[Starting test changeCwd() (java cwd=/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/NuProcess/workingDir, tmp=/tmp/junit9330275660987252069)
+Completed test changeCwd()
+]]></system-err>
+  </testcase>
+  <testcase name="nullEnvironmentValueViaEnvironmentMutation" classname="com.zaxxer.nuprocess.RunTest" time="0.0"/>
+</testsuite>

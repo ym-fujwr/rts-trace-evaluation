@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Ranges2.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hilbert-curve</a> &gt; <a href="index.source.html" class="el_package">org.davidmoten.hilbert</a> &gt; <span class="el_source">Ranges2.java</span></div><h1>Ranges2.java</h1><pre class="source lang-java linenums">package org.davidmoten.hilbert;
+
+import java.util.Iterator;
+import java.util.TreeSet;
+
+import com.github.davidmoten.guavamini.Preconditions;
+
+// NotThreadSafe
+public class Ranges2 implements Iterable&lt;Range&gt; {
+
+    private final int bufferSize;
+
+    // set is ordered by increasing distance to next node (Node is a linked list)
+    private final TreeSet&lt;Node&gt; set;
+    private Node ranges; // in descending order of ranges e.g. Range(5,7) -&gt; Range(1,3)
+    private int count; // count of items in ranges
+
+<span class="fc" id="L18">    public Ranges2(int bufferSize) {</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        Preconditions.checkArgument(bufferSize &gt; 1);</span>
+<span class="fc" id="L20">        this.bufferSize = bufferSize;</span>
+<span class="fc" id="L21">        this.ranges = null;</span>
+<span class="fc" id="L22">        this.set = new TreeSet&lt;&gt;();</span>
+<span class="fc" id="L23">    }</span>
+
+    public void add(Range r) {
+<span class="fc bfc" id="L26" title="All 4 branches covered.">        Preconditions.checkArgument(ranges == null || ranges.value.high() &lt; r.low(),</span>
+                &quot;ranges must be added in increasing order and without overlap&quot;);
+<span class="fc" id="L28">        Node node = new Node(r);</span>
+<span class="fc" id="L29">        count++;</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (ranges == null) {</span>
+<span class="fc" id="L31">            ranges = node;</span>
+        } else {
+            // and set new head and recalculate distance for ranges
+<span class="fc" id="L34">            node.setNext(ranges);</span>
+
+            // add old head to set (now that the distanceToPrevious has been calculated) 
+<span class="fc" id="L37">            set.add(ranges);</span>
+
+<span class="fc" id="L39">            ranges = node;</span>
+
+<span class="fc bfc" id="L41" title="All 2 branches covered.">            if (count &gt; bufferSize) {</span>
+                // remove node from set with least distance to next node
+<span class="fc" id="L43">                Node first = set.pollFirst();</span>
+
+                // replace that node in linked list (ranges) with a new Node
+                // that has the concatenation of that node with previous node's range
+                // also remove its predecessor 
+
+                // first.previous will not be null because distance was present to be in set
+<span class="fc" id="L50">                Range joined = first.value.join(first.previous().value);</span>
+
+<span class="fc" id="L52">                Node n = new Node(joined);</span>
+                // link and recalculate distance (won't change because the lower bound of the
+                // new ranges is the same as the lower bound of the range of first)
+<span class="fc" id="L55">                n.setNext(first.next());</span>
+                // link and calculate the distance for n
+<span class="fc" id="L57">                Node firstPrevious = first.previous();</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">                if (firstPrevious == ranges) {</span>
+<span class="fc" id="L59">                    ranges = n;</span>
+                } else {
+<span class="fc" id="L61">                    first.previous().previous().setNext(n);</span>
+                }
+
+                // clear pointers from first to help gc out
+                // there new gen to old gen promotion can cause problems
+<span class="fc" id="L66">                first.clearForGc();</span>
+
+                // we have reduced number of nodes in list so reduce count
+<span class="fc" id="L69">                count--;</span>
+            }
+        }
+<span class="fc" id="L72">    }</span>
+
+    @Override
+    public Iterator&lt;Range&gt; iterator() {
+<span class="fc" id="L76">        return new Iterator&lt;Range&gt;() {</span>
+
+<span class="fc" id="L78">            Node r = ranges;</span>
+
+            @Override
+            public boolean hasNext() {
+<span class="fc bfc" id="L82" title="All 2 branches covered.">                return r != null;</span>
+            }
+
+            @Override
+            public Range next() {
+<span class="fc" id="L87">                Range v = r.value;</span>
+<span class="fc" id="L88">                r = r.next();</span>
+<span class="fc" id="L89">                return v;</span>
+            }
+
+        };
+    }
+
+    public void println() {
+<span class="fc" id="L96">        forEach(System.out::println);</span>
+<span class="fc" id="L97">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

@@ -1,0 +1,55 @@
+diff --git a/src/main/java/org/apache/commons/cli/DefaultParser.java b/src/main/java/org/apache/commons/cli/DefaultParser.java
+index 8a027094..8b69a766 100644
+--- a/src/main/java/org/apache/commons/cli/DefaultParser.java
++++ b/src/main/java/org/apache/commons/cli/DefaultParser.java
+@@ -583 +583 @@ public class DefaultParser implements CommandLineParser {
+-        final String opt = token.isEmpty() ? null : token.substring(0, 1);
++        final String opt = token.substring(0, 1);
+diff --git a/src/test/java/org/apache/commons/cli/ParserTestCase.java b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+similarity index 99%
+rename from src/test/java/org/apache/commons/cli/ParserTestCase.java
+rename to src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+index db8d7b08..907e1f00 100644
+--- a/src/test/java/org/apache/commons/cli/ParserTestCase.java
++++ b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+@@ -37 +37 @@ import org.junit.Test;
+-public abstract class ParserTestCase {
++public abstract class AbstractParserTestCase {
+@@ -1023,8 +1023 @@ public abstract class ParserTestCase {
+-    
+-    @Test(expected = UnrecognizedOptionException.class)
+-    public void testAmbiguousArgParsing() throws Exception {
+-        final String[] args = {"-=-"};
+-        final Options options = new Options();
+-        
+-        final CommandLine cl = parser.parse(options, args);
+-    }
++
+diff --git a/src/test/java/org/apache/commons/cli/BasicParserTest.java b/src/test/java/org/apache/commons/cli/BasicParserTest.java
+index fe7a823e..e05a38f5 100644
+--- a/src/test/java/org/apache/commons/cli/BasicParserTest.java
++++ b/src/test/java/org/apache/commons/cli/BasicParserTest.java
+@@ -25 +25 @@ import org.junit.Test;
+-public class BasicParserTest extends ParserTestCase {
++public class BasicParserTest extends AbstractParserTestCase {
+diff --git a/src/test/java/org/apache/commons/cli/DefaultParserTest.java b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
+index c3ccf9ab..7181daa5 100644
+--- a/src/test/java/org/apache/commons/cli/DefaultParserTest.java
++++ b/src/test/java/org/apache/commons/cli/DefaultParserTest.java
+@@ -25 +25 @@ import org.junit.Test;
+-public class DefaultParserTest extends ParserTestCase {
++public class DefaultParserTest extends AbstractParserTestCase {
+diff --git a/src/test/java/org/apache/commons/cli/GnuParserTest.java b/src/test/java/org/apache/commons/cli/GnuParserTest.java
+index a08ca8bc..92cc24da 100644
+--- a/src/test/java/org/apache/commons/cli/GnuParserTest.java
++++ b/src/test/java/org/apache/commons/cli/GnuParserTest.java
+@@ -25 +25 @@ import org.junit.Test;
+-public class GnuParserTest extends ParserTestCase {
++public class GnuParserTest extends AbstractParserTestCase {
+diff --git a/src/test/java/org/apache/commons/cli/PosixParserTest.java b/src/test/java/org/apache/commons/cli/PosixParserTest.java
+index 5efb938e..19874228 100644
+--- a/src/test/java/org/apache/commons/cli/PosixParserTest.java
++++ b/src/test/java/org/apache/commons/cli/PosixParserTest.java
+@@ -27 +27 @@ import org.junit.Test;
+-public class PosixParserTest extends ParserTestCase {
++public class PosixParserTest extends AbstractParserTestCase {

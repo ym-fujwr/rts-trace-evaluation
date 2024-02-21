@@ -1,0 +1,25 @@
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] ----------------< com.github.davidmoten:hilbert-curve >-----------------
+[INFO] Building hilbert-curve 0.1.5-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.3:prepare-agent (default) @ hilbert-curve ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.3/org.jacoco.agent-0.8.3-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/original_source/hilbertCurve/rev_12/target/jacoco.exec"
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hilbert-curve ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/original_source/hilbertCurve/rev_12/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ hilbert-curve ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /mnt/c/Users/fujiwara yuma/evaluation/original_source/hilbertCurve/rev_12/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.076 s
+[INFO] Finished at: 2024-01-30T16:35:46+09:00
+[INFO] ------------------------------------------------------------------------

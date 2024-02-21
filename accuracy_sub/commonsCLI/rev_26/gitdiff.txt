@@ -1,0 +1,32 @@
+diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
+index ad416cbc..8511f08c 100644
+--- a/src/main/java/org/apache/commons/cli/CommandLine.java
++++ b/src/main/java/org/apache/commons/cli/CommandLine.java
+@@ -442 +442 @@ public class CommandLine implements Serializable {
+-     * @param opt short or long name of the option.
++     * @param opt short or long name of the option, may be null.
+@@ -445,5 +445,7 @@ public class CommandLine implements Serializable {
+-    private Option resolveOption(String opt) {
+-        opt = Util.stripLeadingHyphens(opt);
+-        for (final Option option : options) {
+-            if (opt.equals(option.getOpt()) || opt.equals(option.getLongOpt())) {
+-                return option;
++    private Option resolveOption(final String opt) {
++        final String actual = Util.stripLeadingHyphens(opt);
++        if (actual != null) {
++            for (final Option option : options) {
++                if (actual.equals(option.getOpt()) || actual.equals(option.getLongOpt())) {
++                    return option;
++                }
+@@ -451 +452,0 @@ public class CommandLine implements Serializable {
+-
+diff --git a/src/test/java/org/apache/commons/cli/bug/BugsTest.java b/src/test/java/org/apache/commons/cli/bug/BugsTest.java
+index 2eb6ea73..eed3381a 100644
+--- a/src/test/java/org/apache/commons/cli/bug/BugsTest.java
++++ b/src/test/java/org/apache/commons/cli/bug/BugsTest.java
+@@ -22,0 +23 @@ import static org.junit.Assert.assertNotNull;
++import static org.junit.Assert.assertNull;
+@@ -137,0 +139,3 @@ public class BugsTest {
++        //
++        assertNull(cmd.getOptionValue((String) null, null));
++        assertEquals("default", cmd.getOptionValue((String) null, "default"));

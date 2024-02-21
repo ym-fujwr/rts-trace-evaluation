@@ -1,0 +1,75 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.chrisnewland:jitwatch-core >-------------------
+[INFO] Building JITWatch Core 1.3.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ jitwatch-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 38 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 180 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/target/classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[110,49] Boolean(boolean) in java.lang.Boolean has been deprecated and marked for removal
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[133,68] newInstance() in java.lang.Class has been deprecated
+[INFO] 2 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLine.java:[17,1] cannot find symbol
+  symbol:   static ZING
+  location: class org.adoptopenjdk.jitwatch.core.JITWatchConstants
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLine.java:[18,1] cannot find symbol
+  symbol:   static FALCON
+  location: class org.adoptopenjdk.jitwatch.core.JITWatchConstants
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLine.java:[202,52] cannot find symbol
+  symbol:   variable FALCON
+  location: class org.adoptopenjdk.jitwatch.parser.zing.ZingLine
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLine.java:[202,61] cannot find symbol
+  symbol:   variable ZING
+  location: class org.adoptopenjdk.jitwatch.parser.zing.ZingLine
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLogParser.java:[237,51] cannot find symbol
+  symbol:   method parseHexAddress(java.lang.String)
+  location: class org.adoptopenjdk.jitwatch.util.ParseUtil
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLogParser.java:[246,54] cannot find symbol
+  symbol:   method parseHexAddress(java.lang.String)
+  location: class org.adoptopenjdk.jitwatch.util.ParseUtil
+[INFO] 6 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.122 s
+[INFO] Finished at: 2023-12-14T14:32:42+09:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project jitwatch-core: Compilation failure: Compilation failure: 
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLine.java:[17,1] cannot find symbol
+[ERROR]   symbol:   static ZING
+[ERROR]   location: class org.adoptopenjdk.jitwatch.core.JITWatchConstants
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLine.java:[18,1] cannot find symbol
+[ERROR]   symbol:   static FALCON
+[ERROR]   location: class org.adoptopenjdk.jitwatch.core.JITWatchConstants
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLine.java:[202,52] cannot find symbol
+[ERROR]   symbol:   variable FALCON
+[ERROR]   location: class org.adoptopenjdk.jitwatch.parser.zing.ZingLine
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLine.java:[202,61] cannot find symbol
+[ERROR]   symbol:   variable ZING
+[ERROR]   location: class org.adoptopenjdk.jitwatch.parser.zing.ZingLine
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLogParser.java:[237,51] cannot find symbol
+[ERROR]   symbol:   method parseHexAddress(java.lang.String)
+[ERROR]   location: class org.adoptopenjdk.jitwatch.util.ParseUtil
+[ERROR] /mnt/c/Users/fujiwara yuma/evaluation/ALL/jitwatch/workingDir/core/src/main/java/org/adoptopenjdk/jitwatch/parser/zing/ZingLogParser.java:[246,54] cannot find symbol
+[ERROR]   symbol:   method parseHexAddress(java.lang.String)
+[ERROR]   location: class org.adoptopenjdk.jitwatch.util.ParseUtil
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

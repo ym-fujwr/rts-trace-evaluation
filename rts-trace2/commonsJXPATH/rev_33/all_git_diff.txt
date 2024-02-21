@@ -1,0 +1,35 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index d582b7cf..6f07cb81 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -91 +91,4 @@ The <action> type attribute can be add,update,fix,remove.
+-      </action>      
++      </action>
++      <action dev="ggregory" type="fix" due-to="Gary Gregory">
++        ValueUtils.setValue() now throws IllegalArgumentException instead of RuntimeException.
++      </action>
+diff --git a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
+index 843715aa..ecee382b 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
++++ b/src/main/java/org/apache/commons/jxpath/util/ValueUtils.java
+@@ -481,2 +481 @@ public class ValueUtils {
+-                final IndexedPropertyDescriptor ipd =
+-                    (IndexedPropertyDescriptor) propertyDescriptor;
++                final IndexedPropertyDescriptor ipd = (IndexedPropertyDescriptor) propertyDescriptor;
+@@ -485,4 +484 @@ public class ValueUtils {
+-                    method.invoke(
+-                        bean,
+-                            Integer.valueOf(index),
+-                            convert(value, ipd.getIndexedPropertyType()));
++                    method.invoke(bean, Integer.valueOf(index), convert(value, ipd.getIndexedPropertyType()));
+@@ -493,5 +489 @@ public class ValueUtils {
+-                throw new RuntimeException(
+-                    "Cannot access property: "
+-                        + propertyDescriptor.getName()
+-                        + ", "
+-                        + ex.getMessage());
++                throw new IllegalArgumentException("Cannot access property: " + propertyDescriptor.getName() + ", " + ex.getMessage());
+@@ -509,2 +501 @@ public class ValueUtils {
+-            throw new RuntimeException(
+-                "Not a collection: " + propertyDescriptor.getName());
++            throw new IllegalArgumentException("Not a collection: " + propertyDescriptor.getName());

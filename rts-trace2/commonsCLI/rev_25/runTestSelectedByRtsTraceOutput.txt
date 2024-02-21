@@ -1,0 +1,51 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< commons-cli:commons-cli >-----------------------
+[INFO] Building Apache Commons CLI 1.6.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.3.0:enforce (enforce-maven-version) @ commons-cli ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.3.0:enforce (enforce-java-version) @ commons-cli ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.3.0:enforce (enforce-maven-3) @ commons-cli ---
+[INFO] 
+[INFO] --- apache-rat-plugin:0.15:check (rat-check) @ commons-cli ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.4.0:parse-version (parse-version) @ commons-cli ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:3.1.0:run (javadoc.resources) @ commons-cli ---
+[INFO] Executing tasks
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:3.1.0:process (process-resource-bundles) @ commons-cli ---
+[INFO] Skipping remote resources execution.
+[INFO] 
+[INFO] --- buildnumber-maven-plugin:3.2.0:create (default) @ commons-cli ---
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/original_source/commonsCLI/rev_25' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/original_source/commonsCLI/rev_25
+[INFO] Storing buildNumber: null at timestamp: 1706602911480
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/original_source/commonsCLI/rev_25' && 'git' 'symbolic-ref' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/original_source/commonsCLI/rev_25
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
+
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/original_source/commonsCLI/rev_25' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/original_source/commonsCLI/rev_25
+[INFO] Storing scmBranch: UNKNOWN
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ commons-cli ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/original_source/commonsCLI/rev_25/src/main/resources
+[INFO] Copying 2 resources from  to target/classes/META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ commons-cli ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.510 s
+[INFO] Finished at: 2024-01-30T17:21:51+09:00
+[INFO] ------------------------------------------------------------------------

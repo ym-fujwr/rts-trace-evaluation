@@ -1,0 +1,10 @@
+org.apache.commons.jxpath.BasicNodeSetTest
+org.apache.commons.jxpath.issues.JXPath118Test
+org.apache.commons.jxpath.issues.JXPath149Test
+org.apache.commons.jxpath.issues.JXPath172Test
+org.apache.commons.jxpath.ri.axes.SimplePathInterpreterTest
+org.apache.commons.jxpath.ri.compiler.ExtensionFunctionTest
+org.apache.commons.jxpath.ri.JXPathCompiledExpressionTest
+org.apache.commons.jxpath.ri.model.dynamic.DynamicPropertiesModelTest
+org.apache.commons.jxpath.ri.model.MixedModelTest
+org.apache.commons.jxpath.ri.model.XMLSpaceTest

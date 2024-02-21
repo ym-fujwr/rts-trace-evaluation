@@ -1,0 +1,103 @@
+diff --git a/src/test/java/org/davidmoten/hilbert/Benchmarks.java b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
+index a201973..fba826b 100644
+--- a/src/test/java/org/davidmoten/hilbert/Benchmarks.java
++++ b/src/test/java/org/davidmoten/hilbert/Benchmarks.java
+@@ -4,0 +5 @@ import java.util.List;
++import java.util.concurrent.TimeUnit;
+@@ -15 +16,2 @@ public class Benchmarks {
+-    private static final SmallHilbertCurve small = HilbertCurve.small().bits(BITS).dimensions(DIMENSIONS);
++    private static final SmallHilbertCurve small = HilbertCurve.small().bits(BITS)
++            .dimensions(DIMENSIONS);
+@@ -26 +28 @@ public class Benchmarks {
+-    
++
+@@ -33 +35 @@ public class Benchmarks {
+-    
++
+@@ -94,0 +97,28 @@ public class Benchmarks {
++    private static final Query query = new Query();
++
++    @Benchmark
++    public Ranges querySydney() {
++        return query.query();
++    }
++
++    private static final class Query {
++        float lat1 = -33.806477f;
++        float lon1 = 151.181767f;
++        long minTime = 1510779675000L;
++        long maxTime = 1510876800000L;
++        long t1 = minTime + (maxTime - minTime) / 2;
++        float lat2 = -33.882896f;
++        float lon2 = 151.281330f;
++        long t2 = t1 + TimeUnit.HOURS.toMillis(1);
++        int bits = 10;
++        int dimensions = 3;
++        SmallHilbertCurve h = HilbertCurve.small().bits(bits).dimensions(dimensions);
++        long maxOrdinates = 1L << bits;
++        long[] point1 = GeoUtil.scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates);
++        long[] point2 = GeoUtil.scalePoint(lat2, lon2, t2, minTime, maxTime, maxOrdinates);
++
++        Ranges query() {
++            return h.query(point1, point2);
++        }
++    }
++
+diff --git a/src/test/java/org/davidmoten/hilbert/GeoUtil.java b/src/test/java/org/davidmoten/hilbert/GeoUtil.java
+new file mode 100644
+index 0000000..9528551
+--- /dev/null
++++ b/src/test/java/org/davidmoten/hilbert/GeoUtil.java
+@@ -0,0 +1,24 @@
++package org.davidmoten.hilbert;
++
++import com.github.davidmoten.guavamini.Preconditions;
++
++public class GeoUtil {
++
++    public static long[] scalePoint(float lat, float lon, long time, long minTime, long maxTime,
++            long max) {
++        long x = scale((lat + 90.0f) / 180, max);
++        long y = scale((lon + 180.0f) / 360, max);
++        long z = scale(((float) time - minTime) / (maxTime - minTime), max);
++        return new long[] { x, y, z };
++    }
++    
++    private static long scale(float d, long max) {
++        Preconditions.checkArgument(d >= 0 && d <= 1);
++        if (d == 1) {
++            return max;
++        } else {
++            return Math.round(Math.floor(d * (max + 1)));
++        }
++    }
++
++}
+diff --git a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+index ea1eca0..e7ce267 100644
+--- a/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
++++ b/src/test/java/org/davidmoten/hilbert/HilbertCurveTest.java
+@@ -2,0 +3 @@ package org.davidmoten.hilbert;
++import static org.davidmoten.hilbert.GeoUtil.scalePoint;
+@@ -334 +335 @@ public class HilbertCurveTest {
+-        h.query(scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates),
++        Ranges r = h.query(scalePoint(lat1, lon1, t1, minTime, maxTime, maxOrdinates),
+@@ -335,0 +337 @@ public class HilbertCurveTest {
++        System.out.println(r.get().size());
+@@ -426,16 +427,0 @@ public class HilbertCurveTest {
+-    private static long[] scalePoint(float lat, float lon, long time, long minTime, long maxTime,
+-            long max) {
+-        long x = scale((lat + 90.0f) / 180, max);
+-        long y = scale((lon + 180.0f) / 360, max);
+-        long z = scale(((float) time - minTime) / (maxTime - minTime), max);
+-        return new long[] { x, y, z };
+-    }
+-
+-    private static long scale(float d, long max) {
+-        Preconditions.checkArgument(d >= 0 && d <= 1);
+-        if (d == 1) {
+-            return max;
+-        } else {
+-            return Math.round(Math.floor(d * (max + 1)));
+-        }
+-    }

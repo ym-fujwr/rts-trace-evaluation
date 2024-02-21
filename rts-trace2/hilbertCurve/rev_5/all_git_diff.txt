@@ -1,0 +1,11 @@
+diff --git a/src/main/java/org/davidmoten/hilbert/Box.java b/src/main/java/org/davidmoten/hilbert/Box.java
+index a7ad9ff..b9f0878 100644
+--- a/src/main/java/org/davidmoten/hilbert/Box.java
++++ b/src/main/java/org/davidmoten/hilbert/Box.java
+@@ -10 +10 @@ final class Box {
+-    
++
+@@ -29 +29,2 @@ final class Box {
+-    //TODO remove
++    // TODO not used yet but good for unit testing (e.g. ensuring that the cells
++    // reported by the perimiter algorithm match those reported by visit all cells

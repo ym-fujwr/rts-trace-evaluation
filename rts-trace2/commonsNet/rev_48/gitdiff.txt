@@ -1,0 +1,7 @@
+diff --git a/src/main/java/org/apache/commons/net/bsd/RCommandClient.java b/src/main/java/org/apache/commons/net/bsd/RCommandClient.java
+index c03f5c458..909d9ce93 100644
+--- a/src/main/java/org/apache/commons/net/bsd/RCommandClient.java
++++ b/src/main/java/org/apache/commons/net/bsd/RCommandClient.java
+@@ -226 +226 @@ public class RCommandClient extends RExecClient {
+-        server = null; // Keep compiler from barfing
++        server = null;

@@ -1,0 +1,1 @@
+org.apache.commons.cli.AbstractParserTestCase,org.apache.commons.cli.bug.BugCLI265Test#shouldParseConcatenatedShortOptions,org.apache.commons.cli.DefaultParserTest#testShortOptionConcatenatedQuoteHandling,org.apache.commons.cli.DisablePartialMatchingTest#testDisablePartialMatching

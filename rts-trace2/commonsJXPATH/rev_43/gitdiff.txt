@@ -1,0 +1,9 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
+index 74ab2cc9..bf1961fe 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
+@@ -83,2 +83,2 @@ public abstract class JXPathContextFactory {
+-     * available, to determine the classname. The Services API will look
+-     * for a classname in the file
++     * available, to determine the class name. The Services API will look
++     * for a class name in the file

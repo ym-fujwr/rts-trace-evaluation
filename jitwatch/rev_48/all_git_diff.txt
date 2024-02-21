@@ -1,0 +1,88 @@
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerGroovy.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerGroovy.java
+index 1baf59f7..3ad1312e 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerGroovy.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerGroovy.java
+@@ -42 +42 @@ public class CompilerGroovy extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, List<String> vmOptions, File outputDir, Map<String, String> environment, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -52 +51,0 @@ public class CompilerGroovy extends AbstractProcess implements ICompiler
+-		commands.addAll(vmOptions);
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJRuby.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJRuby.java
+index 169db0e5..e6cd6416 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJRuby.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJRuby.java
+@@ -44 +44 @@ public class CompilerJRuby extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, List<String> vmOptions, File outputDir, Map<String, String> environment, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -61 +60,0 @@ public class CompilerJRuby extends AbstractProcess implements ICompiler
+-		commands.addAll(vmOptions);
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJava.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJava.java
+index 365a8f2c..92e18c5d 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJava.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJava.java
+@@ -47 +47 @@ public class CompilerJava extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, List<String> vmOptions, File outputDir, Map<String, String> environment, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -57 +56,0 @@ public class CompilerJava extends AbstractProcess implements ICompiler
+-		commands.addAll(vmOptions);
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJavaScript.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJavaScript.java
+index 3189531f..4868ebee 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJavaScript.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerJavaScript.java
+@@ -42 +42 @@ public class CompilerJavaScript extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, List<String> vmOptions, File outputDir, Map<String, String> environment, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -53 +52,0 @@ public class CompilerJavaScript extends AbstractProcess implements ICompiler
+-		commands.addAll(vmOptions);
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerKotlin.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerKotlin.java
+index 172c7583..10ab50b0 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerKotlin.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerKotlin.java
+@@ -43 +43 @@ public class CompilerKotlin extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, List<String> vmOptions, File outputDir, Map<String, String> environment, ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener)
+@@ -56 +55,0 @@ public class CompilerKotlin extends AbstractProcess implements ICompiler
+-		commands.addAll(vmOptions);
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerScala.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerScala.java
+index 1ef7f1e3..a654c6f1 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerScala.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/CompilerScala.java
+@@ -47 +47 @@ public class CompilerScala extends AbstractProcess implements ICompiler
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, List<String> vmOptions, File outputDir, Map<String, String> environment,ILogListener logListener)
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment,ILogListener logListener)
+@@ -57 +56,0 @@ public class CompilerScala extends AbstractProcess implements ICompiler
+-		commands.addAll(vmOptions);
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/ICompiler.java b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/ICompiler.java
+index 16560e72..35d7e910 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/ICompiler.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/process/compiler/ICompiler.java
+@@ -18 +18 @@ public interface ICompiler extends IExternalProcess
+-	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, List<String> vmOptions, File outputDir, Map<String, String> environment, ILogListener logListener) throws IOException;
++	public boolean compile(List<File> sourceFiles, List<String> classpathEntries, File outputDir, Map<String, String> environment, ILogListener logListener) throws IOException;
+diff --git a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java
+index 704bf894..1550c6c6 100644
+--- a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java
++++ b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoaderWithInnerClasses.java
+@@ -106,3 +106 @@ public class TestBytecodeLoaderWithInnerClasses
+-			List<String> vmOptions = new ArrayList<>();
+-
+-			boolean success = compiler.compile(sources, compileClasspath, vmOptions, pathToTempClassDir.toFile(), Collections.emptyMap(),
++			boolean success = compiler.compile(sources, compileClasspath, pathToTempClassDir.toFile(), Collections.emptyMap(),
+diff --git a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestCompilationUtil.java b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestCompilationUtil.java
+index 73e36d65..be35a9e6 100644
+--- a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestCompilationUtil.java
++++ b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestCompilationUtil.java
+@@ -94,3 +94 @@ public class TestCompilationUtil
+-			List<String> vmOptions = new ArrayList<>();
+-
+-			boolean success = compiler.compile(sources, compileClasspath, vmOptions, tempDirPath.toFile(), Collections.emptyMap(),
++			boolean success = compiler.compile(sources, compileClasspath, tempDirPath.toFile(), Collections.emptyMap(),
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
+index 63cc27f7..1349e92e 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
+@@ -180,3 +180 @@ public class Sandbox
+-		List<String> compilationSwitches = Arrays.asList(logParser.getConfig().getExtraVMCompilationSwitches().split(" "));
+-
+-		boolean compiledOK = compiler.compile(compileList, buildUniqueClasspath(logParser.getConfig()), compilationSwitches, SANDBOX_CLASS_DIR.toFile(),
++		boolean compiledOK = compiler.compile(compileList, buildUniqueClasspath(logParser.getConfig()), SANDBOX_CLASS_DIR.toFile(),

@@ -1,0 +1,9 @@
+org.apache.commons.net.ftp.FTPClientTest
+org.apache.commons.net.ftp.FTPSClientTest
+org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest
+org.apache.commons.net.io.DotTerminatedMessageReaderTest
+org.apache.commons.net.nntp.TestThreader
+org.apache.commons.net.tftp.TFTPServerPathTest
+org.apache.commons.net.time.TimeTCPClientTest
+org.apache.commons.net.util.Base64Test
+org.apache.commons.net.util.UtilTest

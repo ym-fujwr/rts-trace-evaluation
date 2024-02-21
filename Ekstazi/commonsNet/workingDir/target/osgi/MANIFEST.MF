@@ -1,0 +1,43 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Commons Net library contains a collection of 
+ network utilities and protocol implementations.Supported protocols incl
+ ude: Echo, Finger, FTP, NNTP, NTP, POP3(S), SMTP(S), Telnet, Whois
+Bundle-DocURL: https://commons.apache.org/proper/commons-net/
+Bundle-License: https://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Commons Net
+Bundle-SymbolicName: org.apache.commons.commons-net
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 3.9.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin 5.1.8
+Export-Package: org.apache.commons.net;version="3.9.0.SNAPSHOT",org.apac
+ he.commons.net.bsd;version="3.9.0.SNAPSHOT",org.apache.commons.net.char
+ gen;version="3.9.0.SNAPSHOT",org.apache.commons.net.daytime;version="3.
+ 9.0.SNAPSHOT",org.apache.commons.net.discard;version="3.9.0.SNAPSHOT",o
+ rg.apache.commons.net.echo;version="3.9.0.SNAPSHOT",org.apache.commons.
+ net.examples;version="3.9.0.SNAPSHOT",org.apache.commons.net.examples.c
+ idr;version="3.9.0.SNAPSHOT",org.apache.commons.net.examples.ftp;versio
+ n="3.9.0.SNAPSHOT",org.apache.commons.net.examples.mail;version="3.9.0.
+ SNAPSHOT",org.apache.commons.net.examples.nntp;version="3.9.0.SNAPSHOT"
+ ,org.apache.commons.net.examples.ntp;version="3.9.0.SNAPSHOT",org.apach
+ e.commons.net.examples.telnet;version="3.9.0.SNAPSHOT",org.apache.commo
+ ns.net.examples.unix;version="3.9.0.SNAPSHOT",org.apache.commons.net.ex
+ amples.util;version="3.9.0.SNAPSHOT",org.apache.commons.net.finger;vers
+ ion="3.9.0.SNAPSHOT",org.apache.commons.net.ftp;version="3.9.0.SNAPSHOT
+ ",org.apache.commons.net.ftp.parser;version="3.9.0.SNAPSHOT",org.apache
+ .commons.net.imap;version="3.9.0.SNAPSHOT",org.apache.commons.net.io;ve
+ rsion="3.9.0.SNAPSHOT",org.apache.commons.net.nntp;version="3.9.0.SNAPS
+ HOT",org.apache.commons.net.ntp;version="3.9.0.SNAPSHOT",org.apache.com
+ mons.net.pop3;version="3.9.0.SNAPSHOT",org.apache.commons.net.smtp;vers
+ ion="3.9.0.SNAPSHOT",org.apache.commons.net.telnet;version="3.9.0.SNAPS
+ HOT",org.apache.commons.net.tftp;version="3.9.0.SNAPSHOT",org.apache.co
+ mmons.net.time;version="3.9.0.SNAPSHOT",org.apache.commons.net.util;ver
+ sion="3.9.0.SNAPSHOT",org.apache.commons.net.whois;version="3.9.0.SNAPS
+ HOT"
+Import-Package: javax.crypto,javax.crypto.spec,javax.net,javax.net.ssl
+Include-Resource: org/apache/commons/net/examples/examples.properties=sr
+ c/main/resources/org/apache/commons/net/examples/examples.properties,ME
+ TA-INF/LICENSE.txt=LICENSE.txt,META-INF/NOTICE.txt=NOTICE.txt
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-6.3.1.202206071316

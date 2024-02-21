@@ -1,0 +1,63 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index 2e4cbace..bf326fbf 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -48 +48 @@ jobs:
+-      uses: actions/checkout@v3.5.2
++      uses: actions/checkout@v3.5.3
+diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
+index ce7402a8..7f1f8611 100644
+--- a/.github/workflows/coverage.yml
++++ b/.github/workflows/coverage.yml
+@@ -32 +32 @@ jobs:
+-    - uses: actions/checkout@v3.5.2
++    - uses: actions/checkout@v3.5.3
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index 811c8b90..495c4a01 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -48 +48 @@ jobs:
+-    - uses: actions/checkout@v3.5.2
++    - uses: actions/checkout@v3.5.3
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index 9eebcf45..d9beb0ff 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -42 +42 @@ jobs:
+-        uses: actions/checkout@v3.5.2   # 3.0.2
++        uses: actions/checkout@v3.5.3   # 3.0.2
+diff --git a/README.md b/README.md
+index 5206b133..2f0d3f78 100644
+--- a/README.md
++++ b/README.md
+@@ -62 +62 @@ You can download source and binaries from our [download page](https://commons.ap
+-Alternatively you can pull it from the central Maven repositories:
++Alternatively, you can pull it from the central Maven repositories:
+diff --git a/pom.xml b/pom.xml
+index 1df81f34..519185f9 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -22 +22 @@
+-    <version>56</version>
++    <version>58</version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index c75b2928..d582b7cf 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -88,0 +89,3 @@ The <action> type attribute can be add,update,fix,remove.
++      <action dev="ggregory" type="fix" due-to="Gary Gregory">
++        JDOMNodePointer.compareChildNodePointers() now throws IllegalStateException instead of RuntimeException.
++      </action>      
+@@ -113 +116 @@ The <action> type attribute can be add,update,fix,remove.
+-        Bump commons-parent from 54 to 56 #45, #49.
++        Bump commons-parent from 54 to 58 #45, #49, #64.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
+index f04dca01..f3b53240 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
+@@ -201,4 +201 @@ public class JDOMNodePointer extends NodePointer {
+-            throw new RuntimeException(
+-                "JXPath internal error: "
+-                    + "compareChildNodes called for "
+-                    + node);
++            throw new IllegalStateException("JXPath internal error: " + "compareChildNodes called for " + node);

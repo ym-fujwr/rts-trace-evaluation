@@ -1,0 +1,3 @@
+org.adoptopenjdk.jitwatch.test.TestAssemblyProcessor
+org.adoptopenjdk.jitwatch.test.TestBytecodeAnnotationBuilder
+org.adoptopenjdk.jitwatch.test.TestZingParser

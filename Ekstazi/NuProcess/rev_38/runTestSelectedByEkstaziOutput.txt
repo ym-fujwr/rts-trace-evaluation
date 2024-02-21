@@ -1,0 +1,73 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.zaxxer:nuprocess >------------------------
+[INFO] Building NuProcess 1.2.7-SNAPSHOT
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ nuprocess ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ nuprocess ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_38/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ nuprocess ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 35 source files to /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_38/target/classes
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_38/src/main/java/com/zaxxer/nuprocess/internal/ReferenceCountedFileDescriptor.java: Some input files use or override a deprecated API.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_38/src/main/java/com/zaxxer/nuprocess/internal/ReferenceCountedFileDescriptor.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_38/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java: Some input files use unchecked or unsafe operations.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_38/src/main/java/com/zaxxer/nuprocess/windows/NuWinNT.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ nuprocess ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_38/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ nuprocess ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 10 source files to /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_38/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ nuprocess ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.zaxxer.nuprocess.CatTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.07 s -- in com.zaxxer.nuprocess.CatTest
+[INFO] Running com.zaxxer.nuprocess.DirectWriteTest
+Writing: 128K of data, waiting for checksum -65536
+Reading.  Current checksum -32768
+Reading.  Current checksum -65536
+Checksums matched, exiting.
+Reading.  Current checksum -65536
+Checksums matched, exiting.
+Writing: This is a test
+Read: This is a test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.585 s -- in com.zaxxer.nuprocess.DirectWriteTest
+[INFO] Running com.zaxxer.nuprocess.EnvironmentTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.zaxxer.nuprocess.EnvironmentTest
+[INFO] Running com.zaxxer.nuprocess.FastExitingProcessTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.59 s -- in com.zaxxer.nuprocess.FastExitingProcessTest
+[INFO] Running com.zaxxer.nuprocess.internal.ConstantsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.zaxxer.nuprocess.internal.ConstantsTest
+[INFO] Running com.zaxxer.nuprocess.InterruptTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.520 s -- in com.zaxxer.nuprocess.InterruptTest
+[INFO] Running com.zaxxer.nuprocess.ThreadedTest
+0 Maximum memory used: 46662184
+0 Total execution time (ms): 5987
+2 Maximum memory used: 36117392
+2 Total execution time (ms): 6160
+3 Maximum memory used: 15306448
+3 Total execution time (ms): 6204
+1 Maximum memory used: 17212224
+1 Total execution time (ms): 6515
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.511 s -- in com.zaxxer.nuprocess.ThreadedTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:11 min
+[INFO] Finished at: 2024-01-30T16:59:26+09:00
+[INFO] ------------------------------------------------------------------------

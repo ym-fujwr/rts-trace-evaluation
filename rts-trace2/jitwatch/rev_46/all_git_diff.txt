@@ -1,0 +1,1091 @@
+diff --git a/.mvn/wrapper/maven-wrapper.jar b/.mvn/wrapper/maven-wrapper.jar
+deleted file mode 100755
+index 41c70a7e..00000000
+Binary files a/.mvn/wrapper/maven-wrapper.jar and /dev/null differ
+diff --git a/.mvn/wrapper/maven-wrapper.properties b/.mvn/wrapper/maven-wrapper.properties
+deleted file mode 100755
+index a447c9fa..00000000
+--- a/.mvn/wrapper/maven-wrapper.properties
++++ /dev/null
+@@ -1 +0,0 @@
+-distributionUrl=https://repo1.maven.org/maven2/org/apache/maven/apache-maven/3.5.2/apache-maven-3.5.2-bin.zip
+\ No newline at end of file
+diff --git a/PRIVACY b/PRIVACY
+index 81b63131..24cf53a5 100644
+--- a/PRIVACY
++++ b/PRIVACY
+@@ -39 +39 @@ Build systems
+-If you build JITWatch from source using maven or gradle then those build systems will download various further 
++If you build JITWatch from source using maven then the build system will download various further 
+diff --git a/README.md b/README.md
+index 94acfd0f..cec6f2c2 100644
+--- a/README.md
++++ b/README.md
+@@ -17,4 +17 @@ For pre-JDK11 you will need to use a Java runtime that includes JavaFX.
+-<pre>mvn clean compile test exec:java</pre>
+-
+-<h2>gradle</h2>
+-<pre>gradlew clean build run</pre>
++<pre>mvn clean package && java -jar ui/target/jitwatch-ui-shaded.jar</pre>
+@@ -24 +21 @@ For pre-JDK11 you will need to use a Java runtime that includes JavaFX.
+-./makeDemoLogFile.sh</pre>
++cd scripts && ./makeDemoLogFile.sh</pre>
+diff --git a/build.gradle b/build.gradle
+deleted file mode 100644
+index 7100c704..00000000
+--- a/build.gradle
++++ /dev/null
+@@ -1,152 +0,0 @@
+-buildscript {
+-   repositories {
+-      jcenter()
+-      mavenCentral()
+-   }
+-
+-   dependencies {
+-      classpath 'commons-io:commons-io:2.5'
+-   }
+-}
+-import static org.apache.commons.io.output.NullOutputStream.NULL_OUTPUT_STREAM
+-
+-plugins {
+-   id 'java'         	// self explanatory
+-   id 'idea'         	// idem
+-   id 'eclipse'		 	// eclipse
+-   id 'findbugs'	 	// findbugs plugin for static code analysis
+-   id 'pmd'			 	// code quality check plugin
+-   id 'jacoco'			// code coverage 
+-   id 'project-report'	// project reporting plugin
+-   id 'com.github.hierynomus.license' version '0.11.0'   // license checks
+-   id 'com.github.ben-manes.versions' version '0.15.0'   // version checks
+-   id 'com.jfrog.bintray' version '1.7.3'
+-   id 'maven-publish'
+-}
+-
+-// maven coordinates
+-group = 'org.adoptopenjdk.jitwatch'
+-
+-def props = new Properties()
+-file("build.properties").withInputStream { props.load(it) }
+-
+-version = props.getProperty("version");
+-
+-allprojects {
+-    repositories {
+-        jcenter()  // faster than mavenCentral()
+-    }
+-}
+-
+-//Code quality plugins configuration
+-findbugsMain {
+-	reports {
+-		xml.enabled = false
+-		html.enabled = true
+-	}
+-}
+-
+-findbugs {
+-	ignoreFailures = true
+-	sourceSets = [sourceSets.main]
+-}
+-
+-pmd {
+-	ignoreFailures = true
+-	sourceSets = [sourceSets.main]
+-}
+-
+-jacocoTestReport {
+-	reports {
+-		xml.enabled false
+-		csv.enabled false
+-		html.enabled true
+-	}
+-}
+-//Code quality plugins configuration end
+-
+-apply from: "gradle/eclipse.gradle"
+-
+-license {
+-    header = rootProject.file('config/HEADER')
+-    strictCheck = true
+-    ignoreFailures = true
+-    mapping {
+-        java   = 'SLASHSTAR_STYLE'
+-        groovy = 'SLASHSTAR_STYLE'
+-        scala  = 'SLASHSTAR_STYLE'
+-    }
+-    ext.year = '2013, 2014'
+-    exclude '**/*.png'
+-    exclude '**/*.kt'
+-}
+-
+-// do not format test resources
+-licenseTest {
+-    source -= sourceSets.test.resources
+-}
+-
+-subprojects {
+-    task sourceJar(type: Jar, dependsOn: classes) {
+-        from sourceSets.main.allJava
+-    }
+-
+-    task javadocJar(type: Jar, dependsOn: javadoc) {
+-        from javadoc.destinationDir
+-    }
+-}
+-
+-bintray {
+-  user = rootProject.hasProperty('bintrayUser') ? rootProject.property('bintrayUser') : 'FIXME'
+-  key = rootProject.hasProperty('bintrayApiKey') ? rootProject.property('bintrayApiKey') : 'FIXME'
+-  publications = ['bintray']
+-
+-  pkg {
+-    repo = 'maven'
+-    licenses = ['BSD 2-Clause']
+-    vcsUrl = 'https://github.com/AdoptOpenJDK/jitwatch'
+-    name = "${project.group}:${project.name}"
+-
+-    version {
+-      name = project.version
+-      released = new Date()
+-      vcsTag = 'v' + project.version
+-    }
+-  }
+-}
+-
+-task makeDemoLogFile(type: JavaExec) {
+-    dependsOn classes
+-    main = 'org.adoptopenjdk.jitwatch.demo.MakeHotSpotLog'
+-    jvmArgs = [
+-        // --== required switches ==--
+-
+-        // Log each time a class is loaded (how JITWatch builds the class model)
+-        "-XX:+TraceClassLoading",
+-
+-        // Enable XML format HotSpot log output
+-        "-XX:+LogCompilation",
+-
+-        // --== optional switches ==--
+-        // Enable disassembly of native code into assembly language (AT&T / GNU format)
+-        // Requires the hsdis (HotSpot disassembler) binary to be added to your JRE
+-        // For hsdis build instructions see http://www.chrisnewland.com/building-hsdis-on-linux-amd64-on-debian-369
+-        "-XX:+PrintAssembly",
+-
+-        // Change disassembly format from AT&T to Intel assembly
+-        "-XX:PrintAssemblyOptions=intel",
+-
+-        // Disable tiered compilation (enabled by default on Java 8, optional on Java 7)
+-        "-XX:-TieredCompilation",
+-
+-        // Enable tiered compilation
+-        "-XX:+TieredCompilation",
+-
+-        // Disable compressed oops (makes assembly easier to read)
+-        "-XX:-UseCompressedOops"
+-    ]
+-    classpath = project.configurations.runtime
+-    ignoreExitValue = true
+-    standardOutput = NULL_OUTPUT_STREAM
+-    errorOutput = NULL_OUTPUT_STREAM
+-}
+diff --git a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
+index 4ac09f36..31dd19ff 100644
+--- a/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
++++ b/core/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
+@@ -38,8 +37,0 @@ public class TestExecutionUtil
+-		// path for gradle build
+-		path = FileSystems.getDefault().getPath(userDir, "build", "classes", "java", "test");
+-
+-		if (Files.exists(path))
+-		{
+-			cp.add(path.toString());
+-		}
+-
+diff --git a/gradle/code-quality.gradle b/gradle/code-quality.gradle
+deleted file mode 100644
+index 6e70b659..00000000
+--- a/gradle/code-quality.gradle
++++ /dev/null
+@@ -1,70 +0,0 @@
+-apply plugin: 'jdepend'
+-apply plugin: 'checkstyle'
+-apply plugin: 'com.github.hierynomus.license'
+-
+-def configDir = new File(buildscript.sourceFile.parentFile.parentFile, 'config')
+-ext.checkstyleConfigDir = "$configDir/checkstyle"
+-
+-checkstyle {
+-    toolVersion = '6.0'
+-    configFile = new File(checkstyleConfigDir, 'checkstyle.xml')
+-    configProperties.checkstyleConfigDir = checkstyleConfigDir
+-}
+-
+-if (project.hasProperty('findBugsEnabled') && project.findBugsEnabled.toBoolean()) {
+-    apply plugin: 'findbugs'
+-    findbugs {
+-        toolVersion = '3.0.0'
+-        sourceSets = [sourceSets.main]
+-        ignoreFailures = true
+-        reportsDir = file("$project.buildDir/reports/findbugs")
+-        effort = 'max'
+-        reportLevel = 'high'
+-    }
+-
+-    findbugsMain {
+-        reports {
+-            xml.enabled = false
+-            html.enabled = true
+-        }
+-    }
+-
+-    findbugsTest {
+-        reports {
+-            xml.enabled = false
+-            html.enabled = true
+-        }
+-    }
+-}
+-
+-jdepend {
+-    toolVersion = '2.9.1'
+-    sourceSets = [sourceSets.main]
+-    ignoreFailures = true
+-    reportsDir = file("$project.buildDir/reports/jdepend")
+-}
+-
+-license {
+-    header = rootProject.file('config/HEADER')
+-    strictCheck = true
+-    ignoreFailures = true
+-    mapping {
+-        java   = 'SLASHSTAR_STYLE'
+-        groovy = 'SLASHSTAR_STYLE'
+-    }
+-    ext.year = '2014'
+-    exclude '**/*.png'
+-}
+-
+-licenseTest {
+-    source -= sourceSets.test.resources
+-}
+-
+-if (project.plugins.hasPlugin('groovy')) {
+-    apply plugin: 'codenarc'
+-
+-    codenarc {
+-        ignoreFailures = true
+-        configFile = file("$configDir/codenarc/codenarc.groovy")
+-    }
+-}
+diff --git a/gradle/eclipse.gradle b/gradle/eclipse.gradle
+deleted file mode 100644
+index e1007d83..00000000
+--- a/gradle/eclipse.gradle
++++ /dev/null
+@@ -1,15 +0,0 @@
+-//Eclipse project generation instructions
+-eclipse {
+-	project {
+-		name = rootProject.name
+-
+-		comment = 'Log analyser and visualiser for the HotSpot JIT compiler'
+-
+-		natures 'org.eclipse.buildship.core.gradleprojectnature', 'org.springsource.ide.eclipse.gradle.core.nature', 'org.eclipse.jdt.core.javanature'
+-	}
+-}
+-
+-gradle.projectsEvaluated {
+-    def systemConfigurations = subprojects.collect { it.configurations.findByName("system") }.findAll { it != null}
+-    eclipse.classpath.plusConfigurations += [systemConfigurations]
+-}
+diff --git a/gradle/wrapper/gradle-wrapper.jar b/gradle/wrapper/gradle-wrapper.jar
+deleted file mode 100644
+index ed88a042..00000000
+Binary files a/gradle/wrapper/gradle-wrapper.jar and /dev/null differ
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+deleted file mode 100644
+index a0a439e0..00000000
+--- a/gradle/wrapper/gradle-wrapper.properties
++++ /dev/null
+@@ -1,5 +0,0 @@
+-distributionBase=GRADLE_USER_HOME
+-distributionPath=wrapper/dists
+-zipStoreBase=GRADLE_USER_HOME
+-zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-5.5-all.zip
+diff --git a/gradlew b/gradlew
+deleted file mode 100755
+index cccdd3d5..00000000
+--- a/gradlew
++++ /dev/null
+@@ -1,172 +0,0 @@
+-#!/usr/bin/env sh
+-
+-##############################################################################
+-##
+-##  Gradle start up script for UN*X
+-##
+-##############################################################################
+-
+-# Attempt to set APP_HOME
+-# Resolve links: $0 may be a link
+-PRG="$0"
+-# Need this for relative symlinks.
+-while [ -h "$PRG" ] ; do
+-    ls=`ls -ld "$PRG"`
+-    link=`expr "$ls" : '.*-> \(.*\)$'`
+-    if expr "$link" : '/.*' > /dev/null; then
+-        PRG="$link"
+-    else
+-        PRG=`dirname "$PRG"`"/$link"
+-    fi
+-done
+-SAVED="`pwd`"
+-cd "`dirname \"$PRG\"`/" >/dev/null
+-APP_HOME="`pwd -P`"
+-cd "$SAVED" >/dev/null
+-
+-APP_NAME="Gradle"
+-APP_BASE_NAME=`basename "$0"`
+-
+-# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+-DEFAULT_JVM_OPTS=""
+-
+-# Use the maximum available, or set MAX_FD != -1 to use that value.
+-MAX_FD="maximum"
+-
+-warn () {
+-    echo "$*"
+-}
+-
+-die () {
+-    echo
+-    echo "$*"
+-    echo
+-    exit 1
+-}
+-
+-# OS specific support (must be 'true' or 'false').
+-cygwin=false
+-msys=false
+-darwin=false
+-nonstop=false
+-case "`uname`" in
+-  CYGWIN* )
+-    cygwin=true
+-    ;;
+-  Darwin* )
+-    darwin=true
+-    ;;
+-  MINGW* )
+-    msys=true
+-    ;;
+-  NONSTOP* )
+-    nonstop=true
+-    ;;
+-esac
+-
+-CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
+-
+-# Determine the Java command to use to start the JVM.
+-if [ -n "$JAVA_HOME" ] ; then
+-    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+-        # IBM's JDK on AIX uses strange locations for the executables
+-        JAVACMD="$JAVA_HOME/jre/sh/java"
+-    else
+-        JAVACMD="$JAVA_HOME/bin/java"
+-    fi
+-    if [ ! -x "$JAVACMD" ] ; then
+-        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+-
+-Please set the JAVA_HOME variable in your environment to match the
+-location of your Java installation."
+-    fi
+-else
+-    JAVACMD="java"
+-    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+-
+-Please set the JAVA_HOME variable in your environment to match the
+-location of your Java installation."
+-fi
+-
+-# Increase the maximum file descriptors if we can.
+-if [ "$cygwin" = "false" -a "$darwin" = "false" -a "$nonstop" = "false" ] ; then
+-    MAX_FD_LIMIT=`ulimit -H -n`
+-    if [ $? -eq 0 ] ; then
+-        if [ "$MAX_FD" = "maximum" -o "$MAX_FD" = "max" ] ; then
+-            MAX_FD="$MAX_FD_LIMIT"
+-        fi
+-        ulimit -n $MAX_FD
+-        if [ $? -ne 0 ] ; then
+-            warn "Could not set maximum file descriptor limit: $MAX_FD"
+-        fi
+-    else
+-        warn "Could not query maximum file descriptor limit: $MAX_FD_LIMIT"
+-    fi
+-fi
+-
+-# For Darwin, add options to specify how the application appears in the dock
+-if $darwin; then
+-    GRADLE_OPTS="$GRADLE_OPTS \"-Xdock:name=$APP_NAME\" \"-Xdock:icon=$APP_HOME/media/gradle.icns\""
+-fi
+-
+-# For Cygwin, switch paths to Windows format before running java
+-if $cygwin ; then
+-    APP_HOME=`cygpath --path --mixed "$APP_HOME"`
+-    CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
+-    JAVACMD=`cygpath --unix "$JAVACMD"`
+-
+-    # We build the pattern for arguments to be converted via cygpath
+-    ROOTDIRSRAW=`find -L / -maxdepth 1 -mindepth 1 -type d 2>/dev/null`
+-    SEP=""
+-    for dir in $ROOTDIRSRAW ; do
+-        ROOTDIRS="$ROOTDIRS$SEP$dir"
+-        SEP="|"
+-    done
+-    OURCYGPATTERN="(^($ROOTDIRS))"
+-    # Add a user-defined pattern to the cygpath arguments
+-    if [ "$GRADLE_CYGPATTERN" != "" ] ; then
+-        OURCYGPATTERN="$OURCYGPATTERN|($GRADLE_CYGPATTERN)"
+-    fi
+-    # Now convert the arguments - kludge to limit ourselves to /bin/sh
+-    i=0
+-    for arg in "$@" ; do
+-        CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
+-        CHECK2=`echo "$arg"|egrep -c "^-"`                                 ### Determine if an option
+-
+-        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
+-            eval `echo args$i`=`cygpath --path --ignore --mixed "$arg"`
+-        else
+-            eval `echo args$i`="\"$arg\""
+-        fi
+-        i=$((i+1))
+-    done
+-    case $i in
+-        (0) set -- ;;
+-        (1) set -- "$args0" ;;
+-        (2) set -- "$args0" "$args1" ;;
+-        (3) set -- "$args0" "$args1" "$args2" ;;
+-        (4) set -- "$args0" "$args1" "$args2" "$args3" ;;
+-        (5) set -- "$args0" "$args1" "$args2" "$args3" "$args4" ;;
+-        (6) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" ;;
+-        (7) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" ;;
+-        (8) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" ;;
+-        (9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
+-    esac
+-fi
+-
+-# Escape application args
+-save () {
+-    for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
+-    echo " "
+-}
+-APP_ARGS=$(save "$@")
+-
+-# Collect all arguments for the java command, following the shell quoting and substitution rules
+-eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
+-
+-# by default we should be in the correct project dir, but when run from Finder on Mac, the cwd is wrong
+-if [ "$(uname)" = "Darwin" ] && [ "$HOME" = "$PWD" ]; then
+-  cd "$(dirname "$0")"
+-fi
+-
+-exec "$JAVACMD" "$@"
+diff --git a/gradlew.bat b/gradlew.bat
+deleted file mode 100644
+index f9553162..00000000
+--- a/gradlew.bat
++++ /dev/null
+@@ -1,84 +0,0 @@
+-@if "%DEBUG%" == "" @echo off
+-@rem ##########################################################################
+-@rem
+-@rem  Gradle startup script for Windows
+-@rem
+-@rem ##########################################################################
+-
+-@rem Set local scope for the variables with windows NT shell
+-if "%OS%"=="Windows_NT" setlocal
+-
+-set DIRNAME=%~dp0
+-if "%DIRNAME%" == "" set DIRNAME=.
+-set APP_BASE_NAME=%~n0
+-set APP_HOME=%DIRNAME%
+-
+-@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+-set DEFAULT_JVM_OPTS=
+-
+-@rem Find java.exe
+-if defined JAVA_HOME goto findJavaFromJavaHome
+-
+-set JAVA_EXE=java.exe
+-%JAVA_EXE% -version >NUL 2>&1
+-if "%ERRORLEVEL%" == "0" goto init
+-
+-echo.
+-echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+-echo.
+-echo Please set the JAVA_HOME variable in your environment to match the
+-echo location of your Java installation.
+-
+-goto fail
+-
+-:findJavaFromJavaHome
+-set JAVA_HOME=%JAVA_HOME:"=%
+-set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+-
+-if exist "%JAVA_EXE%" goto init
+-
+-echo.
+-echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
+-echo.
+-echo Please set the JAVA_HOME variable in your environment to match the
+-echo location of your Java installation.
+-
+-goto fail
+-
+-:init
+-@rem Get command-line arguments, handling Windows variants
+-
+-if not "%OS%" == "Windows_NT" goto win9xME_args
+-
+-:win9xME_args
+-@rem Slurp the command line arguments.
+-set CMD_LINE_ARGS=
+-set _SKIP=2
+-
+-:win9xME_args_slurp
+-if "x%~1" == "x" goto execute
+-
+-set CMD_LINE_ARGS=%*
+-
+-:execute
+-@rem Setup the command line
+-
+-set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
+-
+-@rem Execute Gradle
+-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %CMD_LINE_ARGS%
+-
+-:end
+-@rem End local scope for the variables with windows NT shell
+-if "%ERRORLEVEL%"=="0" goto mainEnd
+-
+-:fail
+-rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+-rem the _cmd.exe /c_ return code!
+-if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
+-exit /b 1
+-
+-:mainEnd
+-if "%OS%"=="Windows_NT" endlocal
+-
+-:omega
+diff --git a/mvnw b/mvnw
+deleted file mode 100755
+index e96ccd5f..00000000
+--- a/mvnw
++++ /dev/null
+@@ -1,227 +0,0 @@
+-#!/bin/sh
+-# ----------------------------------------------------------------------------
+-# Licensed to the Apache Software Foundation (ASF) under one
+-# or more contributor license agreements.  See the NOTICE file
+-# distributed with this work for additional information
+-# regarding copyright ownership.  The ASF licenses this file
+-# to you under the Apache License, Version 2.0 (the
+-# "License"); you may not use this file except in compliance
+-# with the License.  You may obtain a copy of the License at
+-#
+-#    http://www.apache.org/licenses/LICENSE-2.0
+-#
+-# Unless required by applicable law or agreed to in writing,
+-# software distributed under the License is distributed on an
+-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+-# KIND, either express or implied.  See the License for the
+-# specific language governing permissions and limitations
+-# under the License.
+-# ----------------------------------------------------------------------------
+-
+-# ----------------------------------------------------------------------------
+-# Maven2 Start Up Batch script
+-#
+-# Required ENV vars:
+-# ------------------
+-#   JAVA_HOME - location of a JDK home dir
+-#
+-# Optional ENV vars
+-# -----------------
+-#   M2_HOME - location of maven2's installed home dir
+-#   MAVEN_OPTS - parameters passed to the Java VM when running Maven
+-#     e.g. to debug Maven itself, use
+-#       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+-#   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+-# ----------------------------------------------------------------------------
+-
+-if [ -z "$MAVEN_SKIP_RC" ] ; then
+-
+-  if [ -f /etc/mavenrc ] ; then
+-    . /etc/mavenrc
+-  fi
+-
+-  if [ -f "$HOME/.mavenrc" ] ; then
+-    . "$HOME/.mavenrc"
+-  fi
+-
+-fi
+-
+-# OS specific support.  $var _must_ be set to either true or false.
+-cygwin=false;
+-darwin=false;
+-mingw=false
+-case "`uname`" in
+-  CYGWIN*) cygwin=true ;;
+-  MINGW*) mingw=true;;
+-  Darwin*) darwin=true
+-    # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
+-    # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
+-    if [ -z "$JAVA_HOME" ]; then
+-      if [ -x "/usr/libexec/java_home" ]; then
+-        export JAVA_HOME="`/usr/libexec/java_home`"
+-      else
+-        export JAVA_HOME="/Library/Java/Home"
+-      fi
+-    fi
+-    ;;
+-esac
+-
+-if [ -z "$JAVA_HOME" ] ; then
+-  if [ -r /etc/gentoo-release ] ; then
+-    JAVA_HOME=`java-config --jre-home`
+-  fi
+-fi
+-
+-if [ -z "$M2_HOME" ] ; then
+-  ## resolve links - $0 may be a link to maven's home
+-  PRG="$0"
+-
+-  # need this for relative symlinks
+-  while [ -h "$PRG" ] ; do
+-    ls=`ls -ld "$PRG"`
+-    link=`expr "$ls" : '.*-> \(.*\)$'`
+-    if expr "$link" : '/.*' > /dev/null; then
+-      PRG="$link"
+-    else
+-      PRG="`dirname "$PRG"`/$link"
+-    fi
+-  done
+-
+-  saveddir=`pwd`
+-
+-  M2_HOME=`dirname "$PRG"`/..
+-
+-  # make it fully qualified
+-  M2_HOME=`cd "$M2_HOME" && pwd`
+-
+-  cd "$saveddir"
+-  # echo Using m2 at $M2_HOME
+-fi
+-
+-# For Cygwin, ensure paths are in UNIX format before anything is touched
+-if $cygwin ; then
+-  [ -n "$M2_HOME" ] &&
+-    M2_HOME=`cygpath --unix "$M2_HOME"`
+-  [ -n "$JAVA_HOME" ] &&
+-    JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
+-  [ -n "$CLASSPATH" ] &&
+-    CLASSPATH=`cygpath --path --unix "$CLASSPATH"`
+-fi
+-
+-# For Mingw, ensure paths are in UNIX format before anything is touched
+-if $mingw ; then
+-  [ -n "$M2_HOME" ] &&
+-    M2_HOME="`(cd "$M2_HOME"; pwd)`"
+-  [ -n "$JAVA_HOME" ] &&
+-    JAVA_HOME="`(cd "$JAVA_HOME"; pwd)`"
+-  # TODO classpath?
+-fi
+-
+-if [ -z "$JAVA_HOME" ]; then
+-  javaExecutable="`which javac`"
+-  if [ -n "$javaExecutable" ] && ! [ "`expr \"$javaExecutable\" : '\([^ ]*\)'`" = "no" ]; then
+-    # readlink(1) is not available as standard on Solaris 10.
+-    readLink=`which readlink`
+-    if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
+-      if $darwin ; then
+-        javaHome="`dirname \"$javaExecutable\"`"
+-        javaExecutable="`cd \"$javaHome\" && pwd -P`/javac"
+-      else
+-        javaExecutable="`readlink -f \"$javaExecutable\"`"
+-      fi
+-      javaHome="`dirname \"$javaExecutable\"`"
+-      javaHome=`expr "$javaHome" : '\(.*\)/bin'`
+-      JAVA_HOME="$javaHome"
+-      export JAVA_HOME
+-    fi
+-  fi
+-fi
+-
+-if [ -z "$JAVACMD" ] ; then
+-  if [ -n "$JAVA_HOME"  ] ; then
+-    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+-      # IBM's JDK on AIX uses strange locations for the executables
+-      JAVACMD="$JAVA_HOME/jre/sh/java"
+-    else
+-      JAVACMD="$JAVA_HOME/bin/java"
+-    fi
+-  else
+-    JAVACMD="`which java`"
+-  fi
+-fi
+-
+-if [ ! -x "$JAVACMD" ] ; then
+-  echo "Error: JAVA_HOME is not defined correctly." >&2
+-  echo "  We cannot execute $JAVACMD" >&2
+-  exit 1
+-fi
+-
+-if [ -z "$JAVA_HOME" ] ; then
+-  echo "Warning: JAVA_HOME environment variable is not set."
+-fi
+-
+-CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
+-
+-# traverses directory structure from process work directory to filesystem root
+-# first directory with .mvn subdirectory is considered project base directory
+-find_maven_basedir() {
+-
+-  if [ -z "$1" ]
+-  then
+-    echo "Path not specified to find_maven_basedir"
+-    return 1
+-  fi
+-
+-  basedir="$1"
+-  wdir="$1"
+-  while [ "$wdir" != '/' ] ; do
+-    if [ -d "$wdir"/.mvn ] ; then
+-      basedir=$wdir
+-      break
+-    fi
+-    # workaround for JBEAP-8937 (on Solaris 10/Sparc)
+-    if [ -d "${wdir}" ]; then
+-      wdir=`cd "$wdir/.."; pwd`
+-    fi
+-    # end of workaround
+-  done
+-  echo "${basedir}"
+-}
+-
+-# concatenates all lines of a file
+-concat_lines() {
+-  if [ -f "$1" ]; then
+-    echo "$(tr -s '\n' ' ' < "$1")"
+-  fi
+-}
+-
+-BASE_DIR=`find_maven_basedir "$(pwd)"`
+-if [ -z "$BASE_DIR" ]; then
+-  exit 1;
+-fi
+-
+-export MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}
+-if [ "$MVNW_VERBOSE" = true ]; then
+-  echo $MAVEN_PROJECTBASEDIR
+-fi
+-MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
+-
+-# For Cygwin, switch paths to Windows format before running java
+-if $cygwin; then
+-  [ -n "$M2_HOME" ] &&
+-    M2_HOME=`cygpath --path --windows "$M2_HOME"`
+-  [ -n "$JAVA_HOME" ] &&
+-    JAVA_HOME=`cygpath --path --windows "$JAVA_HOME"`
+-  [ -n "$CLASSPATH" ] &&
+-    CLASSPATH=`cygpath --path --windows "$CLASSPATH"`
+-  [ -n "$MAVEN_PROJECTBASEDIR" ] &&
+-    MAVEN_PROJECTBASEDIR=`cygpath --path --windows "$MAVEN_PROJECTBASEDIR"`
+-fi
+-
+-WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+-
+-exec "$JAVACMD" \
+-  $MAVEN_OPTS \
+-  -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
+-  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
+-  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+diff --git a/mvnw.cmd b/mvnw.cmd
+deleted file mode 100755
+index 019bd74d..00000000
+--- a/mvnw.cmd
++++ /dev/null
+@@ -1,143 +0,0 @@
+-@REM ----------------------------------------------------------------------------
+-@REM Licensed to the Apache Software Foundation (ASF) under one
+-@REM or more contributor license agreements.  See the NOTICE file
+-@REM distributed with this work for additional information
+-@REM regarding copyright ownership.  The ASF licenses this file
+-@REM to you under the Apache License, Version 2.0 (the
+-@REM "License"); you may not use this file except in compliance
+-@REM with the License.  You may obtain a copy of the License at
+-@REM
+-@REM    http://www.apache.org/licenses/LICENSE-2.0
+-@REM
+-@REM Unless required by applicable law or agreed to in writing,
+-@REM software distributed under the License is distributed on an
+-@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+-@REM KIND, either express or implied.  See the License for the
+-@REM specific language governing permissions and limitations
+-@REM under the License.
+-@REM ----------------------------------------------------------------------------
+-
+-@REM ----------------------------------------------------------------------------
+-@REM Maven2 Start Up Batch script
+-@REM
+-@REM Required ENV vars:
+-@REM JAVA_HOME - location of a JDK home dir
+-@REM
+-@REM Optional ENV vars
+-@REM M2_HOME - location of maven2's installed home dir
+-@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
+-@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a key stroke before ending
+-@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven
+-@REM     e.g. to debug Maven itself, use
+-@REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+-@REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+-@REM ----------------------------------------------------------------------------
+-
+-@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'
+-@echo off
+-@REM enable echoing my setting MAVEN_BATCH_ECHO to 'on'
+-@if "%MAVEN_BATCH_ECHO%" == "on"  echo %MAVEN_BATCH_ECHO%
+-
+-@REM set %HOME% to equivalent of $HOME
+-if "%HOME%" == "" (set "HOME=%HOMEDRIVE%%HOMEPATH%")
+-
+-@REM Execute a user defined script before this one
+-if not "%MAVEN_SKIP_RC%" == "" goto skipRcPre
+-@REM check for pre script, once with legacy .bat ending and once with .cmd ending
+-if exist "%HOME%\mavenrc_pre.bat" call "%HOME%\mavenrc_pre.bat"
+-if exist "%HOME%\mavenrc_pre.cmd" call "%HOME%\mavenrc_pre.cmd"
+-:skipRcPre
+-
+-@setlocal
+-
+-set ERROR_CODE=0
+-
+-@REM To isolate internal variables from possible post scripts, we use another setlocal
+-@setlocal
+-
+-@REM ==== START VALIDATION ====
+-if not "%JAVA_HOME%" == "" goto OkJHome
+-
+-echo.
+-echo Error: JAVA_HOME not found in your environment. >&2
+-echo Please set the JAVA_HOME variable in your environment to match the >&2
+-echo location of your Java installation. >&2
+-echo.
+-goto error
+-
+-:OkJHome
+-if exist "%JAVA_HOME%\bin\java.exe" goto init
+-
+-echo.
+-echo Error: JAVA_HOME is set to an invalid directory. >&2
+-echo JAVA_HOME = "%JAVA_HOME%" >&2
+-echo Please set the JAVA_HOME variable in your environment to match the >&2
+-echo location of your Java installation. >&2
+-echo.
+-goto error
+-
+-@REM ==== END VALIDATION ====
+-
+-:init
+-
+-@REM Find the project base dir, i.e. the directory that contains the folder ".mvn".
+-@REM Fallback to current working directory if not found.
+-
+-set MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%
+-IF NOT "%MAVEN_PROJECTBASEDIR%"=="" goto endDetectBaseDir
+-
+-set EXEC_DIR=%CD%
+-set WDIR=%EXEC_DIR%
+-:findBaseDir
+-IF EXIST "%WDIR%"\.mvn goto baseDirFound
+-cd ..
+-IF "%WDIR%"=="%CD%" goto baseDirNotFound
+-set WDIR=%CD%
+-goto findBaseDir
+-
+-:baseDirFound
+-set MAVEN_PROJECTBASEDIR=%WDIR%
+-cd "%EXEC_DIR%"
+-goto endDetectBaseDir
+-
+-:baseDirNotFound
+-set MAVEN_PROJECTBASEDIR=%EXEC_DIR%
+-cd "%EXEC_DIR%"
+-
+-:endDetectBaseDir
+-
+-IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
+-
+-@setlocal EnableExtensions EnableDelayedExpansion
+-for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
+-@endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%
+-
+-:endReadAdditionalConfig
+-
+-SET MAVEN_JAVA_EXE="%JAVA_HOME%\bin\java.exe"
+-
+-set WRAPPER_JAR="%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.jar"
+-set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+-
+-%MAVEN_JAVA_EXE% %JVM_CONFIG_MAVEN_PROPS% %MAVEN_OPTS% %MAVEN_DEBUG_OPTS% -classpath %WRAPPER_JAR% "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*
+-if ERRORLEVEL 1 goto error
+-goto end
+-
+-:error
+-set ERROR_CODE=1
+-
+-:end
+-@endlocal & set ERROR_CODE=%ERROR_CODE%
+-
+-if not "%MAVEN_SKIP_RC%" == "" goto skipRcPost
+-@REM check for post script, once with legacy .bat ending and once with .cmd ending
+-if exist "%HOME%\mavenrc_post.bat" call "%HOME%\mavenrc_post.bat"
+-if exist "%HOME%\mavenrc_post.cmd" call "%HOME%\mavenrc_post.cmd"
+-:skipRcPost
+-
+-@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'
+-if "%MAVEN_BATCH_PAUSE%" == "on" pause
+-
+-if "%MAVEN_TERMINATE_CMD%" == "on" exit %ERROR_CODE%
+-
+-exit /B %ERROR_CODE%
+diff --git a/pom.xml b/pom.xml
+index cdb0ec0d..4b8de7fb 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -130,0 +131,6 @@
++        <contributor>
++            <name>Matt Brown</name>
++        </contributor>
++        <contributor>
++            <name>Carlos Ferreira</name>
++        </contributor>
+@@ -161 +167 @@
+-                    <version>2.2.1</version>
++                    <version>3.0.0</version>
+@@ -223 +229 @@
+-                    <version>3.0.0</version>
++                    <version>3.1.0</version>
+diff --git a/scripts/makeDemoLogFile.sh b/scripts/makeDemoLogFile.sh
+index 11ed45fa..e7cadbd7 100755
+--- a/scripts/makeDemoLogFile.sh
++++ b/scripts/makeDemoLogFile.sh
+@@ -73,5 +73 @@ echo "Building example HotSpot log"
+-if [ "$unamestr" = 'Darwin' ]; then
+-   export CLASSPATH=../ui/target/jitwatch-ui-1.4.4-shaded-mac.jar
+-else
+-   export CLASSPATH=../ui/target/jitwatch-ui-1.4.4-shaded-linux.jar
+-fi
++export CLASSPATH=../ui/target/jitwatch-ui-shaded.jar
+diff --git a/settings.gradle b/settings.gradle
+deleted file mode 100644
+index 38943889..00000000
+--- a/settings.gradle
++++ /dev/null
+@@ -1,2 +0,0 @@
+-rootProject.name = 'jitwatch'
+-include 'core', 'ui'
+\ No newline at end of file
+diff --git a/ui/build.gradle b/ui/build.gradle
+deleted file mode 100644
+index 2f3c8158..00000000
+--- a/ui/build.gradle
++++ /dev/null
+@@ -1,58 +0,0 @@
+-plugins {
+-    id 'java'
+-    id 'application'  	// similar to mvn exec:java
+-    id 'maven-publish'
+-    id 'org.openjfx.javafxplugin' version '0.0.8' apply(false)
+-}
+-
+-def javaVersion = JavaVersion.current()
+-
+-if (javaVersion >= JavaVersion.VERSION_1_7 && javaVersion < JavaVersion.VERSION_1_9) {
+-    apply from: "build-jdk7.gradle"
+-} else if (javaVersion >= JavaVersion.VERSION_11) {
+-    apply from: "build-jdk11.gradle"
+-} else {
+-    throw new GradleException("JITWatch is unsupported on Java $javaVersion")
+-}
+-
+-dependencies {
+-    compile project(':core')
+-    implementation 'com.chrisnewland:FreeLogJ:0.0.1'
+-    testCompile 'junit:junit:4.13.1'
+-}
+-
+-mainClassName = 'org.adoptopenjdk.jitwatch.launch.LaunchUI'
+-
+-run {
+-    workingDir = rootDir
+-}
+-
+-task fatJar(type: Jar) {
+-    manifest {
+-        attributes 'Main-Class': mainClassName
+-    }
+-
+-    group = 'build'
+-    baseName = 'ui-shadow'
+-    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+-    with jar
+-}
+-
+-publishing {
+-    publications {
+-        bintray(MavenPublication) {
+-            from components.java
+-            groupId project.group
+-            artifactId project.name
+-            version project.version
+-
+-            artifact sourceJar {
+-                classifier 'sources'
+-            }
+-
+-            artifact javadocJar {
+-                classifier 'javadoc'
+-            }
+-        }
+-    }
+-}
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
+index 7e8619e8..543fbcd6 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/main/JITWatchUI.java
+@@ -21,0 +22 @@ import java.util.ArrayList;
++import java.util.Arrays;
+@@ -155,0 +157,3 @@ public class JITWatchUI extends Application
++	private static final String PROPERTY_SOURCES = "jitwatch.sourcepath";
++	private static final String PROPERTY_CLASSPATH = "jitwatch.classpath";
++
+@@ -894,0 +899,14 @@ public class JITWatchUI extends Application
++				JITWatchConfig config = logParser.getConfig();
++
++				String sourceLocations = System.getProperty(PROPERTY_SOURCES);
++				String classLocations = System.getProperty(PROPERTY_CLASSPATH);
++
++				List<String> configSources = new ArrayList<>();
++				List<String> configClasses = new ArrayList<>();
++
++				configSources.addAll(Arrays.asList(sourceLocations.split(File.pathSeparator)));
++				configClasses.addAll(Arrays.asList(classLocations.split(File.pathSeparator)));
++
++				config.setSourceLocations(configSources);
++				config.setClassLocations(configClasses);
++

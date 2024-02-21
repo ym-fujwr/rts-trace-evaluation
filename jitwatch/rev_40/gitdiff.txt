@@ -1,0 +1,772 @@
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/chain/CompileChainWalker.java b/src/main/java/org/adoptopenjdk/jitwatch/chain/CompileChainWalker.java
+index ff0495a9..8a45e3c2 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/chain/CompileChainWalker.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/chain/CompileChainWalker.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -46,2 +46,2 @@ import org.adoptopenjdk.jitwatch.util.TooltipUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/compilation/CompilationUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/compilation/CompilationUtil.java
+index df5d4937..103897a8 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/compilation/CompilationUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/compilation/CompilationUtil.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2018 Chris Newland.
+@@ -41,2 +41,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/compilation/codecache/CodeCacheEventWalker.java b/src/main/java/org/adoptopenjdk/jitwatch/compilation/codecache/CodeCacheEventWalker.java
+index b66449fe..24a27209 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/compilation/codecache/CodeCacheEventWalker.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/compilation/codecache/CodeCacheEventWalker.java
+@@ -2 +2 @@
+- * Copyright (c) 2017-2021 Chris Newland.
++ * Copyright (c) 2017 Chris Newland.
+@@ -14,2 +14,2 @@ import org.adoptopenjdk.jitwatch.model.IReadOnlyJITDataModel;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -36 +36 @@ public class CodeCacheEventWalker extends AbstractCompilationWalker
+-	{
++	{			
+@@ -89 +89 @@ public class CodeCacheEventWalker extends AbstractCompilationWalker
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java b/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
+index 07c183d3..9e93232c 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -30,2 +30,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -922 +922 @@ public class JITWatchConfig
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/core/TagProcessor.java b/src/main/java/org/adoptopenjdk/jitwatch/core/TagProcessor.java
+index dbb8dd5c..87272a85 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/core/TagProcessor.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/core/TagProcessor.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -24,2 +24,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/demo/MakeHotSpotLog.java b/src/main/java/org/adoptopenjdk/jitwatch/demo/MakeHotSpotLog.java
+index 4135137f..7dbc85be 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/demo/MakeHotSpotLog.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/demo/MakeHotSpotLog.java
+@@ -8,2 +8,2 @@ package org.adoptopenjdk.jitwatch.demo;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/histo/InlineSizeHistoVisitable.java b/src/main/java/org/adoptopenjdk/jitwatch/histo/InlineSizeHistoVisitable.java
+index d7557c0d..8fb31b74 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/histo/InlineSizeHistoVisitable.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/histo/InlineSizeHistoVisitable.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -48,2 +48,2 @@ import org.adoptopenjdk.jitwatch.model.Tag;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -193 +193 @@ public class InlineSizeHistoVisitable extends AbstractHistoVisitable
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/hotthrow/HotThrowFinder.java b/src/main/java/org/adoptopenjdk/jitwatch/hotthrow/HotThrowFinder.java
+index a291aaff..fef89668 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/hotthrow/HotThrowFinder.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/hotthrow/HotThrowFinder.java
+@@ -2 +2 @@
+- * Copyright (c) 2016-2021 Chris Newland.
++ * Copyright (c) 2016-2020 Chris Newland.
+@@ -53,2 +53,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/inline/HeadlessInlineVisitor.java b/src/main/java/org/adoptopenjdk/jitwatch/inline/HeadlessInlineVisitor.java
+index d8021089..bf792358 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/inline/HeadlessInlineVisitor.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/inline/HeadlessInlineVisitor.java
+@@ -2 +2 @@
+- * Copyright (c) 2015-2021 Jean Phillipe BEMPEL
++ * Copyright (c) 2015-2016 Jean Phillipe BEMPEL
+@@ -38,2 +38,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/intrinsic/IntrinsicFinder.java b/src/main/java/org/adoptopenjdk/jitwatch/intrinsic/IntrinsicFinder.java
+index d9253b24..5098061b 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/intrinsic/IntrinsicFinder.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/intrinsic/IntrinsicFinder.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -48,2 +48,2 @@ import org.adoptopenjdk.jitwatch.model.Tag;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/launch/LaunchHeadless.java b/src/main/java/org/adoptopenjdk/jitwatch/launch/LaunchHeadless.java
+index 8d289c80..3cbec49e 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/launch/LaunchHeadless.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/launch/LaunchHeadless.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2018 Chris Newland.
+@@ -19 +18,0 @@ import java.util.List;
+-import com.chrisnewland.freelogj.LoggerFactory;
+@@ -54,3 +53 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-		LoggerFactory.setLogFile(Paths.get("jitwatch.out"));
+-
+-		String compilationLog = args[args.length - 1];
++		String logFile = args[args.length - 1];
+@@ -68 +65 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
++		
+@@ -70 +67 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
++		
+@@ -72 +69 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
++		
+@@ -75 +72 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-		parser.processLogFile(new File(compilationLog), this);
++		parser.processLogFile(new File(logFile), this);
+@@ -78 +75,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override public void handleLogEntry(String entry)
++	@Override
++	public void handleLogEntry(String entry)
+@@ -82 +80,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override public void handleErrorEntry(String entry)
++	@Override
++	public void handleErrorEntry(String entry)
+@@ -90 +89,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override public void handleJITEvent(JITEvent event)
++	@Override
++	public void handleJITEvent(JITEvent event)
+@@ -101 +101,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override public void handleReadStart()
++	@Override
++	public void handleReadStart()
+@@ -105 +106,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override public void handleError(String title, String body)
++	@Override
++	public void handleError(String title, String body)
+@@ -145 +147 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
++				
+@@ -149 +151 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
++				
+@@ -153 +155 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
++				
+@@ -157 +159 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
++				
+@@ -161 +163 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
++				
+@@ -165 +167 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
++				
+@@ -169,4 +171,4 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-
+-			// case "-o":
+-			// showOptimizedVirtualCalls = true;
+-			// break;s
++				
++				// case "-o":
++				// showOptimizedVirtualCalls = true;
++				// break;s
+@@ -177 +179,2 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-	@Override public void handleReadComplete()
++	@Override
++	public void handleReadComplete()
+@@ -315 +318 @@ public class LaunchHeadless implements IJITListener, ILogParseErrorListener
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java b/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
+index 69eea89a..5f370299 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/loader/BytecodeLoader.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2017 Chris Newland.
+@@ -68,2 +68,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/loader/ResourceLoader.java b/src/main/java/org/adoptopenjdk/jitwatch/loader/ResourceLoader.java
+index c0db95d1..6c399e72 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/loader/ResourceLoader.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/loader/ResourceLoader.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -29,2 +29,2 @@ import org.adoptopenjdk.jitwatch.util.FileUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/AbstractMetaMember.java b/src/main/java/org/adoptopenjdk/jitwatch/model/AbstractMetaMember.java
+index 9a53a71b..20fdab2a 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/AbstractMetaMember.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/AbstractMetaMember.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2017 Chris Newland.
+@@ -40,2 +40,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -606 +606 @@ public abstract class AbstractMetaMember implements IMetaMember, Comparable<IMet
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/JITDataModel.java b/src/main/java/org/adoptopenjdk/jitwatch/model/JITDataModel.java
+index d27e3c36..83223e0e 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/JITDataModel.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/JITDataModel.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2019 Chris Newland.
+@@ -35,2 +35,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/MemberSignatureParts.java b/src/main/java/org/adoptopenjdk/jitwatch/model/MemberSignatureParts.java
+index b8aa0037..3bf38792 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/MemberSignatureParts.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/MemberSignatureParts.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2018 Chris Newland.
+@@ -45,2 +45,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/MetaClass.java b/src/main/java/org/adoptopenjdk/jitwatch/model/MetaClass.java
+index 9b869fb6..feac5e0d 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/MetaClass.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/MetaClass.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2015 Chris Newland.
+@@ -21,2 +21,2 @@ import java.util.concurrent.CopyOnWriteArrayList;
+-//import com.chrisnewland.freelogj.Logger;
+-//import com.chrisnewland.freelogj.LoggerFactory;
++//import org.slf4j.Logger;
++//import org.slf4j.LoggerFactory;
+@@ -25,2 +25,2 @@ import org.adoptopenjdk.jitwatch.model.bytecode.ClassBC;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/PackageManager.java b/src/main/java/org/adoptopenjdk/jitwatch/model/PackageManager.java
+index 32510a89..d9beb11b 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/PackageManager.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/PackageManager.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2015 Chris Newland.
+@@ -18,2 +18,2 @@ import java.util.concurrent.CopyOnWriteArrayList;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/Task.java b/src/main/java/org/adoptopenjdk/jitwatch/model/Task.java
+index aa84c57a..8f690281 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/Task.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/Task.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2017 Chris Newland.
+@@ -23,2 +23,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -132 +132 @@ public class Task extends Tag
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser.java b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser.java
+index 7537db3d..13bfe387 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser.java
+@@ -2 +2 @@
+- * Copyright (c) 2017-2021 Chris Newland.
++ * Copyright (c) 2017 Chris Newland.
+@@ -19,2 +19,2 @@ import static org.adoptopenjdk.jitwatch.core.JITWatchConstants.S_SEMICOLON;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod.java b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod.java
+index e9f0691e..95387ba5 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2017 Chris Newland.
+@@ -12,2 +12,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -140 +140 @@ public class AssemblyMethod
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyProcessor.java b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyProcessor.java
+index 1544857c..fe4f35ee 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyProcessor.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyProcessor.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2020 Chris Newland.
+@@ -27,2 +27,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -326 +326 @@ public class AssemblyProcessor
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyReference.java b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyReference.java
+index aa7afb1d..3c147ecf 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyReference.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyReference.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2015 Chris Newland.
+@@ -17,2 +17,2 @@ import java.util.Set;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -143 +143 @@ public final class AssemblyReference
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil.java
+index 4dcc82b5..79bce100 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2020 Chris Newland.
+@@ -10,2 +10,2 @@ import org.adoptopenjdk.jitwatch.model.assembly.x86.AssemblyParserX86;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -75 +75 @@ public final class AssemblyUtil
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationBuilder.java b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationBuilder.java
+index c9580100..f1098b4b 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationBuilder.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationBuilder.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2018 Chris Newland.
+@@ -77,2 +77,2 @@ import org.adoptopenjdk.jitwatch.util.TooltipUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -869 +869 @@ public class BytecodeAnnotationBuilder extends AbstractCompilationVisitable
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationList.java b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationList.java
+index 3979a0ae..5a922805 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationList.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeAnnotationList.java
+@@ -2 +2 @@
+- * Copyright (c) 2016-2021 Chris Newland.
++ * Copyright (c) 2016 Chris Newland.
+@@ -19,2 +19,2 @@ import java.util.TreeMap;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -94 +94 @@ public class BytecodeAnnotationList
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeInstruction.java b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeInstruction.java
+index bde06476..7bd2e045 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeInstruction.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/BytecodeInstruction.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -22,2 +22,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
+index bfaa458d..292235fc 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/ClassBC.java
+@@ -22,2 +22,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/LineTable.java b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/LineTable.java
+index 438a5445..00cae543 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/LineTable.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/LineTable.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2017 Chris Newland.
+@@ -16,2 +16,2 @@ import java.util.List;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -258 +258 @@ public class LineTable
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/MemberBytecode.java b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/MemberBytecode.java
+index d4580753..8163760a 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/MemberBytecode.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/MemberBytecode.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2015 Chris Newland.
+@@ -15,2 +15,2 @@ import org.adoptopenjdk.jitwatch.model.MemberSignatureParts;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -203 +203 @@ public class MemberBytecode
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/SourceMapper.java b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/SourceMapper.java
+index e85b0178..4e5b7979 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/SourceMapper.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/SourceMapper.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2015 Chris Newland.
+@@ -17,2 +17,2 @@ import java.util.Map;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -137 +137 @@ public class SourceMapper
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/parser/AbstractLogParser.java b/src/main/java/org/adoptopenjdk/jitwatch/parser/AbstractLogParser.java
+index 5202a23a..2e4e56b2 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/parser/AbstractLogParser.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/parser/AbstractLogParser.java
+@@ -2 +2 @@
+- * Copyright (c) 2018-2021 Chris Newland.
++ * Copyright (c) 2018 Chris Newland.
+@@ -60,2 +60,2 @@ import org.adoptopenjdk.jitwatch.util.ParseUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java b/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java
+index 978b4e0a..657395a5 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/process/AbstractProcess.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -21,2 +21,2 @@ import org.adoptopenjdk.jitwatch.process.runtime.RuntimeJava;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -178 +178 @@ public abstract class AbstractProcess implements IExternalProcess
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java b/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
+index 311c6711..0033d744 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/process/javap/JavapProcess.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -19,2 +19,2 @@ import org.adoptopenjdk.jitwatch.process.AbstractProcess;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -101 +101 @@ public class JavapProcess extends AbstractProcess
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java b/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java
+index d87e3b8b..70a5e720 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java
+@@ -2 +2 @@
+- * Copyright (c) 2017-2021 Chris Newland.
++ * Copyright (c) 2017 Chris Newland.
+@@ -22,2 +22,2 @@ import org.adoptopenjdk.jitwatch.loader.DisposableURLClassLoader;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/report/suggestion/SuggestionWalker.java b/src/main/java/org/adoptopenjdk/jitwatch/report/suggestion/SuggestionWalker.java
+index 1ed6f385..3d24a448 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/report/suggestion/SuggestionWalker.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/report/suggestion/SuggestionWalker.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2020 Chris Newland.
+@@ -66,2 +66,2 @@ import org.adoptopenjdk.jitwatch.util.StringUtil;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/toplist/AbstractTopListVisitable.java b/src/main/java/org/adoptopenjdk/jitwatch/toplist/AbstractTopListVisitable.java
+index 78972c00..58e06085 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/toplist/AbstractTopListVisitable.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/toplist/AbstractTopListVisitable.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2015 Chris Newland.
+@@ -19,2 +19,2 @@ import org.adoptopenjdk.jitwatch.treevisitor.TreeVisitor;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/util/ClassUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/util/ClassUtil.java
+index c044aea0..0d9b8915 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/util/ClassUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/util/ClassUtil.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2020 Chris Newland.
+@@ -10,2 +10,2 @@ import org.adoptopenjdk.jitwatch.loader.DisposableURLClassLoader;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
+index 9638afac..e26275cc 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2020 Chris Newland.
+@@ -16,2 +16,2 @@ import org.adoptopenjdk.jitwatch.util.OSUtil.OperatingSystem;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/util/FileUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/util/FileUtil.java
+index 59b97009..481b8d42 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/util/FileUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/util/FileUtil.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2020 Chris Newland.
+@@ -25,2 +25,2 @@ import java.util.zip.ZipInputStream;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -247 +247 @@ public final class FileUtil
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/util/JVMSUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/util/JVMSUtil.java
+index bb06bc2c..de78a989 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/util/JVMSUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/util/JVMSUtil.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2017 Chris Newland.
+@@ -9,2 +9,2 @@ import org.adoptopenjdk.jitwatch.model.bytecode.Opcode;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+@@ -179 +179 @@ public final class JVMSUtil
+-}
++}
+\ No newline at end of file
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java
+index 7b10042c..bbf2198d 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/util/NetUtil.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2015 Chris Newland.
+@@ -8,2 +8,2 @@ package org.adoptopenjdk.jitwatch.util;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java
+index 28b5aa54..94b27329 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/util/OSUtil.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2016 Chris Newland.
+@@ -9,2 +9,2 @@ import org.adoptopenjdk.jitwatch.model.assembly.Architecture;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/util/ParseUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/util/ParseUtil.java
+index ef6d6f95..b53d7123 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/util/ParseUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/util/ParseUtil.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2018 Chris Newland.
+@@ -76,2 +76,2 @@ import org.adoptopenjdk.jitwatch.model.bytecode.BytecodeInstruction;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/util/VmVersionDetector.java b/src/main/java/org/adoptopenjdk/jitwatch/util/VmVersionDetector.java
+index c697f4b1..57ee27bd 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/util/VmVersionDetector.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/util/VmVersionDetector.java
+@@ -2 +2 @@
+- * Copyright (c) 2019-2021 Chris Newland.
++ * Copyright (c) 2019 Chris Newland.
+@@ -9,2 +9,2 @@ import org.adoptopenjdk.jitwatch.model.Tag;
+-import com.chrisnewland.freelogj.Logger;
+-import com.chrisnewland.freelogj.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+diff --git a/src/test/java/org/adoptopenjdk/jitwatch/test/DummyClassWithMain.java b/src/test/java/org/adoptopenjdk/jitwatch/test/DummyClassWithMain.java
+deleted file mode 100644
+index 7bb5b94b..00000000
+--- a/src/test/java/org/adoptopenjdk/jitwatch/test/DummyClassWithMain.java
++++ /dev/null
+@@ -1,14 +0,0 @@
+-/*
+- * Copyright (c) 2021 Chris Newland.
+- * Licensed under https://github.com/AdoptOpenJDK/jitwatch/blob/master/LICENSE-BSD
+- * Instructions: https://github.com/AdoptOpenJDK/jitwatch/wiki
+- */
+-package org.adoptopenjdk.jitwatch.test;
+-
+-public class DummyClassWithMain
+-{
+-	public static void main(String[] args)
+-	{
+-		System.out.println("Hello World!");
+-	}
+-}
+diff --git a/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoader.java b/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoader.java
+index 28b561c6..0e4a5b9c 100644
+--- a/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoader.java
++++ b/src/test/java/org/adoptopenjdk/jitwatch/test/TestBytecodeLoader.java
+@@ -2 +2 @@
+- * Copyright (c) 2013-2021 Chris Newland.
++ * Copyright (c) 2013-2017 Chris Newland.
+@@ -787,2 +787,2 @@ public class TestBytecodeLoader
+-				"                             2: invokestatic  #150                // Method com.chrisnewland.freelogj/LoggerFactory.getLogger:(Ljava/lang/Class;)Lcom.chrisnewland.freelogj/Logger;",
+-				"                             5: putstatic     #33                 // Field logger:Lcom.chrisnewland.freelogj/Logger;",
++				"                             2: invokestatic  #150                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;",
++				"                             5: putstatic     #33                 // Field logger:Lorg/slf4j/Logger;",
+diff --git a/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java b/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
+index f55d4e04..9def146a 100644
+--- a/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
++++ b/src/test/java/org/adoptopenjdk/jitwatch/test/TestExecutionUtil.java
+@@ -10,0 +11,2 @@ import static org.junit.Assert.fail;
++import java.io.File;
++import java.io.FilenameFilter;
+@@ -13,0 +16 @@ import java.nio.file.Path;
++import java.nio.file.Paths;
+@@ -16,0 +20,2 @@ import java.util.List;
++import org.adoptopenjdk.jitwatch.demo.MakeHotSpotLog;
++import org.adoptopenjdk.jitwatch.logger.NullLogListener;
+@@ -23 +28,2 @@ public class TestExecutionUtil
+-	@Test public void testExecuteDemo()
++	@Test
++	public void testExecuteDemo()
+@@ -30 +36 @@ public class TestExecutionUtil
+-		Path path = FileSystems.getDefault().getPath(userDir, "target", "test-classes");
++		Path path = FileSystems.getDefault().getPath(userDir, "target", "classes");
+@@ -32,2 +38 @@ public class TestExecutionUtil
+-		if (Files.exists(path))
+-		{
++		if (Files.exists(path)){
+@@ -38 +43 @@ public class TestExecutionUtil
+-		path = FileSystems.getDefault().getPath(userDir, "build", "classes", "java", "test");
++		path = FileSystems.getDefault().getPath(userDir, "build", "classes","java", "main");
+@@ -40,2 +45 @@ public class TestExecutionUtil
+-		if (Files.exists(path))
+-		{
++		if (Files.exists(path)){
+@@ -44,0 +49,19 @@ public class TestExecutionUtil
++		File libDir = Paths.get(userDir, "../lib").toFile();
++
++		assertTrue(libDir.exists());
++		assertTrue(libDir.isDirectory());
++
++		String[] jarNames = libDir.list(new FilenameFilter()
++		{
++			@Override
++			public boolean accept(File dir, String name)
++			{
++				return name.endsWith(".jar");
++			}
++		});
++
++		for (String jar : jarNames)
++		{
++			cp.add(libDir.getAbsolutePath() + File.separatorChar + jar);
++		}
++
+@@ -53,5 +76 @@ public class TestExecutionUtil
+-			boolean success = executor.execute(DummyClassWithMain.class.getCanonicalName(), cp, options, new StdLogListener());
+-
+-			System.out.println(executor.getOutputStream());
+-
+-			System.out.println(executor.getErrorStream());
++			boolean success = executor.execute(MakeHotSpotLog.class.getCanonicalName(), cp, options, new StdLogListener());

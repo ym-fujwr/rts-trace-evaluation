@@ -1,0 +1,989 @@
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index 1a366a20..5b4a9a97 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -10 +10 @@ jobs:
+-        os: [ubuntu-20.04, macOS-latest, windows-latest]
++        os: [ubuntu-18.04, macOS-latest, windows-latest]
+diff --git a/core/pom.xml b/core/pom.xml
+index cf2f807a..75e45689 100644
+--- a/core/pom.xml
++++ b/core/pom.xml
+@@ -9 +9 @@
+-        <version>1.4.8</version>
++        <version>1.4.7</version>
+@@ -23,7 +23 @@
+-<!--
+-        <dependency>
+-            <groupId>com.chrisnewland</groupId>
+-            <artifactId>ClassAct</artifactId>
+-            <version>0.0.1</version>
+-        </dependency>
+--->
++
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/Opcode.java b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/Opcode.java
+index 06f3de38..d527eaea 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/Opcode.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/model/bytecode/Opcode.java
+@@ -13,205 +13,345 @@ public enum Opcode implements Comparable<Opcode>
+-	NOP(0, "nop"),
+-	ACONST_NULL(1, "aconst_null"),
+-	ICONST_M1(2, "iconst_m1"),
+-	ICONST_0(3, "iconst_0"),
+-	ICONST_1(4, "iconst_1"),
+-	ICONST_2(5, "iconst_2"),
+-	ICONST_3(6, "iconst_3"),
+-	ICONST_4(7, "iconst_4"),
+-	ICONST_5(8, "iconst_5"),
+-	LCONST_0(9, "lconst_0"),
+-	LCONST_1(10, "lconst_1"),
+-	FCONST_0(11, "fconst_0"),
+-	FCONST_1(12, "fconst_1"),
+-	FCONST_2(13, "fconst_2"),
+-	DCONST_0(14, "dconst_0"),
+-	DCONST_1(15, "dconst_1"),
+-	BIPUSH(16, "bipush"),
+-	SIPUSH(17, "sipush"),
+-	LDC(18, "ldc"),
+-	LDC_W(19, "ldc_w"),
+-	LDC2_W(20, "ldc2_w"),
+-	ILOAD(21, "iload"),
+-	LLOAD(22, "lload"),
+-	FLOAD(23, "fload"),
+-	DLOAD(24, "dload"),
+-	ALOAD(25, "aload"),
+-	ILOAD_0(26, "iload_0"),
+-	ILOAD_1(27, "iload_1"),
+-	ILOAD_2(28, "iload_2"),
+-	ILOAD_3(29, "iload_3"),
+-	LLOAD_0(30, "lload_0"),
+-	LLOAD_1(31, "lload_1"),
+-	LLOAD_2(32, "lload_2"),
+-	LLOAD_3(33, "lload_3"),
+-	FLOAD_0(34, "fload_0"),
+-	FLOAD_1(35, "fload_1"),
+-	FLOAD_2(36, "fload_2"),
+-	FLOAD_3(37, "fload_3"),
+-	DLOAD_0(38, "dload_0"),
+-	DLOAD_1(39, "dload_1"),
+-	DLOAD_2(40, "dload_2"),
+-	DLOAD_3(41, "dload_3"),
+-	ALOAD_0(42, "aload_0"),
+-	ALOAD_1(43, "aload_1"),
+-	ALOAD_2(44, "aload_2"),
+-	ALOAD_3(45, "aload_3"),
+-	IALOAD(46, "iaload"),
+-	LALOAD(47, "laload"),
+-	FALOAD(48, "faload"),
+-	DALOAD(49, "daload"),
+-	AALOAD(50, "aaload"),
+-	BALOAD(51, "baload"),
+-	CALOAD(52, "caload"),
+-	SALOAD(53, "saload"),
+-	ISTORE(54, "istore"),
+-	LSTORE(55, "lstore"),
+-	FSTORE(56, "fstore"),
+-	DSTORE(57, "dstore"),
+-	ASTORE(58, "astore"),
+-	ISTORE_0(59, "istore_0"),
+-	ISTORE_1(60, "istore_1"),
+-	ISTORE_2(61, "istore_2"),
+-	ISTORE_3(62, "istore_3"),
+-	LSTORE_0(63, "lstore_0"),
+-	LSTORE_1(64, "lstore_1"),
+-	LSTORE_2(65, "lstore_2"),
+-	LSTORE_3(66, "lstore_3"),
+-	FSTORE_0(67, "fstore_0"),
+-	FSTORE_1(68, "fstore_1"),
+-	FSTORE_2(69, "fstore_2"),
+-	FSTORE_3(70, "fstore_3"),
+-	DSTORE_0(71, "dstore_0"),
+-	DSTORE_1(72, "dstore_1"),
+-	DSTORE_2(73, "dstore_2"),
+-	DSTORE_3(74, "dstore_3"),
+-	ASTORE_0(75, "astore_0"),
+-	ASTORE_1(76, "astore_1"),
+-	ASTORE_2(77, "astore_2"),
+-	ASTORE_3(78, "astore_3"),
+-	IASTORE(79, "iastore"),
+-	LASTORE(80, "lastore"),
+-	FASTORE(81, "fastore"),
+-	DASTORE(82, "dastore"),
+-	AASTORE(83, "aastore"),
+-	BASTORE(84, "bastore"),
+-	CASTORE(85, "castore"),
+-	SASTORE(86, "sastore"),
+-	POP(87, "pop"),
+-	POP2(88, "pop2"),
+-	DUP(89, "dup"),
+-	DUP_X1(90, "dup_x1"),
+-	DUP_X2(91, "dup_x2"),
+-	DUP2(92, "dup2"),
+-	DUP2_X1(93, "dup2_x1"),
+-	DUP2_X2(94, "dup2_x2"),
+-	SWAP(95, "swap"),
+-	IADD(96, "iadd"),
+-	LADD(97, "ladd"),
+-	FADD(98, "fadd"),
+-	DADD(99, "dadd"),
+-	ISUB(100, "isub"),
+-	LSUB(101, "lsub"),
+-	FSUB(102, "fsub"),
+-	DSUB(103, "dsub"),
+-	IMUL(104, "imul"),
+-	LMUL(105, "lmul"),
+-	FMUL(106, "fmul"),
+-	DMUL(107, "dmul"),
+-	IDIV(108, "idiv"),
+-	LDIV(109, "ldiv"),
+-	FDIV(110, "fdiv"),
+-	DDIV(111, "ddiv"),
+-	IREM(112, "irem"),
+-	LREM(113, "lrem"),
+-	FREM(114, "frem"),
+-	DREM(115, "drem"),
+-	INEG(116, "ineg"),
+-	LNEG(117, "lneg"),
+-	FNEG(118, "fneg"),
+-	DNEG(119, "dneg"),
+-	ISHL(120, "ishl"),
+-	LSHL(121, "lshl"),
+-	ISHR(122, "ishr"),
+-	LSHR(123, "lshr"),
+-	IUSHR(124, "iushr"),
+-	LUSHR(125, "lushr"),
+-	IAND(126, "iand"),
+-	LAND(127, "land"),
+-	IOR(128, "ior"),
+-	LOR(129, "lor"),
+-	IXOR(130, "ixor"),
+-	LXOR(131, "lxor"),
+-	IINC(132, "iinc"),
+-	I2L(133, "i2l"),
+-	I2F(134, "i2f"),
+-	I2D(135, "i2d"),
+-	L2I(136, "l2i"),
+-	L2F(137, "l2f"),
+-	L2D(138, "l2d"),
+-	F2I(139, "f2i"),
+-	F2L(140, "f2l"),
+-	F2D(141, "f2d"),
+-	D2I(142, "d2i"),
+-	D2L(143, "d2l"),
+-	D2F(144, "d2f"),
+-	I2B(145, "i2b"),
+-	I2C(146, "i2c"),
+-	I2S(147, "i2s"),
+-	LCMP(148, "lcmp"),
+-	FCMPL(149, "fcmpl"),
+-	FCMPG(150, "fcmpg"),
+-	DCMPL(151, "dcmpl"),
+-	DCMPG(152, "dcmpg"),
+-	IFEQ(153, "ifeq"),
+-	IFNE(154, "ifne"),
+-	IFLT(155, "iflt"),
+-	IFGE(156, "ifge"),
+-	IFGT(157, "ifgt"),
+-	IFLE(158, "ifle"),
+-	IF_ICMPEQ(159, "if_icmpeq"),
+-	IF_ICMPNE(160, "if_icmpne"),
+-	IF_ICMPLT(161, "if_icmplt"),
+-	IF_ICMPGE(162, "if_icmpge"),
+-	IF_ICMPGT(163, "if_icmpgt"),
+-	IF_ICMPLE(164, "if_icmple"),
+-	IF_ACMPEQ(165, "if_acmpeq"),
+-	IF_ACMPNE(166, "if_acmpne"),
+-	GOTO(167, "goto"),
+-	JSR(168, "jsr"),
+-	RET(169, "ret"),
+-	TABLESWITCH(170, "tableswitch"),
+-	LOOKUPSWITCH(171, "lookupswitch"),
+-	IRETURN(172, "ireturn"),
+-	LRETURN(173, "lreturn"),
+-	FRETURN(174, "freturn"),
+-	DRETURN(175, "dreturn"),
+-	ARETURN(176, "areturn"),
+-	RETURN(177, "return"),
+-	GETSTATIC(178, "getstatic"),
+-	PUTSTATIC(179, "putstatic"),
+-	GETFIELD(180, "getfield"),
+-	PUTFIELD(181, "putfield"),
+-	INVOKEVIRTUAL(182, "invokevirtual"),
+-	INVOKESPECIAL(183, "invokespecial"),
+-	INVOKESTATIC(184, "invokestatic"),
+-	INVOKEINTERFACE(185, "invokeinterface"),
+-	INVOKEDYNAMIC(186, "invokedynamic"),
+-	NEW(187, "new"),
+-	NEWARRAY(188, "newarray"),
+-	ANEWARRAY(189, "anewarray"),
+-	ARRAYLENGTH(190, "arraylength"),
+-	ATHROW(191, "athrow"),
+-	CHECKCAST(192, "checkcast"),
+-	INSTANCEOF(193, "instanceof"),
+-	MONITORENTER(194, "monitorenter"),
+-	MONITOREXIT(195, "monitorexit"),
+-	WIDE(196, "wide"),
+-	MULTIANEWARRAY(197, "multianewarray"),
+-	IFNULL(198, "ifnull"),
+-	IFNONNULL(199, "ifnonnull"),
+-	GOTO_W(200, "goto_w"),
+-	JSR_W(201, "jsr_w"),
+-	BREAKPOINT(202, "breakpoint"),
+-	IMPDEP1(254, "impdep1"),
+-	IMPDEP2(255, "impdep2");
++	NOP(0, "nop"), ACONST_NULL(1, "aconst_null"), ICONST_M1(2, "iconst_m1"), ICONST_0(3, "iconst_0"), ICONST_1(4,
++			"iconst_1"), ICONST_2(5, "iconst_2"), ICONST_3(6, "iconst_3"), ICONST_4(7, "iconst_4"), ICONST_5(8,
++					"iconst_5"), LCONST_0(9, "lconst_0"), LCONST_1(10, "lconst_1"), FCONST_0(11, "fconst_0"), FCONST_1(12,
++							"fconst_1"), FCONST_2(13, "fconst_2"), DCONST_0(14, "dconst_0"), DCONST_1(15, "dconst_1"), BIPUSH(16,
++									"bipush"), SIPUSH(17, "sipush"), LDC(18, "ldc"), LDC_W(19, "ldc_w"), LDC2_W(20,
++											"ldc2_w"), ILOAD(21, "iload"), LLOAD(22, "lload"), FLOAD(23, "fload"), DLOAD(24,
++													"dload"), ALOAD(25, "aload"), ILOAD_0(26, "iload_0"), ILOAD_1(27,
++															"iload_1"), ILOAD_2(28, "iload_2"), ILOAD_3(29, "iload_3"), LLOAD_0(30,
++																	"lload_0"), LLOAD_1(31, "lload_1"), LLOAD_2(32,
++																			"lload_2"), LLOAD_3(33, "lload_3"), FLOAD_0(34,
++																					"fload_0"), FLOAD_1(35, "fload_1"), FLOAD_2(36,
++																							"fload_2"), FLOAD_3(37,
++																									"fload_3"), DLOAD_0(38,
++																											"dload_0"), DLOAD_1(39,
++																													"dload_1"), DLOAD_2(
++																															40,
++																															"dload_2"), DLOAD_3(
++																																	41,
++																																	"dload_3"), ALOAD_0(
++																																			42,
++																																			"aload_0"), ALOAD_1(
++																																					43,
++																																					"aload_1"), ALOAD_2(
++																																							44,
++																																							"aload_2"), ALOAD_3(
++																																									45,
++																																									"aload_3"), IALOAD(
++																																											46,
++																																											"iaload"), LALOAD(
++																																													47,
++																																													"laload"), FALOAD(
++																																															48,
++																																															"faload"), DALOAD(
++																																																	49,
++																																																	"daload"), AALOAD(
++																																																			50,
++																																																			"aaload"), BALOAD(
++																																																					51,
++																																																					"baload"), CALOAD(
++																																																							52,
++																																																							"caload"), SALOAD(
++																																																									53,
++																																																									"saload"), ISTORE(
++																																																											54,
++																																																											"istore"), LSTORE(
++																																																													55,
++																																																													"lstore"), FSTORE(
++																																																															56,
++																																																															"fstore"), DSTORE(
++																																																																	57,
++																																																																	"dstore"), ASTORE(
++																																																																			58,
++																																																																			"astore"), ISTORE_0(
++																																																																					59,
++																																																																					"istore_0"), ISTORE_1(
++																																																																							60,
++																																																																							"istore_1"), ISTORE_2(
++																																																																									61,
++																																																																									"istore_2"), ISTORE_3(
++																																																																											62,
++																																																																											"istore_3"), LSTORE_0(
++																																																																													63,
++																																																																													"lstore_0"), LSTORE_1(
++																																																																															64,
++																																																																															"lstore_1"), LSTORE_2(
++																																																																																	65,
++																																																																																	"lstore_2"), LSTORE_3(
++																																																																																			66,
++																																																																																			"lstore_3"), FSTORE_0(
++																																																																																					67,
++																																																																																					"fstore_0"), FSTORE_1(
++																																																																																							68,
++																																																																																							"fstore_1"), FSTORE_2(
++																																																																																									69,
++																																																																																									"fstore_2"), FSTORE_3(
++																																																																																											70,
++																																																																																											"fstore_3"), DSTORE_0(
++																																																																																													71,
++																																																																																													"dstore_0"), DSTORE_1(
++																																																																																															72,
++																																																																																															"dstore_1"), DSTORE_2(
++																																																																																																	73,
++																																																																																																	"dstore_2"), DSTORE_3(
++																																																																																																			74,
++																																																																																																			"dstore_3"), ASTORE_0(
++																																																																																																					75,
++																																																																																																					"astore_0"), ASTORE_1(
++																																																																																																							76,
++																																																																																																							"astore_1"), ASTORE_2(
++																																																																																																									77,
++																																																																																																									"astore_2"), ASTORE_3(
++																																																																																																											78,
++																																																																																																											"astore_3"), IASTORE(
++																																																																																																													79,
++																																																																																																													"iastore"), LASTORE(
++																																																																																																															80,
++																																																																																																															"lastore"), FASTORE(
++																																																																																																																	81,
++																																																																																																																	"fastore"), DASTORE(
++																																																																																																																			82,
++																																																																																																																			"dastore"), AASTORE(
++																																																																																																																					83,
++																																																																																																																					"aastore"), BASTORE(
++																																																																																																																							84,
++																																																																																																																							"bastore"), CASTORE(
++																																																																																																																									85,
++																																																																																																																									"castore"), SASTORE(
++																																																																																																																											86,
++																																																																																																																											"sastore"), POP(
++																																																																																																																													87,
++																																																																																																																													"pop"), POP2(
++																																																																																																																															88,
++																																																																																																																															"pop2"), DUP(
++																																																																																																																																	89,
++																																																																																																																																	"dup"), DUP_X1(
++																																																																																																																																			90,
++																																																																																																																																			"dup_x1"), DUP_X2(
++																																																																																																																																					91,
++																																																																																																																																					"dup_x2"), DUP2(
++																																																																																																																																							92,
++																																																																																																																																							"dup2"), DUP2_X1(
++																																																																																																																																									93,
++																																																																																																																																									"dup2_x1"), DUP2_X2(
++																																																																																																																																											94,
++																																																																																																																																											"dup2_x2"), SWAP(
++																																																																																																																																													95,
++																																																																																																																																													"swap"), IADD(
++																																																																																																																																															96,
++																																																																																																																																															"iadd"), LADD(
++																																																																																																																																																	97,
++																																																																																																																																																	"ladd"), FADD(
++																																																																																																																																																			98,
++																																																																																																																																																			"fadd"), DADD(
++																																																																																																																																																					99,
++																																																																																																																																																					"dadd"), ISUB(
++																																																																																																																																																							100,
++																																																																																																																																																							"isub"), LSUB(
++																																																																																																																																																									101,
++																																																																																																																																																									"lsub"), FSUB(
++																																																																																																																																																											102,
++																																																																																																																																																											"fsub"), DSUB(
++																																																																																																																																																													103,
++																																																																																																																																																													"dsub"), IMUL(
++																																																																																																																																																															104,
++																																																																																																																																																															"imul"), LMUL(
++																																																																																																																																																																	105,
++																																																																																																																																																																	"lmul"), FMUL(
++																																																																																																																																																																			106,
++																																																																																																																																																																			"fmul"), DMUL(
++																																																																																																																																																																					107,
++																																																																																																																																																																					"dmul"), IDIV(
++																																																																																																																																																																							108,
++																																																																																																																																																																							"idiv"), LDIV(
++																																																																																																																																																																									109,
++																																																																																																																																																																									"ldiv"), FDIV(
++																																																																																																																																																																											110,
++																																																																																																																																																																											"fdiv"), DDIV(
++																																																																																																																																																																													111,
++																																																																																																																																																																													"ddiv"), IREM(
++																																																																																																																																																																															112,
++																																																																																																																																																																															"irem"), LREM(
++																																																																																																																																																																																	113,
++																																																																																																																																																																																	"lrem"), FREM(
++																																																																																																																																																																																			114,
++																																																																																																																																																																																			"frem"), DREM(
++																																																																																																																																																																																					115,
++																																																																																																																																																																																					"drem"), INEG(
++																																																																																																																																																																																							116,
++																																																																																																																																																																																							"ineg"), LNEG(
++																																																																																																																																																																																									117,
++																																																																																																																																																																																									"lneg"), FNEG(
++																																																																																																																																																																																											118,
++																																																																																																																																																																																											"fneg"), DNEG(
++																																																																																																																																																																																													119,
++																																																																																																																																																																																													"dneg"), ISHL(
++																																																																																																																																																																																															120,
++																																																																																																																																																																																															"ishl"), LSHL(
++																																																																																																																																																																																																	121,
++																																																																																																																																																																																																	"lshl"), ISHR(
++																																																																																																																																																																																																			122,
++																																																																																																																																																																																																			"ishr"), LSHR(
++																																																																																																																																																																																																					123,
++																																																																																																																																																																																																					"lshr"), IUSHR(
++																																																																																																																																																																																																							124,
++																																																																																																																																																																																																							"iushr"), LUSHR(
++																																																																																																																																																																																																									125,
++																																																																																																																																																																																																									"lushr"), IAND(
++																																																																																																																																																																																																											126,
++																																																																																																																																																																																																											"iand"), LAND(
++																																																																																																																																																																																																													127,
++																																																																																																																																																																																																													"land"), IOR(
++																																																																																																																																																																																																															128,
++																																																																																																																																																																																																															"ior"), LOR(
++																																																																																																																																																																																																																	129,
++																																																																																																																																																																																																																	"lor"), IXOR(
++																																																																																																																																																																																																																			130,
++																																																																																																																																																																																																																			"ixor"), LXOR(
++																																																																																																																																																																																																																					131,
++																																																																																																																																																																																																																					"lxor"), IINC(
++																																																																																																																																																																																																																							132,
++																																																																																																																																																																																																																							"iinc"), I2L(
++																																																																																																																																																																																																																									133,
++																																																																																																																																																																																																																									"i2l"), I2F(
++																																																																																																																																																																																																																											134,
++																																																																																																																																																																																																																											"i2f"), I2D(
++																																																																																																																																																																																																																													135,
++																																																																																																																																																																																																																													"i2d"), L2I(
++																																																																																																																																																																																																																															136,
++																																																																																																																																																																																																																															"l2i"), L2F(
++																																																																																																																																																																																																																																	137,
++																																																																																																																																																																																																																																	"l2f"), L2D(
++																																																																																																																																																																																																																																			138,
++																																																																																																																																																																																																																																			"l2d"), F2I(
++																																																																																																																																																																																																																																					139,
++																																																																																																																																																																																																																																					"f2i"), F2L(
++																																																																																																																																																																																																																																							140,
++																																																																																																																																																																																																																																							"f2l"), F2D(
++																																																																																																																																																																																																																																									141,
++																																																																																																																																																																																																																																									"f2d"), D2I(
++																																																																																																																																																																																																																																											142,
++																																																																																																																																																																																																																																											"d2i"), D2L(
++																																																																																																																																																																																																																																													143,
++																																																																																																																																																																																																																																													"d2l"), D2F(
++																																																																																																																																																																																																																																															144,
++																																																																																																																																																																																																																																															"d2f"), I2B(
++																																																																																																																																																																																																																																																	145,
++																																																																																																																																																																																																																																																	"i2b"), I2C(
++																																																																																																																																																																																																																																																			146,
++																																																																																																																																																																																																																																																			"i2c"), I2S(
++																																																																																																																																																																																																																																																					147,
++																																																																																																																																																																																																																																																					"i2s"), LCMP(
++																																																																																																																																																																																																																																																							148,
++																																																																																																																																																																																																																																																							"lcmp"), FCMPL(
++																																																																																																																																																																																																																																																									149,
++																																																																																																																																																																																																																																																									"fcmpl"), FCMPG(
++																																																																																																																																																																																																																																																											150,
++																																																																																																																																																																																																																																																											"fcmpg"), DCMPL(
++																																																																																																																																																																																																																																																													151,
++																																																																																																																																																																																																																																																													"dcmpl"), DCMPG(
++																																																																																																																																																																																																																																																															152,
++																																																																																																																																																																																																																																																															"dcmpg"), IFEQ(
++																																																																																																																																																																																																																																																																	153,
++																																																																																																																																																																																																																																																																	"ifeq"), IFNE(
++																																																																																																																																																																																																																																																																			154,
++																																																																																																																																																																																																																																																																			"ifne"), IFLT(
++																																																																																																																																																																																																																																																																					155,
++																																																																																																																																																																																																																																																																					"iflt"), IFGE(
++																																																																																																																																																																																																																																																																							156,
++																																																																																																																																																																																																																																																																							"ifge"), IFGT(
++																																																																																																																																																																																																																																																																									157,
++																																																																																																																																																																																																																																																																									"ifgt"), IFLE(
++																																																																																																																																																																																																																																																																											158,
++																																																																																																																																																																																																																																																																											"ifle"), IF_ICMPEQ(
++																																																																																																																																																																																																																																																																													159,
++																																																																																																																																																																																																																																																																													"if_icmpeq"), IF_ICMPNE(
++																																																																																																																																																																																																																																																																															160,
++																																																																																																																																																																																																																																																																															"if_icmpne"), IF_ICMPLT(
++																																																																																																																																																																																																																																																																																	161,
++																																																																																																																																																																																																																																																																																	"if_icmplt"), IF_ICMPGE(
++																																																																																																																																																																																																																																																																																			162,
++																																																																																																																																																																																																																																																																																			"if_icmpge"), IF_ICMPGT(
++																																																																																																																																																																																																																																																																																					163,
++																																																																																																																																																																																																																																																																																					"if_icmpgt"), IF_ICMPLE(
++																																																																																																																																																																																																																																																																																							164,
++																																																																																																																																																																																																																																																																																							"if_icmple"), IF_ACMPEQ(
++																																																																																																																																																																																																																																																																																									165,
++																																																																																																																																																																																																																																																																																									"if_acmpeq"), IF_ACMPNE(
++																																																																																																																																																																																																																																																																																											166,
++																																																																																																																																																																																																																																																																																											"if_acmpne"), GOTO(
++																																																																																																																																																																																																																																																																																													167,
++																																																																																																																																																																																																																																																																																													"goto"), JSR(
++																																																																																																																																																																																																																																																																																															168,
++																																																																																																																																																																																																																																																																																															"jsr"), RET(
++																																																																																																																																																																																																																																																																																																	169,
++																																																																																																																																																																																																																																																																																																	"ret"), TABLESWITCH(
++																																																																																																																																																																																																																																																																																																			170,
++																																																																																																																																																																																																																																																																																																			"tableswitch"), LOOKUPSWITCH(
++																																																																																																																																																																																																																																																																																																					171,
++																																																																																																																																																																																																																																																																																																					"lookupswitch"), IRETURN(
++																																																																																																																																																																																																																																																																																																							172,
++																																																																																																																																																																																																																																																																																																							"ireturn"), LRETURN(
++																																																																																																																																																																																																																																																																																																									173,
++																																																																																																																																																																																																																																																																																																									"lreturn"), FRETURN(
++																																																																																																																																																																																																																																																																																																											174,
++																																																																																																																																																																																																																																																																																																											"freturn"), DRETURN(
++																																																																																																																																																																																																																																																																																																													175,
++																																																																																																																																																																																																																																																																																																													"dreturn"), ARETURN(
++																																																																																																																																																																																																																																																																																																															176,
++																																																																																																																																																																																																																																																																																																															"areturn"), RETURN(
++																																																																																																																																																																																																																																																																																																																	177,
++																																																																																																																																																																																																																																																																																																																	"return"), GETSTATIC(
++																																																																																																																																																																																																																																																																																																																			178,
++																																																																																																																																																																																																																																																																																																																			"getstatic"), PUTSTATIC(
++																																																																																																																																																																																																																																																																																																																					179,
++																																																																																																																																																																																																																																																																																																																					"putstatic"), GETFIELD(
++																																																																																																																																																																																																																																																																																																																							180,
++																																																																																																																																																																																																																																																																																																																							"getfield"), PUTFIELD(
++																																																																																																																																																																																																																																																																																																																									181,
++																																																																																																																																																																																																																																																																																																																									"putfield"), INVOKEVIRTUAL(
++																																																																																																																																																																																																																																																																																																																											182,
++																																																																																																																																																																																																																																																																																																																											"invokevirtual"), INVOKESPECIAL(
++																																																																																																																																																																																																																																																																																																																													183,
++																																																																																																																																																																																																																																																																																																																													"invokespecial"), INVOKESTATIC(
++																																																																																																																																																																																																																																																																																																																															184,
++																																																																																																																																																																																																																																																																																																																															"invokestatic"), INVOKEINTERFACE(
++																																																																																																																																																																																																																																																																																																																																	185,
++																																																																																																																																																																																																																																																																																																																																	"invokeinterface"), INVOKEDYNAMIC(
++																																																																																																																																																																																																																																																																																																																																			186,
++																																																																																																																																																																																																																																																																																																																																			"invokedynamic"), NEW(
++																																																																																																																																																																																																																																																																																																																																					187,
++																																																																																																																																																																																																																																																																																																																																					"new"), NEWARRAY(
++																																																																																																																																																																																																																																																																																																																																							188,
++																																																																																																																																																																																																																																																																																																																																							"newarray"), ANEWARRAY(
++																																																																																																																																																																																																																																																																																																																																									189,
++																																																																																																																																																																																																																																																																																																																																									"anewarray"), ARRAYLENGTH(
++																																																																																																																																																																																																																																																																																																																																											190,
++																																																																																																																																																																																																																																																																																																																																											"arraylength"), ATHROW(
++																																																																																																																																																																																																																																																																																																																																													191,
++																																																																																																																																																																																																																																																																																																																																													"athrow"), CHECKCAST(
++																																																																																																																																																																																																																																																																																																																																															192,
++																																																																																																																																																																																																																																																																																																																																															"checkcast"), INSTANCEOF(
++																																																																																																																																																																																																																																																																																																																																																	193,
++																																																																																																																																																																																																																																																																																																																																																	"instanceof"), MONITORENTER(
++																																																																																																																																																																																																																																																																																																																																																			194,
++																																																																																																																																																																																																																																																																																																																																																			"monitorenter"), MONITOREXIT(
++																																																																																																																																																																																																																																																																																																																																																					195,
++																																																																																																																																																																																																																																																																																																																																																					"monitorexit"), WIDE(
++																																																																																																																																																																																																																																																																																																																																																							196,
++																																																																																																																																																																																																																																																																																																																																																							"wide"), MULTIANEWARRAY(
++																																																																																																																																																																																																																																																																																																																																																									197,
++																																																																																																																																																																																																																																																																																																																																																									"multianewarray"), IFNULL(
++																																																																																																																																																																																																																																																																																																																																																											198,
++																																																																																																																																																																																																																																																																																																																																																											"ifnull"), IFNONNULL(
++																																																																																																																																																																																																																																																																																																																																																													199,
++																																																																																																																																																																																																																																																																																																																																																													"ifnonnull"), GOTO_W(
++																																																																																																																																																																																																																																																																																																																																																															200,
++																																																																																																																																																																																																																																																																																																																																																															"goto_w"), JSR_W(
++																																																																																																																																																																																																																																																																																																																																																																	201,
++																																																																																																																																																																																																																																																																																																																																																																	"jsr_w"), BREAKPOINT(
++																																																																																																																																																																																																																																																																																																																																																																			202,
++																																																																																																																																																																																																																																																																																																																																																																			"breakpoint"), IMPDEP1(
++																																																																																																																																																																																																																																																																																																																																																																					254,
++																																																																																																																																																																																																																																																																																																																																																																					"impdep1"), IMPDEP2(
++																																																																																																																																																																																																																																																																																																																																																																							255,
++																																																																																																																																																																																																																																																																																																																																																																							"impdep2");
+@@ -276 +416 @@ public enum Opcode implements Comparable<Opcode>
+-
++	
+diff --git a/pom.xml b/pom.xml
+index 7265265b..4b8de7fb 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -8 +8 @@
+-    <version>1.4.8</version>
++    <version>1.4.7</version>
+@@ -13 +13,4 @@
+-        <junit.version>4.13.2</junit.version> <!-- https://mvnrepository.com/artifact/junit/junit -->
++        <junit.version>4.13.1</junit.version>
++
++        <exec.skip>true</exec.skip>
++
+@@ -44 +47 @@
+-            <url>https://www.chriswhocodes.com</url>
++            <url>https://www.chrisnewland.com</url>
+@@ -134,4 +136,0 @@
+-        <contributor>
+-            <name>Filippo Barbari</name>
+-        </contributor>
+-
+@@ -157 +156 @@
+-                    <version>3.0.1</version>
++                    <version>2.5.3</version>
+@@ -168 +167,6 @@
+-                    <version>3.6.0</version>
++                    <version>3.0.0</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-clean-plugin</artifactId>
++                    <version>3.1.0</version>
+@@ -173 +177 @@
+-                    <version>3.11.0</version>
++                    <version>3.8.1</version>
+@@ -186 +190 @@
+-                    <version>3.6.0</version>
++                    <version>3.0.0</version>
+@@ -191 +195,6 @@
+-                    <version>3.1.1</version>
++                    <version>2.8.2</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-failsafe-plugin</artifactId>
++                    <version>2.20</version>
+@@ -196 +205 @@
+-                    <version>3.1.1</version>
++                    <version>2.5.2</version>
+@@ -201 +210 @@
+-                    <version>3.3.1</version>
++                    <version>3.0.2</version>
+@@ -206 +215 @@
+-                    <version>3.3.0</version>
++                    <version>3.0.1</version>
+@@ -211 +220 @@
+-                    <version>3.1.2</version>
++                    <version>2.22.2</version>
+@@ -221,0 +231,10 @@
++                <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-site-plugin</artifactId>
++                    <version>3.6</version>
++                </plugin>
++                <plugin>
++                    <groupId>org.codehaus.mojo</groupId>
++                    <artifactId>license-maven-plugin</artifactId>
++                    <version>2.0.0</version>
++                </plugin>
+diff --git a/ui/build-jdk11.gradle b/ui/build-jdk11.gradle
+new file mode 100644
+index 00000000..5b2d061b
+--- /dev/null
++++ b/ui/build-jdk11.gradle
+@@ -0,0 +1,25 @@
++apply plugin: "org.openjfx.javafxplugin"
++
++def javaVersion = JavaVersion.current()
++def openjfxVersion = "17.0.1"
++
++def javafxModules = [
++        'javafx.controls',
++        'javafx.swing',
++        'javafx.web',
++]
++
++javafx {
++    version = openjfxVersion
++    modules = javafxModules
++}
++
++dependencies {
++    javafxModules.each {
++        def javafxModuleArtifact = it.replace(".", "-")
++
++        runtimeOnly "org.openjfx:$javafxModuleArtifact:$javafx.version:linux"
++        runtimeOnly "org.openjfx:$javafxModuleArtifact:$javafx.version:win"
++        runtimeOnly "org.openjfx:$javafxModuleArtifact:$javafx.version:mac"
++    }
++}
+diff --git a/ui/build-jdk7.gradle b/ui/build-jdk7.gradle
+new file mode 100644
+index 00000000..28cfa654
+--- /dev/null
++++ b/ui/build-jdk7.gradle
+@@ -0,0 +1,46 @@
++def findJavafxRuntime(String path) {
++    if (path == null) {
++        return null
++    }
++
++    def tree = fileTree(dir: path, include: ['**/jfxrt.jar'])
++
++    if (!tree.files.isEmpty()) {
++        return tree.singleFile
++    }
++
++    return null
++}
++
++def potentialJavafxLocations = [
++    System.properties['java.home'],
++    "$rootDir/lib" // Support dropping a JavaFX installation into lib/
++]
++
++def javafxHome = System.properties['javafx.home']
++if (javafxHome != null) {
++    potentialJavafxLocations += javafxHome
++}
++
++def jfxrt = potentialJavafxLocations.collect(this.&findJavafxRuntime).find { it != null}
++
++if (jfxrt == null) {
++    throw new GradleException(
++        """
++Unable to locate a JavaFX runtime in the any of the following locations:
++    
++${potentialJavafxLocations.collect { path -> "\t${path}" }.join("\n")}
++
++Please set the property "javafx.home" to a location containing a JavaFX installation,
++or place the JavaFX runtime into "$rootDir/lib".
++        """
++    )
++}
++
++configurations {
++    compileOnly
++}
++
++dependencies {
++    compileOnly(files(jfxrt))
++}
+diff --git a/ui/dependency-reduced-pom.xml b/ui/dependency-reduced-pom.xml
+deleted file mode 100644
+index 4d5c9856..00000000
+--- a/ui/dependency-reduced-pom.xml
++++ /dev/null
+@@ -1,162 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+-  <parent>
+-    <artifactId>jitwatch-parent</artifactId>
+-    <groupId>com.chrisnewland</groupId>
+-    <version>1.4.8</version>
+-  </parent>
+-  <modelVersion>4.0.0</modelVersion>
+-  <artifactId>jitwatch-ui</artifactId>
+-  <name>JITWatch UI</name>
+-  <build>
+-    <plugins>
+-      <plugin>
+-        <artifactId>maven-source-plugin</artifactId>
+-        <executions>
+-          <execution>
+-            <id>attach-sources</id>
+-            <goals>
+-              <goal>jar-no-fork</goal>
+-            </goals>
+-          </execution>
+-        </executions>
+-      </plugin>
+-      <plugin>
+-        <groupId>org.codehaus.mojo</groupId>
+-        <artifactId>exec-maven-plugin</artifactId>
+-        <executions>
+-          <execution>
+-            <id>default-cli</id>
+-            <goals>
+-              <goal>java</goal>
+-            </goals>
+-            <configuration>
+-              <skip>false</skip>
+-              <mainClass>${main.class}</mainClass>
+-              <cleanupDaemonThreads>false</cleanupDaemonThreads>
+-              <classpathScope>compile</classpathScope>
+-            </configuration>
+-          </execution>
+-        </executions>
+-      </plugin>
+-    </plugins>
+-  </build>
+-  <profiles>
+-    <profile>
+-      <id>linux</id>
+-      <properties>
+-        <javafx.platform>linux</javafx.platform>
+-      </properties>
+-    </profile>
+-    <profile>
+-      <id>macosx</id>
+-      <properties>
+-        <javafx.platform>mac</javafx.platform>
+-      </properties>
+-    </profile>
+-    <profile>
+-      <id>windows</id>
+-      <properties>
+-        <javafx.platform>win</javafx.platform>
+-      </properties>
+-    </profile>
+-    <profile>
+-      <id>with_built_in_javafx</id>
+-      <build>
+-        <plugins>
+-          <plugin>
+-            <artifactId>maven-shade-plugin</artifactId>
+-            <version>3.5.0</version>
+-            <executions>
+-              <execution>
+-                <phase>package</phase>
+-                <goals>
+-                  <goal>shade</goal>
+-                </goals>
+-                <configuration>
+-                  <shadedArtifactAttached>true</shadedArtifactAttached>
+-                  <shadedClassifierName>project-classifier</shadedClassifierName>
+-                  <outputFile>target/jitwatch-ui-shaded.jar</outputFile>
+-                  <transformers>
+-                    <transformer>
+-                      <mainClass>${main.class}</mainClass>
+-                      <manifestEntries>
+-                        <Add-Exports>jdk.jdeps/com.sun.tools.javap</Add-Exports>
+-                      </manifestEntries>
+-                    </transformer>
+-                  </transformers>
+-                </configuration>
+-              </execution>
+-            </executions>
+-          </plugin>
+-        </plugins>
+-      </build>
+-    </profile>
+-    <profile>
+-      <id>with_openjfx_from_maven_central</id>
+-      <build>
+-        <plugins>
+-          <plugin>
+-            <artifactId>maven-shade-plugin</artifactId>
+-            <version>3.5.0</version>
+-            <executions>
+-              <execution>
+-                <phase>package</phase>
+-                <goals>
+-                  <goal>shade</goal>
+-                </goals>
+-                <configuration>
+-                  <shadedArtifactAttached>true</shadedArtifactAttached>
+-                  <shadedClassifierName>project-classifier</shadedClassifierName>
+-                  <outputFile>target/jitwatch-ui-shaded.jar</outputFile>
+-                  <transformers>
+-                    <transformer>
+-                      <mainClass>${main.class}</mainClass>
+-                      <manifestEntries>
+-                        <Add-Exports>jdk.jdeps/com.sun.tools.javap</Add-Exports>
+-                      </manifestEntries>
+-                    </transformer>
+-                  </transformers>
+-                </configuration>
+-              </execution>
+-            </executions>
+-          </plugin>
+-        </plugins>
+-      </build>
+-      <dependencies>
+-        <dependency>
+-          <groupId>org.openjfx</groupId>
+-          <artifactId>javafx-controls</artifactId>
+-          <version>${openjfx.version}</version>
+-        </dependency>
+-        <dependency>
+-          <groupId>org.openjfx</groupId>
+-          <artifactId>javafx-web</artifactId>
+-          <version>${openjfx.version}</version>
+-        </dependency>
+-        <dependency>
+-          <groupId>org.openjfx</groupId>
+-          <artifactId>javafx-swing</artifactId>
+-          <version>${openjfx.version}</version>
+-        </dependency>
+-      </dependencies>
+-    </profile>
+-  </profiles>
+-  <dependencies>
+-    <dependency>
+-      <groupId>junit</groupId>
+-      <artifactId>junit</artifactId>
+-      <version>4.13.2</version>
+-      <scope>test</scope>
+-      <exclusions>
+-        <exclusion>
+-          <artifactId>hamcrest-core</artifactId>
+-          <groupId>org.hamcrest</groupId>
+-        </exclusion>
+-      </exclusions>
+-    </dependency>
+-  </dependencies>
+-  <properties>
+-    <openjfx.version>19.0.2.1</openjfx.version>
+-  </properties>
+-</project>
+diff --git a/ui/pom.xml b/ui/pom.xml
+index c45cfcad..60142284 100644
+--- a/ui/pom.xml
++++ b/ui/pom.xml
+@@ -9 +9 @@
+-		<version>1.4.8</version>
++		<version>1.4.7</version>
+@@ -17 +17 @@
+-		<openjfx.version>19.0.2.1</openjfx.version> <!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
++		<openjfx.version>18.0.2</openjfx.version>
+@@ -64 +64 @@
+-						<version>3.5.0</version>
++						<version>3.2.0</version>
+@@ -96,0 +97 @@
++				<!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
+@@ -118 +119 @@
+-						<version>3.5.0</version>
++						<version>3.2.0</version>
+@@ -159,7 +160 @@
+-<!--
+-		<dependency>
+-			<groupId>com.chrisnewland</groupId>
+-			<artifactId>ClassAct</artifactId>
+-			<version>0.0.1</version>
+-		</dependency>
+--->
++
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/jarscan/visualiser/HistoPlotter.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/jarscan/visualiser/HistoPlotter.java
+index 7281e569..9ac48bd6 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/jarscan/visualiser/HistoPlotter.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/jarscan/visualiser/HistoPlotter.java
+@@ -174,2 +174,3 @@ public class HistoPlotter extends Application
+-				Method methodFromFXImage = swingFXUtils.getMethod("fromFXImage", javafx.scene.image.Image.class,
+-						java.awt.image.BufferedImage.class);
++				Method methodFromFXImage = swingFXUtils.getMethod("fromFXImage", new Class[] {
++						javafx.scene.image.Image.class,
++						java.awt.image.BufferedImage.class });
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
+index ce9152a3..63cc27f7 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
+@@ -180,8 +180 @@ public class Sandbox
+-		String compilationSwitchesText = logParser.getConfig().getExtraVMCompilationSwitches().trim();
+-
+-		List<String> compilationSwitches = new ArrayList<>();
+-
+-		if (!compilationSwitchesText.isEmpty())
+-		{
+-			compilationSwitches.addAll(Arrays.asList(compilationSwitchesText.split("\\s+")));
+-		}
++		List<String> compilationSwitches = Arrays.asList(logParser.getConfig().getExtraVMCompilationSwitches().split(" "));
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
+index c26bce7e..689c1d3a 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
+@@ -60 +60 @@ public class SandboxConfigStage extends Stage
+-	private static final int labelWidth = 170;
++	private static final int labelWidth = 160;
+@@ -544 +544 @@ public class SandboxConfigStage extends Stage
+-		Label labelExtraCompilation = new Label("Extra Compilation options:");
++		Label labelExtraCompilation = new Label("Extra VM compilation switches:");
+@@ -561 +561 @@ public class SandboxConfigStage extends Stage
+-		Label labelExtraRuntime = new Label("Extra Runtime Options:");
++		Label labelExtraRuntime = new Label("Extra VM runtime switches:");
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/util/UserInterfaceUtil.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/util/UserInterfaceUtil.java
+index bc75f657..35863ef6 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/util/UserInterfaceUtil.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/util/UserInterfaceUtil.java
+@@ -161,2 +161 @@ public final class UserInterfaceUtil
+-			@Override
+-			public void handle(ActionEvent e)
++			@Override public void handle(ActionEvent e)
+@@ -187 +186,2 @@ public final class UserInterfaceUtil
+-			Method methodWrite = classImageIO.getMethod("write", java.awt.image.RenderedImage.class, String.class, File.class);
++			Method methodWrite = classImageIO.getMethod("write",
++					new Class[] { java.awt.image.RenderedImage.class, String.class, File.class });
+@@ -189 +189,2 @@ public final class UserInterfaceUtil
+-			Method methodFromFXImage = classSwingFXUtils.getMethod("fromFXImage", Image.class, java.awt.image.BufferedImage.class);
++			Method methodFromFXImage = classSwingFXUtils.getMethod("fromFXImage",
++					new Class[] { javafx.scene.image.Image.class, java.awt.image.BufferedImage.class });
+@@ -191 +192,2 @@ public final class UserInterfaceUtil
+-			methodWrite.invoke(null, methodFromFXImage.invoke(null, imageSnap, null), "png", new File(snapshotFilename));
++			methodWrite.invoke(null, new Object[] { methodFromFXImage.invoke(null, new Object[] { imageSnap, null }), "png",
++					new File(snapshotFilename) });
+@@ -282,2 +284 @@ public final class UserInterfaceUtil
+-		@Override
+-		protected Tooltip computeValue()
++		@Override protected Tooltip computeValue()

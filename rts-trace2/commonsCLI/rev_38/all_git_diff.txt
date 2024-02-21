@@ -1,0 +1,53 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index 0cd8b5cd..7f22e2a5 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -48 +48 @@ jobs:
+-      uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac
++      uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+@@ -60 +60 @@ jobs:
+-      uses: github/codeql-action/init@04daf014b50eaf774287bf3f0f1869d4b4c4b913 # v2.21.7
++      uses: github/codeql-action/init@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
+@@ -71 +71 @@ jobs:
+-      uses: github/codeql-action/autobuild@04daf014b50eaf774287bf3f0f1869d4b4c4b913 # v2.21.7
++      uses: github/codeql-action/autobuild@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
+@@ -85 +85 @@ jobs:
+-      uses: github/codeql-action/analyze@04daf014b50eaf774287bf3f0f1869d4b4c4b913 # v2.21.7
++      uses: github/codeql-action/analyze@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
+diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
+index 9779190b..58ab71cc 100644
+--- a/.github/workflows/coverage.yml
++++ b/.github/workflows/coverage.yml
+@@ -32 +32 @@ jobs:
+-    - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac
++    - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+@@ -42 +42 @@ jobs:
+-      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
++      uses: actions/setup-java@0ab4596768b603586c0de567f2430c30f5b0d2b0 # v3.13.0
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index feb009ce..ce53b3fd 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -37 +37 @@ jobs:
+-    - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac
++    - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+@@ -47 +47 @@ jobs:
+-      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
++      uses: actions/setup-java@0ab4596768b603586c0de567f2430c30f5b0d2b0 # v3.13.0
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index 4e9543ce..dbe71a80 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -43 +43 @@ jobs:
+-        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac   # 4.0.0
++        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608   # 4.1.0
+@@ -67 +67 @@ jobs:
+-        uses: github/codeql-action/upload-sarif@04daf014b50eaf774287bf3f0f1869d4b4c4b913    # 2.21.7
++        uses: github/codeql-action/upload-sarif@ddccb873888234080b77e9bc2d4764d5ccaaccf9    # 2.21.9
+diff --git a/src/main/java/org/apache/commons/cli/TypeHandler.java b/src/main/java/org/apache/commons/cli/TypeHandler.java
+index abb7016e..261ecc44 100644
+--- a/src/main/java/org/apache/commons/cli/TypeHandler.java
++++ b/src/main/java/org/apache/commons/cli/TypeHandler.java
+@@ -120 +120 @@ public class TypeHandler {
+-            return cl.newInstance();
++            return cl.getConstructor().newInstance();

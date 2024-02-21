@@ -1,0 +1,209 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathBasicBeanInfo.java b/src/main/java/org/apache/commons/jxpath/JXPathBasicBeanInfo.java
+index 00f6d8a4..c05c494a 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathBasicBeanInfo.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathBasicBeanInfo.java
+@@ -160 +160 @@ public class JXPathBasicBeanInfo implements JXPathBeanInfo {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathException.java b/src/main/java/org/apache/commons/jxpath/JXPathException.java
+index e1d50a71..e76622db 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathException.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathException.java
+@@ -88 +88 @@ public class JXPathException extends RuntimeException {
+-        final StringBuffer buf = new StringBuffer();
++        final StringBuilder buf = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java
+index 8c871599..9b3bd01b 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java
+@@ -224 +224 @@ public class CoreFunction extends Operation {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+@@ -531 +531 @@ public class CoreFunction extends Operation {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreOperation.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreOperation.java
+index 2080f88f..488b1ea6 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreOperation.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/CoreOperation.java
+@@ -84 +84 @@ public abstract class CoreOperation extends Operation {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/ExpressionPath.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/ExpressionPath.java
+index e2e46477..39853fa9 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/ExpressionPath.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/ExpressionPath.java
+@@ -105 +105 @@ public class ExpressionPath extends Path {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunction.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunction.java
+index 482df390..c8a9b277 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunction.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunction.java
+@@ -66 +66 @@ public class ExtensionFunction extends Operation {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/LocationPath.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/LocationPath.java
+index b21b5336..98afe8a4 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/LocationPath.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/LocationPath.java
+@@ -53 +53 @@ public class LocationPath extends Path {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/Step.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/Step.java
+index 958b649b..8dc0e48d 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/Step.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/Step.java
+@@ -81 +81 @@ public class Step {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+index 34b498db..4d7e0e76 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+@@ -689 +689 @@ public abstract class NodePointer implements Pointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+@@ -852 +852 @@ public abstract class NodePointer implements Pointer {
+-        StringBuffer sb = null;
++        StringBuilder sb = null;
+@@ -855 +855 @@ public abstract class NodePointer implements Pointer {
+-                sb = new StringBuffer(string);
++                sb = new StringBuilder(string);
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/VariablePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/VariablePointer.java
+index 3b1459c7..d7d1803d 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/VariablePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/VariablePointer.java
+@@ -323 +323 @@ public class VariablePointer extends NodePointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/CollectionPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/CollectionPointer.java
+index ec73b2ff..5fa85ded 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/CollectionPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/CollectionPointer.java
+@@ -235 +235 @@ public class CollectionPointer extends NodePointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/LangAttributePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/LangAttributePointer.java
+index 8cab27c4..0a0a2fc1 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/LangAttributePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/LangAttributePointer.java
+@@ -88 +88 @@ public class LangAttributePointer extends NodePointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullElementPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullElementPointer.java
+index 0f8b1bd4..bf7fbdbe 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullElementPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullElementPointer.java
+@@ -136 +136 @@ public class NullElementPointer extends CollectionPointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java
+index e527e1a7..fcc02cae 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java
+@@ -215 +215 @@ public class NullPropertyPointer extends PropertyPointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributePointer.java
+index 834f4a68..e05daedb 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributePointer.java
+@@ -121 +121 @@ public class DOMAttributePointer extends NodePointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java
+index bccb30ac..d3fdfaf6 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java
+@@ -511 +511 @@ public class DOMNodePointer extends NodePointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+@@ -750 +750 @@ public class DOMNodePointer extends NodePointer {
+-        final StringBuffer buf = new StringBuffer();
++        final StringBuilder buf = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dom/NamespacePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/dom/NamespacePointer.java
+index adc9c41b..5e4c6c27 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dom/NamespacePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dom/NamespacePointer.java
+@@ -116 +116 @@ public class NamespacePointer extends NodePointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyPointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyPointer.java
+index 7d3970c9..a54c259b 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyPointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyPointer.java
+@@ -299 +299 @@ public class DynamicPropertyPointer extends PropertyPointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributePointer.java
+index f8536971..05dd873b 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributePointer.java
+@@ -105 +105 @@ public class JDOMAttributePointer extends NodePointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNamespacePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNamespacePointer.java
+index fbfc769b..2cc28431 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNamespacePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNamespacePointer.java
+@@ -105 +105 @@ public class JDOMNamespacePointer extends NodePointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
+index 5e544765..f04dca01 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java
+@@ -273 +273 @@ public class JDOMNodePointer extends NodePointer {
+-            final StringBuffer buf = new StringBuffer();
++            final StringBuilder buf = new StringBuilder();
+@@ -645 +645 @@ public class JDOMNodePointer extends NodePointer {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/ParseException.java b/src/main/java/org/apache/commons/jxpath/ri/parser/ParseException.java
+index 3ff88a9b..d95f1fb8 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/parser/ParseException.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/ParseException.java
+@@ -173 +173 @@ public String getMessage() {
+-      final StringBuffer retval = new StringBuffer();
++      final StringBuilder retval = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/TokenMgrError.java b/src/main/java/org/apache/commons/jxpath/ri/parser/TokenMgrError.java
+index 68ccfa0e..1739a9f8 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/parser/TokenMgrError.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/TokenMgrError.java
+@@ -68 +68 @@ public class TokenMgrError extends Error
+-      final StringBuffer retval = new StringBuffer();
++      final StringBuilder retval = new StringBuilder();
+diff --git a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
+index fa1db5e6..1994b53b 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
++++ b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
+@@ -152 +152 @@ public class ClassLoaderUtil {
+-            final StringBuffer classNameBuffer = new StringBuffer();
++            final StringBuilder classNameBuffer = new StringBuilder();
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/dom/DOMModelTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/dom/DOMModelTest.java
+index b6def8bf..97fda34c 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/dom/DOMModelTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/dom/DOMModelTest.java
+@@ -66 +66 @@ public class DOMModelTest extends XMLModelTestCase {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+@@ -72 +72 @@ public class DOMModelTest extends XMLModelTestCase {
+-        final StringBuffer buffer,
++        final StringBuilder buffer,
+@@ -123 +123 @@ public class DOMModelTest extends XMLModelTestCase {
+-        final StringBuffer buffer,
++        final StringBuilder buffer,
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/jdom/JDOMModelTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/jdom/JDOMModelTest.java
+index d0816c9d..8ae05833 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/jdom/JDOMModelTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/jdom/JDOMModelTest.java
+@@ -72 +72 @@ public class JDOMModelTest extends XMLModelTestCase {
+-        final StringBuffer buffer = new StringBuffer();
++        final StringBuilder buffer = new StringBuilder();
+@@ -78 +78 @@ public class JDOMModelTest extends XMLModelTestCase {
+-        final StringBuffer buffer,
++        final StringBuilder buffer,
+@@ -122 +122 @@ public class JDOMModelTest extends XMLModelTestCase {
+-        final StringBuffer buffer,
++        final StringBuilder buffer,

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlDeserializationContext.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml.deser</a> &gt; <span class="el_source">XmlDeserializationContext.java</span></div><h1>XmlDeserializationContext.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml.deser;
+
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.cfg.CacheProvider;
+import com.fasterxml.jackson.databind.deser.DefaultDeserializationContext;
+import com.fasterxml.jackson.databind.deser.DeserializerCache;
+import com.fasterxml.jackson.databind.deser.DeserializerFactory;
+
+/**
+ * XML-specific {@link DeserializationContext} needed to override certain
+ * handlers.
+ *
+ * @since 2.12
+ */
+public class XmlDeserializationContext
+    extends DefaultDeserializationContext
+{
+    private static final long serialVersionUID = 1L;
+
+    /*
+    /**********************************************************
+    /* Life-cycle methods
+    /**********************************************************
+     */
+
+    /**
+     * Default constructor for a blueprint object, which will use the standard
+     * {@link DeserializerCache}, given factory.
+     */
+    public XmlDeserializationContext(DeserializerFactory df) {
+        // 04-Sep-2023, tatu: Not ideal (wrt not going via CacheProvider) but
+        //     has to do for backwards compatibility:
+<span class="fc" id="L37">        super(df, new DeserializerCache());</span>
+<span class="fc" id="L38">    }</span>
+
+    private XmlDeserializationContext(XmlDeserializationContext src,
+            DeserializationConfig config, JsonParser p, InjectableValues values) {
+<span class="fc" id="L42">        super(src, config, p, values);</span>
+<span class="fc" id="L43">    }</span>
+
+<span class="fc" id="L45">    private XmlDeserializationContext(XmlDeserializationContext src) { super(src); }</span>
+
+    private XmlDeserializationContext(XmlDeserializationContext src, DeserializerFactory factory) {
+<span class="fc" id="L48">        super(src, factory);</span>
+<span class="fc" id="L49">    }</span>
+
+    private XmlDeserializationContext(XmlDeserializationContext src, DeserializationConfig config) {
+<span class="fc" id="L52">        super(src, config);</span>
+<span class="fc" id="L53">    }</span>
+
+    // @since 2.16
+    private XmlDeserializationContext(XmlDeserializationContext src, CacheProvider cp) {
+<span class="nc" id="L57">        super(src, cp);</span>
+<span class="nc" id="L58">    }</span>
+
+    @Override
+    public XmlDeserializationContext copy() {
+<span class="fc" id="L62">        return new XmlDeserializationContext(this);</span>
+    }
+
+    @Override
+    public DefaultDeserializationContext createInstance(DeserializationConfig config,
+            JsonParser p, InjectableValues values) {
+<span class="fc" id="L68">        return new XmlDeserializationContext(this, config, p, values);</span>
+    }
+
+    @Override
+    public DefaultDeserializationContext createDummyInstance(DeserializationConfig config) {
+        // need to be careful to create non-blue-print instance
+<span class="fc" id="L74">        return new XmlDeserializationContext(this, config);</span>
+    }
+
+    @Override
+    public DefaultDeserializationContext with(DeserializerFactory factory) {
+<span class="fc" id="L79">        return new XmlDeserializationContext(this, factory);</span>
+    }
+
+    @Override
+    public DefaultDeserializationContext withCaches(CacheProvider cp) {
+<span class="nc" id="L84">        return new XmlDeserializationContext(this, cp);</span>
+    }
+
+    /*
+    /**********************************************************
+    /* Overrides we need
+    /**********************************************************
+     */
+
+    @Override // since 2.12
+    public Object readRootValue(JsonParser p, JavaType valueType,
+            JsonDeserializer&lt;Object&gt; deser, Object valueToUpdate)
+        throws IOException
+    {
+        // 18-Sep-2021, tatu: Complicated mess; with 2.12, had [dataformat-xml#374]
+        //    to disable handling. With 2.13, via [dataformat-xml#485] undid this change
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        if (_config.useRootWrapping()) {</span>
+<span class="fc" id="L101">            return _unwrapAndDeserialize(p, valueType, deser, valueToUpdate);</span>
+        }
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">        if (valueToUpdate == null) {</span>
+<span class="fc" id="L104">            return deser.deserialize(p, this);</span>
+        }
+<span class="nc" id="L106">        return deser.deserialize(p, this, valueToUpdate);</span>
+    }
+
+    // To support case where XML element has attributes as well as CDATA, need
+    // to &quot;extract&quot; scalar value (CDATA), after the fact
+    @Override // since 2.12
+    public String extractScalarFromObject(JsonParser p, JsonDeserializer&lt;?&gt; deser,
+            Class&lt;?&gt; scalarType)
+        throws IOException
+    {
+        // Only called on START_OBJECT, should not need to check, but JsonParser we
+        // get may or may not be `FromXmlParser` so traverse using regular means
+<span class="fc" id="L118">        String text = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        while (p.nextToken() == JsonToken.FIELD_NAME) {</span>
+            // Couple of ways to find &quot;real&quot; textual content. One is to look for
+            // &quot;XmlText&quot;... but for that would need to know configuration. Alternatively
+            // could hold on to last text seen -- but this might be last attribute, for
+            // empty element. So for now let's simply hard-code check for empty String
+            // as marker and hope for best
+<span class="fc" id="L126">            final String propName = p.currentName();</span>
+<span class="fc" id="L127">            JsonToken t = p.nextToken();</span>
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">            if (t == JsonToken.VALUE_STRING) {</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">                if (propName.equals(&quot;&quot;)) {</span>
+<span class="fc" id="L130">                    text = p.getText();</span>
+                }
+            } else {
+<span class="nc" id="L133">                p.skipChildren();</span>
+            }
+<span class="fc" id="L135">        }</span>
+<span class="fc" id="L136">        return text;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

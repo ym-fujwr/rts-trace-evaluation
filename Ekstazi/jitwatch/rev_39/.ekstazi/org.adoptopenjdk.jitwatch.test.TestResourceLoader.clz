@@ -1,0 +1,10 @@
+# 1
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/jvmlang/LanguageManager.class _ 2288407931
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/loader/ResourceLoader.class _ 1113353968
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestResourceLoader.class _ 259003092
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/Logger.class _ 1540281330
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/selector/ContextSelector.class _ 3724270016
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/util/LoggerNameUtil.class _ 3832657498
+jar:file:/home/ym-fujwr/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class _ 3503914941
+jar:file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar!/org/slf4j/ILoggerFactory.class _ 2957801382
+jar:file:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar!/org/slf4j/LoggerFactory.class _ 3674618535

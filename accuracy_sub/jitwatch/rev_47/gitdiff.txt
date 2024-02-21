@@ -1,0 +1,43 @@
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java b/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
+index 29751208..493a0103 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
+@@ -83 +83,2 @@ public class JITWatchConfig
+-	private static final String KEY_SANDBOX_EXTRA_VM_SWITCHES = SANDBOX_PREFIX + ".extra.vm.switches";
++	private static final String KEY_SANDBOX_EXTRA_VM_COMPILATION_SWITCHES = SANDBOX_PREFIX + ".extra.vm.switches.compilation";
++	private static final String KEY_SANDBOX_EXTRA_VM_RUNTIME_SWITCHES = SANDBOX_PREFIX + ".extra.vm.switches.runtime";
+@@ -115 +116,2 @@ public class JITWatchConfig
+-	private String extraVMSwitches;
++	private String extraVMCompilationSwitches;
++	private String extraVMRuntimeSwitches;
+@@ -357 +359,2 @@ public class JITWatchConfig
+-		extraVMSwitches = getProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_SWITCHES, JITWatchConstants.S_EMPTY);
++		extraVMCompilationSwitches = getProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_COMPILATION_SWITCHES, JITWatchConstants.S_EMPTY);
++		extraVMRuntimeSwitches = getProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_RUNTIME_SWITCHES, JITWatchConstants.S_EMPTY);
+@@ -620 +623,3 @@ public class JITWatchConfig
+-		putProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_SWITCHES, extraVMSwitches);
++		putProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_COMPILATION_SWITCHES, extraVMCompilationSwitches);
++
++		putProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_RUNTIME_SWITCHES, extraVMRuntimeSwitches);
+@@ -826 +831,11 @@ public class JITWatchConfig
+-	public String getExtraVMSwitches()
++	public String getExtraVMCompilationSwitches()
++	{
++		return extraVMCompilationSwitches;
++	}
++
++	public void setExtraVMCompilationSwitches(String extraVMCompilationSwitches)
++	{
++		this.extraVMCompilationSwitches = extraVMCompilationSwitches;
++	}
++
++	public String getExtraVMRuntimeSwitches()
+@@ -828 +843 @@ public class JITWatchConfig
+-		return extraVMSwitches;
++		return extraVMRuntimeSwitches;
+@@ -831 +846 @@ public class JITWatchConfig
+-	public void setExtraVMSwitches(String extraVMSwitches)
++	public void setExtraVMRuntimeSwitches(String extraVMRuntimeSwitches)
+@@ -833 +848 @@ public class JITWatchConfig
+-		this.extraVMSwitches = extraVMSwitches;
++		this.extraVMRuntimeSwitches = extraVMRuntimeSwitches;

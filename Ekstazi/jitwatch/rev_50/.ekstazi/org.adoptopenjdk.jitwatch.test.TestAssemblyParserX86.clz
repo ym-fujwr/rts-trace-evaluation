@@ -1,0 +1,18 @@
+# 1
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/AbstractAssemblyParser.class _ 3447747115
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/Architecture.class _ 2718162838
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/AssemblyBlock.class _ 4119784930
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/AssemblyInstruction.class _ 1978130198
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/AssemblyLabels.class _ 2316818538
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/AssemblyMethod.class _ 3331879240
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil$1.class _ 3982762404
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/AssemblyUtil.class _ 1511205667
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/IAssemblyParser.class _ 4160053799
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/model/assembly/x86/AssemblyParserX86.class _ 2303831152
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/AbstractAssemblyTest$OperandType.class _ 1762977609
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/AbstractAssemblyTest.class _ 2134058669
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestAssemblyParserX86$1.class _ 657221663
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestAssemblyParserX86.class _ 329438605
+jar:file:/home/ym-fujwr/.m2/repository/com/chrisnewland/FreeLogJ/0.0.1/FreeLogJ-0.0.1.jar!/com/chrisnewland/freelogj/Logger$LogLevel.class _ 884793566
+jar:file:/home/ym-fujwr/.m2/repository/com/chrisnewland/FreeLogJ/0.0.1/FreeLogJ-0.0.1.jar!/com/chrisnewland/freelogj/Logger.class _ 2460491661
+jar:file:/home/ym-fujwr/.m2/repository/com/chrisnewland/FreeLogJ/0.0.1/FreeLogJ-0.0.1.jar!/com/chrisnewland/freelogj/LoggerFactory.class _ 3632338463

@@ -1,0 +1,111 @@
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] ----------------< com.github.davidmoten:hilbert-curve >-----------------
+[INFO] Building hilbert-curve 0.1.5-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.3:prepare-agent (default) @ hilbert-curve ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.3/org.jacoco.agent-0.8.3-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/target/jacoco.exec"
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hilbert-curve ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ hilbert-curve ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ hilbert-curve ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 15 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:testCompile (default-testCompile) @ hilbert-curve ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ hilbert-curve ---
+[INFO] Surefire report directory: /mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.davidmoten.hilbert.BoxTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.168 sec
+Running org.davidmoten.hilbert.HilbertCurveRendererTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 1.148 sec
+Running org.davidmoten.hilbert.HilbertCurveTest
+[Range [low=3, high=3], Range [low=4, high=6]]
+Range [low=10, high=10]
+Range [low=26, high=28]
+Range [low=31, high=48]
+Range [low=51, high=53]
+Range [low=69, high=69]
+Range [low=122, high=124]
+Range [low=127, high=128]
+Range [low=131, high=132]
+Range [low=210, high=221]
+Range [low=227, high=229]
+Range [low=10, high=69]
+Range [low=122, high=132]
+Range [low=210, high=229]
+Range [low=10, high=10]
+Range [low=26, high=53]
+Range [low=69, high=69]
+Range [low=122, high=132]
+Range [low=210, high=221]
+Range [low=227, high=229]
+0	[0, 0]
+1	[1, 0]
+2	[1, 1]
+3	[0, 1]
+20	1.00
+19	1.05
+18	1.11
+17	1.16
+16	1.22
+15	1.49
+14	1.75
+13	2.01
+12	2.28
+11	2.54
+10	2.80
+09	3.49
+08	4.17
+07	4.86
+06	5.54
+05	7.70
+04	11.54
+03	17.07
+02	56.29
+01	370.03
+[Range [low=3, high=3], Range [low=4, high=7]]
+length = 46
+[845160956002304, 772841539928063, 1110767956099071]
+[Range [low=5, high=7], Range [low=8, high=10]]
+Tests run: 40, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.774 sec
+Running org.davidmoten.hilbert.internal.util.BoundedPriorityQueueTest
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 sec
+Running org.davidmoten.hilbert.RangesTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+Running org.davidmoten.hilbert.UtilTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+Running org.davidmoten.hilbert.WikipediaHilbertTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.038 sec
+
+Results :
+
+Tests run: 78, Failures: 0, Errors: 0, Skipped: 1
+
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.3:report (report) @ hilbert-curve ---
+[INFO] Loading execution data file /mnt/c/Users/fujiwara yuma/evaluation/ALL/hilbertCurve/workingDir/target/jacoco.exec
+[INFO] Analyzed bundle 'hilbert-curve' with 14 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.924 s
+[INFO] Finished at: 2023-12-14T10:23:23+09:00
+[INFO] ------------------------------------------------------------------------

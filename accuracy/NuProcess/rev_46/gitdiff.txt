@@ -1,0 +1,131 @@
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java b/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
+index e2fa76f..5b8f19d 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
+@@ -356,2 +356,3 @@ public abstract class BasePosixProcess implements NuProcess
+-            throw new RuntimeException("Unexpected eof");
+-            // EOF?
++
++            int errno = Native.getLastError();
++            throw new RuntimeException("Unexpected EOF reading stdout, errno: " + errno);
+@@ -393 +393,0 @@ public abstract class BasePosixProcess implements NuProcess
+-            // EOF?
+@@ -395 +395,3 @@ public abstract class BasePosixProcess implements NuProcess
+-            throw new RuntimeException("Unexpected eof");
++
++            int errno = Native.getLastError();
++            throw new RuntimeException("Unexpected EOF reading stderr, errno: " + errno);
+diff --git a/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java b/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
+index a0ff29f..d4c6bca 100644
+--- a/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
+@@ -37,0 +38,2 @@ public class LinuxProcess extends BasePosixProcess
++   private final EpollEvent epollEvent;
++
+@@ -57,0 +60,2 @@ public class LinuxProcess extends BasePosixProcess
++
++      epollEvent = new EpollEvent();
+@@ -114,0 +119,11 @@ public class LinuxProcess extends BasePosixProcess
++   /**
++    * An {@link EpollEvent} struct, which may be used when registering for events for this process. Each process has
++    * its own struct to avoid concurrency issues in {@link ProcessEpoll#registerProcess} when multiple processes are
++    * registered at once (e.g. multiple threads are all starting new processes concurrently).
++    *
++    * @return this process's {@link EpollEvent} struct
++    */
++   EpollEvent getEpollEvent() {
++      return epollEvent;
++   }
++
+diff --git a/src/main/java/com/zaxxer/nuprocess/linux/ProcessEpoll.java b/src/main/java/com/zaxxer/nuprocess/linux/ProcessEpoll.java
+index ad2067d..54c09fc 100644
+--- a/src/main/java/com/zaxxer/nuprocess/linux/ProcessEpoll.java
++++ b/src/main/java/com/zaxxer/nuprocess/linux/ProcessEpoll.java
+@@ -22,2 +21,0 @@ import java.util.List;
+-import java.util.concurrent.ArrayBlockingQueue;
+-import java.util.concurrent.BlockingQueue;
+@@ -41,2 +39,3 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-   private static final int EVENT_POOL_SIZE = 64;
+-   private static final BlockingQueue<EpollEvent> eventPool;
++   private final int epoll;
++   private final EpollEvent triggeredEvent;
++   private final List<LinuxProcess> deadPool;
+@@ -44,3 +42,0 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-   private int epoll;
+-   private EpollEvent triggeredEvent;
+-   private List<LinuxProcess> deadPool;
+@@ -49,9 +44,0 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-   static
+-   {
+-      eventPool = new ArrayBlockingQueue<>(EVENT_POOL_SIZE);
+-      for (int i = 0; i < EVENT_POOL_SIZE; i++) {
+-         EpollEvent event = new EpollEvent();
+-         eventPool.add(event);
+-      }
+-   }
+-
+@@ -79 +66,2 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-         throw new RuntimeException("Unable to create kqueue: " + Native.getLastError());
++         int errno = Native.getLastError();
++         throw new RuntimeException("Unable to create kqueue, errno: " + errno);
+@@ -111,22 +99,7 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-         try {
+-            EpollEvent event = eventPool.take();
+-            event.setEvents(LibEpoll.EPOLLIN);
+-            event.setFileDescriptor(stdoutFd);
+-            int rc = LibEpoll.epoll_ctl(epoll, LibEpoll.EPOLL_CTL_ADD, stdoutFd, event.getPointer());
+-            if (rc == -1) {
+-               rc = Native.getLastError();
+-               eventPool.put(event);
+-               throw new RuntimeException("Unable to register new events to epoll, errorcode: " + rc);
+-            }
+-            eventPool.put(event);
+-
+-            event = eventPool.take();
+-            event.setEvents(LibEpoll.EPOLLIN);
+-            event.setFileDescriptor(stderrFd);
+-            rc = LibEpoll.epoll_ctl(epoll, LibEpoll.EPOLL_CTL_ADD, stderrFd, event.getPointer());
+-            if (rc == -1) {
+-               rc = Native.getLastError();
+-               eventPool.put(event);
+-               throw new RuntimeException("Unable to register new events to epoll, errorcode: " + rc);
+-            }
+-            eventPool.put(event);
++         EpollEvent event = process.getEpollEvent();
++         event.setEvents(LibEpoll.EPOLLIN);
++         event.setFileDescriptor(stdoutFd);
++         int rc = LibEpoll.epoll_ctl(epoll, LibEpoll.EPOLL_CTL_ADD, stdoutFd, event.getPointer());
++         if (rc == -1) {
++            int errno = Native.getLastError();
++            throw new RuntimeException("Unable to register new events to epoll, errno: " + errno);
+@@ -134,2 +107,7 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-         catch (InterruptedException ie) {
+-            throw new RuntimeException(ie);
++
++         event.setEvents(LibEpoll.EPOLLIN);
++         event.setFileDescriptor(stderrFd);
++         rc = LibEpoll.epoll_ctl(epoll, LibEpoll.EPOLL_CTL_ADD, stderrFd, event.getPointer());
++         if (rc == -1) {
++            int errno = Native.getLastError();
++            throw new RuntimeException("Unable to register new events to epoll, errno: " + errno);
+@@ -163 +141,2 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-         EpollEvent event = eventPool.take();
++
++         EpollEvent event = process.getEpollEvent();
+@@ -169,0 +149,4 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
++            if (rc == -1) {
++               int errno = Native.getLastError();
++               throw new RuntimeException("Unable to register new event to epoll queue, errno: " + errno);
++            }
+@@ -171,8 +153,0 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-
+-         eventPool.put(event);
+-         if (rc == -1) {
+-            throw new RuntimeException("Unable to register new event to epoll queue");
+-         }
+-      }
+-      catch (InterruptedException ie) {
+-         throw new RuntimeException(ie);
+@@ -231 +206 @@ class ProcessEpoll extends BaseEventProcessor<LinuxProcess>
+-            throw new RuntimeException("Error waiting for epoll (" + errno + ")");
++            throw new RuntimeException("Error waiting for epoll, errno: " + errno);

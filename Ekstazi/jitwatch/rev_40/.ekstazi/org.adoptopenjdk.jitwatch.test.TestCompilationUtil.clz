@@ -1,0 +1,10 @@
+# 1
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/logger/ILogListener.class _ 933323663
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/logger/NullLogListener.class _ 2266777424
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/process/AbstractProcess.class _ 4208846512
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/process/compiler/CompilerJava.class _ 1547290080
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/classes/org/adoptopenjdk/jitwatch/util/FileUtil.class _ 2071132611
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/jitwatch/workingDir/core/target/test-classes/org/adoptopenjdk/jitwatch/test/TestCompilationUtil.class _ 76317469
+jar:file:/home/ym-fujwr/.m2/repository/com/chrisnewland/FreeLogJ/0.0.1/FreeLogJ-0.0.1.jar!/com/chrisnewland/freelogj/Logger$LogLevel.class _ 884793566
+jar:file:/home/ym-fujwr/.m2/repository/com/chrisnewland/FreeLogJ/0.0.1/FreeLogJ-0.0.1.jar!/com/chrisnewland/freelogj/Logger.class _ 2460491661
+jar:file:/home/ym-fujwr/.m2/repository/com/chrisnewland/FreeLogJ/0.0.1/FreeLogJ-0.0.1.jar!/com/chrisnewland/freelogj/LoggerFactory.class _ 3632338463

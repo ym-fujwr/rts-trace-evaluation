@@ -1,0 +1,119 @@
+diff --git a/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java b/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
+index 493a0103..29751208 100644
+--- a/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
++++ b/core/src/main/java/org/adoptopenjdk/jitwatch/core/JITWatchConfig.java
+@@ -83,2 +83 @@ public class JITWatchConfig
+-	private static final String KEY_SANDBOX_EXTRA_VM_COMPILATION_SWITCHES = SANDBOX_PREFIX + ".extra.vm.switches.compilation";
+-	private static final String KEY_SANDBOX_EXTRA_VM_RUNTIME_SWITCHES = SANDBOX_PREFIX + ".extra.vm.switches.runtime";
++	private static final String KEY_SANDBOX_EXTRA_VM_SWITCHES = SANDBOX_PREFIX + ".extra.vm.switches";
+@@ -116,2 +115 @@ public class JITWatchConfig
+-	private String extraVMCompilationSwitches;
+-	private String extraVMRuntimeSwitches;
++	private String extraVMSwitches;
+@@ -359,2 +357 @@ public class JITWatchConfig
+-		extraVMCompilationSwitches = getProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_COMPILATION_SWITCHES, JITWatchConstants.S_EMPTY);
+-		extraVMRuntimeSwitches = getProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_RUNTIME_SWITCHES, JITWatchConstants.S_EMPTY);
++		extraVMSwitches = getProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_SWITCHES, JITWatchConstants.S_EMPTY);
+@@ -623,3 +620 @@ public class JITWatchConfig
+-		putProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_COMPILATION_SWITCHES, extraVMCompilationSwitches);
+-
+-		putProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_RUNTIME_SWITCHES, extraVMRuntimeSwitches);
++		putProperty(loadedProps, KEY_SANDBOX_EXTRA_VM_SWITCHES, extraVMSwitches);
+@@ -831,11 +826 @@ public class JITWatchConfig
+-	public String getExtraVMCompilationSwitches()
+-	{
+-		return extraVMCompilationSwitches;
+-	}
+-
+-	public void setExtraVMCompilationSwitches(String extraVMCompilationSwitches)
+-	{
+-		this.extraVMCompilationSwitches = extraVMCompilationSwitches;
+-	}
+-
+-	public String getExtraVMRuntimeSwitches()
++	public String getExtraVMSwitches()
+@@ -843 +828 @@ public class JITWatchConfig
+-		return extraVMRuntimeSwitches;
++		return extraVMSwitches;
+@@ -846 +831 @@ public class JITWatchConfig
+-	public void setExtraVMRuntimeSwitches(String extraVMRuntimeSwitches)
++	public void setExtraVMSwitches(String extraVMSwitches)
+@@ -848 +833 @@ public class JITWatchConfig
+-		this.extraVMRuntimeSwitches = extraVMRuntimeSwitches;
++		this.extraVMSwitches = extraVMSwitches;
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
+index 1349e92e..9b9c41de 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/sandbox/Sandbox.java
+@@ -325 +325 @@ public class Sandbox
+-		if (logParser.getConfig().getExtraVMRuntimeSwitches().length() > 0)
++		if (logParser.getConfig().getExtraVMSwitches().length() > 0)
+@@ -327 +327 @@ public class Sandbox
+-			String extraSwitchString = logParser.getConfig().getExtraVMRuntimeSwitches();
++			String extraSwitchString = logParser.getConfig().getExtraVMSwitches();
+diff --git a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
+index 689c1d3a..a315e178 100644
+--- a/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
++++ b/ui/src/main/java/org/adoptopenjdk/jitwatch/ui/sandbox/SandboxConfigStage.java
+@@ -47,2 +47 @@ public class SandboxConfigStage extends Stage
+-	private TextField txtExtraCompilationSwitches;
+-	private TextField txtExtraRuntimeSwitches;
++	private TextField txtExtraSwitches;
+@@ -106,3 +105 @@ public class SandboxConfigStage extends Stage
+-		vbox.getChildren().add(buildHBoxExtraCompilationSwitches());
+-
+-		vbox.getChildren().add(buildHBoxExtraRuntimeSwitches());
++		vbox.getChildren().add(buildHBoxExtraSwitches());
+@@ -130,3 +127 @@ public class SandboxConfigStage extends Stage
+-				setExtraVMCompilationSwitches(config);
+-
+-				setExtraVMRuntimeSwitches(config);
++				setExtraVMSwitches(config);
+@@ -170 +165 @@ public class SandboxConfigStage extends Stage
+-	private void setExtraVMCompilationSwitches(JITWatchConfig config)
++	private void setExtraVMSwitches(JITWatchConfig config)
+@@ -172,6 +167 @@ public class SandboxConfigStage extends Stage
+-		config.setExtraVMCompilationSwitches(txtExtraCompilationSwitches.getText().trim());
+-	}
+-
+-	private void setExtraVMRuntimeSwitches(JITWatchConfig config)
+-	{
+-		config.setExtraVMRuntimeSwitches(txtExtraRuntimeSwitches.getText().trim());
++		config.setExtraVMSwitches(txtExtraSwitches.getText().trim());
+@@ -540,18 +530 @@ public class SandboxConfigStage extends Stage
+-	private HBox buildHBoxExtraCompilationSwitches()
+-	{
+-		HBox hbox = new HBox();
+-
+-		Label labelExtraCompilation = new Label("Extra VM compilation switches:");
+-		labelExtraCompilation.setMinWidth(labelWidth);
+-
+-		txtExtraCompilationSwitches = new TextField(config.getExtraVMCompilationSwitches());
+-		txtExtraCompilationSwitches.prefWidthProperty().bind(scene.widthProperty());
+-		txtExtraCompilationSwitches.setAlignment(Pos.BASELINE_LEFT);
+-
+-		hbox.getChildren().add(labelExtraCompilation);
+-		hbox.getChildren().add(txtExtraCompilationSwitches);
+-
+-		return hbox;
+-	}
+-
+-	private HBox buildHBoxExtraRuntimeSwitches()
++	private HBox buildHBoxExtraSwitches()
+@@ -561,2 +534,2 @@ public class SandboxConfigStage extends Stage
+-		Label labelExtraRuntime = new Label("Extra VM runtime switches:");
+-		labelExtraRuntime.setMinWidth(labelWidth);
++		Label labelExtra = new Label("Extra VM switches:");
++		labelExtra.setMinWidth(labelWidth);
+@@ -564,3 +537,3 @@ public class SandboxConfigStage extends Stage
+-		txtExtraRuntimeSwitches = new TextField(config.getExtraVMRuntimeSwitches());
+-		txtExtraRuntimeSwitches.prefWidthProperty().bind(scene.widthProperty());
+-		txtExtraRuntimeSwitches.setAlignment(Pos.BASELINE_LEFT);
++		txtExtraSwitches = new TextField(config.getExtraVMSwitches());
++		txtExtraSwitches.prefWidthProperty().bind(scene.widthProperty());
++		txtExtraSwitches.setAlignment(Pos.BASELINE_LEFT);
+@@ -568,2 +541,2 @@ public class SandboxConfigStage extends Stage
+-		hbox.getChildren().add(labelExtraRuntime);
+-		hbox.getChildren().add(txtExtraRuntimeSwitches);
++		hbox.getChildren().add(labelExtra);
++		hbox.getChildren().add(txtExtraSwitches);

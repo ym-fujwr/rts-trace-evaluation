@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlTokenStream.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml.deser</a> &gt; <span class="el_source">XmlTokenStream.java</span></div><h1>XmlTokenStream.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml.deser;
+
+import java.io.IOException;
+
+import javax.xml.XMLConstants;
+import javax.xml.stream.*;
+
+import org.codehaus.stax2.XMLStreamLocation2;
+import org.codehaus.stax2.XMLStreamReader2;
+
+import com.fasterxml.jackson.core.JsonLocation;
+import com.fasterxml.jackson.core.io.ContentReference;
+
+import com.fasterxml.jackson.dataformat.xml.XmlNameProcessor;
+import com.fasterxml.jackson.dataformat.xml.util.Stax2JacksonReaderAdapter;
+
+/**
+ * Simple helper class used on top of STAX {@link XMLStreamReader} to further
+ * abstract out all irrelevant details, and to expose equivalent of flat token
+ * stream with no &quot;fluff&quot; tokens (comments, processing instructions, mixed
+ * content) all of which is just to simplify
+ * actual higher-level conversion to JSON tokens.
+ *&lt;p&gt;
+ * Beyond initial idea there are also couple of other detours like ability
+ * to &quot;replay&quot; some tokens, add virtual wrappers (ironically to support &quot;unwrapped&quot;
+ * array values), and to unroll &quot;Objects&quot; into String values in some cases.
+ */
+public class XmlTokenStream
+{
+    // // // main token states:
+
+    public final static int XML_START_ELEMENT = 1;
+    public final static int XML_END_ELEMENT = 2;
+    public final static int XML_ATTRIBUTE_NAME = 3;
+    public final static int XML_ATTRIBUTE_VALUE = 4;
+    public final static int XML_TEXT = 5;
+
+    // New in 2.12: needed to &quot;re-process&quot; previously encountered START_ELEMENT,
+    // with possible leading text
+    // public final static int XML_DELAYED_START_ELEMENT = 6;
+
+    // 2.12 also exposes &quot;root scalars&quot; as-is, instead of wrapping as Objects; this
+    // needs some more state management too
+    public final static int XML_ROOT_TEXT = 7;
+
+    public final static int XML_END = 8;
+
+    // // // token replay states
+
+    private final static int REPLAY_START_DUP = 1;
+    private final static int REPLAY_END = 2;
+    private final static int REPLAY_START_DELAYED = 3;
+
+    // Some helpful XML Constants
+
+    private final static String XSI_NAMESPACE = XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI;
+
+    /*
+    /**********************************************************************
+    /* Configuration
+    /**********************************************************************
+     */
+
+    protected final XMLStreamReader2 _xmlReader;
+
+    // @since 2.13 (was untyped before)
+    protected final ContentReference _sourceReference;
+
+    /**
+     * Bit flag composed of bits that indicate which
+     * {@link FromXmlParser.Feature}s
+     * are enabled.
+     */
+    protected int _formatFeatures;
+
+    protected boolean _cfgProcessXsiNil;
+
+    protected XmlNameProcessor _nameProcessor;
+
+    /*
+    /**********************************************************************
+    /* Parsing state
+    /**********************************************************************
+     */
+
+    protected int _currentState;
+
+    protected int _attributeCount;
+
+    /**
+     * Marker used to indicate presence of `xsi:nil=&quot;true&quot;' in current START_ELEMENT.
+     *
+     * @since 2.10
+     */
+    protected boolean _xsiNilFound;
+
+    /**
+     * Flag set true if current event is {@code XML_TEXT} and there is START_ELEMENT
+     *
+     * @since 2.12
+     */
+    protected boolean _startElementAfterText;
+
+    /**
+     * Index of the next attribute of the current START_ELEMENT
+     * to return (as field name and value pair), if any; -1
+     * when no attributes to return
+     */
+    protected int _nextAttributeIndex;
+
+    protected String _localName;
+
+    protected String _namespaceURI;
+
+    /**
+     * Current text value for TEXT_VALUE returned
+     */
+    protected String _textValue;
+
+    /**
+     * Marker flag set if caller wants to &quot;push back&quot; current token so
+     * that next call to {@link #next()} should simply be given what was
+     * already read.
+     *
+     * @since 2.12
+     */
+    protected boolean _repeatCurrentToken;
+
+    /**
+     * Reusable internal value object
+     *
+     * @since 2.14
+     */
+<span class="fc" id="L134">    protected XmlNameProcessor.XmlName _nameToDecode = new XmlNameProcessor.XmlName();</span>
+
+    /*
+    /**********************************************************************
+    /* State for handling virtual wrapping
+    /**********************************************************************
+     */
+    
+    /**
+     * Flag used to indicate that given element should be &quot;replayed&quot;.
+     */
+    protected int _repeatElement;
+
+    /**
+     * Wrapping state, if any active (null if none)
+     */
+    protected ElementWrapper _currentWrapper;
+
+    /**
+     * In cases where we need to 'inject' a virtual END_ELEMENT, we may also
+     * need to restore START_ELEMENT afterwards; if so, this is where names
+     * are held.
+     */
+    protected String _nextLocalName;
+    protected String _nextNamespaceURI;
+
+    /*
+    /**********************************************************************
+    /* Life-cycle
+    /**********************************************************************
+     */
+
+    public XmlTokenStream(XMLStreamReader xmlReader, ContentReference sourceRef,
+            int formatFeatures, XmlNameProcessor nameProcessor)
+<span class="fc" id="L168">    {</span>
+<span class="fc" id="L169">        _sourceReference = sourceRef;</span>
+<span class="fc" id="L170">        _formatFeatures = formatFeatures;</span>
+<span class="fc" id="L171">        _cfgProcessXsiNil = FromXmlParser.Feature.PROCESS_XSI_NIL.enabledIn(_formatFeatures);</span>
+        // 04-Dec-2023, tatu: [dataformat-xml#618] Need further customized adapter:
+<span class="fc" id="L173">        _xmlReader = Stax2JacksonReaderAdapter.wrapIfNecessary(xmlReader);</span>
+<span class="fc" id="L174">        _nameProcessor = nameProcessor;</span>
+<span class="fc" id="L175">    }</span>
+
+    /**
+     * Second part of initialization, to be called immediately after construction
+     *
+     * @since 2.12
+     */
+    public int initialize() throws XMLStreamException
+    {
+        // Let's ensure we point to START_ELEMENT...
+<span class="pc bpc" id="L185" title="1 of 2 branches missed.">        if (_xmlReader.getEventType() != XMLStreamConstants.START_ELEMENT) {</span>
+<span class="nc" id="L186">            throw new IllegalArgumentException(&quot;Invalid XMLStreamReader passed: should be pointing to START_ELEMENT (&quot;</span>
+<span class="nc" id="L187">                    +XMLStreamConstants.START_ELEMENT+&quot;), instead got &quot;+_xmlReader.getEventType());</span>
+        }
+<span class="fc" id="L189">        _checkXsiAttributes(); // sets _attributeCount, _nextAttributeIndex</span>
+<span class="fc" id="L190">        _decodeElementName(_xmlReader.getNamespaceURI(), _xmlReader.getLocalName());</span>
+
+        // 02-Jul-2020, tatu: Two choices: if child elements OR attributes, expose
+        //    as Object value; otherwise expose as Text
+        // 06-Sep-2022, tatu: Actually expose as Object in almost every situation
+        //    as of 2.14: otherwise we have lots of issues with empty POJOs,
+        //    Lists, Maps
+<span class="fc bfc" id="L197" title="All 2 branches covered.">        if (_xmlReader.isEmptyElement()</span>
+<span class="pc bpc" id="L198" title="1 of 6 branches missed.">            &amp;&amp; FromXmlParser.Feature.EMPTY_ELEMENT_AS_NULL.enabledIn(_formatFeatures)</span>
+            &amp;&amp; !_xsiNilFound
+            &amp;&amp; _attributeCount &lt; 1) {
+            // 06-Sep-2022, tatu: In fact the only special case of null conversion
+            //    of the root empty element
+<span class="fc" id="L203">            _textValue = null;</span>
+<span class="fc" id="L204">            _startElementAfterText = false;</span>
+<span class="fc" id="L205">            return (_currentState = XML_ROOT_TEXT);</span>
+        }
+<span class="fc" id="L207">        return (_currentState = XML_START_ELEMENT);</span>
+
+        // 06-Sep-2022, tatu: This code was used in 2.12, 2.13, may be
+        //   removed after 2.14 if/when no longer needed
+
+        // copied from START_ELEMENT section of _next():
+        /*
+        final String text = _collectUntilTag();
+        if (text == null) {
+            // 30-Nov-2020, tatu: [dataformat-xml#435], this is tricky
+            //   situation since we got coerced `null`... but at least for
+            //   now will have to report as &quot;root String&quot; (... with null contents)
+            _textValue = null;
+            _startElementAfterText = false;
+            return (_currentState = XML_ROOT_TEXT);
+        }
+
+        final boolean startElementNext = _xmlReader.getEventType() == XMLStreamReader.START_ELEMENT;
+        // If we have no/all-whitespace text followed by START_ELEMENT, ignore text
+        if (startElementNext) {
+            if (_allWs(text)) {
+                _textValue = null;
+                return (_currentState = XML_DELAYED_START_ELEMENT);
+            }
+            _textValue = text;
+            return (_currentState = XML_DELAYED_START_ELEMENT);
+        }
+        _startElementAfterText = false;
+        _textValue = text;
+        return (_currentState = XML_ROOT_TEXT);
+        */
+    }
+
+    public XMLStreamReader2 getXmlReader() {
+<span class="nc" id="L241">        return _xmlReader;</span>
+    }
+
+    /**
+     * @since 2.9
+     */
+    protected void setFormatFeatures(int f) {
+<span class="fc" id="L248">        _formatFeatures = f;</span>
+<span class="fc" id="L249">        _cfgProcessXsiNil = FromXmlParser.Feature.PROCESS_XSI_NIL.enabledIn(f);</span>
+<span class="fc" id="L250">    }</span>
+
+    /*
+    /**********************************************************************
+    /* Public API
+    /**********************************************************************
+     */
+
+    // DEBUGGING
+    /*
+    public int next() throws XMLStreamException 
+    {
+        int n = next0();
+        switch (n) {
+        case XML_START_ELEMENT: 
+            System.out.printf(&quot; XmlTokenStream.next(): XML_START_ELEMENT '%s' %s\n&quot;, _localName, _loc());
+            break;
+        case XML_DELAYED_START_ELEMENT: 
+            System.out.printf(&quot; XmlTokenStream.next(): XML_DELAYED_START_ELEMENT '%s' %s\n&quot;, _localName, _loc());
+            break;
+        case XML_END_ELEMENT: 
+            // 24-May-2020, tatu: no name available for end element so do not print
+            System.out.printf(&quot; XmlTokenStream.next(): XML_END_ELEMENT %s\n&quot;, _loc());
+            break;
+        case XML_ATTRIBUTE_NAME: 
+            System.out.printf(&quot; XmlTokenStream.next(): XML_ATTRIBUTE_NAME '%s' %s\n&quot;, _localName, _loc());
+            break;
+        case XML_ATTRIBUTE_VALUE: 
+            System.out.printf(&quot; XmlTokenStream.next(): XML_ATTRIBUTE_VALUE '%s' %s\n&quot;, _textValue, _loc());
+            break;
+        case XML_TEXT: 
+            System.out.printf(&quot; XmlTokenStream.next(): XML_TEXT '%s' %s\n&quot;, _textValue, _loc());
+            break;
+        case XML_END: 
+            System.out.printf(&quot; XmlTokenStream.next(): XML_END %s\n&quot;, _loc());
+            break;
+        default:
+            throw new IllegalStateException();
+        }
+        return n;
+    }
+
+    private String _loc() {
+        JsonLocation loc = getCurrentLocation();
+        return String.format(&quot;[line: %d, column: %d]&quot;, loc.getLineNr(), loc.getColumnNr());
+    }
+    */
+
+//    public int next0() throws XMLStreamException
+    public int next() throws XMLStreamException
+    {
+<span class="fc bfc" id="L301" title="All 2 branches covered.">        if (_repeatCurrentToken) {</span>
+<span class="fc" id="L302">            _repeatCurrentToken = false;</span>
+<span class="fc" id="L303">            return _currentState;</span>
+        }
+<span class="fc bfc" id="L305" title="All 2 branches covered.">        if (_repeatElement != 0) {</span>
+<span class="fc" id="L306">            return (_currentState = _handleRepeatElement());</span>
+        }
+<span class="fc" id="L308">        return _next();</span>
+    }
+
+    public void skipEndElement() throws IOException, XMLStreamException
+    {
+<span class="fc" id="L313">        int type = next();</span>
+<span class="pc bpc" id="L314" title="1 of 2 branches missed.">        if (type != XML_END_ELEMENT) {</span>
+<span class="nc" id="L315">            throw new IOException(String.format(</span>
+                    &quot;Internal error: Expected END_ELEMENT, got event of type %s&quot;,
+<span class="nc" id="L317">                    _stateDesc(type)));</span>
+        }
+<span class="fc" id="L319">    }</span>
+
+<span class="fc" id="L321">    public int getCurrentToken() { return _currentState; }</span>
+
+<span class="fc" id="L323">    public String getText() { return _textValue; }</span>
+
+    /**
+     * Accessor for local name of current named event (that is,
+     * {@code XML_START_ELEMENT} or {@code XML_ATTRIBUTE_NAME}).
+     *&lt;p&gt;
+     * NOTE: name NOT accessible on {@code XML_END_ELEMENT}
+     */
+<span class="fc" id="L331">    public String getLocalName() { return _localName; }</span>
+
+<span class="nc" id="L333">    public String getNamespaceURI() { return _namespaceURI; }</span>
+
+    public boolean hasXsiNil() {
+<span class="fc" id="L336">        return _xsiNilFound;</span>
+    }
+
+    /*// not used as of 2.10
+    public boolean hasAttributes() {
+        return (_currentState == XML_START_ELEMENT) &amp;&amp; (_attributeCount &gt; 0);
+    }
+    */
+
+    public void closeCompletely() throws XMLStreamException {
+<span class="fc" id="L346">        _xmlReader.closeCompletely();</span>
+<span class="fc" id="L347">    }</span>
+
+    public void close() throws XMLStreamException {
+<span class="fc" id="L350">        _xmlReader.close();</span>
+<span class="fc" id="L351">    }</span>
+
+    public JsonLocation getCurrentLocation() {
+<span class="fc" id="L354">        return _extractLocation(_xmlReader.getLocationInfo().getCurrentLocation());</span>
+    }
+
+    public JsonLocation getTokenLocation() {
+<span class="fc" id="L358">        return _extractLocation(_xmlReader.getLocationInfo().getStartLocation());</span>
+    }
+
+    /*
+    /**********************************************************************
+    /* Internal API: more esoteric methods
+    /**********************************************************************
+     */
+    
+    /**
+     * Method used to add virtual wrapping, which just duplicates START_ELEMENT
+     * stream points to, and its matching closing element.
+     */
+    protected void repeatStartElement()
+    {
+//System.out.println(&quot; XmlTokenStream.repeatStartElement() for &lt;&quot;+_localName+&quot;&gt;, _currentWrapper was: &quot;+_currentWrapper);
+        // sanity check: can only be used when just returned START_ELEMENT:
+<span class="pc bpc" id="L375" title="1 of 2 branches missed.">        if (_currentState != XML_START_ELEMENT) {</span>
+            // 14-May-2020, tatu: Looks like we DO end up here with empty Lists; if so,
+            //    should NOT actually wrap.
+<span class="nc bnc" id="L378" title="All 2 branches missed.">            if (_currentState == XML_END_ELEMENT) {</span>
+<span class="nc" id="L379">                return;</span>
+            }
+<span class="nc" id="L381">            throw new IllegalStateException(&quot;Current state not XML_START_ELEMENT but &quot;+_currentStateDesc());</span>
+        }
+        // Important: add wrapper, to keep track...
+<span class="fc bfc" id="L384" title="All 2 branches covered.">        if (_currentWrapper == null) {</span>
+<span class="fc" id="L385">            _currentWrapper = ElementWrapper.matchingWrapper(null, _localName, _namespaceURI);</span>
+        } else {
+<span class="fc" id="L387">            _currentWrapper = ElementWrapper.matchingWrapper(_currentWrapper.getParent(), _localName, _namespaceURI);</span>
+        }
+//System.out.println(&quot; repeatStartElement for &quot;+_localName+&quot;, _currentWrapper now: &quot;+_currentWrapper);
+<span class="fc" id="L390">        _repeatElement = REPLAY_START_DUP;</span>
+<span class="fc" id="L391">    }</span>
+
+    /**
+     * Method that can be called to ask stream to literally just return current token
+     * with the next call to {@link #next()}, without more work.
+     *
+     * @since 2.12
+     */
+    protected void pushbackCurrentToken()
+    {
+<span class="fc" id="L401">        _repeatCurrentToken = true;</span>
+<span class="fc" id="L402">    }</span>
+
+    /**
+     * Method called to skip any attributes current START_ELEMENT may have,
+     * so that they are not returned as token.
+     * 
+     * @since 2.1
+     */
+    protected void skipAttributes()
+    {
+//System.out.println(&quot; XmlTokenStream.skipAttributes(), state: &quot;+_currentStateDesc());
+<span class="pc bpc" id="L413" title="2 of 4 branches missed.">        switch (_currentState) {</span>
+        case XML_ATTRIBUTE_NAME:
+<span class="fc" id="L415">            _attributeCount = 0;</span>
+<span class="fc" id="L416">            _currentState = XML_START_ELEMENT;</span>
+<span class="fc" id="L417">            break;</span>
+        case XML_START_ELEMENT:
+            // 06-Jan-2012, tatu: As per [#47] it looks like we should NOT do anything
+            //   in this particular case, because it occurs when original element had
+            //   no attributes and we now point to the first child element.
+//              _attributeCount = 0;
+<span class="fc" id="L423">            break;</span>
+        case XML_TEXT:
+<span class="nc" id="L425">            break; // nothing to do... is it even legal?</span>
+
+            /*
+        case XML_DELAYED_START_ELEMENT:
+            // 03-Jul-2020, tatu: and here nothing to do either... ?
+            break;
+            */
+        default:
+<span class="nc" id="L433">            throw new IllegalStateException(</span>
+<span class="nc" id="L434">&quot;Current state not XML_START_ELEMENT or XML_ATTRIBUTE_NAME but &quot;+_currentStateDesc());</span>
+        }
+<span class="fc" id="L436">    }</span>
+
+    /*
+    /**********************************************************************
+    /* Internal methods, parsing
+    /**********************************************************************
+     */
+
+    private final int _next() throws XMLStreamException
+    {
+//System.out.println(&quot; XmlTokenStream._next(), state: &quot;+_currentStateDesc());
+<span class="pc bpc" id="L447" title="1 of 7 branches missed.">        switch (_currentState) {</span>
+        case XML_ATTRIBUTE_VALUE:
+<span class="fc" id="L449">            ++_nextAttributeIndex;</span>
+            // fall through
+        case XML_START_ELEMENT: // attributes to return?
+            // 06-Sep-2019, tatu: `xsi:nil` to induce &quot;real&quot; null value?
+<span class="fc bfc" id="L453" title="All 2 branches covered.">            if (_xsiNilFound) {</span>
+<span class="fc" id="L454">                _xsiNilFound = false;</span>
+                // 08-Jul-2021, tatu: as per [dataformat-xml#467] just skip anything
+                //   element might have, no need to ensure it was empty
+<span class="fc" id="L457">                _xmlReader.skipElement();</span>
+<span class="fc" id="L458">                return _handleEndElement();</span>
+            }
+<span class="fc bfc" id="L460" title="All 2 branches covered.">            if (_nextAttributeIndex &lt; _attributeCount) {</span>
+//System.out.println(&quot; XmlTokenStream._next(): Got attr(s)!&quot;);
+<span class="fc" id="L462">                _decodeAttributeName(_xmlReader.getAttributeNamespace(_nextAttributeIndex),</span>
+<span class="fc" id="L463">                        _xmlReader.getAttributeLocalName(_nextAttributeIndex));</span>
+<span class="fc" id="L464">                _textValue = _xmlReader.getAttributeValue(_nextAttributeIndex);</span>
+<span class="fc" id="L465">                return (_currentState = XML_ATTRIBUTE_NAME);</span>
+            }
+            // otherwise need to find START/END_ELEMENT or text
+<span class="fc" id="L468">            String text = _collectUntilTag();</span>
+//System.out.println(&quot; XmlTokenStream._next(): _collectUntilTag -&gt; '&quot;+text+&quot;'&quot;);
+<span class="fc bfc" id="L470" title="All 2 branches covered.">            final boolean startElementNext = _xmlReader.getEventType() == XMLStreamReader.START_ELEMENT;</span>
+//System.out.println(&quot; XmlTokenStream._next(): startElementNext? &quot;+startElementNext);
+            // If we have no/all-whitespace text followed by START_ELEMENT, ignore text
+<span class="fc bfc" id="L473" title="All 2 branches covered.">            if (startElementNext) {</span>
+<span class="fc bfc" id="L474" title="All 2 branches covered.">                if (_allWs(text)) {</span>
+<span class="fc" id="L475">                    _startElementAfterText = false;</span>
+<span class="fc" id="L476">                    return _initStartElement();</span>
+                }
+<span class="fc" id="L478">                _startElementAfterText = true;</span>
+<span class="fc" id="L479">                _textValue = text;</span>
+                
+<span class="fc" id="L481">                return (_currentState = XML_TEXT);</span>
+            }
+            // For END_ELEMENT we will return text, if any
+<span class="fc bfc" id="L484" title="All 2 branches covered.">            if (text != null) {</span>
+<span class="fc" id="L485">                _startElementAfterText = false;</span>
+<span class="fc" id="L486">                _textValue = text;</span>
+<span class="fc" id="L487">                return (_currentState = XML_TEXT);</span>
+            }
+<span class="fc" id="L489">            _startElementAfterText = false;</span>
+<span class="fc" id="L490">            return _handleEndElement();</span>
+
+            /*
+        case XML_DELAYED_START_ELEMENT: // since 2.12, to support scalar Root Value
+            // Two cases: either &quot;simple&quot; with not text
+           if (_textValue == null) {
+               return _initStartElement();
+           }
+           // or one where there is first text (to translate into &quot;&quot;:&lt;text&gt; key/value entry)
+           // then followed by start element
+           _startElementAfterText = true;
+           return (_currentState = XML_TEXT);
+           */
+
+        case XML_ATTRIBUTE_NAME:
+            // if we just returned name, will need to just send value next
+<span class="fc" id="L506">            return (_currentState = XML_ATTRIBUTE_VALUE);</span>
+        case XML_TEXT:
+            // mixed text with other elements
+<span class="fc bfc" id="L509" title="All 2 branches covered.">            if (_startElementAfterText) {</span>
+<span class="fc" id="L510">                _startElementAfterText = false;</span>
+<span class="fc" id="L511">                return _initStartElement();</span>
+            }
+            // text followed by END_ELEMENT
+<span class="fc" id="L514">            return _handleEndElement();</span>
+        case XML_ROOT_TEXT:
+<span class="nc" id="L516">            close();</span>
+<span class="nc" id="L517">            return (_currentState = XML_END);</span>
+        case XML_END:
+<span class="fc" id="L519">            return XML_END;</span>
+//            throw new IllegalStateException(&quot;No more XML tokens available (end of input)&quot;);
+        }
+        // Ok: must be END_ELEMENT; see what tag we get (or end)
+<span class="fc bfc" id="L523" title="All 3 branches covered.">        switch (_skipAndCollectTextUntilTag()) {</span>
+        case XMLStreamConstants.END_DOCUMENT:
+<span class="fc" id="L525">            close();</span>
+<span class="fc" id="L526">            return (_currentState = XML_END);</span>
+        case XMLStreamConstants.END_ELEMENT:
+            // 24-May-2020, tatu: Need to see if we have &quot;mixed content&quot; to offer
+<span class="fc bfc" id="L529" title="All 2 branches covered.">            if (!_allWs(_textValue)) {</span>
+                // _textValue already set
+<span class="fc" id="L531">                return (_currentState = XML_TEXT);</span>
+            }
+<span class="fc" id="L533">            return _handleEndElement();</span>
+        }
+        // 24-May-2020, tatu: Need to see if we have &quot;mixed content&quot; to offer
+<span class="fc bfc" id="L536" title="All 2 branches covered.">        if (!_allWs(_textValue)) {</span>
+            // _textValue already set
+<span class="fc" id="L538">            _startElementAfterText = true;</span>
+<span class="fc" id="L539">            return (_currentState = XML_TEXT);</span>
+        }
+
+        // START_ELEMENT...
+<span class="fc" id="L543">        return _initStartElement();</span>
+    }
+
+    /**
+     * @return Collected text, if any, EXCEPT that if {@code FromXmlParser.Feature.EMPTY_ELEMENT_AS_NULL}
+     *    AND empty element, returns {@code null}
+     */
+    private final String _collectUntilTag() throws XMLStreamException
+    {
+        // 21-Jun-2017, tatu: Whether exposed as `null` or &quot;&quot; is now configurable...
+<span class="fc bfc" id="L553" title="All 2 branches covered.">        if (_xmlReader.isEmptyElement()) {</span>
+<span class="fc" id="L554">            _xmlReader.next();</span>
+<span class="fc bfc" id="L555" title="All 2 branches covered.">            if (FromXmlParser.Feature.EMPTY_ELEMENT_AS_NULL.enabledIn(_formatFeatures)) {</span>
+<span class="fc" id="L556">                return null;</span>
+            }
+<span class="fc" id="L558">            return &quot;&quot;;</span>
+        }
+
+<span class="fc" id="L561">        CharSequence chars = null;</span>
+        main_loop:
+<span class="pc bpc" id="L563" title="1 of 2 branches missed.">        while (_xmlReader.hasNext()) {</span>
+<span class="fc bfc" id="L564" title="All 4 branches covered.">            switch (_xmlReader.next()) {</span>
+            case XMLStreamConstants.START_ELEMENT:
+<span class="fc" id="L566">                break main_loop;</span>
+
+            case XMLStreamConstants.END_ELEMENT:
+            case XMLStreamConstants.END_DOCUMENT:
+<span class="fc" id="L570">                break main_loop;</span>
+
+            // note: SPACE is ignorable (and seldom seen), not to be included
+            case XMLStreamConstants.CHARACTERS:
+            case XMLStreamConstants.CDATA:
+                // 17-Jul-2017, tatu: as per [dataformat-xml#236], need to try to...
+                {
+<span class="fc" id="L577">                    String str = _getText(_xmlReader);</span>
+<span class="fc bfc" id="L578" title="All 2 branches covered.">                    if (chars == null) {</span>
+<span class="fc" id="L579">                        chars = str;</span>
+                    } else  {
+<span class="fc bfc" id="L581" title="All 2 branches covered.">                        if (chars instanceof String) {</span>
+<span class="fc" id="L582">                            chars = new StringBuilder(chars);</span>
+                        }
+<span class="fc" id="L584">                        ((StringBuilder)chars).append(str);</span>
+                    }
+                }
+<span class="fc" id="L587">                break;</span>
+            default:
+                // any other type (proc instr, comment etc) is just ignored
+            }
+        }
+<span class="fc bfc" id="L592" title="All 2 branches covered.">        return (chars == null) ? &quot;&quot; : chars.toString();</span>
+    }
+
+    // Called to skip tokens until start/end tag (or end-of-document) found, but
+    // also collecting cdata until then, if any found, for possible &quot;mixed content&quot;
+    // to report
+    //
+    // @since 2.12
+    private final int _skipAndCollectTextUntilTag() throws XMLStreamException
+    {
+<span class="fc" id="L602">        CharSequence chars = null;</span>
+
+<span class="pc bpc" id="L604" title="1 of 2 branches missed.">        while (_xmlReader.hasNext()) {</span>
+            int type;
+<span class="pc bpc" id="L606" title="1 of 3 branches missed.">            switch (type = _xmlReader.next()) {</span>
+            case XMLStreamConstants.START_ELEMENT:
+            case XMLStreamConstants.END_ELEMENT:
+            case XMLStreamConstants.END_DOCUMENT:
+<span class="fc bfc" id="L610" title="All 2 branches covered.">                _textValue = (chars == null) ? &quot;&quot; : chars.toString();</span>
+<span class="fc" id="L611">                return type;</span>
+            // note: SPACE is ignorable (and seldom seen), not to be included
+            case XMLStreamConstants.CHARACTERS:
+            case XMLStreamConstants.CDATA:
+                {
+<span class="fc" id="L616">                    String str = _getText(_xmlReader);</span>
+<span class="pc bpc" id="L617" title="1 of 2 branches missed.">                    if (chars == null) {</span>
+<span class="fc" id="L618">                        chars = str;</span>
+                    } else  {
+<span class="nc bnc" id="L620" title="All 2 branches missed.">                        if (chars instanceof String) {</span>
+<span class="nc" id="L621">                            chars = new StringBuilder(chars);</span>
+                        }
+<span class="nc" id="L623">                        ((StringBuilder)chars).append(str);</span>
+                    }
+                }
+<span class="fc" id="L626">                break;</span>
+            default:
+                // any other type (proc instr, comment etc) is just ignored
+            }
+<span class="fc" id="L630">        }</span>
+<span class="nc" id="L631">        throw new IllegalStateException(&quot;Expected to find a tag, instead reached end of input&quot;);</span>
+    }
+
+    private final String _getText(XMLStreamReader2 r) throws XMLStreamException
+    {
+        try {
+<span class="fc" id="L637">            return r.getText();</span>
+<span class="fc" id="L638">        } catch (RuntimeException e) {</span>
+<span class="fc" id="L639">            Throwable cause = e.getCause();</span>
+<span class="pc bpc" id="L640" title="1 of 2 branches missed.">            if (cause instanceof XMLStreamException) {</span>
+<span class="fc" id="L641">                throw (XMLStreamException) cause;</span>
+            }
+<span class="nc" id="L643">            throw e;</span>
+        }
+    }
+
+    /*
+    /**********************************************************************
+    /* Internal methods, other
+    /**********************************************************************
+     */
+
+    private final int _initStartElement() throws XMLStreamException
+    {
+<span class="fc" id="L655">        final String ns = _xmlReader.getNamespaceURI();</span>
+<span class="fc" id="L656">        final String localName = _xmlReader.getLocalName();</span>
+
+<span class="fc" id="L658">        _checkXsiAttributes();</span>
+
+        // Support for virtual wrapping: in wrapping, may either create a new
+        // wrapper scope (if in sub-tree, or matches wrapper element itself),
+        // or implicitly close existing scope.
+
+<span class="fc bfc" id="L664" title="All 2 branches covered.">        if (_currentWrapper != null) {</span>
+<span class="fc bfc" id="L665" title="All 2 branches covered.">            if (_currentWrapper.matchesWrapper(localName, ns)) {</span>
+<span class="fc" id="L666">                _currentWrapper = _currentWrapper.intermediateWrapper();</span>
+//System.out.println(&quot; _initStartElement(): START_ELEMENT (&quot;+localName+&quot;) DOES match [&quot;+_currentWrapper+&quot;]: leave/add intermediate&quot;);
+            } else {
+                // implicit end is more interesting:
+//System.out.println(&quot; _initStartElement(): START_ELEMENT (&quot;+localName+&quot;) not matching '&quot;+_localName+&quot;'; add extra XML-END-ELEMENT!&quot;);
+<span class="fc" id="L671">                _localName = _currentWrapper.getWrapperLocalName();</span>
+<span class="fc" id="L672">                _namespaceURI = _currentWrapper.getWrapperNamespace();</span>
+<span class="fc" id="L673">                _currentWrapper = _currentWrapper.getParent();</span>
+                // Important! We also need to restore the START_ELEMENT, so:
+<span class="fc" id="L675">                _nextLocalName = localName;</span>
+<span class="fc" id="L676">                _nextNamespaceURI = ns;</span>
+<span class="fc" id="L677">                _repeatElement = REPLAY_START_DELAYED;</span>
+<span class="fc" id="L678">                return (_currentState = XML_END_ELEMENT);</span>
+            }
+        }
+<span class="fc" id="L681">        _decodeElementName(ns, localName);</span>
+<span class="fc" id="L682">        return (_currentState = XML_START_ELEMENT);</span>
+    }
+
+    /**
+     * @since 2.10
+     */
+    private final void _checkXsiAttributes() {
+<span class="fc" id="L689">        int count = _xmlReader.getAttributeCount();</span>
+<span class="fc" id="L690">        _attributeCount = count;</span>
+
+        // [dataformat-xml#354]: xsi:nul handling; at first only if first attribute
+<span class="fc bfc" id="L693" title="All 2 branches covered.">        if (count &gt;= 1) {</span>
+            // [dataformat-xml#468]: may disable xsi:nil processing
+<span class="fc bfc" id="L695" title="All 2 branches covered.">            if (_cfgProcessXsiNil</span>
+<span class="fc bfc" id="L696" title="All 2 branches covered.">                     &amp;&amp; &quot;nil&quot;.equals(_xmlReader.getAttributeLocalName(0))) {</span>
+<span class="fc bfc" id="L697" title="All 2 branches covered.">                if (XSI_NAMESPACE.equals(_xmlReader.getAttributeNamespace(0))) {</span>
+                    // need to skip, regardless of value
+<span class="fc" id="L699">                    _nextAttributeIndex = 1;</span>
+                    // but only mark as nil marker if enabled
+<span class="fc" id="L701">                    _xsiNilFound = &quot;true&quot;.equals(_xmlReader.getAttributeValue(0));</span>
+<span class="fc" id="L702">                    return;</span>
+                }
+            }
+        }
+
+<span class="fc" id="L707">        _nextAttributeIndex = 0;</span>
+<span class="fc" id="L708">        _xsiNilFound = false;</span>
+<span class="fc" id="L709">    }</span>
+
+    /**
+     * @since 2.14
+     */
+    protected void _decodeElementName(String namespaceURI, String localName) {
+<span class="fc" id="L715">        _nameToDecode.namespace = namespaceURI;</span>
+<span class="fc" id="L716">        _nameToDecode.localPart = localName;</span>
+<span class="fc" id="L717">        _nameProcessor.decodeName(_nameToDecode);</span>
+<span class="fc" id="L718">        _namespaceURI = _nameToDecode.namespace;</span>
+<span class="fc" id="L719">        _localName = _nameToDecode.localPart;</span>
+<span class="fc" id="L720">    }</span>
+
+    /**
+     * @since 2.14
+     */
+    protected void _decodeAttributeName(String namespaceURI, String localName) {
+<span class="fc" id="L726">        _nameToDecode.namespace = namespaceURI;</span>
+<span class="fc" id="L727">        _nameToDecode.localPart = localName;</span>
+<span class="fc" id="L728">        _nameProcessor.decodeName(_nameToDecode);</span>
+<span class="fc" id="L729">        _namespaceURI = _nameToDecode.namespace;</span>
+<span class="fc" id="L730">        _localName = _nameToDecode.localPart;</span>
+<span class="fc" id="L731">    }</span>
+
+    /**
+     * Method called to handle details of repeating &quot;virtual&quot;
+     * start/end elements, needed for handling 'unwrapped' lists.
+     */
+    protected int _handleRepeatElement() throws XMLStreamException 
+    {
+//System.out.println(&quot; XMLTokenStream._handleRepeatElement()&quot;);
+
+<span class="fc" id="L741">        int type = _repeatElement;</span>
+<span class="fc" id="L742">        _repeatElement = 0;</span>
+<span class="fc bfc" id="L743" title="All 2 branches covered.">        if (type == REPLAY_START_DUP) {</span>
+//System.out.println(&quot; XMLTokenStream._handleRepeatElement() for START_ELEMENT: &quot;+_localName+&quot; (&quot;+_xmlReader.getLocalName()+&quot;)&quot;);
+            // important: add the virtual element second time, but not with name to match
+<span class="fc" id="L746">            _currentWrapper = _currentWrapper.intermediateWrapper(); // lgtm [java/dereferenced-value-may-be-null]</span>
+<span class="fc" id="L747">            return XML_START_ELEMENT;</span>
+        }
+<span class="fc bfc" id="L749" title="All 2 branches covered.">        if (type == REPLAY_END) {</span>
+//System.out.println(&quot; XMLTokenStream._handleRepeatElement() for END_ELEMENT: &quot;+_localName+&quot; (&quot;+_xmlReader.getLocalName()+&quot;)&quot;);
+<span class="fc" id="L751">            _decodeElementName(_xmlReader.getNamespaceURI(), _xmlReader.getLocalName());</span>
+<span class="fc bfc" id="L752" title="All 2 branches covered.">            if (_currentWrapper != null) {</span>
+<span class="fc" id="L753">                _currentWrapper = _currentWrapper.getParent();</span>
+            }
+<span class="fc" id="L755">            return XML_END_ELEMENT;</span>
+        }
+<span class="pc bpc" id="L757" title="1 of 2 branches missed.">        if (type == REPLAY_START_DELAYED) {</span>
+<span class="fc bfc" id="L758" title="All 2 branches covered.">            if (_currentWrapper != null) {</span>
+<span class="fc" id="L759">                _currentWrapper = _currentWrapper.intermediateWrapper();</span>
+            }
+<span class="fc" id="L761">            _decodeElementName(_nextNamespaceURI, _nextLocalName);</span>
+<span class="fc" id="L762">            _nextLocalName = null;</span>
+<span class="fc" id="L763">            _nextNamespaceURI = null;</span>
+
+//System.out.println(&quot; XMLTokenStream._handleRepeatElement() for START_DELAYED: &quot;+_localName+&quot; (&quot;+_xmlReader.getLocalName()+&quot;)&quot;);
+
+<span class="fc" id="L767">            return XML_START_ELEMENT;</span>
+        }
+<span class="nc" id="L769">        throw new IllegalStateException(&quot;Unrecognized type to repeat: &quot;+type);</span>
+    }
+    
+    private final int _handleEndElement()
+    {
+//System.out.println(&quot; XMLTokenStream._handleEndElement()&quot;);
+<span class="fc bfc" id="L775" title="All 2 branches covered.">        if (_currentWrapper != null) {</span>
+<span class="fc" id="L776">            ElementWrapper w = _currentWrapper;</span>
+            // important: if we close the scope, must duplicate END_ELEMENT as well
+<span class="fc bfc" id="L778" title="All 2 branches covered.">            if (w.isMatching()) {</span>
+<span class="fc" id="L779">                _repeatElement = REPLAY_END;</span>
+                // 11-Sep-2022, tatu: I _think_ these are already properly decoded
+<span class="fc" id="L781">                _localName = w.getWrapperLocalName();</span>
+<span class="fc" id="L782">                _namespaceURI = w.getWrapperNamespace();</span>
+<span class="fc" id="L783">                _currentWrapper = _currentWrapper.getParent();</span>
+//System.out.println(&quot; XMLTokenStream._handleEndElement(): IMPLICIT requestRepeat of END_ELEMENT '&quot;+_localName);
+            } else {
+<span class="fc" id="L786">                _currentWrapper = _currentWrapper.getParent();</span>
+                // 23-May-2020, tatu: Let's clear _localName since it's value is unlikely
+                //    to be correct and we may or may not be able to get real one (for
+                //    END_ELEMENT could) -- FromXmlParser does NOT use this info
+<span class="fc" id="L790">                _localName = &quot;&quot;;</span>
+<span class="fc" id="L791">                _namespaceURI = &quot;&quot;;</span>
+
+            }
+<span class="fc" id="L794">        } else {</span>
+            // Not (necessarily) known, as per above, so:
+<span class="fc" id="L796">            _localName = &quot;&quot;;</span>
+<span class="fc" id="L797">            _namespaceURI = &quot;&quot;;</span>
+        }
+<span class="fc" id="L799">        return (_currentState = XML_END_ELEMENT);</span>
+    }
+
+    private JsonLocation _extractLocation(XMLStreamLocation2 location)
+    {
+<span class="pc bpc" id="L804" title="1 of 2 branches missed.">        if (location == null) { // just for impls that might pass null...</span>
+<span class="nc" id="L805">            return new JsonLocation(_sourceReference, -1, -1, -1);</span>
+        }
+<span class="fc" id="L807">        return new JsonLocation(_sourceReference,</span>
+<span class="fc" id="L808">                location.getCharacterOffset(),</span>
+<span class="fc" id="L809">                location.getLineNumber(),</span>
+<span class="fc" id="L810">                location.getColumnNumber());</span>
+    }
+
+    protected static boolean _allWs(String str)
+    {
+<span class="pc bpc" id="L815" title="1 of 2 branches missed.">        final int len = (str == null) ? 0 : str.length();</span>
+<span class="fc bfc" id="L816" title="All 2 branches covered.">        if (len &gt; 0) {</span>
+<span class="fc bfc" id="L817" title="All 2 branches covered.">            for (int i = 0; i &lt; len; ++i) {</span>
+<span class="fc bfc" id="L818" title="All 2 branches covered.">                if (str.charAt(i) &gt; ' ') {</span>
+<span class="fc" id="L819">                    return false;</span>
+                }
+            }
+        }
+<span class="fc" id="L823">        return true;</span>
+    }
+
+    protected String _currentStateDesc() {
+<span class="nc" id="L827">        return _stateDesc(_currentState);</span>
+    }
+
+    protected String _stateDesc(int state) {
+<span class="nc bnc" id="L831" title="All 8 branches missed.">        switch (state) {</span>
+        case XML_START_ELEMENT:
+<span class="nc" id="L833">            return &quot;XML_START_ELEMENT&quot;;</span>
+        case XML_END_ELEMENT:
+<span class="nc" id="L835">            return &quot;XML_END_ELEMENT&quot;;</span>
+        case XML_ATTRIBUTE_NAME:
+<span class="nc" id="L837">            return &quot;XML_ATTRIBUTE_NAME&quot;;</span>
+        case XML_ATTRIBUTE_VALUE:
+<span class="nc" id="L839">            return &quot;XML_ATTRIBUTE_VALUE&quot;;</span>
+        case XML_TEXT:
+<span class="nc" id="L841">            return &quot;XML_TEXT&quot;;</span>
+        // case XML_DELAYED_START_ELEMENT:
+        //    return &quot;XML_START_ELEMENT_DELAYED&quot;;
+        case XML_ROOT_TEXT:
+<span class="nc" id="L845">            return &quot;XML_ROOT_TEXT&quot;;</span>
+        case XML_END:
+<span class="nc" id="L847">            return &quot;XML_END&quot;;</span>
+        }
+<span class="nc" id="L849">        return &quot;N/A (&quot;+_currentState+&quot;)&quot;;</span>
+    }
+
+    // for DEBUGGING
+    /*
+    @Override
+    public String toString()
+    {
+        return String.format(&quot;(Token stream: state=%s attr=%s nextAttr=%s&quot;
+                +&quot; name=%s text=%s repeat?=%s wrapper=[%s] repeatElement=%s nextName=%s)&quot;,
+                _currentState, _attributeCount, _nextAttributeIndex,
+                _localName, _textValue, _repeatElement, _currentWrapper, _repeatElement, _nextLocalName);
+    }
+    */
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

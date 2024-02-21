@@ -1,0 +1,47 @@
+diff --git a/src/main/java/org/davidmoten/hilbert/Node.java b/src/main/java/org/davidmoten/hilbert/Node.java
+index 16b99dc..ed76a3b 100644
+--- a/src/main/java/org/davidmoten/hilbert/Node.java
++++ b/src/main/java/org/davidmoten/hilbert/Node.java
+@@ -38,7 +37,0 @@ final class Node implements Comparable<Node> {
+-    Node insert(Range value) {
+-        Node n = new Node(value);
+-        n.next = this;
+-        previous = n;
+-        return n;
+-    }
+-
+@@ -74 +67 @@ final class Node implements Comparable<Node> {
+-    public void clearNext() {
++    public void clearForGc() {
+@@ -76,3 +68,0 @@ final class Node implements Comparable<Node> {
+-    }
+-    
+-    public void clearPrevious() {
+@@ -81 +71 @@ final class Node implements Comparable<Node> {
+-
++    
+diff --git a/src/main/java/org/davidmoten/hilbert/Ranges2.java b/src/main/java/org/davidmoten/hilbert/Ranges2.java
+index b7b00d4..865d293 100644
+--- a/src/main/java/org/davidmoten/hilbert/Ranges2.java
++++ b/src/main/java/org/davidmoten/hilbert/Ranges2.java
+@@ -9 +9 @@ import com.github.davidmoten.guavamini.Preconditions;
+-public class Ranges2 implements Iterable<Range>{
++public class Ranges2 implements Iterable<Range> {
+@@ -53 +53 @@ public class Ranges2 implements Iterable<Range>{
+-                //link and calculate the distance for n
++                // link and calculate the distance for n
+@@ -58,2 +58 @@ public class Ranges2 implements Iterable<Range>{
+-                first.clearNext();
+-                first.clearPrevious();
++                first.clearForGc();
+@@ -60,0 +60,2 @@ public class Ranges2 implements Iterable<Range>{
++                // we have reduced number of nodes in list so reduce count
++                count--;
+@@ -68 +69 @@ public class Ranges2 implements Iterable<Range>{
+-            
++
+@@ -82 +83 @@ public class Ranges2 implements Iterable<Range>{
+-            
++
+@@ -86 +86,0 @@ public class Ranges2 implements Iterable<Range>{
+-    

@@ -1,0 +1,31 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.chrisnewland:jitwatch-core >-------------------
+[INFO] Building JITWatch Core 1.4.8
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ jitwatch-core ---
+[INFO] Copying 38 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ jitwatch-core ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 180 source files with javac [debug target 1.8] to target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_49/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[99,80] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_49/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[100,87] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_49/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[101,78] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_49/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[136,86] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_49/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[137,100] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/jitWatch/rev_49/core/src/main/java/org/adoptopenjdk/jitwatch/process/javap/ReflectionJavap.java:[138,82] found raw type: java.lang.Class
+  missing type arguments for generic class java.lang.Class<T>
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.484 s
+[INFO] Finished at: 2024-01-30T17:17:43+09:00
+[INFO] ------------------------------------------------------------------------

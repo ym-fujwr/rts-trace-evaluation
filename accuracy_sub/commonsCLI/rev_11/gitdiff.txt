@@ -1,0 +1,20 @@
+diff --git a/src/main/java/org/apache/commons/cli/CommandLine.java b/src/main/java/org/apache/commons/cli/CommandLine.java
+index 333ef9d4..05d6a93b 100644
+--- a/src/main/java/org/apache/commons/cli/CommandLine.java
++++ b/src/main/java/org/apache/commons/cli/CommandLine.java
+@@ -27,0 +28,2 @@ import java.util.Properties;
++import static org.apache.commons.cli.Util.EMPTY_STRING_ARRAY;
++
+@@ -331 +333 @@ public class CommandLine implements Serializable {
+-        return values.isEmpty() ? null : values.toArray(new String[values.size()]);
++        return values.isEmpty() ? null : values.toArray(EMPTY_STRING_ARRAY);
+diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
+index 616c1126..d101c504 100644
+--- a/src/main/java/org/apache/commons/cli/Option.java
++++ b/src/main/java/org/apache/commons/cli/Option.java
+@@ -24,0 +25,2 @@ import java.util.Objects;
++import static org.apache.commons.cli.Util.EMPTY_STRING_ARRAY;
++
+@@ -620 +622 @@ public class Option implements Cloneable, Serializable {
+-        return hasNoValues() ? null : values.toArray(new String[values.size()]);
++        return hasNoValues() ? null : values.toArray(EMPTY_STRING_ARRAY);

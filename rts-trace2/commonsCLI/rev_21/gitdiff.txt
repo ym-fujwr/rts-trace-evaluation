@@ -1,0 +1,10 @@
+diff --git a/src/test/java/org/apache/commons/cli/ValuesTest.java b/src/test/java/org/apache/commons/cli/ValuesTest.java
+index 2e0928b3..392715be 100644
+--- a/src/test/java/org/apache/commons/cli/ValuesTest.java
++++ b/src/test/java/org/apache/commons/cli/ValuesTest.java
+@@ -147 +147 @@ public class ValuesTest {
+-     * try { assertEquals(_option.getValue(2), "key"); fail("IndexOutOfBounds not caught"); } catch(
++     * try { assertEquals(_option.getValue(2), "key"); fail("IndexOutOfBounds not caught"); } catch (
+@@ -152 +152 @@ public class ValuesTest {
+-     * try { assertEquals(_option.getValue(-1), "key"); fail("IndexOutOfBounds not caught"); } catch(
++     * try { assertEquals(_option.getValue(-1), "key"); fail("IndexOutOfBounds not caught"); } catch (

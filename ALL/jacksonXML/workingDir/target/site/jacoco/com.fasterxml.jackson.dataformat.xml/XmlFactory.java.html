@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml</a> &gt; <span class="el_source">XmlFactory.java</span></div><h1>XmlFactory.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml;
+
+import java.io.*;
+
+import javax.xml.stream.*;
+
+import org.codehaus.stax2.XMLInputFactory2;
+import org.codehaus.stax2.io.Stax2ByteArraySource;
+import org.codehaus.stax2.io.Stax2CharArraySource;
+
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.core.format.InputAccessor;
+import com.fasterxml.jackson.core.format.MatchStrength;
+import com.fasterxml.jackson.core.io.IOContext;
+import com.fasterxml.jackson.core.util.VersionUtil;
+import com.fasterxml.jackson.databind.util.ClassUtil;
+import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import com.fasterxml.jackson.dataformat.xml.util.StaxUtil;
+
+/**
+* Factory used for constructing {@link FromXmlParser} and {@link ToXmlGenerator}
+* instances.
+*&lt;p&gt;
+* Implements {@link JsonFactory} since interface for constructing XML backed
+* parsers and generators is quite similar to dealing with JSON.
+* 
+* @author Tatu Saloranta (tatu.saloranta@iki.fi)
+*/
+public class XmlFactory extends JsonFactory
+{
+    private static final long serialVersionUID = 1; // 2.6
+
+    /**
+     * Name used to identify XML format
+     * (and returned by {@link #getFormatName()}
+     */
+    public final static String FORMAT_NAME_XML = &quot;XML&quot;;
+
+    /**
+     * Bitfield (set of flags) of all parser features that are enabled
+     * by default.
+     */
+<span class="fc" id="L44">    final static int DEFAULT_XML_PARSER_FEATURE_FLAGS = FromXmlParser.Feature.collectDefaults();</span>
+
+    /**
+     * Bitfield (set of flags) of all generator features that are enabled
+     * by default.
+     */
+<span class="fc" id="L50">    final static int DEFAULT_XML_GENERATOR_FEATURE_FLAGS = ToXmlGenerator.Feature.collectDefaults();</span>
+
+    /*
+    /**********************************************************
+    /* Configuration
+    /**********************************************************
+     */
+
+    protected int _xmlParserFeatures;
+
+    protected int _xmlGeneratorFeatures;
+
+    // non-final for setters (why are they needed again?)
+    protected transient XMLInputFactory _xmlInputFactory;
+
+    protected transient XMLOutputFactory _xmlOutputFactory;
+
+    protected String _cfgNameForTextElement;
+
+    protected XmlNameProcessor _nameProcessor;
+    
+    /*
+    /**********************************************************
+    /* Factory construction, configuration
+    /**********************************************************
+     */
+
+    /**
+     * Default constructor used to create factory instances.
+     * Creation of a factory instance is a light-weight operation,
+     * but it is still a good idea to reuse limited number of
+     * factory instances (and quite often just a single instance):
+     * factories are used as context for storing some reused
+     * processing objects (such as symbol tables parsers use)
+     * and this reuse only works within context of a single
+     * factory instance.
+     */
+<span class="fc" id="L87">    public XmlFactory() { this(null, null, null); }</span>
+
+    public XmlFactory(ObjectCodec oc) {
+<span class="nc" id="L90">        this(oc, null, null);</span>
+<span class="nc" id="L91">    }</span>
+
+    public XmlFactory(XMLInputFactory xmlIn) {
+<span class="fc" id="L94">        this(null, xmlIn, null);</span>
+<span class="fc" id="L95">    }</span>
+    
+    public XmlFactory(XMLInputFactory xmlIn, XMLOutputFactory xmlOut) {
+<span class="nc" id="L98">        this(null, xmlIn, xmlOut);</span>
+<span class="nc" id="L99">    }</span>
+    
+    public XmlFactory(ObjectCodec oc, XMLInputFactory xmlIn, XMLOutputFactory xmlOut)
+    {
+<span class="fc" id="L103">        this(oc, DEFAULT_XML_PARSER_FEATURE_FLAGS, DEFAULT_XML_GENERATOR_FEATURE_FLAGS,</span>
+                xmlIn, xmlOut, null);
+<span class="fc" id="L105">    }</span>
+
+    public XmlFactory(ObjectCodec oc, int xpFeatures, int xgFeatures,
+                         XMLInputFactory xmlIn, XMLOutputFactory xmlOut,
+                         String nameForTextElem) {
+<span class="fc" id="L110">        this(oc, xpFeatures, xgFeatures, xmlIn, xmlOut, nameForTextElem, XmlNameProcessors.newPassthroughProcessor());</span>
+<span class="fc" id="L111">    }</span>
+
+    protected XmlFactory(ObjectCodec oc, int xpFeatures, int xgFeatures,
+            XMLInputFactory xmlIn, XMLOutputFactory xmlOut,
+            String nameForTextElem, XmlNameProcessor nameProcessor)
+    {
+<span class="fc" id="L117">        super(oc);</span>
+<span class="fc" id="L118">        _nameProcessor = nameProcessor;</span>
+<span class="fc" id="L119">        _xmlParserFeatures = xpFeatures;</span>
+<span class="fc" id="L120">        _xmlGeneratorFeatures = xgFeatures;</span>
+<span class="fc" id="L121">        _cfgNameForTextElement = nameForTextElem;</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        if (xmlIn == null) {</span>
+<span class="fc" id="L123">            xmlIn = StaxUtil.defaultInputFactory(getClass().getClassLoader());</span>
+            // as per [dataformat-xml#190], disable external entity expansion by default
+<span class="fc" id="L125">            xmlIn.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, Boolean.FALSE);</span>
+            // and ditto wrt [dataformat-xml#211], SUPPORT_DTD
+<span class="fc" id="L127">            xmlIn.setProperty(XMLInputFactory.SUPPORT_DTD, Boolean.FALSE);</span>
+        }
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        if (xmlOut == null) {</span>
+<span class="fc" id="L130">            xmlOut = StaxUtil.defaultOutputFactory(getClass().getClassLoader());</span>
+            // [dataformat-xml#326]: Better ensure namespaces get built properly:
+<span class="fc" id="L132">            xmlOut.setProperty(XMLOutputFactory.IS_REPAIRING_NAMESPACES, Boolean.TRUE);</span>
+        }
+<span class="fc" id="L134">        _initFactories(xmlIn, xmlOut);</span>
+<span class="fc" id="L135">        _xmlInputFactory = xmlIn;</span>
+<span class="fc" id="L136">        _xmlOutputFactory = xmlOut;</span>
+<span class="fc" id="L137">    }</span>
+
+    /**
+     * @since 2.2.1
+     */
+    protected XmlFactory(XmlFactory src, ObjectCodec oc)
+    {
+<span class="fc" id="L144">        super(src, oc);</span>
+<span class="fc" id="L145">        _xmlParserFeatures = src._xmlParserFeatures;</span>
+<span class="fc" id="L146">        _xmlGeneratorFeatures = src._xmlGeneratorFeatures;</span>
+<span class="fc" id="L147">        _cfgNameForTextElement = src._cfgNameForTextElement;</span>
+<span class="fc" id="L148">        _xmlInputFactory = src._xmlInputFactory;</span>
+<span class="fc" id="L149">        _xmlOutputFactory = src._xmlOutputFactory;</span>
+<span class="fc" id="L150">        _nameProcessor = src._nameProcessor;</span>
+<span class="fc" id="L151">    }</span>
+
+    /**
+     * Constructors used by {@link JsonFactoryBuilder} for instantiation.
+     *
+     * @since 2.9
+     */
+    protected XmlFactory(XmlFactoryBuilder b)
+    {
+<span class="fc" id="L160">        super(b, false);</span>
+<span class="fc" id="L161">        _xmlParserFeatures = b.formatParserFeaturesMask();</span>
+<span class="fc" id="L162">        _xmlGeneratorFeatures = b.formatGeneratorFeaturesMask();</span>
+<span class="fc" id="L163">        _cfgNameForTextElement = b.nameForTextElement();</span>
+<span class="fc" id="L164">        _xmlInputFactory = b.xmlInputFactory();</span>
+<span class="fc" id="L165">        _xmlOutputFactory = b.xmlOutputFactory();</span>
+<span class="fc" id="L166">        _nameProcessor = b.xmlNameProcessor();</span>
+<span class="fc" id="L167">        _initFactories(_xmlInputFactory, _xmlOutputFactory);</span>
+<span class="fc" id="L168">    }</span>
+
+    public static XmlFactoryBuilder builder() {
+<span class="fc" id="L171">        return new XmlFactoryBuilder();</span>
+    }
+
+    @Override
+    public XmlFactoryBuilder rebuild() {
+<span class="nc" id="L176">        return new XmlFactoryBuilder(this);</span>
+    }
+
+    protected void _initFactories(XMLInputFactory xmlIn, XMLOutputFactory xmlOut)
+    {
+        // [dataformat-xml#326]: Better ensure namespaces get built properly, so:
+<span class="fc" id="L182">        xmlOut.setProperty(XMLOutputFactory.IS_REPAIRING_NAMESPACES, Boolean.TRUE);</span>
+        // and for parser, force coalescing as well (much simpler to use)
+<span class="fc" id="L184">        xmlIn.setProperty(XMLInputFactory.IS_COALESCING, Boolean.TRUE);</span>
+<span class="fc" id="L185">    }</span>
+
+    /**
+     * Note: compared to base implementation by {@link JsonFactory},
+     * here the copy will actually share underlying XML input and
+     * output factories, as there is no way to make copies of those.
+     */
+    @Override
+    public XmlFactory copy() {
+<span class="fc" id="L194">        _checkInvalidCopy(XmlFactory.class);</span>
+<span class="fc" id="L195">        return new XmlFactory(this, null);</span>
+    }
+
+    @Override
+    public Version version() {
+<span class="fc" id="L200">        return PackageVersion.VERSION;</span>
+    }
+
+    /*
+    /**********************************************************
+    /* Serializable overrides
+    /**********************************************************
+     */
+
+    /**
+     * Hiding place for JDK-serialization unthawed factories...
+     */
+    protected transient String _jdkXmlInFactory;
+
+    /**
+     * Hiding place for JDK-serialization unthawed factories...
+     */
+    protected transient String _jdkXmlOutFactory;
+
+    /**
+     * Method that we need to override to actually make restoration go
+     * through constructors etc.
+     */
+    @Override // since JsonFactory already implemented it
+    protected Object readResolve() {
+<span class="pc bpc" id="L225" title="1 of 2 branches missed.">        if (_jdkXmlInFactory == null) {</span>
+<span class="nc" id="L226">            throw new IllegalStateException(&quot;No XMLInputFactory class name read during JDK deserialization&quot;);</span>
+        }
+<span class="pc bpc" id="L228" title="1 of 2 branches missed.">        if (_jdkXmlOutFactory == null) {</span>
+<span class="nc" id="L229">            throw new IllegalStateException(&quot;No XMLOutputFactory class name read during JDK deserialization&quot;);</span>
+        }
+        final XMLInputFactory inf;
+        XMLOutputFactory outf;
+        try {
+<span class="fc" id="L234">            inf = (XMLInputFactory) Class.forName(_jdkXmlInFactory).getDeclaredConstructor().newInstance();</span>
+<span class="fc" id="L235">            outf = (XMLOutputFactory) Class.forName(_jdkXmlOutFactory).getDeclaredConstructor().newInstance();</span>
+<span class="nc" id="L236">        } catch (Exception e) {</span>
+<span class="nc" id="L237">            throw new IllegalArgumentException(e);</span>
+<span class="fc" id="L238">        }</span>
+<span class="fc" id="L239">	return new XmlFactory(_objectCodec, _xmlParserFeatures, _xmlGeneratorFeatures,</span>
+			      inf, outf, _cfgNameForTextElement);
+    }
+
+    /**
+     * In addition to default serialization, which mostly works, need
+     * to handle case of XML factories, hence override.
+     */
+    private void readObject(ObjectInputStream in)
+            throws IOException, ClassNotFoundException
+    {
+<span class="fc" id="L250">        in.defaultReadObject();</span>
+<span class="fc" id="L251">        _jdkXmlInFactory = in.readUTF();</span>
+<span class="fc" id="L252">        _jdkXmlOutFactory = in.readUTF();</span>
+<span class="fc" id="L253">    }</span>
+
+    /**
+     * In addition to default serialization, which mostly works, need
+     * to handle case of XML factories, hence override.
+     */
+    private void writeObject(ObjectOutputStream out) throws IOException {
+<span class="fc" id="L260">        out.defaultWriteObject();</span>
+<span class="fc" id="L261">        out.writeUTF(_xmlInputFactory.getClass().getName());</span>
+<span class="fc" id="L262">        out.writeUTF(_xmlOutputFactory.getClass().getName());</span>
+<span class="fc" id="L263">    }</span>
+    
+    /*
+    /**********************************************************
+    /* Configuration, XML-specific
+    /**********************************************************
+     */
+    
+    /**
+     * @since 2.1
+     */
+    public void setXMLTextElementName(String name) {
+<span class="fc" id="L275">        _cfgNameForTextElement = name;</span>
+<span class="fc" id="L276">    }</span>
+
+    /**
+     * @since 2.2
+     */
+    public String getXMLTextElementName() {
+<span class="fc" id="L282">        return _cfgNameForTextElement;</span>
+    }
+    
+    /*
+    /**********************************************************
+    /* Configuration, XML, parser setting
+    /**********************************************************
+     */
+
+    /**
+     * Method for enabling or disabling specified XML parser feature.
+     */
+    public final XmlFactory configure(FromXmlParser.Feature f, boolean state)
+    {
+<span class="nc bnc" id="L296" title="All 2 branches missed.">        if (state) {</span>
+<span class="nc" id="L297">            enable(f);</span>
+        } else {
+<span class="nc" id="L299">            disable(f);</span>
+        }
+<span class="nc" id="L301">        return this;</span>
+    }
+
+    /**
+     * Method for enabling specified XML parser feature.
+     */
+    public XmlFactory enable(FromXmlParser.Feature f) {
+<span class="fc" id="L308">        _xmlParserFeatures |= f.getMask();</span>
+<span class="fc" id="L309">        return this;</span>
+    }
+
+    /**
+     * Method for disabling specified XML parser feature.
+     */
+    public XmlFactory disable(FromXmlParser.Feature f) {
+<span class="fc" id="L316">        _xmlParserFeatures &amp;= ~f.getMask();</span>
+<span class="fc" id="L317">        return this;</span>
+    }
+
+    /**
+     * Checked whether specified XML parser feature is enabled.
+     */
+    public final boolean isEnabled(FromXmlParser.Feature f) {
+<span class="nc bnc" id="L324" title="All 2 branches missed.">        return (_xmlParserFeatures &amp; f.getMask()) != 0;</span>
+    }
+
+    @Override
+    public int getFormatParserFeatures() {
+<span class="nc" id="L329">        return _xmlParserFeatures;</span>
+    }
+
+    @Override
+    public int getFormatGeneratorFeatures() {
+<span class="nc" id="L334">        return _xmlGeneratorFeatures;</span>
+    }
+
+    public XmlNameProcessor getXmlNameProcessor() {
+<span class="nc" id="L338">        return _nameProcessor;</span>
+    }
+
+    public void setXmlNameProcessor(XmlNameProcessor processor) {
+<span class="fc" id="L342">        _nameProcessor = processor;</span>
+<span class="fc" id="L343">    }</span>
+
+    /*
+    /******************************************************
+    /* Configuration, XML, generator settings
+    /******************************************************
+     */
+
+    /**
+     * Method for enabling or disabling specified XML generator feature.
+     */
+    public final XmlFactory configure(ToXmlGenerator.Feature f, boolean state) {
+<span class="pc bpc" id="L355" title="1 of 2 branches missed.">        if (state) {</span>
+<span class="fc" id="L356">            enable(f);</span>
+        } else {
+<span class="nc" id="L358">            disable(f);</span>
+        }
+<span class="fc" id="L360">        return this;</span>
+    }
+
+    /**
+     * Method for enabling specified XML generator feature.
+     */
+    public XmlFactory enable(ToXmlGenerator.Feature f) {
+<span class="fc" id="L367">        _xmlGeneratorFeatures |= f.getMask();</span>
+<span class="fc" id="L368">        return this;</span>
+    }
+
+    /**
+     * Method for disabling specified XML generator feature.
+     */
+    public XmlFactory disable(ToXmlGenerator.Feature f) {
+<span class="fc" id="L375">        _xmlGeneratorFeatures &amp;= ~f.getMask();</span>
+<span class="fc" id="L376">        return this;</span>
+    }
+
+    /**
+     * Check whether specified XML generator feature is enabled.
+     */
+    public final boolean isEnabled(ToXmlGenerator.Feature f) {
+<span class="nc bnc" id="L383" title="All 2 branches missed.">        return (_xmlGeneratorFeatures &amp; f.getMask()) != 0;</span>
+    }
+
+    /*
+    /**********************************************************
+    /* Additional configuration
+    /**********************************************************
+     */
+
+    /** @since 2.4 */
+    public XMLInputFactory getXMLInputFactory() {
+<span class="fc" id="L394">        return _xmlInputFactory;</span>
+    }
+
+    /**
+     * @deprecated Since 2.12 -- should be set as part of build process
+     *   (either in builder, or constructor)
+     */
+    @Deprecated
+    public void setXMLInputFactory(XMLInputFactory f) {
+<span class="nc" id="L403">        _xmlInputFactory = f;</span>
+<span class="nc" id="L404">    }</span>
+
+    /** @since 2.4 */
+    public XMLOutputFactory getXMLOutputFactory() {
+<span class="fc" id="L408">        return _xmlOutputFactory;</span>
+    }
+    
+    /**
+     * @deprecated Since 2.12 -- should be set as part of build process
+     *   (either in builder, or constructor)
+     */
+    @Deprecated
+    public void setXMLOutputFactory(XMLOutputFactory f) {
+<span class="nc" id="L417">        _xmlOutputFactory = f;</span>
+<span class="nc" id="L418">    }</span>
+
+    /*
+    /**********************************************************
+    /* Format detection functionality
+    /**********************************************************
+     */
+
+    /**
+     * Method that returns short textual id identifying format
+     * this factory supports.
+     *&lt;p&gt;
+     * Note: sub-classes should override this method; default
+     * implementation will return null for all sub-classes
+     */
+    @Override
+    public String getFormatName() {
+<span class="fc" id="L435">        return FORMAT_NAME_XML;</span>
+    }
+
+    @Override
+    public MatchStrength hasFormat(InputAccessor acc) throws IOException {
+<span class="fc" id="L440">        return hasXMLFormat(acc);</span>
+    }
+
+    /**
+     * XML format does require support from custom {@link ObjectCodec}
+     * (that is, {@link XmlMapper}), so need to return true here.
+     * 
+     * @return True since XML format does require support from codec
+     */
+    @Override
+<span class="nc" id="L450">    public boolean requiresCustomCodec() { return true; }</span>
+
+    /*
+    /**********************************************************
+    /* Capability introspection
+    /**********************************************************
+     */
+
+    /**
+     * As of 2.4, we do have actual capability for passing char arrays
+     * efficiently, but unfortunately
+     * have no working mechanism for recycling buffers. So we have to 
+     * admit that can not make efficient use.
+     */
+    @Override
+<span class="nc" id="L465">    public boolean canUseCharArrays() { return false; }</span>
+
+    @Override // since 2.6
+    public Class&lt;FromXmlParser.Feature&gt; getFormatReadFeatureType() {
+<span class="nc" id="L469">        return FromXmlParser.Feature.class;</span>
+    }
+
+    @Override // since 2.6
+    public Class&lt;ToXmlGenerator.Feature&gt; getFormatWriteFeatureType() {
+<span class="nc" id="L474">        return ToXmlGenerator.Feature.class;</span>
+    }
+
+    /*
+    /**********************************************************
+    /* Overrides of public methods: parsing
+    /**********************************************************
+     */
+
+    /**
+     * Overridden just to prevent trying to optimize access via char array;
+     * while nice idea, problem is that we don't have proper hooks to ensure
+     * that temporary buffer gets recycled; so let's just use StringReader.
+     */
+    @SuppressWarnings(&quot;resource&quot;)
+    @Override
+    public JsonParser createParser(String content) throws IOException {
+<span class="fc" id="L491">        Reader r = new StringReader(content);</span>
+<span class="fc" id="L492">        IOContext ctxt = _createContext(_createContentReference(r), true);</span>
+<span class="pc bpc" id="L493" title="1 of 2 branches missed.">        if (_inputDecorator != null) {</span>
+<span class="nc" id="L494">            r = _inputDecorator.decorate(ctxt, r);</span>
+        }
+<span class="fc" id="L496">        return _createParser(r, ctxt);</span>
+    }
+    
+    /*
+    /**********************************************************
+    /* Overrides of public methods: generation
+    /**********************************************************
+     */
+
+    @Override
+    public ToXmlGenerator createGenerator(OutputStream out) throws IOException {
+<span class="fc" id="L507">        return createGenerator(out, JsonEncoding.UTF8);</span>
+    }
+    
+    @Override
+    public ToXmlGenerator createGenerator(OutputStream out, JsonEncoding enc) throws IOException
+    {
+        // false -&gt; we won't manage the stream unless explicitly directed to
+<span class="fc" id="L514">        final IOContext ctxt = _createContext(_createContentReference(out), false);</span>
+<span class="fc" id="L515">        ctxt.setEncoding(enc);</span>
+<span class="fc" id="L516">        return new ToXmlGenerator(ctxt,</span>
+                _generatorFeatures, _xmlGeneratorFeatures,
+<span class="fc" id="L518">                _objectCodec, _createXmlWriter(ctxt, out), _nameProcessor);</span>
+    }
+    
+    @Override
+    public ToXmlGenerator createGenerator(Writer out) throws IOException
+    {
+<span class="fc" id="L524">        final IOContext ctxt = _createContext(_createContentReference(out), false);</span>
+<span class="fc" id="L525">        return new ToXmlGenerator(ctxt,</span>
+                _generatorFeatures, _xmlGeneratorFeatures,
+<span class="fc" id="L527">                _objectCodec, _createXmlWriter(ctxt, out), _nameProcessor);</span>
+    }
+
+    @SuppressWarnings(&quot;resource&quot;)
+    @Override
+    public ToXmlGenerator createGenerator(File f, JsonEncoding enc) throws IOException
+    {
+<span class="fc" id="L534">        OutputStream out = new FileOutputStream(f);</span>
+        // true -&gt; yes, we have to manage the stream since we created it
+<span class="fc" id="L536">        final IOContext ctxt = _createContext(_createContentReference(out), true);</span>
+<span class="fc" id="L537">        ctxt.setEncoding(enc);</span>
+<span class="fc" id="L538">        return new ToXmlGenerator(ctxt, _generatorFeatures, _xmlGeneratorFeatures,</span>
+<span class="fc" id="L539">                _objectCodec, _createXmlWriter(ctxt, out), _nameProcessor);</span>
+    }
+
+    /*
+    /**********************************************************
+    /* Extended public API, mostly for XmlMapper
+    /**********************************************************
+     */
+
+    /**
+     * Factory method that wraps given {@link XMLStreamReader}, usually to allow
+     * partial data-binding.
+     * 
+     * @since 2.4
+     */
+    public FromXmlParser createParser(XMLStreamReader sr) throws IOException
+    {
+        // note: should NOT move parser if already pointing to START_ELEMENT
+<span class="pc bpc" id="L557" title="1 of 2 branches missed.">        if (sr.getEventType() != XMLStreamConstants.START_ELEMENT) {</span>
+<span class="nc" id="L558">            sr = _initializeXmlReader(sr);</span>
+        }
+
+        // false -&gt; not managed
+<span class="fc" id="L562">        FromXmlParser xp = new FromXmlParser(_createContext(_createContentReference(sr), false),</span>
+                _parserFeatures, _xmlParserFeatures, _objectCodec, sr, _nameProcessor);
+<span class="pc bpc" id="L564" title="1 of 2 branches missed.">        if (_cfgNameForTextElement != null) {</span>
+<span class="nc" id="L565">            xp.setXMLTextElementName(_cfgNameForTextElement);</span>
+        }
+<span class="fc" id="L567">        return xp;</span>
+    }
+
+    /**
+     * Factory method that wraps given {@link XMLStreamWriter}, usually to allow
+     * incremental serialization to compose large output by serializing a sequence
+     * of individual objects.
+     *
+     * @since 2.4
+     */
+    public ToXmlGenerator createGenerator(XMLStreamWriter sw) throws IOException
+    {
+<span class="fc" id="L579">        sw = _initializeXmlWriter(sw);</span>
+<span class="fc" id="L580">        IOContext ctxt = _createContext(_createContentReference(sw), false);</span>
+<span class="fc" id="L581">        return new ToXmlGenerator(ctxt, _generatorFeatures, _xmlGeneratorFeatures,</span>
+                _objectCodec, sw, _nameProcessor);
+    }
+
+    /*
+    /**********************************************************
+    /* Internal factory method overrides
+    /**********************************************************
+     */
+
+    @Override
+    protected FromXmlParser _createParser(InputStream in, IOContext ctxt) throws IOException
+    {
+        XMLStreamReader sr;
+        try {
+<span class="fc" id="L596">            sr = _xmlInputFactory.createXMLStreamReader(in);</span>
+<span class="nc" id="L597">        } catch (XMLStreamException e) {</span>
+<span class="nc" id="L598">            return StaxUtil.throwAsParseException(e, null);</span>
+<span class="fc" id="L599">        }</span>
+<span class="fc" id="L600">        sr = _initializeXmlReader(sr);</span>
+<span class="fc" id="L601">        FromXmlParser xp = new FromXmlParser(ctxt, _parserFeatures, _xmlParserFeatures,</span>
+                _objectCodec, sr, _nameProcessor);
+<span class="pc bpc" id="L603" title="1 of 2 branches missed.">        if (_cfgNameForTextElement != null) {</span>
+<span class="nc" id="L604">            xp.setXMLTextElementName(_cfgNameForTextElement);</span>
+        }
+<span class="fc" id="L606">        return xp;</span>
+    }
+
+    @Override
+    protected FromXmlParser _createParser(Reader r, IOContext ctxt) throws IOException
+    {
+        XMLStreamReader sr;
+        try {
+<span class="fc" id="L614">            sr = _xmlInputFactory.createXMLStreamReader(r);</span>
+<span class="nc" id="L615">        } catch (XMLStreamException e) {</span>
+<span class="nc" id="L616">            return StaxUtil.throwAsParseException(e, null);</span>
+<span class="fc" id="L617">        }</span>
+<span class="fc" id="L618">        sr = _initializeXmlReader(sr);</span>
+<span class="fc" id="L619">        FromXmlParser xp = new FromXmlParser(ctxt, _parserFeatures, _xmlParserFeatures,</span>
+                _objectCodec, sr, _nameProcessor);
+<span class="fc bfc" id="L621" title="All 2 branches covered.">        if (_cfgNameForTextElement != null) {</span>
+<span class="fc" id="L622">            xp.setXMLTextElementName(_cfgNameForTextElement);</span>
+        }
+<span class="fc" id="L624">        return xp;</span>
+    }
+
+    @Override
+    protected FromXmlParser _createParser(char[] data, int offset, int len, IOContext ctxt,
+            boolean recycleBuffer) throws IOException
+    {
+        // !!! TODO: add proper handling of 'recycleBuffer'; currently its handling
+        //    is always same as if 'false' was passed
+        XMLStreamReader sr;
+        try {
+            // 03-Jul-2021, tatu: [dataformat-xml#482] non-Stax2 impls unlikely to
+            //    support so avoid:
+<span class="pc bpc" id="L637" title="1 of 2 branches missed.">            if (_xmlInputFactory instanceof XMLInputFactory2) {</span>
+<span class="nc" id="L638">                sr = _xmlInputFactory.createXMLStreamReader(new Stax2CharArraySource(data, offset, len));</span>
+            } else {
+<span class="fc" id="L640">                sr = _xmlInputFactory.createXMLStreamReader(new CharArrayReader(data, offset, len));</span>
+            }
+<span class="nc" id="L642">        } catch (XMLStreamException e) {</span>
+<span class="nc" id="L643">            return StaxUtil.throwAsParseException(e, null);</span>
+<span class="fc" id="L644">        }</span>
+<span class="fc" id="L645">        sr = _initializeXmlReader(sr);</span>
+<span class="fc" id="L646">        FromXmlParser xp = new FromXmlParser(ctxt, _parserFeatures, _xmlParserFeatures,</span>
+                _objectCodec, sr, _nameProcessor);
+<span class="pc bpc" id="L648" title="1 of 2 branches missed.">        if (_cfgNameForTextElement != null) {</span>
+<span class="nc" id="L649">            xp.setXMLTextElementName(_cfgNameForTextElement);</span>
+        }
+<span class="fc" id="L651">        return xp;</span>
+    }
+
+    @Override
+    protected FromXmlParser _createParser(byte[] data, int offset, int len, IOContext ctxt) throws IOException
+    {
+        XMLStreamReader sr;
+        try {
+            // 03-Jul-2021, tatu: [dataformat-xml#482] non-Stax2 impls unlikely to
+            //    support so avoid:
+<span class="fc bfc" id="L661" title="All 2 branches covered.">            if (_xmlInputFactory instanceof XMLInputFactory2) {</span>
+<span class="fc" id="L662">                sr = _xmlInputFactory.createXMLStreamReader(new Stax2ByteArraySource(data, offset, len));</span>
+            } else {
+                // 04-Dec-2023, tatu: As per [dataformat-xml#618], JDK's crappy in-built
+                //    Stax implementation barfs here. Hence:
+                try {
+<span class="fc" id="L667">                    sr = _xmlInputFactory.createXMLStreamReader(new ByteArrayInputStream(data, offset, len));</span>
+<span class="nc" id="L668">                } catch (ArrayIndexOutOfBoundsException e) {</span>
+<span class="nc" id="L669">                    throw new JsonParseException(null,</span>
+                            &quot;Internal processing error by `XMLInputFactory` of type &quot;
+<span class="nc" id="L671">                            +ClassUtil.classNameOf(_xmlInputFactory)+&quot; when trying to create a parser (&quot;</span>
+                            +&quot;consider using Woodstox instead): &quot;
+<span class="nc" id="L673">                            +e.getMessage());</span>
+<span class="fc" id="L674">                }</span>
+            }
+<span class="fc" id="L676">        } catch (XMLStreamException e) {</span>
+<span class="nc" id="L677">            return StaxUtil.throwAsParseException(e, null);</span>
+<span class="fc" id="L678">        }</span>
+<span class="fc" id="L679">        sr = _initializeXmlReader(sr);</span>
+<span class="fc" id="L680">        FromXmlParser xp = new FromXmlParser(ctxt, _parserFeatures, _xmlParserFeatures,</span>
+                _objectCodec, sr, _nameProcessor);
+<span class="pc bpc" id="L682" title="1 of 2 branches missed.">        if (_cfgNameForTextElement != null) {</span>
+<span class="nc" id="L683">            xp.setXMLTextElementName(_cfgNameForTextElement);</span>
+        }
+<span class="fc" id="L685">        return xp;</span>
+    }
+
+    @Override
+    protected JsonGenerator _createGenerator(Writer out, IOContext ctxt) throws IOException {
+        // this method should never get called here, so:
+<span class="nc" id="L691">        VersionUtil.throwInternal();</span>
+<span class="nc" id="L692">        return null;</span>
+    }
+
+    /*
+    /**********************************************************************
+    /* Internal factory methods, XML-specific
+    /**********************************************************************
+     */
+
+    protected XMLStreamWriter _createXmlWriter(IOContext ctxt, OutputStream out) throws IOException
+    {
+        XMLStreamWriter sw;
+        try {
+<span class="fc" id="L705">            sw = _xmlOutputFactory.createXMLStreamWriter(_decorate(ctxt, out), &quot;UTF-8&quot;);</span>
+<span class="nc" id="L706">        } catch (Exception e) {</span>
+<span class="nc" id="L707">            throw new JsonGenerationException(e.getMessage(), e, null);</span>
+<span class="fc" id="L708">        }</span>
+<span class="fc" id="L709">        return _initializeXmlWriter(sw);</span>
+    }
+
+    protected XMLStreamWriter _createXmlWriter(IOContext ctxt, Writer w) throws IOException
+    {
+        XMLStreamWriter sw;
+        try {
+<span class="fc" id="L716">            sw = _xmlOutputFactory.createXMLStreamWriter(_decorate(ctxt, w));</span>
+<span class="nc" id="L717">        } catch (Exception e) {</span>
+<span class="nc" id="L718">            throw new JsonGenerationException(e.getMessage(), e, null);</span>
+<span class="fc" id="L719">        }</span>
+<span class="fc" id="L720">        return _initializeXmlWriter(sw);</span>
+    }
+
+    protected final XMLStreamWriter _initializeXmlWriter(XMLStreamWriter sw) throws IOException
+    {
+        // And just for Sun Stax parser (JDK default), seems that we better define default namespace
+        // (Woodstox doesn't care) -- otherwise it'll add unnecessary odd declaration
+        try {
+<span class="fc" id="L728">            sw.setDefaultNamespace(&quot;&quot;);</span>
+<span class="nc" id="L729">        } catch (Exception e) {</span>
+<span class="nc" id="L730">            throw new JsonGenerationException(e.getMessage(), e, null);</span>
+<span class="fc" id="L731">        }</span>
+<span class="fc" id="L732">        return sw;</span>
+    }
+
+    protected final XMLStreamReader _initializeXmlReader(XMLStreamReader sr) throws IOException
+    {
+        try {
+            // for now, nothing to do... except let's find the root element
+<span class="fc bfc" id="L739" title="All 2 branches covered.">            while (sr.next() != XMLStreamConstants.START_ELEMENT) {</span>
+                ;
+            }
+        // [dataformat-xml#350]: Xerces-backed impl throws non-XMLStreamException so:
+<span class="nc" id="L743">        } catch (Exception e) {</span>
+<span class="nc" id="L744">            throw new JsonParseException(null, e.getMessage(), e);</span>
+<span class="fc" id="L745">        }</span>
+<span class="fc" id="L746">        return sr;</span>
+    }
+
+    /*
+    /**********************************************************************
+    /* Internal methods, format auto-detection
+    /**********************************************************************
+     */
+
+    private final static byte UTF8_BOM_1 = (byte) 0xEF;
+    private final static byte UTF8_BOM_2 = (byte) 0xBB;
+    private final static byte UTF8_BOM_3 = (byte) 0xBF;
+
+    private final static byte BYTE_x = (byte) 'x';
+    private final static byte BYTE_m = (byte) 'm';
+    private final static byte BYTE_l = (byte) 'l';
+    private final static byte BYTE_D = (byte) 'D';
+
+    private final static byte BYTE_LT = (byte) '&lt;';
+    private final static byte BYTE_QMARK = (byte) '?';
+    private final static byte BYTE_EXCL = (byte) '!';
+    private final static byte BYTE_HYPHEN = (byte) '-';
+    
+    /**
+     * Method that tries to figure out if content seems to be in some kind
+     * of XML format.
+     * Note that implementation here is not nearly as robust as what underlying
+     * Stax parser will do; the idea is to first support common encodings,
+     * then expand as needed (for example, it is not all that hard to support
+     * UTF-16; but it is some work and not needed quite yet)
+     */
+    public static MatchStrength hasXMLFormat(InputAccessor acc) throws IOException
+    {
+        /* Basically we just need to find &quot;&lt;!&quot;, &quot;&lt;?&quot; or &quot;&lt;NAME&quot;... but ideally
+         * we would actually see the XML declaration
+         */
+<span class="pc bpc" id="L782" title="1 of 2 branches missed.">        if (!acc.hasMoreBytes()) {</span>
+<span class="nc" id="L783">            return MatchStrength.INCONCLUSIVE;</span>
+        }
+<span class="fc" id="L785">        byte b = acc.nextByte();</span>
+        // Very first thing, a UTF-8 BOM? (later improvements: other BOM's, heuristics)
+<span class="pc bpc" id="L787" title="1 of 2 branches missed.">        if (b == UTF8_BOM_1) { // yes, looks like UTF-8 BOM</span>
+<span class="nc bnc" id="L788" title="All 2 branches missed.">            if (!acc.hasMoreBytes()) {</span>
+<span class="nc" id="L789">                return MatchStrength.INCONCLUSIVE;</span>
+            }
+<span class="nc bnc" id="L791" title="All 2 branches missed.">            if (acc.nextByte() != UTF8_BOM_2) {</span>
+<span class="nc" id="L792">                return MatchStrength.NO_MATCH;</span>
+            }
+<span class="nc bnc" id="L794" title="All 2 branches missed.">            if (!acc.hasMoreBytes()) {</span>
+<span class="nc" id="L795">                return MatchStrength.INCONCLUSIVE;</span>
+            }
+<span class="nc bnc" id="L797" title="All 2 branches missed.">            if (acc.nextByte() != UTF8_BOM_3) {</span>
+<span class="nc" id="L798">                return MatchStrength.NO_MATCH;</span>
+            }
+<span class="nc bnc" id="L800" title="All 2 branches missed.">            if (!acc.hasMoreBytes()) {</span>
+<span class="nc" id="L801">                return MatchStrength.INCONCLUSIVE;</span>
+            }
+<span class="nc" id="L803">            b = acc.nextByte();</span>
+        }
+        // otherwise: XML declaration?
+<span class="fc bfc" id="L806" title="All 2 branches covered.">        boolean maybeXmlDecl = (b == BYTE_LT);</span>
+<span class="fc bfc" id="L807" title="All 2 branches covered.">        if (!maybeXmlDecl) {</span>
+<span class="fc" id="L808">            int ch = skipSpace(acc, b);</span>
+<span class="pc bpc" id="L809" title="1 of 2 branches missed.">            if (ch &lt; 0) {</span>
+<span class="nc" id="L810">                return MatchStrength.INCONCLUSIVE;</span>
+            }
+<span class="fc" id="L812">            b = (byte) ch;</span>
+            // If we did not get an LT, shouldn't be valid XML (minus encoding issues etc)
+<span class="fc bfc" id="L814" title="All 2 branches covered.">           if (b != BYTE_LT) {</span>
+<span class="fc" id="L815">                return MatchStrength.NO_MATCH;</span>
+            }
+        }
+<span class="pc bpc" id="L818" title="1 of 2 branches missed.">        if (!acc.hasMoreBytes()) {</span>
+<span class="nc" id="L819">            return MatchStrength.INCONCLUSIVE;</span>
+        }
+<span class="fc" id="L821">        b = acc.nextByte();</span>
+        // Couple of choices here
+<span class="fc bfc" id="L823" title="All 2 branches covered.">        if (b == BYTE_QMARK) { // &lt;?</span>
+<span class="fc" id="L824">            b = acc.nextByte();</span>
+<span class="fc bfc" id="L825" title="All 2 branches covered.">            if (b == BYTE_x) {</span>
+<span class="pc bpc" id="L826" title="1 of 2 branches missed.">                if (maybeXmlDecl) {</span>
+<span class="pc bpc" id="L827" title="2 of 4 branches missed.">                    if (acc.hasMoreBytes() &amp;&amp; acc.nextByte() == BYTE_m) {</span>
+<span class="pc bpc" id="L828" title="2 of 4 branches missed.">                        if (acc.hasMoreBytes() &amp;&amp; acc.nextByte() == BYTE_l) {</span>
+<span class="fc" id="L829">                            return MatchStrength.FULL_MATCH;</span>
+                        }
+                    }
+                }
+                // but even with just partial match, we ought to be fine
+<span class="nc" id="L834">                return MatchStrength.SOLID_MATCH;</span>
+            }
+            // Ok to start with some other char too; just not xml declaration
+<span class="pc bpc" id="L837" title="1 of 2 branches missed.">            if (validXmlNameStartChar(acc, b)) {</span>
+<span class="fc" id="L838">                return MatchStrength.SOLID_MATCH;</span>
+            }
+<span class="fc bfc" id="L840" title="All 2 branches covered.">        } else if (b == BYTE_EXCL) {</span>
+            /* must be &lt;!-- comment --&gt; or &lt;!DOCTYPE ...&gt;, since
+             * &lt;![CDATA[ ]]&gt; can NOT come outside of root
+             */
+<span class="pc bpc" id="L844" title="1 of 2 branches missed.">            if (!acc.hasMoreBytes()) {</span>
+<span class="nc" id="L845">                return MatchStrength.INCONCLUSIVE;</span>
+            }
+<span class="fc" id="L847">            b = acc.nextByte();</span>
+<span class="fc bfc" id="L848" title="All 2 branches covered.">            if (b == BYTE_HYPHEN) {</span>
+<span class="pc bpc" id="L849" title="1 of 2 branches missed.">                if (!acc.hasMoreBytes()) {</span>
+<span class="nc" id="L850">                    return MatchStrength.INCONCLUSIVE;</span>
+                }
+<span class="pc bpc" id="L852" title="1 of 2 branches missed.">                if (acc.nextByte() == BYTE_HYPHEN) {</span>
+<span class="fc" id="L853">                    return MatchStrength.SOLID_MATCH;</span>
+                }
+<span class="pc bpc" id="L855" title="1 of 2 branches missed.">            } else if (b == BYTE_D) {</span>
+<span class="fc" id="L856">                return tryMatch(acc, &quot;OCTYPE&quot;, MatchStrength.SOLID_MATCH);</span>
+            }
+        } else {
+            // maybe root element? Just needs to match first char.
+<span class="pc bpc" id="L860" title="1 of 2 branches missed.">            if (validXmlNameStartChar(acc, b)) {</span>
+<span class="fc" id="L861">                return MatchStrength.SOLID_MATCH;</span>
+            }
+        }
+<span class="nc" id="L864">        return MatchStrength.NO_MATCH;</span>
+    }
+
+    private final static boolean validXmlNameStartChar(InputAccessor acc, byte b)
+        throws IOException
+    {
+        /* Can make it actual real XML check in future; for now we do just crude
+         * check for ASCII range
+         */
+<span class="fc" id="L873">        int ch = (int) b &amp; 0xFF;</span>
+<span class="pc bpc" id="L874" title="1 of 2 branches missed.">        if (ch &gt;= 'A') { // in theory, colon could be; in practice it should never be valid (wrt namespace)</span>
+            // This is where we'd check for multi-byte UTF-8 chars (or whatever encoding is in use)...
+<span class="fc" id="L876">            return true;</span>
+        }
+<span class="nc" id="L878">        return false;</span>
+    }
+    
+    private final static MatchStrength tryMatch(InputAccessor acc, String matchStr, MatchStrength fullMatchStrength)
+        throws IOException
+    {
+<span class="fc bfc" id="L884" title="All 2 branches covered.">        for (int i = 0, len = matchStr.length(); i &lt; len; ++i) {</span>
+<span class="pc bpc" id="L885" title="1 of 2 branches missed.">            if (!acc.hasMoreBytes()) {</span>
+<span class="nc" id="L886">                return MatchStrength.INCONCLUSIVE;</span>
+            }
+<span class="pc bpc" id="L888" title="1 of 2 branches missed.">            if (acc.nextByte() != matchStr.charAt(i)) {</span>
+<span class="nc" id="L889">                return MatchStrength.NO_MATCH;</span>
+            }
+        }
+<span class="fc" id="L892">        return fullMatchStrength;</span>
+    }
+    
+    private final static int skipSpace(InputAccessor acc, byte b) throws IOException
+    {
+        while (true) {
+<span class="fc" id="L898">            int ch = (int) b &amp; 0xFF;</span>
+<span class="pc bpc" id="L899" title="3 of 8 branches missed.">            if (!(ch == ' ' || ch == '\r' || ch == '\n' || ch == '\t')) {</span>
+<span class="fc" id="L900">                return ch;</span>
+            }
+<span class="pc bpc" id="L902" title="1 of 2 branches missed.">            if (!acc.hasMoreBytes()) {</span>
+<span class="nc" id="L903">                return -1;</span>
+            }
+<span class="fc" id="L905">            b = acc.nextByte();</span>
+<span class="fc" id="L906">            ch = (int) b &amp; 0xFF;</span>
+<span class="fc" id="L907">        }</span>
+    }
+
+    /*
+    /**********************************************************
+    /* Decorators, output
+    /**********************************************************
+     */
+
+    protected OutputStream _decorate(IOContext ioCtxt, OutputStream out) throws IOException
+    {
+<span class="fc bfc" id="L918" title="All 2 branches covered.">        if (_outputDecorator != null) {</span>
+<span class="fc" id="L919">            OutputStream out2 = _outputDecorator.decorate(ioCtxt, out);</span>
+<span class="pc bpc" id="L920" title="1 of 2 branches missed.">            if (out2 != null) {</span>
+<span class="fc" id="L921">                return out2;</span>
+            }
+        }
+<span class="fc" id="L924">        return out;</span>
+    }
+
+    protected Writer _decorate(IOContext ioCtxt, Writer out) throws IOException
+    {
+<span class="fc bfc" id="L929" title="All 2 branches covered.">        if (_outputDecorator != null) {</span>
+<span class="fc" id="L930">            Writer out2 = _outputDecorator.decorate(ioCtxt, out);</span>
+<span class="pc bpc" id="L931" title="1 of 2 branches missed.">            if (out2 != null) {</span>
+<span class="fc" id="L932">                return out2;</span>
+            }
+        }
+<span class="fc" id="L935">        return out;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

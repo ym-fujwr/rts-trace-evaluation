@@ -1,0 +1,21 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 6f07cb81..9d6560da 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -94,0 +95,3 @@ The <action> type attribute can be add,update,fix,remove.
++      <action dev="ggregory" type="fix" due-to="Gary Gregory">
++        ClassLoaderUtil.toCanonicalName() now calls Objects.requireNonNull() instead of throwing a RuntimeException.
++      </action>
+diff --git a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
+index 1994b53b..eb6eabc0 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
++++ b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
+@@ -20,0 +21 @@ import java.util.Map;
++import java.util.Objects;
+@@ -148,4 +149,2 @@ public class ClassLoaderUtil {
+-        if (className == null) {
+-            throw new RuntimeException("Argument className was null.");
+-        }
+-        else if (className.endsWith("[]")) {
++        Objects.requireNonNull(className, "className");
++        if (className.endsWith("[]")) {

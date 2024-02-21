@@ -1,0 +1,106 @@
+diff --git a/src/main/java/org/davidmoten/hilbert/Ranges2.java b/src/main/java/org/davidmoten/hilbert/Ranges2.java
+index 726f364..09232ed 100644
+--- a/src/main/java/org/davidmoten/hilbert/Ranges2.java
++++ b/src/main/java/org/davidmoten/hilbert/Ranges2.java
+@@ -3 +2,0 @@ package org.davidmoten.hilbert;
+-import java.util.Comparator;
+@@ -11 +10 @@ public class Ranges2 {
+-    
++
+@@ -25,0 +25 @@ public class Ranges2 {
++        System.out.println("adding " + r);
+@@ -34 +34,2 @@ public class Ranges2 {
+-                Node next = x.next;
++                System.out.println("first = " + x.value);
++                Node next = x.next();
+@@ -36,2 +37,2 @@ public class Ranges2 {
+-                y.next = next.next;
+-                if (x.previous == null) {
++                y.setNext(next.next());
++                if (x.previous() == null) {
+@@ -40,2 +41,2 @@ public class Ranges2 {
+-                    x.previous.next = y;
+-                    y.previous = x.previous;
++                    x.previous.setNext(y);
++                    y.setPrevious(x.previous);
+@@ -46,2 +47,2 @@ public class Ranges2 {
+-                x.next = null;
+-                x.previous = null;
++                x.setNext(null);
++                x.setPrevious (null);
+@@ -49,0 +51 @@ public class Ranges2 {
++                System.out.println("removing " + x);
+@@ -57 +59 @@ public class Ranges2 {
+-    
++
+@@ -66 +68,5 @@ public class Ranges2 {
+-    private static final class Node implements Comparator<Node> {
++    // NotThreadSafe
++    private static final class Node implements Comparable<Node> {
++        
++        private static long counter = 0;
++        
+@@ -68,2 +74,3 @@ public class Ranges2 {
+-        Node next;
+-        Node previous;
++        private Node next;
++        private Node previous;
++        private final long id;
+@@ -72,0 +80,21 @@ public class Ranges2 {
++            this.id = counter++;
++        }
++        
++        Node next() {
++            return next;
++        }
++        
++        Node previous() {
++            return previous;
++        }
++        
++        Node setNext(Node next) {
++            Preconditions.checkArgument(next != this);
++            this.next = next;
++            return this;
++        }
++        
++        Node setPrevious(Node previous) {
++            Preconditions.checkArgument(previous != this);
++            this.previous = previous;
++            return this;
+@@ -83,6 +111,2 @@ public class Ranges2 {
+-        public int compare(Node a, Node b) {
+-            long x = a.next.value.low() - a.value.high();
+-            long y = b.next.value.low() - b.value.high();
+-            if (x < y) {
+-                return -1;
+-            } else if (x == y) {
++        public int compareTo(Node o) {
++            if (this == o) {
+@@ -91 +115,12 @@ public class Ranges2 {
+-                return 1;
++                if (next == null) {
++                    return -1;
++                }
++                long x = next.value.low() - value.high();
++                long y = o.next.value.low() - o.value.high();
++                if (x < y) {
++                    return -1;
++                } else if (x == y) {
++                    return Long.compare(id, o.id);
++                } else {
++                    return 1;
++                }
+@@ -93,0 +129,6 @@ public class Ranges2 {
++
++        @Override
++        public String toString() {
++            return "Node [value=" + value + ", next=" + next + ", previous=" + previous + "]";
++        }
++        
+diff --git a/src/test/java/org/davidmoten/hilbert/RangesTest.java b/src/test/java/org/davidmoten/hilbert/RangesTest.java
+index a78f978..e0cd560 100644
+--- a/src/test/java/org/davidmoten/hilbert/RangesTest.java
++++ b/src/test/java/org/davidmoten/hilbert/RangesTest.java
+@@ -28,0 +29 @@ public class RangesTest {
++    

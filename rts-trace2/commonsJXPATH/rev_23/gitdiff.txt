@@ -1,0 +1,146 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/axes/PredicateContext.java b/src/main/java/org/apache/commons/jxpath/ri/axes/PredicateContext.java
+index b2e1deaa..645fdf53 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/axes/PredicateContext.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/axes/PredicateContext.java
+@@ -142,10 +142,2 @@ public class PredicateContext extends EvalContext {
+-        else {
+-            if (dynamicPropertyPointer == null && !setupDynamicPropertyPointer()) {
+-                return setPositionStandard(position);
+-            }
+-            if (position < 1
+-                || position > dynamicPropertyPointer.getLength()) {
+-                return false;
+-            }
+-            dynamicPropertyPointer.setIndex(position - 1);
+-            return true;
++        if (dynamicPropertyPointer == null && !setupDynamicPropertyPointer()) {
++            return setPositionStandard(position);
+@@ -152,0 +145,6 @@ public class PredicateContext extends EvalContext {
++        if (position < 1
++            || position > dynamicPropertyPointer.getLength()) {
++            return false;
++        }
++        dynamicPropertyPointer.setIndex(position - 1);
++        return true;
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java b/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java
+index 8f3c5c75..2efd1426 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java
+@@ -636,16 +636,6 @@ public class SimplePathInterpreter {
+-        else {
+-            // For a subscript, simply take the corresponding
+-            // element from the list of results and
+-            // proceed to the remaining predicates with that element
+-            final int index = indexFromPredicate(context, predicate);
+-            if (index < 0 || index >= parents.size()) {
+-                return null;
+-            }
+-            final NodePointer ptr = (NodePointer) parents.get(index);
+-            return doPredicate(
+-                context,
+-                ptr,
+-                steps,
+-                currentStep,
+-                predicates,
+-                currentPredicate + 1);
++        // For a subscript, simply take the corresponding
++        // element from the list of results and
++        // proceed to the remaining predicates with that element
++        final int index = indexFromPredicate(context, predicate);
++        if (index < 0 || index >= parents.size()) {
++            return null;
+@@ -652,0 +643,8 @@ public class SimplePathInterpreter {
++        final NodePointer ptr = (NodePointer) parents.get(index);
++        return doPredicate(
++            context,
++            ptr,
++            steps,
++            currentStep,
++            predicates,
++            currentPredicate + 1);
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodeIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodeIterator.java
+index 872c638d..89c142e8 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodeIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodeIterator.java
+@@ -154,6 +154,4 @@ public class JDOMNodeIterator implements NodeIterator {
+-        else {
+-            if (position == 1) {
+-                index = children.size() - 1;
+-                if (child != null) {
+-                    index = children.indexOf(child) - 1;
+-                }
++        if (position == 1) {
++            index = children.size() - 1;
++            if (child != null) {
++                index = children.indexOf(child) - 1;
+@@ -161,8 +159,8 @@ public class JDOMNodeIterator implements NodeIterator {
+-            else {
+-                index--;
+-            }
+-            for (; index >= 0; index--) {
+-                child = children.get(index);
+-                if (testChild()) {
+-                    return true;
+-                }
++        }
++        else {
++            index--;
++        }
++        for (; index >= 0; index--) {
++            child = children.get(index);
++            if (testChild()) {
++                return true;
+@@ -170 +167,0 @@ public class JDOMNodeIterator implements NodeIterator {
+-            return false;
+@@ -171,0 +169 @@ public class JDOMNodeIterator implements NodeIterator {
++        return false;
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/SimpleCharStream.java b/src/main/java/org/apache/commons/jxpath/ri/parser/SimpleCharStream.java
+index 5e5443a6..35e3deab 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/parser/SimpleCharStream.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/SimpleCharStream.java
+@@ -131,2 +130,0 @@ public class SimpleCharStream
+-        } else {
+-            maxNextCharInd += i;
+@@ -133,0 +132 @@ public class SimpleCharStream
++        maxNextCharInd += i;
+@@ -350,3 +348,0 @@ public int getLine() {
+-    } else {
+-        return new String(buffer, tokenBegin, bufsize - tokenBegin) +
+-                              new String(buffer, 0, bufpos + 1);
+@@ -353,0 +350,2 @@ public int getLine() {
++    return new String(buffer, tokenBegin, bufsize - tokenBegin) +
++                          new String(buffer, 0, bufpos + 1);
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/XPathParserTokenManager.java b/src/main/java/org/apache/commons/jxpath/ri/parser/XPathParserTokenManager.java
+index 2a1a74c7..1cf32d67 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/parser/XPathParserTokenManager.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/XPathParserTokenManager.java
+@@ -1384,11 +1383,0 @@ private void jjCheckNAddTwoStates(final int state1, final int state2)
+-private void jjCheckNAddStates(int start, final int end)
+-{
+-   do {
+-      jjCheckNAdd(jjnextStates[start]);
+-   } while (start++ != end);
+-}
+-private void jjCheckNAddStates(final int start)
+-{
+-   jjCheckNAdd(jjnextStates[start]);
+-   jjCheckNAdd(jjnextStates[start + 1]);
+-}
+@@ -1520 +1508,0 @@ private int jjMoveNfa_0(final int startState, int curPos)
+-   final int[] nextStates;
+@@ -1525 +1512,0 @@ private int jjMoveNfa_0(final int startState, int curPos)
+-   final int j;
+@@ -1921,2 +1907,0 @@ public void SwitchTo(final int lexState)
+-} else {
+-    curLexState = lexState;
+@@ -1923,0 +1909 @@ public void SwitchTo(final int lexState)
++curLexState = lexState;
+@@ -1948,2 +1933,0 @@ public Token getNextToken()
+-  final int kind;
+-  final Token specialToken = null;
+@@ -1986,4 +1970 @@ public Token getNextToken()
+-      else
+-      {
+-         continue EOFLoop;
+-      }
++    continue EOFLoop;

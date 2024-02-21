@@ -1,0 +1,180 @@
+diff --git a/pom.xml b/pom.xml
+index 07715089..20ef9035 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -105 +105 @@
+-    <defaultGoal>clean apache-rat:check package japicmp:cmp</defaultGoal>
++    <defaultGoal>clean apache-rat:check package japicmp:cmp javadoc:javadoc</defaultGoal>
+@@ -144,0 +145,15 @@
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-javadoc-plugin</artifactId>
++        <configuration>
++          <linksource>true</linksource>
++          <links>
++            <link>${commons.javadoc8.java.link}</link>
++            <link>${commons.javadoc.javaee5.link}</link>
++            <link>https://commons.apache.org/proper/commons-beanutils/apidocs</link>
++            <link>https://commons.apache.org/proper/commons-lang/apidocs</link>
++            <!-- http://www.jdom.org/docs/apidocs/ is not a secure link -->
++            <link>https://javadoc.io/doc/org.jdom/jdom/1.1</link> 
++          </links>
++        </configuration>
++      </plugin>
+@@ -175 +190 @@
+-      <version>3.8.1</version>
++      <version>4.13.2</version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index e9cca6c8..654aacc0 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -50 +50 @@ The <action> type attribute can be add,update,fix,remove.
+-      <action issue="JXPATH-184" dev="britter" type="update" >
++      <action issue="JXPATH-184" dev="britter" type="update" due-to="britter, Gary Gregory">
+@@ -52,0 +53,3 @@ The <action> type attribute can be add,update,fix,remove.
++      <action issue="JXPATH-184" dev="britter" type="update" due-to="britter, Gary Gregory">
++        Bump JUnit 3.8.1 to 4.13.2
++      </action>
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContext.java b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+index 9a27b0e9..fe22e281 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathContext.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathContext.java
+@@ -95 +95 @@ import org.apache.commons.jxpath.util.KeyManagerUtils;
+- *
++ * </p>
+@@ -99 +98,0 @@ import org.apache.commons.jxpath.util.KeyManagerUtils;
+- * </p>
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java b/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java
+index 85ec269e..8239fbf8 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/EvalContext.java
+@@ -163 +163 @@ public abstract class EvalContext implements ExpressionContext, Iterator {
+-     * @throws UnsupportedOperationException
++     * @throws UnsupportedOperationException Always thrown.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+index fefc55ad..2612bf34 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/NodePointer.java
+@@ -920 +920 @@ public abstract class NodePointer implements Pointer {
+-     * @throws JXPathNotFoundException
++     * @throws JXPathNotFoundException Thrown when there is no value at the NodePointer.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/ParseException.java b/src/main/java/org/apache/commons/jxpath/ri/parser/ParseException.java
+index 04446064..dbb7463e 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/parser/ParseException.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/ParseException.java
+@@ -32,13 +32,11 @@ public class ParseException extends Exception {
+-  /**
+-   * This constructor is used by the method "generateParseException"
+-   * in the generated parser.  Calling this constructor generates
+-   * a new object of this type with the fields "currentToken",
+-   * "expectedTokenSequences", and "tokenImage" set.  The boolean
+-   * flag "specialConstructor" is also set to true to indicate that
+-   * this constructor was used to create this object.
+-   * This constructor calls its super class with the empty string
+-   * to force the "toString" method of parent class "Throwable" to
+-   * print the error message in the form:
+-   *     ParseException: <result of getMessage>
+-   */
+-  public ParseException(Token currentTokenVal,
++    /**
++     * This constructor is used by the method "generateParseException" in the generated parser. Calling this constructor generates a new object of this type
++     * with the fields "currentToken", "expectedTokenSequences", and "tokenImage" set. The boolean flag "specialConstructor" is also set to true to indicate
++     * that this constructor was used to create this object. This constructor calls its super class with the empty string to force the "toString" method of
++     * parent class "Throwable" to print the error message in the form: ParseException: "result of getMessage"
++     * 
++     * @param currentTokenVal TODO
++     * @param expectedTokenSequencesVal TODO
++     * @param tokenImageVal TODO
++     */
++    public ParseException(Token currentTokenVal,
+@@ -162,0 +161,3 @@ public class ParseException extends Exception {
++   *
++   * @param str raw characters.
++   * @return escaped version of the input.
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/SimpleCharStream.java b/src/main/java/org/apache/commons/jxpath/ri/parser/SimpleCharStream.java
+index 30b448c4..63fb8674 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/parser/SimpleCharStream.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/SimpleCharStream.java
+@@ -214,0 +215 @@ public class SimpleCharStream
++   * @return the end column.
+@@ -217 +217,0 @@ public class SimpleCharStream
+-
+@@ -223,0 +224 @@ public class SimpleCharStream
++   * @return the line number.
+@@ -226 +226,0 @@ public class SimpleCharStream
+-
+@@ -371,0 +372,3 @@ public class SimpleCharStream
++   * 
++   * @param newLine TODO
++   * @param newCol  TODO
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/Token.java b/src/main/java/org/apache/commons/jxpath/ri/parser/Token.java
+index 59e6205a..53dc6d53 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/parser/Token.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/Token.java
+@@ -78,6 +78,5 @@ public class Token {
+-   * Returns a new Token object, by default. However, if you want, you
+-   * can create and return subclass objects based on the value of ofKind.
+-   * Simply add the cases to the switch for all those special cases.
+-   * For example, if you have a subclass of Token called IDToken that
+-   * you want to create if ofKind is ID, simlpy add something like :
+-   *
++   * Returns a new Token object, by default. However, if you want, you can create and return subclass objects based on the value of ofKind. Simply add the cases
++   * to the switch for all those special cases. For example, if you have a subclass of Token called IDToken that you want to create if ofKind is ID, simlpy add
++   * something like :
++   * 
++   * <pre>
+@@ -85,3 +84,6 @@ public class Token {
+-   *
+-   * to the following switch statement. Then you can cast matchedToken
+-   * variable to the appropriate type and use it in your lexical actions.
++   * </pre>
++   * 
++   * to the following switch statement. Then you can cast matchedToken variable to the appropriate type and use it in your lexical actions.
++   * 
++   * @param ofKind TODO
++   * @return TODO
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/TokenMgrError.java b/src/main/java/org/apache/commons/jxpath/ri/parser/TokenMgrError.java
+index 19b03c2c..a6d59f5a 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/parser/TokenMgrError.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/TokenMgrError.java
+@@ -57,2 +57,4 @@ public class TokenMgrError extends Error
+-    * Replaces unprintable characters by their espaced (or unicode escaped)
+-    * equivalents in the given string
++    * Replaces unprintable characters by their escaped (or Unicode escaped) equivalents in the given string
++    * 
++    * @param str TODO
++    * @return TODO
+@@ -106,9 +108,2 @@ public class TokenMgrError extends Error
+-    * Returns a detailed message for the Error when it is thrown by the
+-    * token manager to indicate a lexical error.
+-    * Parameters :
+-    *    EOFSeen     : indicates if EOF caused the lexicl error
+-    *    curLexState : lexical state in which this error occurred
+-    *    errorLine   : line number when the error occurred
+-    *    errorColumn : column number when the error occurred
+-    *    errorAfter  : prefix that was seen before this error occurred
+-    *    curchar     : the offending character
++    * Returns a detailed message for the Error when it is thrown by the token manager to indicate a lexical error.
++    * 
+@@ -115,0 +111,8 @@ public class TokenMgrError extends Error
++    * 
++    * @param EOFSeen     indicates if EOF caused the lexicl error
++    * @param lexState    lexical state in which this error occurred
++    * @param errorLine   line number when the error occurred
++    * @param errorColumn column number when the error occurred
++    * @param errorAfter  prefix that was seen before this error occurred
++    * @param curChar     the offending character
++    * @return TODO
+diff --git a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
+index 8409730a..131d2e3e 100644
+--- a/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
++++ b/src/main/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java
+@@ -23 +23 @@ import java.util.Map;
+- * Port of class loading methods from <code>org.apache.commons.lang.ClassUtils</code> from
++ * Port of class loading methods from <code>org.apache.commons.lang3.ClassUtils</code> from
+@@ -25 +25 @@ import java.util.Map;
+- * <code>org.apache.commons.lang.StringUtils</code>. Also modified to fall back on the
++ * <code>org.apache.commons.lang3.StringUtils</code>. Also modified to fall back on the
+@@ -29 +29 @@ import java.util.Map;
+- * @see org.apache.commons.lang.ClassUtils
++ * See org.apache.commons.lang3.ClassUtils

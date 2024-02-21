@@ -1,0 +1,20 @@
+diff --git a/src/test/java/org/apache/commons/net/examples/MainTest.java b/src/test/java/org/apache/commons/net/examples/MainTest.java
+index d442e1908..f2e95343a 100644
+--- a/src/test/java/org/apache/commons/net/examples/MainTest.java
++++ b/src/test/java/org/apache/commons/net/examples/MainTest.java
+@@ -37 +36,0 @@ public class MainTest {
+-        System.out.println("Initial name " + name);
+@@ -39,2 +38 @@ public class MainTest {
+-        name = name.replace("/", ".");
+-        name = name.replace("\\", "."); // Allow for Windows
++        name = name.replace(File.separatorChar, '.');
+@@ -59 +57 @@ public class MainTest {
+-                || name.endsWith("examples/Main.class")  // the initial class, don't want to add that
++                || name.endsWith("examples"+ File.separator + "Main.class")  // the initial class, don't want to add that
+@@ -75 +72,0 @@ public class MainTest {
+-        System.out.println("len=" + rootLength + " " + current);
+@@ -111,0 +109 @@ public class MainTest {
++        // Use canonical path to ensure consistency with Windows
+@@ -126 +124 @@ public class MainTest {
+-                System.out.println("sf="+sourceFile);
++                // need to add 1 to allow for path separator between root and file

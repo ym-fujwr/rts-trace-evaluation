@@ -1,0 +1,47 @@
+========================
+JITWatch Privacy Policy
+========================
+Version:            1.03
+Date   :      2022-01-08
+Author :   Chris Newland
+========================
+
+This document describes the privacy implications of using JITWatch to analyse your program code or JIT log files.
+
+============
+Talking back
+============
+
+JITWatch does not transmit any information about your usage of the program, the log files you load, or any code 
+you execute in the sandbox.
+
+=====================
+Downloading resources
+=====================
+
+The first time you double-click on a bytecode in the TriView screen JITWatch will attempt to download the 
+JVM Specification from the https://docs.oracle.com website.
+
+https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html
+https://docs.oracle.com/javase/specs/javaspec.css
+
+These downloads are made over the HTTPS protocol and once successfully downloaded they will be stored in your 
+jitwatch folder and will not be downloaded again.
+
+JITWatch offers the option to download the hsdis HotSpot disassembly binary from https://chriswhocodes.com
+This is an optional download. If you choose to download the binary your IP address will be logged in the webserver
+logs which are retained for 14 days.
+
+=============
+Build systems
+=============
+
+If you build JITWatch from source using maven then the build system will download various further 
+dependencies required to compile, package, test, and execute the build targets.
+
+=======================
+Sharing JITWatch output
+=======================
+
+JITWatch contains a screenshot feature. If you share screenshots from JITWatch, or snippets of your LogCompilation 
+XML or disassembled compiled methods you may divulge information about your program.

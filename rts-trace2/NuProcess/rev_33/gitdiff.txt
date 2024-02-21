@@ -1,0 +1,20 @@
+diff --git a/src/main/java/com/zaxxer/nuprocess/linux/EpollEvent.java b/src/main/java/com/zaxxer/nuprocess/linux/EpollEvent.java
+index 0a11c27..bc8e0e8 100644
+--- a/src/main/java/com/zaxxer/nuprocess/linux/EpollEvent.java
++++ b/src/main/java/com/zaxxer/nuprocess/linux/EpollEvent.java
+@@ -92 +92 @@ class EpollEvent
+-         super(ALIGN_NONE);
++         super(ALIGN_GNUC); // super(ALIGN_NONE);
+diff --git a/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java b/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
+index f8ccdaf..5161e7a 100644
+--- a/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
++++ b/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
+@@ -13 +13,3 @@ public class EpollEventTest
+-      Assert.assertEquals(12, event.size());
++      Assert.assertEquals(16, event.size());
++      // When alignment is ALIGN_NONE
++      // Assert.assertEquals(12, event.size());
+@@ -15 +17 @@ public class EpollEventTest
+-}
+\ No newline at end of file
++}

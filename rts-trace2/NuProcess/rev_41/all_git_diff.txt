@@ -1,0 +1,187 @@
+diff --git a/.travis.yml b/.travis.yml
+index 01e527d..c1e556e 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -7,0 +8,4 @@ cache:
++os:
++  - linux
++  - osx
++
+@@ -9 +12,0 @@ matrix:
+-  fast_finish: true
+@@ -11,2 +14,15 @@ matrix:
+-    - jdk: openjdk7
+-    - jdk: oraclejdk8
++    - os: linux
++      jdk:
++        - openjdk7
++        - openjdk8
++        - openjdk11
++        - oraclejdk8
++        - oraclejdk11
++    - os: osx
++      osx_image: xcode8.3
++      jdk:
++        - oraclejdk8
++    - os: osx
++      osx_image: xcode10.1
++      jdk:
++        - oraclejdk11
+@@ -15 +31 @@ script:
+-  - mvn -e package -V
++  - mvn -Dmaven.javadoc.skip=true -e package -V
+diff --git a/README.md b/README.md
+index 9382099..72b0309 100644
+--- a/README.md
++++ b/README.md
+@@ -30 +30 @@ Java process and the spawned processes:
+-        <version>1.2.3</version>
++        <version>2.0.0</version>
+diff --git a/pom.xml b/pom.xml
+index 7311a3c..66fb326 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -9 +9 @@
+-    <version>2.0.0-SNAPSHOT</version>
++    <version>2.0.1-SNAPSHOT</version>
+@@ -65 +65 @@
+-            <version>5.2.0</version>
++            <version>5.5.0</version>
+diff --git a/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java b/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
+index b710386..39c86ce 100644
+--- a/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/internal/BasePosixProcess.java
+@@ -480 +480,5 @@ public abstract class BasePosixProcess implements NuProcess
+-      if (!userWantsWrite.get()) {
++      // Check whether the user has requested a write window. If so, this will clear the request and set
++      // userWantsWrite to a known-false state. Clearing the flag here ensures, if wantWrite() is called
++      // while we're in onStdinReady or, racily, after onStdinReady returns but before the result can be
++      // used to update userWantsWrite, we don't "lose" the write request
++      if (!userWantsWrite.compareAndSet(true, false)) {
+@@ -486,2 +490,5 @@ public abstract class BasePosixProcess implements NuProcess
+-         boolean wantMore = processHandler.onStdinReady(inBuffer);
+-         userWantsWrite.set(wantMore);
++         if (processHandler.onStdinReady(inBuffer)) {
++            // If onStdinReady returns true, re-set userWantsWrite. If it returns false, we already set
++            // userWantsWrite to false before we made the callback so there's nothing to do
++            userWantsWrite.set(true);
++         }
+@@ -491,2 +497,0 @@ public abstract class BasePosixProcess implements NuProcess
+-         } else {
+-            return true;
+@@ -493,0 +499,2 @@ public abstract class BasePosixProcess implements NuProcess
++
++         return true;
+diff --git a/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java b/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java
+index 89422a6..fce7b60 100644
+--- a/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/windows/WindowsProcess.java
+@@ -35,0 +36,2 @@ import java.util.concurrent.atomic.AtomicInteger;
++import java.util.logging.Level;
++import java.util.logging.Logger;
+@@ -440,6 +442,5 @@ public final class WindowsProcess implements NuProcess
+-      if (userWantsWrite.compareAndSet(true, false)) {
+-
+-         try {
+-            final ByteBuffer buffer = stdinPipe.buffer;
+-            buffer.clear();
+-            userWantsWrite.set(processHandler.onStdinReady(buffer));
++      // See BasePosixProcess.writeStdin(int, int) for an explanation of how the userWantsWrite
++      // flag is handled here; both methods use the same approach
++      if (!userWantsWrite.compareAndSet(true, false)) {
++         return false;
++      }
+@@ -447,6 +448,5 @@ public final class WindowsProcess implements NuProcess
+-            return true;
+-         }
+-         catch (Exception e) {
+-            // Don't let an exception thrown from the user's handler interrupt us
+-            e.printStackTrace();
+-            return false;
++      try {
++         ByteBuffer buffer = stdinPipe.buffer;
++         buffer.clear();
++         if (processHandler.onStdinReady(buffer)) {
++            userWantsWrite.set(true);
+@@ -453,0 +454,2 @@ public final class WindowsProcess implements NuProcess
++
++         return true;
+@@ -454,0 +457,2 @@ public final class WindowsProcess implements NuProcess
++      catch (Exception e) {
++         Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Exception thrown handling writes to stdin " + processHandler, e);
+@@ -456 +460,3 @@ public final class WindowsProcess implements NuProcess
+-      return false;
++         // Don't let an exception thrown from the user's handler interrupt us
++         return false;
++      }
+@@ -715 +721 @@ public final class WindowsProcess implements NuProcess
+-      if (NuWinNT.INVALID_HANDLE_VALUE.getPointer().equals(handle)) {
++      if (NuWinNT.INVALID_HANDLE_VALUE.getPointer().equals(handle.getPointer())) {
+diff --git a/src/test/java/com/zaxxer/nuprocess/CatTest.java b/src/test/java/com/zaxxer/nuprocess/CatTest.java
+index 0dd6354..d38903f 100644
+--- a/src/test/java/com/zaxxer/nuprocess/CatTest.java
++++ b/src/test/java/com/zaxxer/nuprocess/CatTest.java
+@@ -303,0 +304,63 @@ public class CatTest
++   @Test
++   public void wantWriteDuringOnStdinReady() throws Exception
++   {
++      System.err.println("Starting test wantWriteDuringOnStdinReady()");
++
++      final AtomicInteger callCount = new AtomicInteger(0);
++      final CountDownLatch onStdinReadyCalled = new CountDownLatch(1);
++      final CountDownLatch wantWriteCalled = new CountDownLatch(1);
++      NuProcessHandler processListener = new NuAbstractProcessHandler() {
++         private NuProcess nuProcess;
++
++         @Override
++         public void onPreStart(NuProcess nuProcess) {
++            this.nuProcess = nuProcess;
++         }
++
++         @Override
++         public boolean onStdinReady(ByteBuffer buffer) {
++            if (callCount.getAndIncrement() == 0) {
++               // For the first callback, signal that we're inside the callback
++               // and then wait for wantWrite() to be called by the test thread
++               onStdinReadyCalled.countDown();
++
++               try {
++                  wantWriteCalled.await(5L, TimeUnit.SECONDS);
++               } catch (InterruptedException e) {
++                  throw new IllegalStateException("Interrupted while waiting for wantWrite()", e);
++               }
++            } else {
++               // For the second callback, close stdin so the process can complete
++               nuProcess.closeStdin(false);
++            }
++
++            // No matter which callback, always return false
++            return false;
++         }
++      };
++
++      NuProcessBuilder pb = new NuProcessBuilder(processListener, command);
++      NuProcess nuProcess = pb.start();
++      //Trigger the first onStdinReady callback
++      nuProcess.wantWrite();
++      //Wait until onStdinReady is called
++      onStdinReadyCalled.await(5L, TimeUnit.SECONDS);
++      //Call wantWrite() again
++      nuProcess.wantWrite();
++      //Let the first onStdinReady callback complete
++      wantWriteCalled.countDown();
++
++      try {
++         Assert.assertNotEquals(command + " did not complete",
++                 nuProcess.waitFor(5L, TimeUnit.SECONDS), Integer.MIN_VALUE);
++         Assert.assertEquals("Unexpected onStdinReady call count", 2, callCount.get());
++      } finally {
++         if (nuProcess.isRunning()) {
++            nuProcess.closeStdin(true);
++            nuProcess.destroy(false);
++         }
++      }
++
++      System.err.println("Completed test wantWriteDuringOnStdinReady()");
++   }
++

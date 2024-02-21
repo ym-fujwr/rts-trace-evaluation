@@ -1,0 +1,67 @@
+diff --git a/build.properties b/build.properties
+index 93dd6b9c..ab1de3f1 100644
+--- a/build.properties
++++ b/build.properties
+@@ -1 +1 @@
+-version=1.4.5
++version=1.4.6
+diff --git a/core/pom.xml b/core/pom.xml
+index aeff1196..123e0d1b 100644
+--- a/core/pom.xml
++++ b/core/pom.xml
+@@ -9 +9 @@
+-        <version>1.4.5</version>
++        <version>1.4.6</version>
+diff --git a/core/src/main/resources/examples/DoesItVectorise.java b/core/src/main/resources/examples/DoesItVectorise.java
+new file mode 100644
+index 00000000..9ed670f9
+--- /dev/null
++++ b/core/src/main/resources/examples/DoesItVectorise.java
+@@ -0,0 +1,32 @@
++public class DoesItVectorise
++{
++    public DoesItVectorise()
++    {
++        int[] array = new int[1024];
++
++        for (int i = 0; i < 1_000_000; i++)
++        {
++            incrementArray(array, 1);
++        }
++
++        for (int i = 0; i < array.length; i++)
++        {
++            System.out.println(array[i]);
++        }
++    }
++
++    public void incrementArray(int[] array, int constant)
++    {
++        int length = array.length;
++
++        for (int i = 0; i < length; i++)
++        {
++            array[i] += constant;
++        }
++    }
++
++    public static void main(String[] args)
++    {
++        new DoesItVectorise();
++    }
++}
+\ No newline at end of file
+diff --git a/pom.xml b/pom.xml
+index a51b29b8..aa99328f 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -8 +8 @@
+-    <version>1.4.5</version>
++    <version>1.4.6</version>
+diff --git a/ui/pom.xml b/ui/pom.xml
+index c09a6107..fbbc34f1 100644
+--- a/ui/pom.xml
++++ b/ui/pom.xml
+@@ -9 +9 @@
+-		<version>1.4.5</version>
++		<version>1.4.6</version>

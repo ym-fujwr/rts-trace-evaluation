@@ -1,0 +1,287 @@
+diff --git a/README.md b/README.md
+index b6a86659..5206b133 100644
+--- a/README.md
++++ b/README.md
+@@ -46 +46 @@ Apache Commons JXPath
+-[![Build Status](https://travis-ci.org/apache/commons-jxpath.svg?branch=trunk)](https://travis-ci.org/apache/commons-jxpath)
++[![GitHub Actions Status](https://github.com/apache/commons-jxpath/workflows/Java%20CI/badge.svg)](https://github.com/apache/commons-jxpath/actions)
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 34c4db1e..2ad27210 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -51,2 +51,2 @@ The <action> type attribute can be add,update,fix,remove.
+-      <action issue="JXPATH-172" dev="britter" type="update" due-to="Michele Vivoda">
+-        Clarify Javadoc of JXPathContext#getPointer
++      <action issue="JXPATH-172" dev="britter" type="fix" due-to="Michele Vivoda">
++        Clarify Javadoc of JXPathContext#getPointer.
+@@ -55 +55 @@ The <action> type attribute can be add,update,fix,remove.
+-        NullPointerException in ChildContext when document only contains an empty root node
++        NullPointerException in ChildContext when document only contains an empty root node.
+@@ -58 +58 @@ The <action> type attribute can be add,update,fix,remove.
+-        ValueUtils.getValue throws exception with set and index above size
++        ValueUtils.getValue throws exception with set and index above size.
+@@ -61 +61 @@ The <action> type attribute can be add,update,fix,remove.
+-        Concurrency problem for JXPathContextFactory.factoryImplName static field
++        Concurrency problem for JXPathContextFactory.factoryImplName static field.
+@@ -64 +64 @@ The <action> type attribute can be add,update,fix,remove.
+-        FunctionLibrary Multithreading issue
++        FunctionLibrary Multithreading issue.
+@@ -67 +67 @@ The <action> type attribute can be add,update,fix,remove.
+-        Bean exception handling
++        Bean exception handling.
+@@ -76 +76 @@ The <action> type attribute can be add,update,fix,remove.
+-        Wrong entry IMPORT-PACKAGE in the file MANIFEST.MF for jdom and commons-beanutils
++        Wrong entry IMPORT-PACKAGE in the file MANIFEST.MF for jdom and commons-beanutils.
+@@ -78 +78 @@ The <action> type attribute can be add,update,fix,remove.
+-      <action issue="JXPATH-153" dev="mbenson" type="update" due-to="John Trimble">
++      <action issue="JXPATH-153" dev="mbenson" type="fix" due-to="John Trimble">
+@@ -81,3 +80,0 @@ The <action> type attribute can be add,update,fix,remove.
+-      <action issue="JXPATH-123" dev="mbenson" type="add">
+-        "ends-with" XPath function is not implemented (although "starts-with" is)
+-      </action>
+@@ -85 +82 @@ The <action> type attribute can be add,update,fix,remove.
+-        Concurrent access on hashmap of JXPathIntrospector
++        Concurrent access on hashmap of JXPathIntrospector.
+@@ -89,0 +87,4 @@ The <action> type attribute can be add,update,fix,remove.
++      <!-- ADD -->
++      <action issue="JXPATH-123" dev="mbenson" type="add">
++        XPath function "ends-with" is not implemented (although "starts-with" is).
++      </action>
+@@ -92 +93 @@ The <action> type attribute can be add,update,fix,remove.
+-        Update to Java 8
++        Bump Java to 8.
+@@ -95 +96 @@ The <action> type attribute can be add,update,fix,remove.
+-        Bump JUnit 3.8.1 to 4.13.2
++        Bump JUnit 3.8.1 to 4.13.2.
+@@ -98 +99 @@ The <action> type attribute can be add,update,fix,remove.
+-        Bump commons-logging from 1.1.1 to 1.2 #34
++        Bump commons-logging from 1.1.1 to 1.2 #34.
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
+index 5a0cfa35..42ba1575 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathContextFactory.java
+@@ -25,0 +26 @@ import java.util.Properties;
++
+diff --git a/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java b/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java
+index 61dc3dba..9a7d1abc 100644
+--- a/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java
++++ b/src/main/java/org/apache/commons/jxpath/JXPathIntrospector.java
+@@ -21 +20,0 @@ import java.util.Date;
+-import java.util.Map;
+@@ -22,0 +22 @@ import java.util.HashMap;
++import java.util.Map;
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/JXPathCompiledExpression.java b/src/main/java/org/apache/commons/jxpath/ri/JXPathCompiledExpression.java
+index 7f89c12e..fd9a88a3 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/JXPathCompiledExpression.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/JXPathCompiledExpression.java
+@@ -21 +20,0 @@ import java.util.Iterator;
+-import org.apache.commons.jxpath.ri.compiler.Expression;
+@@ -24,0 +24 @@ import org.apache.commons.jxpath.Pointer;
++import org.apache.commons.jxpath.ri.compiler.Expression;
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
+index 96b1281b..2d731994 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java
+@@ -27 +26,0 @@ import java.util.Map;
+-import java.util.Vector;
+@@ -28,0 +28 @@ import java.util.Map.Entry;
++import java.util.Vector;
+@@ -54 +53,0 @@ import org.apache.commons.jxpath.ri.model.dynamic.DynamicPointerFactory;
+-import org.apache.commons.jxpath.util.ReverseComparator;
+@@ -55,0 +55 @@ import org.apache.commons.jxpath.util.ClassLoaderUtil;
++import org.apache.commons.jxpath.util.ReverseComparator;
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/Expression.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/Expression.java
+index 8fc79b31..3a913ece 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/Expression.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/Expression.java
+@@ -18,0 +19,4 @@ package org.apache.commons.jxpath.ri.compiler;
++import java.util.Collections;
++import java.util.Iterator;
++import java.util.Locale;
++
+@@ -22 +25,0 @@ import org.apache.commons.jxpath.ri.EvalContext;
+-import org.apache.commons.jxpath.ri.model.NodePointer;
+@@ -23,0 +27 @@ import org.apache.commons.jxpath.ri.QName;
++import org.apache.commons.jxpath.ri.model.NodePointer;
+@@ -26,4 +29,0 @@ import org.apache.commons.jxpath.util.ValueUtils;
+-import java.util.Collections;
+-import java.util.Iterator;
+-import java.util.Locale;
+-
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/compiler/VariableReference.java b/src/main/java/org/apache/commons/jxpath/ri/compiler/VariableReference.java
+index 5074d9b4..4a71a090 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/compiler/VariableReference.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/compiler/VariableReference.java
+@@ -19 +18,0 @@ package org.apache.commons.jxpath.ri.compiler;
+-import org.apache.commons.jxpath.ri.QName;
+@@ -20,0 +20 @@ import org.apache.commons.jxpath.ri.EvalContext;
++import org.apache.commons.jxpath.ri.QName;
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/parser/XPathParser.java b/src/main/java/org/apache/commons/jxpath/ri/parser/XPathParser.java
+index e0606568..592a796b 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/parser/XPathParser.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/parser/XPathParser.java
+@@ -21 +20,0 @@
+-    import org.apache.commons.jxpath.ri.Compiler;
+@@ -23,0 +23,2 @@
++import org.apache.commons.jxpath.ri.Compiler;
++
+diff --git a/src/main/java/org/apache/commons/jxpath/servlet/HttpSessionHandler.java b/src/main/java/org/apache/commons/jxpath/servlet/HttpSessionHandler.java
+index 3f89f640..2104d750 100644
+--- a/src/main/java/org/apache/commons/jxpath/servlet/HttpSessionHandler.java
++++ b/src/main/java/org/apache/commons/jxpath/servlet/HttpSessionHandler.java
+@@ -20,0 +21 @@ import java.util.HashSet;
++
+diff --git a/src/main/java/org/apache/commons/jxpath/servlet/JXPathServletContexts.java b/src/main/java/org/apache/commons/jxpath/servlet/JXPathServletContexts.java
+index e699d9ee..9ef61622 100644
+--- a/src/main/java/org/apache/commons/jxpath/servlet/JXPathServletContexts.java
++++ b/src/main/java/org/apache/commons/jxpath/servlet/JXPathServletContexts.java
+@@ -23,0 +24 @@ import javax.servlet.jsp.PageContext;
++
+diff --git a/src/main/java/org/apache/commons/jxpath/servlet/ServletContextHandler.java b/src/main/java/org/apache/commons/jxpath/servlet/ServletContextHandler.java
+index 45f98160..54173b2c 100644
+--- a/src/main/java/org/apache/commons/jxpath/servlet/ServletContextHandler.java
++++ b/src/main/java/org/apache/commons/jxpath/servlet/ServletContextHandler.java
+@@ -20,0 +21 @@ import java.util.HashSet;
++
+diff --git a/src/main/java/org/apache/commons/jxpath/servlet/ServletRequestHandler.java b/src/main/java/org/apache/commons/jxpath/servlet/ServletRequestHandler.java
+index b67ee4f5..297308d3 100644
+--- a/src/main/java/org/apache/commons/jxpath/servlet/ServletRequestHandler.java
++++ b/src/main/java/org/apache/commons/jxpath/servlet/ServletRequestHandler.java
+@@ -20,0 +21 @@ import java.util.HashSet;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java b/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java
+index 5896964a..21c2df2e 100644
+--- a/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java
++++ b/src/test/java/org/apache/commons/jxpath/JXPathTestCase.java
+@@ -28,2 +27,0 @@ import java.util.Set;
+-import junit.framework.TestCase;
+-
+@@ -31,0 +30,2 @@ import org.apache.commons.jxpath.ri.model.NodePointer;
++import junit.framework.TestCase;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java b/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java
+index aab9d223..93c9c3fd 100644
+--- a/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java
++++ b/src/test/java/org/apache/commons/jxpath/issues/JXPath118Test.java
+@@ -20,2 +20 @@ import java.util.Iterator;
+-import junit.framework.Assert;
+-import junit.framework.TestCase;
++
+@@ -24,0 +24,3 @@ import org.apache.commons.jxpath.Pointer;
++import junit.framework.Assert;
++import junit.framework.TestCase;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/issues/JXPath172DynamicTest.java b/src/test/java/org/apache/commons/jxpath/issues/JXPath172DynamicTest.java
+index 9534bad5..6899ab75 100644
+--- a/src/test/java/org/apache/commons/jxpath/issues/JXPath172DynamicTest.java
++++ b/src/test/java/org/apache/commons/jxpath/issues/JXPath172DynamicTest.java
+@@ -21,2 +20,0 @@ import java.util.HashMap;
+-import junit.framework.TestSuite;
+-
+@@ -27,0 +26,2 @@ import org.apache.commons.jxpath.ri.model.dynamic.DynamicPropertyPointer;
++import junit.framework.TestSuite;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/issues/JXPath172Test.java b/src/test/java/org/apache/commons/jxpath/issues/JXPath172Test.java
+index 2d741ddb..50ad4f4a 100644
+--- a/src/test/java/org/apache/commons/jxpath/issues/JXPath172Test.java
++++ b/src/test/java/org/apache/commons/jxpath/issues/JXPath172Test.java
+@@ -19,2 +18,0 @@ package org.apache.commons.jxpath.issues;
+-import junit.framework.TestSuite;
+-
+@@ -27,0 +26,2 @@ import org.apache.commons.jxpath.ri.model.beans.NullPropertyPointer;
++import junit.framework.TestSuite;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java b/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java
+index 3739302a..f3dd7279 100644
+--- a/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java
++++ b/src/test/java/org/apache/commons/jxpath/issues/JXPath177Test.java
+@@ -21 +21 @@ import java.util.Map;
+-import junit.framework.TestCase;
++
+@@ -25,0 +26,2 @@ import org.apache.commons.jxpath.Variables;
++import junit.framework.TestCase;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImplTestCase.java b/src/test/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImplTestCase.java
+index 4280a527..369ccdf8 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImplTestCase.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImplTestCase.java
+@@ -20,2 +19,0 @@ package org.apache.commons.jxpath.ri;
+-import junit.framework.TestCase;
+-
+@@ -23,0 +22,2 @@ import org.apache.commons.jxpath.ri.model.container.ContainerPointerFactory;
++import junit.framework.TestCase;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/StressTest.java b/src/test/java/org/apache/commons/jxpath/ri/StressTest.java
+index ee119102..62050808 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/StressTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/StressTest.java
+@@ -19,2 +18,0 @@ package org.apache.commons.jxpath.ri;
+-import junit.framework.TestCase;
+-
+@@ -22,0 +21,2 @@ import org.apache.commons.jxpath.JXPathContext;
++import junit.framework.TestCase;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreterTest.java b/src/test/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreterTest.java
+index 19ee7286..4b0388cd 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreterTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreterTest.java
+@@ -21,2 +20,0 @@ import java.util.HashMap;
+-import junit.framework.TestCase;
+-
+@@ -39,0 +38,2 @@ import org.apache.commons.jxpath.ri.model.dynamic.DynamicPropertyPointer;
++import junit.framework.TestCase;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/compiler/TestFunctions.java b/src/test/java/org/apache/commons/jxpath/ri/compiler/TestFunctions.java
+index ee5d8ff5..ac5eb8ae 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/compiler/TestFunctions.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/compiler/TestFunctions.java
+@@ -27 +26,0 @@ import org.apache.commons.jxpath.NestedTestBean;
+-import org.apache.commons.jxpath.Pointer;
+@@ -28,0 +28 @@ import org.apache.commons.jxpath.NodeSet;
++import org.apache.commons.jxpath.Pointer;
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/beans/BadlyImplementedFactoryTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/beans/BadlyImplementedFactoryTest.java
+index 19b4352b..221b1b9b 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/beans/BadlyImplementedFactoryTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/beans/BadlyImplementedFactoryTest.java
+@@ -22,2 +21,0 @@ import java.util.Map;
+-import junit.framework.TestCase;
+-
+@@ -29,0 +28,2 @@ import org.apache.commons.jxpath.Pointer;
++import junit.framework.TestCase;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/dom/DOMModelTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/dom/DOMModelTest.java
+index 094ffd59..b6def8bf 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/dom/DOMModelTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/dom/DOMModelTest.java
+@@ -23 +22,0 @@ import org.apache.commons.jxpath.xml.DocumentContainer;
+-
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/jdom/JDOMModelTest.java b/src/test/java/org/apache/commons/jxpath/ri/model/jdom/JDOMModelTest.java
+index 4f241a72..d0816c9d 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/jdom/JDOMModelTest.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/jdom/JDOMModelTest.java
+@@ -25 +24,0 @@ import org.apache.commons.jxpath.xml.DocumentContainer;
+-
+diff --git a/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java b/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java
+index 8365921b..0b815924 100644
+--- a/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java
++++ b/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java
+@@ -20,0 +21 @@ import java.util.Iterator;
++
+@@ -31,0 +33 @@ import com.mockrunner.mock.web.MockServletContext;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/util/BasicTypeConverterTest.java b/src/test/java/org/apache/commons/jxpath/util/BasicTypeConverterTest.java
+index 77c7ef82..85b2e23d 100644
+--- a/src/test/java/org/apache/commons/jxpath/util/BasicTypeConverterTest.java
++++ b/src/test/java/org/apache/commons/jxpath/util/BasicTypeConverterTest.java
+@@ -27,2 +26,0 @@ import java.util.List;
+-import junit.framework.TestCase;
+-
+@@ -31,0 +30,2 @@ import org.apache.commons.jxpath.Pointer;
++import junit.framework.TestCase;
++
+diff --git a/src/test/java/org/apache/commons/jxpath/util/ValueUtilsTest.java b/src/test/java/org/apache/commons/jxpath/util/ValueUtilsTest.java
+index 7cdff6f1..87342e77 100644
+--- a/src/test/java/org/apache/commons/jxpath/util/ValueUtilsTest.java
++++ b/src/test/java/org/apache/commons/jxpath/util/ValueUtilsTest.java
+@@ -22,0 +23 @@ import java.util.Set;
++

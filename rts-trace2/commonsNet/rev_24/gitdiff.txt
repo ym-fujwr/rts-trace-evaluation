@@ -1,0 +1,64 @@
+diff --git a/src/main/java/org/apache/commons/net/util/SubnetUtils.java b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
+index 5f84bf44d..96bcc19a8 100644
+--- a/src/main/java/org/apache/commons/net/util/SubnetUtils.java
++++ b/src/main/java/org/apache/commons/net/util/SubnetUtils.java
+@@ -23 +23 @@ import java.util.regex.Pattern;
+- * A class that performs some subnet calculations given a network address and a subnet mask.
++ * Performs some subnet calculations given a network address and a subnet mask.
+@@ -33,0 +34 @@ public class SubnetUtils {
++
+@@ -45 +46 @@ public class SubnetUtils {
+-        * Convert a 4-element array into dotted decimal format
++        * Converts a 4-element array into dotted decimal format
+@@ -64 +65 @@ public class SubnetUtils {
+-         * Get the count of available addresses.
++         * Gets the count of available addresses.
+@@ -81 +82 @@ public class SubnetUtils {
+-         * Get the count of available addresses.
++         * Gets the count of available addresses.
+@@ -114 +115 @@ public class SubnetUtils {
+-         * Return the high address as a dotted IP address.
++         * Gets the high address as a dotted IP address.
+@@ -124 +125 @@ public class SubnetUtils {
+-         * Return the low address as a dotted IP address.
++         * Gets the low address as a dotted IP address.
+@@ -155 +156 @@ public class SubnetUtils {
+-         * Returns true if the parameter <code>address</code> is in the
++         * Tests if the parameter <code>address</code> is in the
+@@ -174 +175 @@ public class SubnetUtils {
+-         * Returns true if the parameter <code>address</code> is in the
++         * Tests if the parameter <code>address</code> is in the
+@@ -193,2 +194,2 @@ public class SubnetUtils {
+-        /*
+-        * Convert a packed integer address into a 4-element array
++       /**
++        * Converts a packed integer address into a 4-element array
+@@ -230,0 +232 @@ public class SubnetUtils {
++
+@@ -232 +234 @@ public class SubnetUtils {
+-     * Convenience method to extract the components of a dotted decimal address and
++     * Extracts the components of a dotted decimal address and
+@@ -244 +246 @@ public class SubnetUtils {
+-     * Convenience function to check integer boundaries.
++     * Checks integer boundaries.
+@@ -257 +259 @@ public class SubnetUtils {
+-     * Convert a dotted decimal format address to a packed integer format
++     * Converts a dotted decimal format address to a packed integer format
+@@ -279 +281 @@ public class SubnetUtils {
+-     * Constructor that takes a CIDR-notation string, e.g. "192.168.0.1/16"
++     * Constructs an instance from a CIDR-notation string, e.g. "192.168.0.1/16"
+@@ -314 +316 @@ public class SubnetUtils {
+-     * Constructor that takes a dotted decimal address and a dotted decimal mask.
++     * Constructs an instance from a dotted decimal address and a dotted decimal mask.
+@@ -336 +338 @@ public class SubnetUtils {
+-     * Return a {@link SubnetInfo} instance that contains subnet-specific statistics
++     * Gets a {@link SubnetInfo} instance that contains subnet-specific statistics
+@@ -350 +352 @@ public class SubnetUtils {
+-     * Returns <code>true</code> if the return value of {@link SubnetInfo#getAddressCount()}
++     * Tests if the return value of {@link SubnetInfo#getAddressCount()}
+@@ -360 +362 @@ public class SubnetUtils {
+-     * Count the number of 1-bits in a 32-bit integer using a divide-and-conquer strategy
++     * Counts the number of 1-bits in a 32-bit integer using a divide-and-conquer strategy
+@@ -373 +375 @@ public class SubnetUtils {
+-     * Set to <code>true</code> if you want the return value of {@link SubnetInfo#getAddressCount()}
++     * Sets to <code>true</code> if you want the return value of {@link SubnetInfo#getAddressCount()}

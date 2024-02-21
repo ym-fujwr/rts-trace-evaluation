@@ -1,0 +1,9 @@
+org.apache.commons.jxpath.issues.JXPath118Test
+org.apache.commons.jxpath.issues.JXPath172DynamicTest
+org.apache.commons.jxpath.issues.JXPath172Test
+org.apache.commons.jxpath.issues.JXPath177Test
+org.apache.commons.jxpath.ri.axes.SimplePathInterpreterTest
+org.apache.commons.jxpath.ri.JXPathContextReferenceImplTestCase
+org.apache.commons.jxpath.ri.model.beans.BadlyImplementedFactoryTest
+org.apache.commons.jxpath.ri.StressTest
+org.apache.commons.jxpath.util.BasicTypeConverterTest

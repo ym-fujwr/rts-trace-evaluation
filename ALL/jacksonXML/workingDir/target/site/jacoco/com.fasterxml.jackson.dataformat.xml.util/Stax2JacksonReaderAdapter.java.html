@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Stax2JacksonReaderAdapter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml.util</a> &gt; <span class="el_source">Stax2JacksonReaderAdapter.java</span></div><h1>Stax2JacksonReaderAdapter.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml.util;
+
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.codehaus.stax2.XMLStreamReader2;
+import org.codehaus.stax2.ri.Stax2ReaderAdapter;
+
+import com.fasterxml.jackson.databind.util.ClassUtil;
+
+/**
+ * Refinement of {@link Stax2ReaderAdapter} to override certain methods,
+ * to patch over flaws of JDK-provided default Stax implementation, SJSXP
+ *
+ * @since 2.17
+ */
+public class Stax2JacksonReaderAdapter
+    extends Stax2ReaderAdapter
+{
+    private final XMLStreamReader _delegate;
+
+    public Stax2JacksonReaderAdapter(XMLStreamReader sr) {
+<span class="fc" id="L23">        super(sr);</span>
+<span class="fc" id="L24">        _delegate = sr;</span>
+<span class="fc" id="L25">    }</span>
+
+    public static XMLStreamReader2 wrapIfNecessary(XMLStreamReader sr)
+    {
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (sr instanceof XMLStreamReader2) {</span>
+<span class="fc" id="L30">            return (XMLStreamReader2) sr;</span>
+        }
+<span class="fc" id="L32">        return new Stax2JacksonReaderAdapter(sr);</span>
+    }
+
+    // 04-Dec-2023, tatu: Needed to catch exceptions from buggy SJSXP decoder...
+    @Override
+    public int next() throws XMLStreamException
+    {
+        try {
+<span class="fc" id="L40">            return super.next();</span>
+<span class="nc" id="L41">        } catch (ArrayIndexOutOfBoundsException e) {</span>
+            // Use IllegalStateException since that is guaranteed to be translated
+            // appropriately into Jackson type by caller:
+<span class="nc" id="L44">            throw new IllegalStateException(</span>
+                    &quot;Internal processing error by `XMLStreamReader` of type &quot;
+<span class="nc" id="L46">                    +ClassUtil.classNameOf(_delegate)+&quot; when calling `next()` (&quot;</span>
+                    +&quot;consider using Woodstox instead): &quot;
+<span class="nc" id="L48">                    +e.getMessage(), e);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

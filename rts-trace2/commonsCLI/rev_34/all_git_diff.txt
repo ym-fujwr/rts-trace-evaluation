@@ -1,0 +1,33 @@
+diff --git a/src/test/java/org/apache/commons/cli/BasicParserTest.java b/src/test/java/org/apache/commons/cli/BasicParserTest.java
+index e05a38f5..5b47fcd8 100644
+--- a/src/test/java/org/apache/commons/cli/BasicParserTest.java
++++ b/src/test/java/org/apache/commons/cli/BasicParserTest.java
+@@ -38,0 +39,6 @@ public class BasicParserTest extends AbstractParserTestCase {
++    @Override
++    @Test
++    @Ignore("not supported by the BasicParser")
++    public void testAmbiguousLongWithoutEqualSingleDash2() throws Exception {
++    }
++
+diff --git a/src/test/java/org/apache/commons/cli/GnuParserTest.java b/src/test/java/org/apache/commons/cli/GnuParserTest.java
+index 92cc24da..9cda17cc 100644
+--- a/src/test/java/org/apache/commons/cli/GnuParserTest.java
++++ b/src/test/java/org/apache/commons/cli/GnuParserTest.java
+@@ -38,0 +39,6 @@ public class GnuParserTest extends AbstractParserTestCase {
++    @Override
++    @Test
++    @Ignore("not supported by the GnuParser")
++    public void testAmbiguousLongWithoutEqualSingleDash2() throws Exception {
++    }
++
+diff --git a/src/test/java/org/apache/commons/cli/PosixParserTest.java b/src/test/java/org/apache/commons/cli/PosixParserTest.java
+index 19874228..71d79b82 100644
+--- a/src/test/java/org/apache/commons/cli/PosixParserTest.java
++++ b/src/test/java/org/apache/commons/cli/PosixParserTest.java
+@@ -41,0 +42,6 @@ public class PosixParserTest extends AbstractParserTestCase {
++    @Override
++    @Test
++    @Ignore("not supported by the PosixParser")
++    public void testAmbiguousLongWithoutEqualSingleDash2() throws Exception {
++    }
++

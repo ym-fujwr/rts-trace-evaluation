@@ -1,0 +1,39 @@
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] ------< com.fasterxml.jackson.dataformat:jackson-dataformat-xml >-------
+[INFO] Building Jackson-dataformat-XML 2.15.0-rc1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.2.1:enforce (enforce-java) @ jackson-dataformat-xml ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (default) @ jackson-dataformat-xml ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/original_source/jacksonXML/rev_22/target/jacoco.exec"
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.3.0:add-source (add-generated-sources) @ jackson-dataformat-xml ---
+[INFO] Source directory: /mnt/c/Users/fujiwara yuma/evaluation/original_source/jacksonXML/rev_22/target/generated-sources added.
+[INFO] 
+[INFO] --- replacer:1.5.3:replace (process-packageVersion) @ jackson-dataformat-xml ---
+[INFO] Replacement run on 1 file.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.3.0:add-resource (add-resource) @ jackson-dataformat-xml ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ jackson-dataformat-xml ---
+[INFO] Copying 4 resources
+[INFO] Copying 1 resource to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ jackson-dataformat-xml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 43 source files to /mnt/c/Users/fujiwara yuma/evaluation/original_source/jacksonXML/rev_22/target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.138 s
+[INFO] Finished at: 2024-01-30T16:44:32+09:00
+[INFO] ------------------------------------------------------------------------

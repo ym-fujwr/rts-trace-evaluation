@@ -1,0 +1,154 @@
+[INFO] Scanning for projects...
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-base/2.16.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 620 B                   Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-base/2.16.0-rc1-SNAPSHOT/maven-metadata.xml (620 B at 459 B/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-bom/2.16.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 619 B                   Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-bom/2.16.0-rc1-SNAPSHOT/maven-metadata.xml (619 B at 1.5 kB/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-parent/2.16-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 618 B                   Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/jackson-parent/2.16-rc1-SNAPSHOT/maven-metadata.xml (618 B at 1.5 kB/s)
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] ------< com.fasterxml.jackson.dataformat:jackson-dataformat-xml >-------
+[INFO] Building Jackson-dataformat-XML 2.16.0-rc1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-core/2.16.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 1.2 kB                    Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-core/2.16.0-rc1-SNAPSHOT/maven-metadata.xml (1.2 kB at 3.0 kB/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-annotations/2.16.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 1.2 kB                    Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-annotations/2.16.0-rc1-SNAPSHOT/maven-metadata.xml (1.2 kB at 144 B/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-databind/2.16.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 1.2 kB                    Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/core/jackson-databind/2.16.0-rc1-SNAPSHOT/maven-metadata.xml (1.2 kB at 279 B/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/module/jackson-module-jakarta-xmlbind-annotations/2.16.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 1.2 kB                    Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/module/jackson-module-jakarta-xmlbind-annotations/2.16.0-rc1-SNAPSHOT/maven-metadata.xml (1.2 kB at 3.1 kB/s)
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/module/jackson-modules-base/2.16.0-rc1-SNAPSHOT/maven-metadata.xml
+Progress (1): 635 B                   Downloaded from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/com/fasterxml/jackson/module/jackson-modules-base/2.16.0-rc1-SNAPSHOT/maven-metadata.xml (635 B at 1.6 kB/s)
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.4.1:enforce (enforce-java) @ jackson-dataformat-xml ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.10:prepare-agent (default) @ jackson-dataformat-xml ---
+[INFO] argLine set to "-javaagent:/home/ym-fujwr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.10/org.jacoco.agent-0.8.10-runtime.jar=destfile=/mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/jacksonXML/workingDir/target/jacoco.exec"
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.4.0:add-source (add-generated-sources) @ jackson-dataformat-xml ---
+[INFO] Source directory: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/jacksonXML/workingDir/target/generated-sources added.
+[INFO] 
+[INFO] --- replacer:1.5.3:replace (process-packageVersion) @ jackson-dataformat-xml ---
+[INFO] Replacement run on 1 file.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.4.0:add-resource (add-resource) @ jackson-dataformat-xml ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ jackson-dataformat-xml ---
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from  to target/classes/META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ jackson-dataformat-xml ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 43 source files with javac [debug:lines,source,vars deprecation target 1.8] to target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.9:manifest (bundle-manifest) @ jackson-dataformat-xml ---
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.16.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml is set to different values in the source (2.16.0-rc1-SNAPSHOT) and in the manifest (2.16.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.16.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.annotation is set to different values in the source (2.16.0-rc1-SNAPSHOT) and in the manifest (2.16.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.16.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.deser is set to different values in the source (2.16.0-rc1-SNAPSHOT) and in the manifest (2.16.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.16.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.jaxb is set to different values in the source (2.16.0-rc1-SNAPSHOT) and in the manifest (2.16.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.16.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.ser is set to different values in the source (2.16.0-rc1-SNAPSHOT) and in the manifest (2.16.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[WARNING] Manifest com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.16.0-rc1-SNAPSHOT : Version for package com.fasterxml.jackson.dataformat.xml.util is set to different values in the source (2.16.0-rc1-SNAPSHOT) and in the manifest (2.16.0.SNAPSHOT). The version in the manifest is not picked up by an other sibling bundles in this project or projects that directly depend on this project
+[INFO] Writing manifest: /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/jacksonXML/workingDir/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ jackson-dataformat-xml ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:testCompile (default-testCompile) @ jackson-dataformat-xml ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 145 source files with javac [debug:lines,source,vars deprecation target 1.8] to target/test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ jackson-dataformat-xml ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.fasterxml.jackson.dataformat.xml.failing.UnexpectedNonWhitespaceText509Test
+[ERROR] Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.605 s <<< FAILURE! -- in com.fasterxml.jackson.dataformat.xml.failing.UnexpectedNonWhitespaceText509Test
+[ERROR] com.fasterxml.jackson.dataformat.xml.failing.UnexpectedNonWhitespaceText509Test.testDeSerMetaData -- Time elapsed: 0.084 s <<< ERROR!
+com.fasterxml.jackson.databind.JsonMappingException: 
+Unexpected non-whitespace text ('Text Editor' in Array context: should not occur (or should be handled)
+ at [Source: (StringReader); line: 2, column: 44] (through reference chain: com.fasterxml.jackson.dataformat.xml.failing.UnexpectedNonWhitespaceText509Test$MetaData["data"])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:402)
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:361)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.wrapAndThrow(BeanDeserializerBase.java:1853)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:311)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177)
+	at com.fasterxml.jackson.dataformat.xml.deser.XmlDeserializationContext.readRootValue(XmlDeserializationContext.java:104)
+	at com.fasterxml.jackson.databind.ObjectReader._bindAndClose(ObjectReader.java:2125)
+	at com.fasterxml.jackson.databind.ObjectReader.readValue(ObjectReader.java:1566)
+	at com.fasterxml.jackson.dataformat.xml.failing.UnexpectedNonWhitespaceText509Test.deSer(UnexpectedNonWhitespaceText509Test.java:76)
+	at com.fasterxml.jackson.dataformat.xml.failing.UnexpectedNonWhitespaceText509Test.testDeSerMetaData(UnexpectedNonWhitespaceText509Test.java:63)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: com.fasterxml.jackson.core.JsonParseException: Unexpected non-whitespace text ('Text Editor' in Array context: should not occur (or should be handled)
+ at [Source: (StringReader); line: 2, column: 44]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:2481)
+	at com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser.nextToken(FromXmlParser.java:850)
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer._deserializeFromArray(CollectionDeserializer.java:350)
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:244)
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:28)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:309)
+	... 34 more
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   UnexpectedNonWhitespaceText509Test.testDeSerMetaData:63->deSer:76 » JsonMapping Unexpected non-whitespace text ('Text Editor' in Array context: should not occur (or should be handled)
+ at [Source: (StringReader); line: 2, column: 44] (through reference chain: com.fasterxml.jackson.dataformat.xml.failing.UnexpectedNonWhitespaceText509Test$MetaData["data"])
+[INFO] 
+[ERROR] Tests run: 2, Failures: 0, Errors: 1, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  34.521 s
+[INFO] Finished at: 2024-01-23T17:45:51+09:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project jackson-dataformat-xml: 
+[ERROR] 
+[ERROR] Please refer to /mnt/c/Users/fujiwara yuma/evaluation/rts-trace2/jacksonXML/workingDir/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

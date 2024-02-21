@@ -1,0 +1,139 @@
+diff --git a/.github/workflows/codeql-analysis.yml b/.github/workflows/codeql-analysis.yml
+index cb9ded29..f737294e 100644
+--- a/.github/workflows/codeql-analysis.yml
++++ b/.github/workflows/codeql-analysis.yml
+@@ -48 +48 @@ jobs:
+-      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
++      uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+@@ -51 +51 @@ jobs:
+-    - uses: actions/cache@v3.0.11
++    - uses: actions/cache@v3.2.3
+diff --git a/.github/workflows/coverage.yml b/.github/workflows/coverage.yml
+index c42458f5..2f1d4f0d 100644
+--- a/.github/workflows/coverage.yml
++++ b/.github/workflows/coverage.yml
+@@ -32 +32 @@ jobs:
+-    - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
++    - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+@@ -35 +35 @@ jobs:
+-    - uses: actions/cache@v3.0.11
++    - uses: actions/cache@v3.2.3
+@@ -42 +42 @@ jobs:
+-      uses: actions/setup-java@v3.6.0
++      uses: actions/setup-java@v3.9.0
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index 690a5165..02e0c60a 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -37 +37 @@ jobs:
+-    - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
++    - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+@@ -40 +40 @@ jobs:
+-    - uses: actions/cache@v3.0.11
++    - uses: actions/cache@v3.2.3
+@@ -47 +47 @@ jobs:
+-      uses: actions/setup-java@v3.6.0
++      uses: actions/setup-java@v3.9.0
+diff --git a/.github/workflows/scorecards-analysis.yml b/.github/workflows/scorecards-analysis.yml
+index d223bf49..0f7047ad 100644
+--- a/.github/workflows/scorecards-analysis.yml
++++ b/.github/workflows/scorecards-analysis.yml
+@@ -43 +43 @@ jobs:
+-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8   # 3.1.0
++        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c   # 3.3.0
+@@ -48 +48 @@ jobs:
+-        uses: ossf/scorecard-action@99c53751e09b9529366343771cc321ec74e9bd3d    # 2.0.6
++        uses: ossf/scorecard-action@e38b1902ae4f44df626f11ba0734b14fb91f8f86    # 2.1.2
+@@ -60 +60 @@ jobs:
+-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb    # 3.1.0
++        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce    # 3.1.0
+diff --git a/.gitignore b/.gitignore
+index c64990ca..97965971 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -20 +20,6 @@ site-content
+-/commons-cli.iml
++
++### IntelliJ IDEA ###
++.idea/
++*.iws
++*.ipr
++*.iml
+diff --git a/NOTICE.txt b/NOTICE.txt
+index dbc817e0..94f86efe 100644
+--- a/NOTICE.txt
++++ b/NOTICE.txt
+@@ -2 +2 @@ Apache Commons CLI
+-Copyright 2002-2022 The Apache Software Foundation
++Copyright 2002-2023 The Apache Software Foundation
+diff --git a/RELEASE-NOTES.txt b/RELEASE-NOTES.txt
+index 331227d0..135af61d 100644
+--- a/RELEASE-NOTES.txt
++++ b/RELEASE-NOTES.txt
+@@ -64 +64 @@ For complete information on Apache Commons CLI, including instructions on how to
+-patches, or suggestions for improvement, see the Apache Apache Commons CLI website:
++patches, or suggestions for improvement, see the Apache Commons CLI website:
+diff --git a/pom.xml b/pom.xml
+index 82361a24..c516051c 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -22 +22 @@
+-    <version>54</version>
++    <version>56</version>
+@@ -215 +214,0 @@
+-    <commons.checkstyle-plugin.version>3.2.0</commons.checkstyle-plugin.version>
+@@ -217 +215,0 @@
+-    <commons.javadoc.version>3.4.1</commons.javadoc.version>
+@@ -219,5 +216,0 @@
+-    <commons.jacoco.version>0.8.8</commons.jacoco.version>
+-    <commons.surefire-report.version>3.0.0-M5</commons.surefire-report.version>
+-    <commons.surefire.version>3.0.0-M5</commons.surefire.version>
+-    <commons.felix.version>5.1.2</commons.felix.version>
+-    <biz.aQute.bndlib.version>6.0.0</biz.aQute.bndlib.version>
+@@ -226,3 +218,0 @@
+-    <commons.animal-sniffer.version>1.20</commons.animal-sniffer.version>
+-    <commons.japicmp.version>0.16.0</commons.japicmp.version>
+-    <commons.junit.version>5.9.1</commons.junit.version>
+@@ -365 +354,0 @@
+-        <version>3.19.0</version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index cd7402f1..62d5f232 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -34 +34 @@
+-      <action type="update" dev="ggregory" due-to="Arturo Bernal">
++      <action type="update" dev="ggregory" due-to="Ken Dombeck">
+@@ -36,0 +37,3 @@
++      <action type="update" dev="ggregory" due-to="Arturo Bernal">
++        Fix site links that are broken #155.
++      </action>
+@@ -61 +64 @@
+-        Bump commons-parent from 52 to 54 #100, #128.
++        Bump commons-parent from 52 to 56 #100, #128, #151, #158.
+diff --git a/src/changes/release-notes.vm b/src/changes/release-notes.vm
+index df36243f..752e59c5 100644
+--- a/src/changes/release-notes.vm
++++ b/src/changes/release-notes.vm
+@@ -118 +118 @@ For complete information on ${project.name}, including instructions on how to su
+-patches, or suggestions for improvement, see the Apache ${project.name} website:
++patches, or suggestions for improvement, see the ${project.name} website:
+diff --git a/src/site/xdoc/index.xml b/src/site/xdoc/index.xml
+index 2bb3fdd6..dafa33fe 100644
+--- a/src/site/xdoc/index.xml
++++ b/src/site/xdoc/index.xml
+@@ -73 +73 @@ usage: ls
+-        <li><a href="/apidocs/index.html">Javadoc latest</a></li>
++        <li><a href="apidocs/index.html">Javadoc latest</a></li>
+@@ -86 +86 @@ usage: ls
+-        The <a href="/changes-report.html">release notes</a> are also available.
++        The <a href="changes-report.html">release notes</a> are also available.
+diff --git a/src/test/java/org/apache/commons/cli/ApplicationTest.java b/src/test/java/org/apache/commons/cli/ApplicationTest.java
+index 9ea0ee8c..32079c77 100644
+--- a/src/test/java/org/apache/commons/cli/ApplicationTest.java
++++ b/src/test/java/org/apache/commons/cli/ApplicationTest.java
+@@ -218 +218 @@ public class ApplicationTest {
+-                addOption("m", "systems", true, "search for man pages from other unix system(s).").
++                addOption("m", "systems", true, "search for man pages from other Unix system(s).").
+@@ -257 +257 @@ public class ApplicationTest {
+-                        "                           unix system(s)." + eol +
++                        "                           Unix system(s)." + eol +

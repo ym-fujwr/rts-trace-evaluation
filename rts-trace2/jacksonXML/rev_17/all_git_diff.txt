@@ -1,0 +1,551 @@
+diff --git a/pom.xml b/pom.xml
+index 35531f3e1..8f492a937 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -93 +93 @@ alternative support for serializing POJOs as XML and deserializing XML as pojos.
+-      <version>6.4.0</version>
++      <version>6.5.0</version>
+diff --git a/release-notes/CREDITS-2.x b/release-notes/CREDITS-2.x
+index 947f01153..7fedf40f2 100644
+--- a/release-notes/CREDITS-2.x
++++ b/release-notes/CREDITS-2.x
+@@ -214,0 +215,6 @@ David F. Elliott (dfelliott@github)
++Joo Hyuk Kim (JooHyukKim@github)
++
++* Contributed #560: Add `DefaultXmlPrettyPrinter.withCustomNewLine()` to configure linefeed
++  for XML pretty-printing
++ (2.15.0)
++
+diff --git a/release-notes/VERSION-2.x b/release-notes/VERSION-2.x
+index 994b88c23..f3cd82380 100644
+--- a/release-notes/VERSION-2.x
++++ b/release-notes/VERSION-2.x
+@@ -8,0 +9,3 @@ Project: jackson-dataformat-xml
++#542: `XmlMapper` does not find no-argument record constructor for
++  deserialization of empty XML
++ (reported by @MichalStehlikCz)
+@@ -10,0 +14,8 @@ Project: jackson-dataformat-xml
++#560: Add `DefaultXmlPrettyPrinter.withCustomNewLine()` to configure linefeed
++  for XML pretty-printing
++ (requested by @koalalam)
++ (contributed by Joo Hyuk K)
++
++2.14.2 (28-Jan-2023)
++
++* Upgrade Woodstox to 6.5.0 for a fix to OSGi metadata
+@@ -34 +45 @@ No changes since 2.14.0
+-2.13.5 (not yet released)
++2.13.5 (23-Jan-2023)
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/ElementWrappable.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/ElementWrappable.java
+new file mode 100644
+index 000000000..6f6a0616d
+--- /dev/null
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/ElementWrappable.java
+@@ -0,0 +1,29 @@
++package com.fasterxml.jackson.dataformat.xml.deser;
++
++import java.util.Set;
++
++/**
++ * Minimal API to be implemented by XML-backed parsers for which "virtual"
++ * wrapping may be imposed.
++ *<p>
++ * NOTE: this method is considered part of internal implementation
++ * interface, and it is <b>NOT</b> guaranteed to remain unchanged
++ * between minor versions (it is however expected not to change in
++ * patch versions). So if you have to use it, be prepared for
++ * possible additional work.
++ *
++ * @since 2.15
++ */
++public interface ElementWrappable
++{
++    /**
++     * Method that may be called to indicate that specified names
++     * (only local parts retained currently: this may be changed in
++     * future) should be considered "auto-wrapping", meaning that
++     * they will be doubled to contain two opening elements, two
++     * matching closing elements. This is needed for supporting
++     * handling of so-called "unwrapped" array types, something
++     * XML mappings like JAXB often use.
++     */
++    public void addVirtualWrapping(Set<String> namesToWrap0, boolean caseInsensitive);
++}
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+index 0024c2976..f842ca60a 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java
+@@ -3,0 +4 @@ import java.io.IOException;
++import java.io.UncheckedIOException;
+@@ -14,0 +16 @@ import com.fasterxml.jackson.core.base.ParserMinimalBase;
++import com.fasterxml.jackson.core.exc.StreamConstraintsException;
+@@ -31,0 +34 @@ public class FromXmlParser
++    implements ElementWrappable // @since 2.15
+@@ -434 +437 @@ public class FromXmlParser
+-    /* Internal API
++    /* ElementWrappable implementation
+@@ -438,17 +441 @@ public class FromXmlParser
+-    /**
+-     * Method that may be called to indicate that specified names
+-     * (only local parts retained currently: this may be changed in
+-     * future) should be considered "auto-wrapping", meaning that
+-     * they will be doubled to contain two opening elements, two
+-     * matching closing elements. This is needed for supporting
+-     * handling of so-called "unwrapped" array types, something
+-     * XML mappings like JAXB often use.
+-     *<p>
+-     * NOTE: this method is considered part of internal implementation
+-     * interface, and it is <b>NOT</b> guaranteed to remain unchanged
+-     * between minor versions (it is however expected not to change in
+-     * patch versions). So if you have to use it, be prepared for
+-     * possible additional work.
+-     * 
+-     * @since 2.12
+-     */
++    @Override
+@@ -478,5 +464,0 @@ public class FromXmlParser
+-    @Deprecated // since 2.12
+-    public void addVirtualWrapping(Set<String> namesToWrap) {
+-        addVirtualWrapping(namesToWrap, false);
+-    }
+-
+@@ -653 +635,8 @@ public class FromXmlParser
+-                _numberBigInt = new BigInteger(text);
++                try {
++                    streamReadConstraints().validateIntegerLength(text.length());
++                } catch (StreamConstraintsException e) {
++                    // Ugh. This method in API ought to expose IOException
++                    throw new UncheckedIOException(e);
++                }
++                _numberBigInt = NumberInput.parseBigInteger(
++                        text, isEnabled(StreamReadFeature.USE_FAST_BIG_NUMBER_PARSER));
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/WrapperHandlingDeserializer.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/WrapperHandlingDeserializer.java
+index 8abc5fc21..d0dd2afa1 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/WrapperHandlingDeserializer.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/WrapperHandlingDeserializer.java
+@@ -157 +157 @@ public class WrapperHandlingDeserializer
+-        if ((p instanceof FromXmlParser) && (_namesToWrap != null)) {
++        if ((p instanceof ElementWrappable) && (_namesToWrap != null)) {
+@@ -169 +169 @@ public class WrapperHandlingDeserializer
+-                ((FromXmlParser) p).addVirtualWrapping(_namesToWrap, _caseInsensitive);
++                ((ElementWrappable) p).addVirtualWrapping(_namesToWrap, _caseInsensitive);
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/DefaultXmlPrettyPrinter.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/DefaultXmlPrettyPrinter.java
+index a0c0bbb61..aca070536 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/DefaultXmlPrettyPrinter.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/DefaultXmlPrettyPrinter.java
+@@ -79,0 +80,21 @@ public class DefaultXmlPrettyPrinter
++    /**
++     * By default, will try to set as System.getProperty("line.separator").
++     * Can later set custom new line with withCustomNewLine method.
++     * @since 2.15
++     */
++    private static final String SYSTEM_DEFAULT_NEW_LINE;
++    static {
++        String lf = null;
++        try {
++            lf = System.getProperty("line.separator");
++        } catch (Exception t) { } // access exception?
++        SYSTEM_DEFAULT_NEW_LINE = lf;
++    }
++    protected String _newLine = SYSTEM_DEFAULT_NEW_LINE;
++
++    static final int SPACE_COUNT = 64;
++    static final char[] SPACES = new char[SPACE_COUNT];
++    static {
++        Arrays.fill(SPACES, ' ');
++    }
++
+@@ -114,0 +136 @@ public class DefaultXmlPrettyPrinter
++        _newLine = base._newLine;
+@@ -128,0 +151,9 @@ public class DefaultXmlPrettyPrinter
++    /**
++     * Sets custom new-line.
++     * @since 2.15
++     */
++    public DefaultXmlPrettyPrinter withCustomNewLine(String newLine) {
++        _newLine = newLine != null ? newLine : SYSTEM_DEFAULT_NEW_LINE;
++        return this;
++    }
++
+@@ -446 +477 @@ public class DefaultXmlPrettyPrinter
+-        sw.writeRaw(Lf2SpacesIndenter.SYSTEM_LINE_SEPARATOR);
++        sw.writeRaw(_newLine);
+@@ -489 +520 @@ public class DefaultXmlPrettyPrinter
+-        
++
+@@ -504 +535 @@ public class DefaultXmlPrettyPrinter
+-    protected static class Lf2SpacesIndenter
++    protected class Lf2SpacesIndenter
+@@ -509,15 +539,0 @@ public class DefaultXmlPrettyPrinter
+-        final static String SYSTEM_LINE_SEPARATOR;
+-        static {
+-            String lf = null;
+-            try {
+-                lf = System.getProperty("line.separator");
+-            } catch (Throwable t) { } // access exception?
+-            SYSTEM_LINE_SEPARATOR = (lf == null) ? "\n" : lf;
+-        }
+-
+-        final static int SPACE_COUNT = 64;
+-        final static char[] SPACES = new char[SPACE_COUNT];
+-        static {
+-            Arrays.fill(SPACES, ' ');
+-        }
+-
+@@ -532 +548 @@ public class DefaultXmlPrettyPrinter
+-            sw.writeRaw(SYSTEM_LINE_SEPARATOR);
++            sw.writeRaw(_newLine);
+@@ -544 +560 @@ public class DefaultXmlPrettyPrinter
+-            jg.writeRaw(SYSTEM_LINE_SEPARATOR);
++            jg.writeRaw(_newLine);
+diff --git a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/StaxUtil.java b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/StaxUtil.java
+index 8242ea1c9..d53866225 100644
+--- a/src/main/java/com/fasterxml/jackson/dataformat/xml/util/StaxUtil.java
++++ b/src/main/java/com/fasterxml/jackson/dataformat/xml/util/StaxUtil.java
+@@ -18,16 +17,0 @@ public class StaxUtil
+-    /**
+-     * Adapter method used when only IOExceptions are declared to be thrown, but
+-     * a {@link XMLStreamException} was caught.
+-     *<p>
+-     * Note: dummy type variable is used for convenience, to allow caller to claim
+-     * that this method returns result of any necessary type.
+-     *
+-     * @deprecated Since 2.9
+-     */
+-    @Deprecated
+-    public static <T> T throwXmlAsIOException(XMLStreamException e) throws IOException
+-    {
+-        Throwable t = _unwrap(e);
+-        throw new IOException(t);
+-    }
+-
+diff --git a/src/main/resources/META-INF/LICENSE b/src/main/resources/META-INF/LICENSE
+index 6acf75483..daad0a6aa 100644
+--- a/src/main/resources/META-INF/LICENSE
++++ b/src/main/resources/META-INF/LICENSE
+@@ -1 +1 @@
+-This copy of Jackson JSON processor databind module is licensed under the
++This copy of Jackson JSON processor XML module is licensed under the
+diff --git a/src/main/resources/META-INF/NOTICE b/src/main/resources/META-INF/NOTICE
+index 5ab1e5636..d55c59a0d 100644
+--- a/src/main/resources/META-INF/NOTICE
++++ b/src/main/resources/META-INF/NOTICE
+@@ -6,2 +6 @@ been in development since 2007.
+-It is currently developed by a community of developers, as well as supported
+-commercially by FasterXML.com.
++It is currently developed by a community of developers.
+@@ -11,4 +10,2 @@ commercially by FasterXML.com.
+-Jackson core and extension components may be licensed under different licenses.
+-To find the details that apply to this artifact see the accompanying LICENSE file.
+-For more information, including possible other licensing options, contact
+-FasterXML.com (http://fasterxml.com).
++Jackson components are licensed under Apache (Software) License, version 2.0,
++as per accompanying LICENSE file.
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/XmlTestBase.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/XmlTestBase.java
+index 294931a20..4a75778a3 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/XmlTestBase.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/XmlTestBase.java
+@@ -22,0 +23,8 @@ public abstract class XmlTestBase
++
++    protected static final String DEFAULT_NEW_LINE;
++
++    static {
++        String newLine = System.getProperty("line.separator");
++        DEFAULT_NEW_LINE = newLine == null ? "\n" : newLine;
++    }
++
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/creator/NestedSingleArgCtors547Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/creator/NestedSingleArgCtors547Test.java
+index 18eaee509..b19552807 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/creator/NestedSingleArgCtors547Test.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/creator/NestedSingleArgCtors547Test.java
+@@ -33,3 +33,2 @@ public class NestedSingleArgCtors547Test extends XmlTestBase
+-        // 20-Nov-2022, tatu: [dataformat-xml#547] Should not need "default"
+-        //   Creator
+-        @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
++        // 20-Nov-2022, tatu: [dataformat-xml#547] Shouldn't need annotation
++//        @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+@@ -40 +39 @@ public class NestedSingleArgCtors547Test extends XmlTestBase
+-    
++
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/PolymorphicList576Test.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/PolymorphicList576Test.java
+new file mode 100644
+index 000000000..f3f2cca0b
+--- /dev/null
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/PolymorphicList576Test.java
+@@ -0,0 +1,118 @@
++package com.fasterxml.jackson.dataformat.xml.failing;
++
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.List;
++
++import com.fasterxml.jackson.annotation.*;
++
++import com.fasterxml.jackson.databind.ObjectMapper;
++import com.fasterxml.jackson.dataformat.xml.XmlTestBase;
++import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
++import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
++import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
++
++public class PolymorphicList576Test extends XmlTestBase
++{
++    @JacksonXmlRootElement(localName = "wrapper")
++    static class Wrapper extends Base {
++
++        @JacksonXmlProperty(localName = "item")
++        @JacksonXmlElementWrapper(useWrapping = false)
++        public List<Item> items = new ArrayList<>();
++
++        public Wrapper(List<Item> items) {
++            this.items = items;
++        }
++
++        public Wrapper() {
++        }
++
++        public List<Item> getItems() {
++            return items;
++        }
++
++        public void setItems(List<Item> items) {
++            this.items = items;
++        }
++
++
++
++        @Override
++        public String toString() {
++            return "Wrapper{" +
++                    "items=" + items +
++                    '}';
++        }
++    }
++
++    @JacksonXmlRootElement(localName = "item")
++    @JsonInclude(JsonInclude.Include.NON_NULL)
++    static class Item {
++
++        private String id;
++
++        public Item(String id) {
++            this.id = id;
++        }
++
++        public Item() {
++        }
++
++        public String getId() {
++            return id;
++        }
++
++        public void setId(String id) {
++            this.id = id;
++        }
++
++        @Override
++        public String toString() {
++            return "Item{" +
++                    "id='" + id + '\'' +
++                    '}';
++        }
++    }
++
++    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
++    @JsonSubTypes({
++            @JsonSubTypes.Type(value = Wrapper.class, name = "wrapper")
++    })
++    @JsonInclude(JsonInclude.Include.NON_NULL)
++    static class Base {
++    }
++
++    /*
++    /********************************************************
++    /* Test methods
++    /********************************************************
++     */
++
++    private final ObjectMapper XML_MAPPER = newMapper();
++
++    public void test_3itemsInXml_expect_3itemsInDeserializedObject() throws Exception {
++        String xmlString = 
++                "<?xml version='1.0' encoding='UTF-8'?>\n"
++                +"<wrapper type='wrapper'>\n"
++                +" <item><id>1</id></item>\n"
++                +" <item><id>2</id></item>\n"
++                +" <item><id>3</id></item>\n"
++                +"</wrapper>\n"
++                ;
++        Base base = XML_MAPPER.readValue(xmlString, Base.class);
++        assertEquals(3, ((Wrapper)base).getItems().size());
++    }
++
++    public void test_2itemsInObject_expect_2itemsInObjectAfterRoundTripDeserializationToBaseClass() throws Exception {
++        Wrapper wrapper = new Wrapper();
++        Item item1 = new Item("1");
++        Item item2 = new Item("2");
++        wrapper.setItems(Arrays.asList(item1, item2));
++
++        String writeValueAsString = XML_MAPPER.writeValueAsString(wrapper);
++        Base base = XML_MAPPER.readValue(writeValueAsString, Base.class);
++
++        assertEquals(2, ((Wrapper)base).getItems().size());
++    }
++}
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/TextValueTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/TextValueTest.java
+index c2bdb7aff..cc3c6a4e0 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/TextValueTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/TextValueTest.java
+@@ -107 +107 @@ public class TextValueTest extends XmlTestBase
+-        assertEquals("<Simple a=\"13\">something</Simple>\n", xml);
++        assertEquals("<Simple a=\"13\">something</Simple>" + DEFAULT_NEW_LINE, xml);
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/Base64VariantWriteTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/Base64VariantWriteTest.java
+index bec34c9c2..908448a03 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/Base64VariantWriteTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/Base64VariantWriteTest.java
+@@ -85 +85,3 @@ public class Base64VariantWriteTest extends XmlTestBase
+-                "<BinaryValue>\n  <value>"+expEncoded+"</value>\n</BinaryValue>" :
++                "<BinaryValue>" + DEFAULT_NEW_LINE +
++                    "  <value>"+expEncoded+"</value>" + DEFAULT_NEW_LINE +
++                    "</BinaryValue>" :
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/XmlPrettyPrinterTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/XmlPrettyPrinterTest.java
+index bc0aa59a5..991c563c6 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/XmlPrettyPrinterTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/XmlPrettyPrinterTest.java
+@@ -6,0 +7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
++import com.fasterxml.jackson.core.PrettyPrinter;
+@@ -11,0 +13 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
++import com.fasterxml.jackson.dataformat.xml.util.DefaultXmlPrettyPrinter;
+@@ -17 +19 @@ public class XmlPrettyPrinterTest extends XmlTestBase
+-        
++
+@@ -24 +26 @@ public class XmlPrettyPrinterTest extends XmlTestBase
+-        
++
+@@ -47 +49 @@ public class XmlPrettyPrinterTest extends XmlTestBase
+-        @JsonInclude(JsonInclude.Include.NON_EMPTY) 
++        @JsonInclude(JsonInclude.Include.NON_EMPTY)
+@@ -51 +53 @@ public class XmlPrettyPrinterTest extends XmlTestBase
+-            this.name = name;       
++            this.name = name;
+@@ -158 +160 @@ public class XmlPrettyPrinterTest extends XmlTestBase
+-        assertEquals("<AttrBean count=\"3\"/>\n", xml);
++        assertEquals("<AttrBean count=\"3\"/>" + DEFAULT_NEW_LINE, xml);
+@@ -160 +162,5 @@ public class XmlPrettyPrinterTest extends XmlTestBase
+-        assertEquals("<AttrBean2 count=\"3\">\n  <value>14</value>\n</AttrBean2>\n", xml2);
++        assertEquals(
++            "<AttrBean2 count=\"3\">" + DEFAULT_NEW_LINE +
++            "  <value>14</value>" + DEFAULT_NEW_LINE +
++                "</AttrBean2>" + DEFAULT_NEW_LINE,
++            xml2);
+@@ -167 +173,2 @@ public class XmlPrettyPrinterTest extends XmlTestBase
+-        assertEquals("<PojoFor123 name=\"foobar\"/>\n", xml);
++        assertEquals("<PojoFor123 name=\"foobar\"/>" + DEFAULT_NEW_LINE,
++            xml);
+@@ -179,10 +186,10 @@ public class XmlPrettyPrinterTest extends XmlTestBase
+-        // with indentation, should get linefeeds in prolog/epilog too
+-        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+-                +"<Company>\n"
+-                +"  <e>\n"
+-                +"    <employee>\n"
+-                +"      <id>abc</id>\n"
+-                +"      <type>FULL_TIME</type>\n"
+-                +"    </employee>\n"
+-                +"  </e>\n"
+-                +"</Company>\n",
++
++        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + DEFAULT_NEW_LINE
++                +"<Company>" + DEFAULT_NEW_LINE
++                +"  <e>" + DEFAULT_NEW_LINE
++                +"    <employee>" + DEFAULT_NEW_LINE
++                +"      <id>abc</id>" + DEFAULT_NEW_LINE
++                +"      <type>FULL_TIME</type>" + DEFAULT_NEW_LINE
++                +"    </employee>" + DEFAULT_NEW_LINE
++                +"  </e>" + DEFAULT_NEW_LINE
++                +"</Company>" + DEFAULT_NEW_LINE,
+@@ -190,0 +198,74 @@ public class XmlPrettyPrinterTest extends XmlTestBase
++
++    public void testNewLine_withCustomNewLine() throws Exception {
++        String customNewLine = "\n\rLF\n\r";
++        PrettyPrinter customXmlPrettyPrinter = new DefaultXmlPrettyPrinter().withCustomNewLine(customNewLine);
++
++        Company root = new Company();
++        root.employee.add(new Employee("abc"));
++
++        String xml = _xmlMapper.writer()
++            .with(customXmlPrettyPrinter)
++            .with(ToXmlGenerator.Feature.WRITE_XML_DECLARATION)
++            .writeValueAsString(root);
++        // unify possible apostrophes to quotes
++        xml = a2q(xml);
++
++        // with indentation, should get newLines in prolog/epilog too
++        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + customNewLine
++                + "<Company>" + customNewLine
++                + "  <e>" + customNewLine
++                + "    <employee>" + customNewLine
++                + "      <id>abc</id>" + customNewLine
++                + "      <type>FULL_TIME</type>" + customNewLine
++                + "    </employee>" + customNewLine
++                + "  </e>" + customNewLine
++                + "</Company>" + customNewLine,
++            xml);
++    }
++
++    public void testNewLine_systemDefault() throws Exception {
++        Company root = new Company();
++        root.employee.add(new Employee("abc"));
++
++        String xml = _xmlMapper.writer()
++            .with(new DefaultXmlPrettyPrinter())
++            .with(ToXmlGenerator.Feature.WRITE_XML_DECLARATION)
++            .writeValueAsString(root);
++        // unify possible apostrophes to quotes
++        xml = a2q(xml);
++
++        // with indentation, should get newLines in prolog/epilog too
++        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + DEFAULT_NEW_LINE
++                + "<Company>" + DEFAULT_NEW_LINE
++                + "  <e>" + DEFAULT_NEW_LINE
++                + "    <employee>" + DEFAULT_NEW_LINE
++                + "      <id>abc</id>" + DEFAULT_NEW_LINE
++                + "      <type>FULL_TIME</type>" + DEFAULT_NEW_LINE
++                + "    </employee>" + DEFAULT_NEW_LINE
++                + "  </e>" + DEFAULT_NEW_LINE
++                + "</Company>" + DEFAULT_NEW_LINE,
++            xml);
++    }
++
++    public void testNewLine_UseSystemDefaultLineSeperatorOnNullCustomNewLine() throws Exception {
++        Company root = new Company();
++        root.employee.add(new Employee("abc"));
++
++        String xml = _xmlMapper.writer()
++            .with(new DefaultXmlPrettyPrinter().withCustomNewLine(null))
++            .with(ToXmlGenerator.Feature.WRITE_XML_DECLARATION)
++            .writeValueAsString(root);
++        // unify possible apostrophes to quotes
++        xml = a2q(xml);
++
++        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + DEFAULT_NEW_LINE
++                + "<Company>" + DEFAULT_NEW_LINE
++                + "  <e>" + DEFAULT_NEW_LINE
++                + "    <employee>" + DEFAULT_NEW_LINE
++                + "      <id>abc</id>" + DEFAULT_NEW_LINE
++                + "      <type>FULL_TIME</type>" + DEFAULT_NEW_LINE
++                + "    </employee>" + DEFAULT_NEW_LINE
++                + "  </e>" + DEFAULT_NEW_LINE
++                + "</Company>" + DEFAULT_NEW_LINE,
++            xml);
++    }
+diff --git a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/XsiNilSerializationTest.java b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/XsiNilSerializationTest.java
+index 502a67886..59f3c2a2c 100644
+--- a/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/XsiNilSerializationTest.java
++++ b/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/XsiNilSerializationTest.java
+@@ -44,4 +44,3 @@ public class XsiNilSerializationTest extends XmlTestBase
+-        assertEquals(
+-"<WrapperBean>\n"
+-+"  <value xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/>\n"
+-+"</WrapperBean>", xml);
++        assertEquals("<WrapperBean>" + DEFAULT_NEW_LINE
++            + "  <value xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/>" + DEFAULT_NEW_LINE
++            + "</WrapperBean>", xml);

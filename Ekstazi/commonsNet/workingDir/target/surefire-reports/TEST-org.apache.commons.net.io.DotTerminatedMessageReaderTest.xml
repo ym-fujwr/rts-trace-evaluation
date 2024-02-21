@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0.069" tests="21" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsNet/workingDir/target/test-classes:/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsNet/workingDir/target/classes:/home/ym-fujwr/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/home/ym-fujwr/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/ym-fujwr/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/home/ym-fujwr/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ym-fujwr/.m2/repository/org/junit/vintage/junit-vintage-engine/5.9.1/junit-vintage-engine-5.9.1.jar:/home/ym-fujwr/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar:/home/ym-fujwr/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/ym-fujwr/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ym-fujwr/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar:/home/ym-fujwr/.m2/repository/org/apache/ftpserver/ftpserver-core/1.2.0/ftpserver-core-1.2.0.jar:/home/ym-fujwr/.m2/repository/org/apache/ftpserver/ftplet-api/1.2.0/ftplet-api-1.2.0.jar:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/ym-fujwr/.m2/repository/org/apache/mina/mina-core/2.1.6/mina-core-2.1.6.jar:/home/ym-fujwr/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/ym-fujwr/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:"/>
+    <property name="java.vm.vendor" value="Debian"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://tracker.debian.org/openjdk-17"/>
+    <property name="user.timezone" value="Asia/Tokyo"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="rat.skip" value="true"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsNet/workingDir/target/surefire/surefirebooter-20231221150029112_3.jar /mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsNet/workingDir/target/surefire 2023-12-21T15-00-28_815-jvmRun1 surefire-20231221150029112_1tmp surefire_0-20231221150029112_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsNet/workingDir/target/test-classes:/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsNet/workingDir/target/classes:/home/ym-fujwr/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/home/ym-fujwr/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/ym-fujwr/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/home/ym-fujwr/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ym-fujwr/.m2/repository/org/junit/vintage/junit-vintage-engine/5.9.1/junit-vintage-engine-5.9.1.jar:/home/ym-fujwr/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar:/home/ym-fujwr/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/ym-fujwr/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/ym-fujwr/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar:/home/ym-fujwr/.m2/repository/org/apache/ftpserver/ftpserver-core/1.2.0/ftpserver-core-1.2.0.jar:/home/ym-fujwr/.m2/repository/org/apache/ftpserver/ftplet-api/1.2.0/ftplet-api-1.2.0.jar:/home/ym-fujwr/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/ym-fujwr/.m2/repository/org/apache/mina/mina-core/2.1.6/mina-core-2.1.6.jar:/home/ym-fujwr/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/ym-fujwr/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/ym-fujwr"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-01-17"/>
+    <property name="java.home" value="/usr/lib/jvm/java-17-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsNet/workingDir"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsNet/workingDir/target/surefire/surefirebooter-20231221150029112_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.6+10-Debian-1"/>
+    <property name="user.name" value="ym-fujwr"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="4.4.0-19041-Microsoft"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/ym-fujwr/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugs.debian.org/openjdk-17"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="17.0.6"/>
+    <property name="user.dir" value="/mnt/c/Users/fujiwara yuma/evaluation/Ekstazi/commonsNet/workingDir"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Debian"/>
+    <property name="java.vm.version" value="17.0.6+10-Debian-1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+    <property name="argLine" value="-javaagent:../../../org.ekstazi.core-5.3.0.jar=mode=junit"/>
+  </properties>
+  <testcase name="" classname="org.apache.commons.net.ftp.parser.NetwareFTPEntryParserTest" time="0"/>
+  <testcase name="" classname="org.apache.commons.net.ftp.parser.NTFTPEntryParserTest" time="0"/>
+  <testcase name="" classname="org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest" time="0"/>
+  <testcase name="" classname="org.apache.commons.net.ftp.parser.OS400FTPEntryParserAdditionalTest" time="0"/>
+  <testcase name="" classname="org.apache.commons.net.ftp.parser.OS400FTPEntryParserTest" time="0.001"/>
+  <testcase name="" classname="org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest" time="0"/>
+  <testcase name="" classname="org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest" time="0"/>
+  <testcase name="" classname="org.apache.commons.net.ftp.TestConnectTimeout" time="0"/>
+  <testcase name="" classname="org.apache.commons.net.imap.IMAPTest" time="0"/>
+  <testcase name="testEmbeddedDot1" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0.05"/>
+  <testcase name="testEmbeddedDot2" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0.001"/>
+  <testcase name="testEmbeddedDot3" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0.001"/>
+  <testcase name="testEmbeddedDot4" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0"/>
+  <testcase name="testReadSimpleStringCrLfLineEnding" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0"/>
+  <testcase name="testDoubleCrBeforeDot" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0"/>
+  <testcase name="testSingleDotWithTrailingText" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0.001"/>
+  <testcase name="testReadLine1" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0"/>
+  <testcase name="testReadLine2" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0"/>
+  <testcase name="testLeadingDot" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0"/>
+  <testcase name="testEmbeddedNewlines" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0"/>
+  <testcase name="testReadSimpleStringLfLineEnding" classname="org.apache.commons.net.io.DotTerminatedMessageReaderTest" time="0.001"/>
+</testsuite>

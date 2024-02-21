@@ -1,0 +1,220 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< commons-net:commons-net >-----------------------
+[INFO] Building Apache Commons Net 3.9.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0:enforce (enforce-maven-version) @ commons-net ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0:enforce (enforce-java-version) @ commons-net ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0:enforce (enforce-output-timestamp-property) @ commons-net ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0:enforce (enforce-maven-3) @ commons-net ---
+[INFO] 
+[INFO] --- apache-rat-plugin:0.13:check (rat-check) @ commons-net ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.2.0:parse-version (parse-version) @ commons-net ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:3.0.0:run (javadoc.resources) @ commons-net ---
+[INFO] Executing tasks
+[INFO]      [copy] Copying 2 files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/apidocs/META-INF
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.7.0:process (process-resource-bundles) @ commons-net ---
+[INFO] Skipping remote resources execution.
+[INFO] 
+[INFO] --- buildnumber-maven-plugin:3.0.0:create (default) @ commons-net ---
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir
+[INFO] Storing buildNumber: ?????? at timestamp: 1703139794469
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+
+[INFO] Executing: /bin/sh -c cd '/mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir
+[INFO] Storing buildScmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ commons-net ---
+[INFO] Using 'iso-8859-1' encoding to copy filtered resources.
+[INFO] Using 'iso-8859-1' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ commons-net ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 192 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/src/main/java/org/apache/commons/net/ftp/parser/DefaultFTPFileEntryParserFactory.java: /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/src/main/java/org/apache/commons/net/ftp/parser/DefaultFTPFileEntryParserFactory.java uses or overrides a deprecated API.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/src/main/java/org/apache/commons/net/ftp/parser/DefaultFTPFileEntryParserFactory.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.4:manifest (bundle-manifest) @ commons-net ---
+[INFO] Writing manifest: /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/osgi/MANIFEST.MF
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ commons-net ---
+[INFO] Using 'iso-8859-1' encoding to copy filtered resources.
+[INFO] Using 'iso-8859-1' encoding to copy filtered properties files.
+[INFO] Copying 3 resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ commons-net ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 63 source files to /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/test-classes
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/src/test/java/org/apache/commons/net/tftp/TFTPServer.java: /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/src/test/java/org/apache/commons/net/tftp/TFTPServer.java uses or overrides a deprecated API.
+[INFO] /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/src/test/java/org/apache/commons/net/tftp/TFTPServer.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.21:check (checkAPIcompatibility) @ commons-net ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M5:test (default-test) @ commons-net ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.commons.net.examples.MainTest
+sf=/mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes
+len=79 /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes/org/apache/commons/net/examples
+len=79 /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes/org/apache/commons/net/examples/cidr
+Initial name org/apache/commons/net/examples/cidr/SubnetUtilsExample.class
+len=79 /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes/org/apache/commons/net/examples/ftp
+Initial name org/apache/commons/net/examples/ftp/FTPClientExample.class
+Initial name org/apache/commons/net/examples/ftp/ServerToServerFTP.class
+Initial name org/apache/commons/net/examples/ftp/TFTPExample.class
+len=79 /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes/org/apache/commons/net/examples/mail
+Initial name org/apache/commons/net/examples/mail/IMAPExportMbox.class
+Initial name org/apache/commons/net/examples/mail/IMAPImportMbox.class
+Initial name org/apache/commons/net/examples/mail/IMAPMail.class
+Initial name org/apache/commons/net/examples/mail/IMAPUtils.class
+Initial name org/apache/commons/net/examples/mail/POP3ExportMbox.class
+Initial name org/apache/commons/net/examples/mail/POP3Mail.class
+Initial name org/apache/commons/net/examples/mail/SMTPMail.class
+Initial name org/apache/commons/net/examples/mail/Utils.class
+len=79 /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes/org/apache/commons/net/examples/nntp
+Initial name org/apache/commons/net/examples/nntp/ArticleReader.class
+Initial name org/apache/commons/net/examples/nntp/ExtendedNNTPOps.class
+Initial name org/apache/commons/net/examples/nntp/ListNewsgroups.class
+Initial name org/apache/commons/net/examples/nntp/MessageThreading.class
+Initial name org/apache/commons/net/examples/nntp/NNTPUtils.class
+Initial name org/apache/commons/net/examples/nntp/PostMessage.class
+len=79 /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes/org/apache/commons/net/examples/ntp
+Initial name org/apache/commons/net/examples/ntp/NTPClient.class
+Initial name org/apache/commons/net/examples/ntp/SimpleNTPServer.class
+Initial name org/apache/commons/net/examples/ntp/TimeClient.class
+len=79 /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes/org/apache/commons/net/examples/telnet
+Initial name org/apache/commons/net/examples/telnet/TelnetClientExample.class
+Initial name org/apache/commons/net/examples/telnet/WeatherTelnet.class
+len=79 /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes/org/apache/commons/net/examples/unix
+Initial name org/apache/commons/net/examples/unix/chargen.class
+Initial name org/apache/commons/net/examples/unix/daytime.class
+Initial name org/apache/commons/net/examples/unix/echo.class
+Initial name org/apache/commons/net/examples/unix/finger.class
+Initial name org/apache/commons/net/examples/unix/fwhois.class
+Initial name org/apache/commons/net/examples/unix/rdate.class
+Initial name org/apache/commons/net/examples/unix/rexec.class
+Initial name org/apache/commons/net/examples/unix/rlogin.class
+Initial name org/apache/commons/net/examples/unix/rshell.class
+len=79 /mnt/c/Users/fujiwara yuma/evaluation/ALL/commonsNet/workingDir/target/classes/org/apache/commons/net/examples/util
+Initial name org/apache/commons/net/examples/util/IOUtil.class
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.198 s - in org.apache.commons.net.examples.MainTest
+[INFO] Running org.apache.commons.net.ftp.FTPClientConfigTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.175 s - in org.apache.commons.net.ftp.FTPClientConfigTest
+[INFO] Running org.apache.commons.net.ftp.FTPClientTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.net.ftp.FTPClientTest
+[INFO] Running org.apache.commons.net.ftp.FTPCommandTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.apache.commons.net.ftp.FTPCommandTest
+[INFO] Running org.apache.commons.net.ftp.FTPSClientTest
+Loading file:/mnt/c/Users/fujiwara%20yuma/evaluation/ALL/commonsNet/workingDir/target/test-classes/org/apache/commons/net/ftpsserver/ftpserver.jks
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.407 s - in org.apache.commons.net.ftp.FTPSClientTest
+[INFO] Running org.apache.commons.net.ftp.parser.DefaultFTPFileEntryParserFactoryTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s - in org.apache.commons.net.ftp.parser.DefaultFTPFileEntryParserFactoryTest
+[INFO] Running org.apache.commons.net.ftp.parser.EnterpriseUnixFTPEntryParserTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 s - in org.apache.commons.net.ftp.parser.EnterpriseUnixFTPEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.FTPConfigEntryParserTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in org.apache.commons.net.ftp.parser.FTPConfigEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest
+Skipping Feb 29 test (not leap year or before Feb 29)
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s - in org.apache.commons.net.ftp.parser.FTPTimestampParserImplTest
+[INFO] Running org.apache.commons.net.ftp.parser.MacOsPeterFTPEntryParserTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s - in org.apache.commons.net.ftp.parser.MacOsPeterFTPEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.MLSxEntryParserTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s - in org.apache.commons.net.ftp.parser.MLSxEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.apache.commons.net.ftp.parser.MVSFTPEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.NetwareFTPEntryParserTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.ftp.parser.NetwareFTPEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.NTFTPEntryParserTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s - in org.apache.commons.net.ftp.parser.NTFTPEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.ftp.parser.OS2FTPEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.OS400FTPEntryParserAdditionalTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.ftp.parser.OS400FTPEntryParserAdditionalTest
+[INFO] Running org.apache.commons.net.ftp.parser.OS400FTPEntryParserTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.apache.commons.net.ftp.parser.OS400FTPEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.ftp.parser.UnixFTPEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.ftp.parser.VMSFTPEntryParserTest
+[INFO] Running org.apache.commons.net.ftp.TestConnectTimeout
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.964 s - in org.apache.commons.net.ftp.TestConnectTimeout
+[INFO] Running org.apache.commons.net.imap.IMAPTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s - in org.apache.commons.net.imap.IMAPTest
+[INFO] Running org.apache.commons.net.io.DotTerminatedMessageReaderTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s - in org.apache.commons.net.io.DotTerminatedMessageReaderTest
+[INFO] Running org.apache.commons.net.io.ToNetASCIIInputStreamTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.apache.commons.net.io.ToNetASCIIInputStreamTest
+[INFO] Running org.apache.commons.net.nntp.TestThreader
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.nntp.TestThreader
+[INFO] Running org.apache.commons.net.ntp.TestNtpClient
+Running NTP service on port 59147/UDP
+NTP packet from 127.0.0.1 mode=Client
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.03 s - in org.apache.commons.net.ntp.TestNtpClient
+[INFO] Running org.apache.commons.net.ntp.TestNtpPacket
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.apache.commons.net.ntp.TestNtpPacket
+[INFO] Running org.apache.commons.net.ntp.TestTimeInfo
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in org.apache.commons.net.ntp.TestTimeInfo
+[INFO] Running org.apache.commons.net.ntp.TimeStampTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.ntp.TimeStampTest
+[INFO] Running org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase
+[INFO] Running org.apache.commons.net.SocketClientTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.apache.commons.net.SocketClientTest
+[INFO] Running org.apache.commons.net.SubnetUtilsTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in org.apache.commons.net.SubnetUtilsTest
+[INFO] Running org.apache.commons.net.telnet.EchoOptionHandlerTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.apache.commons.net.telnet.EchoOptionHandlerTest
+[INFO] Running org.apache.commons.net.telnet.InvalidTelnetOptionExceptionTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.telnet.InvalidTelnetOptionExceptionTest
+[INFO] Running org.apache.commons.net.telnet.SimpleOptionHandlerTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in org.apache.commons.net.telnet.SimpleOptionHandlerTest
+[INFO] Running org.apache.commons.net.telnet.SuppressGAOptionHandlerTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.apache.commons.net.telnet.SuppressGAOptionHandlerTest
+[INFO] Running org.apache.commons.net.telnet.TelnetClientTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 47.277 s - in org.apache.commons.net.telnet.TelnetClientTest
+[INFO] Running org.apache.commons.net.telnet.TelnetOptionTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.telnet.TelnetOptionTest
+[INFO] Running org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.apache.commons.net.telnet.TerminalTypeOptionHandlerTest
+[INFO] Running org.apache.commons.net.telnet.WindowSizeOptionHandlerTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in org.apache.commons.net.telnet.WindowSizeOptionHandlerTest
+[INFO] Running org.apache.commons.net.tftp.TFTPServerPathTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.077 s - in org.apache.commons.net.tftp.TFTPServerPathTest
+[INFO] Running org.apache.commons.net.tftp.TFTPTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 44.252 s - in org.apache.commons.net.tftp.TFTPTest
+[INFO] Running org.apache.commons.net.time.TimeTCPClientTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.063 s - in org.apache.commons.net.time.TimeTCPClientTest
+[INFO] Running org.apache.commons.net.util.Base64Test
+[WARNING] Tests run: 28, Failures: 0, Errors: 0, Skipped: 19, Time elapsed: 0.012 s - in org.apache.commons.net.util.Base64Test
+[INFO] Running org.apache.commons.net.util.UtilTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in org.apache.commons.net.util.UtilTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[WARNING] Tests run: 309, Failures: 0, Errors: 0, Skipped: 19
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:59 min
+[INFO] Finished at: 2023-12-21T15:25:10+09:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,1 @@
+org.adoptopenjdk.jitwatch.test.TestAssemblyProcessor,org.adoptopenjdk.jitwatch.test.TestBytecodeAnnotationBuilder,org.adoptopenjdk.jitwatch.test.TestIntrinsicFinder,org.adoptopenjdk.jitwatch.test.TestJITWatchConfig,org.adoptopenjdk.jitwatch.test.TestLogSplitting,org.adoptopenjdk.jitwatch.test.TestReport,org.adoptopenjdk.jitwatch.test.TestZingParser

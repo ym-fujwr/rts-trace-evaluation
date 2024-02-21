@@ -1,0 +1,23 @@
+# 1
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/NuProcess.class _ 1262711691
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/NuProcessBuilder.class _ 4229069390
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/NuProcessFactory.class _ 1512065000
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/NuProcessHandler.class _ 3725546777
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/codec/NuAbstractCharsetHandler$StderrDecoderHandler.class _ 3743578199
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/codec/NuAbstractCharsetHandler$StdinEncoderHandler.class _ 4029505601
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/codec/NuAbstractCharsetHandler$StdoutDecoderHandler.class _ 1295761768
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/codec/NuAbstractCharsetHandler.class _ 3406482331
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/codec/NuCharsetDecoder.class _ 1201088474
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/codec/NuCharsetDecoderHandler.class _ 658913097
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/codec/NuCharsetEncoder.class _ 1749439228
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/internal/BasePosixProcess.class _ 289739413
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/internal/Constants.class _ 2657464497
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/internal/IEventProcessor.class _ 3136621367
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/internal/LibC.class _ 613902400
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/internal/ReferenceCountedFileDescriptor.class _ 2124687894
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/linux/EpollEvent.class _ 2124656072
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/linux/LinProcessFactory.class _ 1829887106
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/linux/LinuxProcess$LaunchMechanism.class _ 30818588
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/classes/com/zaxxer/nuprocess/linux/LinuxProcess.class _ 1339031226
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/test-classes/com/zaxxer/nuprocess/EnvironmentTest$ProcessHandler.class _ 1037128486
+file:/mnt/c/Users/fujiwara%20yuma/evaluation/Ekstazi/NuProcess/workingDir/target/test-classes/com/zaxxer/nuprocess/EnvironmentTest.class _ 4183131099

@@ -1,0 +1,13 @@
+diff --git a/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java b/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
+index f8ccdaf..5161e7a 100644
+--- a/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
++++ b/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
+@@ -13 +13,3 @@ public class EpollEventTest
+-      Assert.assertEquals(12, event.size());
++      Assert.assertEquals(16, event.size());
++      // When alignment is ALIGN_NONE
++      // Assert.assertEquals(12, event.size());
+@@ -15 +17 @@ public class EpollEventTest
+-}
+\ No newline at end of file
++}

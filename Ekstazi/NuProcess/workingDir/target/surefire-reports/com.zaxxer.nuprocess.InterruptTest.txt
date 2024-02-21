@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.zaxxer.nuprocess.InterruptTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.272 s -- in com.zaxxer.nuprocess.InterruptTest

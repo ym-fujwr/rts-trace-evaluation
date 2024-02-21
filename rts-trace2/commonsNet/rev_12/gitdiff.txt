@@ -1,0 +1,20 @@
+diff --git a/src/main/java/org/apache/commons/net/examples/Main.java b/src/main/java/org/apache/commons/net/examples/Main.java
+index 27308bf05..4e2fe92a5 100644
+--- a/src/main/java/org/apache/commons/net/examples/Main.java
++++ b/src/main/java/org/apache/commons/net/examples/Main.java
+@@ -92 +91,0 @@ public class Main {
+-        fullName = fullName.replace('/', '.');
+diff --git a/src/test/java/org/apache/commons/net/examples/MainTest.java b/src/test/java/org/apache/commons/net/examples/MainTest.java
+index f2e95343a..ca27fed9b 100644
+--- a/src/test/java/org/apache/commons/net/examples/MainTest.java
++++ b/src/test/java/org/apache/commons/net/examples/MainTest.java
+@@ -38 +37,0 @@ public class MainTest {
+-        name = name.replace(File.separatorChar, '.');
+@@ -54,0 +54 @@ public class MainTest {
++        name = name.replace(File.separatorChar, '.');
+@@ -57 +57 @@ public class MainTest {
+-                || name.endsWith("examples"+ File.separator + "Main.class")  // the initial class, don't want to add that
++                || name.endsWith("examples.Main.class")  // the initial class, don't want to add that
+@@ -63 +63 @@ public class MainTest {
+-        final int lastSep = name.lastIndexOf('/');
++        final int lastSep = name.lastIndexOf('.');

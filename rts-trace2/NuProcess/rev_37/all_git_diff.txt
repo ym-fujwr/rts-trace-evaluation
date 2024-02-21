@@ -1,0 +1,44 @@
+diff --git a/CHANGES.md b/CHANGES.md
+index b23e1cf..b7a14fe 100644
+--- a/CHANGES.md
++++ b/CHANGES.md
+@@ -0,0 +1,11 @@
++Changes in 1.2.5
++
++ * Handle SystemRoot case-insensitively (Windows).
++ 
++ * Comptibility changes for JNA 5.2.0.
++
++Changes in 1.2.4
++
++ * Fix structure alignment (ALIGN_GNUC) on various platforms.
++
++ * Add support for JDK 10/11.
+@@ -2,0 +14 @@ Changes in 1.2.3
++
+@@ -5,0 +18 @@ Changes in 1.2.2
++
+@@ -9 +22,2 @@ Changes in 1.2.1
+- * On OS X, continue to use posix_spawnp directly, POSIX_SPAWN_START_SUSPENDED solves a lot of potential race conditions that we have to contend with on Linux.
++
++* On OS X, continue to use posix_spawnp directly, POSIX_SPAWN_START_SUSPENDED solves a lot of potential race conditions that we have to contend with on Linux.
+diff --git a/pom.xml b/pom.xml
+index 9ac7c88..5ea6e02 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -9 +9 @@
+-    <version>1.2.5-SNAPSHOT</version>
++    <version>1.2.6-SNAPSHOT</version>
+diff --git a/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java b/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
+index 83a499a..279ac29 100644
+--- a/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
++++ b/src/main/java/com/zaxxer/nuprocess/linux/LinuxProcess.java
+@@ -38,2 +37,0 @@ public class LinuxProcess extends BasePosixProcess
+-   private static final boolean isAzul;
+-
+@@ -41,2 +38,0 @@ public class LinuxProcess extends BasePosixProcess
+-      isAzul = System.getProperty("java.vm.vendor", "").contains("Azul");
+-
+@@ -93 +89 @@ public class LinuxProcess extends BasePosixProcess
+-         if (JVM_MAJOR_VERSION >= 10 || isAzul) {
++         if (JVM_MAJOR_VERSION >= 10) {

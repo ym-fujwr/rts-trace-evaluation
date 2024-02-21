@@ -1,0 +1,21 @@
+diff --git a/pom.xml b/pom.xml
+index f9612ef5..0dd5975f 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -219 +219 @@
+-    <biz.aQute.bndlib.version>5.3.0</biz.aQute.bndlib.version>
++    <biz.aQute.bndlib.version>6.0.0</biz.aQute.bndlib.version>
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 720c4169..d7d56a72 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -110 +110 @@
+-       Bump biz.aQute.bndlib.version 5.1.2 -> 5.3.0.
++       Bump biz.aQute.bndlib.version 5.1.2 -> 6.0.0.
+diff --git a/src/main/java/org/apache/commons/cli/Parser.java b/src/main/java/org/apache/commons/cli/Parser.java
+index b43c50f6..a28d47ab 100644
+--- a/src/main/java/org/apache/commons/cli/Parser.java
++++ b/src/main/java/org/apache/commons/cli/Parser.java
+@@ -34 +34 @@ public abstract class Parser implements CommandLineParser {
+-    /** commandline instance */
++    /** CommandLine instance */

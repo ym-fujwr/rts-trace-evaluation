@@ -1,0 +1,15 @@
+HelpFormatterTest,27
+OptionTest,10
+TypeHandlerTest,17
+BugCLI252Test,2
+ApplicationTest,5
+ParserTestCase,64
+BugsTest,12
+CommandLineTest,10
+PosixParserTest,10
+BasicParserTest,27
+GnuParserTest,22
+DefaultParserTest,9
+AbstractParserTestCase,64
+BugCLI162Test,4
+BugCLI265Test,3

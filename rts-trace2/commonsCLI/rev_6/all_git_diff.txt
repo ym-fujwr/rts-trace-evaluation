@@ -1,0 +1,54 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index be34f391..517cb70d 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -45,0 +46,3 @@
++      <action type="fix" dev="ggregory" due-to="MrQubo, Gary Gregory" issue="CLI-287">
++        Allow whitespace-only header and footer #26.
++      </action>
+diff --git a/src/conf/checkstyle.xml b/src/conf/checkstyle.xml
+index eb541774..0c7dcfbd 100644
+--- a/src/conf/checkstyle.xml
++++ b/src/conf/checkstyle.xml
+@@ -48,0 +49 @@ limitations under the License.
++        <module name="LeftCurly" />
+@@ -55 +55,0 @@ limitations under the License.
+-
+@@ -75 +74,0 @@ limitations under the License.
+-
+diff --git a/src/main/java/org/apache/commons/cli/GnuParser.java b/src/main/java/org/apache/commons/cli/GnuParser.java
+index 41263522..8369c805 100644
+--- a/src/main/java/org/apache/commons/cli/GnuParser.java
++++ b/src/main/java/org/apache/commons/cli/GnuParser.java
+@@ -81,2 +81 @@ public class GnuParser extends Parser {
+-                for (i++; i < arguments.length; i++) // NOPMD
+-                {
++                for (i++; i < arguments.length; i++) { // NOPMD
+diff --git a/src/main/java/org/apache/commons/cli/HelpFormatter.java b/src/main/java/org/apache/commons/cli/HelpFormatter.java
+index 81cc03c7..911e3f87 100644
+--- a/src/main/java/org/apache/commons/cli/HelpFormatter.java
++++ b/src/main/java/org/apache/commons/cli/HelpFormatter.java
+@@ -810,2 +810 @@ public class HelpFormatter {
+-        } catch (final IOException e) // NOPMD
+-        {
++        } catch (final IOException e) { // NOPMD
+diff --git a/src/main/java/org/apache/commons/cli/Parser.java b/src/main/java/org/apache/commons/cli/Parser.java
+index a28d47ab..8543d9c1 100644
+--- a/src/main/java/org/apache/commons/cli/Parser.java
++++ b/src/main/java/org/apache/commons/cli/Parser.java
+@@ -313,2 +313 @@ public abstract class Parser implements CommandLineParser {
+-                        } catch (final RuntimeException exp) // NOPMD
+-                        {
++                        } catch (final RuntimeException exp) { // NOPMD
+diff --git a/src/test/java/org/apache/commons/cli/HelpFormatterTest.java b/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
+index 30420349..d836f996 100644
+--- a/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
++++ b/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
+@@ -297,2 +297 @@ public class HelpFormatterTest {
+-    public void testPrintHelpNewlineFooter()
+-    {
++    public void testPrintHelpNewlineFooter() {
+@@ -325,2 +324 @@ public class HelpFormatterTest {
+-    public void testPrintHelpNewlineHeader()
+-    {
++    public void testPrintHelpNewlineHeader() {

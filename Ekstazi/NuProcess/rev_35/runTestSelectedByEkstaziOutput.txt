@@ -1,0 +1,24 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.zaxxer:nuprocess >------------------------
+[INFO] Building NuProcess 1.2.5-SNAPSHOT
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ nuprocess ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ nuprocess ---
+[INFO] skip non existing resourceDirectory /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_35/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ nuprocess ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 35 source files to /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_35/target/classes
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_35/src/main/java/com/zaxxer/nuprocess/internal/LibC.java: Some input files use or override a deprecated API.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_35/src/main/java/com/zaxxer/nuprocess/internal/LibC.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_35/src/main/java/com/zaxxer/nuprocess/osx/LibKevent.java: Some input files use unchecked or unsafe operations.
+[WARNING] /mnt/c/Users/fujiwara yuma/evaluation/original_source/NuProcess/rev_35/src/main/java/com/zaxxer/nuprocess/osx/LibKevent.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.928 s
+[INFO] Finished at: 2024-01-30T16:56:54+09:00
+[INFO] ------------------------------------------------------------------------

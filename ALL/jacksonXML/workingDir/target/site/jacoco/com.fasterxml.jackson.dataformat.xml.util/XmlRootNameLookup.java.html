@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlRootNameLookup.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jackson-dataformat-XML</a> &gt; <a href="index.source.html" class="el_package">com.fasterxml.jackson.dataformat.xml.util</a> &gt; <span class="el_source">XmlRootNameLookup.java</span></div><h1>XmlRootNameLookup.java</h1><pre class="source lang-java linenums">package com.fasterxml.jackson.dataformat.xml.util;
+
+import javax.xml.namespace.QName;
+
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.cfg.MapperConfig;
+import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
+import com.fasterxml.jackson.databind.type.ClassKey;
+import com.fasterxml.jackson.databind.util.LRUMap;
+
+/**
+ * Helper class used for efficiently finding root element name used with
+ * XML serializations.
+ */
+public class XmlRootNameLookup
+    implements java.io.Serializable
+{
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * If all we get to serialize is a null, there's no way to figure out
+     * expected root name; so let's just default to literal {@code &quot;null&quot;}.
+     */
+<span class="fc" id="L24">    public final static QName ROOT_NAME_FOR_NULL = new QName(&quot;null&quot;);</span>
+
+    /**
+     * For efficient operation, let's try to minimize number of times we
+     * need to introspect root element name to use.
+     *&lt;p&gt;
+     * Note: changed to &lt;code&gt;transient&lt;/code&gt; for 2.3; no point in serializing such
+     * state
+     */
+    protected final transient LRUMap&lt;ClassKey,QName&gt; _rootNames;
+
+<span class="fc" id="L35">    public XmlRootNameLookup() {</span>
+<span class="fc" id="L36">        _rootNames = new LRUMap&lt;ClassKey,QName&gt;(40, 200);</span>
+<span class="fc" id="L37">    }</span>
+
+    protected Object readResolve() {
+        // just need to make 100% sure it gets set to non-null, that's all
+        // 05-Jan-2020, tatu: How is that possibly, you ask? JDK serialization, that's how
+        //   (it by-passes calls to constructors, as well as initializers)
+        //   ... and if you don't believe, try commenting it out and see test failure you get
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (_rootNames == null) {</span>
+<span class="fc" id="L45">            return new XmlRootNameLookup();</span>
+        }
+<span class="nc" id="L47">        return this;</span>
+    }
+
+    public QName findRootName(JavaType rootType, MapperConfig&lt;?&gt; config) {
+<span class="fc" id="L51">        return findRootName(rootType.getRawClass(), config);</span>
+    }
+
+    public QName findRootName(Class&lt;?&gt; rootType, MapperConfig&lt;?&gt; config)
+    {
+<span class="fc" id="L56">        ClassKey key = new ClassKey(rootType);</span>
+        QName name;
+<span class="fc" id="L58">        synchronized (_rootNames) {</span>
+<span class="fc" id="L59">            name = _rootNames.get(key);</span>
+<span class="fc" id="L60">        }</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (name != null) {</span>
+<span class="fc" id="L62">            return name;</span>
+        }
+<span class="fc" id="L64">        name = _findRootName(config, rootType);</span>
+<span class="fc" id="L65">        synchronized (_rootNames) {</span>
+<span class="fc" id="L66">            _rootNames.put(key, name);</span>
+<span class="fc" id="L67">        }</span>
+<span class="fc" id="L68">        return name;</span>
+    }
+
+    protected QName _findRootName(MapperConfig&lt;?&gt; config, Class&lt;?&gt; rootType)
+    {
+<span class="fc" id="L73">        BeanDescription beanDesc = config.introspectClassAnnotations(rootType);</span>
+<span class="fc" id="L74">        AnnotationIntrospector intr = config.getAnnotationIntrospector();</span>
+<span class="fc" id="L75">        AnnotatedClass ac = beanDesc.getClassInfo();</span>
+<span class="fc" id="L76">        String localName = null;</span>
+<span class="fc" id="L77">        String ns = null;</span>
+
+<span class="fc" id="L79">        PropertyName root = intr.findRootName(ac);</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        if (root != null) {</span>
+<span class="fc" id="L81">            localName = root.getSimpleName();</span>
+<span class="fc" id="L82">            ns = root.getNamespace();</span>
+        }
+        // No answer so far? Let's just default to using simple class name
+<span class="fc bfc" id="L85" title="All 4 branches covered.">        if (localName == null || localName.length() == 0) {</span>
+            // Should we strip out enclosing class tho? For now, nope:
+            // one caveat: array simple names end with &quot;[]&quot;; also, &quot;$&quot; needs replacing
+<span class="fc" id="L88">            localName = StaxUtil.sanitizeXmlTypeName(rootType.getSimpleName());</span>
+<span class="fc" id="L89">            return _qname(ns, localName);</span>
+        }
+        // Otherwise let's see if there's namespace, too (if we are missing it)
+<span class="fc bfc" id="L92" title="All 4 branches covered.">        if (ns == null || ns.isEmpty()) {</span>
+<span class="fc" id="L93">            ns = _findNamespace(config, intr, ac);</span>
+        }
+<span class="fc" id="L95">        return _qname(ns, localName);</span>
+    }
+
+    private QName _qname(String ns, String localName) {
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        if (ns == null) { // some QName impls barf on nulls...</span>
+<span class="fc" id="L100">            ns = &quot;&quot;;</span>
+        }
+<span class="fc" id="L102">        return new QName(ns, localName);</span>
+    }
+
+    private String _findNamespace(MapperConfig&lt;?&gt; config, AnnotationIntrospector ai,
+            AnnotatedClass ann)
+    {
+<span class="fc bfc" id="L108" title="All 2 branches covered.">        for (AnnotationIntrospector intr : ai.allIntrospectors()) {</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">            if (intr instanceof AnnotationIntrospector.XmlExtensions) {</span>
+<span class="fc" id="L110">                String ns = ((AnnotationIntrospector.XmlExtensions) intr).findNamespace(config, ann);</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">                if (ns != null) {</span>
+<span class="fc" id="L112">                    return ns;</span>
+                }
+            }
+<span class="fc" id="L115">        }</span>
+<span class="fc" id="L116">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

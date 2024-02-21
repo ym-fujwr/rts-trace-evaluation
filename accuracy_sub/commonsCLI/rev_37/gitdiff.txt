@@ -1,0 +1,64 @@
+diff --git a/src/main/java/org/apache/commons/cli/HelpFormatter.java b/src/main/java/org/apache/commons/cli/HelpFormatter.java
+index b8ef6704..7a1b7900 100644
+--- a/src/main/java/org/apache/commons/cli/HelpFormatter.java
++++ b/src/main/java/org/apache/commons/cli/HelpFormatter.java
+@@ -151,4 +151,4 @@ public class HelpFormatter {
+-     * the new line string
+-     *
+-     * @deprecated Scope will be made private for next major version - use get/setNewLine methods instead.
+-     */
++    * the new line string
++    *
++    * @deprecated Scope will be made private for next major version - use get/setNewLine methods instead.
++    */
+@@ -156 +156 @@ public class HelpFormatter {
+-    public String defaultNewLine = System.getProperty("line.separator");
++    public String defaultNewLine = System.lineSeparator();
+diff --git a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+index 36affcc7..bb992379 100644
+--- a/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
++++ b/src/test/java/org/apache/commons/cli/AbstractParserTestCase.java
+@@ -489 +489 @@ public abstract class AbstractParserTestCase {
+-    
++
+@@ -1024 +1024 @@ public abstract class AbstractParserTestCase {
+-    
++
+@@ -1029 +1029 @@ public abstract class AbstractParserTestCase {
+-        
++
+diff --git a/src/test/java/org/apache/commons/cli/ApplicationTest.java b/src/test/java/org/apache/commons/cli/ApplicationTest.java
+index 32079c77..952d36e5 100644
+--- a/src/test/java/org/apache/commons/cli/ApplicationTest.java
++++ b/src/test/java/org/apache/commons/cli/ApplicationTest.java
+@@ -230 +230 @@ public class ApplicationTest {
+-        final String eol = System.getProperty("line.separator");
++        final String eol = System.lineSeparator();
+diff --git a/src/test/java/org/apache/commons/cli/HelpFormatterTest.java b/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
+index abeb4321..5c9264eb 100644
+--- a/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
++++ b/src/test/java/org/apache/commons/cli/HelpFormatterTest.java
+@@ -27 +26,0 @@ import java.io.StringWriter;
+-import java.util.Comparator;
+@@ -35 +34 @@ public class HelpFormatterTest {
+-    private static final String EOL = System.getProperty("line.separator");
++    private static final String EOL = System.lineSeparator();
+@@ -274 +273 @@ public class HelpFormatterTest {
+-        final String eol = System.getProperty("line.separator");
++        final String eol = System.lineSeparator();
+@@ -473,7 +472 @@ public class HelpFormatterTest {
+-        helpFormatter.setOptionComparator(new Comparator<Option>() {
+-            @Override
+-            public int compare(final Option opt1, final Option opt2) {
+-                // reverses the functionality of the default comparator
+-                return opt2.getKey().compareToIgnoreCase(opt1.getKey());
+-            }
+-        });
++        helpFormatter.setOptionComparator((opt1, opt2) -> opt2.getKey().compareToIgnoreCase(opt1.getKey()));
+diff --git a/src/test/java/org/apache/commons/cli/bug/BugCLI162Test.java b/src/test/java/org/apache/commons/cli/bug/BugCLI162Test.java
+index 3123d902..db37aacd 100644
+--- a/src/test/java/org/apache/commons/cli/bug/BugCLI162Test.java
++++ b/src/test/java/org/apache/commons/cli/bug/BugCLI162Test.java
+@@ -36 +36 @@ public class BugCLI162Test {
+-    private static final String CR = System.getProperty("line.separator");
++    private static final String CR = System.lineSeparator();

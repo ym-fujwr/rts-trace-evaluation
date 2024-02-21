@@ -1,0 +1,2 @@
+org.apache.commons.net.ntp.TestTimeInfo
+org.apache.commons.net.smtp.SimpleSMTPHeaderTestCase

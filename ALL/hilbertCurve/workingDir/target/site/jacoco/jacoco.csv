@@ -1,0 +1,18 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+hilbert-curve,org.davidmoten.hilbert.exceptions,IORuntimeException,0,4,0,0,0,2,0,1,0,1
+hilbert-curve,org.davidmoten.hilbert,Util,0,91,1,15,0,28,1,10,0,3
+hilbert-curve,org.davidmoten.hilbert,Node,35,81,3,7,5,25,5,9,2,7
+hilbert-curve,org.davidmoten.hilbert,Ranges,3,216,2,16,1,40,2,19,0,12
+hilbert-curve,org.davidmoten.hilbert,Range,138,172,17,13,31,26,16,13,3,11
+hilbert-curve,org.davidmoten.hilbert,HilbertCurve,1,480,1,37,0,76,1,31,0,13
+hilbert-curve,org.davidmoten.hilbert,Ranges2,0,135,0,12,0,29,0,10,0,4
+hilbert-curve,org.davidmoten.hilbert,HilbertCurveRenderer.Option,0,15,0,0,0,2,0,1,0,1
+hilbert-curve,org.davidmoten.hilbert,Ranges.Builder,5,154,1,15,1,29,1,10,0,3
+hilbert-curve,org.davidmoten.hilbert,SmallHilbertCurve.Builder,0,27,0,2,0,6,0,4,0,3
+hilbert-curve,org.davidmoten.hilbert,Box,2,394,4,44,0,70,4,31,0,11
+hilbert-curve,org.davidmoten.hilbert,SmallHilbertCurve,127,306,15,27,28,62,11,22,2,10
+hilbert-curve,org.davidmoten.hilbert,Ranges2.new Iterator() {...},0,29,0,2,0,6,0,4,0,3
+hilbert-curve,org.davidmoten.hilbert,HilbertCurve.Builder,0,37,0,6,0,7,0,5,0,2
+hilbert-curve,org.davidmoten.hilbert,HilbertCurveRenderer,8,479,3,11,3,62,3,9,0,5
+hilbert-curve,org.davidmoten.hilbert.internal.util,BoundedPriorityQueue.new Comparator() {...},0,12,0,0,0,2,0,2,0,2
+hilbert-curve,org.davidmoten.hilbert.internal.util,BoundedPriorityQueue,12,85,0,8,3,21,1,9,1,5

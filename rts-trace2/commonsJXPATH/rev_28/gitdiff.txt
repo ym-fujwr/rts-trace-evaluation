@@ -1,0 +1,30 @@
+diff --git a/src/main/java/org/apache/commons/jxpath/NodeSet.java b/src/main/java/org/apache/commons/jxpath/NodeSet.java
+index 477be054..d92a02fc 100644
+--- a/src/main/java/org/apache/commons/jxpath/NodeSet.java
++++ b/src/main/java/org/apache/commons/jxpath/NodeSet.java
+@@ -26 +25,0 @@ import java.util.List;
+- * @version $Id$
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicAttributeIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicAttributeIterator.java
+index dff26624..b6264cc1 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicAttributeIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicAttributeIterator.java
+@@ -27 +26,0 @@ import org.apache.commons.jxpath.ri.model.beans.PropertyOwnerPointer;
+- * @version $Id$
+diff --git a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyIterator.java b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyIterator.java
+index 33b21b7b..aac09ae6 100644
+--- a/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyIterator.java
++++ b/src/main/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyIterator.java
+@@ -25 +24,0 @@ import org.apache.commons.jxpath.ri.model.beans.PropertyOwnerPointer;
+- * @version $Id$
+diff --git a/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java b/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
+index 6031bb23..79da9eb6 100644
+--- a/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
++++ b/src/test/java/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java
+@@ -23 +22,0 @@ import org.apache.commons.jxpath.TestBean;
+- * @version $Id$
+diff --git a/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java b/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java
+index 0b815924..a4c2a886 100644
+--- a/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java
++++ b/src/test/java/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java
+@@ -37 +36,0 @@ import junit.framework.TestCase;
+- * @version $Revision$, $Date$

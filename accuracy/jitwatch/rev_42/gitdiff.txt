@@ -1,0 +1,23 @@
+diff --git a/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java b/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
+index baeb07d1..37f53f40 100644
+--- a/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
++++ b/src/main/java/org/adoptopenjdk/jitwatch/util/DisassemblyUtil.java
+@@ -68,0 +69 @@ public final class DisassemblyUtil
++		Architecture arch = OSUtil.getArchitecture();
+@@ -70,3 +71 @@ public final class DisassemblyUtil
+-		String archName =  System.getProperty("os.arch");
+-
+-		if ("x86_64".equals(archName))
++		if (DEBUG_LOGGING_ASSEMBLY)
+@@ -74 +73 @@ public final class DisassemblyUtil
+-			archName = "amd64";
++			logger.debug("OS: {} Arch: {}", os, arch);
+@@ -77 +76 @@ public final class DisassemblyUtil
+-		String binaryName = "hsdis-" + archName;
++		String binaryName = "hsdis-" + System.getProperty("os.arch");
+@@ -154 +153 @@ public final class DisassemblyUtil
+-		String[] serverPath = new String[] { "server", "client", "" };
++		String[] serverPath = new String[] { "server", "" };
+@@ -156 +155 @@ public final class DisassemblyUtil
+-		String[] archPath = new String[] { "i386", "amd64", "arm", "aarch64", "" };
++		String[] archPath = new String[] { "i386", "amd64", "" };

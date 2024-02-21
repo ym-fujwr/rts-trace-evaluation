@@ -1,0 +1,3 @@
+org.apache.commons.net.io.ToNetASCIIInputStreamTest
+org.apache.commons.net.nntp.TestThreader
+org.apache.commons.net.ntp.TestNtpPacket

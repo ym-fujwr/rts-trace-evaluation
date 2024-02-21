@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Node.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hilbert-curve</a> &gt; <a href="index.source.html" class="el_package">org.davidmoten.hilbert</a> &gt; <span class="el_source">Node.java</span></div><h1>Node.java</h1><pre class="source lang-java linenums">package org.davidmoten.hilbert;
+
+import com.github.davidmoten.guavamini.Preconditions;
+
+// NotThreadSafe
+final class Node implements Comparable&lt;Node&gt; {
+
+<span class="fc" id="L8">    private static long counter = 0;</span>
+
+    private final long id;
+    final Range value;
+    private Node next;
+    private Node previous;
+    private long distanceToPrevious;
+
+<span class="fc" id="L16">    Node(Range value) {</span>
+<span class="fc" id="L17">        this.value = value;</span>
+<span class="fc" id="L18">        this.id = counter++;</span>
+<span class="fc" id="L19">    }</span>
+
+    Node next() {
+<span class="fc" id="L22">        return next;</span>
+    }
+
+    Node previous() {
+<span class="fc" id="L26">        return previous;</span>
+    }
+
+    Node setNext(Node next) {
+<span class="fc" id="L30">        Preconditions.checkNotNull(next);</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        Preconditions.checkArgument(next != this);</span>
+<span class="fc" id="L32">        this.next = next;</span>
+<span class="fc" id="L33">        next.distanceToPrevious = value.low() - next.value.high();</span>
+<span class="fc" id="L34">        next.previous = this;</span>
+<span class="fc" id="L35">        return this;</span>
+    }
+
+    @Override
+    public int compareTo(Node o) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L41">            return 0;</span>
+        } else {
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">            if (next == null) {</span>
+<span class="nc" id="L44">                return -1;</span>
+            }
+<span class="fc" id="L46">            long x = distanceToPrevious;</span>
+<span class="fc" id="L47">            long y = o.distanceToPrevious;</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">            if (x &lt; y) {</span>
+<span class="fc" id="L49">                return -1;</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            } else if (x == y) {</span>
+<span class="nc" id="L51">                return Long.compare(id, o.id);</span>
+            } else {
+<span class="fc" id="L53">                return 1;</span>
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L60">        return &quot;Node [value=&quot; + value + &quot;, next=&quot; + next + &quot;, previous=&quot; + previous + &quot;]&quot;;</span>
+    }
+
+    public void setDistanceToPrevious(long distance) {
+<span class="nc" id="L64">        this.distanceToPrevious = distance;</span>
+<span class="nc" id="L65">    }</span>
+
+    public void clearForGc() {
+<span class="fc" id="L68">        next = null;</span>
+<span class="fc" id="L69">        previous = null;</span>
+<span class="fc" id="L70">    }</span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

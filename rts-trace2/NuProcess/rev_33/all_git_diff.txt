@@ -1,0 +1,51 @@
+diff --git a/README.md b/README.md
+index 4a63345..9382099 100644
+--- a/README.md
++++ b/README.md
+@@ -4,0 +5 @@ NuProcess
++[![][Shippable Status img]][Shippable Status]
+@@ -184,0 +186,3 @@ The following limitations exist in NuProcess:
++[Shippable Status]:https://app.shippable.com/github/brettwooldridge/NuProcess
++[Shippable Status img]:https://api.shippable.com/projects/5b4b6a3e6db3b807000a63d8/badge?branch=master
++
+diff --git a/shippable.yml b/shippable.yml
+new file mode 100644
+index 0000000..d66735c
+--- /dev/null
++++ b/shippable.yml
+@@ -0,0 +1,15 @@
++language: java
++
++jdk:
++  - oraclejdk8
++  
++build:
++  ci:
++    - mvn install
++    #Create folders for test and code coverage
++    - mkdir -p shippable/testresults
++    - mkdir -p shippable/codecoverage
++    - cp -r target/site/jacoco/jacoco.xml shippable/codecoverage
++
++runtime:
++  nodePool: shippable_shared_aarch64
+diff --git a/src/main/java/com/zaxxer/nuprocess/linux/EpollEvent.java b/src/main/java/com/zaxxer/nuprocess/linux/EpollEvent.java
+index 0a11c27..bc8e0e8 100644
+--- a/src/main/java/com/zaxxer/nuprocess/linux/EpollEvent.java
++++ b/src/main/java/com/zaxxer/nuprocess/linux/EpollEvent.java
+@@ -92 +92 @@ class EpollEvent
+-         super(ALIGN_NONE);
++         super(ALIGN_GNUC); // super(ALIGN_NONE);
+diff --git a/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java b/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
+index f8ccdaf..5161e7a 100644
+--- a/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
++++ b/src/test/java/com/zaxxer/nuprocess/linux/EpollEventTest.java
+@@ -13 +13,3 @@ public class EpollEventTest
+-      Assert.assertEquals(12, event.size());
++      Assert.assertEquals(16, event.size());
++      // When alignment is ALIGN_NONE
++      // Assert.assertEquals(12, event.size());
+@@ -15 +17 @@ public class EpollEventTest
+-}
+\ No newline at end of file
++}

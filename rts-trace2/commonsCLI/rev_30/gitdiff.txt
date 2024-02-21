@@ -1,0 +1,28 @@
+diff --git a/src/main/java/org/apache/commons/cli/Option.java b/src/main/java/org/apache/commons/cli/Option.java
+index 828c995d..e8853e25 100644
+--- a/src/main/java/org/apache/commons/cli/Option.java
++++ b/src/main/java/org/apache/commons/cli/Option.java
+@@ -176 +176 @@ public class Option implements Cloneable, Serializable {
+-         * @param numberOfArgs the number of argument values
++         * @param argCount the number of argument values
+@@ -179,2 +179,2 @@ public class Option implements Cloneable, Serializable {
+-        public Builder numberOfArgs(final int numberOfArgs) {
+-            this.argCount = numberOfArgs;
++        public Builder numberOfArgs(final int argCount) {
++            this.argCount = argCount;
+@@ -200 +200 @@ public class Option implements Cloneable, Serializable {
+-         * @param isOptional specifies whether the Option can have an optional argument.
++         * @param optionalArg specifies whether the Option can have an optional argument.
+@@ -203,2 +203,2 @@ public class Option implements Cloneable, Serializable {
+-        public Builder optionalArg(final boolean isOptional) {
+-            this.optionalArg = isOptional;
++        public Builder optionalArg(final boolean optionalArg) {
++            this.optionalArg = optionalArg;
+@@ -265 +265 @@ public class Option implements Cloneable, Serializable {
+-         * @param sep The value separator.
++         * @param valueSeparator The value separator.
+@@ -268,2 +268,2 @@ public class Option implements Cloneable, Serializable {
+-        public Builder valueSeparator(final char sep) {
+-            valueSeparator = sep;
++        public Builder valueSeparator(final char valueSeparator) {
++            this.valueSeparator = valueSeparator;

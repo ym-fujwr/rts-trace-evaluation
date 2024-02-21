@@ -1,0 +1,8 @@
+diff --git a/src/test/java/org/apache/commons/net/examples/MainTest.java b/src/test/java/org/apache/commons/net/examples/MainTest.java
+index 6dc8de604..321d15f4c 100644
+--- a/src/test/java/org/apache/commons/net/examples/MainTest.java
++++ b/src/test/java/org/apache/commons/net/examples/MainTest.java
+@@ -126 +126,2 @@ public class MainTest {
+-                System.out.println(sourceFile);
++                System.out.println("sf="+sourceFile);
++                System.out.println("cp="+new File(sourceFile).getCanonicalPath());

@@ -42,8 +42,5 @@
 - result2: 評価結果をまとめてる．（testtimeはいらないやつ．testtime2が正しい）
 - rts-trace: いらないフォルダ（ミスってるやつ）
 - rts-trace2: rts-traceの適用結果．
-- sample: いらないフォルダ
 - script: スクリプトを置いている
-- workingDir: いらないフォルダ
-
 
